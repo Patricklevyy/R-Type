@@ -1,10 +1,5 @@
-cmake_minimum_required(VERSION 3.15)
-project(r-type LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
+project(rtype)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
-
-add_subdirectory(server)
-add_subdirectory(client)
+# Inclure le sous-dossier rtype_game
+add_subdirectory(rtype_game)
