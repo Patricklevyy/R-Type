@@ -31,7 +31,7 @@ jobs:
 
       - name: Verify Executables
         run: |
-          test -f r-type_server || { echo "r-type_server not found!"; exit 1; }
+          test -f r-type_server || { echo "r-type_server not found!"; exit 1; } 
           test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
 
   push_to_mirror:
