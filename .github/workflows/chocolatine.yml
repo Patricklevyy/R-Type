@@ -10,6 +10,7 @@ on:
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
+  GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
 
 jobs:
   build_and_verify:
@@ -31,7 +32,7 @@ jobs:
 
       - name: Verify Executables
         run: |
-          test -f r-type_server || { echo "r-type_server not found!"; exit 1; } 
+          test -f r-type_server || { echo "r-type_server not found!"; exit 1; }
           test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
 
   push_to_mirror:
@@ -43,9 +44,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Set up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GIT_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/id_rsa -T git@github.com || exit 1
 
       - name: Push to Mirror Repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url: "${{ env.MIRROR_URL }}"
-          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+          ssh_private_key: ${{ env.GIT_SSH_PRIVATE_KEY }}
