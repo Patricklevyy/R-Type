@@ -9,7 +9,7 @@ on:
       - 'dev'
 
 env:
-  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
+  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git" 
 
 jobs:
   build_and_verify:
@@ -42,7 +42,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
       - name: Push to Mirror Repository
         uses: pixta-dev/repository-mirroring-action@v1
