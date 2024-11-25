@@ -1,0 +1,51 @@
+name: Chocolatine
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'dev'
+
+env:
+  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
+
+jobs:
+  build_and_verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo dnf update -y
+          sudo dnf install -y cmake gcc-c++ make
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build Project
+        run: cmake --build build
+
+      - name: Verify Executables
+        run: |
+          test -f build/r-type_server || { echo "r-type_server not found!"; exit 1; }
+          test -f build/r-type_client || { echo "r-type_client not found!"; exit 1; }
+
+  push_to_mirror:
+    needs: build_and_verify
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Push to Mirror Repository
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url: "${{ env.MIRROR_URL }}"
+          ssh_private_key: ${{ secrets.GIT_SSH_PUBLIC_KEY }}
