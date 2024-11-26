@@ -9,7 +9,7 @@ on:
       - 'dev'
 
 env:
-  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git" 
+  MIRROR_URL: "git@github.com:Patricklevyy/RepoTest.git"
 
 jobs:
   build_and_verify:
