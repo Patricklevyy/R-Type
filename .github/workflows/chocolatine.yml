@@ -9,7 +9,7 @@ on:
       - 'dev'
 
 env:
-  MIRROR_URL: "git@github.com:Patricklevyy/RepoTest.git"
+  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
 
 jobs:
   build_and_verify:
@@ -26,7 +26,7 @@ jobs:
       - name: Configure CMake
         run: cmake -S . -B build
 
-      - name: Build Project
+      - name: Build R-Type
         run: cmake --build build
 
       - name: Verify Executables
