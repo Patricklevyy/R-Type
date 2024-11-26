@@ -35,23 +35,18 @@ jobs:
           test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
 
   push_to_mirror:
-    needs: build_and_verify
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    needs: build_and_verify
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Debug SSH
-        run: |
-          ssh -v git@github.com
-          git remote -v
-          git ls-remote ${{ env.MIRROR_URL }}
-
       - name: Push to Mirror Repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url: "${{ env.MIRROR_URL }}"
-          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
