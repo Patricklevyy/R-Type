@@ -5,8 +5,12 @@
 ** Main
 */
 
-#include <iostream>
+#include "Server.hpp"
 
 int main() {
-    std::cout << "Hello server" << std::endl;
+    rtype::Server RYTPE_SERVER;
+
+    int response = RYTPE_SERVER.start();
+
+    std::cout << "RESPONSE " << response << std::endl;
 }
