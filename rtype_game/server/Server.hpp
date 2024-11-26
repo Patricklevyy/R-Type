@@ -21,24 +21,17 @@
 
                 int start();
 
-                // void addRoom(const sockaddr_in& roomAddr) {
-                //     Room newRoom(roomAddr);
-                //     newRoom.start();
-                //     rooms.push_back(std::move(newRoom));
-                // }
-
-                // void stop() {
-                //     for (auto& room : rooms) {
-                //         room.stop();
-                //     }
-                // }
-
                 bool isRunning() const;
                 void setRunning(bool);
 
             private:
-                bool _running = true;
-                // std::vector<Room> rooms;
+                bool _running;
+                std::vector<Room> _rooms;
+                int _currentPort;
+                UDP_Manager udpManager;
+
+                void createRoom(const std::string& name);
+                void notifyRoomToCreateClient(const std::string& roomName, std::string lastclientAdr);
             };
     }
 
