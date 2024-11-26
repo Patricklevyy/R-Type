@@ -44,6 +44,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug SSH
+        run: |
+          ssh -v git@github.com
+          git remote -v
+          git ls-remote ${{ env.MIRROR_URL }}
+
       - name: Push to Mirror Repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
