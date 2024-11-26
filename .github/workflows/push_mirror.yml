@@ -1,4 +1,4 @@
-name: Chocolatine
+name: Push_mirror
 
 on:
   push:
@@ -21,10 +21,15 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev 
+          sudo apt-get install -y cmake g++ make libconfig++-dev
 
       - name: Configure CMake
-        run: cmake -S . -B build
+        run: cmake -S . -B
+
+      # - name: Check libconfig installation by CMake
+      #   run: |
+      #     cmake -S . -B build | tee cmake_configure.log
+      #     grep "libconfig" cmake_configure.log || { echo "libconfig++ not detected by CMake!"; exit 1; }
 
       - name: Build R-Type
         run: cmake --build build
