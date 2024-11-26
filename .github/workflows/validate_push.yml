@@ -10,7 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Block direct push
+      - name: Check if push is from a pull request
         run: |
-          echo "Direct pushes to 'main' are not allowed. Please use a pull request."
-          exit 1
+          if [[ "$GITHUB_EVENT_NAME" == "push" && "$GITHUB_HEAD_REF" == "" ]]; then
+            echo "Direct pushes to 'main' are not allowed. Please use a pull request."
+            exit 1
+          else
+            echo "Push is from a pull request. Proceeding."
+          fi
