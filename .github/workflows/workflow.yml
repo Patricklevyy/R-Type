@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for Direct Push
+        shell: bash
         run: |
           if [[ -z "$GITHUB_HEAD_REF" ]]; then
             echo "❌ Direct pushes to 'main' are not allowed. Please create a pull request."
             exit 1
           else
             echo "✅ Push is from a pull request. Proceeding."
-
