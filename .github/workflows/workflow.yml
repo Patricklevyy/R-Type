@@ -23,17 +23,16 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y cmake g++ make libconfig++-dev
 
-      - name: Verify Dependencies
-        run: |
-          dpkg -l | grep libconfig++-dev || { echo "libconfig++-dev not found!"; exit 1; }
+      - name: Configure CMake
+        run: cmake -S . -B build
 
       - name: Build R-Type
         run: cmake --build build
 
       - name: Verify Executables
         run: |
-          test -f build/r-type_server || { echo "r-type_server not found!"; exit 1; }
-          test -f build/r-type_client || { echo "r-type_client not found!"; exit 1; }
+          test -f r-type_server || { echo "r-type_server not found!"; exit 1; }
+          test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
 
   push_to_mirror:
     runs-on: ubuntu-latest
