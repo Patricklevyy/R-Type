@@ -16,7 +16,7 @@
             JOIN_ROOM,
             LEAVE_ROOM,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
-            MAX_ACTION
+            MAX_ACTION 
         };
     }
 
