@@ -24,14 +24,14 @@ namespace rtype
         }
         if (_listenThread.joinable())
         {
-            _listenThread.join(); // Joindre le thread si nécessaire
+            _listenThread.join();
         }
     }
 
     Room::Room(Room &&other) noexcept
         : _port(other._port), _name(std::move(other._name)), _sockfd(other._sockfd), _addr(other._addr), _listenThread(std::move(other._listenThread))
     {
-        other._sockfd = -1; // L'autre socket n'est plus valide
+        other._sockfd = -1;
     }
 
     Room &Room::operator=(Room &&other) noexcept
@@ -73,6 +73,16 @@ namespace rtype
         return true;
     }
 
+    unsigned int Room::getNbClient() const
+    {
+        return _nb_client;
+    }
+
+    void Room::setNbClient(unsigned int nb_client)
+    {
+        _nb_client = nb_client;
+    }
+
     void Room::listenForMessages()
     {
         char buffer[1024];
@@ -87,31 +97,26 @@ namespace rtype
                 std::string message(buffer, received);
                 std::cout << "Received message in room thread " << _name << ": " << message << std::endl;
 
-                // Si le message est une demande de création de client, envoyer l'adresse de la room
                 if (message == "CREATE")
                 {
-                    // Convertir l'adresse du client en "ip:port"
                     char ipStr[INET_ADDRSTRLEN];
                     inet_ntop(AF_INET, &(senderAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
                     int clientPort = ntohs(senderAddr.sin_port);
 
                     std::string clientAddress = std::string(ipStr) + ":" + std::to_string(clientPort);
 
-                    // Formater l'adresse de la room
                     std::string roomAddress = "127.0.0.1:" + std::to_string(_port); // L'adresse et le port de la room
 
-                    // Construire le message à envoyer
                     std::string response = "The room address is: " + roomAddress;
 
-                    // Envoyer la réponse avec l'adresse de la room au client
-                    if (!_udpServer.sendMessage(response, clientAddress))
-                    {
-                        std::cerr << "Failed to send room address to client." << std::endl;
-                    }
-                    else
-                    {
-                        std::cout << "Sent room address to client: " << roomAddress << std::endl;
-                    }
+                    // if (!_udpServer.sendMessage(response, clientAddress))
+                    // {
+                    //     std::cerr << "Failed to send room address to client." << std::endl;
+                    // }
+                    // else
+                    // {
+                    //     std::cout << "Sent room address to client: " << roomAddress << std::endl;
+                    // }
                 }
             }
         }
@@ -131,24 +136,21 @@ namespace rtype
             return;
         }
 
-        // Lancer le thread pour écouter les messages
         _listenThread = std::thread(&Room::listenForMessages, this);
         _listenThread.detach(); // Laisser le thread détaché pour tourner en arrière-plan
     }
 
     void Room::createClient(std::string lastclientAdr)
     {
-        // Simuler la création du client
 
         std::cout << "Client created in room [" << _name << "] with addr: " << lastclientAdr << std::endl;
 
-        std::string roomAddress = getAddress(); // Récupérer l'adresse sous forme "IP:port"
+        std::string roomAddress = getAddress();
 
-        // Créer le message de bienvenue avec l'adresse de la room
         std::string message = "Welcome to the room, client! The room address is: " + roomAddress;
 
-        // Envoyer le message au client
-        _udpServer.sendMessage(message, lastclientAdr);
+        // _udpServer.sendMessage(message, lastclientAdr);
+        setNbClient(getNbClient() + 1);
     }
 
     void Room::closeRoom()
@@ -167,10 +169,8 @@ namespace rtype
 
     std::string Room::getAddress() const
     {
-        // Convertir l'adresse IP en chaîne
         char ipStr[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(this->_addr.sin_addr), ipStr, INET_ADDRSTRLEN);
-        // Retourner l'adresse sous forme "IP:port"
         return std::string(ipStr) + ":" + std::to_string(ntohs(this->_addr.sin_port));
     }
 

@@ -10,7 +10,10 @@
 int main() {
     rtype::Server RYTPE_SERVER;
 
-    int response = RYTPE_SERVER.start();
-
-    std::cout << "RESPONSE " << response << std::endl;
+    try {
+        RYTPE_SERVER.start();
+    } catch (std::exception &e) {
+        std::cerr << std::endl << e.what() << std::endl;
+        exit(84);
+    }
 }

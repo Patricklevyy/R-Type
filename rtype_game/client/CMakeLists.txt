@@ -1,6 +1,6 @@
 add_executable(r-type_client Main.cpp)
 
-target_compile_options(r-type_client PRIVATE -Wall -Wextra)
+target_compile_options(r-type_client PRIVATE -Wall -Wextra -g)
 
 target_link_libraries(r-type_client ecs)
 

@@ -10,11 +10,13 @@
 
     namespace rtype
     {
-        enum ROOM_ACTIONS {
+        enum RTYPE_ACTIONS {
             UNDEFINED = -1,
-            CREATE,
-            JOIN,
-            LEAVE
+            CREATE_ROOM,
+            JOIN_ROOM,
+            LEAVE_ROOM,
+            EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
+            MAX_ACTION
         };
     }
 

@@ -2,7 +2,7 @@ file(GLOB_RECURSE SOURCE_FILES *.cpp)
 
 add_executable(r-type_server ${SOURCE_FILES})
 
-target_compile_options(r-type_server PRIVATE -Wall -Wextra)
+target_compile_options(r-type_server PRIVATE -Wall -Wextra -g)
 
 target_link_libraries(r-type_server ecs)
 

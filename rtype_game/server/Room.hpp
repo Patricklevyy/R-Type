@@ -8,11 +8,8 @@
 #ifndef ROOM_HPP_
     #define ROOM_HPP_
 
-    #include <string>
-    #include <thread>
-    #include <iostream>
-    #include <unistd.h>  // Pour close() et autres appels liés aux sockets
-    #include <netinet/in.h>  // Pour sockaddr_in
+    #include "Includes.hpp"
+    #include "MessageChecker.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
 
     namespace rtype {
@@ -27,6 +24,9 @@
 
                 bool sendMessage(const std::string& message);
 
+                unsigned int getNbClient() const;
+                void setNbClient(unsigned int);
+
                 Room(const Room&) = delete;
                 Room(Room&& other) noexcept;
                 Room& operator=(const Room&) = delete;
@@ -39,6 +39,7 @@
             private:
                 int _port;
                 std::string _name;
+                unsigned int _nb_client;
                 int _sockfd;
                 struct sockaddr_in _addr;
                 UDP_Server _udpServer;
