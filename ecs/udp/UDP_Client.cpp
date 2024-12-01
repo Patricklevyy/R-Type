@@ -7,6 +7,8 @@
 
 #include "UDP_Client.hpp"
 
+// A REFACTO , METTRE A JOUR L'ADDRESSE DU SERVER QUAND IL TE RENVOIE L'ADRESSE DE LA ROOM
+
 UDP_Client::UDP_Client()
 {
 }

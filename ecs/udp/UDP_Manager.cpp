@@ -23,20 +23,13 @@ bool UDP_Manager::initialize(const std::string &configFile, int port)
 {
     libconfig::Config cfg;
 
-    try
-    {
+    try {
         std::cout << configFile.c_str() << std::endl;
         cfg.readFile(configFile.c_str());
-    }
-    catch (const libconfig::FileIOException &e)
-    {
-        std::cerr << "Error reading configuration file: " << e.what() << std::endl;
-        return false;
-    }
-    catch (const libconfig::ParseException &e)
-    {
-        std::cerr << "Error parsing configuration file: " << e.getError() << std::endl;
-        return false;
+    } catch (const libconfig::FileIOException &e) {
+        throw ERROR::CantReadConfigFileExceptions();
+    } catch (const libconfig::ParseException &e) {
+        throw ERROR::CantParseConfigFileExceptions();
     }
 
     const libconfig::Setting &root = cfg.getRoot();
@@ -46,9 +39,8 @@ bool UDP_Manager::initialize(const std::string &configFile, int port)
         const libconfig::Setting &udpSettings = root["UDP"];
         bufferSize = udpSettings["buffer_size"];
 
-        if (bufferSize > 1472) { // TODO : REMPLACER PAR DES EXCEPTIONS
-            std::cerr << "Buffer size exceeds safe UDP message size (1472 bytes).\n";
-            return false;
+        if (bufferSize > 1472) {
+            throw ERROR::WrongBufferSizeExceptions();
         }
 
         sockaddr_in addr{};
@@ -61,41 +53,30 @@ bool UDP_Manager::initialize(const std::string &configFile, int port)
             inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 
             sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-            if (sockfd < 0)
-            {
-                perror("Socket creation failed"); // TODO : REMPLACER PAR DES EXCEPTIONS
-                return false;
+            if (sockfd < 0) {
+                throw ERROR::SocketNotInitializedExceptions();
             }
 
             if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
-                perror("Bind failed"); // TODO : REMPLACER PAR DES EXCEPTIONS
                 close(sockfd);
                 sockfd = -1;
-                return false;
+                throw ERROR::BindFailedExceptions();
             }
 
             std::cout << "Server is running on " << ip << ":" << port << "\n";
-    }
-    catch (const libconfig::SettingNotFoundException &e)
-    {
-        std::cerr << "Missing setting in configuration file: " << e.what() << "\n"; // TODO : REMPLACER PAR DES EXCEPTIONS
-        return false;
-    }
-    catch (const libconfig::SettingTypeException &e)
-    {
-        std::cerr << "Type mismatch in configuration file: " << e.what() << "\n"; // TODO : REMPLACER PAR DES EXCEPTIONS
-        return false;
+    } catch (const libconfig::SettingNotFoundException &e) {
+        throw ERROR::WrongConfigurationExceptions();
+    } catch (const libconfig::SettingTypeException &e) {
+        throw ERROR::WrongConfigurationExceptions();
     }
 
     return true;
 }
 
-bool UDP_Manager::receiveMessage(std::string &message)
+bool UDP_Manager::receiveMessage(std::vector<char>& message)
 {
-    if (sockfd < 0)
-    {
-        std::cerr << "Socket not initialized.\n";
-        return false;
+    if (sockfd < 0) {
+        throw ERROR::SocketNotInitializedExceptions();
     }
 
     char buffer[bufferSize];
@@ -103,84 +84,51 @@ bool UDP_Manager::receiveMessage(std::string &message)
     socklen_t senderLen = sizeof(senderAddr);
     ssize_t received = recvfrom(sockfd, buffer, bufferSize, 0, (struct sockaddr *)&senderAddr, &senderLen);
 
-    if (received < 0)
-    {
-        perror("Recvfrom failed");
-        return false;
+    if (received < 0) {
+        throw ERROR::RecvExceptions();
     }
 
     lastSenderAddr = senderAddr;
     lastSenderValid = true;
 
-    message.assign(buffer, received);
+    message.assign(buffer, buffer + received);
+
     clientAddrStr = std::string(inet_ntoa(senderAddr.sin_addr)) + ":" + std::to_string(ntohs(senderAddr.sin_port));
     return true;
 }
+
 
 std::string UDP_Manager::getLastClientAddress() const
 {
     return clientAddrStr;
 }
 
-bool UDP_Manager::respond(const std::string &message)
+bool UDP_Manager::sendMessage(const std::vector<char>& message, const std::string &address)
 {
-    if (sockfd < 0)
-    {
-        std::cerr << "Socket not initialized.\n";
-        return false;
+    if (sockfd < 0) {
+        throw ERROR::SocketNotInitializedExceptions();
     }
 
-    if (!lastSenderValid)
-    {
-        std::cerr << "No valid last sender address to respond to.\n";
-        return false;
-    }
-
-    if (message.size() > bufferSize)
-    {
-        std::cerr << "Message exceeds buffer size. Truncating.\n";
-    }
-
-    ssize_t sent = sendto(sockfd, message.c_str(), std::min(bufferSize, (int)message.size()), 0,
-                          (struct sockaddr *)&lastSenderAddr, sizeof(lastSenderAddr));
-    return sent >= 0;
-}
-
-bool UDP_Manager::sendMessage(const std::string &message, const std::string &address)
-{
-    if (sockfd < 0)
-    {
-        std::cerr << "Socket not initialized.\n"; // TODO : REMPLACER PAR DES EXCEPTIONS
-        return false;
-    }
-
-    // Extraire l'IP et le port de la chaîne "ip:port"
     size_t colonPos = address.find(':');
-    if (colonPos == std::string::npos)
-    {
-        std::cerr << "Invalid address format. Expected 'ip:port'.\n";
-        return false;
+    if (colonPos == std::string::npos) {
+        throw ERROR::InvalidAdressFormatExceptions();
     }
 
     std::string ip = address.substr(0, colonPos);
     int port = std::stoi(address.substr(colonPos + 1));
 
-    // Configurer l'adresse du destinataire
     sockaddr_in receiverAddr{};
     receiverAddr.sin_family = AF_INET;
     receiverAddr.sin_port = htons(port);
-    if (inet_pton(AF_INET, ip.c_str(), &receiverAddr.sin_addr) <= 0)
-    {
-        std::cerr << "Invalid IP address.\n";
-        return false;
+    if (inet_pton(AF_INET, ip.c_str(), &receiverAddr.sin_addr) <= 0) {
+        throw ERROR::InvalidAdressFormatExceptions();
     }
 
-    if (message.size() > bufferSize)
-    {
-        std::cerr << "Message exceeds buffer size. Truncating.\n"; // TODO : REMPLACER PAR DES EXCEPTIONS
+    if (message.size() > bufferSize) {
+        throw ERROR::MessageTooBigExceptions();
     }
 
-    ssize_t sent = sendto(sockfd, message.c_str(), std::min(bufferSize, (int)message.size()), 0,
+    ssize_t sent = sendto(sockfd, message.data(), std::min(bufferSize, (int)message.size()), 0,
                           (struct sockaddr *)&receiverAddr, sizeof(receiverAddr));
     return sent >= 0;
 }

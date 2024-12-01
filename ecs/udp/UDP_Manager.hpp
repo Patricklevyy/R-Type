@@ -8,12 +8,7 @@
 #ifndef UDP_MANAGER_HPP
     #define UDP_MANAGER_HPP
 
-    #include <iostream>
-    #include <string>
-    #include <sys/socket.h>
-    #include <arpa/inet.h>
-    #include <unistd.h>
-    #include <libconfig.h++>
+    #include "../Includes.hpp"
 
     class UDP_Manager {
         public:
@@ -21,9 +16,8 @@
             virtual ~UDP_Manager();
 
             virtual bool initialize(const std::string& configFile, int port = 0);
-            virtual bool sendMessage(const std::string& message, const std::string &address);
-            virtual bool receiveMessage(std::string& message);
-            virtual bool respond(const std::string& message);
+            virtual bool sendMessage(const std::vector<char>& message, const std::string &address);
+            virtual bool receiveMessage(std::vector<char>& message);
             virtual std::string getLastClientAddress() const;
 
         protected:
