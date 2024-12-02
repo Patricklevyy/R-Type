@@ -5,8 +5,15 @@
 ** Main
 */
 
-#include <iostream>
+#include "Server.hpp"
 
 int main() {
-    std::cout << "Hello server" << std::endl;
+    rtype::Server RYTPE_SERVER;
+
+    try {
+        RYTPE_SERVER.start();
+    } catch (std::exception &e) {
+        std::cerr << std::endl << e.what() << std::endl;
+        exit(84);
+    }
 }
