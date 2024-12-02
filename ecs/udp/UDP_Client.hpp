@@ -10,15 +10,21 @@
 
     #include "UDP_Manager.hpp"
 
-    class UDP_Client : public UDP_Manager{
-        public:
-            UDP_Client();
-            ~UDP_Client();
+    namespace ecs
+    {
+        namespace udp
+        {
+            class UDP_Client : public UDP_Manager{
+                public:
+                    UDP_Client();
+                    ~UDP_Client();
 
-            bool initialize(const std::string &configFile, int port = 0) override;
+                    bool initialize(const std::string &configFile, int port = 0) override;
 
-        protected:
-        private:
-    };
+                protected:
+                private:
+            };
+        }
+    }
 
 #endif /* !UDP_CLIENT_HPP_ */

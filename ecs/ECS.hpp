@@ -6,15 +6,18 @@
 */
 
 #ifndef ECS_HPP_
-#define ECS_HPP_
+    #define ECS_HPP_
 
-class ECS {
-    public:
-        ECS();
-        ~ECS();
+    namespace ecs
+    {
+        class ECS {
+            public:
+                ECS();
+                ~ECS();
 
-    protected:
-    private:
-};
+            protected:
+            private:
+        };
+    }
 
 #endif /* !ECS_HPP_ */

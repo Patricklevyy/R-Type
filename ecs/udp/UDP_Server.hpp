@@ -10,22 +10,24 @@
 
     #include "UDP_Manager.hpp"
 
-    class UDP_Server : public UDP_Manager {
-    public:
-        UDP_Server();
-        ~UDP_Server();
+    namespace ecs
+    {
+        namespace udp
+        {
+            class UDP_Server : public UDP_Manager {
+                public:
+                    UDP_Server();
+                    ~UDP_Server();
 
-        // Surcharge de l'initialisation spécifique au serveur
-        bool initialize(const std::string& configFile, int port = 0) override;
+                    bool initialize(const std::string& configFile, int port = 0) override;
 
-        // Ajouter un client et envoyer une confirmation
+                private:
+                    std::unordered_map<std::string, sockaddr_in> clients;
 
-    private:
-        // Stockage des clients (clé: adresse IP et port, valeur: structure sockaddr_in)
-        std::unordered_map<std::string, sockaddr_in> clients;
+                    std::string generateClientKey(const sockaddr_in& addr) const;
+                };
+        }
+    }
 
-        // Générer une clé unique pour chaque client (par ex., "IP:PORT")
-        std::string generateClientKey(const sockaddr_in& addr) const;
-    };
 
 #endif // UDP_SERVER_HPP"

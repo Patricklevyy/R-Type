@@ -11,16 +11,22 @@
     #include "../Includes.hpp"
     #include "../Structures.hpp"
 
-    class MessageCompressor {
-        public:
-            MessageCompressor();
-            ~MessageCompressor();
+    namespace ecs
+    {
+        namespace udp
+        {
+            class MessageCompressor {
+                public:
+                    MessageCompressor();
+                    ~MessageCompressor();
 
-            void serialize(const Message& msg, std::vector<char>& buffer);
-            void deserialize(const std::vector<char>& buffer, Message& msg);
+                    void serialize(const Message& msg, std::vector<char>& buffer);
+                    void deserialize(const std::vector<char>& buffer, Message& msg);
 
-        protected:
-        private:
-    };
+                protected:
+                private:
+            };
+        }
+    }
 
 #endif /* !MESSAGECOMPRESSOR_HPP_ */

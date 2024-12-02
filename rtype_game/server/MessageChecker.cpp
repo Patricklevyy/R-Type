@@ -17,7 +17,7 @@ namespace rtype
     {
     }
 
-    void MessageChecker::checkAction(const Message& message) const{
+    void MessageChecker::checkAction(const ecs::udp::Message& message) const{
         if (message.action < 0 || message.action >= MAX_ACTION) {
             std::string error_message = "Unknown action : " + std::to_string(message.action);
             throw ERROR::InvalidActionExceptions(error_message);

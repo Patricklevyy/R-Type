@@ -18,7 +18,7 @@
                 MessageChecker();
                 ~MessageChecker();
 
-                void checkAction(const Message&) const;
+                void checkAction(const ecs::udp::Message&) const;
 
                 std::map<std::string, std::string> checkFormatParams(std::string&);
 

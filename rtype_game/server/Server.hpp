@@ -28,8 +28,8 @@
                 bool _running;
                 std::vector<Room> _rooms;
                 int _currentPort;
-                UDP_Manager _udpManager;
-                MessageCompressor _compressor;
+                ecs::udp::UDP_Manager _udpManager;
+                ecs::udp::MessageCompressor _compressor;
                 MessageChecker _mes_checker;
                 std::unordered_map<unsigned int, std::function<void(const unsigned int, std::string&, std::string&, std::string&)>> _commands;
 
