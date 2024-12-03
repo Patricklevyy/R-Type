@@ -38,7 +38,7 @@ namespace rtype {
     }
 
     void Server::handleCommand(const std::vector<char>& message, std::string clientAddr) {
-        Message mes;
+        ecs::udp::Message mes;
         _compressor.deserialize(message, mes);
         _mes_checker.checkAction(mes);
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << " body " << mes.body << std::endl;

@@ -7,10 +7,13 @@
 
 #include "ECS.hpp"
 
-ECS::ECS()
+namespace ecs
 {
-}
+    ECS::ECS()
+    {
+    }
 
-ECS::~ECS()
-{
+    ECS::~ECS()
+    {
+    }
 }
