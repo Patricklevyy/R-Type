@@ -1,11 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
-project(RTypeClient)
+add_executable(r-type_client Main.cpp)
 
-# Liste des fichiers sources
-set(SOURCES Main.cpp)
+# Options de compilation
+target_compile_options(r-type_client PRIVATE -Wall -Wextra)
 
-# Création de l'exécutable
-add_executable(r-type_client ${SOURCES})
-
-# Lier les dépendances communes
-target_link_libraries(r-type_client PRIVATE common_dependencies)
+# Forcer le chemin de l'exécutable à la racine
+set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
