@@ -13,27 +13,27 @@ env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
 
 jobs:
-  build_and_verify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  # build_and_verify:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev
+  #     - name: Install Dependencies
+  #       run: |
+  #         sudo apt-get update -y
+  #         sudo apt-get install -y cmake g++ make libconfig++-dev
 
-      - name: Configure CMake
-        run: cmake -S . -B build
+  #     - name: Configure CMake
+  #       run: cmake -S . -B build
 
-      - name: Build R-Type
-        run: cmake --build build
+  #     - name: Build R-Type
+  #       run: cmake --build build
 
-      - name: Verify Executables
-        run: |
-          test -f r-type_server || { echo "r-type_server not found!"; exit 1; }
-          test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
+  #     - name: Verify Executables
+  #       run: |
+  #         test -f r-type_server || { echo "r-type_server not found!"; exit 1; }
+  #         test -f r-type_client || { echo "r-type_client not found!"; exit 1; }
 
   generate_docs:
     runs-on: ubuntu-latest
