@@ -1,5 +1,5 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="node1" href="$classecs_1_1udp_1_1UDP__Manager.html" title=" " alt="" coords="5,31,181,57"/>
+<area shape="rect" id="node1" href="$classecs_1_1udp_1_1UDP__Manager.html" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="5,31,181,57"/>
 <area shape="rect" id="node2" href="$classecs_1_1udp_1_1UDP__Client.html" title=" " alt="" coords="231,5,389,32"/>
 <area shape="rect" id="node3" href="$classecs_1_1udp_1_1UDP__Server.html" title=" " alt="" coords="229,56,391,83"/>
 </map>

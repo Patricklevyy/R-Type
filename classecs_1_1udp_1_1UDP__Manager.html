@@ -76,13 +76,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Cette UDP manager gère les messages de première connexion d'un client.  
+ <a href="classecs_1_1udp_1_1UDP__Manager.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UDP__Manager_8hpp_source.html">UDP_Manager.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Graphe d'héritage de ecs::udp::UDP_Manager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classecs_1_1udp_1_1UDP__Manager__inherit__graph.png" border="0" usemap="#aecs_1_1udp_1_1UDP__Manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="aecs_1_1udp_1_1UDP__Manager_inherit__map" id="aecs_1_1udp_1_1UDP__Manager_inherit__map">
-<area shape="rect" title=" " alt="" coords="88,5,264,32"/>
+<area shape="rect" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="88,5,264,32"/>
 <area shape="rect" href="classecs_1_1udp_1_1UDP__Client.html" title=" " alt="" coords="5,80,163,107"/>
 <area shape="rect" href="classecs_1_1udp_1_1UDP__Server.html" title=" " alt="" coords="187,80,349,107"/>
 </map>
@@ -91,16 +94,21 @@ Graphe d'héritage de ecs::udp::UDP_Manager:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ad9934b4f39df3bb85cc7178b5968e10b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#ad9934b4f39df3bb85cc7178b5968e10b">UDP_Manager</a> ()</td></tr>
+<tr class="memdesc:ad9934b4f39df3bb85cc7178b5968e10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="classecs_1_1udp_1_1UDP__Manager.html#ad9934b4f39df3bb85cc7178b5968e10b">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ad9934b4f39df3bb85cc7178b5968e10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c30602eed3c067010701c0d20d19eb7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#a6c30602eed3c067010701c0d20d19eb7">~UDP_Manager</a> ()</td></tr>
 <tr class="separator:a6c30602eed3c067010701c0d20d19eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d357465fc7075b91a376404a9f00150"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#a6d357465fc7075b91a376404a9f00150">initialize</a> (const std::string &amp;configFile, int port=0)</td></tr>
+<tr class="memdesc:a6d357465fc7075b91a376404a9f00150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize le port du server et ecoute sur le port defini par le config file.  <a href="classecs_1_1udp_1_1UDP__Manager.html#a6d357465fc7075b91a376404a9f00150">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a6d357465fc7075b91a376404a9f00150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a0dd4fb787bcd12a98b54df467761b3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#a6a0dd4fb787bcd12a98b54df467761b3">sendMessage</a> (const std::vector&lt; char &gt; &amp;message, const std::string &amp;address)</td></tr>
+<tr class="memdesc:a6a0dd4fb787bcd12a98b54df467761b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send un message a l'addresse du client donné en param.  <a href="classecs_1_1udp_1_1UDP__Manager.html#a6a0dd4fb787bcd12a98b54df467761b3">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a6a0dd4fb787bcd12a98b54df467761b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78879f76a6eae9995d477c4711fcff5d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#a78879f76a6eae9995d477c4711fcff5d">receiveMessage</a> (std::vector&lt; char &gt; &amp;message)</td></tr>
+<tr class="memdesc:a78879f76a6eae9995d477c4711fcff5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recois un message et le met dans std::vector&lt;char&gt;&amp; message.  <a href="classecs_1_1udp_1_1UDP__Manager.html#a78879f76a6eae9995d477c4711fcff5d">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a78879f76a6eae9995d477c4711fcff5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa654d599cdadc7ebd2ace4aafe216aa9"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#aa654d599cdadc7ebd2ace4aafe216aa9">getLastClientAddress</a> () const</td></tr>
+<tr class="memdesc:aa654d599cdadc7ebd2ace4aafe216aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'addresse du dernier client qui a envoyé un message.  <a href="classecs_1_1udp_1_1UDP__Manager.html#aa654d599cdadc7ebd2ace4aafe216aa9">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aa654d599cdadc7ebd2ace4aafe216aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -118,7 +126,9 @@ Attributs protégés</h2></td></tr>
 <tr class="memitem:a49c55afea159ca773aa8dbf618b50a5d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1udp_1_1UDP__Manager.html#a49c55afea159ca773aa8dbf618b50a5d">clientAddrStr</a></td></tr>
 <tr class="separator:a49c55afea159ca773aa8dbf618b50a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Cette UDP manager gère les messages de première connexion d'un client. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="ad9934b4f39df3bb85cc7178b5968e10b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9934b4f39df3bb85cc7178b5968e10b">&#9670;&nbsp;</a></span>UDP_Manager()</h2>
 
@@ -133,6 +143,8 @@ Attributs protégés</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructeur par défaut. </p>
 
 </div>
 </div>
@@ -185,6 +197,9 @@ Attributs protégés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne l'addresse du dernier client qui a envoyé un message. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne l'addresse du dernier client </dd></dl>
+
 </div>
 </div>
 <a id="a6d357465fc7075b91a376404a9f00150"></a>
@@ -221,6 +236,16 @@ Attributs protégés</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initialize le port du server et ecoute sur le port defini par le config file. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configFile</td><td>Un config file qui set le port et l'ip </td></tr>
+    <tr><td class="paramname">port</td><td>Cet argument n'est pas utilisé par cette udp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si l'initialisation s'est bien passé </dd></dl>
+
 <p>Réimplémentée dans <a class="el" href="classecs_1_1udp_1_1UDP__Server.html#abacdeb5e9777dcb2f416a120899f74c1">ecs::udp::UDP_Server</a>, et <a class="el" href="classecs_1_1udp_1_1UDP__Client.html#ab0a51d34ba109108dd0b22b43c18973a">ecs::udp::UDP_Client</a>.</p>
 
 </div>
@@ -248,6 +273,15 @@ Attributs protégés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Recois un message et le met dans std::vector&lt;char&gt;&amp; message. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>std::vector vide car il va ếtre intialisé par le message </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si la reception s'est bien passé </dd></dl>
 
 </div>
 </div>
@@ -284,6 +318,16 @@ Attributs protégés</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Send un message a l'addresse du client donné en param. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td><a class="el" href="structecs_1_1udp_1_1Message.html">Message</a> serialisé par le message compressor </td></tr>
+    <tr><td class="paramname">address</td><td>Address du receiver </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne true si l'envoie s'est bien passé </dd></dl>
 
 </div>
 </div>

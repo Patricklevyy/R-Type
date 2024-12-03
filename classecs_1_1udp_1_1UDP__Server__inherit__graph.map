@@ -1,4 +1,4 @@
 <map id="ecs::udp::UDP_Server" name="ecs::udp::UDP_Server">
 <area shape="rect" id="node1" title=" " alt="" coords="13,80,174,107"/>
-<area shape="rect" id="node2" href="$classecs_1_1udp_1_1UDP__Manager.html" title=" " alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node2" href="$classecs_1_1udp_1_1UDP__Manager.html" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="5,5,181,32"/>
 </map>
