@@ -1,4 +1,0 @@
-LISTE DE PACKAGE A INSTALLER AVEC LE CMAKE => A FAIRE PLUS TARD
-
-libconfig++-dev
-doxygene

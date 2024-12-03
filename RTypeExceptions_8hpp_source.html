@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE:  Fichier source de rtype_game/shared/RTypeExceptions.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">R-TYPE
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Une brève description du projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_1a7e174f8daab5f721a016525c062f0f.html">rtype_game</a></li><li class="navelem"><a class="el" href="dir_97a2af54c838c108dea6558752a410d7.html">shared</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RTypeExceptions.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="RTypeExceptions_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-Type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** RTypeExceptions</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef RTYPEEXCEPTIONS_HPP_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    #define RTYPEEXCEPTIONS_HPP_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    #include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespacertype.html">rtype</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacertype_1_1ERROR.html">   15</a></span>&#160;        <span class="keyword">namespace </span>ERROR</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html">   17</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html">InvalidActionExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a96e169918ac00276965356f653567c36">   19</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a96e169918ac00276965356f653567c36">InvalidActionExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        : message_(<span class="stringliteral">&quot;InvalidActionExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a06f0df36b0793c2c3e8521448f5340bf">   22</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a06f0df36b0793c2c3e8521448f5340bf">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html">   30</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html">WrongFormatParamsExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#ad4d6f553423696b9c5d11a91cc7ea927">   32</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#ad4d6f553423696b9c5d11a91cc7ea927">WrongFormatParamsExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        : message_(<span class="stringliteral">&quot;WrongFormatParamsExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#a0dbf1c059b0c35be24120eccbe9b239e">   35</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#a0dbf1c059b0c35be24120eccbe9b239e">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html">   43</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html">MissingRoomsParamsExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a12c31394e58bdc086d4e1037c10f8568">   45</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a12c31394e58bdc086d4e1037c10f8568">MissingRoomsParamsExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        : message_(<span class="stringliteral">&quot;MissingRoomsParamsExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a27c3663460f30893ba5be428ee7e0db4">   48</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a27c3663460f30893ba5be428ee7e0db4">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html">   56</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html">RoomAlreadyExistingExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#ac36a6fc1b457b9c7c423fd235750f1f5">   58</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#ac36a6fc1b457b9c7c423fd235750f1f5">RoomAlreadyExistingExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        : message_(<span class="stringliteral">&quot;RoomAlreadyExistingExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#a02e7a48b317583132164795a1c4b3b04">   61</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#a02e7a48b317583132164795a1c4b3b04">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            };</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html">   69</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html">RoomNotFoundExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#abec19b2ddc2c127a421d4ecd16b25fac">   71</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#abec19b2ddc2c127a421d4ecd16b25fac">RoomNotFoundExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        : message_(<span class="stringliteral">&quot;RoomNotFoundExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#a9333aac738d642efb5d4ce0611624727">   74</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#a9333aac738d642efb5d4ce0611624727">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            };</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html">   82</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html">RoomIsFullExceptions</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#aab73daa75b47d77b89817e5d9671e544">   84</a></span>&#160;                    <span class="keyword">explicit</span> <a class="code" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#aab73daa75b47d77b89817e5d9671e544">RoomIsFullExceptions</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        : message_(<span class="stringliteral">&quot;RoomIsFullExceptions: &quot;</span> + message) {}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#a4ee57f38976b3e95e252cf17fe305e6e">   87</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#a4ee57f38976b3e95e252cf17fe305e6e">what</a>() const noexcept<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">return</span> message_.c_str();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    std::string message_;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            };</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !RTYPEEXCEPTIONS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1InvalidActionExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html">rtype::ERROR::InvalidActionExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:17</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1InvalidActionExceptions_html_a06f0df36b0793c2c3e8521448f5340bf"><div class="ttname"><a href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a06f0df36b0793c2c3e8521448f5340bf">rtype::ERROR::InvalidActionExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:22</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1InvalidActionExceptions_html_a96e169918ac00276965356f653567c36"><div class="ttname"><a href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a96e169918ac00276965356f653567c36">rtype::ERROR::InvalidActionExceptions::InvalidActionExceptions</a></div><div class="ttdeci">InvalidActionExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:19</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1MissingRoomsParamsExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html">rtype::ERROR::MissingRoomsParamsExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:43</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1MissingRoomsParamsExceptions_html_a12c31394e58bdc086d4e1037c10f8568"><div class="ttname"><a href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a12c31394e58bdc086d4e1037c10f8568">rtype::ERROR::MissingRoomsParamsExceptions::MissingRoomsParamsExceptions</a></div><div class="ttdeci">MissingRoomsParamsExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:45</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1MissingRoomsParamsExceptions_html_a27c3663460f30893ba5be428ee7e0db4"><div class="ttname"><a href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a27c3663460f30893ba5be428ee7e0db4">rtype::ERROR::MissingRoomsParamsExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:48</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html">rtype::ERROR::RoomAlreadyExistingExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:56</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions_html_a02e7a48b317583132164795a1c4b3b04"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#a02e7a48b317583132164795a1c4b3b04">rtype::ERROR::RoomAlreadyExistingExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:61</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions_html_ac36a6fc1b457b9c7c423fd235750f1f5"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html#ac36a6fc1b457b9c7c423fd235750f1f5">rtype::ERROR::RoomAlreadyExistingExceptions::RoomAlreadyExistingExceptions</a></div><div class="ttdeci">RoomAlreadyExistingExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:58</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomIsFullExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html">rtype::ERROR::RoomIsFullExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:82</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomIsFullExceptions_html_a4ee57f38976b3e95e252cf17fe305e6e"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#a4ee57f38976b3e95e252cf17fe305e6e">rtype::ERROR::RoomIsFullExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:87</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomIsFullExceptions_html_aab73daa75b47d77b89817e5d9671e544"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#aab73daa75b47d77b89817e5d9671e544">rtype::ERROR::RoomIsFullExceptions::RoomIsFullExceptions</a></div><div class="ttdeci">RoomIsFullExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:84</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomNotFoundExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html">rtype::ERROR::RoomNotFoundExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:69</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomNotFoundExceptions_html_a9333aac738d642efb5d4ce0611624727"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#a9333aac738d642efb5d4ce0611624727">rtype::ERROR::RoomNotFoundExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:74</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1RoomNotFoundExceptions_html_abec19b2ddc2c127a421d4ecd16b25fac"><div class="ttname"><a href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#abec19b2ddc2c127a421d4ecd16b25fac">rtype::ERROR::RoomNotFoundExceptions::RoomNotFoundExceptions</a></div><div class="ttdeci">RoomNotFoundExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:71</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1WrongFormatParamsExceptions_html"><div class="ttname"><a href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html">rtype::ERROR::WrongFormatParamsExceptions</a></div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:30</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1WrongFormatParamsExceptions_html_a0dbf1c059b0c35be24120eccbe9b239e"><div class="ttname"><a href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#a0dbf1c059b0c35be24120eccbe9b239e">rtype::ERROR::WrongFormatParamsExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:35</div></div>
+<div class="ttc" id="aclassrtype_1_1ERROR_1_1WrongFormatParamsExceptions_html_ad4d6f553423696b9c5d11a91cc7ea927"><div class="ttname"><a href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html#ad4d6f553423696b9c5d11a91cc7ea927">rtype::ERROR::WrongFormatParamsExceptions::WrongFormatParamsExceptions</a></div><div class="ttdeci">WrongFormatParamsExceptions(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> RTypeExceptions.hpp:32</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition:</b> Enums.hpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

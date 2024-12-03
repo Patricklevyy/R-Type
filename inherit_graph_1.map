@@ -1,0 +1,19 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node1" title=" " alt="" coords="5,476,120,503"/>
+<area shape="rect" id="node2" href="$classecs_1_1ERROR_1_1BindFailedExceptions.html" title=" " alt="" coords="168,5,411,32"/>
+<area shape="rect" id="node3" href="$classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html" title=" " alt="" coords="184,57,395,98"/>
+<area shape="rect" id="node4" href="$classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html" title=" " alt="" coords="185,122,394,163"/>
+<area shape="rect" id="node5" href="$classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html" title=" " alt="" coords="193,187,386,229"/>
+<area shape="rect" id="node6" href="$classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html" title=" " alt="" coords="187,253,392,294"/>
+<area shape="rect" id="node7" href="$classecs_1_1ERROR_1_1MessageTooBigExceptions.html" title=" " alt="" coords="186,318,393,359"/>
+<area shape="rect" id="node8" href="$classecs_1_1ERROR_1_1RecvExceptions.html" title=" " alt="" coords="185,384,393,411"/>
+<area shape="rect" id="node9" href="$classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html" title=" " alt="" coords="172,435,407,477"/>
+<area shape="rect" id="node10" href="$classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html" title=" " alt="" coords="183,501,396,542"/>
+<area shape="rect" id="node11" href="$classecs_1_1ERROR_1_1WrongConfigurationExceptions.html" title=" " alt="" coords="172,566,407,607"/>
+<area shape="rect" id="node12" href="$classrtype_1_1ERROR_1_1InvalidActionExceptions.html" title=" " alt="" coords="188,631,391,673"/>
+<area shape="rect" id="node13" href="$classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html" title=" " alt="" coords="183,697,395,738"/>
+<area shape="rect" id="node14" href="$classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html" title=" " alt="" coords="187,762,392,803"/>
+<area shape="rect" id="node15" href="$classrtype_1_1ERROR_1_1RoomIsFullExceptions.html" title=" " alt="" coords="195,827,384,869"/>
+<area shape="rect" id="node16" href="$classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html" title=" " alt="" coords="181,893,398,934"/>
+<area shape="rect" id="node17" href="$classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html" title=" " alt="" coords="187,958,392,999"/>
+</map>

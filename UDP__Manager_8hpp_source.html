@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE:  Fichier source de ecs/udp/UDP_Manager.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">R-TYPE
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Une brève description du projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_eafb92770fbc727220bdaa0b1292f771.html">ecs</a></li><li class="navelem"><a class="el" href="dir_565f65197d89c1109d1826d995232ba1.html">udp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">UDP_Manager.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="UDP__Manager_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-Type</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** UDP_Manager</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef UDP_MANAGER_HPP</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    #define UDP_MANAGER_HPP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    #include &quot;../Includes.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespaceecs.html">ecs</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">namespace </span>udp</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html">   17</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1udp_1_1UDP__Manager.html">UDP_Manager</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                    <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#ad9934b4f39df3bb85cc7178b5968e10b">UDP_Manager</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                    <span class="keyword">virtual</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a6c30602eed3c067010701c0d20d19eb7">~UDP_Manager</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a6d357465fc7075b91a376404a9f00150">initialize</a>(<span class="keyword">const</span> std::string&amp; configFile, <span class="keywordtype">int</span> port = 0);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a6a0dd4fb787bcd12a98b54df467761b3">sendMessage</a>(<span class="keyword">const</span> std::vector&lt;char&gt;&amp; message, <span class="keyword">const</span> std::string &amp;address);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a78879f76a6eae9995d477c4711fcff5d">receiveMessage</a>(std::vector&lt;char&gt;&amp; message);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    <span class="keyword">virtual</span> std::string <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#aa654d599cdadc7ebd2ace4aafe216aa9">getLastClientAddress</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a8e32073c90f48fee066c71888f583364">   28</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a8e32073c90f48fee066c71888f583364">sockfd</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a057055373cb25dee3c624de7f3d51f25">   29</a></span>&#160;                    <span class="keywordtype">int</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a057055373cb25dee3c624de7f3d51f25">bufferSize</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a6f8c2d0337e3c1ff48bda28e061d2f51">   30</a></span>&#160;                    sockaddr_in <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a6f8c2d0337e3c1ff48bda28e061d2f51">serverAddr</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a5219a99e659d9bdb4927c03783ff3556">   31</a></span>&#160;                    sockaddr_in <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a5219a99e659d9bdb4927c03783ff3556">lastSenderAddr</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a95c8c17196b67f0cc56dcf0e369ea766">   32</a></span>&#160;                    <span class="keywordtype">bool</span> <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a95c8c17196b67f0cc56dcf0e369ea766">lastSenderValid</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classecs_1_1udp_1_1UDP__Manager.html#a49c55afea159ca773aa8dbf618b50a5d">   33</a></span>&#160;                    std::string <a class="code" href="classecs_1_1udp_1_1UDP__Manager.html#a49c55afea159ca773aa8dbf618b50a5d">clientAddrStr</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// UDP_MANAGER_HPP</span></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html">ecs::udp::UDP_Manager</a></div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:17</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a057055373cb25dee3c624de7f3d51f25"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a057055373cb25dee3c624de7f3d51f25">ecs::udp::UDP_Manager::bufferSize</a></div><div class="ttdeci">int bufferSize</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:29</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a49c55afea159ca773aa8dbf618b50a5d"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a49c55afea159ca773aa8dbf618b50a5d">ecs::udp::UDP_Manager::clientAddrStr</a></div><div class="ttdeci">std::string clientAddrStr</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:33</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a5219a99e659d9bdb4927c03783ff3556"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a5219a99e659d9bdb4927c03783ff3556">ecs::udp::UDP_Manager::lastSenderAddr</a></div><div class="ttdeci">sockaddr_in lastSenderAddr</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:31</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a6a0dd4fb787bcd12a98b54df467761b3"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a6a0dd4fb787bcd12a98b54df467761b3">ecs::udp::UDP_Manager::sendMessage</a></div><div class="ttdeci">virtual bool sendMessage(const std::vector&lt; char &gt; &amp;message, const std::string &amp;address)</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:108</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a6c30602eed3c067010701c0d20d19eb7"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a6c30602eed3c067010701c0d20d19eb7">ecs::udp::UDP_Manager::~UDP_Manager</a></div><div class="ttdeci">virtual ~UDP_Manager()</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:18</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a6d357465fc7075b91a376404a9f00150"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a6d357465fc7075b91a376404a9f00150">ecs::udp::UDP_Manager::initialize</a></div><div class="ttdeci">virtual bool initialize(const std::string &amp;configFile, int port=0)</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:24</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a6f8c2d0337e3c1ff48bda28e061d2f51"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a6f8c2d0337e3c1ff48bda28e061d2f51">ecs::udp::UDP_Manager::serverAddr</a></div><div class="ttdeci">sockaddr_in serverAddr</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:30</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a78879f76a6eae9995d477c4711fcff5d"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a78879f76a6eae9995d477c4711fcff5d">ecs::udp::UDP_Manager::receiveMessage</a></div><div class="ttdeci">virtual bool receiveMessage(std::vector&lt; char &gt; &amp;message)</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:78</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a8e32073c90f48fee066c71888f583364"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a8e32073c90f48fee066c71888f583364">ecs::udp::UDP_Manager::sockfd</a></div><div class="ttdeci">int sockfd</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:28</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_a95c8c17196b67f0cc56dcf0e369ea766"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#a95c8c17196b67f0cc56dcf0e369ea766">ecs::udp::UDP_Manager::lastSenderValid</a></div><div class="ttdeci">bool lastSenderValid</div><div class="ttdef"><b>Definition:</b> UDP_Manager.hpp:32</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_aa654d599cdadc7ebd2ace4aafe216aa9"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#aa654d599cdadc7ebd2ace4aafe216aa9">ecs::udp::UDP_Manager::getLastClientAddress</a></div><div class="ttdeci">virtual std::string getLastClientAddress() const</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:103</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Manager_html_ad9934b4f39df3bb85cc7178b5968e10b"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Manager.html#ad9934b4f39df3bb85cc7178b5968e10b">ecs::udp::UDP_Manager::UDP_Manager</a></div><div class="ttdeci">UDP_Manager()</div><div class="ttdef"><b>Definition:</b> UDP_Manager.cpp:14</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition:</b> ECS.cpp:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
