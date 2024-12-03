@@ -50,8 +50,8 @@ namespace ecs
 
                 const libconfig::Setting &serverSettings = udpSettings["server"];
                     std::string ip = serverSettings["ip"];
-                    int port = serverSettings["port"];
-                    addr.sin_port = htons(port);
+                    int port_config = serverSettings["port"];
+                    addr.sin_port = htons(port_config);
                     inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 
                     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -65,7 +65,7 @@ namespace ecs
                         throw ecs::ERROR::BindFailedExceptions();
                     }
 
-                    std::cout << "Server is running on " << ip << ":" << port << "\n";
+                    std::cout << "Server is running on " << ip << ":" << port_config << "\n";
             } catch (const libconfig::SettingNotFoundException &e) {
                 throw ecs::ERROR::WrongConfigurationExceptions();
             } catch (const libconfig::SettingTypeException &e) {
