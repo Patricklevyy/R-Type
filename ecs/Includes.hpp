@@ -20,6 +20,9 @@
     #include <map>
     #include <vector>
     #include <cstring>
+    #include <typeindex>
+    #include <list>
+    #include <any>
 
     // FILES
 
