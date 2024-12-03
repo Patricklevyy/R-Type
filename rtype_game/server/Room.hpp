@@ -42,7 +42,7 @@
                 unsigned int _nb_client;
                 int _sockfd;
                 struct sockaddr_in _addr;
-                UDP_Server _udpServer;
+                ecs::udp::UDP_Server _udpServer;
                 std::thread _listenThread;
 
                 bool initializeSocket();

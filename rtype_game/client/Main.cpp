@@ -12,7 +12,7 @@
 #include "../../ecs/udp/MessageCompressor.hpp"
 
 int main() {
-    UDP_Client udpClient;
+    ecs::udp::UDP_Client udpClient;
 
     if (!udpClient.initialize("rtype_game/config/udp_config.conf")) {
         std::cerr << "Client initialization failed." << std::endl;
@@ -22,12 +22,12 @@ int main() {
     std::string message = "CREATE";
 
     std::vector<char> buffer;
-    Message mess;
+    ecs::udp::Message mess;
     mess.id = 1;
     mess.action = 1;
     mess.params = "room_name=room1;client_name=jean";
 
-    MessageCompressor compresor;
+    ecs::udp::MessageCompressor compresor;
 
     compresor.serialize(mess, buffer);
 
