@@ -123,6 +123,27 @@
                         return ("RecvExceptions : Recvfrom failed.");
                     };
             };
+            class ComponentTypeAlreadyExistException : virtual public std::exception
+            {
+                public:
+                    ComponentTypeAlreadyExistException() {}
+
+                    const char *what() const noexcept override
+                    {
+                        return ("ComponentTypeAlreadyExistException : Component already exists.");
+                    };
+            };
+
+            class ComponentNotFoundExceptions : virtual public std::exception
+            {
+                public:
+                    ComponentNotFoundExceptions() {}
+
+                    const char *what() const noexcept override
+                    {
+                        return ("ComponentNotFoundExceptions : Component not found.");
+                    };
+            };
         }
     }
 #endif /* !ECSEXCEPTIONS_HPP_ */

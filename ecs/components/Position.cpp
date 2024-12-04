@@ -2,18 +2,18 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** ECS
+** Position
 */
 
-#include "ECS.hpp"
+#include "Position.hpp"
 
 namespace ecs
 {
-    ECS::ECS()
+    Position::Position()
     {
     }
 
-    ECS::~ECS()
+    Position::~Position()
     {
     }
 }

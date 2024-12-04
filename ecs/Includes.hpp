@@ -23,6 +23,7 @@
     #include <typeindex>
     #include <list>
     #include <any>
+    #include <optional>
 
     // FILES
 

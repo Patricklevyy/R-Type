@@ -15,8 +15,16 @@
             CREATE_ROOM,
             JOIN_ROOM,
             LEAVE_ROOM,
+            MOVE_UP,
+            MOVE_UP_STOP,
+            MOVE_RIGHT,
+            MOVE_RIGHT_STOP,
+            MOVE_DOWN,
+            MOVE_DOWN_STOP,
+            MOVE_LEFT,
+            MOVE_LEFT_STOP,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
-            MAX_ACTION 
+            MAX_ACTION
         };
     }
 
