@@ -12,11 +12,11 @@
     {
         class Position {
             public:
-                Position();
-                ~Position();
+                Position() {}
+                ~Position() {}
 
-                int pos_x;
-                int pos_y;
+                float pos_x;
+                float pos_y;
 
             protected:
             private:

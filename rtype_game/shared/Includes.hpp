@@ -24,6 +24,6 @@
     // FILES
 
     #include "Enums.hpp"
-    #include "../shared/RTypeExceptions.hpp"
+    #include "RTypeExceptions.hpp"
 
 #endif /* !INCLUDES_HPP_ */

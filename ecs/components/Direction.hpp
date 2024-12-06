@@ -8,15 +8,17 @@
 #ifndef DIRECTION_HPP_
     #define DIRECTION_HPP_
 
+    #include "../Enums_ecs.hpp"
+
     namespace ecs
     {
         class Direction {
             public:
-                Direction();
-                ~Direction();
+                Direction() {}
+                ~Direction() {}
 
-                int dir_x;
-                int dir_y;
+                direction _x = direction::NO_DIRECTION;
+                direction _y = direction::NO_DIRECTION;
 
             protected:
             private:

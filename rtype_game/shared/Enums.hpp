@@ -23,6 +23,7 @@
             MOVE_DOWN_STOP,
             MOVE_LEFT,
             MOVE_LEFT_STOP,
+            UPDATE_POSITION,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             MAX_ACTION
         };

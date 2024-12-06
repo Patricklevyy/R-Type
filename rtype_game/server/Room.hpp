@@ -8,9 +8,13 @@
 #ifndef ROOM_HPP_
     #define ROOM_HPP_
 
-    #include "Includes.hpp"
+    #include "../shared/Includes.hpp"
     #include "MessageChecker.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
+    #include "../../ecs/ECS.hpp"
+    #include "../../ecs/Includes_ecs.hpp"
+    #include "../../ecs/system/PositionSystem.hpp"
+    #include "../shared/EventBus.hpp"
 
     namespace rtype {
         class Room {
@@ -21,6 +25,7 @@
                 void start(int port);
 
                 void listenForMessages();
+                void gameThreadFunction();
 
                 bool sendMessage(const std::string& message);
 
@@ -37,6 +42,8 @@
                 std::string getAddress() const;
 
             private:
+                ecs::ECS _ecs;
+                EventBus _eventBus;
                 int _port;
                 std::string _name;
                 unsigned int _nb_client;
@@ -44,6 +51,7 @@
                 struct sockaddr_in _addr;
                 ecs::udp::UDP_Server _udpServer;
                 std::thread _listenThread;
+                std::thread _gameThread;
 
                 bool initializeSocket();
 

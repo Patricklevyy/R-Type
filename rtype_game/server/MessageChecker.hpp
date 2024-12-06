@@ -8,7 +8,7 @@
 #ifndef MESSAGECHECKER_HPP_
     #define MESSAGECHECKER_HPP_
 
-    #include "Includes.hpp"
+    #include "../shared/Includes.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
 
     namespace rtype

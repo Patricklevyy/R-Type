@@ -2,13 +2,13 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** Structures
+** Structures_ecs
 */
 
-#ifndef STRUCTURES_HPP_
-    #define STRUCTURES_HPP_
+#ifndef STRUCTURES_ECS_HPP_
+    #define STRUCTURES_ECS_HPP_
 
-    #include "Includes.hpp"
+    #include "Includes_ecs.hpp"
 
     namespace ecs
     {
@@ -24,4 +24,4 @@
         }
     }
 
-#endif /* !STRUCTURES_HPP_ */
+#endif /* !STRUCTURES_ECS_HPP_ */

@@ -8,8 +8,8 @@
 #ifndef MESSAGECOMPRESSOR_HPP_
     #define MESSAGECOMPRESSOR_HPP_
 
-    #include "../Includes.hpp"
-    #include "../Structures.hpp"
+    #include "../Includes_ecs.hpp"
+    #include "../Structures_ecs.hpp"
 
     namespace ecs
     {

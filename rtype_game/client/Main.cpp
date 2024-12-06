@@ -8,7 +8,7 @@
 #include "../../ecs/udp/UDP_Client.hpp"
 #include <iostream>
 #include <cstring>
-#include "../../ecs/Structures.hpp"
+#include "../../ecs/Structures_ecs.hpp"
 #include "../../ecs/udp/MessageCompressor.hpp"
 
 int main() {

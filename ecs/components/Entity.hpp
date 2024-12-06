@@ -7,15 +7,12 @@
 
 #ifndef ENTITY_HPP_
     #define ENTITY_HPP_
-
-    #include "../Includes.hpp"
-
     namespace ecs
     {
         class Entity {
             public:
-                Entity();
-                ~Entity();
+                Entity() {}
+                ~Entity() {}
 
                 size_t index;
 

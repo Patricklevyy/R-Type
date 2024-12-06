@@ -8,8 +8,8 @@
 #ifndef SERVER_HPP_
     #define SERVER_HPP_
 
-    #include "Includes.hpp"
     #include "Room.hpp"
+    #include "../shared/Includes.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
 
     namespace rtype

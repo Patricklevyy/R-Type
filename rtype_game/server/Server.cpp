@@ -67,16 +67,20 @@ namespace rtype {
             return 1;
         }
 
-        std::vector<char> message;
-        while (isRunning()) {
-            if (_udpManager.receiveMessage(message)) {
-                try {
-                    handleCommand(message, _udpManager.getLastClientAddress());
-                } catch (std::exception &e) {
-                    std::cerr << std::endl << e.what() << std::endl;
-                }
-            }
-        }
+        std::string params = "room_name=room1;client_name=jean";
+        std::string body;
+        std::string addr;
+        createRoom(1, params, body, addr);
+        // std::vector<char> message;
+        // while (isRunning()) {
+        //     if (_udpManager.receiveMessage(message)) {
+        //         try {
+        //             handleCommand(message, _udpManager.getLastClientAddress());
+        //         } catch (std::exception &e) {
+        //             std::cerr << std::endl << e.what() << std::endl;
+        //         }
+        //     }
+        // }
         return 0;
     }
 

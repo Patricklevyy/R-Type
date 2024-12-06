@@ -8,7 +8,8 @@
 #ifndef UDP_MANAGER_HPP
     #define UDP_MANAGER_HPP
 
-    #include "../Includes.hpp"
+    #include "../Includes_ecs.hpp"
+    #include "../EcsExceptions.hpp"
 
     namespace ecs
     {

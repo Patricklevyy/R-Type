@@ -8,14 +8,12 @@
 #ifndef PLAYABLE_HPP_
     #define PLAYABLE_HPP_
 
-    #include "../Includes.hpp"
-
     namespace ecs
     {
         class Playable {
             public:
-                Playable();
-                ~Playable();
+                Playable() {}
+                ~Playable() {}
 
             protected:
             private:

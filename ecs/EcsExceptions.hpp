@@ -144,6 +144,17 @@
                         return ("ComponentNotFoundExceptions : Component not found.");
                     };
             };
+
+            class IdOutOfRangeExceptions : virtual public std::exception
+            {
+                public:
+                    IdOutOfRangeExceptions() {}
+
+                    const char *what() const noexcept override
+                    {
+                        return ("IdOutOfRangeExceptions : Id index out of range.");
+                    };
+            };
         }
     }
 #endif /* !ECSEXCEPTIONS_HPP_ */
