@@ -31,6 +31,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Rechercher automatiquement les dépendances définies dans vcpkg.json
 find_package(fmt CONFIG REQUIRED)
 find_package(libconfig CONFIG REQUIRED)
+find_package(SFML CONFIG REQUIRED COMPONENTS system window graphics audio network)
 
 # Rechercher récursivement les fichiers sources pour ECS
 file(GLOB_RECURSE ECS_SRC_FILES "${CMAKE_SOURCE_DIR}/ecs/*.cpp")
@@ -43,19 +44,18 @@ target_link_libraries(ecs PRIVATE libconfig::config++)
 # Ajouter les sources du client
 file(GLOB_RECURSE CLIENT_SRC_FILES "${CMAKE_SOURCE_DIR}/rtype_game/client/*.cpp")
 add_executable(r-type_client ${CLIENT_SRC_FILES})
-target_link_libraries(r-type_client PRIVATE ecs fmt::fmt)
+target_link_libraries(r-type_client PRIVATE ecs fmt::fmt sfml-system sfml-window sfml-graphics sfml-audio)
 target_include_directories(r-type_client PRIVATE "${CMAKE_SOURCE_DIR}/ecs")
 
 # Ajouter les sources du serveur
 file(GLOB_RECURSE SERVER_SRC_FILES "${CMAKE_SOURCE_DIR}/rtype_game/server/*.cpp")
 add_executable(r-type_server ${SERVER_SRC_FILES})
-target_link_libraries(r-type_server PRIVATE ecs fmt::fmt)
+target_link_libraries(r-type_server PRIVATE ecs fmt::fmt sfml-system sfml-network)
 target_include_directories(r-type_server PRIVATE "${CMAKE_SOURCE_DIR}/ecs")
 
 # Définir les répertoires de sortie des exécutables
 set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 set_target_properties(r-type_server PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
-
 
 # cmake_minimum_required(VERSION 3.16)
 # project(rtype)
