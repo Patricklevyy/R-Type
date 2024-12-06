@@ -1,9 +1,17 @@
-add_executable(r-type_client Main.cpp)
+# # Déclare le client
+# project(r-type_client)
 
-target_compile_options(r-type_client PRIVATE -Wall -Wextra -g)
+# # Ajouter l'exécutable
+# add_executable(r-type_client Main.cpp)
 
-target_link_libraries(r-type_client ecs)
+# # Ajouter les options de compilation
+# target_compile_options(r-type_client PRIVATE -Wall -Wextra -g)
 
-target_include_directories(r-type_client PRIVATE ${CMAKE_SOURCE_DIR}/ecs)
+# # Lier ECS et les dépendances
+# target_link_libraries(r-type_client PRIVATE ecs)
 
-set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
+# # Ajouter les includes nécessaires
+# target_include_directories(r-type_client PRIVATE ${CMAKE_SOURCE_DIR}/ecs)
+
+# # Spécifier le répertoire de sortie
+# set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
