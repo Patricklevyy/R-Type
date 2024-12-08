@@ -10,7 +10,8 @@
 
     namespace rtype
     {
-        enum RTYPE_ACTIONS {
+        enum RTYPE_ACTIONS
+        {
             UNDEFINED = -1,
             CREATE_ROOM,
             JOIN_ROOM,
@@ -24,10 +25,11 @@
             MOVE_LEFT,
             MOVE_LEFT_STOP,
             UPDATE_POSITION,
+            CHECK_EVENT_WINDOW,
+            CREATE_CLIENT,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             MAX_ACTION
         };
     }
-
 
 #endif /* !ENUMS_HPP_ */

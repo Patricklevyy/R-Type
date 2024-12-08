@@ -6,9 +6,9 @@
 */
 
 #include "Server.hpp"
-#include "../../ecs/udp/UDP_Manager.hpp"
 
-namespace rtype {
+namespace rtype
+{
 
     Server::Server() : _running(true), _currentPort(5000)
     {
@@ -21,14 +21,17 @@ namespace rtype {
         std::cout << "STOP OF THE RTYPE SERVER" << std::endl;
     }
 
-    void Server::initializeCommands() {
-        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string& params, std::string& body, std::string& clientAddr) {
+    void Server::initializeCommands()
+    {
+        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr)
+        {
             createRoom(id, params, body, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string& params, std::string& body, std::string& clientAddr) {
+        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr)
+        {
             joinRoom(id, params, body, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::EXIT] = [this](const unsigned int id, std::string& params, std::string& body, std::string& clientAddr) { // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
+        _commands[RTYPE_ACTIONS::EXIT] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) { // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             (void)id;
             (void)params;
             (void)body;
@@ -37,15 +40,19 @@ namespace rtype {
         };
     }
 
-    void Server::handleCommand(const std::vector<char>& message, std::string clientAddr) {
+    void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)
+    {
         ecs::udp::Message mes;
         _compressor.deserialize(message, mes);
         _mes_checker.checkAction(mes);
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << " body " << mes.body << std::endl;
         auto it = _commands.find(mes.action);
-        if (it != _commands.end()) {
+        if (it != _commands.end())
+        {
             it->second(mes.id, mes.params, mes.body, clientAddr);
-        } else {
+        }
+        else
+        {
             throw ERROR::InvalidActionExceptions("Invalid action");
         }
     }
@@ -60,31 +67,32 @@ namespace rtype {
         this->_running = running;
     }
 
-    int Server::start()
+    void Server::start()
     {
-        if (!_udpManager.initialize("rtype_game/config/udp_config.conf")) {
-            std::cerr << "Server initialization failed." << std::endl;
-            return 1;
+        if (!_udpManager.initialize("rtype_game/config/udp_config.conf"))
+        {
+            throw ERROR::FailedToInitializeServerExceptions("Failed to start the server.");
         }
+        _timer.init("rtype_game/config/server_config.conf", true);
 
-        std::string params = "room_name=room1;client_name=jean";
-        std::string body;
-        std::string addr;
-        createRoom(1, params, body, addr);
-        // std::vector<char> message;
-        // while (isRunning()) {
-        //     if (_udpManager.receiveMessage(message)) {
-        //         try {
-        //             handleCommand(message, _udpManager.getLastClientAddress());
-        //         } catch (std::exception &e) {
-        //             std::cerr << std::endl << e.what() << std::endl;
-        //         }
-        //     }
-        // }
-        return 0;
+        std::vector<char> message;
+        _udpManager.startReceiving();
+        while (isRunning()) {
+            _timer.waitTPS();
+            auto messages = _udpManager.fetchAllMessages();
+            for (auto &[clientAddress, message] : messages)
+            {
+                try {
+                    handleCommand(message, clientAddress);
+                } catch (std::exception &e) {
+                    std::cerr << std::endl << e.what() << std::endl;
+                }
+            }
+        }
     }
 
-    void Server::createRoom(const unsigned int id, std::string& params, std::string& body, std::string& lastclientAdr) {
+    void Server::createRoom(const unsigned int id, std::string &params, std::string &body, std::string &lastclientAdr)
+    {
 
         (void)id;
         (void)body;
@@ -101,14 +109,17 @@ namespace rtype {
 
         // Je notifie la room du nouveau client
 
-        for (auto& room : _rooms) {
-            if (room.getName() == map_params["room_name"]) {
+        for (auto &room : _rooms)
+        {
+            if (room.getName() == map_params["room_name"])
+            {
                 room.createClient(lastclientAdr);
             }
         }
     }
 
-    void Server::joinRoom(const unsigned int id, std::string& params, std::string& body, std::string& lastclientAdr) {
+    void Server::joinRoom(const unsigned int id, std::string &params, std::string &body, std::string &lastclientAdr)
+    {
 
         (void)id;
         (void)body;
@@ -121,41 +132,50 @@ namespace rtype {
 
         // Je notifie la room du nouveau client
 
-        for (auto& room : _rooms) {
-            if (room.getName() == map_params["room_name"]) {
+        for (auto &room : _rooms)
+        {
+            if (room.getName() == map_params["room_name"])
+            {
                 room.createClient(lastclientAdr);
             }
         }
     }
 
-    void Server::checkCreateRoomArgs(std::map<std::string, std::string> params) {
+    void Server::checkCreateRoomArgs(std::map<std::string, std::string> params)
+    {
         if (params.find("room_name") == params.end() || params.find("client_name") == params.end())
             throw ERROR::MissingRoomsParamsExceptions("Missing 'room_name' param or 'client_name' param");
 
-        for (const Room& room : _rooms) {
-            if (room.getName() == params["room_name"]) {
+        for (const Room &room : _rooms)
+        {
+            if (room.getName() == params["room_name"])
+            {
                 throw ERROR::RoomAlreadyExistingExceptions("This name is already taken for a room");
             }
         }
     }
 
-    void Server::checkJoinRoomArgs(std::map<std::string, std::string> params) {
+    void Server::checkJoinRoomArgs(std::map<std::string, std::string> params)
+    {
         if (params.find("room_name") == params.end() || params.find("client_name") == params.end())
             throw ERROR::MissingRoomsParamsExceptions("Missing 'room_name' param or 'client_name' param");
 
-
         bool roomFound = false;
 
-        for (const Room& room : _rooms) {
-            if (room.getName() == params["room_name"]) {
+        for (const Room &room : _rooms)
+        {
+            if (room.getName() == params["room_name"])
+            {
                 roomFound = true;
-                if (room.getNbClient() >= 4) {
+                if (room.getNbClient() >= 4)
+                {
                     throw ERROR::RoomIsFullExceptions("The room is full of client (4 MAX PER ROOM)");
                 }
             }
         }
 
-        if (!roomFound) {
+        if (!roomFound)
+        {
             throw ERROR::RoomNotFoundExceptions("Room not found");
         }
     }
