@@ -13,23 +13,22 @@ namespace ecs
     {
         UDP_Server::UDP_Server() : UDP_Manager() {}
 
-
         UDP_Server::~UDP_Server() {}
-
-        std::string UDP_Server::generateClientKey(const sockaddr_in &addr) const
-        {
-            return std::string(inet_ntoa(addr.sin_addr)) + ":" + std::to_string(ntohs(addr.sin_port));
-        }
 
         bool UDP_Server::initialize(const std::string &configFile, int port)
         {
             libconfig::Config cfg;
 
-            try {
+            try
+            {
                 cfg.readFile(configFile.c_str());
-            } catch (const libconfig::FileIOException &e) {
+            }
+            catch (const libconfig::FileIOException &e)
+            {
                 throw ecs::ERROR::CantReadConfigFileExceptions();
-            } catch (const libconfig::ParseException &e) {
+            }
+            catch (const libconfig::ParseException &e)
+            {
                 throw ecs::ERROR::CantParseConfigFileExceptions();
             }
 
@@ -40,13 +39,17 @@ namespace ecs
                 const libconfig::Setting &udpSettings = root["UDP"];
                 bufferSize = udpSettings["buffer_size"];
 
-                if (bufferSize > 1472) {
+                if (bufferSize > 1472)
+                {
                     throw ecs::ERROR::WrongBufferSizeExceptions();
                 }
             }
-            catch (const libconfig::SettingNotFoundException &e) {
+            catch (const libconfig::SettingNotFoundException &e)
+            {
                 throw ecs::ERROR::WrongConfigurationExceptions();
-            } catch (const libconfig::SettingTypeException &e) {
+            }
+            catch (const libconfig::SettingTypeException &e)
+            {
                 throw ecs::ERROR::WrongConfigurationExceptions();
             }
 
@@ -56,11 +59,13 @@ namespace ecs
             addr.sin_addr.s_addr = INADDR_ANY;
 
             sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-            if (sockfd < 0) {
+            if (sockfd < 0)
+            {
                 throw ecs::ERROR::SocketNotInitializedExceptions();
             }
 
-            if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
+            if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+            {
                 close(sockfd);
                 sockfd = -1;
                 throw ecs::ERROR::BindFailedExceptions();

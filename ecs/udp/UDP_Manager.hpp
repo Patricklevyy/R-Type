@@ -20,51 +20,42 @@
              * @brief Cette UDP manager gère les messages de première connexion d'un client
              *
              */
-            class UDP_Manager {
-                public:
-                    /**
-                     * @brief Constructeur par défaut.
-                     */
-                    UDP_Manager();
-                    virtual ~UDP_Manager();
+            class UDP_Manager
+        {
+        public:
+            UDP_Manager();
+            ~UDP_Manager();
 
-                     /**
-                     * @brief Initialize le port du server et ecoute sur le port defini par le config file
-                     * @param configFile Un config file qui set le port et l'ip
-                     * @param port Cet argument n'est pas utilisé par cette udp
-                     * @return Retourne true si l'initialisation s'est bien passé
-                     */
-                    virtual bool initialize(const std::string& configFile, int port = 0);
+            virtual bool initialize(const std::string &configFile, int port = 0);
+            virtual void startReceiving();
+            virtual void stopReceiving();
 
-                    /**
-                     * @brief Send un message a l'addresse du client donné en param
-                     * @param message Message serialisé par le message compressor
-                     * @param address Address du receiver
-                     * @return Retourne true si l'envoie s'est bien passé
-                     */
-                    virtual bool sendMessage(const std::vector<char>& message, const std::string &address);
+            virtual std::vector<std::pair<std::string, std::vector<char>>> fetchAllMessages();
+            virtual bool sendMessage(const std::vector<char> &message, const std::string &address);
 
-                    /**
-                     * @brief Recois un message et le met dans std::vector<char>& message
-                     * @param message std::vector vide car il va ếtre intialisé par le message
-                     * @return Retourne true si la reception s'est bien passé
-                     */
-                    virtual bool receiveMessage(std::vector<char>& message);
+            virtual std::string getLastClientAddress() const;
 
-                    /**
-                     * @brief Retourne l'addresse du dernier client qui a envoyé un message
-                     * @return Retourne l'addresse du dernier client
-                     */
-                    virtual std::string getLastClientAddress() const;
+        protected:
+            int sockfd;
+            int bufferSize;
+            sockaddr_in serverAddr;
+            sockaddr_in lastSenderAddr;
+            bool lastSenderValid;
+            std::string clientAddrStr;
 
-                protected:
-                    int sockfd;
-                    int bufferSize;
-                    sockaddr_in serverAddr;
-                    sockaddr_in lastSenderAddr;
-                    bool lastSenderValid;
-                    std::string clientAddrStr;
-                };
+            // Gestion des messages
+            std::queue<std::pair<std::string, std::vector<char>>> messageQueue;
+            std::mutex queueMutex;
+            std::condition_variable queueCondition;
+
+            // Gestion du thread
+            std::atomic<bool> isRunning;
+            std::thread receiverThread;
+
+            virtual void receiveLoop();
+            bool receiveMessage(std::vector<char> &message);
+            void enqueueMessage(const std::vector<char> &message, const std::string &clientAddress);
+        };
         }
     }
 

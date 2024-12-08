@@ -14,15 +14,16 @@
     {
         namespace udp
         {
-            class UDP_Client : public UDP_Manager{
-                public:
-                    UDP_Client();
-                    ~UDP_Client();
+            class UDP_Client : public UDP_Manager
+            {
+            public:
+                UDP_Client();
+                ~UDP_Client();
 
-                    bool initialize(const std::string &configFile, int port = 0) override;
+                bool initialize(const std::string &configFile, int port = 0) override;
 
-                protected:
-                private:
+            protected:
+            private:
             };
         }
     }

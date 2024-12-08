@@ -15,16 +15,17 @@
     {
         namespace udp
         {
-            class MessageCompressor {
-                public:
-                    MessageCompressor();
-                    ~MessageCompressor();
+            class MessageCompressor
+            {
+            public:
+                MessageCompressor();
+                ~MessageCompressor();
 
-                    void serialize(const Message& msg, std::vector<char>& buffer);
-                    void deserialize(const std::vector<char>& buffer, Message& msg);
+                void serialize(const Message &msg, std::vector<char> &buffer);
+                void deserialize(const std::vector<char> &buffer, Message &msg);
 
-                protected:
-                private:
+            protected:
+            private:
             };
         }
     }

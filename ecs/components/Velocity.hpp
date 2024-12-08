@@ -10,15 +10,16 @@
 
     namespace ecs
     {
-        class Velocity {
-            public:
-                Velocity() {}
-                ~Velocity() {}
+        class Velocity
+        {
+        public:
+            Velocity() {}
+            ~Velocity() {}
 
-                float velocity = 10.0; // PEUT ETRE CE SERAI BIEN DE POUVOIR LE SET DANS UN FICHIER DE CONFIG DE JEU ?
+            float velocity = 10.0; // PEUT ETRE CE SERAI BIEN DE POUVOIR LE SET DANS UN FICHIER DE CONFIG DE JEU ?
 
-            protected:
-            private:
+        protected:
+        private:
         };
     }
 
