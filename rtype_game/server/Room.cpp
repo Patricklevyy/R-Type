@@ -104,7 +104,7 @@ namespace rtype
     {
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message :" << message.action << ", " << message.params << std::endl;
+        std::cout << "new message in the ROOOM :" << message.action << ", " << message.params << std::endl;
     }
 
     void Room::init_ecs_server_registry()
