@@ -26,11 +26,11 @@
             Room(int port, const std::string &name);
             ~Room();
 
-            void start(int port);
+            void start(int, std::string);
 
-            void gameThreadFunction(int);
+            void gameThreadFunction(int, std::string);
 
-            bool sendMessage(const std::string &message);
+            bool sendMessage(const std::string &);
 
             unsigned int getNbClient() const;
             void setNbClient(unsigned int);
@@ -41,20 +41,20 @@
             Room &operator=(Room &&other) noexcept;
 
             std::string getName() const;
-            void createClient(std::string lastclientAdr);
+            void createClient(std::string);
             std::string getAddress() const;
 
             void init_event_bus();
 
 
         private:
+            int _port;
             unsigned int index_ecs = 0;
-            ecs::udp::UDP_Server _udp_server;
+            std::shared_ptr<ecs::udp::UDP_Server> _udp_server;
             ecs::udp::MessageCompressor _message_compressor;
             bool _game_running;
             ecs::ECS _ecs;
             EventBus _eventBus;
-            int _port;
             std::string _name;
             unsigned int _nb_client;
             int _sockfd;

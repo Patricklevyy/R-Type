@@ -10,7 +10,7 @@
 namespace rtype
 {
 
-    Server::Server() : _running(true), _currentPort(5000)
+    Server::Server() : _running(true), _currentPort(5000), _udpManager(std::make_shared<ecs::udp::UDP_Manager>())
     {
         std::cout << "START OF THE RTYPE SERVER" << std::endl;
         initializeCommands();
@@ -18,6 +18,7 @@ namespace rtype
 
     Server::~Server()
     {
+        _udpManager->stopReceiving();
         std::cout << "STOP OF THE RTYPE SERVER" << std::endl;
     }
 
@@ -36,7 +37,7 @@ namespace rtype
             (void)params;
             (void)body;
             (void)clientAddr;
-            setRunning(false);
+            _running = false;
         };
     }
 
@@ -57,29 +58,19 @@ namespace rtype
         }
     }
 
-    bool Server::isRunning() const
-    {
-        return this->_running;
-    }
-
-    void Server::setRunning(bool running)
-    {
-        this->_running = running;
-    }
-
     void Server::start()
     {
-        if (!_udpManager.initialize("rtype_game/config/udp_config.conf"))
+        if (!_udpManager->initialize("rtype_game/config/udp_config.conf"))
         {
             throw ERROR::FailedToInitializeServerExceptions("Failed to start the server.");
         }
         _timer.init("rtype_game/config/server_config.conf", true);
 
         std::vector<char> message;
-        _udpManager.startReceiving();
-        while (isRunning()) {
+        _udpManager->startReceiving();
+        while (_running) {
             _timer.waitTPS();
-            auto messages = _udpManager.fetchAllMessages();
+            auto messages = _udpManager->fetchAllMessages();
             for (auto &[clientAddress, message] : messages)
             {
                 try {
@@ -104,18 +95,8 @@ namespace rtype
 
         Room newRoom(_currentPort, map_params["room_name"]);
         _rooms.push_back(std::move(newRoom));
-        _rooms.back().start(_currentPort);
+        _rooms.back().start(_currentPort, lastclientAdr);
         _currentPort++;
-
-        // Je notifie la room du nouveau client
-
-        for (auto &room : _rooms)
-        {
-            if (room.getName() == map_params["room_name"])
-            {
-                room.createClient(lastclientAdr);
-            }
-        }
     }
 
     void Server::joinRoom(const unsigned int id, std::string &params, std::string &body, std::string &lastclientAdr)

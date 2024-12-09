@@ -24,15 +24,12 @@
 
             void start();
 
-            bool isRunning() const;
-            void setRunning(bool);
-
         private:
             Timer _timer;
-            bool _running;
+            bool _running = true;
             std::vector<Room> _rooms;
             int _currentPort;
-            ecs::udp::UDP_Manager _udpManager;
+            std::shared_ptr<ecs::udp::UDP_Manager> _udpManager;
             ecs::udp::MessageCompressor _compressor;
             MessageChecker _mes_checker;
             std::unordered_map<unsigned int, std::function<void(const unsigned int, std::string &, std::string &, std::string &)>> _commands;
