@@ -7,7 +7,6 @@
 
 #include "UDP_Client.hpp"
 
-// A REFACTO , METTRE A JOUR L'ADDRESSE DU SERVER QUAND IL TE RENVOIE L'ADRESSE DE LA ROOM
 namespace ecs
 {
     namespace udp
@@ -18,6 +17,21 @@ namespace ecs
 
         UDP_Client::~UDP_Client()
         {
+        }
+
+        void UDP_Client::setDefaultAddress(const std::string &address)
+        {
+            defaultAddress = address;
+        }
+
+        bool UDP_Client::sendMessageToDefault(const std::vector<char> message)
+        {
+            if (defaultAddress.empty())
+            {
+                std::cerr << "[ERROR] Default address is not set!" << std::endl;
+                return false;
+            }
+            return sendMessage(message, defaultAddress);
         }
 
         bool UDP_Client::initialize(const std::string &configFile, int port)
@@ -44,28 +58,23 @@ namespace ecs
 
             try
             {
-                // Obtenir les paramètres UDP
                 const libconfig::Setting &udpSettings = root["UDP"];
                 bufferSize = udpSettings["buffer_size"];
 
-                // Vérifier la taille du buffer
                 if (bufferSize > 1472)
                 {
-                    std::cerr << "Buffer size exceeds safe UDP message size (1472 bytes).\n";
-                    return false;
+                    throw ecs::ERROR::WrongBufferSizeExceptions();
                 }
 
                 sockaddr_in addr{};
                 addr.sin_family = AF_INET;
 
-                // Configuration pour le client
                 const libconfig::Setting &clientSettings = udpSettings["client"];
                 std::string ip = clientSettings["ip"];
                 int port = clientSettings["port"];
                 addr.sin_port = htons(port);
                 inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 
-                // Stocker l'adresse du serveur
                 const libconfig::Setting &serverSettings = udpSettings["server"];
                 std::string serverIp = serverSettings["ip"];
                 int serverPort = serverSettings["port"];
@@ -76,8 +85,21 @@ namespace ecs
                 sockfd = socket(AF_INET, SOCK_DGRAM, 0);
                 if (sockfd < 0)
                 {
-                    perror("Socket creation failed");
-                    return false;
+                    throw ecs::ERROR::SocketNotInitializedExceptions();
+                }
+                int flags = fcntl(sockfd, F_GETFL, 0);
+                if (flags < 0 || fcntl(sockfd, F_SETFL, flags | O_NONBLOCK) < 0)
+                {
+                    close(sockfd);
+                    sockfd = -1;
+                    throw ecs::ERROR::SocketNotInitializedExceptions();
+                }
+
+                if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+                {
+                    close(sockfd);
+                    sockfd = -1;
+                    throw ecs::ERROR::BindFailedExceptions();
                 }
 
                 std::cout << "Client initialized to connect to " << serverIp << ":" << serverPort << "\n";

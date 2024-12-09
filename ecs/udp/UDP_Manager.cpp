@@ -168,26 +168,46 @@ namespace ecs
 
         bool UDP_Manager::sendMessage(const std::vector<char> &message, const std::string &address)
         {
+            // std::cerr << "[DEBUG] sendMessage called with address: " << address << std::endl;
+
             size_t colonPos = address.find(':');
-            if (colonPos == std::string::npos)
+            if (colonPos == std::string::npos) {
+                std::cerr << "[ERROR] Invalid address format: " << address << std::endl;
                 throw ecs::ERROR::InvalidAdressFormatExceptions();
+            }
 
             std::string ip = address.substr(0, colonPos);
             int port = std::stoi(address.substr(colonPos + 1));
 
+            // std::cerr << "[DEBUG] Parsed IP: " << ip << ", Port: " << port << std::endl;
+
             sockaddr_in receiverAddr{};
             receiverAddr.sin_family = AF_INET;
             receiverAddr.sin_port = htons(port);
-            inet_pton(AF_INET, ip.c_str(), &receiverAddr.sin_addr);
+            if (inet_pton(AF_INET, ip.c_str(), &receiverAddr.sin_addr) <= 0) {
+                std::cerr << "[ERROR] Failed to parse IP address: " << ip << std::endl;
+                throw ecs::ERROR::InvalidAdressFormatExceptions();
+            }
 
-            if (message.size() > bufferSize)
+            if (message.size() > bufferSize) {
+                std::cerr << "[ERROR] Message size exceeds buffer size: " << message.size() << " > " << bufferSize << std::endl;
                 throw ecs::ERROR::MessageTooBigExceptions();
+            }
+
+            if (sockfd < 0) {
+                std::cerr << "[ERROR] Socket is not initialized correctly!" << std::endl;
+                return false;
+            }
+
+            // std::cerr << "[DEBUG] Sending message of size: " << message.size() << std::endl;
 
             ssize_t sent = sendto(sockfd, message.data(), message.size(), 0, (struct sockaddr *)&receiverAddr, sizeof(receiverAddr));
             if (sent < 0) {
-                std::cerr << "sendto failed: " << strerror(errno) << std::endl;
+                std::cerr << "[ERROR] sendto failed: " << strerror(errno) << std::endl;
                 return false;
             }
+            return true;
         }
+
     }
 }
