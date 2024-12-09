@@ -23,6 +23,8 @@ namespace ecs {
                 auto& positions = std::any_cast<SparseArray<Position>&>(components_array[typeid(Position)]);
                 auto& hitboxes = std::any_cast<SparseArray<Hitbox>&>(components_array[typeid(Hitbox)]);
 
+                static_assert(std::is_same_v<decltype(positions.size()), std::size_t>, "positions.size() is not std::size_t");
+
                 for (std::size_t i = 0; i < positions.size(); ++i) {
                     if (positions[i].has_value() && hitboxes[i].has_value()) {
                         for (std::size_t j = i + 1; j < positions.size(); ++j) {
