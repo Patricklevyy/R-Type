@@ -30,6 +30,7 @@ namespace ecs {
                         for (std::size_t j = i + 1; j < positions.size(); ++j) {
                             if (positions[j].has_value() && hitboxes[j].has_value()) {
                                 if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
+                                    // Définir que faire en cas de collision
                                     std::cout << "Collision detected between Entity " << i << " and Entity " << j << std::endl;
                                 }
                             }
