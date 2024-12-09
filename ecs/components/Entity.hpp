@@ -9,15 +9,16 @@
     #define ENTITY_HPP_
     namespace ecs
     {
-        class Entity {
-            public:
-                Entity() {}
-                ~Entity() {}
+        class Entity
+        {
+        public:
+            Entity() {}
+            ~Entity() {}
 
-                size_t index;
+            size_t index;
 
-            protected:
-            private:
+        protected:
+        private:
         };
     }
 

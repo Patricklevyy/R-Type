@@ -10,16 +10,17 @@
 
     namespace ecs
     {
-        class Position {
-            public:
-                Position() {}
-                ~Position() {}
+        class Position
+        {
+        public:
+            Position() {}
+            ~Position() {}
 
-                float pos_x;
-                float pos_y;
+            float pos_x;
+            float pos_y;
 
-            protected:
-            private:
+        protected:
+        private:
         };
     }
 

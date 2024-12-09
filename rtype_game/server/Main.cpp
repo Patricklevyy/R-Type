@@ -7,12 +7,16 @@
 
 #include "Server.hpp"
 
-int main() {
+int main()
+{
     rtype::Server RYTPE_SERVER;
 
-    try {
+    try
+    {
         RYTPE_SERVER.start();
-    } catch (std::exception &e) {
+    }
+    catch (std::exception &e)
+    {
         std::cerr << std::endl << e.what() << std::endl;
         exit(84);
     }

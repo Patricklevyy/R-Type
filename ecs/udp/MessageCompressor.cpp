@@ -19,7 +19,7 @@ namespace ecs
         {
         }
 
-        void MessageCompressor::serialize(const Message& msg, std::vector<char>& buffer)
+        void MessageCompressor::serialize(const Message &msg, std::vector<char> &buffer)
         {
             buffer.clear();
 
@@ -28,17 +28,18 @@ namespace ecs
             buffer.push_back((header >> 8) & 0xFF);
 
             uint32_t paramsSize = msg.params.size();
-            buffer.insert(buffer.end(), reinterpret_cast<const char*>(&paramsSize),
-                        reinterpret_cast<const char*>(&paramsSize) + sizeof(paramsSize));
+            buffer.insert(buffer.end(), reinterpret_cast<const char *>(&paramsSize),
+                          reinterpret_cast<const char *>(&paramsSize) + sizeof(paramsSize));
             buffer.insert(buffer.end(), msg.params.begin(), msg.params.end());
 
             uint32_t bodySize = msg.body.size();
-            buffer.insert(buffer.end(), reinterpret_cast<const char*>(&bodySize),
-                        reinterpret_cast<const char*>(&bodySize) + sizeof(bodySize));
+            buffer.insert(buffer.end(), reinterpret_cast<const char *>(&bodySize),
+                          reinterpret_cast<const char *>(&bodySize) + sizeof(bodySize));
             buffer.insert(buffer.end(), msg.body.begin(), msg.body.end());
         }
 
-        void MessageCompressor::deserialize(const std::vector<char>& buffer, Message& msg) {
+        void MessageCompressor::deserialize(const std::vector<char> &buffer, Message &msg)
+        {
             size_t offset = 0;
 
             unsigned short header = buffer[offset] | (buffer[offset + 1] << 8);

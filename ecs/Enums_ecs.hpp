@@ -10,7 +10,8 @@
 
     namespace ecs
     {
-        enum direction {
+        enum direction
+        {
             NO_DIRECTION,
             UP,
             DOWN,

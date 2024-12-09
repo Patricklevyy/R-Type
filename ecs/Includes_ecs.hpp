@@ -26,5 +26,11 @@
     #include <optional>
     #include <functional>
     #include <memory>
+    #include <queue>
+    #include <mutex>
+    #include <condition_variable>
+    #include <thread>
+    #include <atomic>
+    #include <fcntl.h>
 
 #endif /* !INCLUDES_ECS_HPP_ */

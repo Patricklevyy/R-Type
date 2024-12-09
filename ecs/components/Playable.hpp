@@ -10,13 +10,16 @@
 
     namespace ecs
     {
-        class Playable {
-            public:
-                Playable() {}
-                ~Playable() {}
+        class Playable
+        {
+        public:
+            Playable() {}
+            ~Playable() {}
 
-            protected:
-            private:
+            std::string name;
+
+        protected:
+        private:
         };
     }
 

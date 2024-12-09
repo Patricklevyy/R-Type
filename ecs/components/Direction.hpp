@@ -12,16 +12,17 @@
 
     namespace ecs
     {
-        class Direction {
-            public:
-                Direction() {}
-                ~Direction() {}
+        class Direction
+        {
+        public:
+            Direction() {}
+            ~Direction() {}
 
-                direction _x = direction::NO_DIRECTION;
-                direction _y = direction::NO_DIRECTION;
+            direction _x = direction::NO_DIRECTION;
+            direction _y = direction::NO_DIRECTION;
 
-            protected:
-            private:
+        protected:
+        private:
         };
     }
 
