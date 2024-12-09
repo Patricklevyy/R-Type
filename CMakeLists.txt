@@ -33,6 +33,7 @@ add_compile_options(-Wall -Wextra -Werror)
 # Rechercher automatiquement les dépendances définies dans vcpkg.json
 find_package(fmt CONFIG REQUIRED)
 find_package(libconfig CONFIG REQUIRED)
+find_package(SFML CONFIG REQUIRED COMPONENTS system window graphics audio network)
 
 # Rechercher récursivement les fichiers sources pour ECS
 file(GLOB_RECURSE ECS_SRC_FILES "${CMAKE_SOURCE_DIR}/ecs/*.cpp")
