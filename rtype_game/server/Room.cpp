@@ -18,18 +18,16 @@ namespace rtype
 
     Room::~Room()
     {
-        if (_sockfd >= 0)
-        {
+        if (_sockfd >= 0) {
             close(_sockfd);
         }
-        if (_listenThread.joinable())
-        {
-            _listenThread.join();
+        if (_gameThread.joinable()) {
+            _gameThread.join();
         }
     }
 
     Room::Room(Room &&other) noexcept
-        : _port(other._port), _name(std::move(other._name)), _sockfd(other._sockfd), _addr(other._addr), _listenThread(std::move(other._listenThread))
+        : _port(other._port), _name(std::move(other._name)), _sockfd(other._sockfd), _addr(other._addr)
     {
         other._sockfd = -1;
     }
@@ -42,7 +40,6 @@ namespace rtype
             _name = std::move(other._name);
             _sockfd = other._sockfd;
             _addr = other._addr;
-            _listenThread = std::move(other._listenThread);
 
             other._sockfd = -1;
         }
@@ -83,44 +80,44 @@ namespace rtype
         _nb_client = nb_client;
     }
 
-    void Room::listenForMessages()
-    {
-        char buffer[1024];
-        sockaddr_in senderAddr;
-        socklen_t senderLen = sizeof(senderAddr);
+    // void Room::listenForMessages()
+    // {
+    //     char buffer[1024];
+    //     sockaddr_in senderAddr;
+    //     socklen_t senderLen = sizeof(senderAddr);
 
-        while (true)
-        {
-            ssize_t received = recvfrom(_sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&senderAddr, &senderLen);
-            if (received > 0)
-            {
-                std::string message(buffer, received);
-                std::cout << "Received message in room thread " << _name << ": " << message << std::endl;
+    //     while (true)
+    //     {
+    //         ssize_t received = recvfrom(_sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&senderAddr, &senderLen);
+    //         if (received > 0)
+    //         {
+    //             std::string message(buffer, received);
+    //             std::cout << "Received message in room thread " << _name << ": " << message << std::endl;
 
-                if (message == "CREATE")
-                {
-                    char ipStr[INET_ADDRSTRLEN];
-                    inet_ntop(AF_INET, &(senderAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
-                    int clientPort = ntohs(senderAddr.sin_port);
+    //             if (message == "CREATE")
+    //             {
+    //                 char ipStr[INET_ADDRSTRLEN];
+    //                 inet_ntop(AF_INET, &(senderAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
+    //                 int clientPort = ntohs(senderAddr.sin_port);
 
-                    std::string clientAddress = std::string(ipStr) + ":" + std::to_string(clientPort);
+    //                 std::string clientAddress = std::string(ipStr) + ":" + std::to_string(clientPort);
 
-                    std::string roomAddress = "127.0.0.1:" + std::to_string(_port); // L'adresse et le port de la room
+    //                 std::string roomAddress = "127.0.0.1:" + std::to_string(_port); // L'adresse et le port de la room
 
-                    std::string response = "The room address is: " + roomAddress;
+    //                 std::string response = "The room address is: " + roomAddress;
 
-                    // if (!_udpServer.sendMessage(response, clientAddress))
-                    // {
-                    //     std::cerr << "Failed to send room address to client." << std::endl;
-                    // }
-                    // else
-                    // {
-                    //     std::cout << "Sent room address to client: " << roomAddress << std::endl;
-                    // }
-                }
-            }
-        }
-    }
+    //                 // if (!_udpServer.sendMessage(response, clientAddress))
+    //                 // {
+    //                 //     std::cerr << "Failed to send room address to client." << std::endl;
+    //                 // }
+    //                 // else
+    //                 // {
+    //                 //     std::cout << "Sent room address to client: " << roomAddress << std::endl;
+    //                 // }
+    //             }
+    //         }
+    //     }
+    // }
 
     bool Room::sendMessage(const std::string &message)
     {
@@ -128,29 +125,92 @@ namespace rtype
         return sent >= 0;
     }
 
-    void Room::start(int port)
+    void Room::init_event_bus() {
+        // SUBSCRIBE POSITION SYSTEM
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [](const std::vector<std::any>& args) {
+            try {
+                auto& ps = std::any_cast<std::reference_wrapper<ecs::PositionSystem>>(args[0]).get();
+                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[1]).get();
+
+                ps.updatePositions(components);
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+    }
+
+    void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
     {
-        if (!_udpServer.initialize("rtype_game/config/udp_config.conf", port))
+        ecs::udp::Message message;
+        _message_compressor.deserialize(compressed_message, message);
+        std::cout << "new message :" << message.action << ", " << message.params << std::endl;
+    }
+
+    void Room::init_ecs_server_registry()
+    {
+        // INIT LES COMPONENT DU SERVER QUI SONT PAS COMMUN AVEC LE CLIENT
+    }
+
+    void Room::gameThreadFunction(int port) {
+
+        Timer timer;
+
+        if (!_udp_server.initialize("rtype_game/config/udp_config.conf", port))
         {
             std::cerr << "Failed to initialize socket for room " << _name << std::endl;
             return;
         }
 
-        _listenThread = std::thread(&Room::listenForMessages, this);
-        _listenThread.detach(); // Laisser le thread détaché pour tourner en arrière-plan
+        _udp_server.startReceiving();
+        timer.init("rtype_game/config/server_config.conf", true);
+        _game_running = true;
+        _ecs.init_basic_registry();
+        init_ecs_server_registry();
+        std::cout << "je suis dans le game thread" << std::endl;
+        init_event_bus();
+        while (_game_running) {
+            timer.waitTPS();
+            auto messages = _udp_server.fetchAllMessages();
+            if (messages.size() != 0) {
+                for (const auto &[clientAddress, message] : messages)
+                {
+                    handleCommand(message, clientAddress);
+                }
+            }
+        }
+    }
+
+    void Room::start(int port)
+    {
+        std::cout << "j'inite et je creer les threads" << std::endl;
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port);
+        _gameThread.detach();
     }
 
     void Room::createClient(std::string lastclientAdr)
     {
-
         std::cout << "Client created in room [" << _name << "] with addr: " << lastclientAdr << std::endl;
 
         std::string roomAddress = getAddress();
 
-        std::string message = "Welcome to the room, client! The room address is: " + roomAddress;
+        ecs::udp::Message mes;
 
-        // _udpServer.sendMessage(message, lastclientAdr);
+        mes.id = index_ecs;
+        mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
+        mes.params = "x=200;y=200";
+
+        std::vector<char> send_message;
+
+        _message_compressor.serialize(mes, send_message);
+
+        std::cout << lastclientAdr << std::endl;
+        if (_udp_server.sendMessage(send_message, lastclientAdr)) {
+            std::cout << "Message sent: " << std::endl;
+        } else {
+            std::cerr << "Failed to send message." << std::endl;
+        }
         setNbClient(getNbClient() + 1);
+        index_ecs++;
     }
 
     void Room::closeRoom()

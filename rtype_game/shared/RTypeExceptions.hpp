@@ -92,6 +92,45 @@
                     std::string message_;
             };
 
+            class InvalidTpsOrFpsExceptions : public std::exception {
+                public:
+                    explicit InvalidTpsOrFpsExceptions(const std::string& message)
+                        : message_("InvalidTpsOrFpsExceptions: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
+
+            class FailedToInitializeServerExceptions : public std::exception {
+                public:
+                    explicit FailedToInitializeServerExceptions(const std::string& message)
+                        : message_("FailedToInitializeServerExceptions: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
+
+            class FailedToInitializeClientExceptions : public std::exception {
+                public:
+                    explicit FailedToInitializeClientExceptions(const std::string& message)
+                        : message_("FailedToInitializeClientExceptions: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
+
         }
     }
 #endif /* !RTYPEEXCEPTIONS_HPP_ */

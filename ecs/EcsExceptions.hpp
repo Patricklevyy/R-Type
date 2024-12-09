@@ -16,112 +16,144 @@
         {
             class CantReadConfigFileExceptions : virtual public std::exception
             {
-                public:
-                    CantReadConfigFileExceptions() {}
+            public:
+                CantReadConfigFileExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("CantReadConfigFileExceptions : Error when reading the config file");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("CantReadConfigFileExceptions : Error when reading the config file");
+                };
             };
 
             class CantParseConfigFileExceptions : virtual public std::exception
             {
-                public:
-                    CantParseConfigFileExceptions() {}
+            public:
+                CantParseConfigFileExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("CantParseConfigFileExceptions : Error parsing configuration file");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("CantParseConfigFileExceptions : Error parsing configuration file");
+                };
             };
 
             class WrongBufferSizeExceptions : virtual public std::exception
             {
-                public:
-                    WrongBufferSizeExceptions() {}
+            public:
+                WrongBufferSizeExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("WrongBufferSizeExceptions : Buffer size exceeds safe UDP message size (1472 bytes).");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("WrongBufferSizeExceptions : Buffer size exceeds safe UDP message size (1472 bytes).");
+                };
             };
 
             class BindFailedExceptions : virtual public std::exception
             {
-                public:
-                    BindFailedExceptions() {}
+            public:
+                BindFailedExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("BindFailedExceptions : Bind failed.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("BindFailedExceptions : Bind failed.");
+                };
             };
 
             class WrongConfigurationExceptions : virtual public std::exception
             {
-                public:
-                    WrongConfigurationExceptions() {}
+            public:
+                WrongConfigurationExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("WrongConfigurationExceptions : Missing setting or wrong setting in configuration file.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("WrongConfigurationExceptions : Missing setting or wrong setting in configuration file.");
+                };
             };
 
             class SocketNotInitializedExceptions : virtual public std::exception
             {
-                public:
-                    SocketNotInitializedExceptions() {}
+            public:
+                SocketNotInitializedExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("SocketNotInitializedExceptions : Socket not initialized.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("SocketNotInitializedExceptions : Socket not initialized.");
+                };
             };
 
             class InvalidAdressFormatExceptions : virtual public std::exception
             {
-                public:
-                    InvalidAdressFormatExceptions() {}
+            public:
+                InvalidAdressFormatExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("InvalidAdressFormatExceptions : Invalid address format. Expected 'ip:port'.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("InvalidAdressFormatExceptions : Invalid address format. Expected 'ip:port'.");
+                };
             };
 
             class InvalidIpAdressExceptions : virtual public std::exception
             {
-                public:
-                    InvalidIpAdressExceptions() {}
+            public:
+                InvalidIpAdressExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("InvalidIpAdressExceptions : Invalid IP address.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("InvalidIpAdressExceptions : Invalid IP address.");
+                };
             };
 
             class MessageTooBigExceptions : virtual public std::exception
             {
-                public:
-                    MessageTooBigExceptions() {}
+            public:
+                MessageTooBigExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("MessageTooBigExceptions : Message exceeds buffer size.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("MessageTooBigExceptions : Message exceeds buffer size.");
+                };
             };
 
             class RecvExceptions : virtual public std::exception
             {
-                public:
-                    RecvExceptions() {}
+            public:
+                RecvExceptions() {}
 
-                    const char *what() const noexcept override
-                    {
-                        return ("RecvExceptions : Recvfrom failed.");
-                    };
+                const char *what() const noexcept override
+                {
+                    return ("RecvExceptions : Recvfrom failed.");
+                };
+            };
+            class ComponentTypeAlreadyExistException : virtual public std::exception
+            {
+            public:
+                ComponentTypeAlreadyExistException() {}
+
+                const char *what() const noexcept override
+                {
+                    return ("ComponentTypeAlreadyExistException : Component already exists.");
+                };
+            };
+
+            class ComponentNotFoundExceptions : virtual public std::exception
+            {
+            public:
+                ComponentNotFoundExceptions() {}
+
+                const char *what() const noexcept override
+                {
+                    return ("ComponentNotFoundExceptions : Component not found.");
+                };
+            };
+
+            class IdOutOfRangeExceptions : virtual public std::exception
+            {
+            public:
+                IdOutOfRangeExceptions() {}
+
+                const char *what() const noexcept override
+                {
+                    return ("IdOutOfRangeExceptions : Id index out of range.");
+                };
             };
         }
     }

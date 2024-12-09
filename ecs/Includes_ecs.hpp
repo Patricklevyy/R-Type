@@ -5,8 +5,8 @@
 ** Includes
 */
 
-#ifndef INCLUDES_HPP_
-    #define INCLUDES_HPP_
+#ifndef INCLUDES_ECS_HPP_
+    #define INCLUDES_ECS_HPP_
 
     // LIBRAIRIES
 
@@ -23,9 +23,14 @@
     #include <typeindex>
     #include <list>
     #include <any>
+    #include <optional>
+    #include <functional>
+    #include <memory>
+    #include <queue>
+    #include <mutex>
+    #include <condition_variable>
+    #include <thread>
+    #include <atomic>
+    #include <fcntl.h>
 
-    // FILES
-
-    #include "EcsExceptions.hpp"
-
-#endif /* !INCLUDES_HPP_ */
+#endif /* !INCLUDES_ECS_HPP_ */

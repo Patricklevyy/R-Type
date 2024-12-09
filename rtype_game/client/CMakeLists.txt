@@ -15,3 +15,4 @@
 
 # # Spécifier le répertoire de sortie
 # set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+

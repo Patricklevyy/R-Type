@@ -8,23 +8,24 @@
 #ifndef MESSAGECOMPRESSOR_HPP_
     #define MESSAGECOMPRESSOR_HPP_
 
-    #include "../Includes.hpp"
-    #include "../Structures.hpp"
+    #include "../Includes_ecs.hpp"
+    #include "../Structures_ecs.hpp"
 
     namespace ecs
     {
         namespace udp
         {
-            class MessageCompressor {
-                public:
-                    MessageCompressor();
-                    ~MessageCompressor();
+            class MessageCompressor
+            {
+            public:
+                MessageCompressor();
+                ~MessageCompressor();
 
-                    void serialize(const Message& msg, std::vector<char>& buffer);
-                    void deserialize(const std::vector<char>& buffer, Message& msg);
+                void serialize(const Message &msg, std::vector<char> &buffer);
+                void deserialize(const std::vector<char> &buffer, Message &msg);
 
-                protected:
-                private:
+            protected:
+            private:
             };
         }
     }
