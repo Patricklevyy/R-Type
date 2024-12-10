@@ -12,6 +12,7 @@
     {
         enum direction
         {
+            NO_CHANGE = -1,
             NO_DIRECTION,
             UP,
             DOWN,

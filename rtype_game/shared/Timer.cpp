@@ -54,6 +54,7 @@ namespace rtype
                     int tps = cfg.lookup("client.tps");
                     if (tps > 0)
                     {
+                        _tps = tps;
                         tps_duration = std::chrono::duration<float>(1.0f / tps);
                         std::cout << "Client: TPS configuré à " << tps << " (" << (1.0f / tps) << " secondes par tick)" << std::endl;
                     }
