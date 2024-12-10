@@ -9,11 +9,11 @@
 
 int main()
 {
-    rtype::Client RYTPE_CLIENT;
+    rtype::Client RTYPE_CLIENT;
 
     try
     {
-        RYTPE_CLIENT.start();
+        RTYPE_CLIENT.start();
     }
     catch (std::exception &e)
     {

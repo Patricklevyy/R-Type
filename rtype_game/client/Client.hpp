@@ -35,10 +35,13 @@
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
 
+                void init_event_bus();
+
             protected:
             private:
-                ecs::udp::UDP_Client udpClient;
-                EventBus _eventbus;
+                EventBus _eventBus;
+                std::shared_ptr<Timer> _timer;
+                std::shared_ptr<ecs::udp::UDP_Client> _udpClient;
                 ecs::ECS _ecs;
                 bool _running = true;
                 std::queue<sf::Event> _events;
