@@ -131,6 +131,19 @@
                     std::string message_;
             };
 
+            class MissingPortParamsExceptions : public std::exception {
+                public:
+                    explicit MissingPortParamsExceptions(const std::string& message)
+                        : message_("MissingPortParamsExceptions: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
+
         }
     }
 #endif /* !RTYPEEXCEPTIONS_HPP_ */

@@ -11,7 +11,6 @@
 int main()
 {
     try {
-        // Afficher le menu
         rtype::Menu menu(800, 600, "R-Type Menu");
         menu.run();
 

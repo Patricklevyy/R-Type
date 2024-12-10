@@ -22,7 +22,7 @@
         class PositionSystem
         {
         public:
-            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array)
+            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate)
             {
                 auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
                 auto &velocities = std::any_cast<SparseArray<Velocity> &>(components_array[typeid(Velocity)]);
@@ -45,10 +45,10 @@
                         switch (directions[i].value()._x)
                         {
                         case direction::LEFT:
-                            positions[i].value().pos_x -= velocities[i].value().velocity;
+                            positions[i].value().pos_x -= velocities[i].value().velocity / tickRate;;
                             break;
                         case direction::RIGHT:
-                            positions[i].value().pos_x += velocities[i].value().velocity;
+                            positions[i].value().pos_x += velocities[i].value().velocity / tickRate;
                             break;
                         default:
                             break;
@@ -56,10 +56,10 @@
                         switch (directions[i].value()._y)
                         {
                         case direction::LEFT:
-                            positions[i].value().pos_y -= velocities[i].value().velocity;
+                            positions[i].value().pos_y -= velocities[i].value().velocity / tickRate;
                             break;
                         case direction::RIGHT:
-                            positions[i].value().pos_y += velocities[i].value().velocity;
+                            positions[i].value().pos_y += velocities[i].value().velocity / tickRate;
                             break;
                         default:
                             break;

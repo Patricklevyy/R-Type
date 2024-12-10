@@ -22,7 +22,12 @@
 
                 bool initialize(const std::string &configFile, int port = 0) override;
 
+                void setDefaultAddress(const std::string &);
+
+                bool sendMessageToDefault(const std::vector<char>);
+
             protected:
+                std::string defaultAddress;
             private:
             };
         }
