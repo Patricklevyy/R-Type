@@ -7,9 +7,6 @@
 
 #include "Client.hpp"
 #include "../../ecs/components/Direction.hpp"
-#include "../../ecs/components/Window.hpp"
-#include "../../ecs/components/Background.hpp"
-#include "../../ecs/system/EventWindow.hpp"
 
 namespace rtype
 {
@@ -106,6 +103,22 @@ namespace rtype
                             std::cout << "failed " << std::endl;
                         }
                     }
+                    if (event.key.code == sf::Keyboard::B) {
+                        std::vector<char> buffer;
+                        ecs::udp::Message mess;
+                        mess.id = 2;
+                        mess.action = 15;
+                        // mess.params = "room_name=room1;client_name=jean";
+
+                        _message_compressor.serialize(mess, buffer);
+
+                        std::cout << "je teste GET ALL ROOMS " << std::endl;
+                        if (_udpClient->sendMessage(buffer, "127.0.0.1:8080")) {
+                            std::cout << "Message sent: " << std::endl;
+                        } else {
+                            std::cout << "failed " << std::endl;
+                        }
+                    }
                     break;
 
                 case sf::Event::MouseButtonPressed:
@@ -139,33 +152,10 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_subscribe_event_bus();
-
-        sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
-        sf::RenderWindow window(videoMode, "R-Type Client", sf::Style::Fullscreen);
-
-        // Récupère la largeur et la hauteur de la fenêtre SFML
-        int width = window.getSize().x;
-        int height = window.getSize().y;
-        std::string title = "R-Type Client";  // Tu peux changer le titre si nécessaire
-
-        // Crée l'objet rtype::Window avec les paramètres nécessaires
-        rtype::Window ecsWindow(width, height, title);
-        _ecs.addComponents<Window>(index_ecs_client, ecsWindow);
-
-        sf::Texture backgroundTexture;
-        std::cout << "normalement il y a un putain de background pelooooooo" << std::endl;
-        if (!backgroundTexture.loadFromFile("assets/background_2.png")) {
-            std::cerr << "Erreur de chargement de l'image de fond." << std::endl;
-            return;
-        }
-
-        sf::Sprite backgroundSprite(backgroundTexture);
-
+        Window window(800, 600, "My ECS Client Window");
         EventWindow event_window;
+        _ecs.addComponents<Window>(index_ecs_client, window);
 
-        // L'initialisation de Window est déjà faite ci-dessus, pas besoin de std::move(window)
-
-        // La boucle du jeu
         while (_running) {
             _timer->waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::CHECK_EVENT_WINDOW, std::ref(event_window), std::ref(_ecs._components_arrays), std::ref(_events));
