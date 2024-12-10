@@ -113,7 +113,7 @@ namespace rtype
         // INIT LES COMPONENT DU SERVER QUI SONT PAS COMMUN AVEC LE CLIENT
     }
 
-    void Room::gameThreadFunction(int port, std::string lastClientAddr)
+    void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName)
     {
         _port = port;
         Timer timer;
@@ -124,28 +124,14 @@ namespace rtype
             std::cerr << "Failed to initialize socket for room " << _name << std::endl;
             return;
         }
-        createClient(lastClientAddr);
+        _ecs.init_basic_registry();
+        createClient(lastClientAddr, clientName);
         _udp_server->startReceiving();
         timer.init("rtype_game/config/server_config.conf", true);
         _game_running = true;
-        _ecs.init_basic_registry();
         init_ecs_server_registry();
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
-        ecs::Position position1;
-        position1.pos_x = 10;
-        position1.pos_y = 10;
-        ecs::Velocity velocity;
-        velocity.velocity = 10;
-        ecs::Direction direction;
-        direction._x = ecs::direction::RIGHT;
-
-        ecs::Playable playable;
-
-        _ecs.addComponents<ecs::Playable>(1, playable);
-        _ecs.addComponents<ecs::Velocity>(1, velocity);
-        _ecs.addComponents<ecs::Direction>(1, direction);
-        _ecs.addComponents<ecs::Position>(1, position1);
 
         while (_game_running) {
             timer.waitTPS();
@@ -162,14 +148,45 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string lastclientAddr)
+    void Room::start(int port, std::string lastclientAddr, std::string clientName)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, lastclientAddr);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port, lastclientAddr, clientName);
         _gameThread.detach();
     }
 
-    void Room::createClient(std::string lastclientAdr)
+    std::pair<float, float> Room::get_player_start_position(int nb_client)
+    {
+        switch (nb_client)
+        {
+        case 0:
+            return std::pair<float, float>(200, 200);
+        case 1:
+            return std::pair<float, float>(300, 300);
+        case 2:
+            return std::pair<float, float>(400, 400);
+        case 3:
+            return std::pair<float, float>(500, 500);
+        default:
+            // IMPOSSIBLE CASE
+            return std::pair<float, float>(0, 0);
+        }
+    }
+
+    void Room::create_player(size_t index, std::pair<float, float> positions, std::string clientName)
+    {
+        ecs::Direction direction;
+        ecs::Playable playable(clientName);
+        ecs::Position position(positions.first, positions.second);
+        ecs::Velocity velocity;
+
+        _ecs.addComponents<ecs::Direction>(index, direction);
+        _ecs.addComponents<ecs::Playable>(index, playable);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<ecs::Position>(index, position);
+    }
+
+    void Room::createClient(std::string lastclientAdr, std::string clientName)
     {
         std::cout << "Client created in room [" << _name << "] with addr: " << lastclientAdr << std::endl;
 
@@ -179,9 +196,11 @@ namespace rtype
 
         mes.id = index_ecs;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.params = "x=200;y=200;port=" + std::to_string(_port);
-
+        std::pair<float, float> position = get_player_start_position(getNbClient());
+        mes.params = "x=" + std::to_string(position.first) + ";y=" + std::to_string(position.second) + ";port=" + std::to_string(_port);
         std::vector<char> send_message;
+
+        create_player(index_ecs, position, clientName);
 
         _message_compressor.serialize(mes, send_message);
 

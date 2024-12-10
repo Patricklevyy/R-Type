@@ -13,10 +13,10 @@
         class Playable
         {
         public:
-            Playable() {}
+            Playable(std::string name = "") : _name(name) {}
             ~Playable() {}
 
-            std::string name;
+            std::string _name;
 
         protected:
         private:

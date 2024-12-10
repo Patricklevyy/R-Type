@@ -13,11 +13,11 @@
         class Position
         {
         public:
-            Position() {}
+            Position(float pos_x = 0, float pos_y = 0) : _pos_x(pos_x), _pos_y(pos_y) {}
             ~Position() {}
 
-            float pos_x;
-            float pos_y;
+            float _pos_x;
+            float _pos_y;
 
         protected:
         private:

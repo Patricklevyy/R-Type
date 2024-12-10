@@ -97,7 +97,7 @@
                         if (i < positions.size() && positions[i].has_value())
                         {
                             const auto &pos = positions[i].value();
-                            std::cout << "  Position: (" << pos.pos_x << ", " << pos.pos_y << ")" << std::endl;
+                            std::cout << "  Position: (" << pos._pos_x << ", " << pos._pos_y << ")" << std::endl;
                         }
                         else
                         {

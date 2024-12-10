@@ -45,10 +45,10 @@
                         switch (directions[i].value()._x)
                         {
                         case direction::LEFT:
-                            positions[i].value().pos_x -= velocities[i].value().velocity / tickRate;;
+                            positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;;
                             break;
                         case direction::RIGHT:
-                            positions[i].value().pos_x += velocities[i].value().velocity / tickRate;
+                            positions[i].value()._pos_x += velocities[i].value().velocity / tickRate;
                             break;
                         default:
                             break;
@@ -56,10 +56,10 @@
                         switch (directions[i].value()._y)
                         {
                         case direction::LEFT:
-                            positions[i].value().pos_y -= velocities[i].value().velocity / tickRate;
+                            positions[i].value()._pos_y -= velocities[i].value().velocity / tickRate;
                             break;
                         case direction::RIGHT:
-                            positions[i].value().pos_y += velocities[i].value().velocity / tickRate;
+                            positions[i].value()._pos_y += velocities[i].value().velocity / tickRate;
                             break;
                         default:
                             break;

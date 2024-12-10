@@ -28,7 +28,8 @@
             CHECK_EVENT_WINDOW,
             CREATE_CLIENT,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
-            MAX_ACTION
+            MAX_ACTION,
+            GET_ALL_ROOMS
         };
     }
 

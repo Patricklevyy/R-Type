@@ -39,6 +39,34 @@ namespace rtype
             (void)clientAddr;
             _running = false;
         };
+        _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) {
+            (void)id;
+            (void)params;
+            (void)body;
+
+            getAllRooms(clientAddr);
+        };
+    }
+
+    void Server::getAllRooms(std::string &clientAddr)
+    {
+        std::vector<std::string> roomNames;
+        for (const auto& room : _rooms) {
+            roomNames.push_back(room.getName());
+        }
+        std::string roomList = "rooms=";
+        for (const auto& roomName : roomNames) {
+            roomList += roomName + ",";
+        }
+        if (!roomNames.empty()) {
+            roomList.pop_back();
+            roomList.pop_back();
+        }
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = 16;
+        _compressor.serialize(responseMessage, response);
+        _udpManager->sendMessage(response, clientAddr);
     }
 
     void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)
@@ -95,7 +123,13 @@ namespace rtype
 
         Room newRoom(_currentPort, map_params["room_name"]);
         _rooms.push_back(std::move(newRoom));
-        _rooms.back().start(_currentPort, lastclientAdr);
+        if (map_params.find("client_name") != map_params.end())
+        {
+            _rooms.back().start(_currentPort, lastclientAdr, map_params["client_name"]);
+        }
+        else {
+            _rooms.back().start(_currentPort, lastclientAdr, "");
+        }
         _currentPort++;
     }
 
@@ -117,7 +151,14 @@ namespace rtype
         {
             if (room.getName() == map_params["room_name"])
             {
-                room.createClient(lastclientAdr);
+                if (map_params.find("client_name") != map_params.end())
+                {
+                    room.createClient(lastclientAdr, map_params["client_name"]);
+                }
+                else
+                {
+                    room.createClient(lastclientAdr, "");
+                }
             }
         }
     }
