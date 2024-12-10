@@ -91,7 +91,7 @@ namespace rtype
                         std::vector<char> buffer;
                         ecs::udp::Message mess;
                         mess.id = 1;
-                        mess.action = 1;
+                        mess.action = 0;
                         mess.params = "room_name=room1;client_name=jean";
 
                         _message_compressor.serialize(mess, buffer);
