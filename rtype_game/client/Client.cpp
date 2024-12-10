@@ -108,119 +108,53 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_subscribe_event_bus();
-        Window window(800, 600, "My ECS Client Window");
+
+        sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
+        // std::cout << "dimensions de l'écran (height) = " << videoMode.height << " , dimension de l'écran (width) = " << videoMode.width << std::endl;
+        sf::RenderWindow window(videoMode, "R-Type Client", sf::Style::Fullscreen);
+
+        sf::Texture backgroundTexture;
+        if (!backgroundTexture.loadFromFile("assets/background_2.png")) {
+            std::cerr << "Erreur de chargement de l'image de fond." << std::endl;
+            return;
+        }
+
+        sf::Sprite backgroundSprite(backgroundTexture);
+
         EventWindow event_window;
-        _ecs.addComponents<Window>(index_ecs_client, window);
         udpClient.startReceiving();
 
+        // while (window.isOpen()) {
         while (_running) {
             timer.waitTPS();
+
+            sf::Event event;
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed) {
+                    window.close();
+                    _running = false;
+                } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                    std::cout << "Escape pressed. Closing window." << std::endl;
+                    window.close();
+                    _running = false;
+                }
+            }
+
             _eventbus.emit(RTYPE_ACTIONS::CHECK_EVENT_WINDOW, std::ref(event_window), std::ref(_ecs._components_arrays), std::ref(_events));
             handle_event();
+
             auto messages = udpClient.fetchAllMessages();
-            for (auto &[clientAddress, message] : messages)
-            {
+            for (auto &[clientAddress, message] : messages) {
                 try {
                     handle_message(message, clientAddress);
                 } catch (std::exception &e) {
-                    std::cerr << std::endl << e.what() << std::endl;
+                    std::cerr << "Erreur : " << e.what() << std::endl;
                 }
             }
+
+            window.clear();
+            window.draw(backgroundSprite);
+            window.display();
         }
-        // // Boucle principale
-        // while (window.isRunning())
-        // {
-        //     // Mise à jour et collecte des événements
-        //     window.updateEvent();
-
-        //     // Traiter les événements
-        //     auto events = window.fetchEvents();
-        //     while (!events.empty())
-        //     {
-        //         auto event = events.front();
-        //         events.pop();
-
-        //         // Exemple de traitement
-        //         if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-        //         {
-        //             std::cout << "Escape pressed! Closing window." << std::endl;
-        //             break;
-        //         }
-        //     }
-        // }
-        // Window window(800, 600, "RTYPE");
-        // EventWindow eventSystem;
-
-        // // Boucle principale
-        // while (window.isRunning()) {
-        //     // Mise à jour de la fenêtre (collecte des événements)
-        //     window.update();
-
-        //     // Traite les événements collectés
-        //     eventSystem.processEvents(window);
-
-        //     // Autres systèmes ou logique de jeu ici
-        // }
     }
-//         ecs::udp::UDP_Client udpClient;
-
-//     if (!udpClient.initialize("rtype_game/config/udp_config.conf")) {
-//         std::cerr << "Client initialization failed." << std::endl;
-//         return 1;
-//     }
-
-//     std::string message = "CREATE";
-
-//     std::vector<char> buffer;
-//     ecs::udp::Message mess;
-//     mess.id = 1;
-//     mess.action = 0;
-//     mess.params = "room_name=room1;client_name=jean";
-
-//     ecs::udp::MessageCompressor compresor;
-
-//     compresor.serialize(mess, buffer);
-
-//     if (udpClient.sendMessage(buffer, "127.0.0.1:8080")) {
-//         std::cout << "Message sent: " << message << std::endl;
-//     } else {
-//         std::cerr << "Failed to send message." << std::endl;
-//         return 1;
-//     }
-
-//     std::cout << "Waiting for response from the server..." << std::endl;
-
-//     std::string response;
-//     bool messageReceived = false;
-//     std::string roomAddress;
-
-//     for (int i = 0; i < 10; ++i) {
-//         if (udpClient.receiveMessage(response)) {
-//             std::cout << "Received response: " << response << std::endl;
-
-//             if (response.find("The room address is:") != std::string::npos) {
-//                 size_t pos = response.find("The room address is:") + std::strlen("The room address is: ");
-//                 roomAddress = response.substr(pos);
-//                 std::cout << "Room address received: " << roomAddress << std::endl;
-
-//                 if (udpClient.sendMessage("Received room address: " + roomAddress, "127.0.0.1:8080")) {
-//                     std::cout << "Message with room address sent to server." << std::endl;
-//                 } else {
-//                     std::cerr << "Failed to send room address back to the server." << std::endl;
-//                 }
-//             }
-//             messageReceived = true;
-//             break;
-//         } else {
-//             std::cerr << "Failed to receive response. Retrying..." << std::endl;
-//             usleep(500000);
-//         }
-//     }
-
-//     if (!messageReceived) {
-//         std::cerr << "Server not available or no response received after several retries." << std::endl;
-//     }
-
-//     return 0;
-// }
 }
