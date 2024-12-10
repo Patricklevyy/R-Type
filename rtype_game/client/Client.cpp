@@ -7,6 +7,9 @@
 
 #include "Client.hpp"
 #include "../../ecs/components/Direction.hpp"
+#include "../../ecs/components/Window.hpp"
+#include "../../ecs/components/Background.hpp"
+#include "../../ecs/system/EventWindow.hpp"
 
 namespace rtype
 {
@@ -142,10 +145,19 @@ namespace rtype
         init_subscribe_event_bus();
 
         sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
-        // std::cout << "dimensions de l'écran (height) = " << videoMode.height << " , dimension de l'écran (width) = " << videoMode.width << std::endl;
         sf::RenderWindow window(videoMode, "R-Type Client", sf::Style::Fullscreen);
 
+        // Récupère la largeur et la hauteur de la fenêtre SFML
+        int width = window.getSize().x;
+        int height = window.getSize().y;
+        std::string title = "R-Type Client";  // Tu peux changer le titre si nécessaire
+
+        // Crée l'objet rtype::Window avec les paramètres nécessaires
+        rtype::Window ecsWindow(width, height, title);
+        _ecs.addComponents<Window>(index_ecs_client, ecsWindow);
+
         sf::Texture backgroundTexture;
+        std::cout << "normalement il y a un putain de background pelooooooo" << std::endl;
         if (!backgroundTexture.loadFromFile("assets/background_2.png")) {
             std::cerr << "Erreur de chargement de l'image de fond." << std::endl;
             return;
@@ -154,9 +166,10 @@ namespace rtype
         sf::Sprite backgroundSprite(backgroundTexture);
 
         EventWindow event_window;
-        _ecs.addComponents<Window>(index_ecs_client, window);
 
-        // while (window.isOpen()) {
+        // L'initialisation de Window est déjà faite ci-dessus, pas besoin de std::move(window)
+
+        // La boucle du jeu
         while (_running) {
             _timer->waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::CHECK_EVENT_WINDOW, std::ref(event_window), std::ref(_ecs._components_arrays), std::ref(_events));
