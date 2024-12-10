@@ -19,39 +19,41 @@ endif()
 
 # Rechercher les dépendances
 find_package(fmt CONFIG REQUIRED)
-find_package(libconfig CONFIG REQUIRED)
 find_package(SFML CONFIG REQUIRED COMPONENTS system window graphics audio network)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBCONFIG REQUIRED libconfig++)
 
-# Rechercher récursivement les fichiers sources pour ECS
+# Ajouter les chemins pour libconfig++
+include_directories(${LIBCONFIG_INCLUDE_DIRS})
+link_directories(${LIBCONFIG_LIBRARY_DIRS})
+
+# Rechercher les fichiers ECS
 file(GLOB_RECURSE ECS_SRC_FILES "${CMAKE_SOURCE_DIR}/ecs/*.cpp")
-
-# Ajouter ECS comme bibliothèque statique
 add_library(ecs STATIC ${ECS_SRC_FILES})
 target_include_directories(ecs PUBLIC "${CMAKE_SOURCE_DIR}/ecs")
-target_link_libraries(ecs PRIVATE libconfig::config++)
+target_link_libraries(ecs PRIVATE ${LIBCONFIG_LIBRARIES})
 
-# Rechercher récursivement les fichiers partagés entre client et serveur
+# Rechercher les fichiers partagés
 file(GLOB_RECURSE SHARED_SRC_FILES "${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp" "${CMAKE_SOURCE_DIR}/rtype_game/shared/*.h")
-
-# Ajouter les fichiers partagés comme bibliothèque statique
 add_library(shared STATIC ${SHARED_SRC_FILES})
 target_include_directories(shared PUBLIC "${CMAKE_SOURCE_DIR}/rtype_game/shared")
 
-# Ajouter les sources du client
+# Configurer l'exécutable du client
 file(GLOB_RECURSE CLIENT_SRC_FILES "${CMAKE_SOURCE_DIR}/rtype_game/client/*.cpp")
 add_executable(r-type_client ${CLIENT_SRC_FILES})
-target_link_libraries(r-type_client PRIVATE ecs shared fmt::fmt sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
 target_include_directories(r-type_client PRIVATE "${CMAKE_SOURCE_DIR}/ecs")
+target_link_libraries(r-type_client PRIVATE ecs shared fmt::fmt sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
 
-# Ajouter les sources du serveur
+# Configurer l'exécutable du serveur
 file(GLOB_RECURSE SERVER_SRC_FILES "${CMAKE_SOURCE_DIR}/rtype_game/server/*.cpp")
 add_executable(r-type_server ${SERVER_SRC_FILES})
-target_link_libraries(r-type_server PRIVATE ecs shared fmt::fmt)
 target_include_directories(r-type_server PRIVATE "${CMAKE_SOURCE_DIR}/ecs")
+target_link_libraries(r-type_server PRIVATE ecs shared fmt::fmt)
 
-# Définir les répertoires de sortie des exécutables
+# Définir les répertoires de sortie
 set_target_properties(r-type_client PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 set_target_properties(r-type_server PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+
 
 
 

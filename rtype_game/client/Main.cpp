@@ -6,19 +6,21 @@
 */
 
 #include "Client.hpp"
+#include "menu/menu.hpp"
 
 int main()
 {
-    rtype::Client RYTPE_CLIENT;
+    try {
+        // Afficher le menu
+        rtype::Menu menu(800, 600, "R-Type Menu");
+        menu.run();
 
-    try
-    {
-        RYTPE_CLIENT.start();
     }
-    catch (std::exception &e)
-    {
+    catch (const std::exception &e) {
         std::cerr << std::endl
                   << e.what() << std::endl;
-        exit(84);
+        return 84;
     }
+
+    return 0;
 }
