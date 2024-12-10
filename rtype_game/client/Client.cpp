@@ -103,6 +103,22 @@ namespace rtype
                             std::cout << "failed " << std::endl;
                         }
                     }
+                    if (event.key.code == sf::Keyboard::B) {
+                        std::vector<char> buffer;
+                        ecs::udp::Message mess;
+                        mess.id = 2;
+                        mess.action = 15;
+                        // mess.params = "room_name=room1;client_name=jean";
+
+                        _message_compressor.serialize(mess, buffer);
+
+                        std::cout << "je teste GET ALL ROOMS " << std::endl;
+                        if (_udpClient->sendMessage(buffer, "127.0.0.1:8080")) {
+                            std::cout << "Message sent: " << std::endl;
+                        } else {
+                            std::cout << "failed " << std::endl;
+                        }
+                    }
                     break;
 
                 case sf::Event::MouseButtonPressed:
