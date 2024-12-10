@@ -60,6 +60,7 @@
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
+            ecs::PositionSystem pos;
 
             bool initializeSocket();
             void closeRoom();

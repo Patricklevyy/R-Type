@@ -21,8 +21,10 @@
 
             void waitTPS();
             void waitFPS();
+            float getTps() const;
 
         private:
+            float _tps;
             std::chrono::duration<float> tps_duration;
             std::chrono::duration<float> fps_duration;
             std::chrono::time_point<std::chrono::high_resolution_clock> last_tps_tick;

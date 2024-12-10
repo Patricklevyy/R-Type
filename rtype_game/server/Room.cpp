@@ -92,8 +92,9 @@ namespace rtype
             try {
                 auto& ps = std::any_cast<std::reference_wrapper<ecs::PositionSystem>>(args[0]).get();
                 auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[1]).get();
+                auto& timer = std::any_cast<std::reference_wrapper<rtype::Timer>>(args[2]).get();
 
-                ps.updatePositions(components);
+                ps.updatePositions(components, timer.getTps());
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -131,8 +132,25 @@ namespace rtype
         init_ecs_server_registry();
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
+        ecs::Position position1;
+        position1.pos_x = 10;
+        position1.pos_y = 10;
+        ecs::Velocity velocity;
+        velocity.velocity = 10;
+        ecs::Direction direction;
+        direction._x = ecs::direction::RIGHT;
+
+        ecs::Playable playable;
+
+        _ecs.addComponents<ecs::Playable>(1, playable);
+        _ecs.addComponents<ecs::Velocity>(1, velocity);
+        _ecs.addComponents<ecs::Direction>(1, direction);
+        _ecs.addComponents<ecs::Position>(1, position1);
+
         while (_game_running) {
             timer.waitTPS();
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(pos), std::ref(_ecs._components_arrays), std::ref(timer));
+            _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages)
@@ -169,7 +187,7 @@ namespace rtype
 
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
-            std::cout << "Message sent: " << std::endl;
+            std::cout << "Message sent: "  << mes.params << mes.action << std::endl;
         } else {
             std::cerr << "Failed to send message." << std::endl;
         }
