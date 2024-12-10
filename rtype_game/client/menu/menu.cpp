@@ -22,7 +22,26 @@ namespace rtype {
         _buttonText.setString("START GAME");
         _buttonText.setCharacterSize(30);
         _buttonText.setFillColor(sf::Color::White);
-        centerText();
+        centerText(_buttonText);
+    }
+
+    void Menu::initializeButtons() {
+        std::vector<std::string> buttonLabels = {"CREATE ROOM", "JOIN ROOM", "OPTIONS", "EXIT"};
+        float buttonY = 200.f;
+
+        for (const auto &label : buttonLabels) {
+            Button button;
+            button.text.setFont(_font);
+            button.text.setString(label);
+            button.text.setCharacterSize(30);
+            button.text.setFillColor(sf::Color::White);
+            button.text.setPosition(_window.getSize().x / 2.f, buttonY);
+
+            centerText(button.text);
+            _buttons.push_back(button);
+
+            buttonY += 80.f;
+        }
     }
 
     void Menu::update(float deltaTime) {
@@ -51,20 +70,43 @@ namespace rtype {
 
             if (event.type == sf::Event::Resized) {
                 _window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
-                centerText();
+                centerText(_buttonText);
+                for (auto &button : _buttons) {
+                    centerText(button.text);
+                }
             }
 
             sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
-            sf::FloatRect textBounds = _buttonText.getGlobalBounds();
 
-            if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                _buttonText.setFillColor(sf::Color::Red);
-                _buttonText.setCharacterSize(35);
-                centerText(35);
+            if (!_showSecondaryMenu) {
+                sf::FloatRect textBounds = _buttonText.getGlobalBounds();
+                if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                    _buttonText.setFillColor(sf::Color::Red);
+
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                        _showSecondaryMenu = true;
+                        initializeButtons();
+                    }
+                } else {
+                    _buttonText.setFillColor(sf::Color::White);
+                }
             } else {
-                _buttonText.setFillColor(sf::Color::White);
-                _buttonText.setCharacterSize(30);
-                centerText();
+                for (auto &button : _buttons) {
+                    sf::FloatRect textBounds = button.text.getGlobalBounds();
+                    if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                        button.text.setFillColor(sf::Color::Red);
+
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                            if (button.text.getString() == "EXIT") {
+                                _window.close();
+                            } else {
+                                std::cout << button.text.getString().toAnsiString() << " clicked!" << std::endl;
+                            }
+                        }
+                    } else {
+                        button.text.setFillColor(sf::Color::White);
+                    }
+                }
             }
         }
     }
@@ -72,22 +114,25 @@ namespace rtype {
     void Menu::render() {
         _window.clear();
         _window.draw(_backgroundSprite);
-        _window.draw(_buttonText);
+
+        if (!_showSecondaryMenu) {
+            _window.draw(_buttonText);
+        } else {
+            for (const auto &button : _buttons) {
+                _window.draw(button.text);
+            }
+        }
+
         _window.display();
     }
 
-    void Menu::centerText(int characterSize) {
+    void Menu::centerText(sf::Text &text, int characterSize) {
         if (characterSize > 0) {
-            _buttonText.setCharacterSize(characterSize);
+            text.setCharacterSize(characterSize);
         }
 
-        sf::FloatRect textBounds = _buttonText.getGlobalBounds();
-        float windowWidth = static_cast<float>(_window.getSize().x);
-        float windowHeight = static_cast<float>(_window.getSize().y);
-
-        _buttonText.setPosition(
-            windowWidth / 2.f - textBounds.width / 2.f,
-            windowHeight / 2.f - textBounds.height / 2.f
-        );
+        sf::FloatRect textBounds = text.getGlobalBounds();
+        text.setOrigin(textBounds.width / 2.f, textBounds.height / 2.f);
+        text.setPosition(static_cast<float>(_window.getSize().x) / 2.f, text.getPosition().y);
     }
 }

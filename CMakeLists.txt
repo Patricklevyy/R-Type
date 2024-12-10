@@ -27,8 +27,10 @@ pkg_check_modules(LIBCONFIG REQUIRED libconfig++)
 include_directories(${LIBCONFIG_INCLUDE_DIRS})
 link_directories(${LIBCONFIG_LIBRARY_DIRS})
 
-# Rechercher les fichiers ECS
+# Rechercher récursivement les fichiers partagés entre client et serveur
 file(GLOB_RECURSE ECS_SRC_FILES "${CMAKE_SOURCE_DIR}/ecs/*.cpp")
+
+# Ajouter les fichiers partagés comme bibliothèque statique
 add_library(ecs STATIC ${ECS_SRC_FILES})
 target_include_directories(ecs PUBLIC "${CMAKE_SOURCE_DIR}/ecs")
 target_link_libraries(ecs PRIVATE ${LIBCONFIG_LIBRARIES})
