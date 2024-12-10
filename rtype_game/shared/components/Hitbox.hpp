@@ -8,7 +8,7 @@
 #ifndef HITBOX_HPP_
 #define HITBOX_HPP_
 
-namespace ecs {
+namespace rtype {
     class Hitbox {
         public:
 

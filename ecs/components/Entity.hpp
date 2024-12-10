@@ -12,10 +12,10 @@
         class Entity
         {
         public:
-            Entity() {}
+            Entity(size_t index) : _index(index) {}
             ~Entity() {}
 
-            size_t index;
+            size_t _index;
 
         protected:
         private:

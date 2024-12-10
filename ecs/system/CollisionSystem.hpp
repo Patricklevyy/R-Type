@@ -11,8 +11,8 @@
 #include "../Includes_ecs.hpp"
 #include "../SparseArray.hpp"
 #include "../components/Entity.hpp"
-#include "../components/Health.hpp"
-#include "../components/Hitbox.hpp"
+#include "../../rtype_game/shared/components/Health.hpp"
+#include "../../rtype_game/shared/components/Hitbox.hpp"
 #include "../components/Position.hpp"
 
 namespace ecs
@@ -23,8 +23,8 @@ namespace ecs
         void detectCollisions(std::unordered_map<std::type_index, std::any> &components_array)
         {
             auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
-            auto &hitboxes = std::any_cast<SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
-            auto &healths = std::any_cast<SparseArray<Health> &>(components_array[typeid(Health)]);
+            auto &hitboxes = std::any_cast<SparseArray<rtype::Hitbox> &>(components_array[typeid(rtype::Hitbox)]);
+            auto &healths = std::any_cast<SparseArray<rtype::Health> &>(components_array[typeid(rtype::Health)]);
 
             for (std::size_t i = 0; i < positions.size(); ++i) {
                 if (positions[i].has_value() && hitboxes[i].has_value()) {
@@ -49,10 +49,10 @@ namespace ecs
     private:
         bool isColliding(const Position &pos1, const Hitbox &box1, const Position &pos2, const Hitbox &box2)
         {
-            return !(pos1.pos_x + box1.width < pos2.pos_x ||
-            pos1.pos_x > pos2.pos_x + box2.width ||
-            pos1.pos_y + box1.height < pos2.pos_y ||
-            pos1.pos_y > pos2.pos_y + box2.height);
+            return !(pos1._pos_x + box1.width < pos2._pos_x ||
+            pos1._pos_x > pos2._pos_x + box2.width ||
+            pos1._pos_y + box1.height < pos2._pos_y ||
+            pos1._pos_x > pos2._pos_y + box2.height);
         }
     };
 }

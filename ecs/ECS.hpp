@@ -76,6 +76,7 @@
                         sparseArray[index].reset();
                     }
                 }
+                _dead_entities.push_back(Entity(index));
             }
 
             void displayPlayableEntityComponents()
