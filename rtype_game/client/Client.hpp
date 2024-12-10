@@ -18,6 +18,7 @@
     #include "system/EventWindow.hpp"
     #include "../shared/Timer.hpp"
     #include "../shared/MessageChecker.hpp"
+    #include "Command_checker.hpp"
 
     namespace rtype
     {
@@ -34,8 +35,6 @@
 
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
-
-                void init_event_bus();
 
             protected:
             private:

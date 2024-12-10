@@ -42,12 +42,16 @@ namespace rtype
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::CREATE_CLIENT, [](const std::vector<std::any>& args) {
             try {
                 unsigned int id = std::any_cast<std::reference_wrapper<unsigned int>>(args[0]).get();
-                std::string params = std::any_cast<std::reference_wrapper<std::string>>(args[1]).get();
+                std::map<std::string, std::string> params = std::any_cast<std::reference_wrapper<std::map<std::string, std::string>>>(args[1]).get();
                 std::shared_ptr<ecs::udp::UDP_Client> udpClient = std::any_cast<std::shared_ptr<ecs::udp::UDP_Client>>(args[2]);
 
-                udpClient->setDefaultAddress("127.0.0.0:5000");
+                std::string ip_port = Command_checker::check_adress(params);
+                udpClient->setDefaultAddress(ip_port);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
+            } catch (std::exception &e)
+            {
+                std::cerr << std::endl << e.what() << std::endl;
             }
         });
     }
@@ -57,19 +61,11 @@ namespace rtype
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         _mes_checker.checkAction(mes);
+        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << " body " << mes.body << std::endl;
+        std::map<std::string, std::string> params = _mes_checker.checkFormatParams(mes.params);
         unsigned int id = mes.id;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
-        // std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << " body " << mes.body << std::endl;
-        _eventBus.emit(action, std::ref(id), std::ref(mes.params), _udpClient);
-        std::vector<char> buffer;
-        ecs::udp::Message mess;
-        mess.id = 78;
-        mess.action = 12;
-        mess.params = "tg";
-
-        _message_compressor.serialize(mess, buffer);
-
-        _udpClient->sendMessageToDefault(buffer);
+        _eventBus.emit(action, std::ref(id), std::ref(params), _udpClient);
     }
 
     void Client::handle_event()
@@ -95,7 +91,7 @@ namespace rtype
                         std::vector<char> buffer;
                         ecs::udp::Message mess;
                         mess.id = 1;
-                        mess.action = 0;
+                        mess.action = 1;
                         mess.params = "room_name=room1;client_name=jean";
 
                         _message_compressor.serialize(mess, buffer);

@@ -169,7 +169,7 @@ namespace rtype
 
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
-            std::cout << "Message sent: " << std::endl;
+            std::cout << "Message sent: "  << mes.params << mes.action << std::endl;
         } else {
             std::cerr << "Failed to send message." << std::endl;
         }
