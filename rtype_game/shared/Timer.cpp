@@ -13,6 +13,11 @@ namespace rtype
 
     Timer::~Timer() {}
 
+    float Timer::getTps() const
+    {
+        return _tps;
+    }
+
     void Timer::init(const std::string &configFile, bool isServer)
     {
         libconfig::Config cfg;
@@ -28,6 +33,7 @@ namespace rtype
                     int tps = cfg.lookup("server.tps");
                     if (tps > 0)
                     {
+                        _tps = tps;
                         tps_duration = std::chrono::duration<float>(1.0f / tps);
                         std::cout << "Serveur: TPS configuré à " << tps << " (" << (1.0f / tps) << " secondes par tick)" << std::endl;
                     }
