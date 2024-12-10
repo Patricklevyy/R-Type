@@ -47,7 +47,7 @@ namespace ecs
 
     protected:
     private:
-        bool isColliding(const Position &pos1, const Hitbox &box1, const Position &pos2, const Hitbox &box2)
+        bool isColliding(const Position &pos1, const rtype::Hitbox &box1, const Position &pos2, const rtype::Hitbox &box2)
         {
             return !(pos1._pos_x + box1.width < pos2._pos_x ||
             pos1._pos_x > pos2._pos_x + box2.width ||
