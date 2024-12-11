@@ -26,26 +26,6 @@
 
         ~Window() {}
 
-        void updateEvent()
-        {
-            if (window->isOpen())
-            {
-                sf::Event event;
-
-                if (window->pollEvent(event))
-                {
-                    eventQueue.push(event);
-                }
-            }
-        }
-
-        std::queue<sf::Event> fetchEvents()
-        {
-            std::queue<sf::Event> events = std::move(eventQueue);
-            eventQueue = {};
-            return events;
-        }
-
         bool isRunning() const
         {
             return isOpen;
