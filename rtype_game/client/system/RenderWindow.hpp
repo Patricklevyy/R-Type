@@ -23,14 +23,12 @@
                         std::cout << "[INFO] Composants récupérés avec succès." << std::endl;
 
                         for (size_t i = 0; i < windows.size(); ++i) {
-                            if (!windows[i] || !backgrounds[i]) {
+                            if (!windows[i].has_value() || !backgrounds[i].has_value()) {
                                 std::cerr << "[WARNING] Missing component for entity " << i << std::endl;
                                 continue;
                             }
 
-                            auto& window = windows[i].value();
-                            auto& background = backgrounds[i].value();
-                            auto renderWindow = window.getRenderWindow();
+                            auto renderWindow = windows[i].value().getRenderWindow();
 
                             // Vérification de la fenêtre
                             if (!renderWindow) {
@@ -39,15 +37,7 @@
                             }
 
                             renderWindow->clear(sf::Color::Black);
-
-                            // Vérification du sprite avant affichage
-                            auto& sprite = background.getSprite();
-                            sf::FloatRect bounds = sprite.getGlobalBounds();
-                            std::cout << "[INFO] Rendering background for entity " << i
-                                      << " at bounds: (" << bounds.left << ", " << bounds.top
-                                      << ") - (" << bounds.width << "x" << bounds.height << ")" << std::endl;
-            
-                            renderWindow->draw(sprite);
+                            renderWindow->draw(backgrounds[i].value().getSprite());
                             renderWindow->display();
 
                             std::cout << "[INFO] Rendu terminé pour l'entité " << i << std::endl;
