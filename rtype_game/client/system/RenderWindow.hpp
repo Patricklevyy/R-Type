@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2024
-** R-Type
-** File description:
-** RenderWindow with Debugging
-*/
-
 #ifndef RENDERWINDOW_HPP_
     #define RENDERWINDOW_HPP_
 
@@ -30,13 +23,33 @@
                         std::cout << "[INFO] Composants récupérés avec succès." << std::endl;
 
                         for (size_t i = 0; i < windows.size(); ++i) {
+                            if (!windows[i] || !backgrounds[i]) {
+                                std::cerr << "[WARNING] Missing component for entity " << i << std::endl;
+                                continue;
+                            }
+
                             auto& window = windows[i].value();
                             auto& background = backgrounds[i].value();
                             auto renderWindow = window.getRenderWindow();
 
+                            // Vérification de la fenêtre
+                            if (!renderWindow) {
+                                std::cerr << "[ERROR] RenderWindow is null for entity " << i << std::endl;
+                                continue;
+                            }
+
                             renderWindow->clear(sf::Color::Black);
-                            renderWindow->draw(background.getSprite());
+
+                            // Vérification du sprite avant affichage
+                            auto& sprite = background.getSprite();
+                            sf::FloatRect bounds = sprite.getGlobalBounds();
+                            std::cout << "[INFO] Rendering background for entity " << i
+                                      << " at bounds: (" << bounds.left << ", " << bounds.top
+                                      << ") - (" << bounds.width << "x" << bounds.height << ")" << std::endl;
+            
+                            renderWindow->draw(sprite);
                             renderWindow->display();
+
                             std::cout << "[INFO] Rendu terminé pour l'entité " << i << std::endl;
                         }
                     } catch (const std::exception &e) {

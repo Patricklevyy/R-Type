@@ -227,7 +227,16 @@ namespace rtype
     {
         Window window(1920, 1080, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Background>(_index_ecs_client, Background("assets/background_2.jpg", 1, 1));
+        // Créez une texture partagée
+        std::shared_ptr<sf::Texture> backgroundTexture = std::make_shared<sf::Texture>();
+
+        // Chargez la texture à partir du fichier
+        if (!backgroundTexture->loadFromFile("assets/space-background.jpg")) {
+            throw std::runtime_error("Failed to load texture: assets/space-background.jpg");
+        }
+
+        // Ajoutez le composant Background avec la texture partagée
+        _ecs.addComponents<Background>(_index_ecs_client, Background(backgroundTexture, 100, 100));
         _index_ecs_client++;
     }
 
