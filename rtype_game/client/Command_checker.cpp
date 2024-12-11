@@ -9,7 +9,7 @@
 
 namespace rtype
 {
-    std::string Command_checker::check_adress(std::map<std::string, std::string>& params)
+    std::string Command_checker::check_adress(std::map<std::string, std::string>& params, std::string server_ip)
     {
         if (params.find("port") == params.end())
             throw ERROR::MissingPortParamsExceptions("Missing 'port'");

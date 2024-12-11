@@ -99,13 +99,27 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [](const std::vector<std::any>& args) {
+            try {
+                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
+                auto& direction_system = std::any_cast<std::reference_wrapper<DirectionSystem>>(args[1]).get();
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[2]).get();
+                std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = Utils::extractPlayerPosIndex(message.params, message.id);
+
+                direction_system.updatePlayerDirection(components, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: dans" << e.what() << std::endl;
+            }
+        });
     }
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
     {
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM :" << message.action << ", " << message.params << std::endl;
+        std::cout << "new message in the ROOOM :" << message.id << "action : " << message.action << ", " << message.params << std::endl;
+        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
+        _eventBus.emit(action, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(message));
     }
 
     void Room::init_ecs_server_registry()
@@ -135,7 +149,7 @@ namespace rtype
 
         while (_game_running) {
             timer.waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(pos), std::ref(_ecs._components_arrays), std::ref(timer));
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_positon_system), std::ref(_ecs._components_arrays), std::ref(timer));
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {

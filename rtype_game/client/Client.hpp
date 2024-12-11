@@ -40,6 +40,7 @@
 
             protected:
             private:
+                bool _in_menu = true;
                 std::string _name; // A SET AU MENU
                 std::map<unsigned int, unsigned int> ecs_server_to_client;
                 std::map<unsigned int, unsigned int> ecs_client_to_server;
@@ -61,6 +62,7 @@
 
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
+                void send_server_player_direction(ecs::direction, ecs::direction);
         };
     }
 #endif /* !CLIENT_HPP_ */
