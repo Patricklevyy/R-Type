@@ -187,6 +187,7 @@ namespace rtype
                         std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
+                    break;
 
                 default:
                     std::cout << "Événement non traité." << std::endl;

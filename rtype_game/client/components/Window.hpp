@@ -45,33 +45,6 @@
         ~Window() {}
 
         /**
-         * @brief Updates the event queue by polling events from the SFML window.
-         */
-        void updateEvent()
-        {
-            if (window->isOpen())
-            {
-                sf::Event event;
-
-                if (window->pollEvent(event))
-                {
-                    eventQueue.push(event);
-                }
-            }
-        }
-
-        /**
-         * @brief Retrieves and clears the current event queue.
-         * @return A queue containing all pending events.
-         */
-        std::queue<sf::Event> fetchEvents()
-        {
-            std::queue<sf::Event> events = std::move(eventQueue);
-            eventQueue = {};
-            return events;
-        }
-
-        /**
          * @brief Checks if the window is still running.
          * @return True if the window is open, false otherwise.
          */
