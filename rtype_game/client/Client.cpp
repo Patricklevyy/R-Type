@@ -242,7 +242,7 @@ namespace rtype
         _udpClient->startReceiving();
         _ecs.init_basic_registry();
         init_ecs_client_registry();
-        // init_background();
+        init_background();
         init_subscribe_event_bus();
         // Window window(800, 600, "My ECS Client Window");
         // Window window(1920, 1080, "R-Type");
