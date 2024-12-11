@@ -77,6 +77,8 @@ namespace ecs
 
                 const libconfig::Setting &serverSettings = udpSettings["server"];
                 std::string serverIp = serverSettings["ip"];
+                std::string portStr = serverIp + ":8080";
+                setDefaultAddress(portStr);
                 int serverPort = serverSettings["port"];
                 serverAddr.sin_family = AF_INET;
                 serverAddr.sin_port = htons(serverPort);

@@ -110,6 +110,7 @@ namespace rtype
 
     void Room::init_ecs_server_registry()
     {
+        _ecs.addRegistry<Health>();
         // INIT LES COMPONENT DU SERVER QUI SONT PAS COMMUN AVEC LE CLIENT
     }
 
@@ -125,17 +126,18 @@ namespace rtype
             return;
         }
         _ecs.init_basic_registry();
-        createClient(lastClientAddr, clientName);
+        init_ecs_server_registry();
         _udp_server->startReceiving();
         timer.init("rtype_game/config/server_config.conf", true);
         _game_running = true;
-        init_ecs_server_registry();
+        createClient(lastClientAddr, clientName);
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
 
         while (_game_running) {
             timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(pos), std::ref(_ecs._components_arrays), std::ref(timer));
+            sendUpdate();
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
@@ -173,17 +175,54 @@ namespace rtype
         }
     }
 
+    void Room::sendUpdate()
+    {
+        std::string updateMessage = "update=";
+
+        auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto& healths = std::any_cast<ecs::SparseArray<Health>&>(_ecs._components_arrays[typeid(Health)]);
+
+        for (size_t i = 0; i < positions.size(); ++i) {
+            if (positions[i].has_value() && healths[i].has_value()) {
+                const auto& position = positions[i].value();
+                    const auto& health = healths[i].value();
+                    updateMessage += "id=" + std::to_string(i) +
+                                     ",x=" + std::to_string(position._pos_x) +
+                                     ",y=" + std::to_string(position._pos_y) +
+                                     ",health=" + std::to_string(health._health) + ";";
+                }
+        }
+
+        if (!updateMessage.empty() && updateMessage.back() == ';') {
+            updateMessage.pop_back();
+        }
+
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITION;
+        responseMessage.id = 0;
+        responseMessage.params = updateMessage;
+
+        _message_compressor.serialize(responseMessage, response);
+        for (const auto& clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+
     void Room::create_player(size_t index, std::pair<float, float> positions, std::string clientName)
     {
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
         ecs::Velocity velocity;
+        Health health;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
     }
 
     void Room::createClient(std::string lastclientAdr, std::string clientName)
@@ -203,7 +242,7 @@ namespace rtype
         create_player(index_ecs, position, clientName);
 
         _message_compressor.serialize(mes, send_message);
-
+        _clientAddresses.push_back(lastclientAdr);
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
             std::cout << "Message sent: "  << mes.params << mes.action << std::endl;

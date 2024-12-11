@@ -17,6 +17,7 @@
     #include "../../ecs/system/PositionSystem.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
+    #include "../shared/components/Health.hpp"
 
     namespace rtype
     {
@@ -61,6 +62,7 @@
             struct sockaddr_in _addr;
             std::thread _gameThread;
             ecs::PositionSystem pos;
+            std::vector<std::string> _clientAddresses;
 
             bool initializeSocket();
             void closeRoom();
@@ -68,6 +70,7 @@
             std::pair<float, float> get_player_start_position(int);
             void create_player(size_t, std::pair<float, float>, std::string);
             void handleCommand(const std::vector<char> &, std::string clientAddr);
+            void sendUpdate();
         };
     }
 
