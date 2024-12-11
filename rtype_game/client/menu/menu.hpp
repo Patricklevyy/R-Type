@@ -2,6 +2,7 @@
 #define MENU_HPP
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <vector>
 
@@ -35,6 +36,10 @@ namespace rtype {
 
         std::vector<Button> _buttons;
         bool _showSecondaryMenu = false;
+
+        sf::Music _backgroundMusic;
+        bool _isMusicPlaying = false;
+
     };
 }
 

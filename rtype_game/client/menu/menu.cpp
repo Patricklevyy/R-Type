@@ -6,7 +6,7 @@ namespace rtype {
         : _window(sf::VideoMode(width, height), title), _scrollSpeed(50.0f), _offset(0.0f) {
         _window.setFramerateLimit(60);
 
-        if (!_backgroundTexture.loadFromFile("rtype_game/client/menu/espace.jpeg")) {
+        if (!_backgroundTexture.loadFromFile("rtype_game/client/menu/assets/espace.jpeg")) {
             throw std::runtime_error("Erreur : Impossible de charger le fichier");
         }
 
@@ -14,7 +14,7 @@ namespace rtype {
         _backgroundSprite.setTexture(_backgroundTexture);
         _backgroundSprite.setTextureRect(sf::IntRect(0, 0, width, height));
 
-        if (!_font.loadFromFile("rtype_game/client/menu/arial.ttf")) {
+        if (!_font.loadFromFile("rtype_game/client/menu/assets/arial.ttf")) {
             throw std::runtime_error("Erreur : Impossible de charger la police");
         }
 
@@ -22,7 +22,16 @@ namespace rtype {
         _buttonText.setString("START GAME");
         _buttonText.setCharacterSize(30);
         _buttonText.setFillColor(sf::Color::White);
+
+        sf::Vector2u windowSize = _window.getSize();
+        _buttonText.setPosition(windowSize.x / 2.f, windowSize.y / 2.f);
         centerText(_buttonText);
+
+
+        if (!_backgroundMusic.openFromFile("rtype_game/client/menu/assets/espace.ogg")) {
+            throw std::runtime_error("Erreur : Impossible de charger la musique");
+        }
+        _backgroundMusic.setLoop(true);
     }
 
     void Menu::initializeButtons() {
@@ -33,7 +42,7 @@ namespace rtype {
             Button button;
             button.text.setFont(_font);
             button.text.setString(label);
-            button.text.setCharacterSize(30);
+            button.text.setCharacterSize(50);
             button.text.setFillColor(sf::Color::White);
             button.text.setPosition(_window.getSize().x / 2.f, buttonY);
 
@@ -62,54 +71,60 @@ namespace rtype {
     }
 
     void Menu::handleEvents() {
-        sf::Event event;
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                _window.close();
+    sf::Event event;
+    while (_window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            _window.close();
+        }
+
+        if (event.type == sf::Event::Resized) {
+            _window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
+            centerText(_buttonText);
+            for (auto &button : _buttons) {
+                centerText(button.text);
             }
+        }
 
-            if (event.type == sf::Event::Resized) {
-                _window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
-                centerText(_buttonText);
-                for (auto &button : _buttons) {
-                    centerText(button.text);
-                }
-            }
+        sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
 
-            sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
+        if (!_showSecondaryMenu) {
+            sf::FloatRect textBounds = _buttonText.getGlobalBounds();
+            if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                _buttonText.setFillColor(sf::Color::Red);
 
-            if (!_showSecondaryMenu) {
-                sf::FloatRect textBounds = _buttonText.getGlobalBounds();
-                if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    _buttonText.setFillColor(sf::Color::Red);
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    _showSecondaryMenu = true;
+                    initializeButtons();
 
-                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                        _showSecondaryMenu = true;
-                        initializeButtons();
+                    if (!_isMusicPlaying) {
+                        _backgroundMusic.play();
+                        _isMusicPlaying = true;
                     }
-                } else {
-                    _buttonText.setFillColor(sf::Color::White);
                 }
             } else {
-                for (auto &button : _buttons) {
-                    sf::FloatRect textBounds = button.text.getGlobalBounds();
-                    if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                        button.text.setFillColor(sf::Color::Red);
+                _buttonText.setFillColor(sf::Color::White);
+            }
+        } else {
+            for (auto &button : _buttons) {
+                sf::FloatRect textBounds = button.text.getGlobalBounds();
+                if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                    button.text.setFillColor(sf::Color::Red);
 
-                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                            if (button.text.getString() == "EXIT") {
-                                _window.close();
-                            } else {
-                                std::cout << button.text.getString().toAnsiString() << " clicked!" << std::endl;
-                            }
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                        if (button.text.getString() == "EXIT") {
+                            _window.close();
+                        } else {
+                            std::cout << button.text.getString().toAnsiString() << " clicked!" << std::endl;
                         }
-                    } else {
-                        button.text.setFillColor(sf::Color::White);
                     }
+                } else {
+                    button.text.setFillColor(sf::Color::White);
                 }
             }
         }
     }
+    }
+
 
     void Menu::render() {
         _window.clear();
