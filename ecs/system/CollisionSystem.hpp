@@ -5,6 +5,11 @@
 ** CollisionSystem
 */
 
+/**
+ * @file CollisionSystem.hpp
+ * @brief Handles collision detection between entities in the ECS framework.
+ */
+
 #ifndef COLLISIONSYSTEM_HPP_
 #define COLLISIONSYSTEM_HPP_
 #include "../Enums_ecs.hpp"
@@ -17,9 +22,17 @@
 
 namespace ecs
 {
+    /**
+     * @class CollisionSystem
+     * @brief Detects and processes collisions between entities.
+     */
     class CollisionSystem {
 
     public:
+        /**
+         * @brief Detects collisions between entities and processes health reductions.
+         * @param components_array A map containing all component arrays.
+        */
         void detectCollisions(std::unordered_map<std::type_index, std::any> &components_array)
         {
             auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
@@ -47,6 +60,16 @@ namespace ecs
 
     protected:
     private:
+        /**
+         * @brief Checks if two entities are colliding based on their positions and hitboxes.
+         * @param pos1 Position of the first entity.
+         * @param box1 Hitbox of the first
+         * @param pos1 Position of the first entity.
+         * @param box1 Hitbox of the first entity.
+         * @param pos2 Position of the second entity.
+         * @param box2 Hitbox of the second entity.
+         * @return True if the entities are colliding, false otherwise.
+         */
         bool isColliding(const Position &pos1, const rtype::Hitbox &box1, const Position &pos2, const rtype::Hitbox &box2)
         {
             return !(pos1._pos_x + box1.width < pos2._pos_x ||

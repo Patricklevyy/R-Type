@@ -5,6 +5,13 @@
 ** EcsExceptions
 */
 
+/**
+ * @file EcsExceptions.hpp
+ * @brief Defines custom exception classes for the ECS system.
+ * @details This file contains the definition of various exceptions used in the ECS system,
+ *          such as configuration file errors, network issues, and invalid operations.
+ */
+
 #ifndef ECSEXCEPTIONS_HPP_
     #define ECSEXCEPTIONS_HPP_
 
@@ -14,6 +21,9 @@
     {
         namespace ERROR
         {
+            /**
+             * @brief Exception for errors reading the configuration file.
+             */
             class CantReadConfigFileExceptions : virtual public std::exception
             {
             public:
@@ -25,6 +35,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for errors parsing the configuration file.
+             */
             class CantParseConfigFileExceptions : virtual public std::exception
             {
             public:
@@ -36,6 +49,9 @@
                 };
             };
 
+            /**
+            * @brief Exception for buffer size exceeding safe UDP message size.
+            */
             class WrongBufferSizeExceptions : virtual public std::exception
             {
             public:
@@ -47,6 +63,9 @@
                 };
             };
 
+            /**
+            * @brief Exception for failed socket binding.
+            */
             class BindFailedExceptions : virtual public std::exception
             {
             public:
@@ -58,6 +77,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for incorrect or missing configuration settings.
+             */
             class WrongConfigurationExceptions : virtual public std::exception
             {
             public:
@@ -69,6 +91,9 @@
                 };
             };
 
+            /**
+            * @brief Exception for uninitialized socket operations.
+            */
             class SocketNotInitializedExceptions : virtual public std::exception
             {
             public:
@@ -80,6 +105,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for invalid address format.
+             */
             class InvalidAdressFormatExceptions : virtual public std::exception
             {
             public:
@@ -91,6 +119,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for invalid IP addresses.
+             */
             class InvalidIpAdressExceptions : virtual public std::exception
             {
             public:
@@ -102,6 +133,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for messages exceeding buffer size.
+             */
             class MessageTooBigExceptions : virtual public std::exception
             {
             public:
@@ -113,6 +147,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for failed reception of data.
+             */
             class RecvExceptions : virtual public std::exception
             {
             public:
@@ -123,6 +160,10 @@
                     return ("RecvExceptions : Recvfrom failed.");
                 };
             };
+
+            /**
+            * @brief Exception for duplicate component types.
+            */
             class ComponentTypeAlreadyExistException : virtual public std::exception
             {
             public:
@@ -134,6 +175,9 @@
                 };
             };
 
+            /**
+             * @brief Exception for missing components.
+             */
             class ComponentNotFoundExceptions : virtual public std::exception
             {
             public:
@@ -145,6 +189,9 @@
                 };
             };
 
+            /**
+            * @brief Exception for out-of-range entity IDs.
+            */
             class IdOutOfRangeExceptions : virtual public std::exception
             {
             public:
