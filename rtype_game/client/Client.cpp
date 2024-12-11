@@ -163,7 +163,7 @@ namespace rtype
                         _message_compressor.serialize(mess, buffer);
 
                         std::cout << "je send" << std::endl;
-                        if (_udpClient->sendMessage(buffer, "10.109.251.210:8080")) {
+                        if (_udpClient->sendMessageToDefault(buffer)) {
                             std::cout << "Message sent: " << std::endl;
                         } else {
                             std::cout << "failed " << std::endl;
