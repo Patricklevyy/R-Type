@@ -7,25 +7,36 @@
 #include <stdexcept>
 #include <string>
 
-namespace rtype {
+namespace rtype
+{
 
-    class Background {
+    class Background
+    {
     public:
-        Background(std::shared_ptr<sf::Texture> texturePtr, int x, int y) 
-            : texture(texturePtr)
+        Background(const std::string &texturePath, int x, int y)
         {
-            if (!texture) {
-                throw std::runtime_error("Invalid texture pointer!");
+            try
+            {
+                texture = std::make_shared<sf::Texture>();
+                if (!texture->loadFromFile(texturePath))
+                {
+                    throw std::runtime_error("Failed to load texture from: " + texturePath);
+                }
+                std::cout << "[INFO] Texture loaded successfully from: " << texturePath
+                          << " (Size: " << texture->getSize().x << "x" << texture->getSize().y << ")" << std::endl;
+
+                sprite.setTexture(*texture);
+                sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
+                std::cout << "[INFO] Sprite initialized at position: (" << x << ", " << y << ")" << std::endl;
             }
-            sprite.setTexture(*texture);
-            sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
-            std::cout << "[INFO] Background initialized at position: (" << x << ", " << y << ")" << std::endl;
+            catch (const std::exception &e)
+            {
+                std::cerr << "[ERROR] " << e.what() << std::endl;
+                throw;
+            }
         }
 
-        sf::Sprite& getSprite() { return sprite; }
-
-        std::shared_ptr<sf::Texture> getTexture() const { return texture; }
-        
+        sf::Sprite &getSprite() { return sprite; }
 
     private:
         std::shared_ptr<sf::Texture> texture;
