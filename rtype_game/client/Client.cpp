@@ -24,6 +24,7 @@ namespace rtype
     void Client::init_ecs_client_registry()
     {
         _ecs.addRegistry<Window>();
+        _ecs.addRegistry<Background>();
     }
 
     void Client::init_subscribe_event_bus()
@@ -68,6 +69,16 @@ namespace rtype
                 std::shared_ptr<Timer> timer = std::any_cast<std::shared_ptr<rtype::Timer>>(args[2]);
 
                 position_system.updatePositions(components, timer->getTps());
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER, [](const std::vector<std::any>& args) {
+            try {
+                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
+                auto& EventWindow = std::any_cast<std::reference_wrapper<RenderWindow>>(args[1]).get();
+
+                EventWindow.render(components);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -212,6 +223,13 @@ namespace rtype
         }
     }
 
+    void Client::init_background()
+    {
+        Window window(1920, 1080, "R-Type");
+        _ecs.addComponents<Window>(_index_ecs_client, window);
+        _ecs.addComponents<Background>(_index_ecs_client, Background("assets/background_2.jpg", 1, 1));
+        _index_ecs_client++;
+    }
 
     void Client::start()
     {
@@ -219,14 +237,23 @@ namespace rtype
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
         }
+
         _timer->init("rtype_game/config/client_config.conf", false);
         _udpClient->startReceiving();
         _ecs.init_basic_registry();
         init_ecs_client_registry();
+        // init_background();
         init_subscribe_event_bus();
-        Window window(800, 600, "My ECS Client Window");
-        _ecs.addComponents<Window>(_index_ecs_client, window);
-        _index_ecs_client++;
+        // Window window(800, 600, "My ECS Client Window");
+        // Window window(1920, 1080, "R-Type");
+        // sf::Texture texture;
+        // sf::Sprite sprite;
+        // if (!texture.loadFromFile("assets/background_2.png")) {
+        //             throw std::runtime_error("Failed to load background texture from: ");
+        //         }
+        //         // std::cout << "Texture loaded successfully from: " << texturePath << std::endl;
+        //         sprite.setTexture(texture);
+                // sprite.setScale(800,600);
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
 
         while (_running) {
@@ -236,14 +263,16 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_ecs._components_arrays), std::ref(_position_system), _timer);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udpClient->fetchAllMessages();
-            for (auto &[clientAddress, message] : messages)
-            {
+            for (auto &[clientAddress, message] : messages) {
                 try {
                     handle_message(message, clientAddress);
                 } catch (std::exception &e) {
                     std::cerr << std::endl << e.what() << std::endl;
                 }
             }
+            _eventBus.emit(RTYPE_ACTIONS::RENDER, std::ref(_ecs._components_arrays), std::ref(_render_window_system));
+            // window.getRenderWindow()->draw(sprite);
+            //                 window.getRenderWindow()->display();
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
     }

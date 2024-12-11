@@ -21,6 +21,8 @@
     #include "Command_checker.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
+    #include "components/Background.hpp"
+    #include "system/RenderWindow.hpp"
 
     namespace rtype
     {
@@ -58,9 +60,12 @@
                 EventWindow _event_window_system;
                 DirectionSystem _direction_system;
                 ecs::PositionSystem _position_system;
+                RenderWindow _render_window_system;
 
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
+
+                void init_background();
         };
     }
 #endif /* !CLIENT_HPP_ */
