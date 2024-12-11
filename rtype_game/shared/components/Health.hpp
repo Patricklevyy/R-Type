@@ -10,7 +10,7 @@
 
 // la vie du player?
 // si il a le playable
-namespace ecs {
+namespace rtype {
 
     class Health {
         public:

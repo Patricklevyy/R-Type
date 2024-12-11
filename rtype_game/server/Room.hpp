@@ -26,9 +26,9 @@
             Room(int port, const std::string &name);
             ~Room();
 
-            void start(int, std::string);
+            void start(int, std::string, std::string);
 
-            void gameThreadFunction(int, std::string);
+            void gameThreadFunction(int, std::string, std::string);
 
             bool sendMessage(const std::string &);
 
@@ -41,7 +41,7 @@
             Room &operator=(Room &&other) noexcept;
 
             std::string getName() const;
-            void createClient(std::string);
+            void createClient(std::string, std::string);
             std::string getAddress() const;
 
             void init_event_bus();
@@ -65,6 +65,8 @@
             bool initializeSocket();
             void closeRoom();
             void init_ecs_server_registry();
+            std::pair<float, float> get_player_start_position(int);
+            void create_player(size_t, std::pair<float, float>, std::string);
             void handleCommand(const std::vector<char> &, std::string clientAddr);
         };
     }
