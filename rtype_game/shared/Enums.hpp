@@ -33,6 +33,7 @@
             GET_WINDOW_EVENT,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
+            RENDER,
             MAX_ACTION
         };
     }
