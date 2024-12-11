@@ -28,23 +28,34 @@ namespace rtype
 
     void Client::init_subscribe_event_bus()
     {
-        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_EVENT_WINDOW, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::GET_WINDOW_EVENT, [](const std::vector<std::any>& args) {
             try {
-                auto& event_system = std::any_cast<std::reference_wrapper<EventWindow>>(args[0]).get();
-                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[1]).get();
+                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
+                auto& event_system = std::any_cast<std::reference_wrapper<EventWindow>>(args[1]).get();
                 auto& queue = std::any_cast<std::reference_wrapper<std::queue<sf::Event>>>(args[2]).get();
 
-                queue = event_system.processEvents(components);
+                queue = event_system.fetchEvents();
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::MOVE_RIGHT, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::START_LISTEN_EVENT, [](const std::vector<std::any>& args) {
+            try {
+                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
+                auto& event_system = std::any_cast<std::reference_wrapper<EventWindow>>(args[1]).get();
+
+                event_system.startListening(components);
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [](const std::vector<std::any>& args) {
             try {
                 auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
                 auto& direction_system = std::any_cast<std::reference_wrapper<DirectionSystem>>(args[1]).get();
                 std::pair<ecs::direction, ecs::direction> _x_y = std::any_cast<std::reference_wrapper<std::pair<ecs::direction, ecs::direction>>>(args[2]).get();
 
+                std::cout << _x_y.first << " , " << _x_y.second << std::endl;
                 direction_system.updatePlayerDirection(components, _x_y.first, _x_y.second);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
@@ -128,7 +139,19 @@ namespace rtype
                     }
                     if (event.key.code == sf::Keyboard::D) {
                         std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
-                        _eventBus.emit(RTYPE_ACTIONS::MOVE_RIGHT, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    if (event.key.code == sf::Keyboard::Q) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::LEFT, ecs::direction::NO_CHANGE);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    if (event.key.code == sf::Keyboard::Z) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_CHANGE, ecs::direction::UP);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    if (event.key.code == sf::Keyboard::S) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::A) {
                         std::vector<char> buffer;
@@ -140,7 +163,7 @@ namespace rtype
                         _message_compressor.serialize(mess, buffer);
 
                         std::cout << "je send" << std::endl;
-                        if (_udpClient->sendMessage(buffer, "127.0.0.1:8080")) {
+                        if (_udpClient->sendMessageToDefault(buffer)) {
                             std::cout << "Message sent: " << std::endl;
                         } else {
                             std::cout << "failed " << std::endl;
@@ -150,8 +173,21 @@ namespace rtype
                 case sf::Event::KeyReleased:
                     if (event.key.code == sf::Keyboard::D) {
                         std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
-                        _eventBus.emit(RTYPE_ACTIONS::MOVE_RIGHT, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
+                    if (event.key.code == sf::Keyboard::Q) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    if (event.key.code == sf::Keyboard::Z) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    if (event.key.code == sf::Keyboard::S) {
+                        std::pair<ecs::direction, ecs::direction> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                    }
+                    break;
 
                 default:
                     std::cout << "Événement non traité." << std::endl;
@@ -175,10 +211,11 @@ namespace rtype
         Window window(800, 600, "My ECS Client Window");
         _ecs.addComponents<Window>(_index_ecs_client, window);
         _index_ecs_client++;
+        _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
 
         while (_running) {
             _timer->waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::CHECK_EVENT_WINDOW, std::ref(_event_window_system), std::ref(_ecs._components_arrays), std::ref(_events));
+            _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system), std::ref(_events));
             handle_event();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_ecs._components_arrays), std::ref(_position_system), _timer);
             _ecs.displayPlayableEntityComponents();
@@ -192,5 +229,6 @@ namespace rtype
                 }
             }
         }
+        _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
     }
 }

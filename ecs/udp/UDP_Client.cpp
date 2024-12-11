@@ -80,6 +80,7 @@ namespace ecs
                 std::string portStr = serverIp + ":8080";
                 setDefaultAddress(portStr);
                 int serverPort = serverSettings["port"];
+                setDefaultAddress(serverIp + ":" + std::to_string(serverPort));
                 serverAddr.sin_family = AF_INET;
                 serverAddr.sin_port = htons(serverPort);
                 inet_pton(AF_INET, serverIp.c_str(), &serverAddr.sin_addr);
