@@ -18,6 +18,11 @@
         class EventWindow
         {
             public:
+                /**
+                * @brief Processes events from all windows in the ECS components array.
+                * @param components_array A map containing ECS components by type.
+                * @return A queue of events from the processed windows.
+                */
                 std::queue<sf::Event> processEvents(std::unordered_map<std::type_index, std::any> &components_array) {
                     auto &window = std::any_cast<ecs::SparseArray<Window> &>(components_array[typeid(Window)]);
 

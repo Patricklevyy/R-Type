@@ -5,6 +5,11 @@
 ** ECS
 */
 
+/**
+ * @file ECS.hpp
+ * @brief Core of the Entity-Component-System (ECS) architecture for managing entities and components.
+ */
+
 #ifndef ECS_HPP_
     #define ECS_HPP_
 
@@ -18,12 +23,19 @@
 
     namespace ecs
     {
+        /**
+         * @class ECS
+         * @brief Manages entities and their components in an ECS architecture.
+         */
         class ECS
         {
         public:
             ECS() {}
             ~ECS() {}
 
+            /**
+             * @brief Initializes basic registries for default components.
+             */
             void init_basic_registry()
             {
                 addRegistry<Position>();
@@ -32,6 +44,11 @@
                 addRegistry<Playable>();
             }
 
+            /**
+             * @brief Adds a registry for a specific component type.
+             * @tparam Component The type of component to register.
+             * @throws ComponentTypeAlreadyExistException If the component type is already registered.
+             */
             template <typename Component>
             void addRegistry()
             {
@@ -44,6 +61,13 @@
                 std::cout << "Component registered: " << typeid(Component).name() << std::endl;
             }
 
+            /**
+             * @brief Adds a component to an entity.
+             * @tparam Component The type of component to add.
+             * @param index The ID of the entity.
+             * @param component The component to associate with the entity.
+             * @throws ComponentNotFoundExceptions If the component type is not registered.
+             */
             template <typename Component>
             void addComponents(size_t index, const Component &component)
             {
@@ -61,6 +85,12 @@
                 sparse_array[index] = component;
             }
 
+            /**
+             * @brief Removes all components from an entity, marking it as "dead."
+             * @tparam Component The component type to process.
+             * @param index The ID of the entity.
+             * @throws IdOutOfRangeExceptions If the entity ID is out of range.
+             */
             template <typename Component>
             void killEntity(size_t index)
             {
@@ -79,6 +109,9 @@
                 _dead_entities.push_back(Entity(index));
             }
 
+            /**
+             * @brief Displays the components of all playable entities in the system.
+             */
             void displayPlayableEntityComponents()
             {
                 auto &positions = std::any_cast<SparseArray<Position> &>(_components_arrays[typeid(Position)]);
@@ -128,11 +161,11 @@
                 }
             }
 
-            std::unordered_map<std::type_index, std::any> _components_arrays;
+            std::unordered_map<std::type_index, std::any> _components_arrays; /**< Maps component types to sparse arrays. */
 
         protected:
         private:
-            std::list<Entity> _dead_entities;
+            std::list<Entity> _dead_entities; /**< List of entities marked as "dead." */
 
             // std::vector<freset_type> _freset_entity_components;
             // std::vector<freset_all_types> _freset_all_entity_components; ECS ARTHUR, JE SAIS PAS SI C'EST UTILE POUR NOUS

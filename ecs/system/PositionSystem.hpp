@@ -5,6 +5,11 @@
 ** PositionSystem
 */
 
+/**
+ * @file PositionSystem.hpp
+ * @brief Updates entity positions based on their velocities and directions.
+ */
+
 #ifndef POSITIONSYSTEM_HPP_
     #define POSITIONSYSTEM_HPP_
 
@@ -19,9 +24,18 @@
 
     namespace ecs
     {
+        /**
+         * @class PositionSystem
+         * @brief Handles position updates for entities in the ECS framework.
+         */
         class PositionSystem
         {
         public:
+            /**
+             * @brief Updates the positions of entities based on their velocity and direction.
+             * @param components_array A map containing all component arrays.
+             * @param tickRate The rate at which the system updates (used for time scaling).
+             */
             void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate)
             {
                 auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
