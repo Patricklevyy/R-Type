@@ -13,6 +13,23 @@ namespace rtype {
         void run();
 
     private:
+        enum class ColorMode {
+            Normal,
+            Deuteranopia,
+            Protanopia,
+            Deuteranomaly,
+            Protanomaly,
+            Tritanopia,
+            Tritanomaly,
+            Achromatopsia
+        };
+
+        sf::Text _colorModeText;
+        sf::Clock _colorModeClock;
+        bool _showColorModeText = false;
+        ColorMode _currentColorMode = ColorMode::Normal;
+
+        void applyColorMode();
         struct Button {
             sf::Text text;
         };

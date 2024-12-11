@@ -23,6 +23,12 @@ namespace rtype {
         _buttonText.setCharacterSize(30);
         _buttonText.setFillColor(sf::Color::White);
 
+        _colorModeText.setFont(_font);
+        _colorModeText.setCharacterSize(20);
+        _colorModeText.setFillColor(sf::Color::White);
+        _colorModeText.setPosition(10.f, 10.f);
+
+
         sf::Vector2u windowSize = _window.getSize();
         _buttonText.setPosition(windowSize.x / 2.f, windowSize.y / 2.f);
         centerText(_buttonText);
@@ -71,60 +77,164 @@ namespace rtype {
     }
 
     void Menu::handleEvents() {
-    sf::Event event;
-    while (_window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            _window.close();
-        }
-
-        if (event.type == sf::Event::Resized) {
-            _window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
-            centerText(_buttonText);
-            for (auto &button : _buttons) {
-                centerText(button.text);
+        sf::Event event;
+        while (_window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                _window.close();
             }
-        }
 
-        sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
-
-        if (!_showSecondaryMenu) {
-            sf::FloatRect textBounds = _buttonText.getGlobalBounds();
-            if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                _buttonText.setFillColor(sf::Color::Red);
-
-                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                    _showSecondaryMenu = true;
-                    initializeButtons();
-
-                    if (!_isMusicPlaying) {
-                        _backgroundMusic.play();
-                        _isMusicPlaying = true;
-                    }
+            if (event.type == sf::Event::Resized) {
+                _window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
+                centerText(_buttonText);
+                for (auto &button : _buttons) {
+                    centerText(button.text);
                 }
-            } else {
-                _buttonText.setFillColor(sf::Color::White);
             }
-        } else {
-            for (auto &button : _buttons) {
-                sf::FloatRect textBounds = button.text.getGlobalBounds();
+
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A) {
+                switch (_currentColorMode) {
+                    case ColorMode::Normal:
+                        _currentColorMode = ColorMode::Deuteranopia;
+                        break;
+                    case ColorMode::Deuteranopia:
+                        _currentColorMode = ColorMode::Protanopia;
+                        break;
+                    case ColorMode::Protanopia:
+                        _currentColorMode = ColorMode::Deuteranomaly;
+                        break;
+                    case ColorMode::Deuteranomaly:
+                        _currentColorMode = ColorMode::Protanomaly;
+                        break;
+                    case ColorMode::Protanomaly:
+                        _currentColorMode = ColorMode::Tritanopia;
+                        break;
+                    case ColorMode::Tritanopia:
+                        _currentColorMode = ColorMode::Tritanomaly;
+                        break;
+                    case ColorMode::Tritanomaly:
+                        _currentColorMode = ColorMode::Achromatopsia;
+                        break;
+                    case ColorMode::Achromatopsia:
+                        _currentColorMode = ColorMode::Normal;
+                        break;
+                }
+                applyColorMode();
+            }
+
+
+            sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
+
+            if (!_showSecondaryMenu) {
+                sf::FloatRect textBounds = _buttonText.getGlobalBounds();
                 if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    button.text.setFillColor(sf::Color::Red);
+                    _buttonText.setFillColor(sf::Color::Red);
 
                     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                        if (button.text.getString() == "EXIT") {
-                            _window.close();
-                        } else {
-                            std::cout << button.text.getString().toAnsiString() << " clicked!" << std::endl;
+                        _showSecondaryMenu = true;
+                        initializeButtons();
+
+                        if (!_isMusicPlaying) {
+                            _backgroundMusic.play();
+                            _isMusicPlaying = true;
                         }
                     }
                 } else {
-                    button.text.setFillColor(sf::Color::White);
+                    _buttonText.setFillColor(sf::Color::White);
+                }
+            } else {
+                for (auto &button : _buttons) {
+                    sf::FloatRect textBounds = button.text.getGlobalBounds();
+                    if (textBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                        button.text.setFillColor(sf::Color::Red);
+
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                            if (button.text.getString() == "EXIT") {
+                                _window.close();
+                            } else {
+                                std::cout << button.text.getString().toAnsiString() << " clicked!" << std::endl;
+                            }
+                        }
+                    } else {
+                        button.text.setFillColor(sf::Color::White);
+                    }
                 }
             }
         }
     }
-    }
 
+    void Menu::applyColorMode() {
+        std::string modeName;
+
+        switch (_currentColorMode) {
+            case ColorMode::Normal:
+                modeName = "Normal";
+                _backgroundSprite.setColor(sf::Color::White);
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color::White);
+                }
+                break;
+
+            case ColorMode::Deuteranopia:
+                modeName = "Deuteranopia";
+                _backgroundSprite.setColor(sf::Color(255, 255, 150));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(255, 255, 150));
+                }
+                break;
+
+            case ColorMode::Protanopia:
+                modeName = "Protanopia";
+                _backgroundSprite.setColor(sf::Color(150, 255, 255));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(150, 255, 255));
+                }
+                break;
+
+            case ColorMode::Deuteranomaly:
+                modeName = "Deuteranomaly";
+                _backgroundSprite.setColor(sf::Color(200, 255, 200));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(200, 255, 200));
+                }
+                break;
+
+            case ColorMode::Protanomaly:
+                modeName = "Protanomaly";
+                _backgroundSprite.setColor(sf::Color(255, 200, 200));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(255, 200, 200));
+                }
+                break;
+
+            case ColorMode::Tritanopia:
+                modeName = "Tritanopia";
+                _backgroundSprite.setColor(sf::Color(200, 200, 255));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(200, 200, 255));
+                }
+                break;
+
+            case ColorMode::Tritanomaly:
+                modeName = "Tritanomaly";
+                _backgroundSprite.setColor(sf::Color(200, 255, 255));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(200, 255, 255));
+                }
+                break;
+
+            case ColorMode::Achromatopsia:
+                modeName = "Achromatopsia";
+                _backgroundSprite.setColor(sf::Color(128, 128, 128));
+                for (auto &button : _buttons) {
+                    button.text.setFillColor(sf::Color(128, 128, 128));
+                }
+                break;
+        }
+
+        _colorModeText.setString("Color Mode: " + modeName);
+        _showColorModeText = true;
+        _colorModeClock.restart();
+    }
 
     void Menu::render() {
         _window.clear();
@@ -138,8 +248,15 @@ namespace rtype {
             }
         }
 
+        if (_showColorModeText && _colorModeClock.getElapsedTime().asSeconds() <= 2.f) {
+            _window.draw(_colorModeText);
+        } else {
+            _showColorModeText = false;
+        }
+
         _window.display();
     }
+
 
     void Menu::centerText(sf::Text &text, int characterSize) {
         if (characterSize > 0) {
