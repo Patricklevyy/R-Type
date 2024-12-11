@@ -19,6 +19,8 @@
     #include "../shared/Timer.hpp"
     #include "../shared/MessageChecker.hpp"
     #include "Command_checker.hpp"
+    #include "../shared/system/DirectionSystem.hpp"
+    #include "../../ecs/system/PositionSystem.hpp"
 
     namespace rtype
     {
@@ -38,6 +40,9 @@
 
             protected:
             private:
+                std::string _name; // A SET AU MENU
+                std::map<unsigned int, unsigned int> ecs_server_to_client;
+                std::map<unsigned int, unsigned int> ecs_client_to_server;
                 EventBus _eventBus;
                 std::shared_ptr<Timer> _timer;
                 std::shared_ptr<ecs::udp::UDP_Client> _udpClient;
@@ -46,7 +51,16 @@
                 std::queue<sf::Event> _events;
                 ecs::udp::MessageCompressor _message_compressor;
                 MessageChecker _mes_checker;
+                size_t _index_ecs_client = 0;
 
+                // SYSTEMS
+
+                EventWindow _event_window_system;
+                DirectionSystem _direction_system;
+                ecs::PositionSystem _position_system;
+
+                void setRoomAdress(unsigned int, std::map<std::string, std::string>);
+                void createPlayer(unsigned int, std::map<std::string, std::string>);
         };
     }
 #endif /* !CLIENT_HPP_ */

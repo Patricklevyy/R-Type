@@ -1,0 +1,10 @@
+PRATIQUEMENT TOUTES LES FONCTIONS DE L'ECS SONT TEMPLATE
+
+POUR AJOUTER LES DES COMPONENTS , IL FAUT UNE SIZE_T et le COMPONENTS
+ON PEU AJOUTER DES REGISTRY AUSSI, dans les sparse array (peut etre a faire un debut)
+
+une entity a juste un SIZE_T
+
+registry c'est le sparse array de un type de COMPONENTS
+
+la map std::unordered<std::type_index, std::any> le type_index c'est l'id du type de components, creer a la creation du components

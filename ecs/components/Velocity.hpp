@@ -5,18 +5,38 @@
 ** Velocity
 */
 
+/**
+ * @file Velocity.hpp
+ * @brief Defines the Velocity component for movement speed.
+ */
+
 #ifndef VELOCITY_HPP_
     #define VELOCITY_HPP_
 
     namespace ecs
     {
+        /**
+         * @class Velocity
+         * @brief Represents the velocity of an entity.
+         */
         class Velocity
         {
         public:
+            /**
+             * @brief Default constructor for Velocity.
+             */
             Velocity() {}
+
+            /**
+             * @brief Destructor for Velocity.
+             */
             ~Velocity() {}
 
-            float velocity = 10.0; // PEUT ETRE CE SERAI BIEN DE POUVOIR LE SET DANS UN FICHIER DE CONFIG DE JEU ?
+            /**
+             * @brief Movement speed of the entity.
+             * @note Consider making this configurable through an external file.
+             */
+            float velocity = 10.0;
 
         protected:
         private:

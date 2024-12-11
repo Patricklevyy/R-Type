@@ -27,7 +27,12 @@
             UPDATE_POSITION,
             CHECK_EVENT_WINDOW,
             CREATE_CLIENT,
+            UPDATE_DIRECTION,
+            START_LISTEN_EVENT,
+            STOP_LISTEN_EVENT,
+            GET_WINDOW_EVENT,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
+            GET_ALL_ROOMS,
             MAX_ACTION
         };
     }

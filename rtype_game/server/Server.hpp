@@ -41,9 +41,9 @@
             void checkJoinRoomArgs(std::map<std::string, std::string>);
 
             //  COMMANDS
-
             void createRoom(const unsigned int, std::string &, std::string &, std::string &);
             void joinRoom(const unsigned int, std::string &, std::string &, std::string &);
+            void getAllRooms(std::string &);
         };
     }
 
