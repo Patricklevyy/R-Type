@@ -163,7 +163,7 @@ namespace rtype
                         _message_compressor.serialize(mess, buffer);
 
                         std::cout << "je send" << std::endl;
-                        if (_udpClient->sendMessage(buffer, "127.0.0.1:8080")) {
+                        if (_udpClient->sendMessage(buffer, "10.109.251.210:8080")) {
                             std::cout << "Message sent: " << std::endl;
                         } else {
                             std::cout << "failed " << std::endl;
@@ -214,8 +214,8 @@ namespace rtype
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
 
         while (_running) {
-            _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system), std::ref(_events));
             _timer->waitTPS();
+            _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system), std::ref(_events));
             handle_event();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_ecs._components_arrays), std::ref(_position_system), _timer);
             _ecs.displayPlayableEntityComponents();
