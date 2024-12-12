@@ -10,6 +10,7 @@
 
     #include <iostream>
     #include "../../ecs/Enums_ecs.hpp"
+    #include <tuple>
 
     namespace rtype
     {
