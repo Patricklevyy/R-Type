@@ -151,7 +151,6 @@ namespace rtype
         while (_game_running) {
             timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_positon_system), std::ref(_ecs._components_arrays), std::ref(timer));
-            sendUpdate();
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {

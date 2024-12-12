@@ -4,3 +4,4 @@ r-type_server
 .vscode/
 docs
 ecs_type.md
+rtype_game/config/udp_config.conf

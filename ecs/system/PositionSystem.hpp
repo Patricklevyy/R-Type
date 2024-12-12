@@ -86,6 +86,37 @@
                 }
             }
 
+            void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, size_t indexPlayer)
+            {
+                if (indexPlayer == -1)
+                    return;
+                auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
+                auto &velocities = std::any_cast<SparseArray<Velocity> &>(components_array[typeid(Velocity)]);
+                auto &directions = std::any_cast<SparseArray<Direction> &>(components_array[typeid(Direction)]);
+
+                switch (directions[indexPlayer].value()._x) {
+                case direction::LEFT:
+                    positions[indexPlayer].value()._pos_x -= velocities[indexPlayer].value().velocity / tickRate;
+                    ;
+                    break;
+                case direction::RIGHT:
+                    positions[indexPlayer].value()._pos_x += velocities[indexPlayer].value().velocity / tickRate;
+                    break;
+                default:
+                    break;
+                }
+                switch (directions[indexPlayer].value()._y) {
+                case direction::UP:
+                    positions[indexPlayer].value()._pos_y -= velocities[indexPlayer].value().velocity / tickRate;
+                    break;
+                case direction::DOWN:
+                    positions[indexPlayer].value()._pos_y += velocities[indexPlayer].value().velocity / tickRate;
+                    break;
+                default:
+                    break;
+                }
+            }
+
         protected:
         private:
         };
