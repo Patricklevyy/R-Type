@@ -49,7 +49,7 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, [](const std::vector<std::any>& args) {
             try {
                 auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
                 auto& direction_system = std::any_cast<std::reference_wrapper<DirectionSystem>>(args[1]).get();
@@ -60,13 +60,29 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [](const std::vector<std::any>& args) {
             try {
-                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
+                auto& ecs = std::any_cast<std::reference_wrapper<ecs::ECS>>(args[0]).get();
                 auto& position_system = std::any_cast<std::reference_wrapper<ecs::PositionSystem>>(args[1]).get();
                 std::shared_ptr<Timer> timer = std::any_cast<std::shared_ptr<rtype::Timer>>(args[2]);
 
-                position_system.updatePositions(components, timer->getTps());
+                position_system.updatePlayerPositions(ecs._components_arrays, timer->getTps(), ecs.getIndexPlayer());
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [](const std::vector<std::any>& args) {
+            try {
+                auto& ecs = std::any_cast<std::reference_wrapper<ecs::ECS>>(args[0]).get();
+                auto& message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[1]).get();
+                auto& update_entity_system = std::any_cast<std::reference_wrapper<UpdateEntitySystem>>(args[2]).get();
+
+                std::list<std::tuple<std::size_t, std::pair<float, float>, int>> params = Command_checker::parse_update(message.params);
+
+                // while (!params.empty()) {
+                //     update_entity_system.updateEntity(params.front());
+                //     params.pop_front();
+                // }
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -115,7 +131,7 @@ namespace rtype
             _in_menu = false;
             return;
         }
-        _eventBus.emit(action, std::ref(id), std::ref(params), _udpClient, std::ref(_index_ecs_client), std::ref(_ecs));
+        _eventBus.emit(action, std::ref(_ecs), std::ref(mes), std::ref(_update_entity_system));
     }
 
     void Client::send_server_player_direction(ecs::direction x, ecs::direction y)
@@ -157,22 +173,22 @@ namespace rtype
                     if (event.key.code == sf::Keyboard::D && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::RIGHT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::Q && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::LEFT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::LEFT, ecs::direction::NO_CHANGE);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::Z && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::UP, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::UP);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::S && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::DOWN, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::A) {
                         std::vector<char> buffer;
@@ -190,17 +206,33 @@ namespace rtype
                             std::cout << "failed " << std::endl;
                         }
                     }
+                    if (event.key.code == sf::Keyboard::B) {
+                        std::vector<char> buffer;
+                        ecs::udp::Message mess;
+                        mess.id = 1;
+                        mess.action = 1;
+                        mess.params = "room_name=room1;client_name=patrick";
+
+                        _message_compressor.serialize(mess, buffer);
+
+                        std::cout << "je send" << std::endl;
+                        if (_udpClient->sendMessageToDefault(buffer)) {
+                            std::cout << "Message sent: " << std::endl;
+                        } else {
+                            std::cout << "failed " << std::endl;
+                        }
+                    }
                     break;
                 case sf::Event::KeyReleased:
                     if ((event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q) && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     if ((event.key.code == sf::Keyboard::Z || event.key.code == sf::Keyboard::S) && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION, _ecs.getIndexPlayer());
                         send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
+                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(_x_y));
                     }
                     break;
 
@@ -232,7 +264,7 @@ namespace rtype
             _timer->waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system), std::ref(_events));
             handle_event();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_ecs._components_arrays), std::ref(_position_system), _timer);
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, std::ref(_ecs), std::ref(_position_system), _timer);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages)
