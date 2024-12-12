@@ -57,8 +57,11 @@
                  */
                 bool sendMessageToDefault(const std::vector<char>);
 
+                std::string getServerIp() const;
+
             protected:
                 std::string defaultAddress; /**< The default address for message transmission. */
+                std::string _ip_server;
             private:
             };
         }

@@ -17,7 +17,9 @@
     #include "../../ecs/system/PositionSystem.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
+    #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/components/Health.hpp"
+    #include "../shared/Utils.hpp"
 
     namespace rtype
     {
@@ -61,7 +63,11 @@
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
-            ecs::PositionSystem pos;
+
+            // SYSTEMS
+
+            ecs::PositionSystem _positon_system;
+            rtype::DirectionSystem _direction_system;
             std::vector<std::string> _clientAddresses;
 
             bool initializeSocket();

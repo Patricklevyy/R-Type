@@ -17,7 +17,7 @@
         class Command_checker
         {
         public:
-            static std::string check_adress(std::map<std::string, std::string>&);
+            static std::string check_adress(std::map<std::string, std::string>&, std::string);
 
         protected:
         private:

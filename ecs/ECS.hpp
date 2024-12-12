@@ -110,6 +110,21 @@
             }
 
             /**
+             * @brief Return the index of the player, used only by the client.
+             */
+            size_t getIndexPlayer()
+            {
+                auto &playables = std::any_cast<SparseArray<Playable> &>(_components_arrays[typeid(Playable)]);
+
+                for (std::size_t i = 0; i < playables.size(); ++i)
+                {
+                    if (i < playables.size() && playables[i].has_value())
+                        return i;
+                }
+                return -1;
+            }
+
+            /**
              * @brief Displays the components of all playable entities in the system.
              */
             void displayPlayableEntityComponents()
