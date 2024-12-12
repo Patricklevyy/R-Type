@@ -151,6 +151,7 @@ namespace rtype
         while (_game_running) {
             timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_positon_system), std::ref(_ecs._components_arrays), std::ref(timer));
+            sendUpdate();
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
@@ -190,19 +191,21 @@ namespace rtype
 
     void Room::sendUpdate()
     {
-        std::string updateMessage = "update=";
+        std::string updateMessage = "";
 
         auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
         auto& healths = std::any_cast<ecs::SparseArray<Health>&>(_ecs._components_arrays[typeid(Health)]);
+        auto& playables = std::any_cast<ecs::SparseArray<ecs::Playable>&>(_ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value() && healths[i].has_value()) {
                 const auto& position = positions[i].value();
-                    const auto& health = healths[i].value();
-                    updateMessage += "id=" + std::to_string(i) +
-                                     ",x=" + std::to_string(position._pos_x) +
-                                     ",y=" + std::to_string(position._pos_y) +
-                                     ",health=" + std::to_string(health._health) + ";";
+                const auto& health = healths[i].value();
+
+                updateMessage += ",id=" + std::to_string(i) +
+                                 ",x=" + std::to_string(positions[i].value()._pos_x) +
+                                 ",y=" + std::to_string(positions[i].value()._pos_y) +
+                                 ",health=" + std::to_string(healths[i].value()._health) + ";";
                 }
         }
 
@@ -258,9 +261,20 @@ namespace rtype
         _clientAddresses.push_back(lastclientAdr);
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
+
             std::cout << "Message sent: "  << mes.params << mes.action << std::endl;
         } else {
             std::cerr << "Failed to send message." << std::endl;
+        }
+        mes.action = RTYPE_ACTIONS::CREATE_TEAMMATE;
+        size_t port_pos = mes.params.find(";port=");
+        if (port_pos != std::string::npos) {
+            mes.params.erase(port_pos);
+        }
+        _message_compressor.serialize(mes, send_message);
+        for (const auto& clientAddr : _clientAddresses) {
+            if (clientAddr != lastclientAdr)
+                _udp_server->sendMessage(send_message, clientAddr);
         }
         setNbClient(getNbClient() + 1);
         index_ecs++;
