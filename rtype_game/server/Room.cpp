@@ -245,6 +245,7 @@ namespace rtype
         std::vector<char> send_message;
 
         create_player(index_ecs, position, clientName);
+        sendExistingEntities(lastclientAdr, RTYPE_SPRITE::SPACESHIP);
 
         _message_compressor.serialize(mes, send_message);
         _clientAddresses.push_back(lastclientAdr);
@@ -267,6 +268,34 @@ namespace rtype
         }
         setNbClient(getNbClient() + 1);
         index_ecs++;
+    }
+
+    void Room::sendExistingEntities(const std::string &clientAddress, int type)
+    {
+        auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
+        std::string updateMessage = "";
+
+        for (size_t i = 0; i < positions.size(); ++i) {
+            if (positions[i].has_value()) {
+                if (i != _ecs.getIndexPlayer()) {
+                    updateMessage += "x=" + std::to_string(positions[i].value()._pos_x) +
+                                ",y=" + std::to_string(positions[i].value()._pos_y) +
+                                ",id=" + std::to_string(i) +
+                                ",type=" + std::to_string(type) + ";";
+                }
+            }
+        }
+
+        if (!updateMessage.empty() && updateMessage.back() == ';') {
+            updateMessage.pop_back();
+        }
+        ecs::udp::Message mes;
+        mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
+        mes.id = 0;
+        mes.params = updateMessage;
+        std::vector<char> send_message;
+        _message_compressor.serialize(mes, send_message);
+        _udp_server->sendMessage(send_message, clientAddress);
     }
 
     void Room::closeRoom()
