@@ -8,8 +8,6 @@
 #ifndef HEALTH_HPP_
 #define HEALTH_HPP_
 
-// la vie du player?
-// si il a le playable
 namespace rtype {
 
     class Health {

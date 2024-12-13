@@ -25,6 +25,8 @@
     #include "components/Sprite.hpp"
     #include "system/RenderWindow.hpp"
     #include "../../ecs/components/Displayable.hpp"
+    #include "../shared/components/Health.hpp"
+    #include "system/UpdateEntitySystem.hpp"
 
     // #include "../../ecs/components/Displayable.hpp"
 
@@ -38,15 +40,12 @@
 
                 void start();
 
-                void init_ecs_client_registry();
-                void init_subscribe_event_bus();
-
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
-                // void onPlayerDataReceived(const ServerMessage& message);
 
             protected:
             private:
+                bool _in_menu = true;
                 std::string _name; // A SET AU MENU
                 std::map<unsigned int, unsigned int> ecs_server_to_client;
                 std::map<unsigned int, unsigned int> ecs_client_to_server;
@@ -66,14 +65,18 @@
                 DirectionSystem _direction_system;
                 ecs::PositionSystem _position_system;
                 RenderWindow _render_window_system;
-
-                // ecs::Displayable _displayable;
+                UpdateEntitySystem _update_entity_system;
 
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
+                void send_server_player_direction(ecs::direction, ecs::direction);
+                void createTeammate(unsigned int, float, float);
 
-                void init_background();
-                void displayEntities();
+                // INITIALISATION
+
+                void init_window_and_background();
+                void init_ecs_client_registry();
+                void init_subscribe_event_bus();
         };
     }
 #endif /* !CLIENT_HPP_ */

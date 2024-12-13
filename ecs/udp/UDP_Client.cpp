@@ -19,6 +19,11 @@ namespace ecs
         {
         }
 
+        std::string UDP_Client::getServerIp() const
+        {
+            return _ip_server;
+        }
+
         void UDP_Client::setDefaultAddress(const std::string &address)
         {
             defaultAddress = address;
@@ -77,6 +82,7 @@ namespace ecs
 
                 const libconfig::Setting &serverSettings = udpSettings["server"];
                 std::string serverIp = serverSettings["ip"];
+                _ip_server = serverIp;
                 int serverPort = serverSettings["port"];
                 setDefaultAddress(serverIp + ":" + std::to_string(serverPort));
                 serverAddr.sin_family = AF_INET;

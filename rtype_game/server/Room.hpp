@@ -17,6 +17,9 @@
     #include "../../ecs/system/PositionSystem.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
+    #include "../shared/system/DirectionSystem.hpp"
+    #include "../shared/components/Health.hpp"
+    #include "../shared/Utils.hpp"
 
     namespace rtype
     {
@@ -48,6 +51,7 @@
 
 
         private:
+            Timer _timer;
             int _port;
             unsigned int index_ecs = 0;
             std::shared_ptr<ecs::udp::UDP_Server> _udp_server;
@@ -60,7 +64,12 @@
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
-            ecs::PositionSystem pos;
+
+            // SYSTEMS
+
+            ecs::PositionSystem _positon_system;
+            rtype::DirectionSystem _direction_system;
+            std::vector<std::string> _clientAddresses;
 
             bool initializeSocket();
             void closeRoom();
@@ -68,6 +77,7 @@
             std::pair<float, float> get_player_start_position(int);
             void create_player(size_t, std::pair<float, float>, std::string);
             void handleCommand(const std::vector<char> &, std::string clientAddr);
+            void sendUpdate();
         };
     }
 

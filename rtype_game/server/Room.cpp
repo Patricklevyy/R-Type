@@ -88,15 +88,17 @@ namespace rtype
 
     void Room::init_event_bus() {
         // SUBSCRIBE POSITION SYSTEM
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any>& args) {
+            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps());
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any>& args) {
             try {
-                auto& ps = std::any_cast<std::reference_wrapper<ecs::PositionSystem>>(args[0]).get();
-                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[1]).get();
-                auto& timer = std::any_cast<std::reference_wrapper<rtype::Timer>>(args[2]).get();
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+                std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = Utils::extractPlayerPosIndex(message.params, message.id);
 
-                ps.updatePositions(components, timer.getTps());
+                _direction_system.updatePlayerDirection(_ecs._components_arrays, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
             } catch (const std::bad_any_cast& e) {
-                std::cerr << "Error during event handling: " << e.what() << std::endl;
+                std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
     }
@@ -105,18 +107,19 @@ namespace rtype
     {
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM :" << message.action << ", " << message.params << std::endl;
+        std::cout << "new message in the ROOOM :" << message.id << "action : " << message.action << ", " << message.params << std::endl;
+        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
+        _eventBus.emit(action, std::ref(message));
     }
 
     void Room::init_ecs_server_registry()
     {
-        // INIT LES COMPONENT DU SERVER QUI SONT PAS COMMUN AVEC LE CLIENT
+        _ecs.addRegistry<Health>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName)
     {
         _port = port;
-        Timer timer;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
 
         if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port))
@@ -125,17 +128,17 @@ namespace rtype
             return;
         }
         _ecs.init_basic_registry();
-        createClient(lastClientAddr, clientName);
-        _udp_server->startReceiving();
-        timer.init("rtype_game/config/server_config.conf", true);
-        _game_running = true;
         init_ecs_server_registry();
+        _udp_server->startReceiving();
+        _timer.init("rtype_game/config/server_config.conf", true);
+        _game_running = true;
+        createClient(lastClientAddr, clientName);
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
 
         while (_game_running) {
-            timer.waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(pos), std::ref(_ecs._components_arrays), std::ref(timer));
+            _timer.waitTPS();
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
@@ -144,6 +147,7 @@ namespace rtype
                     handleCommand(message, clientAddress);
                 }
             }
+            sendUpdate();
         }
         _udp_server->stopReceiving();
     }
@@ -173,17 +177,56 @@ namespace rtype
         }
     }
 
+    void Room::sendUpdate()
+    {
+        std::string updateMessage = "";
+
+        auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto& healths = std::any_cast<ecs::SparseArray<Health>&>(_ecs._components_arrays[typeid(Health)]);
+        auto& playables = std::any_cast<ecs::SparseArray<ecs::Playable>&>(_ecs._components_arrays[typeid(ecs::Playable)]);
+
+        for (size_t i = 0; i < positions.size(); ++i) {
+            if (positions[i].has_value() && healths[i].has_value()) {
+                const auto& position = positions[i].value();
+                const auto& health = healths[i].value();
+
+                updateMessage += ",id=" + std::to_string(i) +
+                                 ",x=" + std::to_string(positions[i].value()._pos_x) +
+                                 ",y=" + std::to_string(positions[i].value()._pos_y) +
+                                 ",health=" + std::to_string(healths[i].value()._health) + ";";
+                }
+        }
+
+        if (!updateMessage.empty() && updateMessage.back() == ';') {
+            updateMessage.pop_back();
+        }
+
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITION;
+        responseMessage.id = 0;
+        responseMessage.params = updateMessage;
+
+        _message_compressor.serialize(responseMessage, response);
+        for (const auto& clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+
     void Room::create_player(size_t index, std::pair<float, float> positions, std::string clientName)
     {
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
         ecs::Velocity velocity;
+        Health health;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
     }
 
     void Room::createClient(std::string lastclientAdr, std::string clientName)
@@ -203,12 +246,23 @@ namespace rtype
         create_player(index_ecs, position, clientName);
 
         _message_compressor.serialize(mes, send_message);
-
+        _clientAddresses.push_back(lastclientAdr);
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
+
             std::cout << "Message sent: "  << mes.params << mes.action << std::endl;
         } else {
             std::cerr << "Failed to send message." << std::endl;
+        }
+        mes.action = RTYPE_ACTIONS::CREATE_TEAMMATE;
+        size_t port_pos = mes.params.find(";port=");
+        if (port_pos != std::string::npos) {
+            mes.params.erase(port_pos);
+        }
+        _message_compressor.serialize(mes, send_message);
+        for (const auto& clientAddr : _clientAddresses) {
+            if (clientAddr != lastclientAdr)
+                _udp_server->sendMessage(send_message, clientAddr);
         }
         setNbClient(getNbClient() + 1);
         index_ecs++;
