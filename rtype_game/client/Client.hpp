@@ -22,7 +22,11 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
     #include "components/Background.hpp"
+    #include "components/Sprite.hpp"
     #include "system/RenderWindow.hpp"
+    #include "../../ecs/components/Displayable.hpp"
+
+    // #include "../../ecs/components/Displayable.hpp"
 
     namespace rtype
     {
@@ -39,6 +43,7 @@
 
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
+                // void onPlayerDataReceived(const ServerMessage& message);
 
             protected:
             private:
@@ -62,10 +67,13 @@
                 ecs::PositionSystem _position_system;
                 RenderWindow _render_window_system;
 
+                // ecs::Displayable _displayable;
+
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
 
                 void init_background();
+                void displayEntities();
         };
     }
 #endif /* !CLIENT_HPP_ */

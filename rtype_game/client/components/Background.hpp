@@ -42,7 +42,6 @@ namespace rtype
         std::shared_ptr<sf::Texture> texture;
         sf::Sprite sprite;
     };
-
 }
 
 #endif /* BACKGROUND_HPP_ */

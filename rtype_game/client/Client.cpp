@@ -25,6 +25,7 @@ namespace rtype
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Background>();
+        _ecs.addRegistry<ecs::Displayable>();
     }
 
     void Client::init_subscribe_event_bus()
@@ -73,12 +74,14 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER_WINDOW, [](const std::vector<std::any>& args) {
             try {
+                std::cout << "je rentre" << std::endl;
                 auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
-                auto& EventWindow = std::any_cast<std::reference_wrapper<RenderWindow>>(args[1]).get();
+                auto& event_window = std::any_cast<std::reference_wrapper<RenderWindow>>(args[1]).get();
 
-                EventWindow.render(components);
+                std::cout << "je suis encore dedans" << std::endl;
+                event_window.render(components);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -100,11 +103,13 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
+        ecs::Displayable displayable("assets/vaisseau.png", x ,y);
 
         _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
         _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
+        _ecs.addComponents<ecs::Displayable>(_index_ecs_client, displayable);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
@@ -227,9 +232,11 @@ namespace rtype
     {
         Window window(1920, 1080, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Background>(_index_ecs_client, Background("assets/space-background.jpg", 100, 100));
+        _ecs.addComponents<ecs::Displayable>(_index_ecs_client, ecs::Displayable("assets/background_2.png", 0, 0));
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
         _index_ecs_client++;
     }
+
 
     void Client::start()
     {
@@ -244,16 +251,6 @@ namespace rtype
         init_ecs_client_registry();
         init_background();
         init_subscribe_event_bus();
-        // Window window(800, 600, "My ECS Client Window");
-        // Window window(1920, 1080, "R-Type");
-        // sf::Texture texture;
-        // sf::Sprite sprite;
-        // if (!texture.loadFromFile("assets/background_2.png")) {
-        //             throw std::runtime_error("Failed to load background texture from: ");
-        //         }
-        //         // std::cout << "Texture loaded successfully from: " << texturePath << std::endl;
-        //         sprite.setTexture(texture);
-                // sprite.setScale(800,600);
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
 
         while (_running) {
@@ -270,9 +267,7 @@ namespace rtype
                     std::cerr << std::endl << e.what() << std::endl;
                 }
             }
-            _eventBus.emit(RTYPE_ACTIONS::RENDER, std::ref(_ecs._components_arrays), std::ref(_render_window_system));
-            // window.getRenderWindow()->draw(sprite);
-            //                 window.getRenderWindow()->display();
+            _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW, std::ref(_ecs._components_arrays), std::ref(_render_window_system));
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT, std::ref(_ecs._components_arrays), std::ref(_event_window_system));
     }
