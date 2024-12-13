@@ -24,7 +24,7 @@ namespace rtype
     void Client::init_ecs_client_registry()
     {
         _ecs.addRegistry<Window>();
-        _ecs.addRegistry<ecs::Displayable>();
+        _ecs.addRegistry<Displayable>();
         _ecs.addRegistry<Health>();
     }
 
@@ -84,7 +84,7 @@ namespace rtype
                 float x = std::stof(x_part.substr(2));
                 float y = std::stof(y_part.substr(2));
 
-                createTeammate(message.id, x, y);
+                createEntity(message.id, x, y, SPRITES::SHIP);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -95,19 +95,15 @@ namespace rtype
         });
     }
 
-    void Client::createTeammate(unsigned int server_id, float x, float y)
+    void Client::createEntity(unsigned int server_id, float x, float y, int sprite_id)
     {
-        ecs::Direction direction;
         ecs::Position position(x, y);
-        ecs::Velocity velocity;
-        ecs::Displayable displayable("assets/red_ship.png", x ,y);
+        Displayable displayable(sprite_id, x ,y);
         Health health;
 
-        _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
-        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
         _ecs.addComponents<Health>(_index_ecs_client, health);
-        _ecs.addComponents<ecs::Displayable>(_index_ecs_client, displayable);
+        _ecs.addComponents<Displayable>(_index_ecs_client, displayable);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
@@ -130,14 +126,14 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
-        ecs::Displayable displayable("assets/red_ship.png", x ,y);
+        Displayable displayable(1, x ,y);
         Health health;
 
         _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
         _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
-        _ecs.addComponents<ecs::Displayable>(_index_ecs_client, displayable);
+        _ecs.addComponents<Displayable>(_index_ecs_client, displayable);
         _ecs.addComponents<Health>(_index_ecs_client, health);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
@@ -277,13 +273,12 @@ namespace rtype
     {
         Window window(800, 800, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<ecs::Displayable>(_index_ecs_client, ecs::Displayable("assets/background.png", 0, 0));
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::BACKGROUND, 0, 0));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
         _index_ecs_client++;
     }
 
-
-    void Client::start()
+    void Client::init_all()
     {
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
@@ -295,6 +290,11 @@ namespace rtype
         init_window_and_background();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
+    }
+
+    void Client::start()
+    {
+        init_all();
 
         while (_running) {
             _timer->waitTPS();

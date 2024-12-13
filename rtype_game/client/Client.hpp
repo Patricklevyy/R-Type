@@ -24,12 +24,9 @@
     #include "components/Background.hpp"
     #include "components/Sprite.hpp"
     #include "system/RenderWindow.hpp"
-    #include "../../ecs/components/Displayable.hpp"
     #include "../shared/components/Health.hpp"
     #include "system/UpdateEntitySystem.hpp"
-
-    // #include "../../ecs/components/Displayable.hpp"
-
+    #include "components/Displayable.hpp"
     namespace rtype
     {
         class Client
@@ -70,10 +67,11 @@
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
                 void send_server_player_direction(ecs::direction, ecs::direction);
-                void createTeammate(unsigned int, float, float);
+                void createEntity(unsigned int, float, float, int);
 
                 // INITIALISATION
 
+                void init_all();
                 void init_window_and_background();
                 void init_ecs_client_registry();
                 void init_subscribe_event_bus();

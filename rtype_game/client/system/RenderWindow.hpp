@@ -13,7 +13,7 @@
     #include "../../shared/Includes.hpp"
     #include <iostream>
     #include "../../../ecs/SparseArray.hpp"
-    #include "../../../ecs/components/Displayable.hpp"
+    #include "../components/Displayable.hpp"
     #include "../../../ecs/components/Position.hpp"
 
     namespace rtype
@@ -26,7 +26,7 @@
                 {
                     try {
                         std::cout << "con" << std::endl;
-                        auto &displayable = std::any_cast<ecs::SparseArray<ecs::Displayable> &>(components_array.at(typeid(ecs::Displayable)));
+                        auto &displayable = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
                         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
 
@@ -35,7 +35,7 @@
                         for (size_t i = 0; i < displayable.size(); ++i) {
                             if (displayable[i].has_value() && positions[i].has_value()) {
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
-                                lawindow->draw(displayable[i].value().getSprite());
+                                lawindow->draw(*displayable[i].value().getSprite());
 
                                 std::cout << "[INFO] Rendu terminé pour l'entité " << i << std::endl;
                             } else {

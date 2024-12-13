@@ -39,6 +39,14 @@
             RENDER_WINDOW,
             MAX_ACTION
         };
+
+        enum SPRITES
+        {
+            BACKGROUND,
+            SHIP,
+            MONSTER,
+            MISSILE
+        };
     }
 
 #endif /* !ENUMS_HPP_ */
