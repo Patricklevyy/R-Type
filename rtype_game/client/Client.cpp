@@ -57,9 +57,10 @@ namespace rtype
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
-                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())])
-                        std::cout << "\n\n\n\n\n\n\njupdate le player " << std::get<0>(entities.front()) << " , " << ecs_server_to_client[std::get<0>(entities.front())] << std::endl;
-                        _update_entity_system.updateEntity(_ecs._components_arrays, entities.front());
+                    std::cout << _ecs.getIndexPlayer() << " , " << ecs_server_to_client[std::get<0>(entities.front())] << std::endl;
+                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())]) {
+                        _update_entity_system.updateEntity(_ecs._components_arrays, entities.front(), ecs_server_to_client[std::get<0>(entities.front())]);
+                    }
                     entities.pop_front();
                 }
             } catch (const std::bad_any_cast& e) {
@@ -91,11 +92,13 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
+        Health health;
 
         _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
         _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
+        _ecs.addComponents<Health>(_index_ecs_client, health);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
@@ -118,11 +121,13 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
+        Health health;
 
         _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
         _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
+        _ecs.addComponents<Health>(_index_ecs_client, health);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
