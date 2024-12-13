@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rtype_5factions_211',['RTYPE_ACTIONS',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3',1,'rtype']]]
+  ['direction_0',['direction',['../namespaceecs.html#a7a98367474612e41f7e1da1a57853776',1,'ecs']]]
 ];

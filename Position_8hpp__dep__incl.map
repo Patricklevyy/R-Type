@@ -1,0 +1,33 @@
+<map id="ecs/components/Position.hpp" name="ecs/components/Position.hpp">
+<area shape="rect" id="Node000001" title="Defines the Position component for 2D positioning." alt="" coords="446,5,658,31"/>
+<area shape="rect" id="Node000002" href="$ECS_8hpp.html" title="Core of the Entity&#45;Component&#45;System (ECS) architecture for managing entities and components." alt="" coords="691,86,792,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="593,33,715,84,713,88,591,38"/>
+<area shape="rect" id="Node000011" href="$CollisionSystem_8hpp.html" title="Handles collision detection between entities in the ECS framework." alt="" coords="817,86,1050,111"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="621,31,878,83,877,89,620,36"/>
+<area shape="rect" id="Node000012" href="$PositionSystem_8hpp.html" title="Updates entity positions based on their velocities and directions." alt="" coords="437,86,667,111"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="555,44,555,86,549,86,549,44"/>
+<area shape="rect" id="Node000013" href="$RenderWindow_8hpp.html" title=" " alt="" coords="221,79,413,119"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="506,37,375,81,373,76,504,32"/>
+<area shape="rect" id="Node000014" href="$UpdateEntitySystem_8hpp.html" title=" " alt="" coords="5,79,197,119"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="474,36,198,83,197,78,473,30"/>
+<area shape="rect" id="Node000003" href="$Client_8hpp.html" title=" " alt="" coords="305,167,516,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="692,118,679,121,469,169,467,164,678,116,691,113"/>
+<area shape="rect" id="Node000006" href="$Room_8hpp.html" title=" " alt="" coords="587,167,802,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="730,125,704,168,699,165,725,122"/>
+<area shape="rect" id="Node000004" href="$Client_8cpp.html" title=" " alt="" coords="101,240,310,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="366,199,239,242,238,237,364,194"/>
+<area shape="rect" id="Node000005" href="$client_2Main_8cpp.html" title=" " alt="" coords="335,240,537,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="422,204,434,239,429,241,417,206"/>
+<area shape="rect" id="Node000007" href="$Room_8cpp.html" title=" " alt="" coords="563,240,778,265"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="689,206,677,241,672,239,684,204"/>
+<area shape="rect" id="Node000008" href="$Server_8hpp.html" title=" " alt="" coords="803,240,1021,265"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="743,194,878,237,876,242,742,199"/>
+<area shape="rect" id="Node000009" href="$server_2Main_8cpp.html" title=" " alt="" coords="689,313,897,339"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="882,275,814,315,811,311,880,270"/>
+<area shape="rect" id="Node000010" href="$Server_8cpp.html" title=" " alt="" coords="922,313,1139,339"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="944,270,1013,311,1010,315,942,275"/>
+<area shape="poly" id="edge12_Node000012_Node000003" title=" " alt="" coords="520,120,433,169,430,164,518,116"/>
+<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="586,116,675,164,672,169,584,120"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="352,126,398,164,395,168,349,130"/>
+<area shape="poly" id="edge17_Node000014_Node000003" title=" " alt="" coords="189,119,366,164,365,169,188,125"/>
+</map>

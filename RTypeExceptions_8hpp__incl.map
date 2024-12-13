@@ -1,4 +1,5 @@
 <map id="rtype_game/shared/RTypeExceptions.hpp" name="rtype_game/shared/RTypeExceptions.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,295,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="110,80,190,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,295,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="110,79,190,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,31,153,65,147,65,147,31"/>
 </map>

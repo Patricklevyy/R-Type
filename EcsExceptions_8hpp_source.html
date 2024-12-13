@@ -1,28 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>R-TYPE:  Fichier source de ecs/EcsExceptions.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">R-TYPE
-   &#160;<span id="projectnumber">1.0</span>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
    <div id="projectbrief">Une brève description du projet</div>
   </td>
@@ -31,22 +35,45 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('EcsExceptions_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,184 +83,285 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_eafb92770fbc727220bdaa0b1292f771.html">ecs</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">EcsExceptions.hpp</div>  </div>
+  <div class="headertitle"><div class="title">EcsExceptions.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="EcsExceptions_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2024</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-Type</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** EcsExceptions</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef ECSEXCEPTIONS_HPP_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    #define ECSEXCEPTIONS_HPP_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    #include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespaceecs.html">ecs</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespaceecs_1_1ERROR.html">   15</a></span>&#160;        <span class="keyword">namespace </span>ERROR</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">   17</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">CantReadConfigFileExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">   20</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">CantReadConfigFileExceptions</a>() {}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#a99aa5e873dca59b0618943019a773f32">   22</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#a99aa5e873dca59b0618943019a773f32">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;CantReadConfigFileExceptions : Error when reading the config file&quot;</span>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    };</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            };</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">   28</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">CantParseConfigFileExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">   31</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">CantParseConfigFileExceptions</a>() {}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#aa1fe9f1020052bc7f05c4cb1313e3a7b">   33</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#aa1fe9f1020052bc7f05c4cb1313e3a7b">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;CantParseConfigFileExceptions : Error parsing configuration file&quot;</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    };</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            };</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">   39</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">WrongBufferSizeExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">   42</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">WrongBufferSizeExceptions</a>() {}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac5cefa7f2c7601c24b8172f3b813ff80">   44</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac5cefa7f2c7601c24b8172f3b813ff80">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;WrongBufferSizeExceptions : Buffer size exceeds safe UDP message size (1472 bytes).&quot;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    };</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            };</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html">   50</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1BindFailedExceptions.html">BindFailedExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">   53</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">BindFailedExceptions</a>() {}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a0a12b1899688d4f175882edec5505030">   55</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a0a12b1899688d4f175882edec5505030">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;BindFailedExceptions : Bind failed.&quot;</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    };</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            };</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">   61</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">WrongConfigurationExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">   64</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">WrongConfigurationExceptions</a>() {}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a1eb6d3fc90c0b0f85f176ac66101ae6c">   66</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a1eb6d3fc90c0b0f85f176ac66101ae6c">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;WrongConfigurationExceptions : Missing setting or wrong setting in configuration file.&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    };</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            };</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">   72</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">SocketNotInitializedExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">   75</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">SocketNotInitializedExceptions</a>() {}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a9f389aa49e2066f36a9868b2c1d23e51">   77</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a9f389aa49e2066f36a9868b2c1d23e51">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;SocketNotInitializedExceptions : Socket not initialized.&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    };</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            };</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">   83</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">InvalidAdressFormatExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">   86</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">InvalidAdressFormatExceptions</a>() {}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a0a48a36361ed8f9b9c41faab3df61b2b">   88</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a0a48a36361ed8f9b9c41faab3df61b2b">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;InvalidAdressFormatExceptions : Invalid address format. Expected &#39;ip:port&#39;.&quot;</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    };</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            };</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">   94</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">InvalidIpAdressExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">   97</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">InvalidIpAdressExceptions</a>() {}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#ab0538cc4c8a388e505b0e083aa74ef0b">   99</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#ab0538cc4c8a388e505b0e083aa74ef0b">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;InvalidIpAdressExceptions : Invalid IP address.&quot;</span>);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    };</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            };</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">  105</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">MessageTooBigExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">  108</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">MessageTooBigExceptions</a>() {}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a88b8faff8f69761cfa978dd5f93200bc">  110</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a88b8faff8f69761cfa978dd5f93200bc">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;MessageTooBigExceptions : Message exceeds buffer size.&quot;</span>);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    };</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            };</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html">  116</a></span>&#160;            <span class="keyword">class </span><a class="code" href="classecs_1_1ERROR_1_1RecvExceptions.html">RecvExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">  119</a></span>&#160;                    <a class="code" href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">RecvExceptions</a>() {}</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html#aa38c7a62481d8c563ffdcd25e90b29c1">  121</a></span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classecs_1_1ERROR_1_1RecvExceptions.html#aa38c7a62481d8c563ffdcd25e90b29c1">what</a>() const noexcept<span class="keyword"> override</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">                    </span>{</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <span class="keywordflow">return</span> (<span class="stringliteral">&quot;RecvExceptions : Recvfrom failed.&quot;</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    };</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            };</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ECSEXCEPTIONS_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html">ecs::ERROR::BindFailedExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:51</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html_a0a12b1899688d4f175882edec5505030"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a0a12b1899688d4f175882edec5505030">ecs::ERROR::BindFailedExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:55</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html_a6109883bd22d37207dc33f05ea4a6c3d"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">ecs::ERROR::BindFailedExceptions::BindFailedExceptions</a></div><div class="ttdeci">BindFailedExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:53</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">ecs::ERROR::CantParseConfigFileExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:29</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html_aa1fe9f1020052bc7f05c4cb1313e3a7b"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#aa1fe9f1020052bc7f05c4cb1313e3a7b">ecs::ERROR::CantParseConfigFileExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:33</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html_ac2593a92a84a873dcb6c71d1f751b29a"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">ecs::ERROR::CantParseConfigFileExceptions::CantParseConfigFileExceptions</a></div><div class="ttdeci">CantParseConfigFileExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:31</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">ecs::ERROR::CantReadConfigFileExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:18</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html_a99aa5e873dca59b0618943019a773f32"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#a99aa5e873dca59b0618943019a773f32">ecs::ERROR::CantReadConfigFileExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:22</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html_ad75f20be2bfc2ac52bf8da287aa53822"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">ecs::ERROR::CantReadConfigFileExceptions::CantReadConfigFileExceptions</a></div><div class="ttdeci">CantReadConfigFileExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:20</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">ecs::ERROR::InvalidAdressFormatExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:84</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html_a0a48a36361ed8f9b9c41faab3df61b2b"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a0a48a36361ed8f9b9c41faab3df61b2b">ecs::ERROR::InvalidAdressFormatExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:88</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html_ac887f62c431d8a868665dee0cf27204a"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">ecs::ERROR::InvalidAdressFormatExceptions::InvalidAdressFormatExceptions</a></div><div class="ttdeci">InvalidAdressFormatExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:86</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">ecs::ERROR::InvalidIpAdressExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:95</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html_aaf9546d84058f4aa16b9b46745782cc4"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">ecs::ERROR::InvalidIpAdressExceptions::InvalidIpAdressExceptions</a></div><div class="ttdeci">InvalidIpAdressExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:97</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html_ab0538cc4c8a388e505b0e083aa74ef0b"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#ab0538cc4c8a388e505b0e083aa74ef0b">ecs::ERROR::InvalidIpAdressExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:99</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">ecs::ERROR::MessageTooBigExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:106</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html_a21d4386f421b34c93df5f08e9b293913"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">ecs::ERROR::MessageTooBigExceptions::MessageTooBigExceptions</a></div><div class="ttdeci">MessageTooBigExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:108</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html_a88b8faff8f69761cfa978dd5f93200bc"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a88b8faff8f69761cfa978dd5f93200bc">ecs::ERROR::MessageTooBigExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:110</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html">ecs::ERROR::RecvExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:117</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html_a75eb4c4d55dc67f28683f105a93a83ec"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">ecs::ERROR::RecvExceptions::RecvExceptions</a></div><div class="ttdeci">RecvExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:119</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html_aa38c7a62481d8c563ffdcd25e90b29c1"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html#aa38c7a62481d8c563ffdcd25e90b29c1">ecs::ERROR::RecvExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:121</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">ecs::ERROR::SocketNotInitializedExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:73</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html_a9f389aa49e2066f36a9868b2c1d23e51"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a9f389aa49e2066f36a9868b2c1d23e51">ecs::ERROR::SocketNotInitializedExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:77</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html_ad465c4347cbe81bcc012bc16fd47f02e"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">ecs::ERROR::SocketNotInitializedExceptions::SocketNotInitializedExceptions</a></div><div class="ttdeci">SocketNotInitializedExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:75</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">ecs::ERROR::WrongBufferSizeExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:40</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html_ac5cefa7f2c7601c24b8172f3b813ff80"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac5cefa7f2c7601c24b8172f3b813ff80">ecs::ERROR::WrongBufferSizeExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:44</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html_ae097e0b47a589b1a253da49ee50bd0c6"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">ecs::ERROR::WrongBufferSizeExceptions::WrongBufferSizeExceptions</a></div><div class="ttdeci">WrongBufferSizeExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:42</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">ecs::ERROR::WrongConfigurationExceptions</a></div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:62</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html_a1eb6d3fc90c0b0f85f176ac66101ae6c"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a1eb6d3fc90c0b0f85f176ac66101ae6c">ecs::ERROR::WrongConfigurationExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:66</div></div>
-<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html_a58824a69008ee58b08f371c8a37c797a"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">ecs::ERROR::WrongConfigurationExceptions::WrongConfigurationExceptions</a></div><div class="ttdeci">WrongConfigurationExceptions()</div><div class="ttdef"><b>Definition:</b> EcsExceptions.hpp:64</div></div>
-<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition:</b> ECS.cpp:11</div></div>
+<a href="EcsExceptions_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** R-Type</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** EcsExceptions</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef ECSEXCEPTIONS_HPP_</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define ECSEXCEPTIONS_HPP_</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceecs.html">ecs</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceecs_1_1ERROR.html">   22</a></span>        <span class="keyword">namespace </span>ERROR</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">   27</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">CantReadConfigFileExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">   30</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">CantReadConfigFileExceptions</a>() {}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#af29d81216813da922c9d5404ab56d4bc">   32</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#af29d81216813da922c9d5404ab56d4bc">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;CantReadConfigFileExceptions : Error when reading the config file&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                };</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            };</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">   41</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">CantParseConfigFileExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">   44</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">CantParseConfigFileExceptions</a>() {}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#a5ae10d5af94b532a1caf9c086f86e8ee">   46</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#a5ae10d5af94b532a1caf9c086f86e8ee">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;CantParseConfigFileExceptions : Error parsing configuration file&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                };</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            };</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">   55</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">WrongBufferSizeExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">   58</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">WrongBufferSizeExceptions</a>() {}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac2e0a57817e137f804e2f2e9009babf6">   60</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac2e0a57817e137f804e2f2e9009babf6">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;WrongBufferSizeExceptions : Buffer size exceeds safe UDP message size (1472 bytes).&quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                };</div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            };</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html">   69</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1BindFailedExceptions.html">BindFailedExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">   72</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">BindFailedExceptions</a>() {}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a26f445f51526f46ed7540eacafed9b35">   74</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a26f445f51526f46ed7540eacafed9b35">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;BindFailedExceptions : Bind failed.&quot;</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                };</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            };</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="};">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">   83</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">WrongConfigurationExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">   86</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">WrongConfigurationExceptions</a>() {}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a8db572ed62ae314721dd5ef377682747">   88</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a8db572ed62ae314721dd5ef377682747">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;WrongConfigurationExceptions : Missing setting or wrong setting in configuration file.&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                };</div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            };</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="};">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">   97</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">SocketNotInitializedExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">  100</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">SocketNotInitializedExceptions</a>() {}</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a608443a691481113d12bf29a2d6969b4">  102</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a608443a691481113d12bf29a2d6969b4">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;SocketNotInitializedExceptions : Socket not initialized.&quot;</span>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                };</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            };</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="};">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">  111</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">InvalidAdressFormatExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">  114</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">InvalidAdressFormatExceptions</a>() {}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a05b697d72593251c9cfadc4e9aa63563">  116</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a05b697d72593251c9cfadc4e9aa63563">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;InvalidAdressFormatExceptions : Invalid address format. Expected &#39;ip:port&#39;.&quot;</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                };</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            };</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="};">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">  125</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">InvalidIpAdressExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">  128</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">InvalidIpAdressExceptions</a>() {}</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#a6662446a97d703850ca3b3ddc396c418">  130</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#a6662446a97d703850ca3b3ddc396c418">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;InvalidIpAdressExceptions : Invalid IP address.&quot;</span>);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                };</div>
+</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            };</div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00139" data-start="{" data-end="};">
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">  139</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">MessageTooBigExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">  142</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">MessageTooBigExceptions</a>() {}</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a32311278f96c6c07c9bb1efdca71ff96">  144</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a32311278f96c6c07c9bb1efdca71ff96">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;MessageTooBigExceptions : Message exceeds buffer size.&quot;</span>);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                };</div>
+</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            };</div>
+</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="foldopen" id="foldopen00153" data-start="{" data-end="};">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html">  153</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1RecvExceptions.html">RecvExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">  156</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">RecvExceptions</a>() {}</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1RecvExceptions.html#aa10e7bc7c34f7c26cda7047270a03a82">  158</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1RecvExceptions.html#aa10e7bc7c34f7c26cda7047270a03a82">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;RecvExceptions : Recvfrom failed.&quot;</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                };</div>
+</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            };</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="};">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html">  167</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html">ComponentTypeAlreadyExistException</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a452f6d18754d6e28c349a70327aea647">  170</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a452f6d18754d6e28c349a70327aea647">ComponentTypeAlreadyExistException</a>() {}</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="foldopen" id="foldopen00172" data-start="{" data-end="}">
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a30312649955326c4dfac3876a548c28d">  172</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a30312649955326c4dfac3876a548c28d">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;ComponentTypeAlreadyExistException : Component already exists.&quot;</span>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                };</div>
+</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            };</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="};">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html">  181</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html">ComponentNotFoundExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#ac8b8452a4f66ccd7970e099a672d5496">  184</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#ac8b8452a4f66ccd7970e099a672d5496">ComponentNotFoundExceptions</a>() {}</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="foldopen" id="foldopen00186" data-start="{" data-end="}">
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#a4b75c1dbdddadf93dc282546a8f03359">  186</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#a4b75c1dbdddadf93dc282546a8f03359">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;ComponentNotFoundExceptions : Component not found.&quot;</span>);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                };</div>
+</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            };</div>
+</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="foldopen" id="foldopen00195" data-start="{" data-end="};">
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html">  195</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html">IdOutOfRangeExceptions</a> : <span class="keyword">virtual</span> <span class="keyword">public</span> std::exception</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#a6baf86c9cc0c63b91a0acad826b75154">  198</a></span>                <a class="code hl_function" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#a6baf86c9cc0c63b91a0acad826b75154">IdOutOfRangeExceptions</a>() {}</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="}">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#ab93599dcfa7878941a39aa7626a3fc38">  200</a></span>                <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#ab93599dcfa7878941a39aa7626a3fc38">what</a>() const noexcept<span class="keyword"> override</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                    <span class="keywordflow">return</span> (<span class="stringliteral">&quot;IdOutOfRangeExceptions : Id index out of range.&quot;</span>);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                };</div>
+</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            };</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        }</div>
+</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif </span><span class="comment">/* !ECSEXCEPTIONS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html">ecs::ERROR::BindFailedExceptions</a></div><div class="ttdoc">Exception for failed socket binding.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:70</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html_a26f445f51526f46ed7540eacafed9b35"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a26f445f51526f46ed7540eacafed9b35">ecs::ERROR::BindFailedExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:74</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1BindFailedExceptions_html_a6109883bd22d37207dc33f05ea4a6c3d"><div class="ttname"><a href="classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d">ecs::ERROR::BindFailedExceptions::BindFailedExceptions</a></div><div class="ttdeci">BindFailedExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:72</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html">ecs::ERROR::CantParseConfigFileExceptions</a></div><div class="ttdoc">Exception for errors parsing the configuration file.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:42</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html_a5ae10d5af94b532a1caf9c086f86e8ee"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#a5ae10d5af94b532a1caf9c086f86e8ee">ecs::ERROR::CantParseConfigFileExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:46</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantParseConfigFileExceptions_html_ac2593a92a84a873dcb6c71d1f751b29a"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html#ac2593a92a84a873dcb6c71d1f751b29a">ecs::ERROR::CantParseConfigFileExceptions::CantParseConfigFileExceptions</a></div><div class="ttdeci">CantParseConfigFileExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:44</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html">ecs::ERROR::CantReadConfigFileExceptions</a></div><div class="ttdoc">Exception for errors reading the configuration file.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:28</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html_ad75f20be2bfc2ac52bf8da287aa53822"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#ad75f20be2bfc2ac52bf8da287aa53822">ecs::ERROR::CantReadConfigFileExceptions::CantReadConfigFileExceptions</a></div><div class="ttdeci">CantReadConfigFileExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:30</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1CantReadConfigFileExceptions_html_af29d81216813da922c9d5404ab56d4bc"><div class="ttname"><a href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html#af29d81216813da922c9d5404ab56d4bc">ecs::ERROR::CantReadConfigFileExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:32</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentNotFoundExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html">ecs::ERROR::ComponentNotFoundExceptions</a></div><div class="ttdoc">Exception for missing components.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:182</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentNotFoundExceptions_html_a4b75c1dbdddadf93dc282546a8f03359"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#a4b75c1dbdddadf93dc282546a8f03359">ecs::ERROR::ComponentNotFoundExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:186</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentNotFoundExceptions_html_ac8b8452a4f66ccd7970e099a672d5496"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html#ac8b8452a4f66ccd7970e099a672d5496">ecs::ERROR::ComponentNotFoundExceptions::ComponentNotFoundExceptions</a></div><div class="ttdeci">ComponentNotFoundExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:184</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentTypeAlreadyExistException_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html">ecs::ERROR::ComponentTypeAlreadyExistException</a></div><div class="ttdoc">Exception for duplicate component types.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:168</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentTypeAlreadyExistException_html_a30312649955326c4dfac3876a548c28d"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a30312649955326c4dfac3876a548c28d">ecs::ERROR::ComponentTypeAlreadyExistException::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:172</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1ComponentTypeAlreadyExistException_html_a452f6d18754d6e28c349a70327aea647"><div class="ttname"><a href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html#a452f6d18754d6e28c349a70327aea647">ecs::ERROR::ComponentTypeAlreadyExistException::ComponentTypeAlreadyExistException</a></div><div class="ttdeci">ComponentTypeAlreadyExistException()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:170</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1IdOutOfRangeExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html">ecs::ERROR::IdOutOfRangeExceptions</a></div><div class="ttdoc">Exception for out-of-range entity IDs.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:196</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1IdOutOfRangeExceptions_html_a6baf86c9cc0c63b91a0acad826b75154"><div class="ttname"><a href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#a6baf86c9cc0c63b91a0acad826b75154">ecs::ERROR::IdOutOfRangeExceptions::IdOutOfRangeExceptions</a></div><div class="ttdeci">IdOutOfRangeExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:198</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1IdOutOfRangeExceptions_html_ab93599dcfa7878941a39aa7626a3fc38"><div class="ttname"><a href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#ab93599dcfa7878941a39aa7626a3fc38">ecs::ERROR::IdOutOfRangeExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:200</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html">ecs::ERROR::InvalidAdressFormatExceptions</a></div><div class="ttdoc">Exception for invalid address format.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:112</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html_a05b697d72593251c9cfadc4e9aa63563"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#a05b697d72593251c9cfadc4e9aa63563">ecs::ERROR::InvalidAdressFormatExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:116</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidAdressFormatExceptions_html_ac887f62c431d8a868665dee0cf27204a"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a">ecs::ERROR::InvalidAdressFormatExceptions::InvalidAdressFormatExceptions</a></div><div class="ttdeci">InvalidAdressFormatExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:114</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html">ecs::ERROR::InvalidIpAdressExceptions</a></div><div class="ttdoc">Exception for invalid IP addresses.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:126</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html_a6662446a97d703850ca3b3ddc396c418"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#a6662446a97d703850ca3b3ddc396c418">ecs::ERROR::InvalidIpAdressExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:130</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1InvalidIpAdressExceptions_html_aaf9546d84058f4aa16b9b46745782cc4"><div class="ttname"><a href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4">ecs::ERROR::InvalidIpAdressExceptions::InvalidIpAdressExceptions</a></div><div class="ttdeci">InvalidIpAdressExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:128</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html">ecs::ERROR::MessageTooBigExceptions</a></div><div class="ttdoc">Exception for messages exceeding buffer size.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:140</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html_a21d4386f421b34c93df5f08e9b293913"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913">ecs::ERROR::MessageTooBigExceptions::MessageTooBigExceptions</a></div><div class="ttdeci">MessageTooBigExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:142</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1MessageTooBigExceptions_html_a32311278f96c6c07c9bb1efdca71ff96"><div class="ttname"><a href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a32311278f96c6c07c9bb1efdca71ff96">ecs::ERROR::MessageTooBigExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:144</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html">ecs::ERROR::RecvExceptions</a></div><div class="ttdoc">Exception for failed reception of data.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:154</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html_a75eb4c4d55dc67f28683f105a93a83ec"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html#a75eb4c4d55dc67f28683f105a93a83ec">ecs::ERROR::RecvExceptions::RecvExceptions</a></div><div class="ttdeci">RecvExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:156</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1RecvExceptions_html_aa10e7bc7c34f7c26cda7047270a03a82"><div class="ttname"><a href="classecs_1_1ERROR_1_1RecvExceptions.html#aa10e7bc7c34f7c26cda7047270a03a82">ecs::ERROR::RecvExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:158</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html">ecs::ERROR::SocketNotInitializedExceptions</a></div><div class="ttdoc">Exception for uninitialized socket operations.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:98</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html_a608443a691481113d12bf29a2d6969b4"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#a608443a691481113d12bf29a2d6969b4">ecs::ERROR::SocketNotInitializedExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:102</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1SocketNotInitializedExceptions_html_ad465c4347cbe81bcc012bc16fd47f02e"><div class="ttname"><a href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e">ecs::ERROR::SocketNotInitializedExceptions::SocketNotInitializedExceptions</a></div><div class="ttdeci">SocketNotInitializedExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:100</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html">ecs::ERROR::WrongBufferSizeExceptions</a></div><div class="ttdoc">Exception for buffer size exceeding safe UDP message size.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:56</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html_ac2e0a57817e137f804e2f2e9009babf6"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ac2e0a57817e137f804e2f2e9009babf6">ecs::ERROR::WrongBufferSizeExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:60</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongBufferSizeExceptions_html_ae097e0b47a589b1a253da49ee50bd0c6"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html#ae097e0b47a589b1a253da49ee50bd0c6">ecs::ERROR::WrongBufferSizeExceptions::WrongBufferSizeExceptions</a></div><div class="ttdeci">WrongBufferSizeExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:58</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html">ecs::ERROR::WrongConfigurationExceptions</a></div><div class="ttdoc">Exception for incorrect or missing configuration settings.</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:84</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html_a58824a69008ee58b08f371c8a37c797a"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a58824a69008ee58b08f371c8a37c797a">ecs::ERROR::WrongConfigurationExceptions::WrongConfigurationExceptions</a></div><div class="ttdeci">WrongConfigurationExceptions()</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:86</div></div>
+<div class="ttc" id="aclassecs_1_1ERROR_1_1WrongConfigurationExceptions_html_a8db572ed62ae314721dd5ef377682747"><div class="ttname"><a href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html#a8db572ed62ae314721dd5ef377682747">ecs::ERROR::WrongConfigurationExceptions::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> EcsExceptions.hpp:88</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_eafb92770fbc727220bdaa0b1292f771.html">ecs</a></li><li class="navelem"><a class="el" href="EcsExceptions_8hpp.html">EcsExceptions.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

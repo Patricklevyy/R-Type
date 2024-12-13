@@ -1,4 +1,5 @@
 <map id="ecs::ERROR::InvalidAdressFormatExceptions" name="ecs::ERROR::InvalidAdressFormatExceptions">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,199,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="45,5,159,32"/>
+<area shape="rect" id="Node000001" title="Exception for invalid address format." alt="" coords="5,79,199,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="45,5,159,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,44,105,79,99,79,99,44"/>
 </map>

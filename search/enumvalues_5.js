@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['undefined_217',['UNDEFINED',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ab2a6540696d8f40f08afe5703bced3f1',1,'rtype']]]
+  ['join_5froom_0',['JOIN_ROOM',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa825d0c6ac448835210faf50d5f7c9b4',1,'rtype']]]
 ];

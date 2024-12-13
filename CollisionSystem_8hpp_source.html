@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE:  Fichier source de ecs/system/CollisionSystem.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Une brève description du projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('CollisionSystem_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">CollisionSystem.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="CollisionSystem_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** R-Type</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** CollisionSystem</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef COLLISIONSYSTEM_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define COLLISIONSYSTEM_HPP_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../Enums_ecs.hpp&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;../Includes_ecs.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../SparseArray.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;../components/Entity.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;../../rtype_game/shared/components/Health.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;../../rtype_game/shared/components/Hitbox.hpp&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;../components/Position.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceecs.html">ecs</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classecs_1_1CollisionSystem.html">   29</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classecs_1_1CollisionSystem.html">CollisionSystem</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classecs_1_1CollisionSystem.html#a264b460de53cf4bd5eb6ed3dda9c3e11">   36</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classecs_1_1CollisionSystem.html#a264b460de53cf4bd5eb6ed3dda9c3e11">detectCollisions</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;SparseArray&lt;Position&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">Position</a>)]);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keyword">auto</span> &amp;hitboxes = std::any_cast&lt;SparseArray&lt;rtype::Hitbox&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Hitbox.html">rtype::Hitbox</a>)]);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keyword">auto</span> &amp;healths = std::any_cast&lt;SparseArray&lt;rtype::Health&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Health.html">rtype::Health</a>)]);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; positions.size(); ++i) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keywordflow">if</span> (positions[i].has_value() &amp;&amp; hitboxes[i].has_value()) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    <span class="keywordflow">for</span> (std::size_t j = i + 1; j &lt; positions.size(); ++j) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        <span class="keywordflow">if</span> (positions[j].has_value() &amp;&amp; hitboxes[j].has_value()) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                            <span class="keywordflow">if</span> (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                std::cout &lt;&lt; <span class="stringliteral">&quot;Collision detected between Entity &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; and Entity &quot;</span> &lt;&lt; j &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                <span class="keywordflow">if</span> (healths[i].has_value() &amp;&amp; healths[j].has_value()) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                    healths[i].value()._health -= 20;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                    healths[j].value()._health -= 20;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                    std::cout &lt;&lt; <span class="stringliteral">&quot;Entity &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; health reduced to &quot;</span> &lt;&lt; healths[i].value()._health &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                    std::cout &lt;&lt; <span class="stringliteral">&quot;Entity &quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot; health reduced to &quot;</span> &lt;&lt; healths[j].value()._health &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                            }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">bool</span> isColliding(<span class="keyword">const</span> <a class="code hl_class" href="classecs_1_1Position.html">Position</a> &amp;pos1, <span class="keyword">const</span> <a class="code hl_class" href="classrtype_1_1Hitbox.html">rtype::Hitbox</a> &amp;box1, <span class="keyword">const</span> <a class="code hl_class" href="classecs_1_1Position.html">Position</a> &amp;pos2, <span class="keyword">const</span> <a class="code hl_class" href="classrtype_1_1Hitbox.html">rtype::Hitbox</a> &amp;box2)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">return</span> !(pos1.<a class="code hl_variable" href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">_pos_x</a> + box1.<a class="code hl_variable" href="classrtype_1_1Hitbox.html#a8fadb0e0aa2da1f62772a501d547217f">width</a> &lt; pos2.<a class="code hl_variable" href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">_pos_x</a> ||</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            pos1.<a class="code hl_variable" href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">_pos_x</a> &gt; pos2.<a class="code hl_variable" href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">_pos_x</a> + box2.<a class="code hl_variable" href="classrtype_1_1Hitbox.html#a8fadb0e0aa2da1f62772a501d547217f">width</a> ||</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            pos1.<a class="code hl_variable" href="classecs_1_1Position.html#ad066430c5339aad34e57f21abbfeb59e">_pos_y</a> + box1.<a class="code hl_variable" href="classrtype_1_1Hitbox.html#a38e4d986e6770a5eed6f8fde48b5f643">height</a> &lt; pos2.<a class="code hl_variable" href="classecs_1_1Position.html#ad066430c5339aad34e57f21abbfeb59e">_pos_y</a> ||</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            pos1.<a class="code hl_variable" href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">_pos_x</a> &gt; pos2.<a class="code hl_variable" href="classecs_1_1Position.html#ad066430c5339aad34e57f21abbfeb59e">_pos_y</a> + box2.<a class="code hl_variable" href="classrtype_1_1Hitbox.html#a38e4d986e6770a5eed6f8fde48b5f643">height</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    };</div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif </span><span class="comment">/* !COLLISIONSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassecs_1_1CollisionSystem_html"><div class="ttname"><a href="classecs_1_1CollisionSystem.html">ecs::CollisionSystem</a></div><div class="ttdoc">Detects and processes collisions between entities.</div><div class="ttdef"><b>Definition</b> CollisionSystem.hpp:29</div></div>
+<div class="ttc" id="aclassecs_1_1CollisionSystem_html_a264b460de53cf4bd5eb6ed3dda9c3e11"><div class="ttname"><a href="classecs_1_1CollisionSystem.html#a264b460de53cf4bd5eb6ed3dda9c3e11">ecs::CollisionSystem::detectCollisions</a></div><div class="ttdeci">void detectCollisions(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdoc">Detects collisions between entities and processes health reductions.</div><div class="ttdef"><b>Definition</b> CollisionSystem.hpp:36</div></div>
+<div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
+<div class="ttc" id="aclassecs_1_1Position_html_ad066430c5339aad34e57f21abbfeb59e"><div class="ttname"><a href="classecs_1_1Position.html#ad066430c5339aad34e57f21abbfeb59e">ecs::Position::_pos_y</a></div><div class="ttdeci">float _pos_y</div><div class="ttdoc">Y coordinate of the position.</div><div class="ttdef"><b>Definition</b> Position.hpp:45</div></div>
+<div class="ttc" id="aclassecs_1_1Position_html_ae042af90478de96a782b266de08b4f7d"><div class="ttname"><a href="classecs_1_1Position.html#ae042af90478de96a782b266de08b4f7d">ecs::Position::_pos_x</a></div><div class="ttdeci">float _pos_x</div><div class="ttdoc">X coordinate of the position.</div><div class="ttdef"><b>Definition</b> Position.hpp:40</div></div>
+<div class="ttc" id="aclassrtype_1_1Health_html"><div class="ttname"><a href="classrtype_1_1Health.html">rtype::Health</a></div><div class="ttdef"><b>Definition</b> Health.hpp:13</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html"><div class="ttname"><a href="classrtype_1_1Hitbox.html">rtype::Hitbox</a></div><div class="ttdef"><b>Definition</b> Hitbox.hpp:12</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a38e4d986e6770a5eed6f8fde48b5f643"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a38e4d986e6770a5eed6f8fde48b5f643">rtype::Hitbox::height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:19</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a8fadb0e0aa2da1f62772a501d547217f"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a8fadb0e0aa2da1f62772a501d547217f">rtype::Hitbox::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:18</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_eafb92770fbc727220bdaa0b1292f771.html">ecs</a></li><li class="navelem"><a class="el" href="dir_75cc8c06ce7fff1dc644ddee93f72ba6.html">system</a></li><li class="navelem"><a class="el" href="CollisionSystem_8hpp.html">CollisionSystem.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

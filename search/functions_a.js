@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['sendmessage_179',['sendMessage',['../classrtype_1_1Room.html#a3e808c777bb92deb9850978a0c049f62',1,'rtype::Room::sendMessage()'],['../classecs_1_1udp_1_1UDP__Manager.html#a6a0dd4fb787bcd12a98b54df467761b3',1,'ecs::udp::UDP_Manager::sendMessage()']]],
-  ['serialize_180',['serialize',['../classecs_1_1udp_1_1MessageCompressor.html#a58c1f899b5a0f62cff0e78e799c55342',1,'ecs::udp::MessageCompressor']]],
-  ['server_181',['Server',['../classrtype_1_1Server.html#a2b9a51821745063229edd2901ac1742b',1,'rtype::Server']]],
-  ['setnbclient_182',['setNbClient',['../classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36',1,'rtype::Room']]],
-  ['setrunning_183',['setRunning',['../classrtype_1_1Server.html#aa61a13f17496ce4642248db4f10c84fc',1,'rtype::Server']]],
-  ['socketnotinitializedexceptions_184',['SocketNotInitializedExceptions',['../classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e',1,'ecs::ERROR::SocketNotInitializedExceptions']]],
-  ['start_185',['start',['../classrtype_1_1Room.html#a70cb1758e13b4a545de1031cb445fc72',1,'rtype::Room::start()'],['../classrtype_1_1Server.html#ab0efdde91ee29ddcf1ab1853bd97a1ec',1,'rtype::Server::start()']]]
+  ['main_0',['main',['../client_2Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Main.cpp'],['../server_2Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Main.cpp']]],
+  ['messagechecker_1',['MessageChecker',['../classrtype_1_1MessageChecker.html#a155c689c82566914b6e07fa9900ea9e7',1,'rtype::MessageChecker']]],
+  ['messagecompressor_2',['MessageCompressor',['../classecs_1_1udp_1_1MessageCompressor.html#ae6815d060f84280ea3db000c33f877db',1,'ecs::udp::MessageCompressor']]],
+  ['messagetoobigexceptions_3',['MessageTooBigExceptions',['../classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913',1,'ecs::ERROR::MessageTooBigExceptions']]],
+  ['missingportparamsexceptions_4',['MissingPortParamsExceptions',['../classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html#a3bd2d998cd7e3c78cf791de536e40fb6',1,'rtype::ERROR::MissingPortParamsExceptions']]],
+  ['missingroomsparamsexceptions_5',['MissingRoomsParamsExceptions',['../classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a12c31394e58bdc086d4e1037c10f8568',1,'rtype::ERROR::MissingRoomsParamsExceptions']]]
 ];

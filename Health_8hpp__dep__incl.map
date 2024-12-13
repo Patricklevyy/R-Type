@@ -1,0 +1,24 @@
+<map id="rtype_game/shared/components/Health.hpp" name="rtype_game/shared/components/Health.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="227,5,459,45"/>
+<area shape="rect" id="Node000002" href="$CollisionSystem_8hpp.html" title="Handles collision detection between entities in the ECS framework." alt="" coords="5,101,239,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,53,152,103,150,98,281,48"/>
+<area shape="rect" id="Node000003" href="$Client_8hpp.html" title=" " alt="" coords="233,181,443,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="322,58,305,94,301,113,305,133,316,159,331,180,326,183,312,161,299,134,296,113,299,93,317,56"/>
+<area shape="rect" id="Node000006" href="$UpdateEntitySystem_8hpp.html" title=" " alt="" coords="314,93,506,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="369,55,397,91,393,95,364,58"/>
+<area shape="rect" id="Node000007" href="$Room_8hpp.html" title=" " alt="" coords="531,101,745,126"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="422,47,600,98,598,103,420,52"/>
+<area shape="rect" id="Node000004" href="$Client_8cpp.html" title=" " alt="" coords="124,255,333,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="310,216,248,257,245,252,308,212"/>
+<area shape="rect" id="Node000005" href="$client_2Main_8cpp.html" title=" " alt="" coords="358,255,561,280"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="371,211,441,252,438,257,368,216"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="385,145,351,183,347,179,381,142"/>
+<area shape="rect" id="Node000008" href="$Room_8cpp.html" title=" " alt="" coords="499,181,713,207"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="631,140,613,182,608,180,626,138"/>
+<area shape="rect" id="Node000009" href="$Server_8hpp.html" title=" " alt="" coords="738,181,957,207"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="682,128,818,179,816,184,680,133"/>
+<area shape="rect" id="Node000010" href="$server_2Main_8cpp.html" title=" " alt="" coords="649,255,857,280"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="823,217,770,257,767,252,820,213"/>
+<area shape="rect" id="Node000011" href="$Server_8cpp.html" title=" " alt="" coords="881,255,1099,280"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="884,210,968,252,965,257,881,215"/>
+</map>

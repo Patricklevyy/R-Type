@@ -1,28 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>R-TYPE:  Fichier source de rtype_game/server/Room.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">R-TYPE
-   &#160;<span id="projectnumber">1.0</span>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
    <div id="projectbrief">Une brève description du projet</div>
   </td>
@@ -31,22 +35,45 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Room_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,96 +83,137 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_1a7e174f8daab5f721a016525c062f0f.html">rtype_game</a></li><li class="navelem"><a class="el" href="dir_613fd6931bb48685d604a2de148497e1.html">server</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
-  <div class="headertitle">
-<div class="title">Room.hpp</div>  </div>
+  <div class="headertitle"><div class="title">Room.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Room_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">** EPITECH PROJECT, 2024</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">** R-Type</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">** File description:</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">** Room</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef ROOM_HPP_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    #define ROOM_HPP_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    #include &quot;<a class="code" href="ecs_2Includes_8hpp.html">Includes.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">    #include &quot;<a class="code" href="MessageChecker_8hpp.html">MessageChecker.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">    #include &quot;../../ecs/udp/UDP_Server.hpp&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespacertype.html">rtype</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html">   16</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classrtype_1_1Room.html">Room</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <a class="code" href="classrtype_1_1Room.html#a50444333d9d1b81cc6f3333c8e9c7b25">Room</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <a class="code" href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">~Room</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classrtype_1_1Room.html#a70cb1758e13b4a545de1031cb445fc72">start</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classrtype_1_1Room.html#ab1debf192f4bfcf8382f71def0491972">listenForMessages</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="classrtype_1_1Room.html#a3e808c777bb92deb9850978a0c049f62">sendMessage</a>(<span class="keyword">const</span> std::string&amp; message);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e">getNbClient</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36">setNbClient</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html#a09cc0e58ae091df00e91631e942f3cb4">   30</a></span>&#160;                <a class="code" href="classrtype_1_1Room.html#a09cc0e58ae091df00e91631e942f3cb4">Room</a>(<span class="keyword">const</span> <a class="code" href="classrtype_1_1Room.html">Room</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="classrtype_1_1Room.html#a50444333d9d1b81cc6f3333c8e9c7b25">Room</a>(<a class="code" href="classrtype_1_1Room.html">Room</a>&amp;&amp; other) noexcept;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html#a4523cfc6eb4358a26ab95589d413c243">   32</a></span>&#160;                <a class="code" href="classrtype_1_1Room.html">Room</a>&amp; <a class="code" href="classrtype_1_1Room.html#a4523cfc6eb4358a26ab95589d413c243">operator=</a>(<span class="keyword">const</span> <a class="code" href="classrtype_1_1Room.html">Room</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <a class="code" href="classrtype_1_1Room.html">Room</a>&amp; <a class="code" href="classrtype_1_1Room.html#a4523cfc6eb4358a26ab95589d413c243">operator=</a>(<a class="code" href="classrtype_1_1Room.html">Room</a>&amp;&amp; other) noexcept;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                std::string <a class="code" href="classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="classrtype_1_1Room.html#afefc33bce71c34ffec244f2c3c520f7f">createClient</a>(std::string lastclientAdr);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                std::string <a class="code" href="classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121">getAddress</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordtype">int</span> _port;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                std::string _name;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _nb_client;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordtype">int</span> _sockfd;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keyword">struct </span>sockaddr_in _addr;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <a class="code" href="classecs_1_1udp_1_1UDP__Server.html">ecs::udp::UDP_Server</a> _udpServer;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                std::thread _listenThread;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordtype">bool</span> initializeSocket();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordtype">void</span> closeRoom();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        };</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* !ROOM_HPP_ */</span><span class="preprocessor"></span></div>
+<a href="Room_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** R-Type</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Room</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef ROOM_HPP_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define ROOM_HPP_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #include &quot;../shared/Includes.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #include &quot;<a class="code" href="MessageChecker_8hpp.html">MessageChecker.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #include &quot;../../ecs/udp/MessageCompressor.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #include &quot;../../ecs/udp/UDP_Server.hpp&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &quot;../../ecs/ECS.hpp&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &quot;../../ecs/Includes_ecs.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../../ecs/system/PositionSystem.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &quot;../shared/EventBus.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #include &quot;../shared/Timer.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #include &quot;../shared/system/DirectionSystem.hpp&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #include &quot;../shared/components/Health.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #include &quot;../shared/Utils.hpp&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html">   26</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Room.html">Room</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <a class="code hl_class" href="classrtype_1_1Room.html">Room</a>(<span class="keywordtype">int</span> port, <span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <a class="code hl_function" href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">~Room</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae">start</a>(<span class="keywordtype">int</span>, std::string, std::string);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Room.html#ac6836d36e84e21f96be317982dc91303">gameThreadFunction</a>(<span class="keywordtype">int</span>, std::string, std::string);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60">sendMessage</a>(<span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e">getNbClient</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36">setNbClient</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html#a09cc0e58ae091df00e91631e942f3cb4">   41</a></span>            <a class="code hl_function" href="classrtype_1_1Room.html#a09cc0e58ae091df00e91631e942f3cb4">Room</a>(<span class="keyword">const</span> <a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_class" href="classrtype_1_1Room.html">Room</a>(<a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;&amp;other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf">   43</a></span>            <a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;<a class="code hl_function" href="classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;<a class="code hl_function" href="classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf">operator=</a>(<a class="code hl_class" href="classrtype_1_1Room.html">Room</a> &amp;&amp;other) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            std::string <a class="code hl_function" href="classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Room.html#a11fc1e95fd88bf58e552286dec627c0d">createClient</a>(std::string, std::string);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            std::string <a class="code hl_function" href="classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121">getAddress</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Room.html#a4a92b4ba7fc348f7d3348c725ded018a">init_event_bus</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <a class="code hl_class" href="classrtype_1_1Timer.html">Timer</a> _timer;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordtype">int</span> _port;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index_ecs = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            std::shared_ptr&lt;ecs::udp::UDP_Server&gt; _udp_server;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <a class="code hl_class" href="classecs_1_1udp_1_1MessageCompressor.html">ecs::udp::MessageCompressor</a> _message_compressor;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">bool</span> _game_running;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <a class="code hl_class" href="classecs_1_1ECS.html">ecs::ECS</a> _ecs;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <a class="code hl_class" href="classrtype_1_1EventBus.html">EventBus</a> _eventBus;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            std::string _name;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _nb_client;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordtype">int</span> _sockfd;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keyword">struct </span>sockaddr_in _addr;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            std::thread _gameThread;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="comment">// SYSTEMS</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <a class="code hl_class" href="classecs_1_1PositionSystem.html">ecs::PositionSystem</a> _positon_system;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_class" href="classrtype_1_1DirectionSystem.html">rtype::DirectionSystem</a> _direction_system;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            std::vector&lt;std::string&gt; _clientAddresses;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordtype">bool</span> initializeSocket();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordtype">void</span> closeRoom();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordtype">void</span> init_ecs_server_registry();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            std::pair&lt;float, float&gt; get_player_start_position(<span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordtype">void</span> create_player(<span class="keywordtype">size_t</span>, std::pair&lt;float, float&gt;, std::string);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">void</span> handleCommand(<span class="keyword">const</span> std::vector&lt;char&gt; &amp;, std::string clientAddr);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordtype">void</span> sendUpdate();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        };</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">/* !ROOM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aMessageChecker_8hpp_html"><div class="ttname"><a href="MessageChecker_8hpp.html">MessageChecker.hpp</a></div></div>
-<div class="ttc" id="aclassecs_1_1udp_1_1UDP__Server_html"><div class="ttname"><a href="classecs_1_1udp_1_1UDP__Server.html">ecs::udp::UDP_Server</a></div><div class="ttdef"><b>Definition:</b> UDP_Server.hpp:17</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html"><div class="ttname"><a href="classrtype_1_1Room.html">rtype::Room</a></div><div class="ttdef"><b>Definition:</b> Room.hpp:16</div></div>
+<div class="ttc" id="aclassecs_1_1ECS_html"><div class="ttname"><a href="classecs_1_1ECS.html">ecs::ECS</a></div><div class="ttdoc">Manages entities and their components in an ECS architecture.</div><div class="ttdef"><b>Definition</b> ECS.hpp:31</div></div>
+<div class="ttc" id="aclassecs_1_1PositionSystem_html"><div class="ttname"><a href="classecs_1_1PositionSystem.html">ecs::PositionSystem</a></div><div class="ttdoc">Handles position updates for entities in the ECS framework.</div><div class="ttdef"><b>Definition</b> PositionSystem.hpp:32</div></div>
+<div class="ttc" id="aclassecs_1_1udp_1_1MessageCompressor_html"><div class="ttname"><a href="classecs_1_1udp_1_1MessageCompressor.html">ecs::udp::MessageCompressor</a></div><div class="ttdoc">Handles serialization and deserialization of messages for network transmission.</div><div class="ttdef"><b>Definition</b> MessageCompressor.hpp:28</div></div>
+<div class="ttc" id="aclassrtype_1_1DirectionSystem_html"><div class="ttname"><a href="classrtype_1_1DirectionSystem.html">rtype::DirectionSystem</a></div><div class="ttdef"><b>Definition</b> DirectionSystem.hpp:19</div></div>
+<div class="ttc" id="aclassrtype_1_1EventBus_html"><div class="ttname"><a href="classrtype_1_1EventBus.html">rtype::EventBus</a></div><div class="ttdef"><b>Definition</b> EventBus.hpp:16</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html"><div class="ttname"><a href="classrtype_1_1Room.html">rtype::Room</a></div><div class="ttdef"><b>Definition</b> Room.hpp:27</div></div>
 <div class="ttc" id="aclassrtype_1_1Room_html_a09cc0e58ae091df00e91631e942f3cb4"><div class="ttname"><a href="classrtype_1_1Room.html#a09cc0e58ae091df00e91631e942f3cb4">rtype::Room::Room</a></div><div class="ttdeci">Room(const Room &amp;)=delete</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a1eb9e89215a2bdb7b1d15a96392acb36"><div class="ttname"><a href="classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36">rtype::Room::setNbClient</a></div><div class="ttdeci">void setNbClient(unsigned int)</div><div class="ttdef"><b>Definition:</b> Room.cpp:81</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a3e808c777bb92deb9850978a0c049f62"><div class="ttname"><a href="classrtype_1_1Room.html#a3e808c777bb92deb9850978a0c049f62">rtype::Room::sendMessage</a></div><div class="ttdeci">bool sendMessage(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> Room.cpp:125</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a4523cfc6eb4358a26ab95589d413c243"><div class="ttname"><a href="classrtype_1_1Room.html#a4523cfc6eb4358a26ab95589d413c243">rtype::Room::operator=</a></div><div class="ttdeci">Room &amp; operator=(const Room &amp;)=delete</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a50444333d9d1b81cc6f3333c8e9c7b25"><div class="ttname"><a href="classrtype_1_1Room.html#a50444333d9d1b81cc6f3333c8e9c7b25">rtype::Room::Room</a></div><div class="ttdeci">Room(int port, const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> Room.cpp:16</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a569d1821621045bbf801706cc73fb9c5"><div class="ttname"><a href="classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5">rtype::Room::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdef"><b>Definition:</b> Room.cpp:165</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a6cbef2ef5a86f4812abc26f4375c4121"><div class="ttname"><a href="classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121">rtype::Room::getAddress</a></div><div class="ttdeci">std::string getAddress() const</div><div class="ttdef"><b>Definition:</b> Room.cpp:170</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_a70cb1758e13b4a545de1031cb445fc72"><div class="ttname"><a href="classrtype_1_1Room.html#a70cb1758e13b4a545de1031cb445fc72">rtype::Room::start</a></div><div class="ttdeci">void start(int port)</div><div class="ttdef"><b>Definition:</b> Room.cpp:131</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_ab1debf192f4bfcf8382f71def0491972"><div class="ttname"><a href="classrtype_1_1Room.html#ab1debf192f4bfcf8382f71def0491972">rtype::Room::listenForMessages</a></div><div class="ttdeci">void listenForMessages()</div><div class="ttdef"><b>Definition:</b> Room.cpp:86</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_ab6b42be3d4c5bd85776d02577d94198e"><div class="ttname"><a href="classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e">rtype::Room::getNbClient</a></div><div class="ttdeci">unsigned int getNbClient() const</div><div class="ttdef"><b>Definition:</b> Room.cpp:76</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_afc290a2753b43a504c71474d8fed3c93"><div class="ttname"><a href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">rtype::Room::~Room</a></div><div class="ttdeci">~Room()</div><div class="ttdef"><b>Definition:</b> Room.cpp:19</div></div>
-<div class="ttc" id="aclassrtype_1_1Room_html_afefc33bce71c34ffec244f2c3c520f7f"><div class="ttname"><a href="classrtype_1_1Room.html#afefc33bce71c34ffec244f2c3c520f7f">rtype::Room::createClient</a></div><div class="ttdeci">void createClient(std::string lastclientAdr)</div><div class="ttdef"><b>Definition:</b> Room.cpp:143</div></div>
-<div class="ttc" id="aecs_2Includes_8hpp_html"><div class="ttname"><a href="ecs_2Includes_8hpp.html">Includes.hpp</a></div></div>
-<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition:</b> Enums.hpp:12</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a0bc153d2086ce4d297b2e476de8e9eae"><div class="ttname"><a href="classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae">rtype::Room::start</a></div><div class="ttdeci">void start(int, std::string, std::string)</div><div class="ttdef"><b>Definition</b> Room.cpp:155</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a11fc1e95fd88bf58e552286dec627c0d"><div class="ttname"><a href="classrtype_1_1Room.html#a11fc1e95fd88bf58e552286dec627c0d">rtype::Room::createClient</a></div><div class="ttdeci">void createClient(std::string, std::string)</div><div class="ttdef"><b>Definition</b> Room.cpp:232</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a1eb9e89215a2bdb7b1d15a96392acb36"><div class="ttname"><a href="classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36">rtype::Room::setNbClient</a></div><div class="ttdeci">void setNbClient(unsigned int)</div><div class="ttdef"><b>Definition</b> Room.cpp:78</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a4a92b4ba7fc348f7d3348c725ded018a"><div class="ttname"><a href="classrtype_1_1Room.html#a4a92b4ba7fc348f7d3348c725ded018a">rtype::Room::init_event_bus</a></div><div class="ttdeci">void init_event_bus()</div><div class="ttdef"><b>Definition</b> Room.cpp:89</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a569d1821621045bbf801706cc73fb9c5"><div class="ttname"><a href="classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5">rtype::Room::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdef"><b>Definition</b> Room.cpp:280</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a6cbef2ef5a86f4812abc26f4375c4121"><div class="ttname"><a href="classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121">rtype::Room::getAddress</a></div><div class="ttdeci">std::string getAddress() const</div><div class="ttdef"><b>Definition</b> Room.cpp:285</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a72c691bb63ac161ea820170ad931aedf"><div class="ttname"><a href="classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf">rtype::Room::operator=</a></div><div class="ttdeci">Room &amp; operator=(const Room &amp;)=delete</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_a964c22530b4a86a9db7da935e6f11d60"><div class="ttname"><a href="classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60">rtype::Room::sendMessage</a></div><div class="ttdeci">bool sendMessage(const std::string &amp;)</div><div class="ttdef"><b>Definition</b> Room.cpp:83</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_ab6b42be3d4c5bd85776d02577d94198e"><div class="ttname"><a href="classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e">rtype::Room::getNbClient</a></div><div class="ttdeci">unsigned int getNbClient() const</div><div class="ttdef"><b>Definition</b> Room.cpp:73</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_ac6836d36e84e21f96be317982dc91303"><div class="ttname"><a href="classrtype_1_1Room.html#ac6836d36e84e21f96be317982dc91303">rtype::Room::gameThreadFunction</a></div><div class="ttdeci">void gameThreadFunction(int, std::string, std::string)</div><div class="ttdef"><b>Definition</b> Room.cpp:120</div></div>
+<div class="ttc" id="aclassrtype_1_1Room_html_afc290a2753b43a504c71474d8fed3c93"><div class="ttname"><a href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">rtype::Room::~Room</a></div><div class="ttdeci">~Room()</div><div class="ttdef"><b>Definition</b> Room.cpp:19</div></div>
+<div class="ttc" id="aclassrtype_1_1Timer_html"><div class="ttname"><a href="classrtype_1_1Timer.html">rtype::Timer</a></div><div class="ttdef"><b>Definition</b> Timer.hpp:15</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1a7e174f8daab5f721a016525c062f0f.html">rtype_game</a></li><li class="navelem"><a class="el" href="dir_613fd6931bb48685d604a2de148497e1.html">server</a></li><li class="navelem"><a class="el" href="Room_8hpp.html">Room.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

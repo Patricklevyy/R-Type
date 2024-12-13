@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['getaddress_157',['getAddress',['../classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121',1,'rtype::Room']]],
-  ['getlastclientaddress_158',['getLastClientAddress',['../classecs_1_1udp_1_1UDP__Manager.html#aa654d599cdadc7ebd2ace4aafe216aa9',1,'ecs::udp::UDP_Manager']]],
-  ['getname_159',['getName',['../classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5',1,'rtype::Room']]],
-  ['getnbclient_160',['getNbClient',['../classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e',1,'rtype::Room']]]
+  ['ecs_0',['ECS',['../classecs_1_1ECS.html#a698863a895d3168cde8f7be588edd857',1,'ecs::ECS']]],
+  ['emit_1',['emit',['../classrtype_1_1EventBus.html#adfa8458c87ffe50e0a9f6b7e6b63bf85',1,'rtype::EventBus']]],
+  ['entity_2',['Entity',['../classecs_1_1Entity.html#a2a59b68959acc996ac9b895674115905',1,'ecs::Entity']]],
+  ['eventwindow_3',['EventWindow',['../classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5',1,'rtype::EventWindow']]],
+  ['extractplayerposindex_4',['extractPlayerPosIndex',['../classrtype_1_1Utils.html#a0b06130cf01cc8a46068c1ac70e4e1fb',1,'rtype::Utils']]]
 ];

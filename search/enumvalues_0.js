@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['create_5froom_212',['CREATE_ROOM',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3adc3d334fd54c56b9491793067b0a5535',1,'rtype']]]
+  ['background_0',['BACKGROUND',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a5e9470285f7a5c6c91bd76d3f5b7c7fa',1,'rtype']]]
 ];

@@ -1,0 +1,25 @@
+<map id="ecs/components/Velocity.hpp" name="ecs/components/Velocity.hpp">
+<area shape="rect" id="Node000001" title="Defines the Velocity component for movement speed." alt="" coords="353,5,563,31"/>
+<area shape="rect" id="Node000002" href="$ECS_8hpp.html" title="Core of the Entity&#45;Component&#45;System (ECS) architecture for managing entities and components." alt="" coords="313,79,414,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,41,380,81,377,76,430,37"/>
+<area shape="rect" id="Node000011" href="$PositionSystem_8hpp.html" title="Updates entity positions based on their velocities and directions." alt="" coords="438,79,667,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="486,37,539,76,536,81,483,41"/>
+<area shape="rect" id="Node000003" href="$Client_8hpp.html" title=" " alt="" coords="234,152,445,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,118,346,153,341,151,353,116"/>
+<area shape="rect" id="Node000006" href="$Room_8hpp.html" title=" " alt="" coords="469,152,684,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="411,106,543,149,541,154,410,111"/>
+<area shape="rect" id="Node000004" href="$Client_8cpp.html" title=" " alt="" coords="5,225,215,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="290,184,148,228,146,223,288,179"/>
+<area shape="rect" id="Node000005" href="$client_2Main_8cpp.html" title=" " alt="" coords="239,225,442,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="342,191,343,225,338,225,337,191"/>
+<area shape="rect" id="Node000007" href="$Room_8cpp.html" title=" " alt="" coords="468,225,683,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="579,191,578,225,573,225,574,191"/>
+<area shape="rect" id="Node000008" href="$Server_8hpp.html" title=" " alt="" coords="707,225,926,251"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="629,179,779,223,777,228,628,184"/>
+<area shape="rect" id="Node000009" href="$server_2Main_8cpp.html" title=" " alt="" coords="594,299,802,324"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="787,260,719,301,716,296,784,255"/>
+<area shape="rect" id="Node000010" href="$Server_8cpp.html" title=" " alt="" coords="827,299,1044,324"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="849,255,917,296,915,301,846,260"/>
+<area shape="poly" id="edge11_Node000011_Node000003" title=" " alt="" coords="506,111,375,154,373,149,505,106"/>
+<area shape="poly" id="edge12_Node000011_Node000006" title=" " alt="" coords="563,116,575,151,570,153,558,118"/>
+</map>

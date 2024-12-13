@@ -1,28 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>R-TYPE: Hiérarchie des classes</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">R-TYPE
-   &#160;<span id="projectnumber">1.0</span>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
    <div id="projectbrief">Une brève description du projet</div>
   </td>
@@ -31,23 +35,40 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.1 -->
+<!-- Généré par Doxygen 1.9.8 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -57,82 +78,243 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="header">
-  <div class="headertitle">
-<div class="title">Hiérarchie des classes</div>  </div>
+  <div class="headertitle"><div class="title">Hiérarchie des classes</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock">
 <p><a href="hierarchy.html">Aller à la hiérarchie des classes en mode texte</a></p>
 </div><table border="0" cellspacing="10" cellpadding="0">
-<tr><td><img src="inherit_graph_0.png" border="0" usemap="#aecs_1_1ECS" alt=""/>
+<tr><td><img src="inherit_graph_0.png" border="0" usemap="#aecs_1_1CollisionSystem" alt=""/>
+<map name="aecs_1_1CollisionSystem" id="aecs_1_1CollisionSystem">
+<area shape="rect" href="classecs_1_1CollisionSystem.html" title="Detects and processes collisions between entities." alt="" coords="5,5,163,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_1.png" border="0" usemap="#aecs_1_1Direction" alt=""/>
+<map name="aecs_1_1Direction" id="aecs_1_1Direction">
+<area shape="rect" href="classecs_1_1Direction.html" title="Represents a 2D direction with x and y components." alt="" coords="5,5,116,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_2.png" border="0" usemap="#aecs_1_1ECS" alt=""/>
 <map name="aecs_1_1ECS" id="aecs_1_1ECS">
-<area shape="rect" href="classecs_1_1ECS.html" title=" " alt="" coords="5,5,83,32"/>
+<area shape="rect" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture." alt="" coords="5,5,83,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_1.png" border="0" usemap="#aecs_1_1ERROR_1_1BindFailedExceptions" alt=""/>
-<map name="aecs_1_1ERROR_1_1BindFailedExceptions" id="aecs_1_1ERROR_1_1BindFailedExceptions">
-<area shape="rect" title=" " alt="" coords="5,476,120,503"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1BindFailedExceptions.html" title=" " alt="" coords="168,5,411,32"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html" title=" " alt="" coords="184,57,395,98"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html" title=" " alt="" coords="185,122,394,163"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html" title=" " alt="" coords="193,187,386,229"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html" title=" " alt="" coords="187,253,392,294"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html" title=" " alt="" coords="186,318,393,359"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1RecvExceptions.html" title=" " alt="" coords="185,384,393,411"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html" title=" " alt="" coords="172,435,407,477"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html" title=" " alt="" coords="183,501,396,542"/>
-<area shape="rect" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html" title=" " alt="" coords="172,566,407,607"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html" title=" " alt="" coords="188,631,391,673"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html" title=" " alt="" coords="183,697,395,738"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html" title=" " alt="" coords="187,762,392,803"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html" title=" " alt="" coords="195,827,384,869"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html" title=" " alt="" coords="181,893,398,934"/>
-<area shape="rect" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html" title=" " alt="" coords="187,958,392,999"/>
+<tr><td><img src="inherit_graph_3.png" border="0" usemap="#aecs_1_1Entity" alt=""/>
+<map name="aecs_1_1Entity" id="aecs_1_1Entity">
+<area shape="rect" href="classecs_1_1Entity.html" title="Represents a unique entity in the ECS framework." alt="" coords="5,5,96,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_2.png" border="0" usemap="#aecs_1_1udp_1_1Message" alt=""/>
+<tr><td><img src="inherit_graph_4.png" border="0" usemap="#aecs_1_1Playable" alt=""/>
+<map name="aecs_1_1Playable" id="aecs_1_1Playable">
+<area shape="rect" href="classecs_1_1Playable.html" title="Represents a playable entity in the game." alt="" coords="5,5,113,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_5.png" border="0" usemap="#aecs_1_1Position" alt=""/>
+<map name="aecs_1_1Position" id="aecs_1_1Position">
+<area shape="rect" href="classecs_1_1Position.html" title="Represents a 2D position with X and Y coordinates." alt="" coords="5,5,109,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_6.png" border="0" usemap="#aecs_1_1PositionSystem" alt=""/>
+<map name="aecs_1_1PositionSystem" id="aecs_1_1PositionSystem">
+<area shape="rect" href="classecs_1_1PositionSystem.html" title="Handles position updates for entities in the ECS framework." alt="" coords="5,5,159,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_7.png" border="0" usemap="#aecs_1_1SparseArray_3_01T_01_4" alt=""/>
+<map name="aecs_1_1SparseArray_3_01T_01_4" id="aecs_1_1SparseArray_3_01T_01_4">
+<area shape="rect" href="classecs_1_1SparseArray.html" title="SparseArray template class." alt="" coords="5,5,175,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_8.png" border="0" usemap="#aecs_1_1udp_1_1Message" alt=""/>
 <map name="aecs_1_1udp_1_1Message" id="aecs_1_1udp_1_1Message">
-<area shape="rect" href="structecs_1_1udp_1_1Message.html" title=" " alt="" coords="5,5,148,32"/>
+<area shape="rect" href="structecs_1_1udp_1_1Message.html" title=" " alt="" coords="5,5,148,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_3.png" border="0" usemap="#aecs_1_1udp_1_1MessageCompressor" alt=""/>
+<tr><td><img src="inherit_graph_9.png" border="0" usemap="#aecs_1_1udp_1_1MessageCompressor" alt=""/>
 <map name="aecs_1_1udp_1_1MessageCompressor" id="aecs_1_1udp_1_1MessageCompressor">
-<area shape="rect" href="classecs_1_1udp_1_1MessageCompressor.html" title=" " alt="" coords="5,5,225,32"/>
+<area shape="rect" href="classecs_1_1udp_1_1MessageCompressor.html" title="Handles serialization and deserialization of messages for network transmission." alt="" coords="5,5,225,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_4.png" border="0" usemap="#aecs_1_1udp_1_1UDP__Manager" alt=""/>
-<map name="aecs_1_1udp_1_1UDP__Manager" id="aecs_1_1udp_1_1UDP__Manager">
-<area shape="rect" href="classecs_1_1udp_1_1UDP__Manager.html" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="5,31,181,57"/>
-<area shape="rect" href="classecs_1_1udp_1_1UDP__Client.html" title=" " alt="" coords="231,5,389,32"/>
-<area shape="rect" href="classecs_1_1udp_1_1UDP__Server.html" title=" " alt="" coords="229,56,391,83"/>
+<tr><td><img src="inherit_graph_10.png" border="0" usemap="#aecs_1_1Velocity" alt=""/>
+<map name="aecs_1_1Velocity" id="aecs_1_1Velocity">
+<area shape="rect" href="classecs_1_1Velocity.html" title="Represents the velocity of an entity." alt="" coords="5,5,109,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_5.png" border="0" usemap="#artype_1_1MessageChecker" alt=""/>
+<tr><td><img src="inherit_graph_11.png" border="0" usemap="#artype_1_1Background" alt=""/>
+<map name="artype_1_1Background" id="artype_1_1Background">
+<area shape="rect" href="classrtype_1_1Background.html" title=" " alt="" coords="5,5,147,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_12.png" border="0" usemap="#artype_1_1Client" alt=""/>
+<map name="artype_1_1Client" id="artype_1_1Client">
+<area shape="rect" href="classrtype_1_1Client.html" title=" " alt="" coords="5,5,108,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_13.png" border="0" usemap="#artype_1_1Command__checker" alt=""/>
+<map name="artype_1_1Command__checker" id="artype_1_1Command__checker">
+<area shape="rect" href="classrtype_1_1Command__checker.html" title=" " alt="" coords="5,5,193,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_14.png" border="0" usemap="#artype_1_1DirectionSystem" alt=""/>
+<map name="artype_1_1DirectionSystem" id="artype_1_1DirectionSystem">
+<area shape="rect" href="classrtype_1_1DirectionSystem.html" title=" " alt="" coords="5,5,177,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_15.png" border="0" usemap="#artype_1_1Displayable" alt=""/>
+<map name="artype_1_1Displayable" id="artype_1_1Displayable">
+<area shape="rect" href="classrtype_1_1Displayable.html" title=" " alt="" coords="5,5,147,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_16.png" border="0" usemap="#artype_1_1EventBus" alt=""/>
+<map name="artype_1_1EventBus" id="artype_1_1EventBus">
+<area shape="rect" href="classrtype_1_1EventBus.html" title=" " alt="" coords="5,5,131,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_17.png" border="0" usemap="#artype_1_1EventWindow" alt=""/>
+<map name="artype_1_1EventWindow" id="artype_1_1EventWindow">
+<area shape="rect" href="classrtype_1_1EventWindow.html" title=" " alt="" coords="5,5,159,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_18.png" border="0" usemap="#artype_1_1Health" alt=""/>
+<map name="artype_1_1Health" id="artype_1_1Health">
+<area shape="rect" href="classrtype_1_1Health.html" title=" " alt="" coords="5,5,112,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_19.png" border="0" usemap="#artype_1_1Hitbox" alt=""/>
+<map name="artype_1_1Hitbox" id="artype_1_1Hitbox">
+<area shape="rect" href="classrtype_1_1Hitbox.html" title=" " alt="" coords="5,5,112,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_20.png" border="0" usemap="#artype_1_1MessageChecker" alt=""/>
 <map name="artype_1_1MessageChecker" id="artype_1_1MessageChecker">
-<area shape="rect" href="classrtype_1_1MessageChecker.html" title=" " alt="" coords="5,5,180,32"/>
+<area shape="rect" href="classrtype_1_1MessageChecker.html" title=" " alt="" coords="5,5,180,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_6.png" border="0" usemap="#artype_1_1Room" alt=""/>
+<tr><td><img src="inherit_graph_21.png" border="0" usemap="#artype_1_1RenderWindow" alt=""/>
+<map name="artype_1_1RenderWindow" id="artype_1_1RenderWindow">
+<area shape="rect" href="classrtype_1_1RenderWindow.html" title=" " alt="" coords="5,5,168,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_22.png" border="0" usemap="#artype_1_1Room" alt=""/>
 <map name="artype_1_1Room" id="artype_1_1Room">
-<area shape="rect" href="classrtype_1_1Room.html" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" href="classrtype_1_1Room.html" title=" " alt="" coords="5,5,108,31"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_7.png" border="0" usemap="#artype_1_1Server" alt=""/>
+<tr><td><img src="inherit_graph_23.png" border="0" usemap="#artype_1_1Server" alt=""/>
 <map name="artype_1_1Server" id="artype_1_1Server">
-<area shape="rect" href="classrtype_1_1Server.html" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" href="classrtype_1_1Server.html" title=" " alt="" coords="5,5,112,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_24.png" border="0" usemap="#artype_1_1Sprite" alt=""/>
+<map name="artype_1_1Sprite" id="artype_1_1Sprite">
+<area shape="rect" href="classrtype_1_1Sprite.html" title=" " alt="" coords="5,5,108,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_25.png" border="0" usemap="#artype_1_1SpriteFactory" alt=""/>
+<map name="artype_1_1SpriteFactory" id="artype_1_1SpriteFactory">
+<area shape="rect" href="classrtype_1_1SpriteFactory.html" title=" " alt="" coords="5,5,155,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_26.png" border="0" usemap="#artype_1_1Timer" alt=""/>
+<map name="artype_1_1Timer" id="artype_1_1Timer">
+<area shape="rect" href="classrtype_1_1Timer.html" title=" " alt="" coords="5,5,108,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_27.png" border="0" usemap="#artype_1_1UpdateEntitySystem" alt=""/>
+<map name="artype_1_1UpdateEntitySystem" id="artype_1_1UpdateEntitySystem">
+<area shape="rect" href="classrtype_1_1UpdateEntitySystem.html" title=" " alt="" coords="5,5,204,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_28.png" border="0" usemap="#artype_1_1Utils" alt=""/>
+<map name="artype_1_1Utils" id="artype_1_1Utils">
+<area shape="rect" href="classrtype_1_1Utils.html" title=" " alt="" coords="5,5,100,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_29.png" border="0" usemap="#artype_1_1Window" alt=""/>
+<map name="artype_1_1Window" id="artype_1_1Window">
+<area shape="rect" href="classrtype_1_1Window.html" title="Manages an SFML window and event queue for rendering and input handling." alt="" coords="5,5,121,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_30.png" border="0" usemap="#astd_1_1exception" alt=""/>
+<map name="astd_1_1exception" id="astd_1_1exception">
+<area shape="rect" title=" " alt="" coords="5,689,120,715"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1BindFailedExceptions.html" title="Exception for failed socket binding." alt="" coords="168,5,411,31"/>
+<area shape="poly" title=" " alt="" coords="62,675,66,542,81,352,94,254,112,165,136,92,150,63,166,41,182,29,186,33,170,45,155,66,141,94,117,166,99,255,86,353,72,543,67,675"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html" title="Exception for errors parsing the configuration file." alt="" coords="184,55,395,95"/>
+<area shape="poly" title=" " alt="" coords="62,675,69,554,86,384,100,296,117,217,139,151,152,125,166,106,182,92,186,96,170,109,156,128,144,153,122,218,105,297,92,384,75,555,68,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html" title="Exception for errors reading the configuration file." alt="" coords="185,119,394,159"/>
+<area shape="poly" title=" " alt="" coords="63,676,72,567,90,415,104,338,121,267,141,209,166,170,183,156,186,160,170,173,146,212,126,269,109,339,95,416,77,567,68,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html" title="Exception for missing components." alt="" coords="188,183,391,223"/>
+<area shape="poly" title=" " alt="" coords="64,675,74,578,94,446,108,379,125,318,144,268,166,234,186,218,189,223,170,237,149,270,130,320,113,380,100,447,80,579,69,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html" title="Exception for duplicate component types." alt="" coords="184,247,395,287"/>
+<area shape="poly" title=" " alt="" coords="65,675,77,590,99,477,128,369,146,327,166,298,182,285,185,289,170,301,151,329,134,371,104,478,83,591,70,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html" title="Exception for out&#45;of&#45;range entity IDs." alt="" coords="191,311,387,351"/>
+<area shape="poly" title=" " alt="" coords="61,675,66,612,80,527,93,482,112,438,136,397,166,361,189,345,192,350,170,365,140,401,116,441,99,484,85,529,71,612,67,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html" title="Exception for invalid address format." alt="" coords="193,375,386,415"/>
+<area shape="poly" title=" " alt="" coords="64,675,72,622,89,555,102,520,119,485,140,453,166,425,191,409,194,414,170,429,145,457,124,488,107,522,94,557,77,623,69,676"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html" title="Exception for invalid IP addresses." alt="" coords="187,439,392,479"/>
+<area shape="poly" title=" " alt="" coords="67,675,78,634,98,584,127,533,145,510,166,489,185,477,188,482,170,493,149,513,131,536,103,586,84,636,72,677"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1MessageTooBigExceptions.html" title="Exception for messages exceeding buffer size." alt="" coords="186,503,393,543"/>
+<area shape="poly" title=" " alt="" coords="73,675,109,614,135,581,166,553,188,541,190,546,170,558,139,585,113,617,77,678"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1RecvExceptions.html" title="Exception for failed reception of data." alt="" coords="185,568,393,593"/>
+<area shape="poly" title=" " alt="" coords="81,677,118,639,141,620,167,604,199,591,201,596,169,608,144,624,121,643,85,680"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html" title="Exception for uninitialized socket operations." alt="" coords="172,618,407,658"/>
+<area shape="poly" title=" " alt="" coords="117,683,167,667,210,655,212,661,169,673,118,688"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html" title="Exception for buffer size exceeding safe UDP message size." alt="" coords="183,682,396,722"/>
+<area shape="poly" title=" " alt="" coords="134,699,183,699,183,705,134,705"/>
+<area shape="rect" href="classecs_1_1ERROR_1_1WrongConfigurationExceptions.html" title="Exception for incorrect or missing configuration settings." alt="" coords="172,746,407,786"/>
+<area shape="poly" title=" " alt="" coords="118,716,169,731,212,743,210,749,167,737,117,721"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1FailedToInitializeClientExceptions.html" title=" " alt="" coords="177,810,402,850"/>
+<area shape="poly" title=" " alt="" coords="85,724,122,761,169,796,196,807,193,812,167,800,119,765,82,728"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1FailedToInitializeServerExceptions.html" title=" " alt="" coords="177,874,402,914"/>
+<area shape="poly" title=" " alt="" coords="76,726,111,794,137,830,170,860,190,872,187,876,166,864,133,833,106,797,71,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1InvalidActionExceptions.html" title=" " alt="" coords="188,938,391,978"/>
+<area shape="poly" title=" " alt="" coords="71,728,82,771,101,824,130,878,148,903,170,924,189,937,186,941,166,928,144,906,125,881,96,826,77,772,66,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html" title=" " alt="" coords="197,1002,381,1042"/>
+<area shape="poly" title=" " alt="" coords="68,728,75,783,92,853,105,890,122,926,144,959,170,988,199,1006,196,1010,166,992,139,962,118,928,100,892,87,855,70,784,63,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html" title=" " alt="" coords="193,1066,386,1106"/>
+<area shape="poly" title=" " alt="" coords="66,728,70,794,84,881,97,927,115,973,139,1015,170,1052,194,1068,191,1073,166,1056,135,1018,110,975,92,929,78,882,64,794,61,728"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html" title=" " alt="" coords="183,1130,395,1170"/>
+<area shape="poly" title=" " alt="" coords="70,728,82,815,103,932,133,1044,150,1087,170,1116,185,1128,182,1132,166,1120,146,1090,128,1046,98,933,77,816,64,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html" title=" " alt="" coords="187,1194,392,1234"/>
+<area shape="poly" title=" " alt="" coords="69,728,79,828,99,964,113,1033,129,1095,148,1146,170,1180,188,1194,185,1198,166,1184,143,1148,124,1097,107,1034,94,965,74,829,64,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1RoomIsFullExceptions.html" title=" " alt="" coords="195,1258,384,1298"/>
+<area shape="poly" title=" " alt="" coords="68,728,76,839,95,995,108,1074,125,1146,146,1205,170,1244,196,1262,193,1267,166,1248,141,1207,120,1147,103,1075,89,995,71,840,63,728"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html" title=" " alt="" coords="181,1322,398,1362"/>
+<area shape="poly" title=" " alt="" coords="68,728,74,852,91,1026,104,1115,121,1197,143,1263,156,1289,170,1308,183,1320,180,1324,166,1312,151,1292,138,1265,116,1198,99,1116,85,1027,69,852,62,729"/>
+<area shape="rect" href="classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html" title=" " alt="" coords="187,1386,392,1426"/>
+<area shape="poly" title=" " alt="" coords="67,728,72,863,87,1056,100,1156,118,1247,141,1322,155,1351,170,1372,188,1387,185,1391,166,1376,150,1353,136,1324,112,1248,95,1157,81,1057,66,863,62,729"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_31.png" border="0" usemap="#aUDP__Manager" alt=""/>
+<map name="aUDP__Manager" id="aUDP__Manager">
+<area shape="rect" href="classUDP__Manager.html" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="5,31,120,56"/>
+<area shape="rect" href="classUDP__Client.html" title="Implements a non&#45;blocking UDP client for sending and receiving messages." alt="" coords="201,5,296,31"/>
+<area shape="poly" title=" " alt="" coords="133,31,201,22,201,27,134,36"/>
+<area shape="rect" href="classecs_1_1udp_1_1UDP__Server.html" title="Implements a non&#45;blocking UDP server for receiving and sending messages." alt="" coords="168,55,329,80"/>
+<area shape="poly" title=" " alt="" coords="134,50,168,54,167,60,133,55"/>
 </map>
 </td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

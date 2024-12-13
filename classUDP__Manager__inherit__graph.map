@@ -1,0 +1,7 @@
+<map id="UDP_Manager" name="UDP_Manager">
+<area shape="rect" id="Node000001" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="71,5,186,31"/>
+<area shape="rect" id="Node000002" href="$classUDP__Client.html" title="Implements a non&#45;blocking UDP client for sending and receiving messages." alt="" coords="5,79,100,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,42,67,80,63,76,105,38"/>
+<area shape="rect" id="Node000003" href="$classecs_1_1udp_1_1UDP__Server.html" title="Implements a non&#45;blocking UDP server for receiving and sending messages." alt="" coords="124,79,285,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,38,194,76,190,80,149,42"/>
+</map>

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['main_167',['main',['../client_2Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Main.cpp'],['../server_2Main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Main.cpp']]],
-  ['messagechecker_168',['MessageChecker',['../classrtype_1_1MessageChecker.html#a155c689c82566914b6e07fa9900ea9e7',1,'rtype::MessageChecker']]],
-  ['messagecompressor_169',['MessageCompressor',['../classecs_1_1udp_1_1MessageCompressor.html#ae6815d060f84280ea3db000c33f877db',1,'ecs::udp::MessageCompressor']]],
-  ['messagetoobigexceptions_170',['MessageTooBigExceptions',['../classecs_1_1ERROR_1_1MessageTooBigExceptions.html#a21d4386f421b34c93df5f08e9b293913',1,'ecs::ERROR::MessageTooBigExceptions']]],
-  ['missingroomsparamsexceptions_171',['MissingRoomsParamsExceptions',['../classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html#a12c31394e58bdc086d4e1037c10f8568',1,'rtype::ERROR::MissingRoomsParamsExceptions']]]
+  ['handle_5fevent_0',['handle_event',['../classrtype_1_1Client.html#aa61d62e46c3604cecf2a8f0610c0b1c0',1,'rtype::Client']]],
+  ['handle_5fmessage_1',['handle_message',['../classrtype_1_1Client.html#af268aedef58def2a1a11887403ed8477',1,'rtype::Client']]],
+  ['has_2',['has',['../classecs_1_1SparseArray.html#afcd962364e142d19175d6e2f98c23f75',1,'ecs::SparseArray']]],
+  ['health_3',['Health',['../classrtype_1_1Health.html#a68c36d2d294ae04973c761030fd23e2a',1,'rtype::Health']]],
+  ['hitbox_4',['Hitbox',['../classrtype_1_1Hitbox.html#a074576b7cd82ea23acfc5c299765357c',1,'rtype::Hitbox']]]
 ];

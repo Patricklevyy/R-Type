@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['udp_5fclient_116',['UDP_Client',['../classecs_1_1udp_1_1UDP__Client.html',1,'ecs::udp']]],
-  ['udp_5fmanager_117',['UDP_Manager',['../classecs_1_1udp_1_1UDP__Manager.html',1,'ecs::udp']]],
-  ['udp_5fserver_118',['UDP_Server',['../classecs_1_1udp_1_1UDP__Server.html',1,'ecs::udp']]]
+  ['message_0',['Message',['../structecs_1_1udp_1_1Message.html',1,'ecs::udp']]],
+  ['messagechecker_1',['MessageChecker',['../classrtype_1_1MessageChecker.html',1,'rtype']]],
+  ['messagecompressor_2',['MessageCompressor',['../classecs_1_1udp_1_1MessageCompressor.html',1,'ecs::udp']]],
+  ['messagetoobigexceptions_3',['MessageTooBigExceptions',['../classecs_1_1ERROR_1_1MessageTooBigExceptions.html',1,'ecs::ERROR']]],
+  ['missingportparamsexceptions_4',['MissingPortParamsExceptions',['../classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html',1,'rtype::ERROR']]],
+  ['missingroomsparamsexceptions_5',['MissingRoomsParamsExceptions',['../classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html',1,'rtype::ERROR']]]
 ];

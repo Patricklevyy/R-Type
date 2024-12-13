@@ -1,12 +1,28 @@
 <map id="ecs/udp/MessageCompressor.hpp" name="ecs/udp/MessageCompressor.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="297,5,536,32"/>
-<area shape="rect" id="node2" href="$client_2Main_8cpp.html" title=" " alt="" coords="15,87,218,114"/>
-<area shape="rect" id="node3" href="$MessageChecker_8hpp.html" title=" " alt="" coords="243,80,449,121"/>
-<area shape="rect" id="node7" href="$Server_8hpp.html" title=" " alt="" coords="379,259,598,285"/>
-<area shape="rect" id="node10" href="$MessageCompressor_8cpp.html" title=" " alt="" coords="527,87,765,114"/>
-<area shape="rect" id="node4" href="$MessageChecker_8cpp.html" title=" " alt="" coords="5,169,212,211"/>
-<area shape="rect" id="node5" href="$Room_8hpp.html" title=" " alt="" coords="236,177,451,203"/>
-<area shape="rect" id="node6" href="$Room_8cpp.html" title=" " alt="" coords="140,259,355,285"/>
-<area shape="rect" id="node8" href="$server_2Main_8cpp.html" title=" " alt="" coords="266,333,474,360"/>
-<area shape="rect" id="node9" href="$Server_8cpp.html" title=" " alt="" coords="499,333,716,360"/>
+<area shape="rect" id="Node000001" title="Provides serialization and deserialization of UDP messages for network communication." alt="" coords="408,5,647,31"/>
+<area shape="rect" id="Node000002" href="$MessageCompressor_8cpp.html" title=" " alt="" coords="108,86,347,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="471,37,272,89,270,83,470,31"/>
+<area shape="rect" id="Node000003" href="$Client_8hpp.html" title=" " alt="" coords="163,174,374,199"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="490,39,411,81,385,100,360,121,286,176,283,171,356,117,382,96,409,76,488,34"/>
+<area shape="rect" id="Node000006" href="$Room_8hpp.html" title=" " alt="" coords="633,174,848,199"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="571,34,609,52,646,77,674,101,699,127,735,172,730,175,695,131,670,105,643,81,606,57,568,38"/>
+<area shape="rect" id="Node000008" href="$Server_8hpp.html" title=" " alt="" coords="777,255,995,280"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="611,31,674,49,742,75,808,114,837,138,863,165,876,187,884,212,889,254,883,255,878,213,871,190,859,168,833,141,805,118,740,80,672,54,610,36"/>
+<area shape="rect" id="Node000011" href="$MessageChecker_8hpp.html" title=" " alt="" coords="422,79,633,119"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="530,44,530,79,525,79,525,44"/>
+<area shape="rect" id="Node000004" href="$Client_8cpp.html" title=" " alt="" coords="5,255,215,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="235,208,134,257,132,252,232,203"/>
+<area shape="rect" id="Node000005" href="$client_2Main_8cpp.html" title=" " alt="" coords="239,255,442,280"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="291,208,332,253,328,256,287,211"/>
+<area shape="rect" id="Node000007" href="$Room_8cpp.html" title=" " alt="" coords="537,255,752,280"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="718,210,661,257,657,252,714,206"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="775,204,866,252,863,257,773,208"/>
+<area shape="rect" id="Node000009" href="$server_2Main_8cpp.html" title=" " alt="" coords="663,328,871,353"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="856,289,788,330,785,325,854,285"/>
+<area shape="rect" id="Node000010" href="$Server_8cpp.html" title=" " alt="" coords="896,328,1113,353"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="918,285,987,325,984,330,916,289"/>
+<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="458,126,304,177,302,171,457,120"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="588,121,713,172,711,176,586,126"/>
+<area shape="rect" id="Node000012" href="$MessageChecker_8cpp.html" title=" " alt="" coords="398,167,609,207"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="521,133,511,167,506,166,516,131"/>
 </map>

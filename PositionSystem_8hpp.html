@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE: Référence du fichier ecs/system/PositionSystem.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Une brève description du projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('PositionSystem_8hpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Espaces de nommage</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier PositionSystem.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Updates entity positions based on their velocities and directions.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="Includes__ecs_8hpp_source.html">../Includes_ecs.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Enums__ecs_8hpp_source.html">../Enums_ecs.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Entity_8hpp_source.html">../components/Entity.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Position_8hpp_source.html">../components/Position.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Velocity_8hpp_source.html">../components/Velocity.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Direction_8hpp_source.html">../components/Direction.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Playable_8hpp_source.html">../components/Playable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SparseArray_8hpp_source.html">../SparseArray.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de PositionSystem.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="PositionSystem_8hpp__incl.png" border="0" usemap="#aecs_2system_2PositionSystem_8hpp" alt=""/></div>
+<map name="aecs_2system_2PositionSystem_8hpp" id="aecs_2system_2PositionSystem_8hpp">
+<area shape="rect" title="Updates entity positions based on their velocities and directions." alt="" coords="2234,5,2463,31"/>
+<area shape="rect" href="Includes__ecs_8hpp.html" title=" " alt="" coords="1199,152,1344,177"/>
+<area shape="poly" title=" " alt="" coords="2264,33,1358,154,1357,149,2263,28"/>
+<area shape="rect" href="Enums__ecs_8hpp.html" title=" " alt="" coords="2169,152,2304,177"/>
+<area shape="poly" title=" " alt="" coords="2266,33,2181,52,2147,65,2127,80,2122,90,2122,99,2133,116,2157,132,2186,145,2184,150,2155,137,2130,120,2116,100,2117,89,2123,77,2145,61,2180,47,2265,28"/>
+<area shape="rect" href="Entity_8hpp.html" title="Defines the Entity class for the ECS framework." alt="" coords="2367,79,2549,104"/>
+<area shape="poly" title=" " alt="" coords="2368,28,2430,69,2427,73,2365,33"/>
+<area shape="rect" href="Position_8hpp.html" title="Defines the Position component for 2D positioning." alt="" coords="2573,79,2772,104"/>
+<area shape="poly" title=" " alt="" coords="2401,28,2607,73,2606,78,2400,33"/>
+<area shape="rect" href="Velocity_8hpp.html" title="Defines the Velocity component for movement speed." alt="" coords="2796,79,2992,104"/>
+<area shape="poly" title=" " alt="" coords="2437,28,2793,74,2792,80,2436,33"/>
+<area shape="rect" href="Direction_8hpp.html" title="Defines the Direction component used for managing directional movement." alt="" coords="2137,79,2342,104"/>
+<area shape="poly" title=" " alt="" coords="2333,33,2270,73,2267,69,2330,28"/>
+<area shape="rect" href="Playable_8hpp.html" title="Defines the Playable component, representing a playable entity." alt="" coords="3017,79,3219,104"/>
+<area shape="poly" title=" " alt="" coords="2464,27,3003,76,3002,81,2463,32"/>
+<area shape="rect" href="SparseArray_8hpp.html" title="Defines a sparse array template for efficient data storage." alt="" coords="1923,79,2062,104"/>
+<area shape="poly" title=" " alt="" coords="2292,33,2064,79,2063,73,2291,28"/>
+<area shape="rect" title=" " alt="" coords="615,225,695,251"/>
+<area shape="poly" title=" " alt="" coords="1199,174,983,193,848,208,709,228,708,223,848,203,983,188,1198,168"/>
+<area shape="rect" title=" " alt="" coords="719,225,778,251"/>
+<area shape="poly" title=" " alt="" coords="1199,174,1018,193,907,208,792,228,791,223,906,203,1017,188,1198,169"/>
+<area shape="rect" title=" " alt="" coords="803,225,905,251"/>
+<area shape="poly" title=" " alt="" coords="1202,180,920,228,919,222,1201,175"/>
+<area shape="rect" title=" " alt="" coords="929,225,1021,251"/>
+<area shape="poly" title=" " alt="" coords="1224,180,1036,225,1034,220,1223,175"/>
+<area shape="rect" title=" " alt="" coords="1046,225,1121,251"/>
+<area shape="poly" title=" " alt="" coords="1242,180,1128,223,1126,218,1240,175"/>
+<area shape="rect" title=" " alt="" coords="1145,225,1256,251"/>
+<area shape="poly" title=" " alt="" coords="1262,180,1224,218,1220,214,1258,176"/>
+<area shape="rect" title=" " alt="" coords="1280,225,1404,251"/>
+<area shape="poly" title=" " alt="" coords="1285,176,1323,214,1319,218,1281,180"/>
+<area shape="rect" title=" " alt="" coords="1429,225,1479,251"/>
+<area shape="poly" title=" " alt="" coords="1302,175,1416,219,1415,224,1300,180"/>
+<area shape="rect" title=" " alt="" coords="1504,225,1567,251"/>
+<area shape="poly" title=" " alt="" coords="1314,175,1491,222,1490,227,1313,180"/>
+<area shape="rect" title=" " alt="" coords="1591,225,1658,251"/>
+<area shape="poly" title=" " alt="" coords="1335,175,1579,223,1579,223,1578,228,1577,228,1334,180"/>
+<area shape="rect" title=" " alt="" coords="2067,225,2153,251"/>
+<area shape="poly" title=" " alt="" coords="1345,166,1649,183,1848,199,2053,223,2052,228,1848,204,1649,188,1344,171"/>
+<area shape="rect" title=" " alt="" coords="2178,225,2221,251"/>
+<area shape="poly" title=" " alt="" coords="1344,166,1754,184,1986,201,2165,223,2164,228,1985,207,1754,190,1344,171"/>
+<area shape="rect" title=" " alt="" coords="1896,225,1943,251"/>
+<area shape="poly" title=" " alt="" coords="1344,165,1580,181,1730,198,1883,223,1882,228,1729,203,1580,186,1344,171"/>
+<area shape="rect" title=" " alt="" coords="1967,225,2042,251"/>
+<area shape="poly" title=" " alt="" coords="1345,166,1614,184,1784,200,1954,223,1955,223,1954,228,1954,228,1783,206,1613,189,1344,172"/>
+<area shape="rect" title=" " alt="" coords="1683,225,1769,251"/>
+<area shape="poly" title=" " alt="" coords="1345,173,1670,223,1669,228,1344,178"/>
+<area shape="rect" title=" " alt="" coords="1794,225,1871,251"/>
+<area shape="poly" title=" " alt="" coords="1344,170,1537,189,1781,223,1780,228,1537,195,1344,175"/>
+<area shape="rect" title=" " alt="" coords="5,225,68,251"/>
+<area shape="poly" title=" " alt="" coords="1198,170,648,189,327,206,190,216,82,228,81,223,189,211,327,200,648,183,1198,165"/>
+<area shape="rect" title=" " alt="" coords="93,225,157,251"/>
+<area shape="poly" title=" " alt="" coords="1199,168,1019,168,766,175,472,193,320,208,170,228,170,223,320,203,472,188,766,170,1019,163,1199,162"/>
+<area shape="rect" title=" " alt="" coords="181,225,324,251"/>
+<area shape="poly" title=" " alt="" coords="1199,172,834,190,590,206,338,228,338,223,589,201,833,185,1198,166"/>
+<area shape="rect" title=" " alt="" coords="349,225,413,251"/>
+<area shape="poly" title=" " alt="" coords="1198,169,1058,173,868,182,650,200,427,228,426,223,650,194,867,177,1058,168,1198,164"/>
+<area shape="rect" title=" " alt="" coords="437,225,503,251"/>
+<area shape="poly" title=" " alt="" coords="1199,170,904,185,713,202,517,228,517,223,713,197,904,180,1198,165"/>
+<area shape="rect" title=" " alt="" coords="528,225,591,251"/>
+<area shape="poly" title=" " alt="" coords="1198,171,940,188,775,204,605,228,604,223,774,199,939,182,1198,166"/>
+<area shape="poly" title=" " alt="" coords="2242,104,2240,139,2235,138,2236,104"/>
+<area shape="poly" title=" " alt="" coords="1923,102,1358,158,1358,152,1923,97"/>
+<area shape="poly" title=" " alt="" coords="2004,103,2094,213,2090,216,2000,106"/>
+<area shape="poly" title=" " alt="" coords="2011,102,2173,215,2170,219,2008,106"/>
+<area shape="poly" title=" " alt="" coords="1989,106,1934,214,1929,212,1984,103"/>
+<area shape="poly" title=" " alt="" coords="1996,104,2005,211,2000,212,1991,105"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="PositionSystem_8hpp__dep__incl.png" border="0" usemap="#aecs_2system_2PositionSystem_8hppdep" alt=""/></div>
+<map name="aecs_2system_2PositionSystem_8hppdep" id="aecs_2system_2PositionSystem_8hppdep">
+<area shape="rect" title="Updates entity positions based on their velocities and directions." alt="" coords="343,5,573,31"/>
+<area shape="rect" href="Client_8hpp.html" title=" " alt="" coords="234,79,445,104"/>
+<area shape="poly" title=" " alt="" coords="428,40,360,81,357,76,426,35"/>
+<area shape="rect" href="Room_8hpp.html" title=" " alt="" coords="469,79,684,104"/>
+<area shape="poly" title=" " alt="" coords="490,35,559,76,556,81,488,40"/>
+<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="5,152,215,177"/>
+<area shape="poly" title=" " alt="" coords="290,111,148,154,146,149,288,106"/>
+<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="239,152,442,177"/>
+<area shape="poly" title=" " alt="" coords="342,118,343,152,338,152,337,118"/>
+<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="468,152,683,177"/>
+<area shape="poly" title=" " alt="" coords="579,118,578,152,573,152,574,118"/>
+<area shape="rect" href="Server_8hpp.html" title=" " alt="" coords="707,152,926,177"/>
+<area shape="poly" title=" " alt="" coords="629,105,779,149,777,154,628,110"/>
+<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="594,225,802,251"/>
+<area shape="poly" title=" " alt="" coords="787,187,719,227,716,223,784,182"/>
+<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="827,225,1044,251"/>
+<area shape="poly" title=" " alt="" coords="849,182,917,223,915,227,846,187"/>
+</map>
+</div>
+</div>
+<p><a href="PositionSystem_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html">ecs::PositionSystem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles position updates for entities in the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a> framework.  <a href="classecs_1_1PositionSystem.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Espaces de nommage</h2></td></tr>
+<tr class="memitem:namespaceecs" id="r_namespaceecs"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceecs.html">ecs</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Updates entity positions based on their velocities and directions. </p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_eafb92770fbc727220bdaa0b1292f771.html">ecs</a></li><li class="navelem"><a class="el" href="dir_75cc8c06ce7fff1dc644ddee93f72ba6.html">system</a></li><li class="navelem"><a class="el" href="PositionSystem_8hpp.html">PositionSystem.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
