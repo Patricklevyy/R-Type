@@ -38,6 +38,14 @@
             GET_ALL_ROOMS,
             MAX_ACTION
         };
+
+        enum RTYPE_SPRITE
+        {
+            UNDEFINED_SPRITE = -1,
+            SPACESHIP,
+            MONSTER,
+            MISSILE
+        };
     }
 
 #endif /* !ENUMS_HPP_ */
