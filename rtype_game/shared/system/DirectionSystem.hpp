@@ -21,7 +21,6 @@
             void updatePlayerDirection(std::unordered_map<std::type_index, std::any> &components_array, ecs::direction x, ecs::direction y, size_t index_player)
             {
                 auto &direction = std::any_cast<ecs::SparseArray<ecs::Direction> &>(components_array[typeid(ecs::Direction)]);
-                auto &playable = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
 
                 if (direction[index_player].has_value()) {
                     if (ecs::direction::NO_CHANGE != x)

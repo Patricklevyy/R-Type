@@ -22,6 +22,7 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
     #include "system/UpdateEntitySystem.hpp"
+    #include "../shared/components/Health.hpp"
 
     namespace rtype
     {
@@ -65,6 +66,7 @@
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
                 void send_server_player_direction(ecs::direction, ecs::direction);
+                void createTeammate(unsigned int, float, float);
         };
     }
 #endif /* !CLIENT_HPP_ */

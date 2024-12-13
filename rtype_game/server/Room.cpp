@@ -88,25 +88,15 @@ namespace rtype
 
     void Room::init_event_bus() {
         // SUBSCRIBE POSITION SYSTEM
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [](const std::vector<std::any>& args) {
-            try {
-                auto& ps = std::any_cast<std::reference_wrapper<ecs::PositionSystem>>(args[0]).get();
-                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[1]).get();
-                auto& timer = std::any_cast<std::reference_wrapper<rtype::Timer>>(args[2]).get();
-
-                ps.updatePositions(components, timer.getTps());
-            } catch (const std::bad_any_cast& e) {
-                std::cerr << "Error during event handling: " << e.what() << std::endl;
-            }
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any>& args) {
+            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps());
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any>& args) {
             try {
-                auto& components = std::any_cast<std::reference_wrapper<std::unordered_map<std::type_index, std::any>>>(args[0]).get();
-                auto& direction_system = std::any_cast<std::reference_wrapper<DirectionSystem>>(args[1]).get();
-                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[2]).get();
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = Utils::extractPlayerPosIndex(message.params, message.id);
 
-                direction_system.updatePlayerDirection(components, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
+                _direction_system.updatePlayerDirection(_ecs._components_arrays, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
@@ -119,7 +109,7 @@ namespace rtype
         _message_compressor.deserialize(compressed_message, message);
         std::cout << "new message in the ROOOM :" << message.id << "action : " << message.action << ", " << message.params << std::endl;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
-        _eventBus.emit(action, std::ref(_ecs._components_arrays), std::ref(_direction_system), std::ref(message));
+        _eventBus.emit(action, std::ref(message));
     }
 
     void Room::init_ecs_server_registry()
@@ -131,7 +121,6 @@ namespace rtype
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName)
     {
         _port = port;
-        Timer timer;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
 
         if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port))
@@ -142,16 +131,15 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_server_registry();
         _udp_server->startReceiving();
-        timer.init("rtype_game/config/server_config.conf", true);
+        _timer.init("rtype_game/config/server_config.conf", true);
         _game_running = true;
         createClient(lastClientAddr, clientName);
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
 
         while (_game_running) {
-            timer.waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_positon_system), std::ref(_ecs._components_arrays), std::ref(timer));
-            sendUpdate();
+            _timer.waitTPS();
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
@@ -160,6 +148,7 @@ namespace rtype
                     handleCommand(message, clientAddress);
                 }
             }
+            sendUpdate();
         }
         _udp_server->stopReceiving();
     }

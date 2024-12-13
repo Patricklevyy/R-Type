@@ -51,6 +51,7 @@
 
 
         private:
+            Timer _timer;
             int _port;
             unsigned int index_ecs = 0;
             std::shared_ptr<ecs::udp::UDP_Server> _udp_server;
