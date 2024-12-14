@@ -48,6 +48,7 @@
             std::string getAddress() const;
 
             void init_event_bus();
+            void sendExistingEntities(const std::string &, int);
 
 
         private:
