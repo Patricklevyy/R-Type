@@ -21,9 +21,12 @@
     #include "Command_checker.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
-    #include "system/UpdateEntitySystem.hpp"
+    #include "components/Background.hpp"
+    #include "components/Sprite.hpp"
+    #include "system/RenderWindow.hpp"
     #include "../shared/components/Health.hpp"
-
+    #include "system/UpdateEntitySystem.hpp"
+    #include "components/Displayable.hpp"
     namespace rtype
     {
         class Client
@@ -33,9 +36,6 @@
                 ~Client();
 
                 void start();
-
-                void init_ecs_client_registry();
-                void init_subscribe_event_bus();
 
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
@@ -61,12 +61,20 @@
                 EventWindow _event_window_system;
                 DirectionSystem _direction_system;
                 ecs::PositionSystem _position_system;
+                RenderWindow _render_window_system;
                 UpdateEntitySystem _update_entity_system;
 
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
                 void send_server_player_direction(ecs::direction, ecs::direction);
-                void createTeammate(unsigned int, float, float);
+                void createEntity(unsigned int, float, float, int);
+
+                // INITIALISATION
+
+                void init_all();
+                void init_window_and_background();
+                void init_ecs_client_registry();
+                void init_subscribe_event_bus();
         };
     }
 #endif /* !CLIENT_HPP_ */

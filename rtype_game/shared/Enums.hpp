@@ -36,13 +36,14 @@
             GET_WINDOW_EVENT,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
+            RENDER_WINDOW,
             MAX_ACTION
         };
 
-        enum RTYPE_SPRITE
+        enum SPRITES
         {
-            UNDEFINED_SPRITE = -1,
-            SPACESHIP,
+            BACKGROUND,
+            SHIP,
             MONSTER,
             MISSILE
         };

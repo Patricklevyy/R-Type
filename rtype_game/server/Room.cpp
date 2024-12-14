@@ -115,7 +115,6 @@ namespace rtype
     void Room::init_ecs_server_registry()
     {
         _ecs.addRegistry<Health>();
-        // INIT LES COMPONENT DU SERVER QUI SONT PAS COMMUN AVEC LE CLIENT
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName)
@@ -245,7 +244,7 @@ namespace rtype
         std::vector<char> send_message;
 
         create_player(index_ecs, position, clientName);
-        sendExistingEntities(lastclientAdr, RTYPE_SPRITE::SPACESHIP);
+        sendExistingEntities(lastclientAdr, SPRITES::SHIP);
 
         _message_compressor.serialize(mes, send_message);
         _clientAddresses.push_back(lastclientAdr);
@@ -292,7 +291,7 @@ namespace rtype
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
         mes.id = 0;
-        mes.params = updateMessage;
+        mes.params = updateMessage + ";port=" + std::to_string(_port);
         std::vector<char> send_message;
         _message_compressor.serialize(mes, send_message);
         _udp_server->sendMessage(send_message, clientAddress);

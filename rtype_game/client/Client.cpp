@@ -24,6 +24,7 @@ namespace rtype
     void Client::init_ecs_client_registry()
     {
         _ecs.addRegistry<Window>();
+        _ecs.addRegistry<Displayable>();
         _ecs.addRegistry<Health>();
     }
 
@@ -37,6 +38,10 @@ namespace rtype
             (void)args;
             _event_window_system.startListening(_ecs._components_arrays);
         });
+         _eventBus.subscribe(RTYPE_ACTIONS::STOP_LISTEN_EVENT, [this](const std::vector<std::any> &args) {
+            (void)args;
+            _event_window_system.stopListening();
+        });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, [this](const std::vector<std::any> &args) {
             try {
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = std::any_cast<std::reference_wrapper<std::tuple<ecs::direction, ecs::direction, size_t>>>(args[0]).get();
@@ -45,7 +50,7 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
+         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
             _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer());
         });
@@ -57,13 +62,14 @@ namespace rtype
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
-                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())])
-                        std::cout << "\n\n\n\n\n\n\njupdate le player " << std::get<0>(entities.front()) << " , " << ecs_server_to_client[std::get<0>(entities.front())] << std::endl;
-                        _update_entity_system.updateEntity(_ecs._components_arrays, entities.front());
+                    std::cout << _ecs.getIndexPlayer() << " , " << ecs_server_to_client[std::get<0>(entities.front())] << std::endl;
+                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())]) {
+                        _update_entity_system.updateEntity(_ecs._components_arrays, entities.front(), ecs_server_to_client[std::get<0>(entities.front())]);
+                    }
                     entities.pop_front();
                 }
             } catch (const std::bad_any_cast& e) {
-                std::cerr << "Error during event handling: " << e.what() << std::endl;
+                std::cerr << "Error during event handling: UPDATE POSSSS" << e.what() << std::endl;
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::CREATE_TEAMMATE, [this](const std::vector<std::any> &args) {
@@ -78,24 +84,26 @@ namespace rtype
                 float x = std::stof(x_part.substr(2));
                 float y = std::stof(y_part.substr(2));
 
-                createTeammate(message.id, x, y);
+                createEntity(message.id, x, y, SPRITES::SHIP);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER_WINDOW, [this](const std::vector<std::any>& args) {
+            (void)args;
+            _render_window_system.render(_ecs._components_arrays);
+        });
     }
 
-    void Client::createTeammate(unsigned int server_id, float x, float y)
+    void Client::createEntity(unsigned int server_id, float x, float y, int sprite_id)
     {
-        ecs::Direction direction;
-        ecs::Playable playable(_name);
         ecs::Position position(x, y);
-        ecs::Velocity velocity;
+        Displayable displayable(sprite_id, x ,y);
+        Health health;
 
-        _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
-        _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
-        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
+        _ecs.addComponents<Health>(_index_ecs_client, health);
+        _ecs.addComponents<Displayable>(_index_ecs_client, displayable);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
@@ -118,11 +126,15 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
+        Displayable displayable(1, x ,y);
+        Health health;
 
         _ecs.addComponents<ecs::Direction>(_index_ecs_client, direction);
         _ecs.addComponents<ecs::Playable>(_index_ecs_client, playable);
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, velocity);
         _ecs.addComponents<ecs::Position>(_index_ecs_client, position);
+        _ecs.addComponents<Displayable>(_index_ecs_client, displayable);
+        _ecs.addComponents<Health>(_index_ecs_client, health);
 
         ecs_server_to_client[server_id] = _index_ecs_client;
         ecs_client_to_server[_index_ecs_client] = server_id;
@@ -257,10 +269,17 @@ namespace rtype
         }
     }
 
-
-    void Client::start()
+    void Client::init_window_and_background()
     {
+        Window window(800, 800, "R-Type");
+        _ecs.addComponents<Window>(_index_ecs_client, window);
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::BACKGROUND, 0, 0));
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
+        _index_ecs_client++;
+    }
 
+    void Client::init_all()
+    {
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
         }
@@ -268,27 +287,30 @@ namespace rtype
         _udpClient->startReceiving();
         _ecs.init_basic_registry();
         init_ecs_client_registry();
+        init_window_and_background();
         init_subscribe_event_bus();
-        Window window(800, 600, "My ECS Client Window");
-        _ecs.addComponents<Window>(_index_ecs_client, window);
-        _index_ecs_client++;
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
+    }
+
+    void Client::start()
+    {
+        init_all();
 
         while (_running) {
             _timer->waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
             handle_event();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
-            _ecs.displayPlayableEntityComponents();
             auto messages = _udpClient->fetchAllMessages();
-            for (auto &[clientAddress, message] : messages)
-            {
+            for (auto &[clientAddress, message] : messages) {
                 try {
                     handle_message(message, clientAddress);
                 } catch (std::exception &e) {
                     std::cerr << std::endl << e.what() << std::endl;
                 }
             }
+            _ecs.displayPlayableEntityComponents();
+            _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
     }

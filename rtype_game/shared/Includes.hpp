@@ -25,6 +25,8 @@
     #include <SFML/Graphics.hpp>
     #include <any>
     #include <typeindex>
+    #include <memory>
+    #include <stdexcept>
 
     // FILES
 

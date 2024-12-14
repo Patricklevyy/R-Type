@@ -97,7 +97,6 @@
                 switch (directions[indexPlayer].value()._x) {
                 case direction::LEFT:
                     positions[indexPlayer].value()._pos_x -= velocities[indexPlayer].value().velocity / tickRate;
-                    ;
                     break;
                 case direction::RIGHT:
                     positions[indexPlayer].value()._pos_x += velocities[indexPlayer].value().velocity / tickRate;
