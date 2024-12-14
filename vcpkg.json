@@ -1,0 +1,10 @@
+{
+    "name": "rtype",
+    "version-string": "1.0.0",
+    "dependencies": [
+        "fmt",
+        "libconfig",
+        "sfml"
+    ],
+    "builtin-baseline": "26abb5b33f976246a5f2cdc45cdd073d51caff06"
+}
