@@ -12,6 +12,7 @@ var classrtype_1_1Room =
     [ "init_event_bus", "classrtype_1_1Room.html#a4a92b4ba7fc348f7d3348c725ded018a", null ],
     [ "operator=", "classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf", null ],
     [ "operator=", "classrtype_1_1Room.html#a8fb3336de82537acdda33d41daef4b02", null ],
+    [ "sendExistingEntities", "classrtype_1_1Room.html#a34d3c9c817aa724d3a254f669e99a043", null ],
     [ "sendMessage", "classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60", null ],
     [ "setNbClient", "classrtype_1_1Room.html#a1eb9e89215a2bdb7b1d15a96392acb36", null ],
     [ "start", "classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae", null ]
