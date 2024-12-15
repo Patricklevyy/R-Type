@@ -9,22 +9,29 @@
     #define SPRITEFACTORY_HPP_
 
     #include "../shared/Includes.hpp"
+    #include "../shared/Enums.hpp"
 
     namespace rtype
     {
         class SpriteFactory
             {
             public:
-                static std::shared_ptr<sf::Sprite> createSprite(int id)
+                static std::shared_ptr<sf::Sprite> createSprite(SPRITES id)
                 {
                     std::string texturePath;
                     switch (id)
                     {
-                    case 0:
+                    case SPRITES::BACKGROUND:
                         texturePath = "assets/background.png";
                         break;
-                    case 1:
+                    case SPRITES::SHIP:
                         texturePath = "assets/red_ship.png";
+                        break;
+                    // case SPRITES::MONSTER:
+                    //     texturePath = "assets/red_ship.png"; sprite a definir
+                    //     break;
+                    case SPRITES::MISSILE:
+                        texturePath = "assets/life.png";
                         break;
                     default:
                         throw std::invalid_argument("Invalid sprite ID");

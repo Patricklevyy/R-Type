@@ -25,8 +25,6 @@
                     auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
 
-                    std::cout << "UDPATE\n\n\n" << entity_id << "\n\n\n" << std::endl;
-
                     if (positions[entity_id].has_value() && healths[entity_id].has_value()) {
                         positions[entity_id].value()._pos_x = std::get<1>(params).first;
                         positions[entity_id].value()._pos_y = std::get<1>(params).second;

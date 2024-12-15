@@ -25,23 +25,21 @@ namespace rtype
 
     void Server::initializeCommands()
     {
-        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) {
-            createRoom(id, params, body, clientAddr);
+        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
+            createRoom(id, params, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) {
-            joinRoom(id, params, body, clientAddr);
+        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
+            joinRoom(id, params, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::EXIT] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) { // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
+        _commands[RTYPE_ACTIONS::EXIT] = [this](const unsigned int id, std::string &params, std::string &clientAddr) { // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             (void)id;
             (void)params;
-            (void)body;
             (void)clientAddr;
             _running = false;
         };
-        _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id, std::string &params, std::string &body, std::string &clientAddr) {
+        _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
             (void)id;
             (void)params;
-            (void)body;
 
             getAllRooms(clientAddr);
         };
@@ -71,10 +69,10 @@ namespace rtype
         _compressor.deserialize(message, mes);
         _mes_checker.checkAction(mes);
         _mes_checker.checkFormatParams(mes.params);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << " body " << mes.body << std::endl;
+        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         auto it = _commands.find(mes.action);
         if (it != _commands.end()) {
-            it->second(mes.id, mes.params, mes.body, clientAddr);
+            it->second(mes.id, mes.params, clientAddr);
         } else {
             throw ERROR::InvalidActionExceptions("Invalid action");
         }
@@ -103,11 +101,10 @@ namespace rtype
         }
     }
 
-    void Server::createRoom(const unsigned int id, std::string &params, std::string &body, std::string &lastclientAdr)
+    void Server::createRoom(const unsigned int id, std::string &params, std::string &lastclientAdr)
     {
 
         (void)id;
-        (void)body;
         // Je check les params de la room et du client
 
         std::map<std::string, std::string> map_params = _mes_checker.checkFormatParams(params);
@@ -116,21 +113,20 @@ namespace rtype
 
         Room newRoom(_currentPort, map_params["room_name"]);
         _rooms.push_back(std::move(newRoom));
-        if (map_params.find("client_name") != map_params.end())
+        if (map_params.find("client_name") != map_params.end() && map_params.find("x") != map_params.end() && map_params.find("y") != map_params.end())
         {
-            _rooms.back().start(_currentPort, lastclientAdr, map_params["client_name"]);
+            _rooms.back().start(_currentPort, lastclientAdr, map_params["client_name"], map_params["x"], map_params["y"]);
         }
         else {
-            _rooms.back().start(_currentPort, lastclientAdr, "");
+            _rooms.back().start(_currentPort, lastclientAdr, "", "", "");
         }
         _currentPort++;
     }
 
-    void Server::joinRoom(const unsigned int id, std::string &params, std::string &body, std::string &lastclientAdr)
+    void Server::joinRoom(const unsigned int id, std::string &params, std::string &lastclientAdr)
     {
 
         (void)id;
-        (void)body;
 
         // Je check les params de la room et du client
 

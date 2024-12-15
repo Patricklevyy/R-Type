@@ -92,20 +92,17 @@
              * @throws IdOutOfRangeExceptions If the entity ID is out of range.
              */
             template <typename Component>
-            void killEntity(size_t index)
+            void killEntityFromRegistry(std::size_t entityIndex)
             {
-                for (const auto &[type, anyValue] : _components_arrays)
-                {
-                    auto &sparseArray = std::any_cast<SparseArray<Component>>(anyValue);
-                    if (index >= sparseArray.size())
-                    {
-                        throw ERROR::IdOutOfRangeExceptions();
-                    }
-                    if (sparseArray[index].has_value())
-                    {
-                        sparseArray[index].reset();
-                    }
+                auto type = std::type_index(typeid(Component));
+                if (_components_arrays.find(type) != _components_arrays.end()) {
+                    auto &sparseArray = std::any_cast<SparseArray<Component>&>(_components_arrays[type]);
+                    sparseArray.remove(entityIndex);
                 }
+            }
+
+            void addDeadEntity(size_t index)
+            {
                 _dead_entities.push_back(Entity(index));
             }
 
@@ -176,12 +173,23 @@
                 }
             }
 
+            std::pair<bool, size_t> getDeadEntityIndex()
+            {
+                if (_dead_entities.empty()) {
+                    return std::make_pair<bool, size_t>(false, 0);
+                } else {
+                    std::pair<bool, size_t> entity = std::make_pair(true, _dead_entities.front()._index);
+                    _dead_entities.pop_front();
+                    return entity;
+                }
+            }
+
             std::unordered_map<std::type_index, std::any> _components_arrays; /**< Maps component types to sparse arrays. */
 
         protected:
         private:
-            std::list<Entity> _dead_entities; /**< List of entities marked as "dead." */
 
+            std::list<Entity> _dead_entities; /**< List of entities marked as "dead." */
             // std::vector<freset_type> _freset_entity_components;
             // std::vector<freset_all_types> _freset_all_entity_components; ECS ARTHUR, JE SAIS PAS SI C'EST UTILE POUR NOUS
             // std::unordered_map<std::type_index, event_types> _events;

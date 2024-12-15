@@ -27,7 +27,7 @@
             /**
              * @brief Default constructor for Direction.
              */
-            Direction() {}
+            Direction(direction x = direction::NO_DIRECTION, direction y = direction::NO_DIRECTION) : _x(x), _y(y) {}
 
             /**
              * @brief Destructor for Direction.

@@ -34,6 +34,10 @@
             START_LISTEN_EVENT,
             STOP_LISTEN_EVENT,
             GET_WINDOW_EVENT,
+            PLAYER_SHOOT,
+            CREATE_PROJECTILE,
+            KILL_PROJECTILES,
+            CHECK_OFF_SCREEN,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
             RENDER_WINDOW,

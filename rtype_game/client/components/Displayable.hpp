@@ -12,7 +12,7 @@ namespace rtype {
 
     class Displayable {
     public:
-        Displayable(int sprite_id, float x, float y) {
+        Displayable(SPRITES sprite_id, float x, float y) {
             sprite = SpriteFactory::createSprite(sprite_id);
 
             sprite->setPosition(x, y);

@@ -21,7 +21,7 @@
     #include "../components/Direction.hpp"
     #include "../components/Playable.hpp"
     #include "../SparseArray.hpp"
-
+    #include "../ECS.hpp"
     namespace ecs
     {
         /**
@@ -79,14 +79,10 @@
                             break;
                         }
                     }
-                    else
-                    {
-                        std::cout << "  Position: None" << std::endl;
-                    }
                 }
             }
 
-            void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, size_t indexPlayer)
+            void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int indexPlayer)
             {
                 if (indexPlayer == -1)
                     return;
@@ -114,6 +110,15 @@
                 default:
                     break;
                 }
+            }
+
+            std::pair<float, float> getPlayerPosition(size_t index, std::unordered_map<std::type_index, std::any> &components_array)
+            {
+                auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
+
+                if (positions[index].has_value())
+                    return std::pair<float, float>(positions[index].value()._pos_x, positions[index].value()._pos_y);
+                // throw exceptions que le player n'existe pas, cas IMPOSSIBLE MAIS A FAIRE POUR EVITER LES WARNING DE RETURN
             }
 
         protected:

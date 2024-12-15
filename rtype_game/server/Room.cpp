@@ -89,6 +89,7 @@ namespace rtype
     void Room::init_event_bus() {
         // SUBSCRIBE POSITION SYSTEM
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any>& args) {
+            (void)args;
             _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps());
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any>& args) {
@@ -101,10 +102,99 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::PLAYER_SHOOT, [this](const std::vector<std::any>& args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                createProjectile(message);
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: dans" << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_OFF_SCREEN, [this](const std::vector<std::any>& args) {
+            try {
+                (void)args;
+
+                std::list<size_t> dead_entites_id = _boundaries_system.checkAndKillEntities(_ecs, _window_width, _window_height);
+                if (!dead_entites_id.empty())
+                    send_client_dead_entities(dead_entites_id);
+            } catch (const std::bad_any_cast& e) {
+                std::cerr << "Error during event handling: dans" << e.what() << std::endl;
+            }
+        });
+    }
+
+    void Room::send_client_dead_entities(std::list<size_t> dead_entities_id)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::KILL_PROJECTILES;
+        responseMessage.id = 0;
+
+        std::string ids;
+        for (const auto& id : dead_entities_id) {
+            if (!ids.empty()) {
+                ids += ";";
+            }
+            ids += std::to_string(id);
+        }
+
+        responseMessage.params = ids;
+        std::cout << "DEAD ENTITIES : " << responseMessage.params << std::endl;
+
+        _message_compressor.serialize(responseMessage, response);
+
+
+
+        for (const auto& clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    void Room::send_client_new_projectile(size_t index_ecs_server, float x, float y)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
+        responseMessage.id = index_ecs_server;
+        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::MISSILE) << std::endl;
+        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::MISSILE);
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto& clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    void Room::createProjectile(ecs::udp::Message &message)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+        std::pair<std::pair<float, float>, std::pair<int, int>> pos_dir = Utils::extractProjectilePosAndDir(message.params);
+        ecs::Direction direction(static_cast<ecs::direction>(pos_dir.second.first), static_cast<ecs::direction>(pos_dir.second.second));
+        ecs::Position position(pos_dir.first.first, pos_dir.first.second);
+        ecs::Velocity velocity;
+        Health health;
+        Projectiles projectile;
+
+        _ecs.addComponents<ecs::Direction>(index, direction);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Projectiles>(index, projectile);
+        send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
     {
+        (void)clientAddr; // POUR L'INSTANT ON NE L'UTILISE PAS, PEUT ETRE PLUS TARD POUR LES ROLLBACK ETC
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
         std::cout << "new message in the ROOOM :" << message.id << "action : " << message.action << ", " << message.params << std::endl;
@@ -115,10 +205,13 @@ namespace rtype
     void Room::init_ecs_server_registry()
     {
         _ecs.addRegistry<Health>();
+        _ecs.addRegistry<Projectiles>();
     }
 
-    void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName)
+    void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
     {
+        _window_width = std::stoi(window_width);
+        _window_height = std::stoi(window_height);
         _port = port;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
 
@@ -139,7 +232,8 @@ namespace rtype
         while (_game_running) {
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
-            _ecs.displayPlayableEntityComponents();
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
+            // _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages)
@@ -152,10 +246,10 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string lastclientAddr, std::string clientName)
+    void Room::start(int port, std::string lastclientAddr, std::string clientName, std::string window_width, std::string window_height)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, lastclientAddr, clientName);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port, lastclientAddr, clientName, window_width, window_height);
         _gameThread.detach();
     }
 
@@ -183,17 +277,14 @@ namespace rtype
 
         auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
         auto& healths = std::any_cast<ecs::SparseArray<Health>&>(_ecs._components_arrays[typeid(Health)]);
-        auto& playables = std::any_cast<ecs::SparseArray<ecs::Playable>&>(_ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value() && healths[i].has_value()) {
-                const auto& position = positions[i].value();
-                const auto& health = healths[i].value();
 
-                updateMessage += ",id=" + std::to_string(i) +
-                                 ",x=" + std::to_string(positions[i].value()._pos_x) +
-                                 ",y=" + std::to_string(positions[i].value()._pos_y) +
-                                 ",health=" + std::to_string(healths[i].value()._health) + ";";
+                updateMessage += std::to_string(i) +
+                                 "," + std::to_string(positions[i].value()._pos_x) +
+                                 "," + std::to_string(positions[i].value()._pos_y) +
+                                 "," + std::to_string(healths[i].value()._health) + ";";
                 }
         }
 
@@ -214,8 +305,18 @@ namespace rtype
     }
 
 
-    void Room::create_player(size_t index, std::pair<float, float> positions, std::string clientName)
+    size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+
+
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
@@ -227,6 +328,8 @@ namespace rtype
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
+
+        return index;
     }
 
     void Room::createClient(std::string lastclientAdr, std::string clientName)
@@ -237,13 +340,12 @@ namespace rtype
 
         ecs::udp::Message mes;
 
-        mes.id = index_ecs;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
         std::pair<float, float> position = get_player_start_position(getNbClient());
         mes.params = "x=" + std::to_string(position.first) + ";y=" + std::to_string(position.second) + ";port=" + std::to_string(_port);
         std::vector<char> send_message;
 
-        create_player(index_ecs, position, clientName);
+        mes.id = create_player(position, clientName);
         sendExistingEntities(lastclientAdr, SPRITES::SHIP);
 
         _message_compressor.serialize(mes, send_message);

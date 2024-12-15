@@ -19,7 +19,6 @@
                 unsigned int id : 10;    /* 10 bits pour 'id' (jusqu'à 1024 id) */
                 unsigned int action : 6; /* 6 bits pour 'action' (jusqu'à 64 types) */
                 std::string params;
-                std::string body;
             };
         }
     }
