@@ -42,6 +42,8 @@
 
             protected:
             private:
+                int _window_width;
+                int _window_height;
                 bool _in_menu = true;
                 std::string _name; // A SET AU MENU
                 std::map<unsigned int, unsigned int> ecs_server_to_client;
@@ -64,14 +66,21 @@
                 RenderWindow _render_window_system;
                 UpdateEntitySystem _update_entity_system;
 
+                void killProjectiles(std::list<size_t>);
                 void setRoomAdress(unsigned int, std::map<std::string, std::string>);
                 void createPlayer(unsigned int, std::map<std::string, std::string>);
+                void createEntity(unsigned int, float, float, SPRITES);
+                void createProjectile(ecs::udp::Message&);
+
+                // MESSAGE TO SERVER
+
+                void send_server_new_shoot();
                 void send_server_player_direction(ecs::direction, ecs::direction);
-                void createEntity(unsigned int, float, float, int);
 
                 // INITIALISATION
 
                 void init_all();
+                void init_window_size(const std::string&);
                 void init_window_and_background();
                 void init_ecs_client_registry();
                 void init_subscribe_event_bus();

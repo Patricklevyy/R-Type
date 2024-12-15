@@ -18,12 +18,13 @@ namespace rtype
         return ip + port;
     }
 
-    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(std::string params)
-    {
+    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(std::string params) {
         std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parsed_data;
 
         std::stringstream ss(params);
         std::string block;
+
+        // Séparation des blocs individuels par ';'
         while (std::getline(ss, block, ';')) {
             if (block.empty())
                 continue;
@@ -33,27 +34,34 @@ namespace rtype
             int health = 0;
 
             std::stringstream block_ss(block);
-            std::string pair;
-            while (std::getline(block_ss, pair, ',')) {
-                auto equal_pos = pair.find('=');
-                if (equal_pos != std::string::npos) {
-                    std::string key = pair.substr(0, equal_pos);
-                    std::string value = pair.substr(equal_pos + 1);
+            std::string value;
+            int index = 0; // Pour savoir quelle donnée on traite
 
-                    if (key == "id") {
+            // Séparation des valeurs par ','
+            while (std::getline(block_ss, value, ',')) {
+                switch (index) {
+                    case 0: // ID
                         id = static_cast<std::size_t>(std::stoul(value));
-                    } else if (key == "x") {
+                        break;
+                    case 1: // X
                         x = std::stof(value);
-                    } else if (key == "y") {
+                        break;
+                    case 2: // Y
                         y = std::stof(value);
-                    } else if (key == "health") {
+                        break;
+                    case 3: // Health
                         health = std::stoi(value);
-                    }
+                        break;
+                    default:
+                        break;
                 }
+                index++;
             }
 
+            // Ajouter les données dans la liste
             parsed_data.emplace_back(id, std::make_pair(x, y), health);
         }
+
         return parsed_data;
     }
 }

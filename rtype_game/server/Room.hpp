@@ -20,6 +20,8 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/components/Health.hpp"
     #include "../shared/Utils.hpp"
+    #include "components/Projectiles.hpp"
+    #include "system/BoundariesSystem.hpp"
 
     namespace rtype
     {
@@ -29,9 +31,9 @@
             Room(int port, const std::string &name);
             ~Room();
 
-            void start(int, std::string, std::string);
+            void start(int, std::string, std::string, std::string, std::string);
 
-            void gameThreadFunction(int, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string, std::string, std::string);
 
             bool sendMessage(const std::string &);
 
@@ -51,6 +53,8 @@
 
 
         private:
+            int _window_width = 0;
+            int _window_height = 0;
             Timer _timer;
             int _port;
             unsigned int index_ecs = 0;
@@ -64,20 +68,25 @@
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
+            std::vector<std::string> _clientAddresses;
 
             // SYSTEMS
 
             ecs::PositionSystem _positon_system;
             rtype::DirectionSystem _direction_system;
-            std::vector<std::string> _clientAddresses;
+            BoundariesSystem _boundaries_system;
 
+
+            void send_client_dead_entities(std::list<size_t>);
             bool initializeSocket();
             void closeRoom();
             void init_ecs_server_registry();
             std::pair<float, float> get_player_start_position(int);
-            void create_player(size_t, std::pair<float, float>, std::string);
+            size_t create_player(std::pair<float, float>, std::string);
             void handleCommand(const std::vector<char> &, std::string clientAddr);
             void sendUpdate();
+            void send_client_new_projectile(size_t, float, float);
+            void createProjectile(ecs::udp::Message&);
         };
     }
 

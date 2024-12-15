@@ -32,7 +32,7 @@
             std::shared_ptr<ecs::udp::UDP_Manager> _udpManager;
             ecs::udp::MessageCompressor _compressor;
             MessageChecker _mes_checker;
-            std::unordered_map<unsigned int, std::function<void(const unsigned int, std::string &, std::string &, std::string &)>> _commands;
+            std::unordered_map<unsigned int, std::function<void(const unsigned int, std::string &, std::string &)>> _commands;
 
             void initializeCommands();
             void handleCommand(const std::vector<char> &, std::string clientAddr);
@@ -41,8 +41,8 @@
             void checkJoinRoomArgs(std::map<std::string, std::string>);
 
             //  COMMANDS
-            void createRoom(const unsigned int, std::string &, std::string &, std::string &);
-            void joinRoom(const unsigned int, std::string &, std::string &, std::string &);
+            void createRoom(const unsigned int, std::string &, std::string &);
+            void joinRoom(const unsigned int, std::string &, std::string &);
             void getAllRooms(std::string &);
         };
     }

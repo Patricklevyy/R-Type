@@ -25,7 +25,6 @@
                 void render(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
-                        std::cout << "con" << std::endl;
                         auto &displayable = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
                         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
@@ -36,10 +35,6 @@
                             if (displayable[i].has_value() && positions[i].has_value()) {
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
                                 lawindow->draw(*displayable[i].value().getSprite());
-
-                                std::cout << "[INFO] Rendu terminé pour l'entité " << i << std::endl;
-                            } else {
-                                std::cout << "[WARNING] Fenêtre ou background invalide à l'index " << i << std::endl;
                             }
                         }
                         lawindow->display();
