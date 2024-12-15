@@ -21,6 +21,10 @@
     #include "Command_checker.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
+    #include "system/menuSystem.hpp"
+
+rtype::MenuSystem _menu_system;
+
 
     namespace rtype
     {

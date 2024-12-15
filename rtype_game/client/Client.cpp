@@ -199,15 +199,19 @@ namespace rtype
 
     void Client::start()
     {
-
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
         }
+        
         _timer->init("rtype_game/config/client_config.conf", false);
         _udpClient->startReceiving();
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_subscribe_event_bus();
+        
+        // Initialisation et démarrage du menu via MenuSystem
+        _menu_system.start(_ecs._components_arrays);
+
         Window window(800, 600, "My ECS Client Window");
         _ecs.addComponents<Window>(_index_ecs_client, window);
         _index_ecs_client++;
@@ -220,8 +224,7 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION, std::ref(_ecs._components_arrays), std::ref(_position_system), _timer);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udpClient->fetchAllMessages();
-            for (auto &[clientAddress, message] : messages)
-            {
+            for (auto &[clientAddress, message] : messages) {
                 try {
                     handle_message(message, clientAddress);
                 } catch (std::exception &e) {

@@ -6,20 +6,28 @@
 */
 
 #include "Client.hpp"
-#include "menu/menu.hpp"
+#include "system/menuSystem.hpp"
+#include "../ecs/ECS.hpp"
 
-int main()
-{
+int main() {
     try {
-        rtype::Menu menu(800, 600, "R-Type Menu");
-        menu.run();
+        // Initialiser l'ECS
+        ecs::ECS ecs;
+        ecs.init_basic_registry();
 
-    }
-    catch (const std::exception &e) {
-        std::cerr << std::endl
-                  << e.what() << std::endl;
+        // Lancer le menu
+        rtype::MenuSystem menu_system;
+        menu_system.start(ecs._components_arrays);
+
+        // Si le menu se termine, démarrer le client
+        rtype::Client client;
+        client.start();
+
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
         return 84;
     }
 
     return 0;
 }
+
