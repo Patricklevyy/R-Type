@@ -14,7 +14,7 @@ var searchData=
   ['size_11',['size',['../classecs_1_1SparseArray.html#a419d82d470b54598c192f1966dd8c27c',1,'ecs::SparseArray']]],
   ['socketnotinitializedexceptions_12',['SocketNotInitializedExceptions',['../classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html#ad465c4347cbe81bcc012bc16fd47f02e',1,'ecs::ERROR::SocketNotInitializedExceptions']]],
   ['sprite_13',['sprite',['../classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9',1,'rtype::Sprite::Sprite()=default'],['../classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25',1,'rtype::Sprite::Sprite(const std::string &amp;texturePath, float width, float height)']]],
-  ['start_14',['start',['../classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4',1,'rtype::Client::start()'],['../classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae',1,'rtype::Room::start()'],['../classrtype_1_1Server.html#a75d2bed462a6e2a9565eb67ff2051b11',1,'rtype::Server::start()']]],
+  ['start_14',['start',['../classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4',1,'rtype::Client::start()'],['../classrtype_1_1Room.html#a21687020018f950f212fff3af326564c',1,'rtype::Room::start()'],['../classrtype_1_1Server.html#a75d2bed462a6e2a9565eb67ff2051b11',1,'rtype::Server::start()']]],
   ['startlistening_15',['startListening',['../classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7',1,'rtype::EventWindow']]],
   ['stoplistening_16',['stopListening',['../classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe',1,'rtype::EventWindow']]],
   ['subscribe_17',['subscribe',['../classrtype_1_1EventBus.html#a67e96467e1e27fa41bb57a4aaf18c430',1,'rtype::EventBus']]]

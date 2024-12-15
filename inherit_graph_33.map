@@ -1,0 +1,7 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" href="$classUDP__Manager.html" title="Cette UDP manager gère les messages de première connexion d&#39;un client." alt="" coords="5,31,120,56"/>
+<area shape="rect" id="Node000001" href="$classUDP__Client.html" title="Implements a non&#45;blocking UDP client for sending and receiving messages." alt="" coords="201,5,296,31"/>
+<area shape="poly" id="edge24_Node000000_Node000001" title=" " alt="" coords="133,31,201,22,201,27,134,36"/>
+<area shape="rect" id="Node000002" href="$classecs_1_1udp_1_1UDP__Server.html" title="Implements a non&#45;blocking UDP server for receiving and sending messages." alt="" coords="168,55,329,80"/>
+<area shape="poly" id="edge25_Node000000_Node000002" title=" " alt="" coords="134,50,168,54,167,60,133,55"/>
+</map>

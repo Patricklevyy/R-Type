@@ -57,8 +57,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Background_8hpp.html",
-"classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html",
-"classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121"
+"classecs_1_1ERROR_1_1RecvExceptions.html",
+"classrtype_1_1Projectiles.html#a1d8d78a1cc4c1d72e0b7f0eb78366bb1"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

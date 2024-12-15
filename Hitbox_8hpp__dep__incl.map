@@ -1,5 +1,0 @@
-<map id="rtype_game/shared/components/Hitbox.hpp" name="rtype_game/shared/components/Hitbox.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="6,5,238,45"/>
-<area shape="rect" id="Node000002" href="$CollisionSystem_8hpp.html" title="Handles collision detection between entities in the ECS framework." alt="" coords="5,93,239,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,59,125,93,119,93,119,59"/>
-</map>

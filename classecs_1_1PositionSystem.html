@@ -108,14 +108,52 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:af66617337d3e4b0e7ce8d3e711b6921e" id="r_af66617337d3e4b0e7ce8d3e711b6921e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#af66617337d3e4b0e7ce8d3e711b6921e">updatePositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate)</td></tr>
 <tr class="memdesc:af66617337d3e4b0e7ce8d3e711b6921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the positions of entities based on their velocity and direction.  <br /></td></tr>
 <tr class="separator:af66617337d3e4b0e7ce8d3e711b6921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840636ed8c510af5cb875279e9d1cb6a" id="r_a840636ed8c510af5cb875279e9d1cb6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#a840636ed8c510af5cb875279e9d1cb6a">updatePlayerPositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate, size_t indexPlayer)</td></tr>
-<tr class="separator:a840636ed8c510af5cb875279e9d1cb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed4bff8e1e56288aa29b4721a407e466" id="r_aed4bff8e1e56288aa29b4721a407e466"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#aed4bff8e1e56288aa29b4721a407e466">updatePlayerPositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate, int indexPlayer)</td></tr>
+<tr class="separator:aed4bff8e1e56288aa29b4721a407e466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae246182323b59247349b0d590e8cd5ab" id="r_ae246182323b59247349b0d590e8cd5ab"><td class="memItemLeft" align="right" valign="top">std::pair&lt; float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#ae246182323b59247349b0d590e8cd5ab">getPlayerPosition</a> (size_t index, std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="separator:ae246182323b59247349b0d590e8cd5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Handles position updates for entities in the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a> framework. </p>
 </div><h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="a840636ed8c510af5cb875279e9d1cb6a" name="a840636ed8c510af5cb875279e9d1cb6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a840636ed8c510af5cb875279e9d1cb6a">&#9670;&#160;</a></span>updatePlayerPositions()</h2>
+<a id="ae246182323b59247349b0d590e8cd5ab" name="ae246182323b59247349b0d590e8cd5ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae246182323b59247349b0d590e8cd5ab">&#9670;&#160;</a></span>getPlayerPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; float, float &gt; ecs::PositionSystem::getPlayerPosition </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
+          <td class="paramname"><em>components_array</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed4bff8e1e56288aa29b4721a407e466" name="aed4bff8e1e56288aa29b4721a407e466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed4bff8e1e56288aa29b4721a407e466">&#9670;&#160;</a></span>updatePlayerPositions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +176,7 @@ Fonctions membres publiques</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>indexPlayer</em>&#160;</td>
         </tr>
         <tr>

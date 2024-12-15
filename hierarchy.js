@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "rtype::Background", "classrtype_1_1Background.html", null ],
+    [ "rtype::BoundariesSystem", "classrtype_1_1BoundariesSystem.html", null ],
     [ "rtype::Client", "classrtype_1_1Client.html", null ],
     [ "ecs::CollisionSystem", "classecs_1_1CollisionSystem.html", null ],
     [ "rtype::Command_checker", "classrtype_1_1Command__checker.html", null ],
@@ -44,6 +45,7 @@ var hierarchy =
     [ "ecs::Playable", "classecs_1_1Playable.html", null ],
     [ "ecs::Position", "classecs_1_1Position.html", null ],
     [ "ecs::PositionSystem", "classecs_1_1PositionSystem.html", null ],
+    [ "rtype::Projectiles", "classrtype_1_1Projectiles.html", null ],
     [ "rtype::RenderWindow", "classrtype_1_1RenderWindow.html", null ],
     [ "rtype::Room", "classrtype_1_1Room.html", null ],
     [ "rtype::Server", "classrtype_1_1Server.html", null ],

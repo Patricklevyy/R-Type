@@ -25,7 +25,7 @@ var searchData=
   ['spritefactory_22',['SpriteFactory',['../classrtype_1_1SpriteFactory.html',1,'rtype']]],
   ['spritefactory_2ehpp_23',['SpriteFactory.hpp',['../SpriteFactory_8hpp.html',1,'']]],
   ['sprites_24',['SPRITES',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662',1,'rtype']]],
-  ['start_25',['start',['../classrtype_1_1Server.html#a75d2bed462a6e2a9565eb67ff2051b11',1,'rtype::Server::start()'],['../classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae',1,'rtype::Room::start()'],['../classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4',1,'rtype::Client::start()']]],
+  ['start_25',['start',['../classrtype_1_1Server.html#a75d2bed462a6e2a9565eb67ff2051b11',1,'rtype::Server::start()'],['../classrtype_1_1Room.html#a21687020018f950f212fff3af326564c',1,'rtype::Room::start()'],['../classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4',1,'rtype::Client::start()']]],
   ['start_5flisten_5fevent_26',['START_LISTEN_EVENT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1ab53a118fe8543baca108f44658d00f',1,'rtype']]],
   ['startlistening_27',['startListening',['../classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7',1,'rtype::EventWindow']]],
   ['stop_5flisten_5fevent_28',['STOP_LISTEN_EVENT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1e5e38c74105866fde450ba13a06164c',1,'rtype']]],

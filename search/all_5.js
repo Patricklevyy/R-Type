@@ -15,5 +15,6 @@ var searchData=
   ['eventwindow_12',['eventwindow',['../classrtype_1_1EventWindow.html',1,'rtype::EventWindow'],['../classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5',1,'rtype::EventWindow::EventWindow()']]],
   ['eventwindow_2ehpp_13',['EventWindow.hpp',['../EventWindow_8hpp.html',1,'']]],
   ['exit_14',['EXIT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3acc91f9f531c6aa977e922fba14888aca',1,'rtype']]],
-  ['extractplayerposindex_15',['extractPlayerPosIndex',['../classrtype_1_1Utils.html#a0b06130cf01cc8a46068c1ac70e4e1fb',1,'rtype::Utils']]]
+  ['extractplayerposindex_15',['extractPlayerPosIndex',['../classrtype_1_1Utils.html#a0b06130cf01cc8a46068c1ac70e4e1fb',1,'rtype::Utils']]],
+  ['extractprojectileposanddir_16',['extractProjectilePosAndDir',['../classrtype_1_1Utils.html#a6ff6ffd51ef39da0d76d17b8d21f0091',1,'rtype::Utils']]]
 ];

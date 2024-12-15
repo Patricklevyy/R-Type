@@ -45,6 +45,7 @@ var annotated_dup =
         [ "WrongFormatParamsExceptions", "classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html", "classrtype_1_1ERROR_1_1WrongFormatParamsExceptions" ]
       ] ],
       [ "Background", "classrtype_1_1Background.html", "classrtype_1_1Background" ],
+      [ "BoundariesSystem", "classrtype_1_1BoundariesSystem.html", "classrtype_1_1BoundariesSystem" ],
       [ "Client", "classrtype_1_1Client.html", "classrtype_1_1Client" ],
       [ "Command_checker", "classrtype_1_1Command__checker.html", null ],
       [ "DirectionSystem", "classrtype_1_1DirectionSystem.html", "classrtype_1_1DirectionSystem" ],
@@ -54,6 +55,7 @@ var annotated_dup =
       [ "Health", "classrtype_1_1Health.html", "classrtype_1_1Health" ],
       [ "Hitbox", "classrtype_1_1Hitbox.html", "classrtype_1_1Hitbox" ],
       [ "MessageChecker", "classrtype_1_1MessageChecker.html", "classrtype_1_1MessageChecker" ],
+      [ "Projectiles", "classrtype_1_1Projectiles.html", "classrtype_1_1Projectiles" ],
       [ "RenderWindow", "classrtype_1_1RenderWindow.html", "classrtype_1_1RenderWindow" ],
       [ "Room", "classrtype_1_1Room.html", "classrtype_1_1Room" ],
       [ "Server", "classrtype_1_1Server.html", "classrtype_1_1Server" ],
