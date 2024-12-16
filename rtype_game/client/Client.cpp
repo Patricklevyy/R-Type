@@ -382,7 +382,7 @@ namespace rtype
                     }
                     break;
                 case sf::Event::MouseButtonPressed:
-                    if (event.mouseButton.button == sf::Mouse::Left) {
+                    if (event.mouseButton.button == sf::Mouse::Left && !_in_menu) {
                         send_server_new_shoot();
                     }
 
