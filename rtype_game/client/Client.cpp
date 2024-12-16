@@ -51,13 +51,14 @@ namespace rtype
             try {
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = std::any_cast<std::reference_wrapper<std::tuple<ecs::direction, ecs::direction, size_t>>>(args[0]).get();
                 _direction_system.updatePlayerDirection(_ecs._components_arrays, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
+                send_server_player_direction(std::get<0>(_x_y_index), std::get<1>(_x_y_index));
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
          _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
-            _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer());
+            _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer(), _window_width, _window_height);
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
             try {
@@ -323,22 +324,18 @@ namespace rtype
                     }
                     if (event.key.code == sf::Keyboard::D && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::RIGHT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::Q && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::LEFT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::LEFT, ecs::direction::NO_CHANGE);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::Z && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::UP, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::UP);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::S && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::DOWN, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     if (event.key.code == sf::Keyboard::A) {
@@ -377,12 +374,10 @@ namespace rtype
                 case sf::Event::KeyReleased:
                     if ((event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q) && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     if ((event.key.code == sf::Keyboard::Z || event.key.code == sf::Keyboard::S) && !_in_menu) {
                         std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION, _ecs.getIndexPlayer());
-                        send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
                         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
                     }
                     break;

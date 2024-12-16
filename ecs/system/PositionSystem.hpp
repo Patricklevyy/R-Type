@@ -24,6 +24,7 @@
     #include "../ECS.hpp"
     namespace ecs
     {
+        const float BORDER_MARGIN = 10.0f;
         /**
          * @class PositionSystem
          * @brief Handles position updates for entities in the ECS framework.
@@ -36,11 +37,12 @@
              * @param components_array A map containing all component arrays.
              * @param tickRate The rate at which the system updates (used for time scaling).
              */
-            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate)
+            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int window_width, int window_height)
             {
                 auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
                 auto &velocities = std::any_cast<SparseArray<Velocity> &>(components_array[typeid(Velocity)]);
                 auto &directions = std::any_cast<SparseArray<Direction> &>(components_array[typeid(Direction)]);
+                auto &playable = std::any_cast<SparseArray<Playable> &>(components_array[typeid(Playable)]);
 
                 static_assert(std::is_same_v<decltype(positions.size()), std::size_t>, "positions.size() is not std::size_t");
                 static_assert(std::is_same_v<decltype(velocities.size()), std::size_t>, "velocities.size() is not std::size_t");
@@ -59,9 +61,15 @@
                         switch (directions[i].value()._x)
                         {
                         case direction::LEFT:
+                            if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x - velocities[i].value().velocity / tickRate) < BORDER_MARGIN)) {
+                                break;
+                            }
                             positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;;
                             break;
                         case direction::RIGHT:
+                            if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x + velocities[i].value().velocity / tickRate) > (window_width - BORDER_MARGIN * 18))) {
+                                break;
+                            }
                             positions[i].value()._pos_x += velocities[i].value().velocity / tickRate;
                             break;
                         default:
@@ -70,9 +78,15 @@
                         switch (directions[i].value()._y)
                         {
                         case direction::UP:
+                            if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_y - velocities[i].value().velocity / tickRate) < BORDER_MARGIN)) {
+                                break;
+                            }
                             positions[i].value()._pos_y -= velocities[i].value().velocity / tickRate;
                             break;
                         case direction::DOWN:
+                            if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_y + velocities[i].value().velocity / tickRate) > (window_height - BORDER_MARGIN * 10))) {
+                                break;
+                            }
                             positions[i].value()._pos_y += velocities[i].value().velocity / tickRate;
                             break;
                         default:
@@ -82,7 +96,7 @@
                 }
             }
 
-            void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int indexPlayer)
+            void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int indexPlayer, int window_width, int window_height)
             {
                 if (indexPlayer == -1)
                     return;
@@ -90,26 +104,39 @@
                 auto &velocities = std::any_cast<SparseArray<Velocity> &>(components_array[typeid(Velocity)]);
                 auto &directions = std::any_cast<SparseArray<Direction> &>(components_array[typeid(Direction)]);
 
+                std::cout << "PLAYER POS " << positions[indexPlayer].value()._pos_x << " , " << positions[indexPlayer].value()._pos_y << std::endl;
                 switch (directions[indexPlayer].value()._x) {
-                case direction::LEFT:
-                    positions[indexPlayer].value()._pos_x -= velocities[indexPlayer].value().velocity / tickRate;
-                    break;
-                case direction::RIGHT:
-                    positions[indexPlayer].value()._pos_x += velocities[indexPlayer].value().velocity / tickRate;
-                    break;
-                default:
-                    break;
-                }
-                switch (directions[indexPlayer].value()._y) {
-                case direction::UP:
-                    positions[indexPlayer].value()._pos_y -= velocities[indexPlayer].value().velocity / tickRate;
-                    break;
-                case direction::DOWN:
-                    positions[indexPlayer].value()._pos_y += velocities[indexPlayer].value().velocity / tickRate;
-                    break;
-                default:
-                    break;
-                }
+                    case direction::LEFT:
+                        if ((positions[indexPlayer].value()._pos_x - velocities[indexPlayer].value().velocity / tickRate) < BORDER_MARGIN) {
+                            break;
+                        }
+                        positions[indexPlayer].value()._pos_x -= velocities[indexPlayer].value().velocity / tickRate;
+                        break;
+                    case direction::RIGHT:
+                        if ((positions[indexPlayer].value()._pos_x + velocities[indexPlayer].value().velocity / tickRate) > (window_width - BORDER_MARGIN * 18)) {
+                            break;
+                        }
+                        positions[indexPlayer].value()._pos_x += velocities[indexPlayer].value().velocity / tickRate;
+                        break;
+                    default:
+                        break;
+                    }
+                    switch (directions[indexPlayer].value()._y) {
+                    case direction::UP:
+                        if ((positions[indexPlayer].value()._pos_y - velocities[indexPlayer].value().velocity / tickRate) < BORDER_MARGIN) {
+                            break;
+                        }
+                        positions[indexPlayer].value()._pos_y -= velocities[indexPlayer].value().velocity / tickRate;
+                        break;
+                    case direction::DOWN:
+                        if ((positions[indexPlayer].value()._pos_y + velocities[indexPlayer].value().velocity / tickRate) > (window_height - BORDER_MARGIN * 10)) {
+                            break;
+                        }
+                        positions[indexPlayer].value()._pos_y += velocities[indexPlayer].value().velocity / tickRate;
+                        break;
+                    default:
+                        break;
+                    }
             }
 
             std::pair<float, float> getPlayerPosition(size_t index, std::unordered_map<std::type_index, std::any> &components_array)

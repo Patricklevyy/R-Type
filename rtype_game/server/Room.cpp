@@ -91,7 +91,7 @@ namespace rtype
         // SUBSCRIBE POSITION SYSTEM
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any>& args) {
             (void)args;
-            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps());
+            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps(), _window_width, _window_height);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any>& args) {
             try {
@@ -235,7 +235,7 @@ namespace rtype
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
-            // _ecs.displayPlayableEntityComponents();
+            _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages)
