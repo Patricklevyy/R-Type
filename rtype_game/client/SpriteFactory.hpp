@@ -19,19 +19,23 @@
                 static std::shared_ptr<sf::Sprite> createSprite(SPRITES id)
                 {
                     std::string texturePath;
+                    sf::Vector2f scale(1.0f, 1.0f);
                     switch (id)
                     {
                     case SPRITES::BACKGROUND:
-                        texturePath = "assets/background.png";
+                        texturePath = "assets/space-background.jpg";
+                        scale = sf::Vector2f(1.0f, 1.0f);
                         break;
                     case SPRITES::SHIP:
-                        texturePath = "assets/red_ship.png";
+                        texturePath = "assets/enemy-spaceship.png";
+                        scale = sf::Vector2f(0.07f, 0.07f);
                         break;
                     // case SPRITES::MONSTER:
                     //     texturePath = "assets/red_ship.png"; sprite a definir
                     //     break;
                     case SPRITES::MISSILE:
-                        texturePath = "assets/life.png";
+                        texturePath = "assets/bullet.png";
+                        scale = sf::Vector2f(0.03f, 0.03f);
                         break;
                     default:
                         throw std::invalid_argument("Invalid sprite ID");
@@ -41,6 +45,7 @@
 
                     auto sprite = std::make_shared<sf::Sprite>();
                     sprite->setTexture(*texture);
+                    sprite->setScale(scale);
 
                     return sprite;
                 }

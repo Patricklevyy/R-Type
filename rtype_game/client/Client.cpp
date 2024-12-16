@@ -179,7 +179,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
-        message.params = "x=" + std::to_string(player_positions.first) + ";y=" + std::to_string(player_positions.second) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
+        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
 
         _message_compressor.serialize(message, buffer);
 

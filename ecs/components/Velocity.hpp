@@ -36,7 +36,7 @@
              * @brief Movement speed of the entity.
              * @note Consider making this configurable through an external file.
              */
-            float velocity = 100.0;
+            float velocity = 300.0;
 
         protected:
         private:
