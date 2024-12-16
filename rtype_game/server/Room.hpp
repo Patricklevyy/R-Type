@@ -89,6 +89,7 @@
             void sendUpdate();
             void send_client_new_projectile(size_t, float, float);
             void createProjectile(ecs::udp::Message&);
+            void createMonster(ecs::udp::Message &);
         };
     }
 

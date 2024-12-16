@@ -336,6 +336,31 @@ namespace rtype
         return index;
     }
 
+    void Room::createMonster(ecs::udp::Message &message)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+
+        ecs::Position position(x, y);
+        ecs::Velocity velocity; // Ajoutez une logique pour donner une vitesse par défaut au monstre
+        Health health(100); // Par exemple : 100 HP
+        Monster monster(type); // Type spécifique au monstre
+
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Monster>(index, monster);
+
+        send_client_new_monster(index, x, y, type);
+    }
+
+
     void Room::createClient(std::string lastclientAdr, std::string clientName)
     {
         std::cout << "Client created in room [" << _name << "] with addr: " << lastclientAdr << std::endl;

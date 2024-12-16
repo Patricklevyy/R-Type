@@ -27,6 +27,7 @@
     #include "../shared/components/Health.hpp"
     #include "system/UpdateEntitySystem.hpp"
     #include "components/Displayable.hpp"
+    #include "../shared/MessageChecker.hpp"
     namespace rtype
     {
         class Client
@@ -73,6 +74,8 @@
                 void createEntity(unsigned int, float, float, SPRITES);
                 void createProjectile(ecs::udp::Message&);
                 void updateEntitiesFirstConnexion(const std::string &);
+
+                void createMonster(ecs::udp::Message&);
 
                 // MESSAGE TO SERVER
 
