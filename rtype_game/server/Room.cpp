@@ -6,16 +6,35 @@
 */
 
 #include "Room.hpp"
-#include <sys/socket.h>
 #include <arpa/inet.h>
-#include <cstring>
 #include <cmath>
+#include <cstring>
+#include <sys/socket.h>
+
+std::unordered_map<std::string, std::string> parseParams(const std::string &params)
+{
+    std::unordered_map<std::string, std::string> parsed;
+    std::stringstream ss(params);
+    std::string item;
+
+    while (std::getline(ss, item, ';')) {
+        size_t eqPos = item.find('=');
+        if (eqPos != std::string::npos) {
+            std::string key = item.substr(0, eqPos);
+            std::string value = item.substr(eqPos + 1);
+            parsed[key] = value;
+        }
+    }
+    return parsed;
+}
 
 namespace rtype
 {
 
     Room::Room(int port, const std::string &name)
-        : _port(port), _name(name), _sockfd(-1) {}
+        : _port(port), _name(name), _sockfd(-1)
+    {
+    }
 
     Room::~Room()
     {
@@ -35,8 +54,7 @@ namespace rtype
 
     Room &Room::operator=(Room &&other) noexcept
     {
-        if (this != &other)
-        {
+        if (this != &other) {
             _port = other._port;
             _name = std::move(other._name);
             _sockfd = other._sockfd;
@@ -50,8 +68,7 @@ namespace rtype
     bool Room::initializeSocket()
     {
         _sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-        if (_sockfd < 0)
-        {
+        if (_sockfd < 0) {
             std::cerr << "Socket creation failed for room " << _name << std::endl;
             return false;
         }
@@ -60,8 +77,7 @@ namespace rtype
         _addr.sin_port = htons(_port);
         _addr.sin_addr.s_addr = INADDR_ANY;
 
-        if (bind(_sockfd, (struct sockaddr *)&_addr, sizeof(_addr)) < 0)
-        {
+        if (bind(_sockfd, (struct sockaddr *)&_addr, sizeof(_addr)) < 0) {
             std::cerr << "Bind failed for room " << _name << std::endl;
             close(_sockfd);
             return false;
@@ -87,41 +103,52 @@ namespace rtype
         return sent >= 0;
     }
 
-    void Room::init_event_bus() {
+    void Room::init_event_bus()
+    {
         // SUBSCRIBE POSITION SYSTEM
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
             _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps());
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_DIRECTION, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = Utils::extractPlayerPosIndex(message.params, message.id);
 
                 _direction_system.updatePlayerDirection(_ecs._components_arrays, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::PLAYER_SHOOT, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::PLAYER_SHOOT, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 createProjectile(message);
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_OFF_SCREEN, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_OFF_SCREEN, [this](const std::vector<std::any> &args) {
             try {
                 (void)args;
 
                 std::list<size_t> dead_entites_id = _boundaries_system.checkAndKillEntities(_ecs, _window_width, _window_height);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
+        });
+        // _eventBus.subscribe(RTYPE_ACTIONS::MOVE_MONSTERS, [this](const std::vector<std::any>& args) {
+        //     (void)args;
+        //     _monster_movement_system.moveMonsters(_ecs, _timer.getTps());
+        // });
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_MONSTER, [this](const std::vector<std::any> &args) {
+            (void)args;
+            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+            createMonster(message);
         });
     }
 
@@ -133,7 +160,7 @@ namespace rtype
         responseMessage.id = 0;
 
         std::string ids;
-        for (const auto& id : dead_entities_id) {
+        for (const auto &id : dead_entities_id) {
             if (!ids.empty()) {
                 ids += ";";
             }
@@ -145,7 +172,7 @@ namespace rtype
 
         _message_compressor.serialize(responseMessage, response);
 
-        for (const auto& clientAddr : _clientAddresses) {
+        for (const auto &clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
         }
     }
@@ -161,7 +188,7 @@ namespace rtype
 
         _message_compressor.serialize(responseMessage, response);
 
-        for (const auto& clientAddr : _clientAddresses) {
+        for (const auto &clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
         }
     }
@@ -193,6 +220,37 @@ namespace rtype
         send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
+    void Room::createMonster(ecs::udp::Message &message)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+        std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
+        if (res.find("x") == res.end() || res.find("y") == res.end()) {
+            std::cerr << "Error: Missing x or y in message parameters" << std::endl;
+            return;
+        }
+        int x = std::stoi(res["x"]);
+        int y = std::stoi(res["y"]);
+        ecs::Position position(x, y);
+        ecs::Velocity velocity;
+        Health health;
+        health._health = 200;
+        Monster monster;
+
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Monster>(index, monster);
+
+        send_client_new_monster(index, x, y, SPRITES::MONSTER);
+    }
+
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
     {
         (void)clientAddr; // POUR L'INSTANT ON NE L'UTILISE PAS, PEUT ETRE PLUS TARD POUR LES ROLLBACK ETC
@@ -208,6 +266,7 @@ namespace rtype
         _ecs.addRegistry<Health>();
         _ecs.addRegistry<Projectiles>();
         _ecs.addRegistry<SpriteId>();
+        _ecs.addRegistry<Monster>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
@@ -217,8 +276,7 @@ namespace rtype
         _port = port;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
 
-        if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port))
-        {
+        if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port)) {
             std::cerr << "Failed to initialize socket for room " << _name << std::endl;
             return;
         }
@@ -234,12 +292,12 @@ namespace rtype
         while (_game_running) {
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
+            // _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
             // _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
-                for (const auto &[clientAddress, message] : messages)
-                {
+                for (const auto &[clientAddress, message] : messages) {
                     handleCommand(message, clientAddress);
                 }
             }
@@ -257,8 +315,7 @@ namespace rtype
 
     std::pair<float, float> Room::get_player_start_position(int nb_client)
     {
-        switch (nb_client)
-        {
+        switch (nb_client) {
         case 0:
             return std::pair<int, float>(200, 200);
         case 1:
@@ -277,17 +334,17 @@ namespace rtype
     {
         std::string updateMessage = "";
 
-        auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
-        auto& healths = std::any_cast<ecs::SparseArray<Health>&>(_ecs._components_arrays[typeid(Health)]);
+        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto &healths = std::any_cast<ecs::SparseArray<Health> &>(_ecs._components_arrays[typeid(Health)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value() && healths[i].has_value()) {
 
                 updateMessage += std::to_string(i) +
-                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
-                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
-                                 "," + std::to_string(healths[i].value()._health) + ";";
-                }
+                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
+                "," + std::to_string(healths[i].value()._health) + ";";
+            }
         }
 
         if (!updateMessage.empty() && updateMessage.back() == ';') {
@@ -301,11 +358,10 @@ namespace rtype
         responseMessage.params = updateMessage;
 
         _message_compressor.serialize(responseMessage, response);
-        for (const auto& clientAddr : _clientAddresses) {
+        for (const auto &clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
         }
     }
-
 
     size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
@@ -317,7 +373,6 @@ namespace rtype
             index = index_ecs;
             index_ecs++;
         }
-
 
         ecs::Direction direction;
         ecs::Playable playable(clientName);
@@ -336,30 +391,20 @@ namespace rtype
         return index;
     }
 
-    void Room::createMonster(ecs::udp::Message &message)
+    void Room::send_client_new_monster(size_t index_ecs_server, float x, float y, int type)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = index_ecs;
-            index_ecs++;
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::CREATE_MONSTER;
+        responseMessage.id = index_ecs_server;
+        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(type);
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
         }
-
-        ecs::Position position(x, y);
-        ecs::Velocity velocity; // Ajoutez une logique pour donner une vitesse par défaut au monstre
-        Health health(100); // Par exemple : 100 HP
-        Monster monster(type); // Type spécifique au monstre
-
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Monster>(index, monster);
-
-        send_client_new_monster(index, x, y, type);
     }
-
 
     void Room::createClient(std::string lastclientAdr, std::string clientName)
     {
@@ -372,7 +417,8 @@ namespace rtype
         std::vector<char> send_message;
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities(lastclientAdr);;
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities(lastclientAdr);
+        ;
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position, clientName);
@@ -381,7 +427,7 @@ namespace rtype
         std::cout << lastclientAdr << std::endl;
         if (_udp_server->sendMessage(send_message, lastclientAdr)) {
 
-            std::cout << "Message sent: "  << mes.params << mes.action << std::endl;
+            std::cout << "Message sent: " << mes.params << mes.action << std::endl;
         } else {
             std::cerr << "Failed to send message." << std::endl;
         }
@@ -391,7 +437,7 @@ namespace rtype
             mes.params.erase(port_pos);
         }
         _message_compressor.serialize(mes, send_message);
-        for (const auto& clientAddr : _clientAddresses) {
+        for (const auto &clientAddr : _clientAddresses) {
             if (clientAddr != lastclientAdr)
                 _udp_server->sendMessage(send_message, clientAddr);
         }
@@ -401,8 +447,8 @@ namespace rtype
 
     std::string Room::sendExistingEntities(const std::string &clientAddress)
     {
-        auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
-        auto& sprite = std::any_cast<ecs::SparseArray<SpriteId>&>(_ecs._components_arrays[typeid(SpriteId)]);
+        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto &sprite = std::any_cast<ecs::SparseArray<SpriteId> &>(_ecs._components_arrays[typeid(SpriteId)]);
 
         std::string updateMessage = "";
 
@@ -412,9 +458,9 @@ namespace rtype
                 if (spriteId == 1)
                     spriteId = 4;
                 updateMessage += std::to_string(positions[i].value()._pos_x) +
-                            "," + std::to_string(positions[i].value()._pos_y) +
-                            "," + std::to_string(i) +
-                            "," + std::to_string(spriteId) + ";";
+                "," + std::to_string(positions[i].value()._pos_y) +
+                "," + std::to_string(i) +
+                "," + std::to_string(spriteId) + ";";
             }
         }
 
@@ -423,8 +469,7 @@ namespace rtype
 
     void Room::closeRoom()
     {
-        if (_sockfd >= 0)
-        {
+        if (_sockfd >= 0) {
             close(_sockfd);
             _sockfd = -1;
         }
