@@ -38,6 +38,7 @@
             CREATE_PROJECTILE,
             KILL_PROJECTILES,
             CHECK_OFF_SCREEN,
+            UPDATE_GAME_STATUS,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
             RENDER_WINDOW,
@@ -47,9 +48,10 @@
         enum SPRITES
         {
             BACKGROUND,
-            SHIP,
+            MY_PLAYER_SHIP,
             MONSTER,
-            MISSILE
+            PLAYER_SIMPLE_MISSILE,
+            OTHER_PLAYER_SHIP
         };
     }
 

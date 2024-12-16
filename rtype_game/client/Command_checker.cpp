@@ -9,22 +9,21 @@
 
 namespace rtype
 {
-    std::string Command_checker::check_adress(std::map<std::string, std::string> &params, std::string server_ip)
+    std::string Command_checker::check_adress(int port, const std::string &server_ip)
     {
-        if (params.find("port") == params.end())
+        if (port == 0)
             throw ERROR::MissingPortParamsExceptions("Missing 'port'");
         std::string ip = "127.0.0.1:";
-        std::string port = params["port"];
-        return ip + port;
+        std::string portStr = std::to_string(port);
+        return (ip + portStr);
     }
 
-    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(std::string params) {
+    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(const std::string &params) {
         std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parsed_data;
 
         std::stringstream ss(params);
         std::string block;
 
-        // Séparation des blocs individuels par ';'
         while (std::getline(ss, block, ';')) {
             if (block.empty())
                 continue;
@@ -35,21 +34,20 @@ namespace rtype
 
             std::stringstream block_ss(block);
             std::string value;
-            int index = 0; // Pour savoir quelle donnée on traite
+            int index = 0;
 
-            // Séparation des valeurs par ','
             while (std::getline(block_ss, value, ',')) {
                 switch (index) {
-                    case 0: // ID
+                    case 0:
                         id = static_cast<std::size_t>(std::stoul(value));
                         break;
-                    case 1: // X
+                    case 1:
                         x = std::stof(value);
                         break;
-                    case 2: // Y
+                    case 2:
                         y = std::stof(value);
                         break;
-                    case 3: // Health
+                    case 3:
                         health = std::stoi(value);
                         break;
                     default:
@@ -58,10 +56,55 @@ namespace rtype
                 index++;
             }
 
-            // Ajouter les données dans la liste
             parsed_data.emplace_back(id, std::make_pair(x, y), health);
         }
 
         return parsed_data;
+    }
+
+    std::vector<std::tuple<std::pair<float, float>, int, int>> Command_checker::parseUpdateEntities(const std::string &message)
+    {
+        std::vector<std::tuple<std::pair<float, float>, int, int>> result;
+        std::stringstream ss(message);
+        std::string block;
+
+        while (std::getline(ss, block, ';')) {
+            if (block.empty()) continue;
+
+            float x = 0.0f, y = 0.0f;
+            int id = 0, type = 0;
+
+            std::stringstream blockStream(block);
+            std::string value;
+
+            if (std::getline(blockStream, value, ',')) x = std::stof(value);
+            if (std::getline(blockStream, value, ',')) y = std::stof(value);
+            if (std::getline(blockStream, value, ',')) id = std::stoi(value);
+            if (std::getline(blockStream, value, ',')) type = std::stoi(value);
+
+            result.emplace_back(std::make_pair(x, y), id, type);
+        }
+
+        return result;
+    }
+
+    std::tuple<float, float, int> Command_checker::parsePositionAndRoomPort(const std::string &input)
+    {
+        std::stringstream ss(input);
+        std::string token;
+
+        float x = 0.0f, y = 0.0f;
+        int port = 0;
+
+        std::getline(ss, token, ';');
+        x = std::stof(token);
+
+        std::getline(ss, token, ';');
+        y = std::stof(token);
+
+        std::getline(ss, token, ';');
+        port = std::stoi(token);
+
+        return std::make_tuple(x, y, port);
     }
 }

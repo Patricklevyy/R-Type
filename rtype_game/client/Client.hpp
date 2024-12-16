@@ -67,10 +67,12 @@
                 UpdateEntitySystem _update_entity_system;
 
                 void killProjectiles(std::list<size_t>);
-                void setRoomAdress(unsigned int, std::map<std::string, std::string>);
-                void createPlayer(unsigned int, std::map<std::string, std::string>);
+                void setRoomAdress(unsigned int, int);
+                void createPlayer(unsigned int, float, float);
+                void init_game(ecs::udp::Message &);
                 void createEntity(unsigned int, float, float, SPRITES);
                 void createProjectile(ecs::udp::Message&);
+                void updateEntitiesFirstConnexion(const std::string &);
 
                 // MESSAGE TO SERVER
 

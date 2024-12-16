@@ -15,14 +15,17 @@
     #include <sstream>
     #include <utility>
     #include <cstdlib>
+    #include <vector>
 
     namespace rtype
     {
         class Command_checker
         {
         public:
-            static std::string check_adress(std::map<std::string, std::string>&, std::string);
-            static std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parse_update(std::string);
+            static std::string check_adress(int, const std::string&);
+            static std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parse_update(const std::string&);
+            static std::vector<std::tuple<std::pair<float, float>, int, int>> parseUpdateEntities(const std::string&);
+            static std::tuple<float, float, int> parsePositionAndRoomPort(const std::string &);
 
         protected:
         private:

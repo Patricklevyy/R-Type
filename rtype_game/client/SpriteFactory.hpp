@@ -18,6 +18,7 @@
             public:
                 static std::shared_ptr<sf::Sprite> createSprite(SPRITES id)
                 {
+                    std::cout << "SPRITE ID =>>> " << id << std::endl;
                     std::string texturePath;
                     sf::Vector2f scale(1.0f, 1.0f);
                     switch (id)
@@ -26,14 +27,13 @@
                         texturePath = "assets/space-background.jpg";
                         scale = sf::Vector2f(1.0f, 1.0f);
                         break;
-                    case SPRITES::SHIP:
-                        texturePath = "assets/enemy-spaceship.png";
-                        scale = sf::Vector2f(0.07f, 0.07f);
+                    case SPRITES::MY_PLAYER_SHIP:
+                        texturePath = "assets/red_ship.png";
                         break;
-                    // case SPRITES::MONSTER:
-                    //     texturePath = "assets/red_ship.png"; sprite a definir
-                    //     break;
-                    case SPRITES::MISSILE:
+                    case SPRITES::OTHER_PLAYER_SHIP:
+                        texturePath = "assets/blue_ship.png";
+                        break;
+                    case SPRITES::PLAYER_SIMPLE_MISSILE:
                         texturePath = "assets/bullet.png";
                         scale = sf::Vector2f(0.03f, 0.03f);
                         break;

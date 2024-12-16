@@ -35,6 +35,7 @@
                             if (displayable[i].has_value() && positions[i].has_value()) {
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
                                 lawindow->draw(*displayable[i].value().getSprite());
+                                std::cout << "RENDER : " << i << std::endl;
                             }
                         }
                         lawindow->display();

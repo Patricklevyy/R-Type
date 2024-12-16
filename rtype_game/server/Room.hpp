@@ -22,6 +22,7 @@
     #include "../shared/Utils.hpp"
     #include "components/Projectiles.hpp"
     #include "system/BoundariesSystem.hpp"
+    #include "components/SpriteId.hpp"
 
     namespace rtype
     {
@@ -50,7 +51,7 @@
             std::string getAddress() const;
 
             void init_event_bus();
-            void sendExistingEntities(const std::string &, int);
+            std::string sendExistingEntities(const std::string &);
 
 
         private:
