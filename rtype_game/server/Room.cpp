@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <cstring>
+#include <cmath>
 
 namespace rtype
 {
@@ -143,8 +144,6 @@ namespace rtype
         std::cout << "DEAD ENTITIES : " << responseMessage.params << std::endl;
 
         _message_compressor.serialize(responseMessage, response);
-
-
 
         for (const auto& clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
@@ -282,8 +281,8 @@ namespace rtype
             if (positions[i].has_value() && healths[i].has_value()) {
 
                 updateMessage += std::to_string(i) +
-                                 "," + std::to_string(positions[i].value()._pos_x) +
-                                 "," + std::to_string(positions[i].value()._pos_y) +
+                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
                                  "," + std::to_string(healths[i].value()._health) + ";";
                 }
         }
@@ -379,10 +378,10 @@ namespace rtype
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value()) {
                 if (i != _ecs.getIndexPlayer()) {
-                    updateMessage += "x=" + std::to_string(positions[i].value()._pos_x) +
-                                ",y=" + std::to_string(positions[i].value()._pos_y) +
-                                ",id=" + std::to_string(i) +
-                                ",type=" + std::to_string(type) + ";";
+                    updateMessage += "x=" + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                                     ",y=" + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
+                                     ",id=" + std::to_string(i) +
+                                     ",type=" + std::to_string(type) + ";";
                 }
             }
         }
