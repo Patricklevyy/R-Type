@@ -18,19 +18,23 @@
             public:
                 static std::shared_ptr<sf::Sprite> createSprite(SPRITES id)
                 {
+                    std::cout << "SPRITE ID =>>> " << id << std::endl;
                     std::string texturePath;
                     switch (id)
                     {
                     case SPRITES::BACKGROUND:
                         texturePath = "assets/background.png";
                         break;
-                    case SPRITES::SHIP:
+                    case SPRITES::MY_PLAYER_SHIP:
                         texturePath = "assets/red_ship.png";
+                        break;
+                    case SPRITES::OTHER_PLAYER_SHIP:
+                        texturePath = "assets/blue_ship.png";
                         break;
                     // case SPRITES::MONSTER:
                     //     texturePath = "assets/red_ship.png"; sprite a definir
                     //     break;
-                    case SPRITES::MISSILE:
+                    case SPRITES::PLAYER_SIMPLE_MISSILE:
                         texturePath = "assets/life.png";
                         break;
                     default:

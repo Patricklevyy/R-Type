@@ -45,10 +45,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CREATE_CLIENT, [this](const std::vector<std::any> &args) {
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-            std::map<std::string, std::string> params = _mes_checker.checkFormatParams(message.params);
-            setRoomAdress(message.id, params);
-            createPlayer(message.id, params);
-            _in_menu = false;
+            init_game(message);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, [this](const std::vector<std::any> &args) {
             try {
@@ -91,7 +88,7 @@ namespace rtype
                 float x = std::stof(x_part.substr(2));
                 float y = std::stof(y_part.substr(2));
 
-                createEntity(message.id, x, y, SPRITES::SHIP);
+                createEntity(message.id, x, y, SPRITES::OTHER_PLAYER_SHIP);
             } catch (const std::bad_any_cast& e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -127,6 +124,23 @@ namespace rtype
         });
     }
 
+    void Client::init_game(ecs::udp::Message &message)
+    {
+        size_t pos = message.params.find(':');
+
+        std::string player_room = message.params.substr(0, pos);
+        std::string entities = message.params.substr(pos + 1);
+
+        std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
+        std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
+
+
+        setRoomAdress(message.id, std::get<2>(pos_port));
+        createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
+        updateEntitiesFirstConnexion(entities);
+        _in_menu = false;
+    }
+
     void Client::killProjectiles(std::list<size_t> entities_id)
     {
         size_t index_ecs_server;
@@ -147,6 +161,42 @@ namespace rtype
                 _ecs.addDeadEntity(index_ecs_client);
             }
         }
+    }
+
+    void Client::updateEntitiesFirstConnexion(const std::string &message)
+    {
+        std::vector<std::tuple<std::pair<float, float>, int, int>> entities = Command_checker::parseUpdateEntities(message);
+
+        while (!entities.empty())
+        {
+            std::tuple<std::pair<float, float>, int, int> entity = entities.back();
+            std::cout << "XX : " << std::get<0>(entity).first << "yy : " << std::get<0>(entity).second << std::endl;
+            createEntity(std::get<1>(entity), std::get<0>(entity).first, std::get<0>(entity).second, static_cast<SPRITES>(std::get<2>(entity)));
+            entities.pop_back();
+        }
+    }
+
+    void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = _index_ecs_client;
+            _index_ecs_client++;
+        }
+        std::cout << "JE CREATE : " << index << std::endl;
+        ecs::Position position(x, y);
+        Displayable displayable(sprite_id, x ,y);
+        Health health;
+
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Displayable>(index, displayable);
+
+        ecs_server_to_client[server_id] = index;
+        ecs_client_to_server[index] = server_id;
     }
 
     void Client::createProjectile(ecs::udp::Message& message)
@@ -190,38 +240,13 @@ namespace rtype
         }
     }
 
-    void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
+    void Client::setRoomAdress(unsigned int server_id, int port)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = _index_ecs_client;
-            _index_ecs_client++;
-        }
-        std::cout << "JE CREATE : " << index << std::endl;
-        ecs::Position position(x, y);
-        Displayable displayable(sprite_id, x ,y);
-        Health health;
-
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Displayable>(index, displayable);
-
-        ecs_server_to_client[server_id] = index;
-        ecs_client_to_server[index] = server_id;
-
-        index++;
-    }
-
-    void Client::setRoomAdress(unsigned int server_id, std::map<std::string, std::string> params)
-    {
-        std::string ip_port = Command_checker::check_adress(params, _udpClient->getServerIp());
+        std::string ip_port = Command_checker::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
     }
 
-    void Client::createPlayer(unsigned int server_id, std::map<std::string, std::string> params)
+    void Client::createPlayer(unsigned int server_id, float x, float y)
     {
         size_t index;
         std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
@@ -231,14 +256,12 @@ namespace rtype
             index = _index_ecs_client;
             _index_ecs_client++;
         }
-        float x = std::stof(params["x"]);
-        float y = std::stof(params["y"]);
 
         ecs::Direction direction;
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
-        Displayable displayable(SPRITES::SHIP, x ,y);
+        Displayable displayable(SPRITES::MY_PLAYER_SHIP, x ,y);
         Health health;
 
         _ecs.addComponents<ecs::Direction>(index, direction);

@@ -157,8 +157,8 @@ namespace rtype
         ecs::udp::Message responseMessage;
         responseMessage.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
         responseMessage.id = index_ecs_server;
-        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::MISSILE) << std::endl;
-        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::MISSILE);
+        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE) << std::endl;
+        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
 
         _message_compressor.serialize(responseMessage, response);
 
@@ -183,12 +183,14 @@ namespace rtype
         ecs::Velocity velocity;
         Health health;
         Projectiles projectile;
+        SpriteId spriteId(SPRITES::PLAYER_SIMPLE_MISSILE);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Projectiles>(index, projectile);
+        _ecs.addComponents<SpriteId>(index, spriteId);
         send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
@@ -206,6 +208,7 @@ namespace rtype
     {
         _ecs.addRegistry<Health>();
         _ecs.addRegistry<Projectiles>();
+        _ecs.addRegistry<SpriteId>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
@@ -258,7 +261,7 @@ namespace rtype
         switch (nb_client)
         {
         case 0:
-            return std::pair<float, float>(200, 200);
+            return std::pair<int, float>(200, 200);
         case 1:
             return std::pair<float, float>(300, 300);
         case 2:
@@ -322,12 +325,14 @@ namespace rtype
         ecs::Position position(positions.first, positions.second);
         ecs::Velocity velocity;
         Health health;
+        SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<SpriteId>(index, spriteId);
 
         return index;
     }
@@ -338,16 +343,15 @@ namespace rtype
 
         std::string roomAddress = getAddress();
 
-        ecs::udp::Message mes;
-
-        mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
         std::pair<float, float> position = get_player_start_position(getNbClient());
-        mes.params = "x=" + std::to_string(position.first) + ";y=" + std::to_string(position.second) + ";port=" + std::to_string(_port);
+
         std::vector<char> send_message;
+        ecs::udp::Message mes;
+        mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities(lastclientAdr);;
 
+        std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position, clientName);
-        sendExistingEntities(lastclientAdr, SPRITES::SHIP);
-
         _message_compressor.serialize(mes, send_message);
         _clientAddresses.push_back(lastclientAdr);
         std::cout << lastclientAdr << std::endl;
@@ -371,32 +375,26 @@ namespace rtype
         index_ecs++;
     }
 
-    void Room::sendExistingEntities(const std::string &clientAddress, int type)
+    std::string Room::sendExistingEntities(const std::string &clientAddress)
     {
         auto& positions = std::any_cast<ecs::SparseArray<ecs::Position>&>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto& sprite = std::any_cast<ecs::SparseArray<SpriteId>&>(_ecs._components_arrays[typeid(SpriteId)]);
+
         std::string updateMessage = "";
 
         for (size_t i = 0; i < positions.size(); ++i) {
-            if (positions[i].has_value()) {
-                if (i != _ecs.getIndexPlayer()) {
-                    updateMessage += "x=" + std::to_string(positions[i].value()._pos_x) +
-                                ",y=" + std::to_string(positions[i].value()._pos_y) +
-                                ",id=" + std::to_string(i) +
-                                ",type=" + std::to_string(type) + ";";
-                }
+            if (positions[i].has_value() && sprite[i].has_value()) {
+                int spriteId = sprite[i].value()._sprite;
+                if (spriteId == 1)
+                    spriteId = 4;
+                updateMessage += std::to_string(positions[i].value()._pos_x) +
+                            "," + std::to_string(positions[i].value()._pos_y) +
+                            "," + std::to_string(i) +
+                            "," + std::to_string(spriteId) + ";";
             }
         }
 
-        if (!updateMessage.empty() && updateMessage.back() == ';') {
-            updateMessage.pop_back();
-        }
-        ecs::udp::Message mes;
-        mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.id = 0;
-        mes.params = updateMessage + ";port=" + std::to_string(_port);
-        std::vector<char> send_message;
-        _message_compressor.serialize(mes, send_message);
-        _udp_server->sendMessage(send_message, clientAddress);
+        return updateMessage;
     }
 
     void Room::closeRoom()
