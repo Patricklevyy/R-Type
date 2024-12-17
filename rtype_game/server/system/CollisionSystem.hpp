@@ -12,15 +12,14 @@
 
 #ifndef COLLISIONSYSTEM_HPP_
 #define COLLISIONSYSTEM_HPP_
-#include "../Enums_ecs.hpp"
-#include "../Includes_ecs.hpp"
-#include "../SparseArray.hpp"
-#include "../components/Entity.hpp"
-#include "../../rtype_game/shared/components/Health.hpp"
-#include "../../rtype_game/shared/components/Hitbox.hpp"
-#include "../components/Position.hpp"
+#include "../../ecs/Enums_ecs.hpp"
+#include "../../ecs/Includes_ecs.hpp"
+#include "../../ecs/SparseArray.hpp"
+#include "../../ecs/components/Position.hpp"
+#include "../../shared/components/Health.hpp"
+#include "../components/Hitbox.hpp"
 
-namespace ecs
+namespace rtype
 {
     /**
      * @class CollisionSystem
@@ -35,9 +34,9 @@ namespace ecs
         */
         void detectCollisions(std::unordered_map<std::type_index, std::any> &components_array)
         {
-            auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
-            auto &hitboxes = std::any_cast<SparseArray<rtype::Hitbox> &>(components_array[typeid(rtype::Hitbox)]);
-            auto &healths = std::any_cast<SparseArray<rtype::Health> &>(components_array[typeid(rtype::Health)]);
+            auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
+            auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
+            auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
 
             for (std::size_t i = 0; i < positions.size(); ++i) {
                 if (positions[i].has_value() && hitboxes[i].has_value()) {
@@ -70,12 +69,12 @@ namespace ecs
          * @param box2 Hitbox of the second entity.
          * @return True if the entities are colliding, false otherwise.
          */
-        bool isColliding(const Position &pos1, const rtype::Hitbox &box1, const Position &pos2, const rtype::Hitbox &box2)
+        bool isColliding(const ecs::Position &pos1, const rtype::Hitbox &box1, const ecs::Position &pos2, const rtype::Hitbox &box2)
         {
-            return !(pos1._pos_x + box1.width < pos2._pos_x ||
-            pos1._pos_x > pos2._pos_x + box2.width ||
-            pos1._pos_y + box1.height < pos2._pos_y ||
-            pos1._pos_x > pos2._pos_y + box2.height);
+            return !(pos1._pos_x + box1._width < pos2._pos_x ||
+            pos1._pos_x > pos2._pos_x + box2._width ||
+            pos1._pos_y + box1._height < pos2._pos_y ||
+            pos1._pos_x > pos2._pos_y + box2._height);
         }
     };
 }

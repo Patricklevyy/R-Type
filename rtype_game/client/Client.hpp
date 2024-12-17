@@ -67,7 +67,8 @@
                 RenderWindow _render_window_system;
                 UpdateEntitySystem _update_entity_system;
 
-                void killProjectiles(std::list<size_t>);
+                void killEntity(std::list<size_t>);
+
                 void setRoomAdress(unsigned int, int);
                 void createPlayer(unsigned int, float, float);
                 void init_game(ecs::udp::Message &);

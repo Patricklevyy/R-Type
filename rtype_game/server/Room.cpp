@@ -145,10 +145,19 @@ namespace rtype
         //     _monster_movement_system.moveMonsters(_ecs, _timer.getTps());
         // });
         _eventBus.subscribe(RTYPE_ACTIONS::CREATE_MONSTER, [this](const std::vector<std::any> &args) {
-            (void)args;
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
             createMonster(message);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_COLLISIONS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            _collision_system.detectCollisions(_ecs._components_arrays);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
+
+            std::list<size_t> dead_entites_id = _health_system.checkAndKillEntities(_ecs);
+                if (!dead_entites_id.empty())
+                    send_client_dead_entities(dead_entites_id);
         });
     }
 
@@ -156,7 +165,7 @@ namespace rtype
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::KILL_PROJECTILES;
+        responseMessage.action = RTYPE_ACTIONS::KILL_ENTITY;
         responseMessage.id = 0;
 
         std::string ids;
@@ -207,7 +216,8 @@ namespace rtype
         ecs::Direction direction(static_cast<ecs::direction>(pos_dir.second.first), static_cast<ecs::direction>(pos_dir.second.second));
         ecs::Position position(pos_dir.first.first, pos_dir.first.second);
         ecs::Velocity velocity;
-        Health health;
+        Health health(20);
+        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::PLAYER_SIMPLE_MISSILE));
         Projectiles projectile;
         SpriteId spriteId(SPRITES::PLAYER_SIMPLE_MISSILE);
 
@@ -217,6 +227,7 @@ namespace rtype
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Projectiles>(index, projectile);
         _ecs.addComponents<SpriteId>(index, spriteId);
+        _ecs.addComponents<Hitbox>(index, hitbox);
         send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
@@ -239,14 +250,15 @@ namespace rtype
         int y = std::stoi(res["y"]);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
-        Health health;
-        health._health = 200;
+        Health health(60);
         Monster monster;
+        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MONSTER));
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Monster>(index, monster);
+        _ecs.addComponents<Hitbox>(index, hitbox);
 
         send_client_new_monster(index, x, y, SPRITES::MONSTER);
     }
@@ -267,6 +279,7 @@ namespace rtype
         _ecs.addRegistry<Projectiles>();
         _ecs.addRegistry<SpriteId>();
         _ecs.addRegistry<Monster>();
+        _ecs.addRegistry<Hitbox>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
@@ -301,6 +314,8 @@ namespace rtype
                     handleCommand(message, clientAddress);
                 }
             }
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
             sendUpdate();
         }
         _udp_server->stopReceiving();
@@ -378,8 +393,9 @@ namespace rtype
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
         ecs::Velocity velocity;
-        Health health;
+        Health health(100);
         SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
+        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MY_PLAYER_SHIP));
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
@@ -387,6 +403,7 @@ namespace rtype
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<SpriteId>(index, spriteId);
+        _ecs.addComponents<Hitbox>(index, hitbox);
 
         return index;
     }

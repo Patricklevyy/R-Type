@@ -41,6 +41,9 @@
             KILL_PROJECTILES,
             CHECK_OFF_SCREEN,
             UPDATE_GAME_STATUS,
+            CHECK_COLLISIONS,
+            KILL_ENTITY,
+            CHECK_LIFES,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
             RENDER_WINDOW,

@@ -106,7 +106,7 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::KILL_PROJECTILES, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::KILL_ENTITY, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
@@ -117,7 +117,7 @@ namespace rtype
                 while (std::getline(ss, token, ';')) {
                     entities_id.push_back(std::stoull(token));
                 }
-                killProjectiles(entities_id);
+                killEntity(entities_id);
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
@@ -153,7 +153,7 @@ namespace rtype
         _in_menu = false;
     }
 
-    void Client::killProjectiles(std::list<size_t> entities_id)
+    void Client::killEntity(std::list<size_t> entities_id)
     {
         size_t index_ecs_server;
         size_t index_ecs_client;
@@ -200,7 +200,7 @@ namespace rtype
         std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id, x, y);
-        Health health;
+        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
@@ -271,7 +271,7 @@ namespace rtype
         int y = std::stof(res["y"]);
         ecs::Position position(x, y);
         Displayable displayable(SPRITES::MONSTER, x, y);
-        Health health;
+        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
@@ -302,7 +302,7 @@ namespace rtype
         ecs::Position position(x, y);
         ecs::Velocity velocity;
         Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
-        Health health;
+        Health health(100);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);

@@ -8,23 +8,38 @@
 #ifndef ROOM_HPP_
     #define ROOM_HPP_
 
+    // INCLUDES
+
     #include "../shared/Includes.hpp"
+    #include "../../ecs/Includes_ecs.hpp"
+
+    // CLASSES
+
     #include "MessageChecker.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
     #include "../../ecs/ECS.hpp"
-    #include "../../ecs/Includes_ecs.hpp"
-    #include "../../ecs/system/PositionSystem.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
-    #include "../shared/system/DirectionSystem.hpp"
-    #include "../shared/components/Health.hpp"
     #include "../shared/Utils.hpp"
+    #include "HitboxFactory.hpp"
+
+    // COMPONENTS
+
+    #include "../shared/components/Health.hpp"
     #include "components/Projectiles.hpp"
     #include "components/Monster.hpp"
+    #include "components/SpriteId.hpp"
+    #include "components/Hitbox.hpp"
+
+    // SYSTEMS
+
     #include "system/BoundariesSystem.hpp"
     #include "system/MonsterMovementSystem.hpp"
-    #include "components/SpriteId.hpp"
+    #include "../../ecs/system/PositionSystem.hpp"
+    #include "../shared/system/DirectionSystem.hpp"
+    #include "system/CollisionSystem.hpp"
+    #include "system/HealthSystem.hpp"
 
     namespace rtype
     {
@@ -80,6 +95,8 @@
             rtype::DirectionSystem _direction_system;
             BoundariesSystem _boundaries_system;
             ecs::MonsterMovementSystem _monster_movement_system;
+            CollisionSystem _collision_system;
+            HealthSystem _health_system;
 
 
             void send_client_dead_entities(std::list<size_t>);
