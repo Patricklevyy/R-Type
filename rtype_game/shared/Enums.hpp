@@ -36,6 +36,8 @@
             GET_WINDOW_EVENT,
             PLAYER_SHOOT,
             CREATE_PROJECTILE,
+            CREATE_MONSTER,
+            MOVE_MONSTERS,
             KILL_PROJECTILES,
             CHECK_OFF_SCREEN,
             UPDATE_GAME_STATUS,

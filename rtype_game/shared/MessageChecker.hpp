@@ -22,6 +22,7 @@
             void checkAction(const ecs::udp::Message &) const;
 
             std::map<std::string, std::string> checkFormatParams(std::string &);
+            static std::unordered_map<std::string, std::string> parseResponse(const std::string &);
 
         protected:
         private:

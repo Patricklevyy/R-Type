@@ -30,6 +30,10 @@
                     case SPRITES::MY_PLAYER_SHIP:
                         texturePath = "assets/red_ship.png";
                         break;
+                    case SPRITES::MONSTER:
+                        texturePath = "assets/enemy-spaceship.png";
+                        scale = sf::Vector2f(-0.04f, 0.04f);
+                        break;
                     case SPRITES::OTHER_PLAYER_SHIP:
                         texturePath = "assets/blue_ship.png";
                         break;

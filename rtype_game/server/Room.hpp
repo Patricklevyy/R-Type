@@ -21,7 +21,9 @@
     #include "../shared/components/Health.hpp"
     #include "../shared/Utils.hpp"
     #include "components/Projectiles.hpp"
+    #include "components/Monster.hpp"
     #include "system/BoundariesSystem.hpp"
+    #include "system/MonsterMovementSystem.hpp"
     #include "components/SpriteId.hpp"
 
     namespace rtype
@@ -77,6 +79,7 @@
             ecs::PositionSystem _positon_system;
             rtype::DirectionSystem _direction_system;
             BoundariesSystem _boundaries_system;
+            ecs::MonsterMovementSystem _monster_movement_system;
 
 
             void send_client_dead_entities(std::list<size_t>);
@@ -89,6 +92,8 @@
             void sendUpdate();
             void send_client_new_projectile(size_t, float, float);
             void createProjectile(ecs::udp::Message&);
+            void createMonster(ecs::udp::Message &);
+            void send_client_new_monster(size_t, float, float , int);
         };
     }
 

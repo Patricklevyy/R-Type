@@ -38,7 +38,7 @@ namespace rtype
             (void)args;
             _event_window_system.startListening(_ecs._components_arrays);
         });
-         _eventBus.subscribe(RTYPE_ACTIONS::STOP_LISTEN_EVENT, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::STOP_LISTEN_EVENT, [this](const std::vector<std::any> &args) {
             (void)args;
             _event_window_system.stopListening();
         });
@@ -56,13 +56,13 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
             _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer(), _window_width, _window_height);
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
             try {
-                auto& message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 std::list<std::tuple<std::size_t, std::pair<float, float>, int>> entities = Command_checker::parse_update(message.params);
 
@@ -73,13 +73,13 @@ namespace rtype
                     }
                     entities.pop_front();
                 }
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: UPDATE POSSSS" << e.what() << std::endl;
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::CREATE_TEAMMATE, [this](const std::vector<std::any> &args) {
             try {
-                auto& message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 size_t separator_pos = message.params.find(';');
 
@@ -90,24 +90,24 @@ namespace rtype
                 float y = std::stof(y_part.substr(2));
 
                 createEntity(message.id, x, y, SPRITES::OTHER_PLAYER_SHIP);
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER_WINDOW, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::RENDER_WINDOW, [this](const std::vector<std::any> &args) {
             (void)args;
             _render_window_system.render(_ecs._components_arrays);
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PROJECTILE, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PROJECTILE, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 createProjectile(message);
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::KILL_PROJECTILES, [this](const std::vector<std::any>& args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::KILL_PROJECTILES, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
@@ -119,8 +119,21 @@ namespace rtype
                     entities_id.push_back(std::stoull(token));
                 }
                 killProjectiles(entities_id);
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::CREATE_MONSTER, [this](const std::vector<std::any> &args) {
+            try {
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                size_t separator_pos = message.params.find(';');
+                float x = std::stof(message.params.substr(0, separator_pos).substr(2));
+                float y = std::stof(message.params.substr(separator_pos + 1).substr(2));
+
+                createEntity(message.id, x, y, SPRITES::MONSTER);
+            } catch (const std::exception &e) {
+                std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
             }
         });
     }
@@ -135,7 +148,6 @@ namespace rtype
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
         std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
 
-
         setRoomAdress(message.id, std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
@@ -147,7 +159,7 @@ namespace rtype
         size_t index_ecs_server;
         size_t index_ecs_client;
 
-        for (const auto& id : entities_id) {
+        for (const auto &id : entities_id) {
             auto it = ecs_server_to_client.find(id);
             if (it != ecs_server_to_client.end()) {
                 index_ecs_client = it->second;
@@ -168,8 +180,7 @@ namespace rtype
     {
         std::vector<std::tuple<std::pair<float, float>, int, int>> entities = Command_checker::parseUpdateEntities(message);
 
-        while (!entities.empty())
-        {
+        while (!entities.empty()) {
             std::tuple<std::pair<float, float>, int, int> entity = entities.back();
             std::cout << "XX : " << std::get<0>(entity).first << "yy : " << std::get<0>(entity).second << std::endl;
             createEntity(std::get<1>(entity), std::get<0>(entity).first, std::get<0>(entity).second, static_cast<SPRITES>(std::get<2>(entity)));
@@ -189,7 +200,7 @@ namespace rtype
         }
         std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
-        Displayable displayable(sprite_id, x ,y);
+        Displayable displayable(sprite_id, x, y);
         Health health;
 
         _ecs.addComponents<ecs::Position>(index, position);
@@ -200,7 +211,7 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createProjectile(ecs::udp::Message& message)
+    void Client::createProjectile(ecs::udp::Message &message)
     {
         float x = 0.0f, y = 0.0f;
         int type = 0;
@@ -241,6 +252,35 @@ namespace rtype
         }
     }
 
+    void Client::createMonster(ecs::udp::Message &message)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = _index_ecs_client;
+            _index_ecs_client++;
+        }
+        std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
+        if (res.find("x") == res.end() || res.find("y") == res.end()) {
+            std::cerr << "Error: Missing x or y in message parameters" << std::endl;
+            return;
+        }
+        int x = std::stof(res["x"]);
+        int y = std::stof(res["y"]);
+        ecs::Position position(x, y);
+        Displayable displayable(SPRITES::MONSTER, x, y);
+        Health health;
+
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Displayable>(index, displayable);
+
+        std::cout << "Monstre créé à l'index : " << index << " (" << x << ", " << y << ")" << std::endl;
+    }
+
     void Client::setRoomAdress(unsigned int server_id, int port)
     {
         std::string ip_port = Command_checker::check_adress(port, _udpClient->getServerIp());
@@ -262,7 +302,7 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity;
-        Displayable displayable(SPRITES::MY_PLAYER_SHIP, x ,y);
+        Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
         Health health;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
@@ -276,7 +316,7 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::handle_message(std::vector<char>& message, std::string clientAddr)
+    void Client::handle_message(std::vector<char> &message, std::string clientAddr)
     {
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
@@ -290,7 +330,8 @@ namespace rtype
     {
         std::vector<char> buffer;
         ecs::udp::Message mess;
-        mess.id = ecs_client_to_server[_ecs.getIndexPlayer()];;
+        mess.id = ecs_client_to_server[_ecs.getIndexPlayer()];
+        ;
         mess.action = RTYPE_ACTIONS::UPDATE_DIRECTION;
         mess.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y);
 
@@ -305,16 +346,15 @@ namespace rtype
 
     void Client::handle_event()
     {
-        while (!_events.empty())
-        {
+        while (!_events.empty()) {
             std::cout << "SIZE : " << _events.size() << std::endl;
             sf::Event event = _events.front();
             _events.pop();
             switch (event.type) {
-                case sf::Event::Closed:
-                    // DIRE A LA ROOM QUE LE CLIENT SE DECONNECTE
-                    _running = false;
-                    return;
+            case sf::Event::Closed:
+                // DIRE A LA ROOM QUE LE CLIENT SE DECONNECTE
+                _running = false;
+                return;
 
                 case sf::Event::KeyPressed:
                     std::cout << "KEYH PRESSED" << std::endl;
@@ -345,23 +385,23 @@ namespace rtype
                         mess.action = 0;
                         mess.params = "room_name=room1;client_name=jean;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
-                        _message_compressor.serialize(mess, buffer);
+                    _message_compressor.serialize(mess, buffer);
 
-                        std::cout << "je send" << std::endl;
-                        if (_udpClient->sendMessageToDefault(buffer)) {
-                            std::cout << "Message sent: " << std::endl;
-                        } else {
-                            std::cout << "failed " << std::endl;
-                        }
+                    std::cout << "je send" << std::endl;
+                    if (_udpClient->sendMessageToDefault(buffer)) {
+                        std::cout << "Message sent: " << std::endl;
+                    } else {
+                        std::cout << "failed " << std::endl;
                     }
-                    if (event.key.code == sf::Keyboard::B) {
-                        std::vector<char> buffer;
-                        ecs::udp::Message mess;
-                        mess.id = 1;
-                        mess.action = 1;
-                        mess.params = "room_name=room1;client_name=patrick;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+                }
+                if (event.key.code == sf::Keyboard::B) {
+                    std::vector<char> buffer;
+                    ecs::udp::Message mess;
+                    mess.id = 1;
+                    mess.action = 1;
+                    mess.params = "room_name=room1;client_name=patrick;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
-                        _message_compressor.serialize(mess, buffer);
+                    _message_compressor.serialize(mess, buffer);
 
                         std::cout << "je send" << std::endl;
                         if (_udpClient->sendMessageToDefault(buffer)) {
@@ -386,9 +426,9 @@ namespace rtype
                         send_server_new_shoot();
                     }
 
-                default:
-                    std::cout << "Événement non traité." << std::endl;
-                    break;
+            default:
+                std::cout << "Événement non traité." << std::endl;
+                break;
             }
         }
     }
@@ -402,15 +442,15 @@ namespace rtype
         _index_ecs_client++;
     }
 
-    void Client::init_window_size(const std::string& file_path)
+    void Client::init_window_size(const std::string &file_path)
     {
         libconfig::Config cfg; // Objet Config pour lire le fichier
 
         try {
             cfg.readFile(file_path.c_str());
 
-            const libconfig::Setting& root = cfg.getRoot();
-            const libconfig::Setting& client = root["client"];
+            const libconfig::Setting &root = cfg.getRoot();
+            const libconfig::Setting &client = root["client"];
 
             if (!client.lookupValue("window_width", _window_width)) {
                 std::cerr << "Erreur : 'window_x' introuvable dans le fichier de configuration." << std::endl;
@@ -419,12 +459,12 @@ namespace rtype
             if (!client.lookupValue("window_height", _window_height)) {
                 std::cerr << "Erreur : 'window_y' introuvable dans le fichier de configuration." << std::endl;
             }
-        } catch (const libconfig::FileIOException& fioex) {
+        } catch (const libconfig::FileIOException &fioex) {
             std::cerr << "Erreur : Impossible de lire le fichier de configuration." << std::endl;
-        } catch (const libconfig::ParseException& pex) {
+        } catch (const libconfig::ParseException &pex) {
             std::cerr << "Erreur de parsing au niveau " << pex.getFile()
-                    << ":" << pex.getLine() << " - " << pex.getError() << std::endl;
-        } catch (const libconfig::SettingNotFoundException& nfex) {
+                      << ":" << pex.getLine() << " - " << pex.getError() << std::endl;
+        } catch (const libconfig::SettingNotFoundException &nfex) {
             std::cerr << "Erreur : Paramètre introuvable dans le fichier de configuration." << std::endl;
         }
     }
@@ -458,7 +498,8 @@ namespace rtype
                 try {
                     handle_message(message, clientAddress);
                 } catch (std::exception &e) {
-                    std::cerr << std::endl << e.what() << std::endl;
+                    std::cerr << std::endl
+                              << e.what() << std::endl;
                 }
             }
             // _ecs.displayPlayableEntityComponents();
