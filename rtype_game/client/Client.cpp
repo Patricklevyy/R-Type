@@ -51,8 +51,7 @@ namespace rtype
             try {
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = std::any_cast<std::reference_wrapper<std::tuple<ecs::direction, ecs::direction, size_t>>>(args[0]).get();
                 _direction_system.updatePlayerDirection(_ecs._components_arrays, std::get<0>(_x_y_index), std::get<1>(_x_y_index), std::get<2>(_x_y_index));
-                send_server_player_direction(std::get<0>(_x_y_index), std::get<1>(_x_y_index));
-            } catch (const std::bad_any_cast& e) {
+            } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
@@ -356,34 +355,38 @@ namespace rtype
                 _running = false;
                 return;
 
-                case sf::Event::KeyPressed:
-                    std::cout << "KEYH PRESSED" << std::endl;
-                    if (event.key.code == sf::Keyboard::Escape) {
-                        _running = false;
-                        return;
-                    }
-                    if (event.key.code == sf::Keyboard::D && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::RIGHT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
-                    }
-                    if (event.key.code == sf::Keyboard::Q && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::LEFT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
-                    }
-                    if (event.key.code == sf::Keyboard::Z && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::UP, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
-                    }
-                    if (event.key.code == sf::Keyboard::S && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::DOWN, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
-                    }
-                    if (event.key.code == sf::Keyboard::A) {
-                        std::vector<char> buffer;
-                        ecs::udp::Message mess;
-                        mess.id = 1;
-                        mess.action = 0;
-                        mess.params = "room_name=room1;client_name=jean;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+            case sf::Event::KeyPressed:
+                std::cout << "KEYH PRESSED" << std::endl;
+                if (event.key.code == sf::Keyboard::Escape) {
+                    _running = false;
+                    return;
+                }
+                if (event.key.code == sf::Keyboard::D && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::RIGHT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if (event.key.code == sf::Keyboard::Q && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::LEFT, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::LEFT, ecs::direction::NO_CHANGE);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if (event.key.code == sf::Keyboard::Z && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::UP, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::UP);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if (event.key.code == sf::Keyboard::S && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::DOWN, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if (event.key.code == sf::Keyboard::A) {
+                    std::vector<char> buffer;
+                    ecs::udp::Message mess;
+                    mess.id = 1;
+                    mess.action = 0;
+                    mess.params = "room_name=room1;client_name=jean;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
                     _message_compressor.serialize(mess, buffer);
 
@@ -403,28 +406,45 @@ namespace rtype
 
                     _message_compressor.serialize(mess, buffer);
 
-                        std::cout << "je send" << std::endl;
-                        if (_udpClient->sendMessageToDefault(buffer)) {
-                            std::cout << "Message sent: " << std::endl;
-                        } else {
-                            std::cout << "failed " << std::endl;
-                        }
+                    std::cout << "je send" << std::endl;
+                    if (_udpClient->sendMessageToDefault(buffer)) {
+                        std::cout << "Message sent: " << std::endl;
+                    } else {
+                        std::cout << "failed " << std::endl;
                     }
-                    break;
-                case sf::Event::KeyReleased:
-                    if ((event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q) && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if (event.key.code == sf::Keyboard::M) {
+                    ecs::udp::Message mess;
+                    std::vector<char> buffer;
+                    mess.id = 0;
+                    mess.action = RTYPE_ACTIONS::CREATE_MONSTER;
+                    mess.params = "x=800;y=800";
+
+                    _message_compressor.serialize(mess, buffer);
+
+                    if (_udpClient->sendMessageToDefault(buffer)) {
+                        std::cout << "Request sent to create a monster" << std::endl;
+                    } else {
+                        std::cerr << "Failed to send request" << std::endl;
                     }
-                    if ((event.key.code == sf::Keyboard::Z || event.key.code == sf::Keyboard::S) && !_in_menu) {
-                        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION, _ecs.getIndexPlayer());
-                        _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
-                    }
-                    break;
-                case sf::Event::MouseButtonPressed:
-                    if (event.mouseButton.button == sf::Mouse::Left && !_in_menu) {
-                        send_server_new_shoot();
-                    }
+                }
+                break;
+            case sf::Event::KeyReleased:
+                if ((event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q) && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                if ((event.key.code == sf::Keyboard::Z || event.key.code == sf::Keyboard::S) && !_in_menu) {
+                    std::tuple<ecs::direction, ecs::direction, size_t> _x_y(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION, _ecs.getIndexPlayer());
+                    send_server_player_direction(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
+                }
+                break;
+            case sf::Event::MouseButtonPressed:
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    send_server_new_shoot();
+                }
 
             default:
                 std::cout << "Événement non traité." << std::endl;
