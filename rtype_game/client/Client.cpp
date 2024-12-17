@@ -300,7 +300,7 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
-        ecs::Velocity velocity;
+        ecs::Velocity velocity(50);
         Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
         Health health(100);
 
@@ -357,6 +357,10 @@ namespace rtype
 
             case sf::Event::KeyPressed:
                 std::cout << "KEYH PRESSED" << std::endl;
+                if (event.key.code == sf::Keyboard::W && !_in_menu) {
+                    std::cout << "CREATE MONSTER" << std::endl;
+                    send_server_start_game();
+                }
                 if (event.key.code == sf::Keyboard::Escape) {
                     _running = false;
                     return;
@@ -450,6 +454,22 @@ namespace rtype
                 std::cout << "Événement non traité." << std::endl;
                 break;
             }
+        }
+    }
+
+    void Client::send_server_start_game()
+    {
+        std::vector<char> buffer;
+        ecs::udp::Message mess;
+        mess.id = 0;
+        mess.action = RTYPE_ACTIONS::START_GAME;
+        _message_compressor.serialize(mess, buffer);
+
+        std::cout << "je send" << std::endl;
+        if (_udpClient->sendMessageToDefault(buffer)) {
+            std::cout << "Message sent: " << std::endl;
+        } else {
+            std::cout << "failed " << std::endl;
         }
     }
 

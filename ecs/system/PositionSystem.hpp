@@ -64,7 +64,7 @@
                             if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x - velocities[i].value().velocity / tickRate) < BORDER_MARGIN)) {
                                 break;
                             }
-                            positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;;
+                            positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;
                             break;
                         case direction::RIGHT:
                             if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x + velocities[i].value().velocity / tickRate) > (window_width - BORDER_MARGIN * 18))) {

@@ -82,6 +82,7 @@
 
                 void send_server_new_shoot();
                 void send_server_player_direction(ecs::direction, ecs::direction);
+                void send_server_start_game();
 
                 // INITIALISATION
 

@@ -37,6 +37,7 @@
     #include "system/BoundariesSystem.hpp"
     #include "system/MonsterMovementSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
+    #include "../../ecs/components/Direction.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "system/CollisionSystem.hpp"
     #include "system/HealthSystem.hpp"
@@ -94,7 +95,7 @@
             ecs::PositionSystem _positon_system;
             rtype::DirectionSystem _direction_system;
             BoundariesSystem _boundaries_system;
-            ecs::MonsterMovementSystem _monster_movement_system;
+            MonsterMovementSystem _monster_movement_system;
             CollisionSystem _collision_system;
             HealthSystem _health_system;
 
@@ -109,7 +110,7 @@
             void sendUpdate();
             void send_client_new_projectile(size_t, float, float);
             void createProjectile(ecs::udp::Message&);
-            void createMonster(ecs::udp::Message &);
+            void createMonster();
             void send_client_new_monster(size_t, float, float , int);
         };
     }

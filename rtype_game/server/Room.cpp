@@ -10,23 +10,7 @@
 #include <cmath>
 #include <cstring>
 #include <sys/socket.h>
-
-std::unordered_map<std::string, std::string> parseParams(const std::string &params)
-{
-    std::unordered_map<std::string, std::string> parsed;
-    std::stringstream ss(params);
-    std::string item;
-
-    while (std::getline(ss, item, ';')) {
-        size_t eqPos = item.find('=');
-        if (eqPos != std::string::npos) {
-            std::string key = item.substr(0, eqPos);
-            std::string value = item.substr(eqPos + 1);
-            parsed[key] = value;
-        }
-    }
-    return parsed;
-}
+#include <random>
 
 namespace rtype
 {
@@ -140,14 +124,8 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        // _eventBus.subscribe(RTYPE_ACTIONS::MOVE_MONSTERS, [this](const std::vector<std::any>& args) {
-        //     (void)args;
-        //     _monster_movement_system.moveMonsters(_ecs, _timer.getTps());
-        // });
-        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_MONSTER, [this](const std::vector<std::any> &args) {
-            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
-
-            createMonster(message);
+        _eventBus.subscribe(RTYPE_ACTIONS::MOVE_MONSTERS, [this](const std::vector<std::any>& args) {
+            _monster_movement_system.moveMonsters(_ecs, _timer.getTps(), _window_width, _window_height);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_COLLISIONS, [this](const std::vector<std::any> &args) {
             (void)args;
@@ -158,6 +136,11 @@ namespace rtype
             std::list<size_t> dead_entites_id = _health_system.checkAndKillEntities(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::START_GAME, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            createMonster();
         });
     }
 
@@ -215,7 +198,7 @@ namespace rtype
         std::pair<std::pair<float, float>, std::pair<int, int>> pos_dir = Utils::extractProjectilePosAndDir(message.params);
         ecs::Direction direction(static_cast<ecs::direction>(pos_dir.second.first), static_cast<ecs::direction>(pos_dir.second.second));
         ecs::Position position(pos_dir.first.first, pos_dir.first.second);
-        ecs::Velocity velocity;
+        ecs::Velocity velocity(300);
         Health health(20);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::PLAYER_SIMPLE_MISSILE));
         Projectiles projectile;
@@ -231,7 +214,7 @@ namespace rtype
         send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
-    void Room::createMonster(ecs::udp::Message &message)
+    void Room::createMonster()
     {
         size_t index;
         std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
@@ -241,17 +224,16 @@ namespace rtype
             index = index_ecs;
             index_ecs++;
         }
-        std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
-        if (res.find("x") == res.end() || res.find("y") == res.end()) {
-            std::cerr << "Error: Missing x or y in message parameters" << std::endl;
-            return;
-        }
-        int x = std::stoi(res["x"]);
-        int y = std::stoi(res["y"]);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> distrib(20, _window_height - 100);
+        int x = _window_width + 30;
+        int y = distrib(gen);
         ecs::Position position(x, y);
-        ecs::Velocity velocity;
+        ecs::Velocity velocity(20);
         Health health(60);
         Monster monster;
+        ecs::Direction direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MONSTER));
 
         _ecs.addComponents<ecs::Position>(index, position);
@@ -259,6 +241,7 @@ namespace rtype
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Monster>(index, monster);
         _ecs.addComponents<Hitbox>(index, hitbox);
+        _ecs.addComponents<ecs::Direction>(index, direction);
 
         send_client_new_monster(index, x, y, SPRITES::MONSTER);
     }
@@ -305,7 +288,7 @@ namespace rtype
         while (_game_running) {
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
-            // _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
+            _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
@@ -392,7 +375,7 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
-        ecs::Velocity velocity;
+        ecs::Velocity velocity(50);
         Health health(100);
         SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MY_PLAYER_SHIP));

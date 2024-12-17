@@ -25,7 +25,7 @@
             /**
              * @brief Default constructor for Velocity.
              */
-            Velocity() {}
+            Velocity(int velocityyyy): velocity(velocityyyy) {}
 
             /**
              * @brief Destructor for Velocity.
@@ -36,7 +36,7 @@
              * @brief Movement speed of the entity.
              * @note Consider making this configurable through an external file.
              */
-            float velocity = 300.0;
+            float velocity;
 
         protected:
         private:

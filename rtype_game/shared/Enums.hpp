@@ -47,6 +47,7 @@
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
             RENDER_WINDOW,
+            START_GAME,
             MAX_ACTION
         };
 
