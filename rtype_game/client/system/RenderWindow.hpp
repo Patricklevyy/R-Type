@@ -10,10 +10,12 @@
 
     #include "../components/Window.hpp"
     #include "../components/Background.hpp"
+    #include "../components/Shader.hpp"
     #include "../../shared/Includes.hpp"
     #include <iostream>
     #include "../../../ecs/SparseArray.hpp"
     #include "../components/Displayable.hpp"
+    #include "./SetFilter.hpp"
     #include "../../../ecs/components/Position.hpp"
 
     namespace rtype
@@ -28,13 +30,15 @@
                         auto &displayable = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
                         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
+                        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(components_array.at(typeid(Shader)));
 
                         auto lawindow = windows[0].value().getRenderWindow().get();
+                        auto leshader = shader[0].value().getShader().get();
                         lawindow->clear(sf::Color::Yellow);
                         for (size_t i = 0; i < displayable.size(); ++i) {
                             if (displayable[i].has_value() && positions[i].has_value()) {
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
-                                lawindow->draw(*displayable[i].value().getSprite());
+                                lawindow->draw(*displayable[i].value().getSprite(), leshader);
                                 std::cout << "RENDER : " << i << std::endl;
                             }
                         }

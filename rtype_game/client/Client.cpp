@@ -26,6 +26,7 @@ namespace rtype
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
         _ecs.addRegistry<Health>();
+        _ecs.addRegistry<Shader>();
     }
 
     void Client::init_subscribe_event_bus()
@@ -356,7 +357,7 @@ namespace rtype
                 return;
 
             case sf::Event::KeyPressed:
-                std::cout << "KEYH PRESSED" << std::endl;
+                std::cout << "KEY PRESSED : " << event.key.code << std::endl;
                 if (event.key.code == sf::Keyboard::Escape) {
                     _running = false;
                     return;
@@ -428,6 +429,21 @@ namespace rtype
                         std::cerr << "Failed to send request" << std::endl;
                     }
                 }
+                if (event.key.code == sf::Keyboard::Num1) {
+                    _set_filter_system.setFilter(_ecs._components_arrays, FILTER_MODE::Neutral);
+                }
+                if (event.key.code == sf::Keyboard::Num2) {
+                    _set_filter_system.setFilter(_ecs._components_arrays, FILTER_MODE::Inverted);
+                }
+                if (event.key.code == sf::Keyboard::Num3) {
+                    _set_filter_system.setFilter(_ecs._components_arrays, FILTER_MODE::Protanopia);
+                }
+                if (event.key.code == 51) {
+                    _set_filter_system.setFilter(_ecs._components_arrays, FILTER_MODE::Deuteranopia);
+                }
+                if (event.key.code == sf::Keyboard::Num5) {
+                    _set_filter_system.setFilter(_ecs._components_arrays, FILTER_MODE::Tritanopia);
+                }
                 break;
             case sf::Event::KeyReleased:
                 if ((event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Q) && !_in_menu) {
@@ -459,6 +475,7 @@ namespace rtype
         _ecs.addComponents<Window>(_index_ecs_client, window);
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::BACKGROUND, 0, 0));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
+        _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
     }
 

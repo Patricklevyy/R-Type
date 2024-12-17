@@ -55,6 +55,14 @@
             PLAYER_SIMPLE_MISSILE,
             OTHER_PLAYER_SHIP
         };
+
+        enum FILTER_MODE {
+            Neutral,
+            Protanopia,
+            Deuteranopia,
+            Tritanopia,
+            Inverted
+        };
     }
 
 #endif /* !ENUMS_HPP_ */

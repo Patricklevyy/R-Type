@@ -18,6 +18,7 @@
     #include "system/EventWindow.hpp"
     #include "../shared/Timer.hpp"
     #include "../shared/MessageChecker.hpp"
+    #include "system/SetFilter.hpp"
     #include "Command_checker.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../../ecs/system/PositionSystem.hpp"
@@ -65,6 +66,7 @@
                 DirectionSystem _direction_system;
                 ecs::PositionSystem _position_system;
                 RenderWindow _render_window_system;
+                SetFilter _set_filter_system;
                 UpdateEntitySystem _update_entity_system;
 
                 void killProjectiles(std::list<size_t>);
