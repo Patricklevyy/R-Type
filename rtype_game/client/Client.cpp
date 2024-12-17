@@ -418,7 +418,7 @@ namespace rtype
                     std::vector<char> buffer;
                     mess.id = 0;
                     mess.action = RTYPE_ACTIONS::CREATE_MONSTER;
-                    mess.params = "x=42;y=84";
+                    mess.params = "x=800;y=800";
 
                     _message_compressor.serialize(mess, buffer);
 
