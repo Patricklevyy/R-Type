@@ -23,8 +23,12 @@
                     sf::Vector2f scale(1.0f, 1.0f);
                     switch (id)
                     {
-                    case SPRITES::BACKGROUND:
-                        texturePath = "assets/space-background.jpg";
+                    case SPRITES::MENU_BACKGROUND:
+                        texturePath = "assets/background.png";
+                        scale = sf::Vector2f(1.0f, 1.0f);
+                        break;
+                    case SPRITES::GAME_BACKGROUND:
+                        texturePath = "assets/background_space_dynamic.jpg";
                         scale = sf::Vector2f(1.0f, 1.0f);
                         break;
                     case SPRITES::MY_PLAYER_SHIP:
@@ -41,8 +45,7 @@
                         texturePath = "assets/bullet.png";
                         scale = sf::Vector2f(0.03f, 0.03f);
                         break;
-                    case 4:
-                        std::cout << "MONSTER MISSILE" << std::endl;
+                    case SPRITES::MONSTER_SIMPLE_MISSILE:
                         texturePath = "assets/monster_missile.png";
                         scale = sf::Vector2f(1.0f, 1.0f);
                         break;

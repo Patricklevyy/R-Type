@@ -49,6 +49,21 @@
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
                 }
+
+                void changeBackground(std::unordered_map<std::type_index, std::any> &components_array, SPRITES sprite)
+                {
+                    try {
+                        auto &displayable = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
+
+                        if (displayable[0].has_value()) {
+                            displayable[0].value().setSprite(sprite);
+                        }
+                    } catch (const std::exception &e) {
+                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                    } catch (...) {
+                        std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
+                    }
+                }
             private:
         };
     }

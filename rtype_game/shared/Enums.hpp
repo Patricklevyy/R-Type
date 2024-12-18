@@ -54,7 +54,8 @@
 
         enum SPRITES
         {
-            BACKGROUND,
+            MENU_BACKGROUND,
+            GAME_BACKGROUND,
             MY_PLAYER_SHIP,
             MONSTER,
             PLAYER_SIMPLE_MISSILE,

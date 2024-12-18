@@ -27,6 +27,10 @@ namespace rtype {
             sprite->setPosition(x, y);
         }
 
+        void setSprite(SPRITES new_sprite_id) {
+            sprite = SpriteFactory::createSprite(new_sprite_id);
+        }
+
     private:
         std::shared_ptr<sf::Sprite> sprite;
     };

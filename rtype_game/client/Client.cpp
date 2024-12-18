@@ -148,6 +148,7 @@ namespace rtype
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
         std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
 
+        _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
@@ -240,7 +241,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
-        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=3";
+        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
 
         _message_compressor.serialize(message, buffer);
 
@@ -492,7 +493,7 @@ namespace rtype
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::BACKGROUND, 0, 0));
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND, 0, 0));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
         _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
