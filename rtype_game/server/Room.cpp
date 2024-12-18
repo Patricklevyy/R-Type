@@ -147,7 +147,15 @@ namespace rtype
             (void)args;
 
             std::list<std::tuple<size_t, std::pair<float, float>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
+            size_t index;
             while (!monsters_pos.empty()) {
+                std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+                if (dead_entity.first) {
+                    index = dead_entity.second;
+                } else {
+                    index = index_ecs;
+                    index_ecs++;
+                }
                 std::tuple<size_t, std::pair<float, float>, SPRITES> monster = monsters_pos.front();
                 monsters_pos.pop_front();
 
@@ -157,7 +165,7 @@ namespace rtype
                     std::get<2>(monster)
                 );
 
-                createEntityProjectiles(std::get<0>(monster), pos_dir_sprite);
+                createEntityProjectiles(index, pos_dir_sprite);
             }
         });
     }

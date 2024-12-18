@@ -18,7 +18,7 @@
             public:
                 static std::pair<int, int> createHitbox(SPRITES id)
                 {
-                    std::cout << "SPRITE ID =>>> " << id << std::endl;
+                    std::cout << "HITBOX ID =>>> " << id << std::endl;
                     int x;
                     int y;
                     switch (id)
@@ -39,8 +39,12 @@
                         x = 100;
                         y = 100;
                         break;
+                    case SPRITES::MONSTER_SIMPLE_MISSILE:
+                        x = 100;
+                        y = 100;
+                        break;
                     default:
-                        throw std::invalid_argument("Invalid sprite ID");
+                        throw std::invalid_argument("Invalid hitbox ID");
                     }
 
                    std::pair<int, int> hitbox = std::make_pair(x, y);
