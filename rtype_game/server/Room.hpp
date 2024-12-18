@@ -41,6 +41,7 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "system/CollisionSystem.hpp"
     #include "system/HealthSystem.hpp"
+    #include "RandomNumber.hpp"
 
     namespace rtype
     {
@@ -98,7 +99,7 @@
             MonsterMovementSystem _monster_movement_system;
             CollisionSystem _collision_system;
             HealthSystem _health_system;
-
+            RandomNumber random;
 
             void send_client_dead_entities(std::list<size_t>);
             bool initializeSocket();
