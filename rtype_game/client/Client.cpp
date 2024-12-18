@@ -107,7 +107,7 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::KILL_PROJECTILES, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::KILL_ENTITY, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
@@ -118,7 +118,7 @@ namespace rtype
                 while (std::getline(ss, token, ';')) {
                     entities_id.push_back(std::stoull(token));
                 }
-                killProjectiles(entities_id);
+                killEntity(entities_id);
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
@@ -148,15 +148,14 @@ namespace rtype
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
         std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
 
-        setRoomAdress(message.id, std::get<2>(pos_port));
+        setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;
     }
 
-    void Client::killProjectiles(std::list<size_t> entities_id)
+    void Client::killEntity(std::list<size_t> entities_id)
     {
-        size_t index_ecs_server;
         size_t index_ecs_client;
 
         for (const auto &id : entities_id) {
@@ -201,7 +200,7 @@ namespace rtype
         std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id, x, y);
-        Health health;
+        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
@@ -241,7 +240,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
-        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
+        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=3";
 
         _message_compressor.serialize(message, buffer);
 
@@ -272,7 +271,7 @@ namespace rtype
         int y = std::stof(res["y"]);
         ecs::Position position(x, y);
         Displayable displayable(SPRITES::MONSTER, x, y);
-        Health health;
+        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Health>(index, health);
@@ -281,7 +280,7 @@ namespace rtype
         std::cout << "Monstre créé à l'index : " << index << " (" << x << ", " << y << ")" << std::endl;
     }
 
-    void Client::setRoomAdress(unsigned int server_id, int port)
+    void Client::setRoomAdress(int port)
     {
         std::string ip_port = Command_checker::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
@@ -301,9 +300,9 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
-        ecs::Velocity velocity;
+        ecs::Velocity velocity(200);
         Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
-        Health health;
+        Health health(100);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
@@ -316,7 +315,7 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::handle_message(std::vector<char> &message, std::string clientAddr)
+    void Client::handle_message(std::vector<char> &message)
     {
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
@@ -357,7 +356,11 @@ namespace rtype
                 return;
 
             case sf::Event::KeyPressed:
-                std::cout << "KEY PRESSED : " << event.key.code << std::endl;
+                std::cout << "KEYH PRESSED" << std::endl;
+                if (event.key.code == sf::Keyboard::W && !_in_menu) {
+                    std::cout << "CREATE MONSTER" << std::endl;
+                    send_server_start_game();
+                }
                 if (event.key.code == sf::Keyboard::Escape) {
                     _running = false;
                     return;
@@ -461,11 +464,27 @@ namespace rtype
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     send_server_new_shoot();
                 }
-
+                break;
             default:
                 std::cout << "Événement non traité." << std::endl;
                 break;
             }
+        }
+    }
+
+    void Client::send_server_start_game()
+    {
+        std::vector<char> buffer;
+        ecs::udp::Message mess;
+        mess.id = 0;
+        mess.action = RTYPE_ACTIONS::START_GAME;
+        _message_compressor.serialize(mess, buffer);
+
+        std::cout << "je send" << std::endl;
+        if (_udpClient->sendMessageToDefault(buffer)) {
+            std::cout << "Message sent: " << std::endl;
+        } else {
+            std::cout << "failed " << std::endl;
         }
     }
 
@@ -533,7 +552,7 @@ namespace rtype
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
                 try {
-                    handle_message(message, clientAddress);
+                    handle_message(message);
                 } catch (std::exception &e) {
                     std::cerr << std::endl
                               << e.what() << std::endl;

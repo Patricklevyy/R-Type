@@ -35,15 +35,20 @@
             STOP_LISTEN_EVENT,
             GET_WINDOW_EVENT,
             PLAYER_SHOOT,
+            ENEMY_SHOOT,
             CREATE_PROJECTILE,
             CREATE_MONSTER,
             MOVE_MONSTERS,
             KILL_PROJECTILES,
             CHECK_OFF_SCREEN,
             UPDATE_GAME_STATUS,
+            CHECK_COLLISIONS,
+            KILL_ENTITY,
+            CHECK_LIFES,
             EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
             RENDER_WINDOW,
+            START_GAME,
             MAX_ACTION
         };
 
@@ -53,6 +58,7 @@
             MY_PLAYER_SHIP,
             MONSTER,
             PLAYER_SIMPLE_MISSILE,
+            MONSTER_SIMPLE_MISSILE,
             OTHER_PLAYER_SHIP
         };
 

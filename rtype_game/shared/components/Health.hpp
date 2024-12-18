@@ -12,10 +12,10 @@ namespace rtype {
 
     class Health {
         public:
-            Health() {};
+            Health(int health) : _health(health){};
             ~Health() {};
 
-            int _health = 100;
+            int _health;
 
         protected:
         private:

@@ -41,8 +41,13 @@
                         texturePath = "assets/bullet.png";
                         scale = sf::Vector2f(0.03f, 0.03f);
                         break;
+                    case 4:
+                        std::cout << "MONSTER MISSILE" << std::endl;
+                        texturePath = "assets/monster_missile.png";
+                        scale = sf::Vector2f(1.0f, 1.0f);
+                        break;
                     default:
-                        throw std::invalid_argument("Invalid sprite ID");
+                        throw std::invalid_argument("Invalid sprite ID : " + id);
                     }
 
                     auto texture = loadTexture(texturePath);

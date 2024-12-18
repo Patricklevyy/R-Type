@@ -64,7 +64,7 @@
                             if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x - velocities[i].value().velocity / tickRate) < BORDER_MARGIN)) {
                                 break;
                             }
-                            positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;;
+                            positions[i].value()._pos_x -= velocities[i].value().velocity / tickRate;
                             break;
                         case direction::RIGHT:
                             if (i < playable.size() && playable[i].has_value() && ((positions[i].value()._pos_x + velocities[i].value().velocity / tickRate) > (window_width - BORDER_MARGIN * 18))) {
@@ -145,7 +145,7 @@
 
                 if (positions[index].has_value())
                     return std::pair<float, float>(positions[index].value()._pos_x, positions[index].value()._pos_y);
-                // throw exceptions que le player n'existe pas, cas IMPOSSIBLE MAIS A FAIRE POUR EVITER LES WARNING DE RETURN
+                throw ERROR::PlayerNotFoundInEcs("NO player found in ECS");
             }
 
         protected:

@@ -27,6 +27,7 @@
     #include <typeindex>
     #include <memory>
     #include <stdexcept>
+    #include <ctime>
 
     // FILES
 
