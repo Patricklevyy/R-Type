@@ -143,6 +143,16 @@ namespace rtype
 
             createMonster();
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::ENEMY_SHOOT, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::list<std::tuple<size_t, float, float>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
+            while (!monsters_pos.empty()) {
+                std::tuple<size_t, float, float> monster = monsters_pos.front();
+                monsters_pos.pop_front();
+                std::cout << "MONSTER SHOTT" << std::get<0>(monster) << std::endl;
+            }
+        });
     }
 
     void Room::createEntityProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
@@ -299,6 +309,7 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
             _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
+            _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
             _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {

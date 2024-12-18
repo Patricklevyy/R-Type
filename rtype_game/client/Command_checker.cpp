@@ -12,6 +12,7 @@ namespace rtype
     std::string Command_checker::check_adress(int port, const std::string &server_ip)
     {
         std::cout << "servir ipp" << server_ip << std::endl;
+        std::cout << "servir ipp" << server_ip << std::endl;
         if (port == 0)
             throw ERROR::MissingPortParamsExceptions("Missing 'port'");
         std::string portStr = std::to_string(port);

@@ -35,6 +35,7 @@
             STOP_LISTEN_EVENT,
             GET_WINDOW_EVENT,
             PLAYER_SHOOT,
+            ENEMY_SHOOT,
             CREATE_PROJECTILE,
             CREATE_MONSTER,
             MOVE_MONSTERS,
