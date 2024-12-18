@@ -29,39 +29,17 @@ namespace rtype
             auto &velocities = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(ecs._components_arrays[typeid(ecs::Velocity)]);
             auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
 
-            // for (size_t i = 0; i < monsters.size(); ++i) {
-            //     if (positions[i].has_value() && velocities[i].has_value() && directions[i].has_value() && monsters[i].has_value()) {
-            //         directions[i].value()._x = ecs::direction::NO_DIRECTION;
-            //         directions[i].value()._y = ecs::direction::UP;
-            //         positions[i].value()._pos_x -= velocities[i].value().velocity / tps;
-
-            //         if (directions[i].value()._y == ecs::direction::UP) {
-            //             directions[i].value()._y = ecs::direction::DOWN;
-            //             positions[i].value()._pos_y -= velocities[i].value().velocity / tps;
-            //         } else if (directions[i].value()._y == ecs::direction::DOWN) {
-            //             directions[i].value()._y = ecs::direction::UP;
-            //             positions[i].value()._pos_y += velocities[i].value().velocity / tps;
-            //         }
-            //     }
-            // }
             for (size_t i = 0; i < monsters.size(); ++i) {
                 if (positions[i].has_value() && velocities[i].has_value() && directions[i].has_value() && monsters[i].has_value()) {
-                    auto &pos = positions[i].value();
-                    auto &dir = directions[i].value();
-                    auto &vel = velocities[i].value();
+                    if (positions[i].value()._pos_x <= (window_width - 100) && directions[i].value()._x != ecs::direction::NO_DIRECTION) {
+                        directions[i].value()._x = ecs::direction::NO_DIRECTION;
+                        directions[i].value()._y = ecs::direction::DOWN;
+                    }
 
-                    pos._pos_x -= vel.velocity / tps;
-
-                    if (dir._y == ecs::direction::UP) {
-                        pos._pos_y -= vel.velocity / tps;
-                        if (pos._pos_y <= 0) {
-                            dir._y = ecs::direction::DOWN;
-                        }
-                    } else if (dir._y == ecs::direction::DOWN) {
-                        pos._pos_y += vel.velocity / tps;
-                        if (pos._pos_y >= window_height) {
-                            dir._y = ecs::direction::UP;
-                        }
+                    if (positions[i].value()._pos_y <= 100) {
+                        directions[i].value()._y = ecs::direction::DOWN;
+                    } else if (positions[i].value()._pos_y >= window_height - 100) {
+                        directions[i].value()._y = ecs::direction::UP;
                     }
                 }
             }

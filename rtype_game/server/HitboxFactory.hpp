@@ -25,19 +25,19 @@
                     {
                     case SPRITES::MY_PLAYER_SHIP:
                         x = 100;
-                        y = 100; 
+                        y = 100;
                         break;
                     case SPRITES::MONSTER:
-                        x = 100;
-                        y = 100; 
+                        x = 200;
+                        y = 200;
                         break;
                     case SPRITES::OTHER_PLAYER_SHIP:
                         x = 100;
-                        y = 100; 
+                        y = 100;
                         break;
                     case SPRITES::PLAYER_SIMPLE_MISSILE:
                         x = 100;
-                        y = 100; 
+                        y = 100;
                         break;
                     default:
                         throw std::invalid_argument("Invalid sprite ID");

@@ -203,6 +203,7 @@ namespace rtype
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::PLAYER_SIMPLE_MISSILE));
         Projectiles projectile;
         SpriteId spriteId(SPRITES::PLAYER_SIMPLE_MISSILE);
+        Allies allies;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
@@ -211,6 +212,7 @@ namespace rtype
         _ecs.addComponents<Projectiles>(index, projectile);
         _ecs.addComponents<SpriteId>(index, spriteId);
         _ecs.addComponents<Hitbox>(index, hitbox);
+        _ecs.addComponents<Allies>(index, allies);
         send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
@@ -230,7 +232,7 @@ namespace rtype
         int x = _window_width + 30;
         int y = distrib(gen);
         ecs::Position position(x, y);
-        ecs::Velocity velocity(20);
+        ecs::Velocity velocity(80);
         Health health(60);
         Monster monster;
         ecs::Direction direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
@@ -263,6 +265,8 @@ namespace rtype
         _ecs.addRegistry<SpriteId>();
         _ecs.addRegistry<Monster>();
         _ecs.addRegistry<Hitbox>();
+        _ecs.addRegistry<Ennemies>();
+        _ecs.addRegistry<Allies>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
@@ -375,10 +379,11 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
-        ecs::Velocity velocity(50);
+        ecs::Velocity velocity(200);
         Health health(100);
         SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MY_PLAYER_SHIP));
+        Allies allies;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
@@ -387,6 +392,7 @@ namespace rtype
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<SpriteId>(index, spriteId);
         _ecs.addComponents<Hitbox>(index, hitbox);
+        _ecs.addComponents<Allies>(index, allies);
 
         return index;
     }

@@ -300,7 +300,7 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
-        ecs::Velocity velocity(50);
+        ecs::Velocity velocity(200);
         Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
         Health health(100);
 

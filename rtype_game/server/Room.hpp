@@ -31,6 +31,8 @@
     #include "components/Monster.hpp"
     #include "components/SpriteId.hpp"
     #include "components/Hitbox.hpp"
+    #include "components/Allies.hpp"
+    #include "components/Ennemies.hpp"
 
     // SYSTEMS
 
