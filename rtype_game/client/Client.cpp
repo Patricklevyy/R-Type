@@ -6,6 +6,9 @@
 */
 
 #include "Client.hpp"
+#include "system/Menu.hpp"
+#include "Client.hpp"
+#include "system/HomeScreen.hpp"
 #include "../../ecs/components/Direction.hpp"
 
 namespace rtype
@@ -524,27 +527,76 @@ namespace rtype
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
     }
 
-    void Client::start()
-    {
+    void Client::start() {
+    // Initialiser la taille de la fenêtre à partir de la configuration
+    init_window_size("rtype_game/config/client_config.conf");
+
+    // Créer la fenêtre
+    sf::RenderWindow window(sf::VideoMode(_window_width, _window_height), "R-Type");
+
+    // Afficher la page d'accueil
+    rtype::HomeScreen homeScreen(_window_width, _window_height);
+    bool playGame = false;
+
+    while (window.isOpen() && !playGame) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+                return;
+            }
+            if (event.type == sf::Event::Resized) {
+                homeScreen.resizeView(window);
+            }
+            if (homeScreen.handleEvent(event, window)) {
+                playGame = true; // Bouton "Play Game" cliqué
+            }
+        }
+        homeScreen.display(window);
+    }
+
+    // Lancer le menu principal
+    rtype::Menu menu(_window_width, _window_height);
+    bool startGame = false;
+
+    while (window.isOpen() && !startGame) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+                return;
+            }
+
+            if (menu.handleEvent(event, window)) {
+                startGame = true;
+            }
+        }
+
+        menu.display(window);
+    }
+
+    // Fermer la fenêtre du menu
+    window.close();
+
+    // Initialisation complète et lancement du jeu
+    if (startGame) {
+        std::cout << "Lancement du jeu..." << std::endl;
         init_all();
 
         while (_running) {
             _timer->waitTPS();
+
             _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
             handle_event();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
+
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
-                try {
-                    handle_message(message, clientAddress);
-                } catch (std::exception &e) {
-                    std::cerr << std::endl
-                              << e.what() << std::endl;
-                }
+                handle_message(message, clientAddress);
             }
-            // _ecs.displayPlayableEntityComponents();
+
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
-        _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
     }
+}
+
 }

@@ -10,6 +10,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON) # Pour les bibliothèques statiques
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBCONFIG REQUIRED libconfig++)
 
+# Trouver SFML
+find_package(SFML 2.5 REQUIRED COMPONENTS system window graphics audio)
+
 # ECS
 file(GLOB_RECURSE ECS_SRC_FILES ecs/*.cpp)
 add_library(ecs STATIC ${ECS_SRC_FILES})
@@ -32,7 +35,15 @@ file(GLOB_RECURSE CLIENT_FILES rtype_game/client/*.cpp rtype_game/client/*.h)
 add_executable(r-type_client ${CLIENT_FILES})
 
 target_compile_options(r-type_client PRIVATE -Wall -Wextra -g)
-target_link_libraries(r-type_client PRIVATE sfml-system sfml-window sfml-graphics ecs shared)
+target_link_libraries(r-type_client 
+    PRIVATE 
+    sfml-system 
+    sfml-window 
+    sfml-graphics 
+    sfml-audio # Ajout de la bibliothèque audio
+    ecs 
+    shared
+)
 
 # Server
 file(GLOB_RECURSE SERVER_FILES rtype_game/server/*.cpp rtype_game/server/*.h)
