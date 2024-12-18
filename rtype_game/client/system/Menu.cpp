@@ -135,29 +135,31 @@ void Menu::handleButtonHover(sf::Text &button, const sf::Vector2f &mousePos) {
 
     bool Menu::handleEvent(sf::Event &event, sf::RenderWindow &window) {
 
-        if (event.type == sf::Event::Resized) {
-            resizeBackground(window.getSize());
-            resizeView(window);
-        }
-        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-            sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window), uiView);
-
-            if (joinRoomText.getGlobalBounds().contains(mousePos)) {
-                return true;
-            }
-            if (optionsText.getGlobalBounds().contains(mousePos)) {
-                std::cout << "Options clicked!" << std::endl;
-            }
-            if (createRoomText.getGlobalBounds().contains(mousePos)) {
-                std::cout << "Create Room clicked!" << std::endl;
-            }
-            if (exitText.getGlobalBounds().contains(mousePos)) {
-                window.close();
-            }
-        }
-        if (event.type == sf::Event::Resized) {
-            resizeView(window);
-        }
-        return false;
+    if (event.type == sf::Event::Resized) {
+        resizeBackground(window.getSize());
+        resizeView(window);
     }
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window), uiView);
+
+        if (joinRoomText.getGlobalBounds().contains(mousePos)) {
+            std::cout << "join game clicked!!!!!" << std::endl;
+            return true;
+        }
+        if (optionsText.getGlobalBounds().contains(mousePos)) {
+            std::cout << "Options clicked!" << std::endl;
+        }
+        if (createRoomText.getGlobalBounds().contains(mousePos)) {
+            std::cout << "Create Room clicked!" << std::endl;
+        }
+        if (exitText.getGlobalBounds().contains(mousePos)) {
+            window.close();
+        }
+    }
+    if (event.type == sf::Event::Resized) {
+        resizeView(window);
+    }
+    return false;
+}
+
 }

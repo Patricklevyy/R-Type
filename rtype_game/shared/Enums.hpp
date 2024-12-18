@@ -48,7 +48,9 @@
             GET_ALL_ROOMS,
             RENDER_WINDOW,
             START_GAME,
-            MAX_ACTION
+            MAX_ACTION,
+            REQUEST_ROOMS,
+            DISPLAY_ROOMS
         };
 
         enum SPRITES

@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <SFML/Audio.hpp>
+#include "../Client.hpp"
 
 
 namespace rtype {

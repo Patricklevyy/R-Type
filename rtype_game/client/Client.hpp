@@ -28,6 +28,7 @@
     #include "system/UpdateEntitySystem.hpp"
     #include "components/Displayable.hpp"
     #include "../shared/MessageChecker.hpp"
+    #include "../shared/Enums.hpp"
     namespace rtype
     {
         class Client
@@ -40,6 +41,7 @@
 
                 void handle_event();
                 void handle_message(std::vector<char>&, std::string);
+                void requestAvailableRooms();
 
             protected:
             private:

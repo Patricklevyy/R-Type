@@ -318,15 +318,27 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
+
+
     void Client::handle_message(std::vector<char> &message, std::string clientAddr)
-    {
-        ecs::udp::Message mes;
-        _message_compressor.deserialize(message, mes);
-        _mes_checker.checkAction(mes);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
-        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
+{
+    ecs::udp::Message mes;
+    _message_compressor.deserialize(message, mes);
+    _mes_checker.checkAction(mes);
+    std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
+
+    rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
+
+    // Vérifiez si l'action est DISPLAY_ROOMS
+    if (action == rtype::RTYPE_ACTIONS::DISPLAY_ROOMS) {
+        // Afficher les rooms disponibles
+        std::cout << "Available rooms: " << mes.params << std::endl;
+    } else {
+        // Émettre l'action via l'EventBus pour les autres gestionnaires
         _eventBus.emit(action, std::ref(mes));
     }
+}
+
 
     void Client::send_server_player_direction(ecs::direction x, ecs::direction y)
     {
@@ -460,6 +472,24 @@ namespace rtype
         }
     }
 
+    void Client::requestAvailableRooms() {
+        ecs::udp::Message message;
+        std::vector<char> buffer;
+
+        message.id = 0;
+        message.action = RTYPE_ACTIONS::REQUEST_ROOMS;
+        message.params = "";
+
+        _message_compressor.serialize(message, buffer);
+
+        if (_udpClient->sendMessageToDefault(buffer)) {
+            std::cout << "Requested available rooms from the server." << std::endl;
+        } else {
+            std::cerr << "Failed to send room request to server." << std::endl;
+        }
+    }
+
+
     void Client::send_server_start_game()
     {
         std::vector<char> buffer;
@@ -487,7 +517,7 @@ namespace rtype
 
     void Client::init_window_size(const std::string &file_path)
     {
-        libconfig::Config cfg; // Objet Config pour lire le fichier
+        libconfig::Config cfg;
 
         try {
             cfg.readFile(file_path.c_str());
@@ -528,75 +558,73 @@ namespace rtype
     }
 
     void Client::start() {
-    init_window_size("rtype_game/config/client_config.conf");
+        init_window_size("rtype_game/config/client_config.conf");
 
-    sf::RenderWindow window(sf::VideoMode(_window_width, _window_height), "R-Type");
+        sf::RenderWindow window(sf::VideoMode(_window_width, _window_height), "R-Type");
 
-    rtype::HomeScreen homeScreen(_window_width, _window_height);
-    bool playGame = false;
+        rtype::HomeScreen homeScreen(_window_width, _window_height);
+        bool playGame = false;
 
-    while (window.isOpen() && !playGame) {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            window.close();
-            return;
-        }
+        while (window.isOpen() && !playGame) {
+            sf::Event event;
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed) {
+                    window.close();
+                    return;
+                }
 
-        if (event.type == sf::Event::Resized) {
-    homeScreen.resizeView(window);
-}
-
-
-        if (homeScreen.handleEvent(event, window)) {
-            playGame = true;
-        }
-    }
-
-    homeScreen.display(window);
-}
+                if (event.type == sf::Event::Resized) {
+                    homeScreen.resizeView(window);
+                }
 
 
-    rtype::Menu menu(_window_width, _window_height);
-    bool startGame = false;
-
-    while (window.isOpen() && !startGame) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-                return;
+                if (homeScreen.handleEvent(event, window)) {
+                    playGame = true;
+                }
             }
 
-            if (menu.handleEvent(event, window)) {
-                startGame = true;
-            }
+            homeScreen.display(window);
         }
 
-        menu.display(window);
-    }
 
-    window.close();
+        rtype::Menu menu(_window_width, _window_height);
+        bool startGame = false;
 
-    if (startGame) {
-        std::cout << "Lancement du jeu..." << std::endl;
-        init_all();
+        while (window.isOpen() && !startGame) {
+            sf::Event event;
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed) {
+                    window.close();
+                    return;
+                }
 
-        while (_running) {
-            _timer->waitTPS();
-
-            _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
-            handle_event();
-
-            auto messages = _udpClient->fetchAllMessages();
-            for (auto &[clientAddress, message] : messages) {
-                handle_message(message, clientAddress);
+                if (menu.handleEvent(event, window)) {
+                    startGame = true;
+                }
             }
 
-            _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
+            menu.display(window);
+        }
+
+        window.close();
+
+        if (startGame) {
+            std::cout << "Lancement du jeu..." << std::endl;
+            init_all();
+
+            while (_running) {
+                _timer->waitTPS();
+
+                _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
+                handle_event();
+
+                auto messages = _udpClient->fetchAllMessages();
+                for (auto &[clientAddress, message] : messages) {
+                    handle_message(message, clientAddress);
+                }
+
+                _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
+            }
         }
     }
-}
-
-
 }
