@@ -11,7 +11,8 @@ namespace rtype {
 
         void display(sf::RenderWindow &window);
         bool handleEvent(sf::Event &event, sf::RenderWindow &window);
-        void resizeView(sf::RenderWindow &window); // Ajuste les éléments à la taille de l'écran
+        void resizeView(sf::RenderWindow &window);
+        void resizeBackground(sf::Vector2u newSize);
 
     private:
         int window_width;
@@ -23,7 +24,7 @@ namespace rtype {
         sf::Texture backgroundTexture;
         sf::Sprite backgroundSprite;
         float normalSize;
-        float hoverSize;  
+        float hoverSize;
 
         void setupButton();
     };

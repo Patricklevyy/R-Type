@@ -16,11 +16,9 @@ namespace rtype {
         Menu(int width, int height);
         ~Menu() = default;
 
-        // Affiche le menu principal
         void display(sf::RenderWindow &window);
         bool handleEvent(sf::Event &event, sf::RenderWindow &window);
 
-        // Nouvelle méthode pour afficher les rooms
         std::string displayRoomSelection(sf::RenderWindow &window, const std::vector<std::string> &rooms);
         bool handleRoomEvent(sf::Event &event, const std::vector<sf::Text> &roomTexts, int &selectedRoom);
 
@@ -29,19 +27,16 @@ namespace rtype {
         int window_width;
         int window_height;
 
-        // Bouton principal Join Room
         sf::RectangleShape button;
         sf::Text buttonText;
 
-        sf::Music backgroundMusic; // Ajout pour la musique
+        sf::Music backgroundMusic;
 
-        // Background animé
         sf::Texture backgroundTexture;
         sf::Sprite backgroundSprite1;
         sf::Sprite backgroundSprite2;
         float scrollSpeed;
 
-        // Texte pour afficher les rooms
         std::vector<sf::Text> roomTexts;
         int selectedRoomIndex;
 
@@ -53,7 +48,6 @@ namespace rtype {
         sf::Text createRoomText;
         sf::Text exitText;
 
-        // Méthodes internes
         void updateBackground();
         void resizeBackground(sf::Vector2u newSize);
         void handleButtonHover(sf::Text &button, const sf::Vector2f &mousePos);

@@ -528,34 +528,35 @@ namespace rtype
     }
 
     void Client::start() {
-    // Initialiser la taille de la fenêtre à partir de la configuration
     init_window_size("rtype_game/config/client_config.conf");
 
-    // Créer la fenêtre
     sf::RenderWindow window(sf::VideoMode(_window_width, _window_height), "R-Type");
 
-    // Afficher la page d'accueil
     rtype::HomeScreen homeScreen(_window_width, _window_height);
     bool playGame = false;
 
     while (window.isOpen() && !playGame) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-                return;
-            }
-            if (event.type == sf::Event::Resized) {
-                homeScreen.resizeView(window);
-            }
-            if (homeScreen.handleEvent(event, window)) {
-                playGame = true; // Bouton "Play Game" cliqué
-            }
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+            return;
         }
-        homeScreen.display(window);
+
+        if (event.type == sf::Event::Resized) {
+    homeScreen.resizeView(window);
+}
+
+
+        if (homeScreen.handleEvent(event, window)) {
+            playGame = true;
+        }
     }
 
-    // Lancer le menu principal
+    homeScreen.display(window);
+}
+
+
     rtype::Menu menu(_window_width, _window_height);
     bool startGame = false;
 
@@ -575,10 +576,8 @@ namespace rtype
         menu.display(window);
     }
 
-    // Fermer la fenêtre du menu
     window.close();
 
-    // Initialisation complète et lancement du jeu
     if (startGame) {
         std::cout << "Lancement du jeu..." << std::endl;
         init_all();
@@ -598,5 +597,6 @@ namespace rtype
         }
     }
 }
+
 
 }
