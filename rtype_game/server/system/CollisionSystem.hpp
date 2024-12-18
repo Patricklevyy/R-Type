@@ -17,6 +17,8 @@
 #include "../../ecs/SparseArray.hpp"
 #include "../../ecs/components/Position.hpp"
 #include "../../shared/components/Health.hpp"
+#include "../components/Allies.hpp"
+#include "../components/Ennemies.hpp"
 #include "../components/Hitbox.hpp"
 
 namespace rtype
@@ -25,26 +27,35 @@ namespace rtype
      * @class CollisionSystem
      * @brief Detects and processes collisions between entities.
      */
-    class CollisionSystem {
+    class CollisionSystem
+    {
 
     public:
         /**
          * @brief Detects collisions between entities and processes health reductions.
          * @param components_array A map containing all component arrays.
-        */
+         */
+
         void detectCollisions(std::unordered_map<std::type_index, std::any> &components_array)
         {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
             auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
+            auto &allies = std::any_cast<ecs::SparseArray<Allies> &>(components_array[typeid(Allies)]);
+            auto &ennemies = std::any_cast<ecs::SparseArray<Ennemies> &>(components_array[typeid(Ennemies)]);
 
             for (std::size_t i = 0; i < positions.size(); ++i) {
                 if (positions[i].has_value() && hitboxes[i].has_value()) {
                     for (std::size_t j = i + 1; j < positions.size(); ++j) {
                         if (positions[j].has_value() && hitboxes[j].has_value()) {
                             if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
+                                bool isAllies = i < allies.size() && j < allies.size() && allies[i].has_value() && allies[j].has_value();
+                                bool isEnemies = i < ennemies.size() && j < ennemies.size() && ennemies[i].has_value() && ennemies[j].has_value();
+                                if (isAllies || isEnemies) {
+                                    continue;
+                                }
                                 std::cout << "Collision detected between Entity " << i << " and Entity " << j << std::endl;
-                                if (healths[i].has_value() && healths[j].has_value()) {
+                                if (i < healths.size() && j < healths.size() && healths[i].has_value() && healths[j].has_value()) {
                                     healths[i].value()._health -= 20;
                                     healths[j].value()._health -= 20;
                                     std::cout << "Entity " << i << " health reduced to " << healths[i].value()._health << std::endl;

@@ -237,6 +237,7 @@ namespace rtype
         Monster monster;
         ecs::Direction direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MONSTER));
+        Ennemies ennemies;
 
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
@@ -244,6 +245,7 @@ namespace rtype
         _ecs.addComponents<Monster>(index, monster);
         _ecs.addComponents<Hitbox>(index, hitbox);
         _ecs.addComponents<ecs::Direction>(index, direction);
+        _ecs.addComponents<Ennemies>(index, ennemies);
 
         send_client_new_monster(index, x, y, SPRITES::MONSTER);
     }
