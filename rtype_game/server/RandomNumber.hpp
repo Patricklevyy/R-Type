@@ -6,26 +6,26 @@
 */
 
 #ifndef GENERATERANDOMNUMBER_HPP_
-#define GENERATERANDOMNUMBER_HPP_
-#include "../shared/Includes.hpp"
-#include <ctime>
+    #define GENERATERANDOMNUMBER_HPP_
 
-namespace rtype {
-    class RandomNumber {
-        public:
-            RandomNumber()
-            {
-                std::srand(std::time(nullptr));
-            }
-            ~RandomNumber() {};
+    #include "../shared/Includes.hpp"
 
-            int generateRandomNumbers(int min, int max)
-            {
-                return( min + std::rand() % (max - min + 1));
-            }
+    namespace rtype {
+        class RandomNumber {
+            public:
+                RandomNumber()
+                {
+                    std::srand(std::time(nullptr));
+                }
+                ~RandomNumber() {};
 
-        protected:
-        private:
-    };
-}
+                int generateRandomNumbers(int min, int max)
+                {
+                    return( min + std::rand() % (max - min + 1));
+                }
+
+            protected:
+            private:
+        };
+    }
 #endif /* !RANDOMNUMBER_HPP_ */

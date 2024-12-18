@@ -147,7 +147,7 @@ namespace rtype
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
         std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
 
-        setRoomAdress(message.id, std::get<2>(pos_port));
+        setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;
@@ -155,7 +155,6 @@ namespace rtype
 
     void Client::killEntity(std::list<size_t> entities_id)
     {
-        size_t index_ecs_server;
         size_t index_ecs_client;
 
         for (const auto &id : entities_id) {
@@ -240,7 +239,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
-        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
+        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=3";
 
         _message_compressor.serialize(message, buffer);
 
@@ -280,7 +279,7 @@ namespace rtype
         std::cout << "Monstre créé à l'index : " << index << " (" << x << ", " << y << ")" << std::endl;
     }
 
-    void Client::setRoomAdress(unsigned int server_id, int port)
+    void Client::setRoomAdress(int port)
     {
         std::string ip_port = Command_checker::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
@@ -315,7 +314,7 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::handle_message(std::vector<char> &message, std::string clientAddr)
+    void Client::handle_message(std::vector<char> &message)
     {
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
@@ -449,7 +448,7 @@ namespace rtype
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     send_server_new_shoot();
                 }
-
+                break;
             default:
                 std::cout << "Événement non traité." << std::endl;
                 break;
@@ -536,7 +535,7 @@ namespace rtype
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
                 try {
-                    handle_message(message, clientAddress);
+                    handle_message(message);
                 } catch (std::exception &e) {
                     std::cerr << std::endl
                               << e.what() << std::endl;

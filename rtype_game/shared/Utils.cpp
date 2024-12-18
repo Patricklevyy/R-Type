@@ -29,7 +29,7 @@ namespace rtype
         return std::tuple<ecs::direction, ecs::direction, size_t>(static_cast<ecs::direction>(x), static_cast<ecs::direction>(y), player_id);
     }
 
-    std::pair<std::pair<float, float>, std::pair<int, int>> Utils::extractProjectilePosAndDir(std::string params)
+    std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> Utils::extractProjectilePosAndDir(std::string params)
     {
         float x = 0.0f, y = 0.0f;
         int dir_x = 0, dir_y = 0;
@@ -47,6 +47,9 @@ namespace rtype
         dir_x = std::stoi(parts[2].substr(parts[2].find('=') + 1));
         dir_y = std::stoi(parts[3].substr(parts[3].find('=') + 1));
 
-        return std::make_pair(std::make_pair(x, y), std::make_pair(dir_x, dir_y));
+        int spriteValue = std::stoi(parts[4].substr(parts[4].find('=') + 1));
+        SPRITES type_shoot = static_cast<SPRITES>(spriteValue);
+
+        return std::make_tuple(std::make_pair(x, y), std::make_pair(dir_x, dir_y), type_shoot);
     }
 }

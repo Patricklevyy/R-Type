@@ -108,7 +108,7 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                createProjectile(message);
+                createAlliesProjectile(message);
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
@@ -125,14 +125,15 @@ namespace rtype
             }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::MOVE_MONSTERS, [this](const std::vector<std::any>& args) {
-            _monster_movement_system.moveMonsters(_ecs, _timer.getTps(), _window_width, _window_height);
+            (void)args;
+            _monster_movement_system.moveMonsters(_ecs, _window_width, _window_height, _random_number);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_COLLISIONS, [this](const std::vector<std::any> &args) {
             (void)args;
             _collision_system.detectCollisions(_ecs._components_arrays);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
-
+            (void)args;
             std::list<size_t> dead_entites_id = _health_system.checkAndKillEntities(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
@@ -142,6 +143,42 @@ namespace rtype
 
             createMonster();
         });
+    }
+
+    void Room::createEntityProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
+    {
+        ecs::Direction direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second));
+        ecs::Position position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second);
+        ecs::Velocity velocity(300);
+        Health health(20);
+        Hitbox hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite)));
+        Projectiles projectile;
+        SpriteId spriteId(std::get<2>(pos_dir_sprite));
+        Allies allies;
+
+        _ecs.addComponents<ecs::Direction>(index, direction);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Projectiles>(index, projectile);
+        _ecs.addComponents<SpriteId>(index, spriteId);
+        _ecs.addComponents<Hitbox>(index, hitbox);
+        _ecs.addComponents<Allies>(index, allies);
+        send_client_new_projectile(index, std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second, std::get<2>(pos_dir_sprite));
+    }
+
+    void Room::createAlliesProjectile(ecs::udp::Message &message)
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+        std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_type = Utils::extractProjectilePosAndDir(message.params);
+        createEntityProjectiles(index, pos_dir_type);
     }
 
     void Room::send_client_dead_entities(std::list<size_t> dead_entities_id)
@@ -169,51 +206,20 @@ namespace rtype
         }
     }
 
-    void Room::send_client_new_projectile(size_t index_ecs_server, float x, float y)
+    void Room::send_client_new_projectile(size_t index_ecs_server, float x, float y, SPRITES sprite_type)
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
         responseMessage.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
         responseMessage.id = index_ecs_server;
-        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE) << std::endl;
-        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
+        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite_type) << std::endl;
+        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite_type);
 
         _message_compressor.serialize(responseMessage, response);
 
         for (const auto &clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
         }
-    }
-
-    void Room::createProjectile(ecs::udp::Message &message)
-    {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = index_ecs;
-            index_ecs++;
-        }
-        std::pair<std::pair<float, float>, std::pair<int, int>> pos_dir = Utils::extractProjectilePosAndDir(message.params);
-        ecs::Direction direction(static_cast<ecs::direction>(pos_dir.second.first), static_cast<ecs::direction>(pos_dir.second.second));
-        ecs::Position position(pos_dir.first.first, pos_dir.first.second);
-        ecs::Velocity velocity(300);
-        Health health(20);
-        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::PLAYER_SIMPLE_MISSILE));
-        Projectiles projectile;
-        SpriteId spriteId(SPRITES::PLAYER_SIMPLE_MISSILE);
-        Allies allies;
-
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Projectiles>(index, projectile);
-        _ecs.addComponents<SpriteId>(index, spriteId);
-        _ecs.addComponents<Hitbox>(index, hitbox);
-        _ecs.addComponents<Allies>(index, allies);
-        send_client_new_projectile(index, pos_dir.first.first, pos_dir.first.second);
     }
 
     void Room::createMonster()
@@ -226,11 +232,8 @@ namespace rtype
             index = index_ecs;
             index_ecs++;
         }
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> distrib(20, _window_height - 100);
         int x = _window_width + 30;
-        int y = distrib(gen);
+        int y = _random_number.generateRandomNumbers(20, _window_height - 100);
         ecs::Position position(x, y);
         ecs::Velocity velocity(80);
         Health health(60);
@@ -425,7 +428,7 @@ namespace rtype
         std::vector<char> send_message;
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities(lastclientAdr);
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities();
         ;
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
@@ -453,7 +456,7 @@ namespace rtype
         index_ecs++;
     }
 
-    std::string Room::sendExistingEntities(const std::string &clientAddress)
+    std::string Room::sendExistingEntities()
     {
         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
         auto &sprite = std::any_cast<ecs::SparseArray<SpriteId> &>(_ecs._components_arrays[typeid(SpriteId)]);

@@ -23,6 +23,7 @@
     #include "../shared/Timer.hpp"
     #include "../shared/Utils.hpp"
     #include "HitboxFactory.hpp"
+    #include "RandomNumber.hpp"
 
     // COMPONENTS
 
@@ -72,7 +73,7 @@
             std::string getAddress() const;
 
             void init_event_bus();
-            std::string sendExistingEntities(const std::string &);
+            std::string sendExistingEntities();
 
 
         private:
@@ -92,6 +93,7 @@
             struct sockaddr_in _addr;
             std::thread _gameThread;
             std::vector<std::string> _clientAddresses;
+            RandomNumber _random_number;
 
             // SYSTEMS
 
@@ -111,8 +113,9 @@
             size_t create_player(std::pair<float, float>, std::string);
             void handleCommand(const std::vector<char> &, std::string clientAddr);
             void sendUpdate();
-            void send_client_new_projectile(size_t, float, float);
-            void createProjectile(ecs::udp::Message&);
+            void send_client_new_projectile(size_t, float, float, SPRITES);
+            void createAlliesProjectile(ecs::udp::Message&);
+            void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
             void createMonster();
             void send_client_new_monster(size_t, float, float , int);
         };

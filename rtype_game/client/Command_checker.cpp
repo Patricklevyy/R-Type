@@ -11,11 +11,11 @@ namespace rtype
 {
     std::string Command_checker::check_adress(int port, const std::string &server_ip)
     {
+        std::cout << "servir ipp" << server_ip << std::endl;
         if (port == 0)
             throw ERROR::MissingPortParamsExceptions("Missing 'port'");
-        std::string ip = "127.0.0.1:";
         std::string portStr = std::to_string(port);
-        return (ip + portStr);
+        return (server_ip + ":" + portStr);
     }
 
     std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(const std::string &params) {

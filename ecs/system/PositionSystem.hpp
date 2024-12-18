@@ -145,7 +145,7 @@
 
                 if (positions[index].has_value())
                     return std::pair<float, float>(positions[index].value()._pos_x, positions[index].value()._pos_y);
-                // throw exceptions que le player n'existe pas, cas IMPOSSIBLE MAIS A FAIRE POUR EVITER LES WARNING DE RETURN
+                throw ERROR::PlayerNotFoundInEcs("NO player found in ECS");
             }
 
         protected:

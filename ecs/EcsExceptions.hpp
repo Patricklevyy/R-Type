@@ -202,6 +202,19 @@
                     return ("IdOutOfRangeExceptions : Id index out of range.");
                 };
             };
+
+            class PlayerNotFoundInEcs : public std::exception {
+                public:
+                    explicit PlayerNotFoundInEcs(const std::string& message)
+                        : message_("PlayerNotFoundInEcs: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
         }
     }
 #endif /* !ECSEXCEPTIONS_HPP_ */

@@ -57,6 +57,7 @@
             MY_PLAYER_SHIP,
             MONSTER,
             PLAYER_SIMPLE_MISSILE,
+            MONSTER_SIMPLE_MISSILE,
             OTHER_PLAYER_SHIP
         };
     }

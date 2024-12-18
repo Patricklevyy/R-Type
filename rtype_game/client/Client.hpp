@@ -39,7 +39,7 @@
                 void start();
 
                 void handle_event();
-                void handle_message(std::vector<char>&, std::string);
+                void handle_message(std::vector<char>&);
 
             protected:
             private:
@@ -69,7 +69,7 @@
 
                 void killEntity(std::list<size_t>);
 
-                void setRoomAdress(unsigned int, int);
+                void setRoomAdress(int);
                 void createPlayer(unsigned int, float, float);
                 void init_game(ecs::udp::Message &);
                 void createEntity(unsigned int, float, float, SPRITES);

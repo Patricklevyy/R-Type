@@ -143,7 +143,6 @@
                 private:
                     std::string message_;
             };
-
         }
     }
 #endif /* !RTYPEEXCEPTIONS_HPP_ */
