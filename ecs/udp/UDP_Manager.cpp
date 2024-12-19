@@ -49,12 +49,10 @@ namespace ecs
                 if (udpSettings.exists("secrete_key_rtype"))
                 {
                     secret_key = udpSettings["secrete_key_rtype"].c_str();
-                    std::cout << "Clé secrète HMAC lue : " << secret_key << std::endl;
                 }
                 else
                 {
-                    std::cerr << "Clé secrète HMAC manquante dans la configuration." << std::endl;
-                    return false;
+                    throw ecs::ERROR::MissingSecretKeyInConfigFileException("Missing key");
                 }
 
                 if (bufferSize > 1472)
@@ -141,7 +139,7 @@ namespace ecs
             if (received < 0)
             {
                 if (errno == EAGAIN || errno == EWOULDBLOCK)
-                    return false; // Pas de message disponible
+                    return false;
                 throw ecs::ERROR::RecvExceptions();
             }
 

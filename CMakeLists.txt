@@ -49,3 +49,22 @@ target_link_libraries(r-type_server PRIVATE ecs shared)
 set_target_properties(r-type_client r-type_server PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
+
+# Tests unitaires (Google Test)
+# -----------------------------
+
+find_package(GTest REQUIRED)
+
+file(GLOB_RECURSE TEST_SOURCES rtype_game/test_unitaire/*.cpp)
+
+add_executable(tests ${TEST_SOURCES})
+
+target_link_libraries(tests PRIVATE GTest::GTest GTest::Main pthread ecs shared)
+
+target_compile_options(tests PRIVATE -Wall -Wextra -g)
+
+set_target_properties(tests PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+
+add_test(NAME unit_tests COMMAND tests)
