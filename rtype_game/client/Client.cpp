@@ -249,6 +249,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
+        message.secret_key = _udpClient->getSecretKey();
         message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
 
         _message_compressor.serialize(message, buffer);
@@ -341,6 +342,7 @@ namespace rtype
         mess.id = ecs_client_to_server[_ecs.getIndexPlayer()];
         ;
         mess.action = RTYPE_ACTIONS::UPDATE_DIRECTION;
+        mess.secret_key = _udpClient->getSecretKey();
         mess.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y);
 
         _message_compressor.serialize(mess, buffer);
@@ -399,6 +401,7 @@ namespace rtype
                     ecs::udp::Message mess;
                     mess.id = 1;
                     mess.action = 0;
+                    mess.secret_key = _udpClient->getSecretKey();
                     mess.params = "room_name=room1;client_name=jean;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
                     _message_compressor.serialize(mess, buffer);
@@ -415,6 +418,7 @@ namespace rtype
                     ecs::udp::Message mess;
                     mess.id = 1;
                     mess.action = 1;
+                    mess.secret_key = _udpClient->getSecretKey();
                     mess.params = "room_name=room1;client_name=patrick;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
                     _message_compressor.serialize(mess, buffer);
@@ -431,6 +435,7 @@ namespace rtype
                     std::vector<char> buffer;
                     mess.id = 0;
                     mess.action = RTYPE_ACTIONS::CREATE_MONSTER;
+                    mess.secret_key = _udpClient->getSecretKey();
                     mess.params = "x=800;y=800";
 
                     _message_compressor.serialize(mess, buffer);
@@ -487,6 +492,7 @@ namespace rtype
         ecs::udp::Message mess;
         mess.id = 0;
         mess.action = RTYPE_ACTIONS::START_GAME;
+        mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
         std::cout << "je send" << std::endl;

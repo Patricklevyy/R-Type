@@ -81,6 +81,8 @@
              */
             virtual std::string getLastClientAddress() const;
 
+            virtual std::string getSecretKey() const;
+
         protected:
             int sockfd; /**< Socket file descriptor. */
             int bufferSize;  /**< Maximum buffer size for receiving messages. */
@@ -88,6 +90,7 @@
             sockaddr_in lastSenderAddr; /**< Address of the last message sender. */
             bool lastSenderValid; /**< Indicates if the last sender address is valid. */
             std::string clientAddrStr;  /**< Cached string representation of the last client address. */
+            std::string secret_key;
 
             // Gestion des messages
             std::queue<std::pair<std::string, std::vector<char>>> messageQueue; /**< Queue for incoming messages. */
