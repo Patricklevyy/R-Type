@@ -118,7 +118,7 @@
                     if (i < playables.size() && playables[i].has_value())
                         return i;
                 }
-                throw ERROR::PlayerDontExistInEcsException("No playable player in ecs");
+                return -1;
             }
 
             /**

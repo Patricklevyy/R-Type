@@ -52,7 +52,3 @@ TEST(EcsTests, RegistryAlreadyExist) {
 TEST(EcsTests, ComponentDontExist) {
     EXPECT_THROW(add_component_dont_exist(), ecs::ERROR::ComponentNotFoundExceptions);
 }
-
-TEST(EcsTests, PlayerDon) {
-    EXPECT_THROW(add_component_dont_exist(), ecs::ERROR::ComponentNotFoundExceptions);
-}

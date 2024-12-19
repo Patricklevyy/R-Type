@@ -27,11 +27,4 @@
         ecs.addComponents<ecs::Position>(0, ecs::Position());
     }
 
-    void player_dont_exist()
-    {
-        ecs::ECS ecs;
-
-        ecs.getIndexPlayer();
-    }
-
 #endif /* !ECS_TESTS_HPP_ */
