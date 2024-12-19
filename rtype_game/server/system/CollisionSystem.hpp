@@ -82,10 +82,10 @@ namespace rtype
          */
         bool isColliding(const ecs::Position &pos1, const rtype::Hitbox &box1, const ecs::Position &pos2, const rtype::Hitbox &box2)
         {
-            return !(pos1._pos_x + box1._width < pos2._pos_x ||
-            pos1._pos_x > pos2._pos_x + box2._width ||
-            pos1._pos_y + box1._height < pos2._pos_y ||
-            pos1._pos_x > pos2._pos_y + box2._height);
+            return (pos1._pos_x < pos2._pos_x + box2._width &&
+                    pos1._pos_x + box1._width > pos2._pos_x &&
+                    pos1._pos_y < pos2._pos_y + box2._height &&
+                    pos1._pos_y + box1._height > pos2._pos_y);
         }
     };
 }

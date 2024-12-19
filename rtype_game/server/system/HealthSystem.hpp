@@ -14,6 +14,7 @@
     #include <list>
     #include "../components/Monster.hpp"
     #include "../components/Hitbox.hpp"
+    #include "../../../ecs/components/Direction.hpp"
 
     namespace rtype
     {
@@ -35,14 +36,16 @@
 
                                 if (health._health <= 0)
                                 {
-                                    std::cout << "KILLL" << std::endl;
+                                    std::cout << "KILLL, deaddddd" << std::endl;
                                     ecs.killEntityFromRegistry<ecs::Position>(i);
                                     ecs.killEntityFromRegistry<ecs::Playable>(i);
                                     ecs.killEntityFromRegistry<Hitbox>(i);
                                     ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                    ecs.killEntityFromRegistry<ecs::Position>(i);
                                     ecs.killEntityFromRegistry<Health>(i);
                                     ecs.killEntityFromRegistry<Monster>(i);
+                                    ecs.killEntityFromRegistry<ecs::Direction>(i);
+                                    ecs.killEntityFromRegistry<Ennemies>(i);
+                                    ecs.killEntityFromRegistry<Allies>(i);
                                     ecs.addDeadEntity(i);
                                     dead_entities.push_front(i);
                                 }

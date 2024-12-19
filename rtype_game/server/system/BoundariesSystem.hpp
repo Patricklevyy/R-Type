@@ -40,9 +40,11 @@
                                     std::cout << "KILLL" << std::endl;
                                     ecs.killEntityFromRegistry<ecs::Position>(i);
                                     ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                    ecs.killEntityFromRegistry<ecs::Position>(i);
                                     ecs.killEntityFromRegistry<Health>(i);
                                     ecs.killEntityFromRegistry<Projectiles>(i);
+                                    ecs.killEntityFromRegistry<Hitbox>(i);
+                                    ecs.killEntityFromRegistry<Allies>(i);
+                                    ecs.killEntityFromRegistry<Ennemies>(i);
                                     ecs.addDeadEntity(i);
                                     dead_entities.push_front(i);
                                 }
