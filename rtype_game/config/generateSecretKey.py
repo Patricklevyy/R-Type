@@ -21,7 +21,7 @@ def update_secret_key_in_file(file_path, new_key):
         file.write(updated_content)
 
 if __name__ == "__main__":
-    config_file = "udp_config.conf"
+    config_file = "rtype_game/config/udp_config.conf"
     new_secret_key = generate_secret_key()
 
     try:
