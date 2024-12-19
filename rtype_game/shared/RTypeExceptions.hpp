@@ -143,6 +143,19 @@
                 private:
                     std::string message_;
             };
+
+            class MessageIsNotSafeException : public std::exception {
+                public:
+                    explicit MessageIsNotSafeException(const std::string& message)
+                        : message_("MessageIsNotSafeException: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
         }
     }
 #endif /* !RTYPEEXCEPTIONS_HPP_ */

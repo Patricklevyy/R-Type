@@ -66,6 +66,17 @@ namespace ecs
                 const libconfig::Setting &udpSettings = root["UDP"];
                 bufferSize = udpSettings["buffer_size"];
 
+                if (udpSettings.exists("secrete_key_rtype"))
+                {
+                    secret_key = udpSettings["secrete_key_rtype"].c_str();
+                    std::cout << "Clé secrète HMAC lue : " << secret_key << std::endl;
+                }
+                else
+                {
+                    std::cerr << "Clé secrète HMAC manquante dans la configuration." << std::endl;
+                    return false;
+                }
+
                 if (bufferSize > 1472)
                 {
                     throw ecs::ERROR::WrongBufferSizeExceptions();
