@@ -13,6 +13,7 @@
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Manager.hpp"
     #include "../shared/Timer.hpp"
+    #include "../shared/SecretKeyChecker.hpp"
 
     namespace rtype
     {
