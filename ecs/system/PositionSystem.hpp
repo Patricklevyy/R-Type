@@ -96,6 +96,20 @@
                 }
             }
 
+            /**
+            * @brief Updates the position of a player based on their velocity and direction.
+            *
+            * This function updates the x and y coordinates of the player's position
+            * based on their current velocity, direction, and the tick rate. The player's
+            * movement is constrained by the boundaries of the window dimensions.
+            *
+            * @param components_array A reference to a map containing component arrays,
+            *                         with each component identified by its type.
+            * @param tickRate The rate at which updates occur (ticks per second).
+            * @param indexPlayer The index of the player in the components array.
+            * @param window_width The width of the window boundary.
+            * @param window_height The height of the window boundary.
+            */
             void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int indexPlayer, int window_width, int window_height)
             {
                 if (indexPlayer == -1)
@@ -139,6 +153,18 @@
                     }
             }
 
+            /**
+             * @brief Retrieves the position of a player from the ECS.
+             *
+             * This function returns the x and y coordinates of a player's position.
+             * If the player does not exist in the ECS, an exception is thrown.
+             *
+             * @param index The index of the player in the components array.
+             * @param components_array A reference to a map containing component arrays,
+             *                         with each component identified by its type.
+             * @return A pair of floats representing the x and y coordinates of the player's position.
+             * @throws ERROR::PlayerNotFoundInEcs If the player is not found in the ECS.
+             */
             std::pair<float, float> getPlayerPosition(size_t index, std::unordered_map<std::type_index, std::any> &components_array)
             {
                 auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);

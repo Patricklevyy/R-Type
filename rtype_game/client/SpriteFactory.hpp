@@ -5,6 +5,14 @@
 ** SpriteFactory
 */
 
+/**
+ * @file SpriteFactory.hpp
+ * @brief Factory class for creating and handling sprites.
+ *
+ * The `SpriteFactory` class provides methods for retrieving sprite properties, loading
+ * textures, and handling sprite scaling and speed based on the sprite type.
+ */
+
 #ifndef SPRITEFACTORY_HPP_
     #define SPRITEFACTORY_HPP_
 
@@ -16,6 +24,12 @@
         class SpriteFactory
             {
             public:
+
+                /**
+                 * @brief Retrieves the scale and speed for a given sprite type.
+                 * @param id The sprite identifier.
+                 * @return A tuple containing the scale (x, y) and speed for the sprite.
+                 */
                 static std::tuple<float, float, float> getSpriteScaleAndSpeed(SPRITES id)
                 {
                     switch (id)
@@ -39,6 +53,11 @@
                     }
                 }
 
+                /**
+                 * @brief Retrieves the maximum texture size for a given sprite type.
+                 * @param id The sprite identifier.
+                 * @return A pair containing the maximum width and height for the sprite.
+                 */
                 static std::pair<int, int> getMaxTextureSizeForSprite(SPRITES id)
                 {
                     auto textures = loadTexturesForSprite(id);
@@ -56,6 +75,11 @@
                     return {(maxWidth * std::get<0>(scale)), (maxHeight * std::get<1>(scale))};
                 }
 
+                /**
+                 * @brief Loads the textures for a given sprite type.
+                 * @param id The sprite identifier.
+                 * @return A vector of shared pointers to sf::Texture objects for the sprite.
+                 */
                 static std::vector<std::shared_ptr<sf::Texture>> loadTexturesForSprite(SPRITES id)
                 {
                     std::vector<std::shared_ptr<sf::Texture>> textures;
@@ -114,12 +138,21 @@
                 }
 
             private:
+                 /**
+                 * @brief Retrieves the texture cache for the sprite factory.
+                 * @return A reference to the texture cache map.
+                 */
                 static std::unordered_map<std::string, std::shared_ptr<sf::Texture>> &getTextureCache()
                 {
                     static std::unordered_map<std::string, std::shared_ptr<sf::Texture>> textureCache;
                     return textureCache;
                 }
 
+                /**
+                 * @brief Loads a texture from a file.
+                 * @param path The path to the texture file.
+                 * @return A shared pointer to the loaded sf::Texture.
+                 */
                 static std::shared_ptr<sf::Texture> loadTexture(const std::string &path)
                 {
                     auto &textureCache = getTextureCache();

@@ -203,6 +203,9 @@
                 };
             };
 
+            /**
+            * @brief Exception for player not found.
+            */
             class PlayerNotFoundInEcs : public std::exception {
                 public:
                     explicit PlayerNotFoundInEcs(const std::string& message)
@@ -216,6 +219,10 @@
                     std::string message_;
             };
 
+
+            /**
+            * @brief Exception for missing the secret key in the config file.
+            */
             class MissingSecretKeyInConfigFileException : public std::exception {
                 public:
                     explicit MissingSecretKeyInConfigFileException(const std::string& message)

@@ -173,6 +173,9 @@
                 }
             }
 
+            /**
+             * @brief Allows us the get the list of the dead entities.
+             */
             std::pair<bool, size_t> getDeadEntityIndex()
             {
                 if (_dead_entities.empty()) {
@@ -190,10 +193,6 @@
         private:
 
             std::list<Entity> _dead_entities; /**< List of entities marked as "dead." */
-            // std::vector<freset_type> _freset_entity_components;
-            // std::vector<freset_all_types> _freset_all_entity_components; ECS ARTHUR, JE SAIS PAS SI C'EST UTILE POUR NOUS
-            // std::unordered_map<std::type_index, event_types> _events;
-            // std::list<callback_type> _callback_pool;
         };
     }
 

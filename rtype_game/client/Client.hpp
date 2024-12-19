@@ -5,6 +5,13 @@
 ** Client
 */
 
+/**
+ * @file Client.hpp
+ * @brief Class representing the client for the game.
+ * The `Client` class handles all the client-side logic of the game, such as communication
+ * with the server, event handling, entity management, and window rendering.
+ */
+
 #ifndef CLIENT_HPP_
     #define CLIENT_HPP_
 
@@ -34,12 +41,29 @@
         class Client
         {
             public:
+                /**
+                 * @brief Default constructor for the Client class.
+                 */
                 Client();
+                /**
+                 * @brief Destructor for the Client class.
+                 */
                 ~Client();
 
+                /**
+                 * @brief Starts the game client.
+                 */
                 void start();
 
+                /**
+                 * @brief Handles events in the game.
+                 */
                 void handle_event();
+
+                /**
+                 * @brief Handles messages from the server.
+                 * @param message A vector of characters representing the message from the server.
+                 */
                 void handle_message(std::vector<char>&);
 
             protected:
@@ -69,29 +93,104 @@
                 SetFilter _set_filter_system;
                 UpdateEntitySystem _update_entity_system;
 
+                /**
+                 * @brief Kills the entities specified by the given list of entity indices.
+                 * @param entities A list of entity indices to be killed.
+                 */
                 void killEntity(std::list<size_t>);
 
+                /**
+                 * @brief Sets the room address for the game client.
+                 * @param roomAddress The address of the room to connect to.
+                 */
                 void setRoomAdress(int);
+
+                /**
+                 * @brief Creates a player entity with the specified parameters.
+                 * @param id The unique identifier for the player.
+                 * @param x The initial x-coordinate of the player.
+                 * @param y The initial y-coordinate of the player.
+                 */
                 void createPlayer(unsigned int, float, float);
+
+                /**
+                 * @brief Initializes the game with the given message.
+                 * @param message The initialization message from the server.
+                 */
                 void init_game(ecs::udp::Message &);
+
+                /**
+                 * @brief Creates a new entity with the specified parameters.
+                 * @param id The entity's unique identifier.
+                 * @param x The entity's x-coordinate.
+                 * @param y The entity's y-coordinate.
+                 * @param sprite The sprite identifier for the entity.
+                 */
                 void createEntity(unsigned int, float, float, SPRITES);
+
+                /**
+                 * @brief Creates a new projectile entity.
+                 * @param message The message from the server containing the projectile data.
+                 */
                 void createProjectile(ecs::udp::Message&);
+
+                /**
+                 * @brief Updates entities during the first connection.
+                 * @param message The message containing the update data.
+                 */
                 void updateEntitiesFirstConnexion(const std::string &);
 
+                /**
+                 * @brief Creates a monster entity.
+                 * @param message The message from the server containing the monster data.
+                 */
                 void createMonster(ecs::udp::Message&);
 
                 // MESSAGE TO SERVER
 
+                /**
+                 * @brief Sends a message to the server indicating a new shoot action.
+                 */
                 void send_server_new_shoot();
+
+                /**
+                 * @brief Sends a message to the server with the player's direction.
+                 * @param direction The player's current direction.
+                 * @param lastDirection The player's previous direction.
+                */
                 void send_server_player_direction(ecs::direction, ecs::direction);
+
+                /**
+                 * @brief Sends a message to the server to start the game.
+                 */
                 void send_server_start_game();
 
                 // INITIALISATION
 
+                /**
+                 * @brief Initializes all components of the client.
+                 */
                 void init_all();
+
+                /**
+                 * @brief Initializes the window size based on the provided configuration.
+                 * @param config A string containing the configuration for the window size.
+                 */
                 void init_window_size(const std::string&);
+
+                /**
+                 * @brief Initializes the game window and background.
+                 */
                 void init_window_and_background();
+
+                /**
+                 * @brief Initializes the ECS client registry.
+                 */
                 void init_ecs_client_registry();
+
+                /**
+                 * @brief Initializes the event bus subscription.
+                 */
                 void init_subscribe_event_bus();
         };
     }

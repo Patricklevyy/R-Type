@@ -1,3 +1,15 @@
+/*
+** EPITECH PROJECT, 2024
+** R-Type
+** File description:
+** Shader
+*/
+
+/**
+ * @file Shader.hpp
+ * @brief Represents a shader applied to the game for the accessibility.
+ */
+
 #ifndef SHADER_HPP_
 #define SHADER_HPP_
 
@@ -12,17 +24,33 @@ namespace rtype
     class Shader
     {
     public:
+        /**
+         * @brief Constructs a shader object with a specific filter type.
+         *
+         * @param type The filter mode for the shader.
+         */
         Shader(FILTER_MODE type)
         {
             filter = std::make_shared<sf::Shader>();
             loadShader(type);
         }
 
+        /**
+         * @brief Gets the SFML shader object.
+         *
+         * @return Shared pointer to the SFML shader.
+         */
         std::shared_ptr<sf::Shader> getShader()
         {
             return filter;
         }
 
+        /**
+         * @brief Loads the shader corresponding to the specified filter type.
+         *
+         * @param type The filter mode for the shader.
+         * @return True if the shader was loaded successfully, false otherwise.
+         */
         bool loadShader(FILTER_MODE type)
         {
             std::string path = getShaderPath(type);
@@ -44,6 +72,13 @@ namespace rtype
     private:
         std::shared_ptr<sf::Shader> filter;
 
+        /**
+         * @brief Gets the file path for a shader based on the filter mode.
+         *
+         * @param type The filter mode.
+         * @return The file path to the corresponding shader.
+         * @throws std::runtime_error If the filter mode is unknown.
+         */
         std::string getShaderPath(FILTER_MODE type) const
         {
             switch (type)

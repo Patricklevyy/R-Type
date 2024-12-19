@@ -5,6 +5,12 @@
 ** RenderWindow
 */
 
+
+/**
+ * @file RenderWindow.hpp
+ * @brief Responsible for rendering entities, backgrounds, and applying shaders to the game window.
+ */
+
 #ifndef RENDERWINDOW_HPP_
     #define RENDERWINDOW_HPP_
 
@@ -24,6 +30,10 @@
         {
             public:
 
+                /**
+                 * @brief Renders all displayable entities to the game window.
+                 * @param components_array The array of ECS components.
+                 */
                 void render(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     static sf::Clock clock;
@@ -54,6 +64,11 @@
                     }
                 }
 
+                /**
+                 * @brief Changes the background sprite to a new one.
+                 * @param components_array The array of ECS components.
+                 * @param sprite The background sprite ID.
+                 */
                 void changeBackground(std::unordered_map<std::type_index, std::any> &components_array, SPRITES sprite)
                 {
                     try {
@@ -69,6 +84,11 @@
                     }
                 }
 
+                /**
+                 * @brief Moves the background by adjusting its position based on velocity.
+                 * @param components_array The array of ECS components.
+                 * @param menu Whether the game is in menu mode (background does not move).
+                 */
                 void move_background(std::unordered_map<std::type_index, std::any> &components_array, bool menu)
                 {
                     if (menu)

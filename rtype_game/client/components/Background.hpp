@@ -1,3 +1,15 @@
+/*
+** EPITECH PROJECT, 2024
+** R-Type
+** File description:
+** Background
+*/
+
+/**
+ * @file Background.hpp
+ * @brief Defines class for managing game background in the R-Type game.
+ */
+
 #ifndef BACKGROUND_HPP_
 #define BACKGROUND_HPP_
 
@@ -9,10 +21,20 @@
 
 namespace rtype
 {
-
+    /**
+     * @brief Represents the game background using an SFML sprite.
+     */
     class Background
     {
     public:
+        /**
+         * @brief Constructs a background object with a texture and initial position.
+         *
+         * @param texturePath Path to the texture file.
+         * @param x Initial x-coordinate of the background sprite.
+         * @param y Initial y-coordinate of the background sprite.
+         * @throws std::runtime_error If the texture fails to load.
+         */
         Background(const std::string &texturePath, int x, int y)
         {
             try
@@ -36,11 +58,16 @@ namespace rtype
             }
         }
 
+        /**
+         * @brief Gets the SFML sprite representing the background.
+         *
+         * @return Reference to the background sprite.
+         */
         sf::Sprite &getSprite() { return sprite; }
 
     private:
-        std::shared_ptr<sf::Texture> texture;
-        sf::Sprite sprite;
+        std::shared_ptr<sf::Texture> texture; /**< Shared pointer to the texture. */
+        sf::Sprite sprite; /**< SFML sprite representing the background. */
     };
 }
 
