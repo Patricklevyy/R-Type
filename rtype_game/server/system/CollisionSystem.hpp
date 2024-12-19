@@ -12,10 +12,10 @@
 
 #ifndef COLLISIONSYSTEM_HPP_
 #define COLLISIONSYSTEM_HPP_
-#include "../../ecs/Enums_ecs.hpp"
-#include "../../ecs/Includes_ecs.hpp"
-#include "../../ecs/SparseArray.hpp"
-#include "../../ecs/components/Position.hpp"
+#include "../../../ecs/Enums_ecs.hpp"
+#include "../../../ecs/Includes_ecs.hpp"
+#include "../../../ecs/SparseArray.hpp"
+#include "../../../ecs/components/Position.hpp"
 #include "../../shared/components/Health.hpp"
 #include "../components/Allies.hpp"
 #include "../components/Ennemies.hpp"

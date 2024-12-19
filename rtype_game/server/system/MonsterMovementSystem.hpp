@@ -15,7 +15,7 @@
 #include "../../../ecs/components/Velocity.hpp"
 #include "../components/Monster.hpp"
 #include "../components/Projectiles.hpp"
-#include "../shared/components/Health.hpp"
+#include "../../shared/components/Health.hpp"
 #include "../RandomNumber.hpp"
 
 namespace rtype

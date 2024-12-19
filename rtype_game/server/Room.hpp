@@ -15,7 +15,7 @@
 
     // CLASSES
 
-    #include "MessageChecker.hpp"
+    #include "../shared/MessageChecker.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
     #include "../../ecs/ECS.hpp"

@@ -13,7 +13,7 @@
     #include "../../../ecs/components/Position.hpp"
     #include "../../../ecs/components/Velocity.hpp"
     #include "../../../ecs/components/Direction.hpp"
-    #include "../shared/components/Health.hpp"
+    #include "../../shared/components/Health.hpp"
     #include "../components/Projectiles.hpp"
 
     namespace rtype
