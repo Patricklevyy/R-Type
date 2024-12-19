@@ -32,7 +32,7 @@ namespace rtype
 
             for (size_t i = 0; i < monsters.size(); ++i) {
                 if (positions[i].has_value() && velocities[i].has_value() && directions[i].has_value() && monsters[i].has_value()) {
-                    if (positions[i].value()._pos_x <= (window_width - 100) && directions[i].value()._x != ecs::direction::NO_DIRECTION) {
+                    if (positions[i].value()._pos_x <= (window_width - 150) && directions[i].value()._x != ecs::direction::NO_DIRECTION) {
                         directions[i].value()._x = ecs::direction::NO_DIRECTION;
                         int random = randomizer.generateRandomNumbers(0, 1);
                         if (random == 0) {
@@ -42,9 +42,9 @@ namespace rtype
                         }
                     }
 
-                    if (positions[i].value()._pos_y <= 100) {
+                    if (positions[i].value()._pos_y <= 150) {
                         directions[i].value()._y = ecs::direction::DOWN;
-                    } else if (positions[i].value()._pos_y >= window_height - 100) {
+                    } else if (positions[i].value()._pos_y >= window_height - 150) {
                         directions[i].value()._y = ecs::direction::UP;
                     }
                 }

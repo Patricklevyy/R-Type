@@ -27,7 +27,7 @@
                         x = 100;
                         y = 100;
                         break;
-                    case SPRITES::MONSTER:
+                    case SPRITES::SIMPLE_MONSTER:
                         x = 200;
                         y = 200;
                         break;

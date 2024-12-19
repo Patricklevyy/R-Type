@@ -131,7 +131,15 @@ namespace rtype
                 float x = std::stof(message.params.substr(0, separator_pos).substr(2));
                 float y = std::stof(message.params.substr(separator_pos + 1).substr(2));
 
-                createEntity(message.id, x, y, SPRITES::MONSTER);
+                createEntity(message.id, x, y, SPRITES::SIMPLE_MONSTER);
+            } catch (const std::exception &e) {
+                std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::MOVE_BACKGROUND, [this](const std::vector<std::any> &args) {
+            try {
+                (void)args;
+                _render_window_system.move_background(_ecs._components_arrays, _in_menu);
             } catch (const std::exception &e) {
                 std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
             }
@@ -200,7 +208,7 @@ namespace rtype
         }
         std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
-        Displayable displayable(sprite_id, x, y);
+        Displayable displayable(sprite_id);
         Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
@@ -241,7 +249,7 @@ namespace rtype
 
         message.id = 0;
         message.action = RTYPE_ACTIONS::PLAYER_SHOOT;
-        message.params = "x=" + std::to_string(player_positions.first + 130) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
+        message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
 
         _message_compressor.serialize(message, buffer);
 
@@ -271,7 +279,7 @@ namespace rtype
         int x = std::stof(res["x"]);
         int y = std::stof(res["y"]);
         ecs::Position position(x, y);
-        Displayable displayable(SPRITES::MONSTER, x, y);
+        Displayable displayable(SPRITES::SIMPLE_MONSTER);
         Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
@@ -302,7 +310,7 @@ namespace rtype
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
         ecs::Velocity velocity(200);
-        Displayable displayable(SPRITES::MY_PLAYER_SHIP, x, y);
+        Displayable displayable(SPRITES::MY_PLAYER_SHIP);
         Health health(100);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
@@ -462,7 +470,7 @@ namespace rtype
                 }
                 break;
             case sf::Event::MouseButtonPressed:
-                if (event.mouseButton.button == sf::Mouse::Left) {
+                if (event.mouseButton.button == sf::Mouse::Left && !_in_menu) {
                     send_server_new_shoot();
                 }
                 break;
@@ -493,8 +501,9 @@ namespace rtype
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND, 0, 0));
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
+        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(10));
         _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
     }
@@ -559,7 +568,7 @@ namespace rtype
                               << e.what() << std::endl;
                 }
             }
-            // _ecs.displayPlayableEntityComponents();
+            _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);

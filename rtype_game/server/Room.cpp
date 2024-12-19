@@ -264,7 +264,7 @@ namespace rtype
         Health health(60);
         Monster monster;
         ecs::Direction direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
-        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MONSTER));
+        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::SIMPLE_MONSTER));
         Ennemies ennemies;
 
         _ecs.addComponents<ecs::Position>(index, position);
@@ -275,7 +275,7 @@ namespace rtype
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<Ennemies>(index, ennemies);
 
-        send_client_new_monster(index, x, y, SPRITES::MONSTER);
+        send_client_new_monster(index, x, y, SPRITES::SIMPLE_MONSTER);
     }
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
@@ -455,7 +455,6 @@ namespace rtype
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
         mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ":" + sendExistingEntities();
-        ;
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position, clientName);
@@ -492,8 +491,8 @@ namespace rtype
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value() && sprite[i].has_value()) {
                 int spriteId = sprite[i].value()._sprite;
-                if (spriteId == 1)
-                    spriteId = 4;
+                if (spriteId == MY_PLAYER_SHIP)
+                    spriteId = OTHER_PLAYER_SHIP;
                 updateMessage += std::to_string(positions[i].value()._pos_x) +
                 "," + std::to_string(positions[i].value()._pos_y) +
                 "," + std::to_string(i) +

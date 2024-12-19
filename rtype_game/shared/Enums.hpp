@@ -49,6 +49,7 @@
             GET_ALL_ROOMS,
             RENDER_WINDOW,
             START_GAME,
+            MOVE_BACKGROUND,
             MAX_ACTION
         };
 
@@ -57,7 +58,7 @@
             MENU_BACKGROUND,
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
-            MONSTER,
+            SIMPLE_MONSTER,
             PLAYER_SIMPLE_MISSILE,
             MONSTER_SIMPLE_MISSILE,
             OTHER_PLAYER_SHIP

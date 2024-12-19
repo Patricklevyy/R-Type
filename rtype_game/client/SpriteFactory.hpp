@@ -16,50 +16,84 @@
         class SpriteFactory
             {
             public:
-                static std::shared_ptr<sf::Sprite> createSprite(SPRITES id)
+                static std::tuple<float, float, float> getSpriteScaleAndSpeed(SPRITES id)
                 {
-                    std::cout << "SPRITE ID =>>> " << id << std::endl;
-                    std::string texturePath;
-                    sf::Vector2f scale(1.0f, 1.0f);
                     switch (id)
                     {
-                    case SPRITES::MENU_BACKGROUND:
-                        texturePath = "assets/background.png";
-                        scale = sf::Vector2f(1.0f, 1.0f);
-                        break;
-                    case SPRITES::GAME_BACKGROUND:
-                        texturePath = "assets/background_space_dynamic.jpg";
-                        scale = sf::Vector2f(1.0f, 1.0f);
-                        break;
-                    case SPRITES::MY_PLAYER_SHIP:
-                        texturePath = "assets/red_ship.png";
-                        break;
-                    case SPRITES::MONSTER:
-                        texturePath = "assets/enemy-spaceship.png";
-                        scale = sf::Vector2f(-0.04f, 0.04f);
-                        break;
-                    case SPRITES::OTHER_PLAYER_SHIP:
-                        texturePath = "assets/blue_ship.png";
-                        break;
-                    case SPRITES::PLAYER_SIMPLE_MISSILE:
-                        texturePath = "assets/bullet.png";
-                        scale = sf::Vector2f(0.03f, 0.03f);
-                        break;
-                    case SPRITES::MONSTER_SIMPLE_MISSILE:
-                        texturePath = "assets/monster_missile.png";
-                        scale = sf::Vector2f(1.0f, 1.0f);
-                        break;
-                    default:
-                        throw std::invalid_argument("Invalid sprite ID : " + id);
+                        case SPRITES::MENU_BACKGROUND:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
+                        case SPRITES::GAME_BACKGROUND:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0, 0.0f);
+                        case SPRITES::MY_PLAYER_SHIP:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
+                        case SPRITES::SIMPLE_MONSTER:
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.2f);
+                        case SPRITES::OTHER_PLAYER_SHIP:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
+                        case SPRITES::PLAYER_SIMPLE_MISSILE:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.10f);
+                        case SPRITES::MONSTER_SIMPLE_MISSILE:
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.10f);
+                        default:
+                            throw std::invalid_argument("Invalid sprite ID : " + id);
+                    }
+                }
+
+                static std::vector<std::shared_ptr<sf::Texture>> loadTexturesForSprite(SPRITES id)
+                {
+                    std::vector<std::shared_ptr<sf::Texture>> textures;
+                    switch (id)
+                    {
+                        case SPRITES::MENU_BACKGROUND:
+                            textures.push_back(loadTexture("assets/background.png"));
+                            break;
+                        case SPRITES::GAME_BACKGROUND:
+                            textures.push_back(loadTexture("assets/background_loop.png"));
+                            break;
+                        case SPRITES::MY_PLAYER_SHIP:
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame1.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame2.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame3.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame4.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame5.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame4.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame3.png"));
+                            textures.push_back(loadTexture("assets/player_blue_ship_frame2.png"));
+                            break;
+                        case SPRITES::SIMPLE_MONSTER:
+                            textures.push_back(loadTexture("assets/simple_monster_frame1.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_frame2.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_frame3.png"));
+                            break;
+                        case SPRITES::OTHER_PLAYER_SHIP:
+                            textures.push_back(loadTexture("assets/player_red_ship_frame1.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame2.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame3.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame4.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame5.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame4.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame3.png"));
+                            textures.push_back(loadTexture("assets/player_red_ship_frame2.png"));
+                            break;
+                        case SPRITES::PLAYER_SIMPLE_MISSILE:
+                            textures.push_back(loadTexture("assets/simple_player_missile_frame1.png"));
+                            textures.push_back(loadTexture("assets/simple_player_missile_frame2.png"));
+                            break;
+                        case SPRITES::MONSTER_SIMPLE_MISSILE:
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame1.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame2.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame3.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame4.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame5.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame6.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame7.png"));
+                            textures.push_back(loadTexture("assets/simple_monster_missile_frame8.png"));
+                            break;
+                        default:
+                            throw std::invalid_argument("Invalid sprite ID : " + id);
                     }
 
-                    auto texture = loadTexture(texturePath);
-
-                    auto sprite = std::make_shared<sf::Sprite>();
-                    sprite->setTexture(*texture);
-                    sprite->setScale(scale);
-
-                    return sprite;
+                    return textures;
                 }
 
             private:
