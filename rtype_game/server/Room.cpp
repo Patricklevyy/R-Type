@@ -164,10 +164,31 @@ namespace rtype
                     std::make_pair(3, 0),
                     std::get<2>(monster)
                 );
-
-                createEntityProjectiles(index, pos_dir_sprite);
+                createEnemiesProjectiles(index, pos_dir_sprite);
             }
         });
+    }
+
+    void Room::createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
+    {
+        ecs::Direction direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second));
+        ecs::Position position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second);
+        ecs::Velocity velocity(300);
+        Health health(20);
+        Hitbox hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite)));
+        Projectiles projectile;
+        SpriteId spriteId(std::get<2>(pos_dir_sprite));
+        Ennemies enemmies;
+
+        _ecs.addComponents<ecs::Direction>(index, direction);
+        _ecs.addComponents<ecs::Velocity>(index, velocity);
+        _ecs.addComponents<ecs::Position>(index, position);
+        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<Projectiles>(index, projectile);
+        _ecs.addComponents<SpriteId>(index, spriteId);
+        _ecs.addComponents<Hitbox>(index, hitbox);
+        _ecs.addComponents<Ennemies>(index, enemmies);
+        send_client_new_projectile(index, std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second, std::get<2>(pos_dir_sprite));
     }
 
     void Room::createEntityProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)

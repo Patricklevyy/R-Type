@@ -117,6 +117,7 @@
             void send_client_new_projectile(size_t, float, float, SPRITES);
             void createAlliesProjectile(ecs::udp::Message&);
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
+            void createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite);
             void createMonster();
             void send_client_new_monster(size_t, float, float , int);
         };
