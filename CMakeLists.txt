@@ -52,31 +52,27 @@ endfunction()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ecs/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/rtype_game/include)
 
-# Gestion des fichiers source
-file(GLOB_RECURSE CLIENT_SRC
-    "${CMAKE_SOURCE_DIR}/rtype_game/client/*.cpp"
-    "${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp"
-    "${CMAKE_SOURCE_DIR}/ecs/*.cpp"
+# Shared
+file(GLOB_RECURSE SHARED_FILES rtype_game/shared/*.cpp rtype_game/shared/*.h)
+add_library(shared STATIC ${SHARED_FILES})
+
+target_include_directories(shared PUBLIC ${CMAKE_SOURCE_DIR}/rtype_game/shared)
+
+# Client
+file(GLOB_RECURSE CLIENT_FILES rtype_game/client/*.cpp rtype_game/client/*.h)
+add_executable(r-type_client ${CLIENT_FILES})
+
+target_compile_options(r-type_client PRIVATE -Wall -Wextra -g)
+target_link_libraries(r-type_client PRIVATE sfml-system sfml-window sfml-graphics ecs shared)
+
+# Server
+file(GLOB_RECURSE SERVER_FILES rtype_game/server/*.cpp rtype_game/server/*.h)
+add_executable(r-type_server ${SERVER_FILES})
+
+target_compile_options(r-type_server PRIVATE -Wall -Wextra -g)
+target_link_libraries(r-type_server PRIVATE ecs shared sfml-graphics sfml-window sfml-system)
+
+# Propriétés des exécutables
+set_target_properties(r-type_client r-type_server PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
-
-file(GLOB_RECURSE SERVER_SRC
-    "${CMAKE_SOURCE_DIR}/rtype_game/server/*.cpp"
-    "${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp"
-    "${CMAKE_SOURCE_DIR}/ecs/*.cpp"
-)
-
-# Création des exécutables
-add_executable(r-type_client ${CLIENT_SRC})
-add_executable(r-type_server ${SERVER_SRC})
-
-# Liens avec les bibliothèques
-resolve_dependency(r-type_client fmt::fmt)
-resolve_dependency(r-type_server fmt::fmt)
-resolve_dependency(r-type_client libconfig::config++)
-resolve_dependency(r-type_server libconfig::config++)
-target_link_libraries(r-type_client PRIVATE sfml-system sfml-window sfml-graphics sfml-audio libconfig::config libconfig::config++)
-target_link_libraries(r-type_server PRIVATE sfml-system sfml-window sfml-graphics sfml-audio libconfig::config libconfig::config++)
-
-
-# Installation
-install(TARGETS r-type_client r-type_server RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin)

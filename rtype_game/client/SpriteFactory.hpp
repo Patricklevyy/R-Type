@@ -39,6 +39,23 @@
                     }
                 }
 
+                static std::pair<int, int> getMaxTextureSizeForSprite(SPRITES id)
+                {
+                    auto textures = loadTexturesForSprite(id);
+                    auto scale = getSpriteScaleAndSpeed(id);
+                    int maxWidth = 0;
+                    int maxHeight = 0;
+
+                    for (const auto &texture : textures) {
+                        if (texture) {
+                            sf::Vector2u size = texture->getSize();
+                            maxWidth = std::max(maxWidth, static_cast<int>(size.x));
+                            maxHeight = std::max(maxHeight, static_cast<int>(size.y));
+                        }
+                    }
+                    return {(maxWidth * std::get<0>(scale)), (maxHeight * std::get<1>(scale))};
+                }
+
                 static std::vector<std::shared_ptr<sf::Texture>> loadTexturesForSprite(SPRITES id)
                 {
                     std::vector<std::shared_ptr<sf::Texture>> textures;
