@@ -110,7 +110,7 @@ namespace rtype
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
     {
-        (void)clientAddr; // POUR L'INSTANT ON NE L'UTILISE PAS, PEUT ETRE PLUS TARD POUR LES ROLLBACK ETC
+        (void)clientAddr;
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
         std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
@@ -142,7 +142,6 @@ namespace rtype
         case 3:
             return std::pair<float, float>(500, 500);
         default:
-            // IMPOSSIBLE CASE
             return std::pair<float, float>(0, 0);
         }
     }

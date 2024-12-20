@@ -75,6 +75,7 @@
                                     ecs.killEntityFromRegistry<ecs::Direction>(i);
                                     ecs.killEntityFromRegistry<Ennemies>(i);
                                     ecs.killEntityFromRegistry<Allies>(i);
+                                    ecs.killEntityFromRegistry<Projectiles>(i);
                                     ecs.addDeadEntity(i);
                                     std::get<0>(dead_entities).push_front(i);
                                 }

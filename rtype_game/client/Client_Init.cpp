@@ -22,7 +22,7 @@ namespace rtype
 
     void Client::init_window_size(const std::string &file_path)
     {
-        libconfig::Config cfg; // Objet Config pour lire le fichier
+        libconfig::Config cfg; 
 
         try {
             cfg.readFile(file_path.c_str());

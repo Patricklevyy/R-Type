@@ -75,7 +75,7 @@
                 int _window_width;
                 int _window_height;
                 bool _in_menu = true;
-                std::string _name; // A SET AU MENU
+                std::string _name; 
                 std::map<unsigned int, unsigned int> ecs_server_to_client;
                 std::map<unsigned int, unsigned int> ecs_client_to_server;
                 EventBus _eventBus;

@@ -13,7 +13,6 @@ namespace rtype
     {
 
         (void)id;
-        // Je check les params de la room et du client
 
         std::map<std::string, std::string> map_params = _mes_checker.checkFormatParams(params);
 
@@ -36,13 +35,9 @@ namespace rtype
 
         (void)id;
 
-        // Je check les params de la room et du client
-
         std::map<std::string, std::string> map_params = _mes_checker.checkFormatParams(params);
 
         checkJoinRoomArgs(map_params);
-
-        // Je notifie la room du nouveau client
 
         for (auto &room : _rooms)
         {

@@ -110,7 +110,7 @@ namespace rtype {
                     textureSize.y * scale.y
                 );
             }
-            return sf::Vector2f(0, 0); // Retourne une taille nulle si la texture est absente
+            return sf::Vector2f(0, 0);
         }
 
     private:

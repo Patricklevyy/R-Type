@@ -11,7 +11,6 @@ namespace rtype
 {
     void Room::init_event_bus()
     {
-        // SUBSCRIBE POSITION SYSTEM
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
             _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps(), _window_width, _window_height);
