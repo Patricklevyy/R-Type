@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messagequeue_0',['messageQueue',['../UDP__Manager_8hpp.html#a2ca279170d08c463f9504842fafc6091',1,'UDP_Manager.hpp']]]
+  ['new_5fsecret_5fkey_0',['new_secret_key',['../namespacegenerateSecretKey.html#a5bfa92e9fe097095f2af4e04d1079dea',1,'generateSecretKey']]]
 ];

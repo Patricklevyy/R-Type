@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sprites_0',['SPRITES',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662',1,'rtype']]]
+  ['levels_0',['LEVELS',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8',1,'rtype']]]
 ];

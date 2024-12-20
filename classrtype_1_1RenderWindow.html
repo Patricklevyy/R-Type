@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -103,9 +103,106 @@ $(document).ready(function(){initNavTree('classrtype_1_1RenderWindow.html',''); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a2e199dca52ff26420ab3522658bab722" id="r_a2e199dca52ff26420ab3522658bab722"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">render</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="memdesc:a2e199dca52ff26420ab3522658bab722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders all displayable entities to the game window.  <br /></td></tr>
 <tr class="separator:a2e199dca52ff26420ab3522658bab722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1302c6ce89bc11d67645629112156fbc" id="r_a1302c6ce89bc11d67645629112156fbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RenderWindow.html#a1302c6ce89bc11d67645629112156fbc">changeBackground</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite)</td></tr>
+<tr class="memdesc:a1302c6ce89bc11d67645629112156fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the background sprite to a new one.  <br /></td></tr>
+<tr class="separator:a1302c6ce89bc11d67645629112156fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9beb6ffcc850800485c292bb27295d44" id="r_a9beb6ffcc850800485c292bb27295d44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RenderWindow.html#a9beb6ffcc850800485c292bb27295d44">move_background</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, bool menu)</td></tr>
+<tr class="memdesc:a9beb6ffcc850800485c292bb27295d44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the background by adjusting its position based on velocity.  <br /></td></tr>
+<tr class="separator:a9beb6ffcc850800485c292bb27295d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="a1302c6ce89bc11d67645629112156fbc" name="a1302c6ce89bc11d67645629112156fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1302c6ce89bc11d67645629112156fbc">&#9670;&#160;</a></span>changeBackground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::RenderWindow::changeBackground </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
+          <td class="paramname"><em>components_array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a>&#160;</td>
+          <td class="paramname"><em>sprite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Changes the background sprite to a new one. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>The array of ECS components. </td></tr>
+    <tr><td class="paramname">sprite</td><td>The background sprite ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9beb6ffcc850800485c292bb27295d44" name="a9beb6ffcc850800485c292bb27295d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9beb6ffcc850800485c292bb27295d44">&#9670;&#160;</a></span>move_background()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::RenderWindow::move_background </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
+          <td class="paramname"><em>components_array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>menu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Moves the background by adjusting its position based on velocity. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>The array of ECS components. </td></tr>
+    <tr><td class="paramname">menu</td><td>Whether the game is in menu mode (background does not move). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2e199dca52ff26420ab3522658bab722" name="a2e199dca52ff26420ab3522658bab722"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e199dca52ff26420ab3522658bab722">&#9670;&#160;</a></span>render()</h2>
 
@@ -129,6 +226,14 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Renders all displayable entities to the game window. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>The array of ECS components. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

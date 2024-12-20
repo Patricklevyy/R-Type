@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -106,71 +106,80 @@ $(document).ready(function(){initNavTree('BoundariesSystem_8hpp_source.html','')
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** BoundariesSystem</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef BOUNDARIESSYSTEM_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define BOUNDARIESSYSTEM_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #include &quot;../../../ecs/ECS.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #include &quot;../../../ecs/components/Position.hpp&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #include &quot;../../../ecs/components/Velocity.hpp&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &quot;../../../ecs/components/Direction.hpp&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &quot;../shared/components/Health.hpp&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../components/Projectiles.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html">   21</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1BoundariesSystem.html">BoundariesSystem</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">   23</a></span>                <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">BoundariesSystem</a>() {}</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">   24</a></span>                <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">~BoundariesSystem</a>() {}</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">   26</a></span>                std::list&lt;size_t&gt; <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">checkAndKillEntities</a>(<a class="code hl_class" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;<a class="code hl_namespace" href="namespaceecs.html">ecs</a>, <span class="keywordtype">float</span> windowWidth, <span class="keywordtype">float</span> windowHeight)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                        <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)]);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                        std::list&lt;size_t&gt; dead_entities;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; positions.size(); ++i)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                        {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                            <span class="keywordflow">if</span> (positions[i].has_value())</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                            {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                                <span class="keyword">auto</span> &amp;position = positions[i].value();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                <span class="keywordflow">if</span> (position._pos_x &gt; windowWidth || position._pos_y &gt; windowHeight ||</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                    position._pos_x &lt; 0 || position._pos_y &lt; 0)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                                    std::cout &lt;&lt; <span class="stringliteral">&quot;KILLL&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>&gt;(i);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classecs_1_1Velocity.html">ecs::Velocity</a>&gt;(i);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>&gt;(i);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>&gt;(i);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Projectiles.html">Projectiles</a>&gt;(i);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.addDeadEntity(i);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                    dead_entities.push_front(i);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                            }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        <span class="keywordflow">return</span> dead_entities;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    }</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef BOUNDARIESSYSTEM_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define BOUNDARIESSYSTEM_HPP_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &quot;../../../ecs/ECS.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &quot;../../../ecs/components/Position.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #include &quot;../../../ecs/components/Velocity.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #include &quot;../../../ecs/components/Direction.hpp&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #include &quot;../../shared/components/Health.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #include &quot;../components/Projectiles.hpp&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #include &quot;../components/Monster.hpp&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html">   31</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1BoundariesSystem.html">BoundariesSystem</a> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">   36</a></span>                <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">BoundariesSystem</a>() {}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">   41</a></span>                <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">~BoundariesSystem</a>() {}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">   50</a></span>                std::list&lt;size_t&gt; <a class="code hl_function" href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">checkAndKillEntities</a>(<a class="code hl_class" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;<a class="code hl_namespace" href="namespaceecs.html">ecs</a>, <span class="keywordtype">float</span> windowWidth, <span class="keywordtype">float</span> windowHeight)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)]);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        std::list&lt;size_t&gt; dead_entities;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; positions.size(); ++i)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                            <span class="keywordflow">if</span> (positions[i].has_value())</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                            {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                <span class="keyword">auto</span> &amp;position = positions[i].value();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                <span class="keywordflow">if</span> (position._pos_x &gt; (windowWidth + 100) || position._pos_y &gt; windowHeight ||</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                    position._pos_x &lt; 0 || position._pos_y &lt; 0)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                    std::cout &lt;&lt; <span class="stringliteral">&quot;KILLL&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>&gt;(i);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classecs_1_1Velocity.html">ecs::Velocity</a>&gt;(i);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>&gt;(i);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Projectiles.html">Projectiles</a>&gt;(i);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Hitbox.html">Hitbox</a>&gt;(i);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Allies.html">Allies</a>&gt;(i);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Ennemies.html">Ennemies</a>&gt;(i);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.killEntityFromRegistry&lt;<a class="code hl_class" href="classrtype_1_1Monster.html">Monster</a>&gt;(i);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                    <a class="code hl_namespace" href="namespaceecs.html">ecs</a>.addDeadEntity(i);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                    dead_entities.push_front(i);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                            }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                        <span class="keywordflow">return</span> dead_entities;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    }</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        };</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        };</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif </span><span class="comment">/* !BOUNDARIESSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif </span><span class="comment">/* !BOUNDARIESSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassecs_1_1ECS_html"><div class="ttname"><a href="classecs_1_1ECS.html">ecs::ECS</a></div><div class="ttdoc">Manages entities and their components in an ECS architecture.</div><div class="ttdef"><b>Definition</b> ECS.hpp:31</div></div>
 <div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
 <div class="ttc" id="aclassecs_1_1Velocity_html"><div class="ttname"><a href="classecs_1_1Velocity.html">ecs::Velocity</a></div><div class="ttdoc">Represents the velocity of an entity.</div><div class="ttdef"><b>Definition</b> Velocity.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html">rtype::BoundariesSystem</a></div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:21</div></div>
-<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_a420263555e6c9a49abc6b4349ae70a23"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">rtype::BoundariesSystem::checkAndKillEntities</a></div><div class="ttdeci">std::list&lt; size_t &gt; checkAndKillEntities(ecs::ECS &amp;ecs, float windowWidth, float windowHeight)</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:26</div></div>
-<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_a49c3223602cd504468b2bd23912aa09a"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">rtype::BoundariesSystem::BoundariesSystem</a></div><div class="ttdeci">BoundariesSystem()</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_aa1f9bb2f618aa584e25273c983489580"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">rtype::BoundariesSystem::~BoundariesSystem</a></div><div class="ttdeci">~BoundariesSystem()</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:24</div></div>
-<div class="ttc" id="aclassrtype_1_1Health_html"><div class="ttname"><a href="classrtype_1_1Health.html">rtype::Health</a></div><div class="ttdef"><b>Definition</b> Health.hpp:13</div></div>
-<div class="ttc" id="aclassrtype_1_1Projectiles_html"><div class="ttname"><a href="classrtype_1_1Projectiles.html">rtype::Projectiles</a></div><div class="ttdef"><b>Definition</b> Projectiles.hpp:13</div></div>
-<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> CollisionSystem.hpp:24</div></div>
+<div class="ttc" id="aclassrtype_1_1Allies_html"><div class="ttname"><a href="classrtype_1_1Allies.html">rtype::Allies</a></div><div class="ttdef"><b>Definition</b> Allies.hpp:20</div></div>
+<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html">rtype::BoundariesSystem</a></div><div class="ttdoc">Manages entity lifecycle based on boundary constraints.</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:31</div></div>
+<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_a420263555e6c9a49abc6b4349ae70a23"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#a420263555e6c9a49abc6b4349ae70a23">rtype::BoundariesSystem::checkAndKillEntities</a></div><div class="ttdeci">std::list&lt; size_t &gt; checkAndKillEntities(ecs::ECS &amp;ecs, float windowWidth, float windowHeight)</div><div class="ttdoc">Checks entities' positions and removes them if they are out of bounds.</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:50</div></div>
+<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_a49c3223602cd504468b2bd23912aa09a"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a">rtype::BoundariesSystem::BoundariesSystem</a></div><div class="ttdeci">BoundariesSystem()</div><div class="ttdoc">Constructor for BoundariesSystem.</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:36</div></div>
+<div class="ttc" id="aclassrtype_1_1BoundariesSystem_html_aa1f9bb2f618aa584e25273c983489580"><div class="ttname"><a href="classrtype_1_1BoundariesSystem.html#aa1f9bb2f618aa584e25273c983489580">rtype::BoundariesSystem::~BoundariesSystem</a></div><div class="ttdeci">~BoundariesSystem()</div><div class="ttdoc">Destructor for BoundariesSystem.</div><div class="ttdef"><b>Definition</b> BoundariesSystem.hpp:41</div></div>
+<div class="ttc" id="aclassrtype_1_1Ennemies_html"><div class="ttname"><a href="classrtype_1_1Ennemies.html">rtype::Ennemies</a></div><div class="ttdef"><b>Definition</b> Ennemies.hpp:20</div></div>
+<div class="ttc" id="aclassrtype_1_1Health_html"><div class="ttname"><a href="classrtype_1_1Health.html">rtype::Health</a></div><div class="ttdef"><b>Definition</b> Health.hpp:20</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html"><div class="ttname"><a href="classrtype_1_1Hitbox.html">rtype::Hitbox</a></div><div class="ttdef"><b>Definition</b> Hitbox.hpp:21</div></div>
+<div class="ttc" id="aclassrtype_1_1Monster_html"><div class="ttname"><a href="classrtype_1_1Monster.html">rtype::Monster</a></div><div class="ttdef"><b>Definition</b> Monster.hpp:21</div></div>
+<div class="ttc" id="aclassrtype_1_1Projectiles_html"><div class="ttname"><a href="classrtype_1_1Projectiles.html">rtype::Projectiles</a></div><div class="ttdef"><b>Definition</b> Projectiles.hpp:20</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

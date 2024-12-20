@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -99,60 +99,66 @@ $(document).ready(function(){initNavTree('Background_8hpp_source.html',''); init
   <div class="headertitle"><div class="title">Background.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Background_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef BACKGROUND_HPP_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define BACKGROUND_HPP_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html">   13</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Background.html">Background</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">   16</a></span>        <a class="code hl_function" href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">Background</a>(<span class="keyword">const</span> std::string &amp;texturePath, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordflow">try</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                texture = std::make_shared&lt;sf::Texture&gt;();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                <span class="keywordflow">if</span> (!texture-&gt;loadFromFile(texturePath))</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture from: &quot;</span> + texturePath);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[INFO] Texture loaded successfully from: &quot;</span> &lt;&lt; texturePath</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                          &lt;&lt; <span class="stringliteral">&quot; (Size: &quot;</span> &lt;&lt; texture-&gt;getSize().x &lt;&lt; <span class="stringliteral">&quot;x&quot;</span> &lt;&lt; texture-&gt;getSize().y &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                sprite.setTexture(*texture);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                sprite.setPosition(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(y));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[INFO] Sprite initialized at position: (&quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; y &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            }</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e)</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;[ERROR] &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordflow">throw</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
+<a href="Background_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** R-Type</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Background</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef BACKGROUND_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define BACKGROUND_HPP_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Background.html">Background</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">   38</a></span>        <a class="code hl_function" href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">Background</a>(<span class="keyword">const</span> std::string &amp;texturePath, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">try</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                texture = std::make_shared&lt;sf::Texture&gt;();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keywordflow">if</span> (!texture-&gt;loadFromFile(texturePath))</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture from: &quot;</span> + texturePath);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[INFO] Texture loaded successfully from: &quot;</span> &lt;&lt; texturePath</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                          &lt;&lt; <span class="stringliteral">&quot; (Size: &quot;</span> &lt;&lt; texture-&gt;getSize().x &lt;&lt; <span class="stringliteral">&quot;x&quot;</span> &lt;&lt; texture-&gt;getSize().y &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                sprite.setTexture(*texture);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                sprite.setPosition(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(y));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[INFO] Sprite initialized at position: (&quot;</span> &lt;&lt; x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; y &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;[ERROR] &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="keywordflow">throw</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">   39</a></span>        sf::Sprite &amp;<a class="code hl_function" href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">getSprite</a>() { <span class="keywordflow">return</span> sprite; }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::shared_ptr&lt;sf::Texture&gt; texture;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        sf::Sprite sprite;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">   66</a></span>        sf::Sprite &amp;<a class="code hl_function" href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">getSprite</a>() { <span class="keywordflow">return</span> sprite; }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::shared_ptr&lt;sf::Texture&gt; texture; </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        sf::Sprite sprite; </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">/* BACKGROUND_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassrtype_1_1Background_html"><div class="ttname"><a href="classrtype_1_1Background.html">rtype::Background</a></div><div class="ttdef"><b>Definition</b> Background.hpp:14</div></div>
-<div class="ttc" id="aclassrtype_1_1Background_html_a1e849137d2b3890f73e9f5ecfdd8129e"><div class="ttname"><a href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">rtype::Background::getSprite</a></div><div class="ttdeci">sf::Sprite &amp; getSprite()</div><div class="ttdef"><b>Definition</b> Background.hpp:39</div></div>
-<div class="ttc" id="aclassrtype_1_1Background_html_acd48d1c774b645044728b1c6e43a5264"><div class="ttname"><a href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">rtype::Background::Background</a></div><div class="ttdeci">Background(const std::string &amp;texturePath, int x, int y)</div><div class="ttdef"><b>Definition</b> Background.hpp:16</div></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif </span><span class="comment">/* BACKGROUND_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1Background_html"><div class="ttname"><a href="classrtype_1_1Background.html">rtype::Background</a></div><div class="ttdoc">Represents the game background using an SFML sprite.</div><div class="ttdef"><b>Definition</b> Background.hpp:28</div></div>
+<div class="ttc" id="aclassrtype_1_1Background_html_a1e849137d2b3890f73e9f5ecfdd8129e"><div class="ttname"><a href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">rtype::Background::getSprite</a></div><div class="ttdeci">sf::Sprite &amp; getSprite()</div><div class="ttdoc">Gets the SFML sprite representing the background.</div><div class="ttdef"><b>Definition</b> Background.hpp:66</div></div>
+<div class="ttc" id="aclassrtype_1_1Background_html_acd48d1c774b645044728b1c6e43a5264"><div class="ttname"><a href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">rtype::Background::Background</a></div><div class="ttdeci">Background(const std::string &amp;texturePath, int x, int y)</div><div class="ttdoc">Constructs a background object with a texture and initial position.</div><div class="ttdef"><b>Definition</b> Background.hpp:38</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

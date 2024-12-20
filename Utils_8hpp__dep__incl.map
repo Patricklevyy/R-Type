@@ -1,15 +1,25 @@
 <map id="rtype_game/shared/Utils.hpp" name="rtype_game/shared/Utils.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="245,5,455,31"/>
-<area shape="rect" id="Node000002" href="$Room_8hpp.html" title=" " alt="" coords="125,79,340,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,40,253,81,250,76,318,35"/>
-<area shape="rect" id="Node000007" href="$Utils_8cpp.html" title=" " alt="" coords="364,79,573,104"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="382,35,451,76,448,81,380,40"/>
-<area shape="rect" id="Node000003" href="$Room_8cpp.html" title=" " alt="" coords="5,152,220,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,113,134,154,131,149,200,109"/>
-<area shape="rect" id="Node000004" href="$Server_8hpp.html" title=" " alt="" coords="245,152,463,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="266,109,335,149,333,154,263,113"/>
-<area shape="rect" id="Node000005" href="$server_2Main_8cpp.html" title=" " alt="" coords="131,225,339,251"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="324,187,256,227,253,223,322,182"/>
-<area shape="rect" id="Node000006" href="$Server_8cpp.html" title=" " alt="" coords="364,225,581,251"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="386,182,455,223,452,227,384,187"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="666,5,877,31"/>
+<area shape="rect" id="Node000002" href="$Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="547,79,761,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="742,40,675,81,672,76,739,35"/>
+<area shape="rect" id="Node000012" href="$Utils_8cpp.html" title=" " alt="" coords="785,79,995,104"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="804,35,872,76,869,81,801,40"/>
+<area shape="rect" id="Node000003" href="$Room_8cpp.html" title=" " alt="" coords="5,159,220,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="558,108,233,155,185,162,185,157,232,149,557,103"/>
+<area shape="rect" id="Node000004" href="$Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="245,152,431,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="596,110,415,155,413,149,594,105"/>
+<area shape="rect" id="Node000005" href="$Room__Event__Bus_8cpp.html" title=" " alt="" coords="455,152,642,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="629,114,576,154,572,150,626,110"/>
+<area shape="rect" id="Node000006" href="$Room__Game__Loop_8cpp.html" title=" " alt="" coords="666,152,853,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="682,110,736,150,732,154,679,114"/>
+<area shape="rect" id="Node000007" href="$Room__Send__Message_8cpp.html" title=" " alt="" coords="877,152,1063,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="714,105,895,149,893,155,712,110"/>
+<area shape="rect" id="Node000008" href="$Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="1087,159,1306,185"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="750,103,1076,149,1124,157,1123,162,1075,155,750,108"/>
+<area shape="rect" id="Node000009" href="$server_2Main_8cpp.html" title=" " alt="" coords="855,247,1063,273"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1152,192,992,250,990,245,1151,187"/>
+<area shape="rect" id="Node000010" href="$Server_8cpp.html" title=" " alt="" coords="1088,247,1305,273"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1199,199,1199,247,1194,247,1194,199"/>
+<area shape="rect" id="Node000011" href="$Server__Create__And__Join__Room_8cpp.html" title=" " alt="" coords="1329,240,1536,280"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="1242,187,1382,237,1380,242,1240,192"/>
 </map>

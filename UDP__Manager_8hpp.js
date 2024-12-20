@@ -9,6 +9,7 @@ var UDP__Manager_8hpp =
     [ "queueCondition", "UDP__Manager_8hpp.html#a1215168db6254235949d363c874dfb51", null ],
     [ "queueMutex", "UDP__Manager_8hpp.html#a781e3772674224fa00da70ac8e0bb247", null ],
     [ "receiverThread", "UDP__Manager_8hpp.html#adde830859f29cb830a94c4789d4ee66c", null ],
+    [ "secret_key", "UDP__Manager_8hpp.html#ab264f401571f17849ca5dbd0e7887646", null ],
     [ "serverAddr", "UDP__Manager_8hpp.html#a1faa4ab9b3640b29c6340ed4e1709897", null ],
     [ "sockfd", "UDP__Manager_8hpp.html#ad2c8fb3df3a737e0685e902870a611d2", null ]
 ];

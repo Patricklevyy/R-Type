@@ -1,12 +1,26 @@
 <map id="rtype_game/client/components/Background.hpp" name="rtype_game/client/components/Background.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="113,5,337,45"/>
-<area shape="rect" id="Node000002" href="$Client_8hpp.html" title=" " alt="" coords="119,181,330,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,58,186,94,182,113,186,132,199,159,215,179,211,183,195,161,181,134,177,113,181,92,199,56"/>
-<area shape="rect" id="Node000005" href="$RenderWindow_8hpp.html" title=" " alt="" coords="195,93,387,133"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="250,55,279,91,274,95,246,58"/>
-<area shape="rect" id="Node000003" href="$Client_8cpp.html" title=" " alt="" coords="5,255,215,280"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="196,216,130,257,127,252,193,211"/>
-<area shape="rect" id="Node000004" href="$client_2Main_8cpp.html" title=" " alt="" coords="239,255,442,280"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="256,211,323,252,320,257,253,216"/>
-<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="268,146,237,183,233,179,264,142"/>
+<area shape="rect" id="Node000001" title="Defines class for managing game background in the R&#45;Type game." alt="" coords="590,5,814,45"/>
+<area shape="rect" id="Node000002" href="$Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="638,269,849,295"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="679,58,656,92,635,134,629,156,627,178,629,200,638,220,650,236,666,249,703,267,700,272,663,253,646,240,633,223,624,201,621,178,624,155,630,132,651,90,675,55"/>
+<area shape="rect" id="Node000010" href="$RenderWindow_8hpp.html" title="Responsible for rendering entities, backgrounds, and applying shaders to the game window." alt="" coords="647,181,839,221"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="712,58,730,133,741,181,736,182,725,134,707,60"/>
+<area shape="rect" id="Node000011" href="$SetFilter_8hpp.html" title="Manages the application of graphical filters (shaders) to game elements." alt="" coords="739,93,931,133"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="744,51,807,91,804,95,742,55"/>
+<area shape="rect" id="Node000003" href="$Client_8cpp.html" title=" " alt="" coords="5,350,215,375"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="624,298,226,345,178,353,177,347,226,340,624,293"/>
+<area shape="rect" id="Node000004" href="$Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="239,343,421,383"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="670,300,422,347,421,341,669,295"/>
+<area shape="rect" id="Node000005" href="$Client__Event__Bus_8cpp.html" title=" " alt="" coords="445,343,628,383"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="702,302,587,345,585,340,700,297"/>
+<area shape="rect" id="Node000006" href="$Client__Event__Sfml_8cpp.html" title=" " alt="" coords="652,343,835,383"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="746,308,746,343,741,343,741,308"/>
+<area shape="rect" id="Node000007" href="$Client__Init_8cpp.html" title=" " alt="" coords="859,343,1041,383"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="787,297,901,340,899,345,785,302"/>
+<area shape="rect" id="Node000008" href="$Client__Send__Message_8cpp.html" title=" " alt="" coords="1065,343,1248,383"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="817,295,1066,341,1065,347,816,300"/>
+<area shape="rect" id="Node000009" href="$client_2Main_8cpp.html" title=" " alt="" coords="1273,350,1475,375"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="863,293,1050,313,1261,340,1309,347,1308,353,1260,345,1050,319,863,298"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="746,235,746,269,741,269,741,235"/>
+<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="853,146,862,183,861,204,854,223,840,240,823,253,786,272,784,267,820,249,836,236,849,220,855,203,856,184,848,147"/>
+<area shape="poly" id="edge13_Node000011_Node000010" title=" " alt="" coords="807,145,766,183,762,179,803,141"/>
 </map>

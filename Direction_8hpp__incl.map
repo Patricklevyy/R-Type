@@ -1,5 +1,5 @@
 <map id="ecs/components/Direction.hpp" name="ecs/components/Direction.hpp">
 <area shape="rect" id="Node000001" title="Defines the Direction component used for managing directional movement." alt="" coords="5,5,224,31"/>
-<area shape="rect" id="Node000002" href="$Enums__ecs_8hpp.html" title=" " alt="" coords="47,79,182,104"/>
+<area shape="rect" id="Node000002" href="$Enums__ecs_8hpp.html" title="Define the possible direction of the player or monsters in the game." alt="" coords="47,79,182,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,31,117,65,112,65,112,31"/>
 </map>

@@ -1,20 +1,22 @@
 <map id="rtype_game/client/Command_checker.cpp" name="rtype_game/client/Command_checker.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="257,5,468,45"/>
-<area shape="rect" id="Node000002" href="$Command__checker_8hpp.html" title=" " alt="" coords="276,93,449,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,46,365,79,360,79,360,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="299,5,509,45"/>
+<area shape="rect" id="Node000002" href="$Command__checker_8hpp.html" title=" " alt="" coords="317,93,491,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="407,46,407,79,401,79,401,46"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="57,240,137,265"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="276,112,200,118,122,128,55,144,30,155,14,168,9,177,8,185,17,202,36,218,60,232,57,236,33,222,13,205,3,186,4,175,10,165,27,151,53,139,121,123,200,112,275,107"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="24,167,74,192"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="303,121,88,169,87,164,302,116"/>
-<area shape="rect" id="Node000005" href="$RTypeExceptions_8hpp.html" title=" " alt="" coords="98,167,317,192"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="339,121,247,163,244,158,336,116"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,110,231,114,141,124,62,141,33,154,14,168,9,177,8,185,17,202,36,218,60,231,57,236,33,222,13,205,3,186,4,175,10,165,30,149,60,136,140,119,231,109,317,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="24,167,75,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="331,121,220,141,89,169,88,164,219,136,330,116"/>
+<area shape="rect" id="Node000005" href="$RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="99,167,317,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="373,121,254,164,252,159,371,116"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="341,167,384,192"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="365,119,365,153,360,153,360,119"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="408,167,482,192"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="377,117,423,155,419,160,374,121"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="399,120,378,156,374,153,395,118"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="408,167,483,192"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="413,118,434,153,429,156,408,120"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="507,167,567,192"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="392,116,497,159,495,164,390,121"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="591,167,656,192"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="405,116,579,163,577,168,404,121"/>
-<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="191,194,128,235,125,230,189,190"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="427,116,505,158,502,162,424,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="591,167,657,192"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="440,116,579,161,578,166,438,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="681,167,743,192"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="458,116,668,164,666,169,457,121"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="192,194,128,235,126,230,189,190"/>
 </map>

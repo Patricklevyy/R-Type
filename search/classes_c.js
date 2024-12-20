@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['udp_5fclient_0',['UDP_Client',['../classUDP__Client.html',1,'']]],
-  ['udp_5fmanager_1',['UDP_Manager',['../classUDP__Manager.html',1,'']]],
-  ['udp_5fserver_2',['UDP_Server',['../classecs_1_1udp_1_1UDP__Server.html',1,'ecs::udp']]],
-  ['updateentitysystem_3',['UpdateEntitySystem',['../classrtype_1_1UpdateEntitySystem.html',1,'rtype']]],
-  ['utils_4',['Utils',['../classrtype_1_1Utils.html',1,'rtype']]]
+  ['randomnumber_0',['RandomNumber',['../classrtype_1_1RandomNumber.html',1,'rtype']]],
+  ['recvexceptions_1',['RecvExceptions',['../classecs_1_1ERROR_1_1RecvExceptions.html',1,'ecs::ERROR']]],
+  ['renderwindow_2',['RenderWindow',['../classrtype_1_1RenderWindow.html',1,'rtype']]],
+  ['room_3',['Room',['../classrtype_1_1Room.html',1,'rtype']]],
+  ['roomalreadyexistingexceptions_4',['RoomAlreadyExistingExceptions',['../classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html',1,'rtype::ERROR']]],
+  ['roomisfullexceptions_5',['RoomIsFullExceptions',['../classrtype_1_1ERROR_1_1RoomIsFullExceptions.html',1,'rtype::ERROR']]],
+  ['roomnotfoundexceptions_6',['RoomNotFoundExceptions',['../classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html',1,'rtype::ERROR']]]
 ];

@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['message_0',['Message',['../structecs_1_1udp_1_1Message.html',1,'ecs::udp']]],
-  ['messagechecker_1',['MessageChecker',['../classrtype_1_1MessageChecker.html',1,'rtype']]],
-  ['messagecompressor_2',['MessageCompressor',['../classecs_1_1udp_1_1MessageCompressor.html',1,'ecs::udp']]],
-  ['messagetoobigexceptions_3',['MessageTooBigExceptions',['../classecs_1_1ERROR_1_1MessageTooBigExceptions.html',1,'ecs::ERROR']]],
-  ['missingportparamsexceptions_4',['MissingPortParamsExceptions',['../classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html',1,'rtype::ERROR']]],
-  ['missingroomsparamsexceptions_5',['MissingRoomsParamsExceptions',['../classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html',1,'rtype::ERROR']]]
+  ['idoutofrangeexceptions_0',['IdOutOfRangeExceptions',['../classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html',1,'ecs::ERROR']]],
+  ['invalidactionexceptions_1',['InvalidActionExceptions',['../classrtype_1_1ERROR_1_1InvalidActionExceptions.html',1,'rtype::ERROR']]],
+  ['invalidadressformatexceptions_2',['InvalidAdressFormatExceptions',['../classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html',1,'ecs::ERROR']]],
+  ['invalidipadressexceptions_3',['InvalidIpAdressExceptions',['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html',1,'ecs::ERROR']]],
+  ['invalidtpsorfpsexceptions_4',['InvalidTpsOrFpsExceptions',['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html',1,'rtype::ERROR']]]
 ];

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -122,18 +122,20 @@ $(document).ready(function(){initNavTree('Structures__ecs_8hpp_source.html','');
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structecs_1_1udp_1_1Message.html#a328e826da0a9ff4824ee4719ae8e7ac1">   19</a></span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structecs_1_1udp_1_1Message.html#a328e826da0a9ff4824ee4719ae8e7ac1">id</a> : 10;    <span class="comment">/* 10 bits pour &#39;id&#39; (jusqu&#39;à 1024 id) */</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structecs_1_1udp_1_1Message.html#a5041de60851897ed0c4d6914495a89b6">   20</a></span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structecs_1_1udp_1_1Message.html#a5041de60851897ed0c4d6914495a89b6">action</a> : 6; <span class="comment">/* 6 bits pour &#39;action&#39; (jusqu&#39;à 64 types) */</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structecs_1_1udp_1_1Message.html#afe953dd8987f6f2efc0a1540df48ed93">   21</a></span>                std::string <a class="code hl_variable" href="structecs_1_1udp_1_1Message.html#afe953dd8987f6f2efc0a1540df48ed93">params</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            };</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structecs_1_1udp_1_1Message.html#a5472b85dad9f827d6c6cd85cd8740408">   22</a></span>                std::string <a class="code hl_variable" href="structecs_1_1udp_1_1Message.html#a5472b85dad9f827d6c6cd85cd8740408">secret_key</a>; <span class="comment">/* Clé secrète pour l&#39;authentification */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            };</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">/* !STRUCTURES_ECS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif </span><span class="comment">/* !STRUCTURES_ECS_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aIncludes__ecs_8hpp_html"><div class="ttname"><a href="Includes__ecs_8hpp.html">Includes_ecs.hpp</a></div></div>
-<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> CollisionSystem.hpp:24</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
 <div class="ttc" id="astructecs_1_1udp_1_1Message_html"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html">ecs::udp::Message</a></div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:18</div></div>
 <div class="ttc" id="astructecs_1_1udp_1_1Message_html_a328e826da0a9ff4824ee4719ae8e7ac1"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html#a328e826da0a9ff4824ee4719ae8e7ac1">ecs::udp::Message::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:19</div></div>
 <div class="ttc" id="astructecs_1_1udp_1_1Message_html_a5041de60851897ed0c4d6914495a89b6"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html#a5041de60851897ed0c4d6914495a89b6">ecs::udp::Message::action</a></div><div class="ttdeci">unsigned int action</div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:20</div></div>
+<div class="ttc" id="astructecs_1_1udp_1_1Message_html_a5472b85dad9f827d6c6cd85cd8740408"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html#a5472b85dad9f827d6c6cd85cd8740408">ecs::udp::Message::secret_key</a></div><div class="ttdeci">std::string secret_key</div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:22</div></div>
 <div class="ttc" id="astructecs_1_1udp_1_1Message_html_afe953dd8987f6f2efc0a1540df48ed93"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html#afe953dd8987f6f2efc0a1540df48ed93">ecs::udp::Message::params</a></div><div class="ttdeci">std::string params</div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

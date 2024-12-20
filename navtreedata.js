@@ -29,6 +29,8 @@ var NAVTREE =
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
         [ "Tout", "namespacemembers.html", null ],
+        [ "Fonctions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Énumérations", "namespacemembers_enum.html", null ],
         [ "Valeurs énumérées", "namespacemembers_eval.html", null ]
       ] ]
@@ -38,8 +40,8 @@ var NAVTREE =
       [ "Index des classes", "classes.html", null ],
       [ "Hiérarchie des classes", "hierarchy.html", "hierarchy" ],
       [ "Membres de classe", "functions.html", [
-        [ "Tout", "functions.html", null ],
-        [ "Fonctions", "functions_func.html", null ],
+        [ "Tout", "functions.html", "functions_dup" ],
+        [ "Fonctions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
@@ -56,9 +58,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Background_8hpp.html",
-"classecs_1_1ERROR_1_1RecvExceptions.html",
-"classrtype_1_1Projectiles.html#a1d8d78a1cc4c1d72e0b7f0eb78366bb1"
+"ATH_8hpp.html",
+"classecs_1_1ECS.html",
+"classrtype_1_1DirectionSystem.html",
+"classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60",
+"namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1c961b13a58c3e7cd4bf700fa2487efe"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

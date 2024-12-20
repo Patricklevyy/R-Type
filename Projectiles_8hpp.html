@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -97,25 +97,63 @@ $(document).ready(function(){initNavTree('Projectiles_8hpp.html',''); initResiza
   <div class="headertitle"><div class="title">Référence du fichier Projectiles.hpp</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing projectiles in the game.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><div class="dynheader">
 Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
 <div class="dyncontent">
 <div class="center"><img src="Projectiles_8hpp__dep__incl.png" border="0" usemap="#artype__game_2server_2components_2Projectiles_8hppdep" alt=""/></div>
 <map name="artype__game_2server_2components_2Projectiles_8hppdep" id="artype__game_2server_2components_2Projectiles_8hppdep">
-<area shape="rect" title=" " alt="" coords="118,5,347,45"/>
-<area shape="rect" href="Room_8hpp.html" title=" " alt="" coords="125,181,340,207"/>
-<area shape="poly" title=" " alt="" coords="211,58,193,94,189,113,193,132,206,159,223,180,219,183,202,162,187,134,183,113,187,92,206,55"/>
-<area shape="rect" href="BoundariesSystem_8hpp.html" title=" " alt="" coords="202,93,399,133"/>
-<area shape="poly" title=" " alt="" coords="258,55,288,91,284,95,254,58"/>
-<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="5,255,220,280"/>
-<area shape="poly" title=" " alt="" coords="203,216,134,257,131,252,200,211"/>
-<area shape="rect" href="Server_8hpp.html" title=" " alt="" coords="245,255,463,280"/>
-<area shape="poly" title=" " alt="" coords="266,211,335,252,333,257,263,216"/>
-<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="131,328,339,353"/>
-<area shape="poly" title=" " alt="" coords="324,289,256,330,253,325,322,285"/>
-<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="364,328,581,353"/>
-<area shape="poly" title=" " alt="" coords="386,285,455,325,452,330,384,289"/>
-<area shape="poly" title=" " alt="" coords="277,146,245,183,241,179,273,142"/>
+<area shape="rect" title="Class representing projectiles in the game." alt="" coords="763,5,993,45"/>
+<area shape="rect" href="Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="652,181,867,207"/>
+<area shape="poly" title=" " alt="" coords="750,37,683,45,619,57,566,74,547,84,533,95,524,112,525,126,533,138,549,149,596,167,653,179,652,184,595,172,546,154,529,142,519,127,519,110,529,92,544,79,564,69,618,52,682,40,749,32"/>
+<area shape="rect" href="BoundariesSystem_8hpp.html" title="Handles entity boundary checks and removal when out of bounds." alt="" coords="543,93,741,133"/>
+<area shape="poly" title=" " alt="" coords="814,53,695,96,693,91,812,48"/>
+<area shape="rect" href="MonsterMovementSystem_8hpp.html" title="Handles the movement of monster entities." alt="" coords="765,93,991,133"/>
+<area shape="poly" title=" " alt="" coords="881,59,881,93,875,93,875,59"/>
+<area shape="rect" href="ScoreSystem_8hpp.html" title=" " alt="" coords="1015,93,1213,133"/>
+<area shape="poly" title=" " alt="" coords="944,48,1063,91,1061,96,942,53"/>
+<area shape="rect" href="KillSystem_8hpp.html" title=" " alt="" coords="1237,93,1437,133"/>
+<area shape="poly" title=" " alt="" coords="992,45,1237,91,1236,96,991,50"/>
+<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="5,262,220,287"/>
+<area shape="poly" title=" " alt="" coords="639,210,233,257,183,265,182,259,232,252,638,205"/>
+<area shape="rect" href="Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="245,255,431,295"/>
+<area shape="poly" title=" " alt="" coords="685,212,432,259,431,253,684,206"/>
+<area shape="rect" href="Room__Event__Bus_8cpp.html" title=" " alt="" coords="455,255,642,295"/>
+<area shape="poly" title=" " alt="" coords="717,214,600,257,598,252,715,209"/>
+<area shape="rect" href="Room__Game__Loop_8cpp.html" title=" " alt="" coords="666,255,853,295"/>
+<area shape="poly" title=" " alt="" coords="762,220,762,255,757,255,757,220"/>
+<area shape="rect" href="Room__Send__Message_8cpp.html" title=" " alt="" coords="877,255,1063,295"/>
+<area shape="poly" title=" " alt="" coords="804,209,920,252,918,257,802,214"/>
+<area shape="rect" href="Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="1087,262,1306,287"/>
+<area shape="poly" title=" " alt="" coords="837,206,1133,259,1133,265,836,212"/>
+<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="855,350,1063,375"/>
+<area shape="poly" title=" " alt="" coords="1152,295,992,352,990,347,1151,290"/>
+<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="1088,350,1305,375"/>
+<area shape="poly" title=" " alt="" coords="1199,301,1199,349,1194,349,1194,301"/>
+<area shape="rect" href="Server__Create__And__Join__Room_8cpp.html" title=" " alt="" coords="1329,343,1536,383"/>
+<area shape="poly" title=" " alt="" coords="1242,290,1382,340,1380,345,1240,295"/>
+<area shape="poly" title=" " alt="" coords="683,139,744,179,741,183,681,143"/>
+<area shape="poly" title=" " alt="" coords="839,143,778,183,775,179,836,139"/>
+<area shape="poly" title=" " alt="" coords="1016,139,812,184,811,179,1015,134"/>
+<area shape="poly" title=" " alt="" coords="1223,136,857,184,857,179,1223,131"/>
+<area shape="rect" href="Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="1859,181,2070,207"/>
+<area shape="poly" title=" " alt="" coords="1451,126,1873,179,1873,184,1450,131"/>
+<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="1331,262,1540,287"/>
+<area shape="poly" title=" " alt="" coords="1869,211,1552,257,1505,265,1504,259,1551,252,1869,206"/>
+<area shape="rect" href="Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="1564,255,1747,295"/>
+<area shape="poly" title=" " alt="" coords="1907,213,1730,257,1729,252,1906,207"/>
+<area shape="rect" href="Client__Event__Bus_8cpp.html" title=" " alt="" coords="1771,255,1953,295"/>
+<area shape="poly" title=" " alt="" coords="1940,217,1888,257,1885,252,1937,213"/>
+<area shape="rect" href="Client__Event__Sfml_8cpp.html" title=" " alt="" coords="1977,255,2160,295"/>
+<area shape="poly" title=" " alt="" coords="1992,213,2045,252,2042,257,1989,217"/>
+<area shape="rect" href="Client__Init_8cpp.html" title=" " alt="" coords="2184,255,2367,295"/>
+<area shape="poly" title=" " alt="" coords="2024,207,2201,252,2200,257,2023,213"/>
+<area shape="rect" href="Client__Send__Message_8cpp.html" title=" " alt="" coords="2391,255,2573,295"/>
+<area shape="poly" title=" " alt="" coords="2065,206,2380,252,2391,254,2390,259,2379,257,2064,211"/>
+<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="2598,262,2801,287"/>
+<area shape="poly" title=" " alt="" coords="2084,202,2317,222,2586,252,2635,259,2634,265,2586,257,2316,227,2084,207"/>
 </map>
 </div>
 </div>
@@ -131,7 +169,10 @@ Espaces de nommage</h2></td></tr>
 <tr class="memitem:namespacertype" id="r_namespacertype"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacertype.html">rtype</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Class representing projectiles in the game. </p>
+<p>The Projectiles class defines the properties and behavior of projectiles. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

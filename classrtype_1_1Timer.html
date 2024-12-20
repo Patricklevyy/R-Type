@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('classrtype_1_1Timer.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>Handles timing for the game loop and frame updates.  
+ <a href="classrtype_1_1Timer.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -107,15 +110,21 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a9eeff216a4c83459d15ba44148fdf01e" id="r_a9eeff216a4c83459d15ba44148fdf01e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e">~Timer</a> ()</td></tr>
 <tr class="separator:a9eeff216a4c83459d15ba44148fdf01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8b2aedfb4c0eac9173ec03e7b5e8012" id="r_ae8b2aedfb4c0eac9173ec03e7b5e8012"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Timer.html#ae8b2aedfb4c0eac9173ec03e7b5e8012">init</a> (const std::string &amp;configFile, bool isServer)</td></tr>
+<tr class="memdesc:ae8b2aedfb4c0eac9173ec03e7b5e8012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the timer with configuration settings.  <br /></td></tr>
 <tr class="separator:ae8b2aedfb4c0eac9173ec03e7b5e8012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39807cf878bf8aa93edfe0d4de11dc08" id="r_a39807cf878bf8aa93edfe0d4de11dc08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Timer.html#a39807cf878bf8aa93edfe0d4de11dc08">waitTPS</a> ()</td></tr>
+<tr class="memdesc:a39807cf878bf8aa93edfe0d4de11dc08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the next tick to maintain TPS.  <br /></td></tr>
 <tr class="separator:a39807cf878bf8aa93edfe0d4de11dc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedb46fe73fcd299ed4c939dbdce47db1" id="r_aedb46fe73fcd299ed4c939dbdce47db1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Timer.html#aedb46fe73fcd299ed4c939dbdce47db1">waitFPS</a> ()</td></tr>
+<tr class="memdesc:aedb46fe73fcd299ed4c939dbdce47db1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the next frame to maintain FPS.  <br /></td></tr>
 <tr class="separator:aedb46fe73fcd299ed4c939dbdce47db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8a164494b7bcb9190909aefcbf777a8" id="r_ab8a164494b7bcb9190909aefcbf777a8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Timer.html#ab8a164494b7bcb9190909aefcbf777a8">getTps</a> () const</td></tr>
+<tr class="memdesc:ab8a164494b7bcb9190909aefcbf777a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current TPS value.  <br /></td></tr>
 <tr class="separator:ab8a164494b7bcb9190909aefcbf777a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Handles timing for the game loop and frame updates. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a42bd695aa25a2d68dd798acf5cf1e68b" name="a42bd695aa25a2d68dd798acf5cf1e68b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42bd695aa25a2d68dd798acf5cf1e68b">&#9670;&#160;</a></span>Timer()</h2>
 
@@ -166,6 +175,9 @@ Fonctions membres publiques</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the current TPS value. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>The TPS value. </dd></dl>
+
 </div>
 </div>
 <a id="ae8b2aedfb4c0eac9173ec03e7b5e8012" name="ae8b2aedfb4c0eac9173ec03e7b5e8012"></a>
@@ -194,6 +206,15 @@ Fonctions membres publiques</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Initializes the timer with configuration settings. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configFile</td><td>Path to the configuration file. </td></tr>
+    <tr><td class="paramname">isServer</td><td>Indicates whether the timer is used on the server side. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aedb46fe73fcd299ed4c939dbdce47db1" name="aedb46fe73fcd299ed4c939dbdce47db1"></a>
@@ -211,6 +232,8 @@ Fonctions membres publiques</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Waits for the next frame to maintain FPS. </p>
+
 </div>
 </div>
 <a id="a39807cf878bf8aa93edfe0d4de11dc08" name="a39807cf878bf8aa93edfe0d4de11dc08"></a>
@@ -227,6 +250,8 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Waits for the next tick to maintain TPS. </p>
 
 </div>
 </div>

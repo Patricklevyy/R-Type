@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -105,12 +105,14 @@ $(document).ready(function(){initNavTree('classecs_1_1PositionSystem.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:af66617337d3e4b0e7ce8d3e711b6921e" id="r_af66617337d3e4b0e7ce8d3e711b6921e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#af66617337d3e4b0e7ce8d3e711b6921e">updatePositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate)</td></tr>
-<tr class="memdesc:af66617337d3e4b0e7ce8d3e711b6921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the positions of entities based on their velocity and direction.  <br /></td></tr>
-<tr class="separator:af66617337d3e4b0e7ce8d3e711b6921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed4bff8e1e56288aa29b4721a407e466" id="r_aed4bff8e1e56288aa29b4721a407e466"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#aed4bff8e1e56288aa29b4721a407e466">updatePlayerPositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate, int indexPlayer)</td></tr>
-<tr class="separator:aed4bff8e1e56288aa29b4721a407e466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9365cfba8746106c3f9dba7523d466bb" id="r_a9365cfba8746106c3f9dba7523d466bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#a9365cfba8746106c3f9dba7523d466bb">updatePositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate, int window_width, int window_height)</td></tr>
+<tr class="memdesc:a9365cfba8746106c3f9dba7523d466bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the positions of entities based on their velocity and direction.  <br /></td></tr>
+<tr class="separator:a9365cfba8746106c3f9dba7523d466bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d09d0d657b87b8c24e735baaf9bfda" id="r_ab9d09d0d657b87b8c24e735baaf9bfda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#ab9d09d0d657b87b8c24e735baaf9bfda">updatePlayerPositions</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, float tickRate, int indexPlayer, int window_width, int window_height)</td></tr>
+<tr class="memdesc:ab9d09d0d657b87b8c24e735baaf9bfda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of a player based on their velocity and direction.  <br /></td></tr>
+<tr class="separator:ab9d09d0d657b87b8c24e735baaf9bfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae246182323b59247349b0d590e8cd5ab" id="r_ae246182323b59247349b0d590e8cd5ab"><td class="memItemLeft" align="right" valign="top">std::pair&lt; float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1PositionSystem.html#ae246182323b59247349b0d590e8cd5ab">getPlayerPosition</a> (size_t index, std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="memdesc:ae246182323b59247349b0d590e8cd5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the position of a player from the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a>.  <br /></td></tr>
 <tr class="separator:ae246182323b59247349b0d590e8cd5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -150,10 +152,27 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the position of a player from the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a>. </p>
+<p>This function returns the x and y coordinates of a player's position. If the player does not exist in the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a>, an exception is thrown.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the player in the components array. </td></tr>
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing component arrays, with each component identified by its type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A pair of floats representing the x and y coordinates of the player's position. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classecs_1_1ERROR_1_1PlayerNotFoundInEcs.html" title="Exception for player not found.">ERROR::PlayerNotFoundInEcs</a></td><td>If the player is not found in the <a class="el" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture.">ECS</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="aed4bff8e1e56288aa29b4721a407e466" name="aed4bff8e1e56288aa29b4721a407e466"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed4bff8e1e56288aa29b4721a407e466">&#9670;&#160;</a></span>updatePlayerPositions()</h2>
+<a id="ab9d09d0d657b87b8c24e735baaf9bfda" name="ab9d09d0d657b87b8c24e735baaf9bfda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9d09d0d657b87b8c24e735baaf9bfda">&#9670;&#160;</a></span>updatePlayerPositions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +196,19 @@ Fonctions membres publiques</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indexPlayer</em>&#160;</td>
+          <td class="paramname"><em>indexPlayer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>window_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>window_height</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -192,10 +223,23 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the position of a player based on their velocity and direction. </p>
+<p>This function updates the x and y coordinates of the player's position based on their current velocity, direction, and the tick rate. The player's movement is constrained by the boundaries of the window dimensions.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing component arrays, with each component identified by its type. </td></tr>
+    <tr><td class="paramname">tickRate</td><td>The rate at which updates occur (ticks per second). </td></tr>
+    <tr><td class="paramname">indexPlayer</td><td>The index of the player in the components array. </td></tr>
+    <tr><td class="paramname">window_width</td><td>The width of the window boundary. </td></tr>
+    <tr><td class="paramname">window_height</td><td>The height of the window boundary. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="af66617337d3e4b0e7ce8d3e711b6921e" name="af66617337d3e4b0e7ce8d3e711b6921e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af66617337d3e4b0e7ce8d3e711b6921e">&#9670;&#160;</a></span>updatePositions()</h2>
+<a id="a9365cfba8746106c3f9dba7523d466bb" name="a9365cfba8746106c3f9dba7523d466bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9365cfba8746106c3f9dba7523d466bb">&#9670;&#160;</a></span>updatePositions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,7 +257,19 @@ Fonctions membres publiques</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>tickRate</em>&#160;</td>
+          <td class="paramname"><em>tickRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>window_width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>window_height</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

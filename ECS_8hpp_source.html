@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -253,33 +253,29 @@ $(document).ready(function(){initNavTree('ECS_8hpp_source.html',''); initResizab
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            }</div>
 </div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">  176</a></span>            std::pair&lt;bool, size_t&gt; <a class="code hl_function" href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">getDeadEntityIndex</a>()</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <span class="keywordflow">if</span> (_dead_entities.empty()) {</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                    <span class="keywordflow">return</span> std::make_pair&lt;bool, size_t&gt;(<span class="keyword">false</span>, 0);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                    std::pair&lt;bool, size_t&gt; <a class="code hl_function" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">entity</a> = std::make_pair(<span class="keyword">true</span>, _dead_entities.front()._index);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                    _dead_entities.pop_front();</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                    <span class="keywordflow">return</span> <a class="code hl_function" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">entity</a>;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                }</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            }</div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">  179</a></span>            std::pair&lt;bool, size_t&gt; <a class="code hl_function" href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">getDeadEntityIndex</a>()</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <span class="keywordflow">if</span> (_dead_entities.empty()) {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                    <span class="keywordflow">return</span> std::make_pair&lt;bool, size_t&gt;(<span class="keyword">false</span>, 0);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                    std::pair&lt;bool, size_t&gt; <a class="code hl_function" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">entity</a> = std::make_pair(<span class="keyword">true</span>, _dead_entities.front()._index);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                    _dead_entities.pop_front();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                    <span class="keywordflow">return</span> <a class="code hl_function" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">entity</a>;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            }</div>
 </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">  187</a></span>            std::unordered_map&lt;std::type_index, std::any&gt; <a class="code hl_variable" href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">_components_arrays</a>; </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            std::list&lt;Entity&gt; _dead_entities; </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="comment">// std::vector&lt;freset_type&gt; _freset_entity_components;</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <span class="comment">// std::vector&lt;freset_all_types&gt; _freset_all_entity_components; ECS ARTHUR, JE SAIS PAS SI C&#39;EST UTILE POUR NOUS</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="comment">// std::unordered_map&lt;std::type_index, event_types&gt; _events;</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="comment">// std::list&lt;callback_type&gt; _callback_pool;</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        };</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">  190</a></span>            std::unordered_map&lt;std::type_index, std::any&gt; <a class="code hl_variable" href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">_components_arrays</a>; </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            std::list&lt;Entity&gt; _dead_entities; </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        };</div>
 </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="preprocessor">#endif </span><span class="comment">/* !ECS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="preprocessor">#endif </span><span class="comment">/* !ECS_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aDirection_8hpp_html"><div class="ttname"><a href="Direction_8hpp.html">Direction.hpp</a></div><div class="ttdoc">Defines the Direction component used for managing directional movement.</div></div>
 <div class="ttc" id="aEntity_8hpp_html"><div class="ttname"><a href="Entity_8hpp.html">Entity.hpp</a></div><div class="ttdoc">Defines the Entity class for the ECS framework.</div></div>
 <div class="ttc" id="aIncludes__ecs_8hpp_html"><div class="ttname"><a href="Includes__ecs_8hpp.html">Includes_ecs.hpp</a></div></div>
@@ -291,11 +287,11 @@ $(document).ready(function(){initNavTree('ECS_8hpp_source.html',''); initResizab
 <div class="ttc" id="aclassecs_1_1ECS_html"><div class="ttname"><a href="classecs_1_1ECS.html">ecs::ECS</a></div><div class="ttdoc">Manages entities and their components in an ECS architecture.</div><div class="ttdef"><b>Definition</b> ECS.hpp:31</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a0580cc6ffce57cee9580fd2af5154fa3"><div class="ttname"><a href="classecs_1_1ECS.html#a0580cc6ffce57cee9580fd2af5154fa3">ecs::ECS::displayPlayableEntityComponents</a></div><div class="ttdeci">void displayPlayableEntityComponents()</div><div class="ttdoc">Displays the components of all playable entities in the system.</div><div class="ttdef"><b>Definition</b> ECS.hpp:127</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a131dec3d781faa68ccb960ed9614ea2b"><div class="ttname"><a href="classecs_1_1ECS.html#a131dec3d781faa68ccb960ed9614ea2b">ecs::ECS::~ECS</a></div><div class="ttdeci">~ECS()</div><div class="ttdef"><b>Definition</b> ECS.hpp:34</div></div>
-<div class="ttc" id="aclassecs_1_1ECS_html_a3a32b3aebe2ec33c05f4b91347120251"><div class="ttname"><a href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">ecs::ECS::getDeadEntityIndex</a></div><div class="ttdeci">std::pair&lt; bool, size_t &gt; getDeadEntityIndex()</div><div class="ttdef"><b>Definition</b> ECS.hpp:176</div></div>
+<div class="ttc" id="aclassecs_1_1ECS_html_a3a32b3aebe2ec33c05f4b91347120251"><div class="ttname"><a href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">ecs::ECS::getDeadEntityIndex</a></div><div class="ttdeci">std::pair&lt; bool, size_t &gt; getDeadEntityIndex()</div><div class="ttdoc">Allows us the get the list of the dead entities.</div><div class="ttdef"><b>Definition</b> ECS.hpp:179</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a49168c7d544cd88021b1259fdc5e56c2"><div class="ttname"><a href="classecs_1_1ECS.html#a49168c7d544cd88021b1259fdc5e56c2">ecs::ECS::addComponents</a></div><div class="ttdeci">void addComponents(size_t index, const Component &amp;component)</div><div class="ttdoc">Adds a component to an entity.</div><div class="ttdef"><b>Definition</b> ECS.hpp:72</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a5aa932ac8e3f3e3959118e2b96d7038e"><div class="ttname"><a href="classecs_1_1ECS.html#a5aa932ac8e3f3e3959118e2b96d7038e">ecs::ECS::init_basic_registry</a></div><div class="ttdeci">void init_basic_registry()</div><div class="ttdoc">Initializes basic registries for default components.</div><div class="ttdef"><b>Definition</b> ECS.hpp:39</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a698863a895d3168cde8f7be588edd857"><div class="ttname"><a href="classecs_1_1ECS.html#a698863a895d3168cde8f7be588edd857">ecs::ECS::ECS</a></div><div class="ttdeci">ECS()</div><div class="ttdef"><b>Definition</b> ECS.hpp:33</div></div>
-<div class="ttc" id="aclassecs_1_1ECS_html_a6e899162107e2f31780fd0516918faa4"><div class="ttname"><a href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">ecs::ECS::_components_arrays</a></div><div class="ttdeci">std::unordered_map&lt; std::type_index, std::any &gt; _components_arrays</div><div class="ttdef"><b>Definition</b> ECS.hpp:187</div></div>
+<div class="ttc" id="aclassecs_1_1ECS_html_a6e899162107e2f31780fd0516918faa4"><div class="ttname"><a href="classecs_1_1ECS.html#a6e899162107e2f31780fd0516918faa4">ecs::ECS::_components_arrays</a></div><div class="ttdeci">std::unordered_map&lt; std::type_index, std::any &gt; _components_arrays</div><div class="ttdef"><b>Definition</b> ECS.hpp:190</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a886a3fc55b1d7106253c4af9d3dd0848"><div class="ttname"><a href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">ecs::ECS::addRegistry</a></div><div class="ttdeci">void addRegistry()</div><div class="ttdoc">Adds a registry for a specific component type.</div><div class="ttdef"><b>Definition</b> ECS.hpp:53</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_a95bdf9be8be539e0c36643ddb8fad7a5"><div class="ttname"><a href="classecs_1_1ECS.html#a95bdf9be8be539e0c36643ddb8fad7a5">ecs::ECS::addDeadEntity</a></div><div class="ttdeci">void addDeadEntity(size_t index)</div><div class="ttdef"><b>Definition</b> ECS.hpp:104</div></div>
 <div class="ttc" id="aclassecs_1_1ECS_html_af42cfac51e77315331cca2d0341e3d61"><div class="ttname"><a href="classecs_1_1ECS.html#af42cfac51e77315331cca2d0341e3d61">ecs::ECS::killEntityFromRegistry</a></div><div class="ttdeci">void killEntityFromRegistry(std::size_t entityIndex)</div><div class="ttdoc">Removes all components from an entity, marking it as &quot;dead.&quot;.</div><div class="ttdef"><b>Definition</b> ECS.hpp:95</div></div>
@@ -306,7 +302,7 @@ $(document).ready(function(){initNavTree('ECS_8hpp_source.html',''); initResizab
 <div class="ttc" id="aclassecs_1_1Playable_html"><div class="ttname"><a href="classecs_1_1Playable.html">ecs::Playable</a></div><div class="ttdoc">Represents a playable entity in the game.</div><div class="ttdef"><b>Definition</b> Playable.hpp:23</div></div>
 <div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
 <div class="ttc" id="aclassecs_1_1Velocity_html"><div class="ttname"><a href="classecs_1_1Velocity.html">ecs::Velocity</a></div><div class="ttdoc">Represents the velocity of an entity.</div><div class="ttdef"><b>Definition</b> Velocity.hpp:23</div></div>
-<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> CollisionSystem.hpp:24</div></div>
+<div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -102,14 +102,18 @@ $(document).ready(function(){initNavTree('classrtype_1_1Command__checker.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
-<tr class="memitem:ac6fd81798eadae77f3485a0bd80065b8" id="r_ac6fd81798eadae77f3485a0bd80065b8"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#ac6fd81798eadae77f3485a0bd80065b8">check_adress</a> (std::map&lt; std::string, std::string &gt; &amp;, std::string)</td></tr>
-<tr class="separator:ac6fd81798eadae77f3485a0bd80065b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0384e246304723f631d342f64c14cb76" id="r_a0384e246304723f631d342f64c14cb76"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::tuple&lt; std::size_t, std::pair&lt; float, float &gt;, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#a0384e246304723f631d342f64c14cb76">parse_update</a> (std::string)</td></tr>
-<tr class="separator:a0384e246304723f631d342f64c14cb76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a639904034e7bfa0ffa30c8a4f8e8e245" id="r_a639904034e7bfa0ffa30c8a4f8e8e245"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#a639904034e7bfa0ffa30c8a4f8e8e245">check_adress</a> (int, const std::string &amp;)</td></tr>
+<tr class="separator:a639904034e7bfa0ffa30c8a4f8e8e245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a60785310b828ce12af8f9a08b1aca4" id="r_a0a60785310b828ce12af8f9a08b1aca4"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::tuple&lt; std::size_t, std::pair&lt; float, float &gt;, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#a0a60785310b828ce12af8f9a08b1aca4">parse_update</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a0a60785310b828ce12af8f9a08b1aca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a947ece68b3298ea932938a5f51b52313" id="r_a947ece68b3298ea932938a5f51b52313"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::tuple&lt; std::pair&lt; float, float &gt;, int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#a947ece68b3298ea932938a5f51b52313">parseUpdateEntities</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a947ece68b3298ea932938a5f51b52313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4854f74b2fdd99d5a80a68b492d4b210" id="r_a4854f74b2fdd99d5a80a68b492d4b210"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; float, float, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Command__checker.html#a4854f74b2fdd99d5a80a68b492d4b210">parsePositionAndRoomPort</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a4854f74b2fdd99d5a80a68b492d4b210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="ac6fd81798eadae77f3485a0bd80065b8" name="ac6fd81798eadae77f3485a0bd80065b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6fd81798eadae77f3485a0bd80065b8">&#9670;&#160;</a></span>check_adress()</h2>
+<a id="a639904034e7bfa0ffa30c8a4f8e8e245" name="a639904034e7bfa0ffa30c8a4f8e8e245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a639904034e7bfa0ffa30c8a4f8e8e245">&#9670;&#160;</a></span>check_adress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,13 +124,13 @@ Fonctions membres publiques statiques</h2></td></tr>
         <tr>
           <td class="memname">std::string rtype::Command_checker::check_adress </td>
           <td>(</td>
-          <td class="paramtype">std::map&lt; std::string, std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>params</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>server_ip</em>&#160;</td>
         </tr>
         <tr>
@@ -144,8 +148,8 @@ Fonctions membres publiques statiques</h2></td></tr>
 
 </div>
 </div>
-<a id="a0384e246304723f631d342f64c14cb76" name="a0384e246304723f631d342f64c14cb76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0384e246304723f631d342f64c14cb76">&#9670;&#160;</a></span>parse_update()</h2>
+<a id="a0a60785310b828ce12af8f9a08b1aca4" name="a0a60785310b828ce12af8f9a08b1aca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a60785310b828ce12af8f9a08b1aca4">&#9670;&#160;</a></span>parse_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,8 +160,60 @@ Fonctions membres publiques statiques</h2></td></tr>
         <tr>
           <td class="memname">std::list&lt; std::tuple&lt; std::size_t, std::pair&lt; float, float &gt;, int &gt; &gt; rtype::Command_checker::parse_update </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4854f74b2fdd99d5a80a68b492d4b210" name="a4854f74b2fdd99d5a80a68b492d4b210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4854f74b2fdd99d5a80a68b492d4b210">&#9670;&#160;</a></span>parsePositionAndRoomPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; float, float, int &gt; rtype::Command_checker::parsePositionAndRoomPort </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a947ece68b3298ea932938a5f51b52313" name="a947ece68b3298ea932938a5f51b52313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a947ece68b3298ea932938a5f51b52313">&#9670;&#160;</a></span>parseUpdateEntities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::tuple&lt; std::pair&lt; float, float &gt;, int, int &gt; &gt; rtype::Command_checker::parseUpdateEntities </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

@@ -9,5 +9,6 @@ var RTypeExceptions_8hpp =
     [ "rtype::ERROR::InvalidTpsOrFpsExceptions", "classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html", "classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions" ],
     [ "rtype::ERROR::FailedToInitializeServerExceptions", "classrtype_1_1ERROR_1_1FailedToInitializeServerExceptions.html", "classrtype_1_1ERROR_1_1FailedToInitializeServerExceptions" ],
     [ "rtype::ERROR::FailedToInitializeClientExceptions", "classrtype_1_1ERROR_1_1FailedToInitializeClientExceptions.html", "classrtype_1_1ERROR_1_1FailedToInitializeClientExceptions" ],
-    [ "rtype::ERROR::MissingPortParamsExceptions", "classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html", "classrtype_1_1ERROR_1_1MissingPortParamsExceptions" ]
+    [ "rtype::ERROR::MissingPortParamsExceptions", "classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html", "classrtype_1_1ERROR_1_1MissingPortParamsExceptions" ],
+    [ "rtype::ERROR::MessageIsNotSafeException", "classrtype_1_1ERROR_1_1MessageIsNotSafeException.html", "classrtype_1_1ERROR_1_1MessageIsNotSafeException" ]
 ];

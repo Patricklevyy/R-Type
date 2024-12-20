@@ -1,5 +1,5 @@
 <map id="rtype_game/shared/system/DirectionSystem.hpp" name="rtype_game/shared/system/DirectionSystem.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1995,5,2195,45"/>
+<area shape="rect" id="Node000001" title="Updates the direction of entities in the game." alt="" coords="1995,5,2195,45"/>
 <area shape="rect" id="Node000002" href="$Includes__ecs_8hpp.html" title=" " alt="" coords="1202,181,1341,221"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2007,48,1355,185,1354,180,2006,43"/>
 <area shape="rect" id="Node000025" href="$SparseArray_8hpp.html" title="Defines a sparse array template for efficient data storage." alt="" coords="1901,101,2090,126"/>
@@ -57,6 +57,6 @@
 <area shape="poly" id="edge28_Node000025_Node000014" title=" " alt="" coords="2010,124,2125,219,2175,259,2172,263,2122,223,2007,128"/>
 <area shape="poly" id="edge29_Node000025_Node000015" title=" " alt="" coords="1993,127,1933,258,1928,256,1988,125"/>
 <area shape="poly" id="edge26_Node000025_Node000016" title=" " alt="" coords="1999,126,2006,255,2001,256,1993,126"/>
-<area shape="rect" id="Node000027" href="$Enums__ecs_8hpp.html" title=" " alt="" coords="2135,189,2269,214"/>
+<area shape="rect" id="Node000027" href="$Enums__ecs_8hpp.html" title="Define the possible direction of the player or monsters in the game." alt="" coords="2135,189,2269,214"/>
 <area shape="poly" id="edge31_Node000026_Node000027" title=" " alt="" coords="2201,133,2203,175,2198,175,2195,134"/>
 </map>

@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -106,91 +106,92 @@ $(document).ready(function(){initNavTree('EventWindow_8hpp_source.html',''); ini
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** EventWindow</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef EVENTWINDOW_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define EVENTWINDOW_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #include &quot;../components/Window.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #include &quot;../../shared/Includes.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef EVENTWINDOW_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define EVENTWINDOW_HPP_</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html">   18</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1EventWindow.html">EventWindow</a></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">   21</a></span>                <a class="code hl_function" href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">EventWindow</a>() : isRunning(false) {}</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">   23</a></span>                <a class="code hl_function" href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">~EventWindow</a>() {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    <a class="code hl_function" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">stopListening</a>();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &quot;../components/Window.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../../shared/Includes.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html">   26</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1EventWindow.html">EventWindow</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">   33</a></span>                <a class="code hl_function" href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">EventWindow</a>() : isRunning(false) {}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">   38</a></span>                <a class="code hl_function" href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">~EventWindow</a>() {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    <a class="code hl_function" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">stopListening</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                }</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">   27</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">startListening</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array) {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                    isRunning = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                    listenerThread = std::thread(&amp;EventWindow::eventLoop, <span class="keyword">this</span>, std::ref(components_array));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">   47</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">startListening</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    isRunning = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    listenerThread = std::thread(&amp;EventWindow::eventLoop, <span class="keyword">this</span>, std::ref(components_array));</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                }</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">   32</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">stopListening</a>() {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    isRunning = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <span class="keywordflow">if</span> (listenerThread.joinable()) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                        listenerThread.join();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                }</div>
-</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">   39</a></span>                std::queue&lt;sf::Event&gt; <a class="code hl_function" href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">fetchEvents</a>() {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    std::lock_guard&lt;std::mutex&gt; lock(queueMutex);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    std::queue&lt;sf::Event&gt; events = std::move(eventQueue);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                    eventQueue = {};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    <span class="keywordflow">return</span> events;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                }</div>
-</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                std::atomic&lt;bool&gt; isRunning;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                std::thread listenerThread;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                std::queue&lt;sf::Event&gt; eventQueue;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                std::mutex queueMutex;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordtype">void</span> eventLoop(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array) {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    <span class="keywordflow">while</span> (isRunning) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                        <span class="keyword">auto</span> &amp;windowArray = std::any_cast&lt;ecs::SparseArray&lt;Window&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Window.html">Window</a>)]);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                        <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; windowArray.size(); ++i) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                            <span class="keywordflow">if</span> (windowArray[i].has_value()) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                <span class="keyword">auto</span> &amp;window = windowArray[i].value();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                <span class="keywordflow">if</span> (window.getRenderWindow()-&gt;isOpen()) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                    sf::Event event;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                    <span class="keywordflow">while</span> (window.getRenderWindow()-&gt;pollEvent(event)) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                        std::lock_guard&lt;std::mutex&gt; lock(queueMutex);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                        eventQueue.push(event);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                    }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                            }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                        }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                        std::this_thread::sleep_for(std::chrono::milliseconds(10));</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            };</div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">   55</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">stopListening</a>() {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    isRunning = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    <span class="keywordflow">if</span> (listenerThread.joinable()) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                        listenerThread.join();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                }</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif </span><span class="comment">/* !EVENTWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html"><div class="ttname"><a href="classrtype_1_1EventWindow.html">rtype::EventWindow</a></div><div class="ttdef"><b>Definition</b> EventWindow.hpp:19</div></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html_a367c0e1cc1736c41d04b3f77fe664336"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">rtype::EventWindow::~EventWindow</a></div><div class="ttdeci">~EventWindow()</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html_a6f3b05ddc1c05aefe81a320d686c01f5"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">rtype::EventWindow::EventWindow</a></div><div class="ttdeci">EventWindow()</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:21</div></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html_a89698d04fb056388ca1f3c8341d326b7"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">rtype::EventWindow::startListening</a></div><div class="ttdeci">void startListening(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:27</div></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html_ad09144c505db42b3cc6b46f61dc26c17"><div class="ttname"><a href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">rtype::EventWindow::fetchEvents</a></div><div class="ttdeci">std::queue&lt; sf::Event &gt; fetchEvents()</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:39</div></div>
-<div class="ttc" id="aclassrtype_1_1EventWindow_html_ae733f6a83766b7b3a0dc547e51f8bdfe"><div class="ttname"><a href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">rtype::EventWindow::stopListening</a></div><div class="ttdeci">void stopListening()</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:32</div></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">   67</a></span>                std::queue&lt;sf::Event&gt; <a class="code hl_function" href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">fetchEvents</a>() {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    std::lock_guard&lt;std::mutex&gt; lock(queueMutex);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    std::queue&lt;sf::Event&gt; events = std::move(eventQueue);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    eventQueue = {};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    <span class="keywordflow">return</span> events;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                std::atomic&lt;bool&gt; isRunning;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                std::thread listenerThread;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                std::queue&lt;sf::Event&gt; eventQueue;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                std::mutex queueMutex;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordtype">void</span> eventLoop(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    <span class="keywordflow">while</span> (isRunning) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                        <span class="keyword">auto</span> &amp;windowArray = std::any_cast&lt;ecs::SparseArray&lt;Window&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Window.html">Window</a>)]);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                        <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; windowArray.size(); ++i) {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                            <span class="keywordflow">if</span> (windowArray[i].has_value()) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                <span class="keyword">auto</span> &amp;window = windowArray[i].value();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                <span class="keywordflow">if</span> (window.getRenderWindow()-&gt;isOpen()) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                    sf::Event event;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                    <span class="keywordflow">while</span> (window.getRenderWindow()-&gt;pollEvent(event)) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                        std::lock_guard&lt;std::mutex&gt; lock(queueMutex);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                        eventQueue.push(event);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                            }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                        std::this_thread::sleep_for(std::chrono::milliseconds(10));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                    }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            };</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">/* !EVENTWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html"><div class="ttname"><a href="classrtype_1_1EventWindow.html">rtype::EventWindow</a></div><div class="ttdoc">Manages the event loop and queues events for processing.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:27</div></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html_a367c0e1cc1736c41d04b3f77fe664336"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">rtype::EventWindow::~EventWindow</a></div><div class="ttdeci">~EventWindow()</div><div class="ttdoc">Destructor, ensures the listener thread is stopped.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:38</div></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html_a6f3b05ddc1c05aefe81a320d686c01f5"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">rtype::EventWindow::EventWindow</a></div><div class="ttdeci">EventWindow()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:33</div></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html_a89698d04fb056388ca1f3c8341d326b7"><div class="ttname"><a href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">rtype::EventWindow::startListening</a></div><div class="ttdeci">void startListening(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdoc">Starts the event listening loop in a separate thread.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:47</div></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html_ad09144c505db42b3cc6b46f61dc26c17"><div class="ttname"><a href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">rtype::EventWindow::fetchEvents</a></div><div class="ttdeci">std::queue&lt; sf::Event &gt; fetchEvents()</div><div class="ttdoc">Retrieves all queued events.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:67</div></div>
+<div class="ttc" id="aclassrtype_1_1EventWindow_html_ae733f6a83766b7b3a0dc547e51f8bdfe"><div class="ttname"><a href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">rtype::EventWindow::stopListening</a></div><div class="ttdeci">void stopListening()</div><div class="ttdoc">Stops the event listening loop and joins the thread.</div><div class="ttdef"><b>Definition</b> EventWindow.hpp:55</div></div>
 <div class="ttc" id="aclassrtype_1_1Window_html"><div class="ttname"><a href="classrtype_1_1Window.html">rtype::Window</a></div><div class="ttdoc">Manages an SFML window and event queue for rendering and input handling.</div><div class="ttdef"><b>Definition</b> Window.hpp:29</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->

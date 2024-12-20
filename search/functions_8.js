@@ -9,5 +9,9 @@ var searchData=
   ['invalidadressformatexceptions_6',['InvalidAdressFormatExceptions',['../classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a',1,'ecs::ERROR::InvalidAdressFormatExceptions']]],
   ['invalidipadressexceptions_7',['InvalidIpAdressExceptions',['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4',1,'ecs::ERROR::InvalidIpAdressExceptions']]],
   ['invalidtpsorfpsexceptions_8',['InvalidTpsOrFpsExceptions',['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html#ae17590d148d444d4bcb155ab51175409',1,'rtype::ERROR::InvalidTpsOrFpsExceptions']]],
-  ['isrunning_9',['isRunning',['../classrtype_1_1Window.html#aed3c4df8bb8f800cf4b045c5ff0945e5',1,'rtype::Window']]]
+  ['islevelclicked_9',['isLevelClicked',['../classrtype_1_1ATH.html#a605d1aca3e9dea19992ce1ecd3ed9d17',1,'rtype::ATH']]],
+  ['islevelfinished_10',['isLevelFinished',['../classrtype_1_1ScoreSystem.html#a21644f8446f7d080ba28dfb9c704a532',1,'rtype::ScoreSystem']]],
+  ['islooseorwinclicked_11',['isLooseOrWinClicked',['../classrtype_1_1ATH.html#a4390c8402870e8f46ddba9eb54499076',1,'rtype::ATH']]],
+  ['ismessagesafe_12',['isMessageSafe',['../classrtype_1_1SecretKeyChecker.html#aa0c697296f62e73334642d2afde9f36e',1,'rtype::SecretKeyChecker']]],
+  ['isrunning_13',['isRunning',['../classrtype_1_1Window.html#aed3c4df8bb8f800cf4b045c5ff0945e5',1,'rtype::Window']]]
 ];

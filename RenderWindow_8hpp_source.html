@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -106,60 +106,114 @@ $(document).ready(function(){initNavTree('RenderWindow_8hpp_source.html',''); in
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** RenderWindow</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef RENDERWINDOW_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define RENDERWINDOW_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #include &quot;../components/Window.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #include &quot;../components/Background.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #include &quot;../../shared/Includes.hpp&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &quot;../components/Displayable.hpp&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../../../ecs/components/Position.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html">   21</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1RenderWindow.html">RenderWindow</a></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">   25</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">render</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                        <span class="keyword">auto</span> &amp;displayable = std::any_cast&lt;ecs::SparseArray&lt;Displayable&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Displayable.html">Displayable</a>)));</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                        <span class="keyword">auto</span> &amp;windows = std::any_cast&lt;ecs::SparseArray&lt;Window&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Window.html">Window</a>)));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                        <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                        <span class="keyword">auto</span> lawindow = windows[0].value().getRenderWindow().get();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                        lawindow-&gt;clear(sf::Color::Yellow);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; displayable.size(); ++i) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                            <span class="keywordflow">if</span> (displayable[i].has_value() &amp;&amp; positions[i].has_value()) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                lawindow-&gt;draw(*displayable[i].value().getSprite());</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                            }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                        }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                        lawindow-&gt;display();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[EXCEPTION] &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    } <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[UNKNOWN ERROR] Une erreur inconnue s&#39;est produite.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                }</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifndef RENDERWINDOW_HPP_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define RENDERWINDOW_HPP_</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &quot;../components/Window.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &quot;../components/Background.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #include &quot;../components/Shader.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #include &quot;../../shared/Includes.hpp&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #include &quot;../../../ecs/SparseArray.hpp&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #include &quot;../components/Displayable.hpp&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    #include &quot;<a class="code" href="SetFilter_8hpp.html">./SetFilter.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    #include &quot;../../../ecs/components/Position.hpp&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    #include &quot;../../../ecs/components/Velocity.hpp&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html">   30</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1RenderWindow.html">RenderWindow</a></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">   38</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">render</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    <span class="keyword">static</span> sf::Clock clock;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    <span class="keywordtype">float</span> deltaTime = clock.restart().asSeconds();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                        <span class="keyword">auto</span> &amp;displayable = std::any_cast&lt;ecs::SparseArray&lt;Displayable&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Displayable.html">Displayable</a>)));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        <span class="keyword">auto</span> &amp;windows = std::any_cast&lt;ecs::SparseArray&lt;Window&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Window.html">Window</a>)));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                        <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)));</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                        <span class="keyword">auto</span> &amp;shader = std::any_cast&lt;ecs::SparseArray&lt;Shader&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Shader.html">Shader</a>)));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        <span class="keyword">auto</span> lawindow = windows[0].value().getRenderWindow().get();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        <span class="keyword">auto</span> leshader = shader[0].value().getShader().get();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        lawindow-&gt;clear(sf::Color::Yellow);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; displayable.size(); ++i) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                            <span class="keywordflow">if</span> (displayable[i].has_value() &amp;&amp; positions[i].has_value()) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                displayable[i].value().update(deltaTime);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                lawindow-&gt;draw(*displayable[i].value().getSprite(), leshader);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                std::cout &lt;&lt; <span class="stringliteral">&quot;RENDER : &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                        lawindow-&gt;display();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[EXCEPTION] &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[UNKNOWN ERROR] Une erreur inconnue s&#39;est produite.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                }</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html#a1302c6ce89bc11d67645629112156fbc">   73</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1RenderWindow.html#a1302c6ce89bc11d67645629112156fbc">changeBackground</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array, <a class="code hl_enumeration" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                        <span class="keyword">auto</span> &amp;displayable = std::any_cast&lt;ecs::SparseArray&lt;Displayable&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Displayable.html">Displayable</a>)));</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                        <span class="keywordflow">if</span> (displayable[0].has_value()) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                            displayable[0].value().setSprite(sprite);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[EXCEPTION] &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[UNKNOWN ERROR] Une erreur inconnue s&#39;est produite.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                }</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">/* !RENDERWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classrtype_1_1RenderWindow.html#a9beb6ffcc850800485c292bb27295d44">   93</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1RenderWindow.html#a9beb6ffcc850800485c292bb27295d44">move_background</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array, <span class="keywordtype">bool</span> menu)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    <span class="keywordflow">if</span> (menu)</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)));</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                    <span class="keyword">auto</span> &amp;velocity = std::any_cast&lt;ecs::SparseArray&lt;ecs::Velocity&gt; &amp;&gt;(components_array.at(<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Velocity.html">ecs::Velocity</a>)));</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    <span class="keywordflow">if</span> (positions[0].has_value() &amp;&amp; velocity[0].has_value())</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                    {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                        <span class="keywordflow">if</span> (positions[0].value()._pos_x &lt;= -1920) {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                            positions[0].value()._pos_x = 0;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                            positions[0].value()._pos_x -= velocity[0].value().velocity;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                        }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                }</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        };</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">/* !RENDERWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aSetFilter_8hpp_html"><div class="ttname"><a href="SetFilter_8hpp.html">SetFilter.hpp</a></div><div class="ttdoc">Manages the application of graphical filters (shaders) to game elements.</div></div>
 <div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1Displayable_html"><div class="ttname"><a href="classrtype_1_1Displayable.html">rtype::Displayable</a></div><div class="ttdef"><b>Definition</b> Displayable.hpp:13</div></div>
-<div class="ttc" id="aclassrtype_1_1RenderWindow_html"><div class="ttname"><a href="classrtype_1_1RenderWindow.html">rtype::RenderWindow</a></div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:22</div></div>
-<div class="ttc" id="aclassrtype_1_1RenderWindow_html_a2e199dca52ff26420ab3522658bab722"><div class="ttname"><a href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">rtype::RenderWindow::render</a></div><div class="ttdeci">void render(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:25</div></div>
+<div class="ttc" id="aclassecs_1_1Velocity_html"><div class="ttname"><a href="classecs_1_1Velocity.html">ecs::Velocity</a></div><div class="ttdoc">Represents the velocity of an entity.</div><div class="ttdef"><b>Definition</b> Velocity.hpp:23</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html"><div class="ttname"><a href="classrtype_1_1Displayable.html">rtype::Displayable</a></div><div class="ttdef"><b>Definition</b> Displayable.hpp:24</div></div>
+<div class="ttc" id="aclassrtype_1_1RenderWindow_html"><div class="ttname"><a href="classrtype_1_1RenderWindow.html">rtype::RenderWindow</a></div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:31</div></div>
+<div class="ttc" id="aclassrtype_1_1RenderWindow_html_a1302c6ce89bc11d67645629112156fbc"><div class="ttname"><a href="classrtype_1_1RenderWindow.html#a1302c6ce89bc11d67645629112156fbc">rtype::RenderWindow::changeBackground</a></div><div class="ttdeci">void changeBackground(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, SPRITES sprite)</div><div class="ttdoc">Changes the background sprite to a new one.</div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:73</div></div>
+<div class="ttc" id="aclassrtype_1_1RenderWindow_html_a2e199dca52ff26420ab3522658bab722"><div class="ttname"><a href="classrtype_1_1RenderWindow.html#a2e199dca52ff26420ab3522658bab722">rtype::RenderWindow::render</a></div><div class="ttdeci">void render(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdoc">Renders all displayable entities to the game window.</div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:38</div></div>
+<div class="ttc" id="aclassrtype_1_1RenderWindow_html_a9beb6ffcc850800485c292bb27295d44"><div class="ttname"><a href="classrtype_1_1RenderWindow.html#a9beb6ffcc850800485c292bb27295d44">rtype::RenderWindow::move_background</a></div><div class="ttdeci">void move_background(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, bool menu)</div><div class="ttdoc">Moves the background by adjusting its position based on velocity.</div><div class="ttdef"><b>Definition</b> RenderWindow.hpp:93</div></div>
+<div class="ttc" id="aclassrtype_1_1Shader_html"><div class="ttname"><a href="classrtype_1_1Shader.html">rtype::Shader</a></div><div class="ttdef"><b>Definition</b> Shader.hpp:25</div></div>
 <div class="ttc" id="aclassrtype_1_1Window_html"><div class="ttname"><a href="classrtype_1_1Window.html">rtype::Window</a></div><div class="ttdoc">Manages an SFML window and event queue for rendering and input handling.</div><div class="ttdef"><b>Definition</b> Window.hpp:29</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
+<div class="ttc" id="anamespacertype_html_a747b1b1523f4dfe8c5cb549d5eb17662"><div class="ttname"><a href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">rtype::SPRITES</a></div><div class="ttdeci">SPRITES</div><div class="ttdoc">Defines sprite identifiers for game assets.</div><div class="ttdef"><b>Definition</b> Enums.hpp:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

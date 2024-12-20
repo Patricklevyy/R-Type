@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -98,17 +98,24 @@ $(document).ready(function(){initNavTree('classrtype_1_1EventBus.html',''); init
 </div><!--header-->
 <div class="contents">
 
+<p>A system for subscribing and emitting events in the game.  
+ <a href="classrtype_1_1EventBus.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="EventBus_8hpp_source.html">EventBus.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a67e96467e1e27fa41bb57a4aaf18c430" id="r_a67e96467e1e27fa41bb57a4aaf18c430"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventBus.html#a67e96467e1e27fa41bb57a4aaf18c430">subscribe</a> (<a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3">RTYPE_ACTIONS</a> type, std::function&lt; void(const std::vector&lt; std::any &gt; &amp;)&gt; listener)</td></tr>
+<tr class="memdesc:a67e96467e1e27fa41bb57a4aaf18c430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes a listener to a specific event type.  <br /></td></tr>
 <tr class="separator:a67e96467e1e27fa41bb57a4aaf18c430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfa8458c87ffe50e0a9f6b7e6b63bf85" id="r_adfa8458c87ffe50e0a9f6b7e6b63bf85"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:adfa8458c87ffe50e0a9f6b7e6b63bf85"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventBus.html#adfa8458c87ffe50e0a9f6b7e6b63bf85">emit</a> (<a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3">RTYPE_ACTIONS</a> type, Args &amp;&amp;...args)</td></tr>
+<tr class="memdesc:adfa8458c87ffe50e0a9f6b7e6b63bf85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits an event of a specific type, passing arguments to the listeners.  <br /></td></tr>
 <tr class="separator:adfa8458c87ffe50e0a9f6b7e6b63bf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>A system for subscribing and emitting events in the game. </p>
+</div><h2 class="groupheader">Documentation des fonctions membres</h2>
 <a id="adfa8458c87ffe50e0a9f6b7e6b63bf85" name="adfa8458c87ffe50e0a9f6b7e6b63bf85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adfa8458c87ffe50e0a9f6b7e6b63bf85">&#9670;&#160;</a></span>emit()</h2>
 
@@ -145,6 +152,21 @@ template&lt;typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Emits an event of a specific type, passing arguments to the listeners. </p>
+<dl class="tparams"><dt>Paramètres du template</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Args</td><td>Variadic template for arguments to pass to the listeners. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of the event. </td></tr>
+    <tr><td class="paramname">args</td><td>Arguments to pass to the listeners. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a67e96467e1e27fa41bb57a4aaf18c430" name="a67e96467e1e27fa41bb57a4aaf18c430"></a>
@@ -180,6 +202,15 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Subscribes a listener to a specific event type. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of the event. </td></tr>
+    <tr><td class="paramname">listener</td><td>The function to call when the event is emitted. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

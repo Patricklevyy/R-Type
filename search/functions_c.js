@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['parse_5fupdate_0',['parse_update',['../classrtype_1_1Command__checker.html#a0384e246304723f631d342f64c14cb76',1,'rtype::Command_checker']]],
-  ['playable_1',['Playable',['../classecs_1_1Playable.html#ad57d175eba3f8592df6037d6ef2be098',1,'ecs::Playable']]],
-  ['position_2',['Position',['../classecs_1_1Position.html#a086437c7dee4e412abf49c16fed91806',1,'ecs::Position']]],
-  ['projectiles_3',['Projectiles',['../classrtype_1_1Projectiles.html#a978f16ea1fcf124a0539911a394c105d',1,'rtype::Projectiles']]]
+  ['operator_3d_0',['operator=',['../classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf',1,'rtype::Room::operator=(const Room &amp;)=delete'],['../classrtype_1_1Room.html#a8fb3336de82537acdda33d41daef4b02',1,'rtype::Room::operator=(Room &amp;&amp;other) noexcept']]],
+  ['operator_5b_5d_1',['operator[]',['../classecs_1_1SparseArray.html#a2c472a9aeb6a2c31111000254de2543f',1,'ecs::SparseArray::operator[](std::size_t index)'],['../classecs_1_1SparseArray.html#a321a8cb5aac58a689b03cbbb2974c57c',1,'ecs::SparseArray::operator[](std::size_t index) const']]]
 ];

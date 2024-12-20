@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kill_5fprojectiles_0',['KILL_PROJECTILES',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a104bb8f3b99608af3096d166ee8b13d8',1,'rtype']]]
+  ['inverted_0',['Inverted',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76aaf2e2f4f071ebc35a949942fa0abc6af',1,'rtype']]]
 ];

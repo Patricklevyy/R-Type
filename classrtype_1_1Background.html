@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -98,16 +98,23 @@ $(document).ready(function(){initNavTree('classrtype_1_1Background.html',''); in
 </div><!--header-->
 <div class="contents">
 
+<p>Represents the game background using an SFML sprite.  
+ <a href="classrtype_1_1Background.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Background_8hpp_source.html">Background.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:acd48d1c774b645044728b1c6e43a5264" id="r_acd48d1c774b645044728b1c6e43a5264"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Background.html#acd48d1c774b645044728b1c6e43a5264">Background</a> (const std::string &amp;texturePath, int x, int y)</td></tr>
+<tr class="memdesc:acd48d1c774b645044728b1c6e43a5264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a background object with a texture and initial position.  <br /></td></tr>
 <tr class="separator:acd48d1c774b645044728b1c6e43a5264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e849137d2b3890f73e9f5ecfdd8129e" id="r_a1e849137d2b3890f73e9f5ecfdd8129e"><td class="memItemLeft" align="right" valign="top">sf::Sprite &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e">getSprite</a> ()</td></tr>
+<tr class="memdesc:a1e849137d2b3890f73e9f5ecfdd8129e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the SFML sprite representing the background.  <br /></td></tr>
 <tr class="separator:a1e849137d2b3890f73e9f5ecfdd8129e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Represents the game background using an SFML sprite. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="acd48d1c774b645044728b1c6e43a5264" name="acd48d1c774b645044728b1c6e43a5264"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd48d1c774b645044728b1c6e43a5264">&#9670;&#160;</a></span>Background()</h2>
 
@@ -148,6 +155,22 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructs a background object with a texture and initial position. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texturePath</td><td>Path to the texture file. </td></tr>
+    <tr><td class="paramname">x</td><td>Initial x-coordinate of the background sprite. </td></tr>
+    <tr><td class="paramname">y</td><td>Initial y-coordinate of the background sprite. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If the texture fails to load. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
@@ -173,6 +196,9 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets the SFML sprite representing the background. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Reference to the background sprite. </dd></dl>
 
 </div>
 </div>

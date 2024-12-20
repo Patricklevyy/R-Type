@@ -1,5 +1,16 @@
 var Enums_8hpp =
 [
+    [ "FILTER_MODE", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76", [
+      [ "Neutral", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559", null ],
+      [ "Protanopia", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76a6158d5d76217b83ce9e706363fd606ff", null ],
+      [ "Deuteranopia", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76ae7eaa4f630758f8eda90371d748fe252", null ],
+      [ "Tritanopia", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76ace6e196774cf4511aeb646882082746a", null ],
+      [ "Inverted", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76aaf2e2f4f071ebc35a949942fa0abc6af", null ]
+    ] ],
+    [ "LEVELS", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8", [
+      [ "UN", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a678371ee8ca4b36a20004f58c7df4ad3", null ],
+      [ "DEUX", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ]
+    ] ],
     [ "RTYPE_ACTIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3", [
       [ "UNDEFINED", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ab2a6540696d8f40f08afe5703bced3f1", null ],
       [ "CREATE_ROOM", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3adc3d334fd54c56b9491793067b0a5535", null ],
@@ -24,18 +35,41 @@ var Enums_8hpp =
       [ "STOP_LISTEN_EVENT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a1e5e38c74105866fde450ba13a06164c", null ],
       [ "GET_WINDOW_EVENT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a5462f8415de3181c9aea7fdc19ea2360", null ],
       [ "PLAYER_SHOOT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a86e66abb9299b207a30be9c4dd3d9b84", null ],
+      [ "ENEMY_SHOOT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a4504916e0f9f243ec5a2414be512707c", null ],
       [ "CREATE_PROJECTILE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a6af0d9fec065062d9c80086f22181186", null ],
+      [ "CREATE_MONSTER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a784b72b156a5171ccea8776792f5cdea", null ],
+      [ "MOVE_MONSTERS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a1261f9d61e9712285ceae9c1fa985af9", null ],
       [ "KILL_PROJECTILES", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a104bb8f3b99608af3096d166ee8b13d8", null ],
       [ "CHECK_OFF_SCREEN", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3afd6cc77c51afcc7ce8906976cca39cf5", null ],
-      [ "EXIT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3acc91f9f531c6aa977e922fba14888aca", null ],
+      [ "UPDATE_GAME_STATUS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a07ca6de1a6ce09c8b364d29fa976c96b", null ],
+      [ "CHECK_COLLISIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3acc8735491e0f3030e12b6e89367912a6", null ],
+      [ "KILL_ENTITY", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ae5a79d16c4aa6fed6aee4d782bdd5f0a", null ],
+      [ "CHECK_LIFES", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a63955d04a58019302dc52f249ea68f5e", null ],
       [ "GET_ALL_ROOMS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a60cacc175132473da141d494c5ad6f65", null ],
+      [ "CHECK_LEVEL_FINISHED", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3abc689b73c579ad6a40536fd8d2e57d86", null ],
       [ "RENDER_WINDOW", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a5c684bf87fdb482fa6584baaa7ccb717", null ],
+      [ "START_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a2c1ffa69c53836b1ad26adb45e1dcb5c", null ],
+      [ "MOVE_BACKGROUND", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3adfbdf0b263f7d9825e01b353e9c690dc", null ],
+      [ "EXECUTE_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a4585ff6202fa6e1e672813694a02b767", null ],
+      [ "CREATE_PLAYER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ad917dcd88a57053879507297b91391dd", null ],
+      [ "FAIL_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a046651e9c88c6ab5cce00a5750b3684c", null ],
+      [ "WIN_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a9646eacc83a3479110711cdc53fdc2b5", null ],
+      [ "REMOVE_ATH", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a45881ffacd58cf9e8700faa7316f5e2b", null ],
       [ "MAX_ACTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
     [ "SPRITES", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662", [
-      [ "BACKGROUND", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a5e9470285f7a5c6c91bd76d3f5b7c7fa", null ],
-      [ "SHIP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a02fa38ff1509d1feb015271d17401fd3", null ],
-      [ "MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a631cc98a2a642d7045623d6d0e659097", null ],
-      [ "MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a35824b05480d6fe6cfd29c446830a527", null ]
+      [ "MENU_BACKGROUND", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aa47073e059f184ce7a62ab010d7e67fb", null ],
+      [ "GAME_BACKGROUND", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a9780a8d75a5383abc00c1f44c8627237", null ],
+      [ "MY_PLAYER_SHIP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a629b51c371016e65912d9e81d785ed8b", null ],
+      [ "SIMPLE_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad88d9ec34276371eb7ab0a016c31716a", null ],
+      [ "ADVANCED_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ab6655f396c15c1ac66057e50da493e5a", null ],
+      [ "PLAYER_SIMPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad0602f7555125293abdd7fadfce67803", null ],
+      [ "MONSTER_SIMPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662af1db3068c29c70dc182f728519949781", null ],
+      [ "OTHER_PLAYER_SHIP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662abce9dd9487d7ddf9cc0c8c5157737e91", null ],
+      [ "LOOSER_SCREEN", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c", null ],
+      [ "WIN_SCREEN", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aac7ba080bbe2957b044cdae38e117e3d", null ],
+      [ "MONSTER_MULTIPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309", null ],
+      [ "LEVEL1", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662acd77d78cec73faf3487efdc668234b9b", null ],
+      [ "LEVEL2", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ]
     ] ]
 ];

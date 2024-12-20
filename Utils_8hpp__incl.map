@@ -1,13 +1,15 @@
 <map id="rtype_game/shared/Utils.hpp" name="rtype_game/shared/Utils.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="233,5,444,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="275,5,485,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,85,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,33,99,80,98,75,291,28"/>
-<area shape="rect" id="Node000003" href="$Enums__ecs_8hpp.html" title=" " alt="" coords="109,79,283,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="317,33,233,75,230,70,315,28"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="326,33,100,81,98,76,325,28"/>
+<area shape="rect" id="Node000003" href="$Enums__ecs_8hpp.html" title="Define the possible direction of the player or monsters in the game." alt="" coords="109,79,283,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="351,33,240,76,238,71,349,28"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="307,79,370,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="341,31,341,65,336,65,336,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="375,32,355,68,350,65,371,30"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="394,79,449,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="354,29,399,67,396,72,350,33"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="389,30,410,65,405,68,385,32"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="473,79,548,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="367,28,471,71,469,76,365,33"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="402,28,479,70,476,74,400,33"/>
+<area shape="rect" id="Node000007" href="$Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="573,79,667,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="419,28,569,72,567,77,418,33"/>
 </map>

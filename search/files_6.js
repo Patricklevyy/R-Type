@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../client_2Main_8cpp.html',1,'(Espace de nommage global)'],['../server_2Main_8cpp.html',1,'(Espace de nommage global)']]],
-  ['messagechecker_2ecpp_1',['MessageChecker.cpp',['../MessageChecker_8cpp.html',1,'']]],
-  ['messagechecker_2ehpp_2',['MessageChecker.hpp',['../MessageChecker_8hpp.html',1,'']]],
-  ['messagecompressor_2ecpp_3',['MessageCompressor.cpp',['../MessageCompressor_8cpp.html',1,'']]],
-  ['messagecompressor_2ehpp_4',['MessageCompressor.hpp',['../MessageCompressor_8hpp.html',1,'']]]
+  ['health_2ehpp_0',['Health.hpp',['../Health_8hpp.html',1,'']]],
+  ['healthsystem_2ehpp_1',['HealthSystem.hpp',['../HealthSystem_8hpp.html',1,'']]],
+  ['hitbox_2ehpp_2',['Hitbox.hpp',['../Hitbox_8hpp.html',1,'']]],
+  ['hitboxfactory_2ehpp_3',['HitboxFactory.hpp',['../HitboxFactory_8hpp.html',1,'']]]
 ];

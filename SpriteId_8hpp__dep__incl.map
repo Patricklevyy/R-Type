@@ -1,0 +1,42 @@
+<map id="rtype_game/server/components/SpriteId.hpp" name="rtype_game/server/components/SpriteId.hpp">
+<area shape="rect" id="Node000001" title="Class representing a sprite identifier." alt="" coords="713,5,942,45"/>
+<area shape="rect" id="Node000002" href="$Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="652,181,867,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="808,58,787,94,772,142,764,182,758,181,766,141,782,92,803,55"/>
+<area shape="rect" id="Node000012" href="$KillSystem_8hpp.html" title=" " alt="" coords="797,93,997,133"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="853,55,883,91,879,95,849,58"/>
+<area shape="rect" id="Node000003" href="$Room_8cpp.html" title=" " alt="" coords="5,262,220,287"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="639,210,233,257,183,265,182,259,232,252,638,205"/>
+<area shape="rect" id="Node000004" href="$Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="245,255,431,295"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="685,212,432,259,431,253,684,206"/>
+<area shape="rect" id="Node000005" href="$Room__Event__Bus_8cpp.html" title=" " alt="" coords="455,255,642,295"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="717,214,600,257,598,252,715,209"/>
+<area shape="rect" id="Node000006" href="$Room__Game__Loop_8cpp.html" title=" " alt="" coords="666,255,853,295"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="762,220,762,255,757,255,757,220"/>
+<area shape="rect" id="Node000007" href="$Room__Send__Message_8cpp.html" title=" " alt="" coords="877,255,1063,295"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="804,209,920,252,918,257,802,214"/>
+<area shape="rect" id="Node000008" href="$Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="1087,262,1306,287"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="837,206,1133,259,1133,265,836,212"/>
+<area shape="rect" id="Node000009" href="$server_2Main_8cpp.html" title=" " alt="" coords="855,350,1063,375"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1152,295,992,352,990,347,1151,290"/>
+<area shape="rect" id="Node000010" href="$Server_8cpp.html" title=" " alt="" coords="1088,350,1305,375"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1199,301,1199,349,1194,349,1194,301"/>
+<area shape="rect" id="Node000011" href="$Server__Create__And__Join__Room_8cpp.html" title=" " alt="" coords="1329,343,1536,383"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="1242,290,1382,340,1380,345,1240,295"/>
+<area shape="poly" id="edge20_Node000012_Node000002" title=" " alt="" coords="853,142,781,183,778,179,851,138"/>
+<area shape="rect" id="Node000013" href="$Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="1859,181,2070,207"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1011,120,1859,182,1859,188,1010,126"/>
+<area shape="rect" id="Node000014" href="$Client_8cpp.html" title=" " alt="" coords="1331,262,1540,287"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="1869,211,1552,257,1505,265,1504,259,1551,252,1869,206"/>
+<area shape="rect" id="Node000015" href="$Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="1564,255,1747,295"/>
+<area shape="poly" id="edge14_Node000013_Node000015" title=" " alt="" coords="1907,213,1730,257,1729,252,1906,207"/>
+<area shape="rect" id="Node000016" href="$Client__Event__Bus_8cpp.html" title=" " alt="" coords="1771,255,1953,295"/>
+<area shape="poly" id="edge15_Node000013_Node000016" title=" " alt="" coords="1940,217,1888,257,1885,252,1937,213"/>
+<area shape="rect" id="Node000017" href="$Client__Event__Sfml_8cpp.html" title=" " alt="" coords="1977,255,2160,295"/>
+<area shape="poly" id="edge16_Node000013_Node000017" title=" " alt="" coords="1992,213,2045,252,2042,257,1989,217"/>
+<area shape="rect" id="Node000018" href="$Client__Init_8cpp.html" title=" " alt="" coords="2184,255,2367,295"/>
+<area shape="poly" id="edge17_Node000013_Node000018" title=" " alt="" coords="2024,207,2201,252,2200,257,2023,213"/>
+<area shape="rect" id="Node000019" href="$Client__Send__Message_8cpp.html" title=" " alt="" coords="2391,255,2573,295"/>
+<area shape="poly" id="edge18_Node000013_Node000019" title=" " alt="" coords="2065,206,2380,252,2391,254,2390,259,2379,257,2064,211"/>
+<area shape="rect" id="Node000020" href="$client_2Main_8cpp.html" title=" " alt="" coords="2598,262,2801,287"/>
+<area shape="poly" id="edge19_Node000013_Node000020" title=" " alt="" coords="2084,202,2317,222,2586,252,2635,259,2634,265,2586,257,2316,227,2084,207"/>
+</map>

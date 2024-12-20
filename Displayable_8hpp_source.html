@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -99,57 +99,124 @@ $(document).ready(function(){initNavTree('Displayable_8hpp_source.html',''); ini
   <div class="headertitle"><div class="title">Displayable.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Displayable_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef DISPLAYABLE_HPP_</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define DISPLAYABLE_HPP_</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../SpriteFactory.hpp&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html">   13</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Displayable.html">Displayable</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a6f4066cc783a6deef614c17ed00cf62f">   15</a></span>        <a class="code hl_function" href="classrtype_1_1Displayable.html#a6f4066cc783a6deef614c17ed00cf62f">Displayable</a>(<a class="code hl_enumeration" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite_id, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            sprite = <a class="code hl_function" href="classrtype_1_1SpriteFactory.html#a1cf71f14a7df872035a00e651d18da41">SpriteFactory::createSprite</a>(sprite_id);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            sprite-&gt;setPosition(x, y);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        }</div>
+<a href="Displayable_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** R-Type</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Displayable</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef DISPLAYABLE_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define DISPLAYABLE_HPP_</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;../SpriteFactory.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a> {</div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html">   24</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Displayable.html">Displayable</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a8dea0a247485e546abdd0936e55cfa28">   32</a></span>        <a class="code hl_function" href="classrtype_1_1Displayable.html#a8dea0a247485e546abdd0936e55cfa28">Displayable</a>(<a class="code hl_enumeration" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite_id)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            : currentFrame(0), elapsedTime(0.0f)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            textures = <a class="code hl_function" href="classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5">SpriteFactory::loadTexturesForSprite</a>(sprite_id);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            std::tuple&lt;float, float, float&gt; scales_and_speed = <a class="code hl_function" href="classrtype_1_1SpriteFactory.html#af79daa9bad34d0e3759ca18c287d3b15">SpriteFactory::getSpriteScaleAndSpeed</a>(sprite_id);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            animationSpeed = std::get&lt;2&gt;(scales_and_speed);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (textures.empty()) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;No textures available for sprite ID&quot;</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            sprite = std::make_shared&lt;sf::Sprite&gt;();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            sprite-&gt;setTexture(*textures[currentFrame]);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            sprite-&gt;setScale(std::get&lt;0&gt;(scales_and_speed), std::get&lt;1&gt;(scales_and_speed));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
 </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">   21</a></span>        std::shared_ptr&lt;sf::Sprite&gt; <a class="code hl_function" href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">getSprite</a>()</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">return</span> sprite;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#aa53ab4e86be0d669f8b23400387e9fa9">   52</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Displayable.html#aa53ab4e86be0d669f8b23400387e9fa9">update</a>(<span class="keywordtype">float</span> deltaTime) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            elapsedTime += deltaTime;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">if</span> (elapsedTime &gt;= animationSpeed) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                elapsedTime = 0.0f;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                currentFrame = (currentFrame + 1) % textures.size();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                sprite-&gt;setTexture(*textures[currentFrame]);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">   26</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">setSpritePosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            sprite-&gt;setPosition(x, y);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">   66</a></span>        std::shared_ptr&lt;sf::Sprite&gt; <a class="code hl_function" href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">getSprite</a>()</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">return</span> sprite;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        std::shared_ptr&lt;sf::Sprite&gt; sprite;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">   77</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">setSpritePosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            sprite-&gt;setPosition(x, y);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif </span><span class="comment">/* DISPLAYABLE_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassrtype_1_1Displayable_html"><div class="ttname"><a href="classrtype_1_1Displayable.html">rtype::Displayable</a></div><div class="ttdef"><b>Definition</b> Displayable.hpp:13</div></div>
-<div class="ttc" id="aclassrtype_1_1Displayable_html_a6741050cc38b89ab94d8eabf0d5c1579"><div class="ttname"><a href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">rtype::Displayable::setSpritePosition</a></div><div class="ttdeci">void setSpritePosition(float x, float y)</div><div class="ttdef"><b>Definition</b> Displayable.hpp:26</div></div>
-<div class="ttc" id="aclassrtype_1_1Displayable_html_a6f4066cc783a6deef614c17ed00cf62f"><div class="ttname"><a href="classrtype_1_1Displayable.html#a6f4066cc783a6deef614c17ed00cf62f">rtype::Displayable::Displayable</a></div><div class="ttdeci">Displayable(SPRITES sprite_id, float x, float y)</div><div class="ttdef"><b>Definition</b> Displayable.hpp:15</div></div>
-<div class="ttc" id="aclassrtype_1_1Displayable_html_ad1bcb1d2c4565daa629f3d43af90b67a"><div class="ttname"><a href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">rtype::Displayable::getSprite</a></div><div class="ttdeci">std::shared_ptr&lt; sf::Sprite &gt; getSprite()</div><div class="ttdef"><b>Definition</b> Displayable.hpp:21</div></div>
-<div class="ttc" id="aclassrtype_1_1SpriteFactory_html_a1cf71f14a7df872035a00e651d18da41"><div class="ttname"><a href="classrtype_1_1SpriteFactory.html#a1cf71f14a7df872035a00e651d18da41">rtype::SpriteFactory::createSprite</a></div><div class="ttdeci">static std::shared_ptr&lt; sf::Sprite &gt; createSprite(SPRITES id)</div><div class="ttdef"><b>Definition</b> SpriteFactory.hpp:19</div></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a01f140c27b6dd0739d3a699aeb4d7869">   87</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Displayable.html#a01f140c27b6dd0739d3a699aeb4d7869">setSprite</a>(<a class="code hl_enumeration" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> new_sprite_id) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            sprite.reset();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            currentFrame = 0;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            textures = <a class="code hl_function" href="classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5">SpriteFactory::loadTexturesForSprite</a>(new_sprite_id);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            std::tuple&lt;float, float, float&gt; scales_and_speed = <a class="code hl_function" href="classrtype_1_1SpriteFactory.html#af79daa9bad34d0e3759ca18c287d3b15">SpriteFactory::getSpriteScaleAndSpeed</a>(new_sprite_id);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            animationSpeed = std::get&lt;2&gt;(scales_and_speed);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">if</span> (textures.empty()) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;No textures available for sprite ID&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            sprite = std::make_shared&lt;sf::Sprite&gt;();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            sprite-&gt;setTexture(*textures[currentFrame]);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            sprite-&gt;setScale(std::get&lt;0&gt;(scales_and_speed), std::get&lt;1&gt;(scales_and_speed));</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classrtype_1_1Displayable.html#a40db3a896bca29987265ed06d3a2df36">  104</a></span>        sf::Vector2f <a class="code hl_function" href="classrtype_1_1Displayable.html#a40db3a896bca29987265ed06d3a2df36">getSpriteSize</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordflow">if</span> (sprite &amp;&amp; sprite-&gt;getTexture()) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                <span class="keyword">auto</span> textureSize = sprite-&gt;getTexture()-&gt;getSize();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                <span class="keyword">auto</span> scale = sprite-&gt;getScale();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                <span class="keywordflow">return</span> sf::Vector2f(</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    textureSize.x * scale.x,</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                    textureSize.y * scale.y</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                );</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">return</span> sf::Vector2f(0, 0);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
+</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        std::shared_ptr&lt;sf::Sprite&gt; sprite;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        std::vector&lt;std::shared_ptr&lt;sf::Texture&gt;&gt; textures;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordtype">size_t</span> currentFrame;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordtype">float</span> animationSpeed;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordtype">float</span> elapsedTime;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    };</div>
+</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span class="comment">/* DISPLAYABLE_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html"><div class="ttname"><a href="classrtype_1_1Displayable.html">rtype::Displayable</a></div><div class="ttdef"><b>Definition</b> Displayable.hpp:24</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_a01f140c27b6dd0739d3a699aeb4d7869"><div class="ttname"><a href="classrtype_1_1Displayable.html#a01f140c27b6dd0739d3a699aeb4d7869">rtype::Displayable::setSprite</a></div><div class="ttdeci">void setSprite(SPRITES new_sprite_id)</div><div class="ttdoc">Updates the displayable object to use a new sprite ID.</div><div class="ttdef"><b>Definition</b> Displayable.hpp:87</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_a40db3a896bca29987265ed06d3a2df36"><div class="ttname"><a href="classrtype_1_1Displayable.html#a40db3a896bca29987265ed06d3a2df36">rtype::Displayable::getSpriteSize</a></div><div class="ttdeci">sf::Vector2f getSpriteSize() const</div><div class="ttdef"><b>Definition</b> Displayable.hpp:104</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_a6741050cc38b89ab94d8eabf0d5c1579"><div class="ttname"><a href="classrtype_1_1Displayable.html#a6741050cc38b89ab94d8eabf0d5c1579">rtype::Displayable::setSpritePosition</a></div><div class="ttdeci">void setSpritePosition(float x, float y)</div><div class="ttdoc">Sets the position of the sprite.</div><div class="ttdef"><b>Definition</b> Displayable.hpp:77</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_a8dea0a247485e546abdd0936e55cfa28"><div class="ttname"><a href="classrtype_1_1Displayable.html#a8dea0a247485e546abdd0936e55cfa28">rtype::Displayable::Displayable</a></div><div class="ttdeci">Displayable(SPRITES sprite_id)</div><div class="ttdoc">Constructs a displayable object with a given sprite ID.</div><div class="ttdef"><b>Definition</b> Displayable.hpp:32</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_aa53ab4e86be0d669f8b23400387e9fa9"><div class="ttname"><a href="classrtype_1_1Displayable.html#aa53ab4e86be0d669f8b23400387e9fa9">rtype::Displayable::update</a></div><div class="ttdeci">void update(float deltaTime)</div><div class="ttdoc">Updates the animation frame based on elapsed time.</div><div class="ttdef"><b>Definition</b> Displayable.hpp:52</div></div>
+<div class="ttc" id="aclassrtype_1_1Displayable_html_ad1bcb1d2c4565daa629f3d43af90b67a"><div class="ttname"><a href="classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a">rtype::Displayable::getSprite</a></div><div class="ttdeci">std::shared_ptr&lt; sf::Sprite &gt; getSprite()</div><div class="ttdoc">Gets the current sprite being displayed.</div><div class="ttdef"><b>Definition</b> Displayable.hpp:66</div></div>
+<div class="ttc" id="aclassrtype_1_1SpriteFactory_html_a85ebb8defb7f39e7d10a33f5181837e5"><div class="ttname"><a href="classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5">rtype::SpriteFactory::loadTexturesForSprite</a></div><div class="ttdeci">static std::vector&lt; std::shared_ptr&lt; sf::Texture &gt; &gt; loadTexturesForSprite(SPRITES id)</div><div class="ttdoc">Loads the textures for a given sprite type.</div><div class="ttdef"><b>Definition</b> SpriteFactory.hpp:97</div></div>
+<div class="ttc" id="aclassrtype_1_1SpriteFactory_html_af79daa9bad34d0e3759ca18c287d3b15"><div class="ttname"><a href="classrtype_1_1SpriteFactory.html#af79daa9bad34d0e3759ca18c287d3b15">rtype::SpriteFactory::getSpriteScaleAndSpeed</a></div><div class="ttdeci">static std::tuple&lt; float, float, float &gt; getSpriteScaleAndSpeed(SPRITES id)</div><div class="ttdoc">Retrieves the scale and speed for a given sprite type.</div><div class="ttdef"><b>Definition</b> SpriteFactory.hpp:35</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
-<div class="ttc" id="anamespacertype_html_a747b1b1523f4dfe8c5cb549d5eb17662"><div class="ttname"><a href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">rtype::SPRITES</a></div><div class="ttdeci">SPRITES</div><div class="ttdef"><b>Definition</b> Enums.hpp:48</div></div>
+<div class="ttc" id="anamespacertype_html_a747b1b1523f4dfe8c5cb549d5eb17662"><div class="ttname"><a href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">rtype::SPRITES</a></div><div class="ttdeci">SPRITES</div><div class="ttdoc">Defines sprite identifiers for game assets.</div><div class="ttdef"><b>Definition</b> Enums.hpp:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

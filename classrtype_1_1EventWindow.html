@@ -28,7 +28,7 @@
   <td id="projectalign">
    <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Une brève description du projet</div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
   </td>
  </tr>
  </tbody>
@@ -98,22 +98,32 @@ $(document).ready(function(){initNavTree('classrtype_1_1EventWindow.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>Manages the event loop and queues events for processing.  
+ <a href="classrtype_1_1EventWindow.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="EventWindow_8hpp_source.html">EventWindow.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a6f3b05ddc1c05aefe81a320d686c01f5" id="r_a6f3b05ddc1c05aefe81a320d686c01f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventWindow.html#a6f3b05ddc1c05aefe81a320d686c01f5">EventWindow</a> ()</td></tr>
+<tr class="memdesc:a6f3b05ddc1c05aefe81a320d686c01f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="separator:a6f3b05ddc1c05aefe81a320d686c01f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367c0e1cc1736c41d04b3f77fe664336" id="r_a367c0e1cc1736c41d04b3f77fe664336"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventWindow.html#a367c0e1cc1736c41d04b3f77fe664336">~EventWindow</a> ()</td></tr>
+<tr class="memdesc:a367c0e1cc1736c41d04b3f77fe664336"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor, ensures the listener thread is stopped.  <br /></td></tr>
 <tr class="separator:a367c0e1cc1736c41d04b3f77fe664336"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89698d04fb056388ca1f3c8341d326b7" id="r_a89698d04fb056388ca1f3c8341d326b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventWindow.html#a89698d04fb056388ca1f3c8341d326b7">startListening</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="memdesc:a89698d04fb056388ca1f3c8341d326b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the event listening loop in a separate thread.  <br /></td></tr>
 <tr class="separator:a89698d04fb056388ca1f3c8341d326b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae733f6a83766b7b3a0dc547e51f8bdfe" id="r_ae733f6a83766b7b3a0dc547e51f8bdfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventWindow.html#ae733f6a83766b7b3a0dc547e51f8bdfe">stopListening</a> ()</td></tr>
+<tr class="memdesc:ae733f6a83766b7b3a0dc547e51f8bdfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the event listening loop and joins the thread.  <br /></td></tr>
 <tr class="separator:ae733f6a83766b7b3a0dc547e51f8bdfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad09144c505db42b3cc6b46f61dc26c17" id="r_ad09144c505db42b3cc6b46f61dc26c17"><td class="memItemLeft" align="right" valign="top">std::queue&lt; sf::Event &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1EventWindow.html#ad09144c505db42b3cc6b46f61dc26c17">fetchEvents</a> ()</td></tr>
+<tr class="memdesc:ad09144c505db42b3cc6b46f61dc26c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all queued events.  <br /></td></tr>
 <tr class="separator:ad09144c505db42b3cc6b46f61dc26c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Manages the event loop and queues events for processing. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a6f3b05ddc1c05aefe81a320d686c01f5" name="a6f3b05ddc1c05aefe81a320d686c01f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f3b05ddc1c05aefe81a320d686c01f5">&#9670;&#160;</a></span>EventWindow()</h2>
 
@@ -136,6 +146,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -161,6 +173,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructor, ensures the listener thread is stopped. </p>
 
 </div>
 </div>
@@ -188,6 +202,9 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves all queued events. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>A queue of SFML events. </dd></dl>
+
 </div>
 </div>
 <a id="a89698d04fb056388ca1f3c8341d326b7" name="a89698d04fb056388ca1f3c8341d326b7"></a>
@@ -214,6 +231,14 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Starts the event listening loop in a separate thread. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to the ECS components array. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ae733f6a83766b7b3a0dc547e51f8bdfe" name="ae733f6a83766b7b3a0dc547e51f8bdfe"></a>
@@ -238,6 +263,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Stops the event listening loop and joins the thread. </p>
 
 </div>
 </div>
