@@ -64,6 +64,7 @@
             CREATE_PLAYER,
             FAIL_LEVEL,
             WIN_LEVEL,
+            REMOVE_ATH,
             MAX_ACTION
         };
 
