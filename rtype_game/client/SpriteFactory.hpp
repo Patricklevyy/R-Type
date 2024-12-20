@@ -11,6 +11,7 @@
 
     #include "../shared/Includes.hpp"
     #include "../shared/Enums.hpp"
+    #include <cmath>
 
     namespace rtype
     {
@@ -66,7 +67,7 @@
                             maxHeight = std::max(maxHeight, static_cast<int>(size.y));
                         }
                     }
-                    return {(maxWidth * std::get<0>(scale)), (maxHeight * std::get<1>(scale))};
+                    return {(maxWidth * std::abs(std::get<0>(scale))), (maxHeight * std::abs(std::get<1>(scale)))};
                 }
 
                 static std::vector<std::shared_ptr<sf::Texture>> loadTexturesForSprite(SPRITES id)
