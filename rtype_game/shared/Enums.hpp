@@ -5,11 +5,21 @@
 ** Enums
 */
 
+/**
+ * @file Enums.hpp
+ * @brief Defines various enumerations for actions, sprites, and visual filters in the R-Type game.
+ */
+
 #ifndef ENUMS_HPP_
     #define ENUMS_HPP_
 
     namespace rtype
     {
+
+        /**
+         * @enum RTYPE_ACTIONS
+         * @brief Defines all the possible actions in the R-Type game.
+         */
         enum RTYPE_ACTIONS
         {
             UNDEFINED = -1,
@@ -53,6 +63,10 @@
             MAX_ACTION
         };
 
+        /**
+         * @enum SPRITES
+         * @brief Defines sprite identifiers for game assets.
+         */
         enum SPRITES
         {
             MENU_BACKGROUND,
@@ -64,6 +78,10 @@
             OTHER_PLAYER_SHIP
         };
 
+        /**
+         * @enum FILTER_MODE
+         * @brief Defines visual filter modes for accessibility and customization.
+         */
         enum FILTER_MODE {
             Neutral,
             Protanopia,

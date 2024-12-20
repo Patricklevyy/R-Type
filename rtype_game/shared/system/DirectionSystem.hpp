@@ -5,6 +5,11 @@
 ** DirectionSystem
 */
 
+/**
+ * @file DirectionSystem.hpp
+ * @brief Updates the direction of entities in the game.
+ */
+
 #ifndef DIRECTIONSYSTEM_HPP_
     #define DIRECTIONSYSTEM_HPP_
 
@@ -18,6 +23,13 @@
         class DirectionSystem
         {
         public:
+            /**
+             * @brief Updates the direction of a player entity based on the given x and y directions.
+             * @param components_array The array of components for the ECS.
+             * @param x The x-direction value to update.
+             * @param y The y-direction value to update.
+             * @param index_player The index of the player entity in the ECS.
+             */
             void updatePlayerDirection(std::unordered_map<std::type_index, std::any> &components_array, ecs::direction x, ecs::direction y, size_t index_player)
             {
                 auto &direction = std::any_cast<ecs::SparseArray<ecs::Direction> &>(components_array[typeid(ecs::Direction)]);

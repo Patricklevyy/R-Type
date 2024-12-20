@@ -5,6 +5,11 @@
 ** ShootingSystem
 */
 
+/**
+ * @file ShootingSystem.hpp
+ * @brief Handles shooting mechanics for monster entities.
+ */
+
 #ifndef SHOOTINGSYSTEM_HPP_
     #define SHOOTINGSYSTEM_HPP_
 
@@ -15,9 +20,20 @@
 
     namespace rtype
     {
+        /**
+         * @class ShootingSystem
+         * @brief Manages shooting behavior for monsters.
+         */
         class ShootingSystem
         {
         public:
+
+            /**
+             * @brief Determines which monsters should shoot and returns shooting details.
+             * @param components_array A map containing all component arrays.
+             * @param randomizer Random number generator for determining shooting intervals.
+             * @return A list of shooting entities and their details.
+             */
             std::list<std::tuple<size_t, std::pair<float, float>, SPRITES>> monster_shooting(std::unordered_map<std::type_index, std::any> &components_array, RandomNumber randomizer)
             {
                 auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(components_array[typeid(Monster)]);

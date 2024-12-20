@@ -5,6 +5,11 @@
 ** HealthSystem
 */
 
+/**
+ * @file HealthSystem.hpp
+ * @brief Handles health management and entity removal upon health depletion.
+ */
+
 #ifndef HEALTHSYSTEM_HPP_
     #define HEALTHSYSTEM_HPP_
 
@@ -18,11 +23,28 @@
 
     namespace rtype
     {
+        /**
+        * @class HealthSystem
+        * @brief Manages entity health and removes entities with zero or negative health.
+        */
         class HealthSystem {
             public:
+
+                /**
+                 * @brief Constructor for HealthSystem.
+                 */
                 HealthSystem() {}
+
+                /**
+                 * @brief Destructor for HealthSystem.
+                 */
                 ~HealthSystem() {}
 
+                /**
+                 * @brief Checks the health of entities and removes those with zero or less health.
+                 * @param ecs The ECS manager.
+                 * @return A list of entities that have been removed.
+                 */
                 std::list<size_t> checkAndKillEntities(ecs::ECS &ecs)
                     {
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);

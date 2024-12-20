@@ -5,6 +5,11 @@
 ** EventBus
 */
 
+/**
+ * @file EventBus.hpp
+ * @brief Implements an event bus system for handling game events and actions.
+ */
+
 #ifndef EVENTBUS_HPP_
     #define EVENTBUS_HPP_
 
@@ -12,14 +17,29 @@
 
     namespace rtype
     {
+        /**
+         * @class EventBus
+         * @brief A system for subscribing and emitting events in the game.
+         */
         class EventBus
         {
         public:
+            /**
+             * @brief Subscribes a listener to a specific event type.
+             * @param type The type of the event.
+             * @param listener The function to call when the event is emitted.
+             */
             void subscribe(RTYPE_ACTIONS type, std::function<void(const std::vector<std::any> &)> listener)
             {
                 subscribers[type].push_back(listener);
             }
 
+            /**
+             * @brief Emits an event of a specific type, passing arguments to the listeners.
+             * @tparam Args Variadic template for arguments to pass to the listeners.
+             * @param type The type of the event.
+             * @param args Arguments to pass to the listeners.
+             */
             template <typename... Args>
             void emit(RTYPE_ACTIONS type, Args &&...args)
             {

@@ -5,6 +5,11 @@
 ** HitboxFactory
 */
 
+/**
+ * @file HitboxFactory.hpp
+ * @brief Provides a factory for creating hitboxes for different sprites.
+ */
+
 #ifndef HitboxFactory_HPP_
 #define HitboxFactory_HPP_
 
@@ -19,9 +24,19 @@
 #include <string>
 namespace rtype
 {
+    /**
+     * @class HitboxFactory
+     * @brief Factory class for generating hitboxes for entities based on sprite IDs.
+     */
     class HitboxFactory
     {
     public:
+        /**
+         * @brief Creates a hitbox for a given sprite ID.
+         * @param id The sprite ID.
+         * @return A pair representing the width and height of the hitbox.
+         * @throws std::invalid_argument If the sprite ID is invalid.
+         */
         static std::pair<int, int> createHitbox(SPRITES id)
         {
             switch (id) {

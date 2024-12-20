@@ -5,6 +5,11 @@
 ** BoundariesSystem
 */
 
+/**
+ * @file BoundariesSystem.hpp
+ * @brief Handles entity boundary checks and removal when out of bounds.
+ */
+
 #ifndef BOUNDARIESSYSTEM_HPP_
     #define BOUNDARIESSYSTEM_HPP_
 
@@ -18,11 +23,29 @@
 
     namespace rtype
     {
+        /**
+         * @class BoundariesSystem
+         * @brief Manages entity lifecycle based on boundary constraints.
+         */
         class BoundariesSystem {
             public:
+                /**
+                 * @brief Constructor for BoundariesSystem.
+                 */
                 BoundariesSystem() {}
+
+                /**
+                 * @brief Destructor for BoundariesSystem.
+                 */
                 ~BoundariesSystem() {}
 
+                /**
+                 * @brief Checks entities' positions and removes them if they are out of bounds.
+                 * @param ecs The ECS manager.
+                 * @param windowWidth Width of the game window.
+                 * @param windowHeight Height of the game window.
+                 * @return A list of entities that have been removed.
+                 */
                 std::list<size_t> checkAndKillEntities(ecs::ECS &ecs, float windowWidth, float windowHeight)
                     {
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);

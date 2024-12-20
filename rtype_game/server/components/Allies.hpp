@@ -5,6 +5,13 @@
 ** Allies
 */
 
+/**
+ * @file Allies.hpp
+ * @brief Class representing allies in the game.
+ *
+ * This class is used to define and manage ally entities in the game.
+ */
+
 #ifndef ALLIES_HPP_
     #define ALLIES_HPP_
 
@@ -12,7 +19,14 @@
     {
         class Allies {
             public:
+                /**
+                 * @brief Constructor for the Allies class.
+                 */
                 Allies() {}
+
+                /**
+                 * @brief Destructor for the Allies class.
+                 */
                 ~Allies() {}
 
             protected:

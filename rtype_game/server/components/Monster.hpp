@@ -5,6 +5,13 @@
 ** Monster
 */
 
+/**
+ * @file Monster.hpp
+ * @brief Class representing a monster entity.
+ *
+ * The Monster class includes functionality for managing the monster's attributes and behavior.
+ */
+
 #ifndef MONSTER_HPP_
     #define MONSTER_HPP_
 
@@ -13,32 +20,59 @@
 
         class Monster {
         public:
-            Monster() : _intValue(5)
 
+            /**
+             * @brief Constructor for the Monster class.
+             *
+             * Initializes the timer and default integer value.
+             */
+            Monster() : _intValue(5)
             {
                 startTime = std::chrono::high_resolution_clock::now();
             }
 
+            /**
+             * @brief Destructor for the Monster class.
+             */
             ~Monster() {}
 
+            /**
+             * @brief Sets the timer duration for the monster.
+             * @param seconds The duration in seconds.
+             */
             void setTimer(int seconds) {
                 _intValue = seconds;
             }
 
+            /**
+             * @brief Gets the current integer value.
+             * @return The integer value.
+             */
             int getIntValue() const {
                 return _intValue;
             }
 
+            /**
+             * @brief Sets a new integer value.
+             * @param value The new value to set.
+             */
             void setIntValue(int value) {
                 _intValue = value;
             }
 
+            /**
+             * @brief Gets the elapsed time since the timer started.
+             * @return The elapsed time in seconds.
+             */
             double getElapsedTime() const {
                 auto currentTime = std::chrono::high_resolution_clock::now();
                 std::chrono::duration<double> elapsed = currentTime - startTime;
                 return elapsed.count();
             }
 
+            /**
+             * @brief Resets the timer to the current time.
+             */
             void resetTimer() {
                 startTime = std::chrono::high_resolution_clock::now();
             }

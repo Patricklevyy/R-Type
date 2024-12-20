@@ -5,6 +5,11 @@
 ** MonsterMovementSystem
 */
 
+/**
+ * @file MonsterMovementSystem.hpp
+ * @brief Handles the movement of monster entities.
+ */
+
 #ifndef MONSTERMOVEMENTSYSTEM_HPP_
 #define MONSTERMOVEMENTSYSTEM_HPP_
 #include "../../../ecs/ECS.hpp"
@@ -20,9 +25,21 @@
 
 namespace rtype
 {
+    /**
+     * @class MonsterMovementSystem
+     * @brief Manages the movement logic for monster entities.
+     */
     class MonsterMovementSystem
     {
     public:
+
+        /**
+         * @brief Updates monster positions based on their velocity and direction.
+         * @param ecs The ECS manager.
+         * @param window_width Width of the game window.
+         * @param window_height Height of the game window.
+         * @param randomizer Random number generator for direction changes.
+         */
         void moveMonsters(ecs::ECS &ecs, int window_width, int window_height, RandomNumber randomizer)
         {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);
