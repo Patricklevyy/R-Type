@@ -31,6 +31,9 @@ namespace rtype
             case SPRITES::SIMPLE_MONSTER: {
                 return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::SIMPLE_MONSTER);
             }
+            case SPRITES::ADVANCED_MONSTER: {
+                return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::ADVANCED_MONSTER);
+            }
             case SPRITES::OTHER_PLAYER_SHIP: {
                 return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::OTHER_PLAYER_SHIP);
             }
@@ -40,8 +43,11 @@ namespace rtype
             case SPRITES::MONSTER_SIMPLE_MISSILE: {
                 return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MONSTER_SIMPLE_MISSILE);
             }
+            case SPRITES::MONSTER_MULTIPLE_MISSILE: {
+                return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MONSTER_MULTIPLE_MISSILE);
+            }
             default: {
-                throw std::invalid_argument("Invalid sprite ID.");
+                throw std::invalid_argument("Invalid sprite ID in hit box.");
             }
             }
         }

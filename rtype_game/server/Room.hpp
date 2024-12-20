@@ -24,6 +24,7 @@
     #include "../shared/Utils.hpp"
     #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
+    #include "MonsterFactory.hpp"
 
     // COMPONENTS
 
@@ -34,6 +35,7 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
 
@@ -46,6 +48,9 @@
     #include "system/ShootingSystem.hpp"
     #include "system/HealthSystem.hpp"
     #include "RandomNumber.hpp"
+    #include "system/LevelSystem.hpp"
+    #include "system/ScoreSystem.hpp"
+    #include "../shared/system/KillSystem.hpp"
 
     namespace rtype
     {
@@ -105,6 +110,9 @@
             CollisionSystem _collision_system;
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
+            LevelSystem _level_system;
+            ScoreSystem _score_system;
+            KillSystem _kill_system;
 
             void send_client_dead_entities(std::list<size_t>);
             bool initializeSocket();
@@ -118,8 +126,11 @@
             void createAlliesProjectile(ecs::udp::Message&);
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
             void createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite);
-            void createMonster();
+            void createMonster(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
+            size_t getNextIndex();
+            void startLevel(LEVELS);
+            void send_client_level_status(bool);
         };
     }
 

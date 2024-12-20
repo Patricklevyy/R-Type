@@ -17,6 +17,7 @@
     #include "../components/Displayable.hpp"
     #include "./SetFilter.hpp"
     #include "../../../ecs/components/Position.hpp"
+    #include "../../../ecs/components/Velocity.hpp"
 
     namespace rtype
     {

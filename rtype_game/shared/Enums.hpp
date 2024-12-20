@@ -45,11 +45,15 @@
             CHECK_COLLISIONS,
             KILL_ENTITY,
             CHECK_LIFES,
-            EXIT, // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
             GET_ALL_ROOMS,
+            CHECK_LEVEL_FINISHED,
             RENDER_WINDOW,
-            START_GAME,
+            START_LEVEL,
             MOVE_BACKGROUND,
+            EXECUTE_LEVEL,
+            CREATE_PLAYER,
+            FAIL_LEVEL,
+            WIN_LEVEL,
             MAX_ACTION
         };
 
@@ -59,9 +63,21 @@
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
             SIMPLE_MONSTER,
+            ADVANCED_MONSTER,
             PLAYER_SIMPLE_MISSILE,
             MONSTER_SIMPLE_MISSILE,
-            OTHER_PLAYER_SHIP
+            OTHER_PLAYER_SHIP,
+            LOOSER_SCREEN,
+            WIN_SCREEN,
+            MONSTER_MULTIPLE_MISSILE,
+            LEVEL1,
+            LEVEL2
+        };
+
+        enum LEVELS
+        {
+            UN,
+            DEUX
         };
 
         enum FILTER_MODE {

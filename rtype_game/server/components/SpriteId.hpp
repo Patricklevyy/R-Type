@@ -5,8 +5,8 @@
 ** Sprite
 */
 
-#ifndef SPRITE_HPP_
-    #define SPRITE_HPP_
+#ifndef SPRITEID_HPP_
+    #define SPRITEID_HPP_
 
     namespace rtype
     {
@@ -21,4 +21,4 @@
         };
     }
 
-#endif /* !SPRITE_HPP_ */
+#endif /* !SPRITEID_HPP_ */

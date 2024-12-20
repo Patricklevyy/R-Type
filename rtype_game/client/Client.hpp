@@ -29,6 +29,10 @@
     #include "system/UpdateEntitySystem.hpp"
     #include "components/Displayable.hpp"
     #include "../shared/MessageChecker.hpp"
+    #include "../shared/components/Levels.hpp"
+    #include "system/ATH.hpp"
+    #include "components/TempDisplay.hpp"
+    #include "../shared/system/KillSystem.hpp"
     namespace rtype
     {
         class Client
@@ -68,6 +72,9 @@
                 RenderWindow _render_window_system;
                 SetFilter _set_filter_system;
                 UpdateEntitySystem _update_entity_system;
+                ATH _ath_system;
+                KillSystem _kill_system;
+
 
                 void killEntity(std::list<size_t>);
 
@@ -77,14 +84,17 @@
                 void createEntity(unsigned int, float, float, SPRITES);
                 void createProjectile(ecs::udp::Message&);
                 void updateEntitiesFirstConnexion(const std::string &);
-
+                size_t getNextIndex();
+                void add_level_status_screen(bool);
                 void createMonster(ecs::udp::Message&);
+                void restart_game();
+                void send_server_new_player();
 
                 // MESSAGE TO SERVER
 
                 void send_server_new_shoot();
                 void send_server_player_direction(ecs::direction, ecs::direction);
-                void send_server_start_game();
+                void send_server_start_game(LEVELS);
 
                 // INITIALISATION
 
@@ -93,6 +103,7 @@
                 void init_window_and_background();
                 void init_ecs_client_registry();
                 void init_subscribe_event_bus();
+                void init_levels_sprites();
         };
     }
 #endif /* !CLIENT_HPP_ */

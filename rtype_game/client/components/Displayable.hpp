@@ -27,7 +27,7 @@ namespace rtype {
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
         }
 
-         void update(float deltaTime) {
+        void update(float deltaTime) {
             elapsedTime += deltaTime;
             if (elapsedTime >= animationSpeed) {
                 elapsedTime = 0.0f;
@@ -60,6 +60,18 @@ namespace rtype {
             sprite = std::make_shared<sf::Sprite>();
             sprite->setTexture(*textures[currentFrame]);
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
+        }
+
+        sf::Vector2f getSpriteSize() const {
+            if (sprite && sprite->getTexture()) {
+                auto textureSize = sprite->getTexture()->getSize();
+                auto scale = sprite->getScale();
+                return sf::Vector2f(
+                    textureSize.x * scale.x,
+                    textureSize.y * scale.y
+                );
+            }
+            return sf::Vector2f(0, 0); // Retourne une taille nulle si la texture est absente
         }
 
     private:

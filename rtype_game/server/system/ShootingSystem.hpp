@@ -12,6 +12,7 @@
     #include "../RandomNumber.hpp"
     #include "../../../ecs/SparseArray.hpp"
     #include <list>
+    #include "../../shared/Enums.hpp"
 
     namespace rtype
     {
@@ -27,14 +28,37 @@
                 for (size_t i = 0; i < monsters.size(); ++i) {
                     if (monsters[i].has_value() && positions[i].has_value()) {
                         std::cout << "HAS VALUE " << std::endl;
-                        if (monsters[i].value().getElapsedTime() > monsters[i].value()._intValue) {
-                            shooting_entities.push_back(std::tuple<size_t, std::pair<float, float>, SPRITES>(
-                                i,
-                                {positions[i].value()._pos_x, positions[i].value()._pos_y},
-                                SPRITES::MONSTER_SIMPLE_MISSILE
-                            ));
-                            monsters[i].value()._intValue = randomizer.generateRandomNumbers(2, 5);
-                            monsters[i].value().resetTimer();
+                        switch (monsters[i].value()._monster)
+                        {
+                        case SPRITES::SIMPLE_MONSTER:
+                            if (monsters[i].value().getElapsedTime() > monsters[i].value()._intValue) {
+                                shooting_entities.push_back(std::tuple<size_t, std::pair<float, float>, SPRITES>(
+                                    i,
+                                    {positions[i].value()._pos_x, positions[i].value()._pos_y},
+                                    SPRITES::MONSTER_SIMPLE_MISSILE
+                                ));
+                                monsters[i].value()._intValue = randomizer.generateRandomNumbers(2, 5);
+                                monsters[i].value().resetTimer();
+                            }
+                            break;
+                        case SPRITES::ADVANCED_MONSTER:
+                            if (monsters[i].value().getElapsedTime() > monsters[i].value()._intValue) {
+                                shooting_entities.push_back(std::tuple<size_t, std::pair<float, float>, SPRITES>(
+                                    i,
+                                    {positions[i].value()._pos_x, positions[i].value()._pos_y + 40},
+                                    SPRITES::MONSTER_MULTIPLE_MISSILE
+                                ));
+                                shooting_entities.push_back(std::tuple<size_t, std::pair<float, float>, SPRITES>(
+                                    i,
+                                    {positions[i].value()._pos_x, positions[i].value()._pos_y - 40},
+                                    SPRITES::MONSTER_MULTIPLE_MISSILE
+                                ));
+                                monsters[i].value()._intValue = randomizer.generateRandomNumbers(2, 5);
+                                monsters[i].value().resetTimer();
+                            }
+                            break;
+                        default:
+                            break;
                         }
                     }
                 }

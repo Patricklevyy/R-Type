@@ -31,12 +31,6 @@ namespace rtype
         _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
             joinRoom(id, params, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::EXIT] = [this](const unsigned int id, std::string &params, std::string &clientAddr) { // FOR DEVELOPMENT ONLY, REMOVE BEFORE DELIVERY
-            (void)id;
-            (void)params;
-            (void)clientAddr;
-            _running = false;
-        };
         _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
             (void)id;
             (void)params;
