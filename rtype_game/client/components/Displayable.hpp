@@ -101,6 +101,18 @@ namespace rtype {
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
         }
 
+        sf::Vector2f getSpriteSize() const {
+            if (sprite && sprite->getTexture()) {
+                auto textureSize = sprite->getTexture()->getSize();
+                auto scale = sprite->getScale();
+                return sf::Vector2f(
+                    textureSize.x * scale.x,
+                    textureSize.y * scale.y
+                );
+            }
+            return sf::Vector2f(0, 0); // Retourne une taille nulle si la texture est absente
+        }
+
     private:
         std::shared_ptr<sf::Sprite> sprite;
         std::vector<std::shared_ptr<sf::Texture>> textures;

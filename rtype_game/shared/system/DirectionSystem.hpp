@@ -34,7 +34,7 @@
             {
                 auto &direction = std::any_cast<ecs::SparseArray<ecs::Direction> &>(components_array[typeid(ecs::Direction)]);
 
-                if (direction[index_player].has_value()) {
+                if (index_player < direction.size() && direction[index_player].has_value()) {
                     if (ecs::direction::NO_CHANGE != x)
                         direction[index_player].value()._x = x;
                     if (ecs::direction::NO_CHANGE != y)

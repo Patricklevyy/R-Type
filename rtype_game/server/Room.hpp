@@ -29,6 +29,7 @@
     #include "../shared/Utils.hpp"
     #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
+    #include "MonsterFactory.hpp"
 
     // COMPONENTS
 
@@ -39,6 +40,7 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
 
@@ -51,6 +53,9 @@
     #include "system/ShootingSystem.hpp"
     #include "system/HealthSystem.hpp"
     #include "RandomNumber.hpp"
+    #include "system/LevelSystem.hpp"
+    #include "system/ScoreSystem.hpp"
+    #include "../shared/system/KillSystem.hpp"
 
     namespace rtype
     {
@@ -168,6 +173,9 @@
             CollisionSystem _collision_system;
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
+            LevelSystem _level_system;
+            ScoreSystem _score_system;
+            KillSystem _kill_system;
 
             /**
              * @brief Sends information about dead entities to clients.
@@ -246,20 +254,11 @@
              * @param data The position, hitbox, and sprite data for the projectile.
              */
             void createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite);
-
-            /**
-             * @brief Creates a new monster entity in the room.
-             */
-            void createMonster();
-
-            /**
-             * @brief Sends information about a new monster to a client.
-             * @param monsterId The ECS ID of the monster.
-             * @param x The x position of the monster.
-             * @param y The y position of the monster.
-             * @param type The type of the monster.
-             */
+            void createMonster(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
+            size_t getNextIndex();
+            void startLevel(LEVELS);
+            void send_client_level_status(bool);
         };
     }
 

@@ -36,6 +36,10 @@
     #include "system/UpdateEntitySystem.hpp"
     #include "components/Displayable.hpp"
     #include "../shared/MessageChecker.hpp"
+    #include "../shared/components/Levels.hpp"
+    #include "system/ATH.hpp"
+    #include "components/TempDisplay.hpp"
+    #include "../shared/system/KillSystem.hpp"
     namespace rtype
     {
         class Client
@@ -92,6 +96,9 @@
                 RenderWindow _render_window_system;
                 SetFilter _set_filter_system;
                 UpdateEntitySystem _update_entity_system;
+                ATH _ath_system;
+                KillSystem _kill_system;
+
 
                 /**
                  * @brief Kills the entities specified by the given list of entity indices.
@@ -139,12 +146,11 @@
                  * @param message The message containing the update data.
                  */
                 void updateEntitiesFirstConnexion(const std::string &);
-
-                /**
-                 * @brief Creates a monster entity.
-                 * @param message The message from the server containing the monster data.
-                 */
+                size_t getNextIndex();
+                void add_level_status_screen(bool);
                 void createMonster(ecs::udp::Message&);
+                void restart_game();
+                void send_server_new_player();
 
                 // MESSAGE TO SERVER
 
@@ -159,11 +165,7 @@
                  * @param lastDirection The player's previous direction.
                 */
                 void send_server_player_direction(ecs::direction, ecs::direction);
-
-                /**
-                 * @brief Sends a message to the server to start the game.
-                 */
-                void send_server_start_game();
+                void send_server_start_game(LEVELS);
 
                 // INITIALISATION
 
@@ -192,6 +194,7 @@
                  * @brief Initializes the event bus subscription.
                  */
                 void init_subscribe_event_bus();
+                void init_levels_sprites();
         };
     }
 #endif /* !CLIENT_HPP_ */

@@ -27,6 +27,8 @@ namespace rtype
         _ecs.addRegistry<Displayable>();
         _ecs.addRegistry<Health>();
         _ecs.addRegistry<Shader>();
+        _ecs.addRegistry<Levels>();
+        _ecs.addRegistry<TempDisplay>();
     }
 
     void Client::init_subscribe_event_bus()
@@ -47,6 +49,23 @@ namespace rtype
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
             init_game(message);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
+            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+            std::stringstream ss(message.params);
+            std::string token;
+
+            float x = 0.0f, y = 0.0f;
+            int port = 0;
+
+            std::getline(ss, token, ';');
+            x = std::stof(token);
+
+            std::getline(ss, token, ';');
+            y = std::stof(token);
+
+            createPlayer(message.id, x, y);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, [this](const std::vector<std::any> &args) {
             try {
@@ -127,11 +146,24 @@ namespace rtype
             try {
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                size_t separator_pos = message.params.find(';');
-                float x = std::stof(message.params.substr(0, separator_pos).substr(2));
-                float y = std::stof(message.params.substr(separator_pos + 1).substr(2));
+                size_t x_pos = message.params.find("x=");
+                size_t y_pos = message.params.find("y=");
+                size_t type_pos = message.params.find("type=");
 
-                createEntity(message.id, x, y, SPRITES::SIMPLE_MONSTER);
+                if (x_pos == std::string::npos || y_pos == std::string::npos || type_pos == std::string::npos) {
+                    throw std::runtime_error("Malformed params string");
+                }
+
+                // Extraction des valeurs
+                float x = std::stof(message.params.substr(x_pos + 2, message.params.find(';', x_pos) - (x_pos + 2)));
+                float y = std::stof(message.params.substr(y_pos + 2, message.params.find(';', y_pos) - (y_pos + 2)));
+                int typeInt = std::stoi(message.params.substr(type_pos + 5));
+
+                // Cast explicite de `typeInt` en SPRITES
+                SPRITES spriteType = static_cast<SPRITES>(typeInt);
+
+                // Création de l'entité
+                createEntity(message.id, x, y, spriteType);
             } catch (const std::exception &e) {
                 std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
             }
@@ -144,6 +176,57 @@ namespace rtype
                 std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
             }
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            add_level_status_screen(false);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::WIN_LEVEL, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            add_level_status_screen(true);
+        });
+    }
+
+    void Client::add_level_status_screen(bool win)
+    {
+        size_t index = getNextIndex();
+
+        SPRITES screen;
+        if (win) {
+            screen = SPRITES::WIN_SCREEN;
+        } else {
+            screen = SPRITES::LOOSER_SCREEN;
+        }
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<TempDisplay>(index, TempDisplay());
+        _ecs.addComponents<Displayable>(index, Displayable(screen));
+    }
+
+    size_t Client::getNextIndex()
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = _index_ecs_client;
+            _index_ecs_client++;
+        }
+        return index;
+    }
+
+    void Client::init_levels_sprites()
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 2) - 300, _window_height - 400));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL1));
+        _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
+        index = getNextIndex();
+        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 2) + 100 , _window_height - 400));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL2));
+        _ecs.addComponents<Levels>(index, Levels(LEVELS::DEUX));
     }
 
     void Client::init_game(ecs::udp::Message &message)
@@ -157,6 +240,7 @@ namespace rtype
         std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
+        init_levels_sprites();
         setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
@@ -178,7 +262,9 @@ namespace rtype
 
                 _ecs.killEntityFromRegistry<ecs::Position>(index_ecs_client);
                 _ecs.killEntityFromRegistry<Health>(index_ecs_client);
+                _ecs.killEntityFromRegistry<Sprite>(index_ecs_client);
                 _ecs.killEntityFromRegistry<Displayable>(index_ecs_client);
+                _ecs.killEntityFromRegistry<ecs::Playable>(index_ecs_client);
                 _ecs.addDeadEntity(index_ecs_client);
             }
         }
@@ -198,14 +284,7 @@ namespace rtype
 
     void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = _index_ecs_client;
-            _index_ecs_client++;
-        }
+        size_t index = getNextIndex();
         std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id);
@@ -263,15 +342,7 @@ namespace rtype
 
     void Client::createMonster(ecs::udp::Message &message)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = _index_ecs_client;
-            _index_ecs_client++;
-        }
+        size_t index = getNextIndex();
         std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
         if (res.find("x") == res.end() || res.find("y") == res.end()) {
             std::cerr << "Error: Missing x or y in message parameters" << std::endl;
@@ -298,14 +369,8 @@ namespace rtype
 
     void Client::createPlayer(unsigned int server_id, float x, float y)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = _index_ecs_client;
-            _index_ecs_client++;
-        }
+        std::cout << "NEW PLAYER \n\n\n\n\n\n\n" << std::endl;
+        size_t index = getNextIndex();
 
         ecs::Direction direction;
         ecs::Playable playable(_name);
@@ -368,10 +433,6 @@ namespace rtype
 
             case sf::Event::KeyPressed:
                 std::cout << "KEYH PRESSED" << std::endl;
-                if (event.key.code == sf::Keyboard::W && !_in_menu) {
-                    std::cout << "CREATE MONSTER" << std::endl;
-                    send_server_start_game();
-                }
                 if (event.key.code == sf::Keyboard::Escape) {
                     _running = false;
                     return;
@@ -475,8 +536,17 @@ namespace rtype
                 }
                 break;
             case sf::Event::MouseButtonPressed:
-                if (event.mouseButton.button == sf::Mouse::Left && !_in_menu) {
-                    send_server_new_shoot();
+                {
+                    std::pair<bool, LEVELS> isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
+                    // Si un niveau est sélectionné, effectuer une action
+                    if (isLevelChosen.first) {
+                        send_server_start_game(isLevelChosen.second);
+                        _ath_system.removeLevels(_ecs);
+                    } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
+                        restart_game();
+                    } else if (_ecs.getIndexPlayer() != -1) {
+                        send_server_new_shoot();
+                    }
                 }
                 break;
             default:
@@ -486,12 +556,37 @@ namespace rtype
         }
     }
 
-    void Client::send_server_start_game()
+    void Client::restart_game()
+    {
+        _kill_system.killTempDisplay(_ecs);
+        init_levels_sprites();
+        if (_ecs.getIndexPlayer() == -1)
+            send_server_new_player();
+    }
+
+    void Client::send_server_new_player()
     {
         std::vector<char> buffer;
         ecs::udp::Message mess;
         mess.id = 0;
-        mess.action = RTYPE_ACTIONS::START_GAME;
+        mess.action = RTYPE_ACTIONS::CREATE_PLAYER;
+        mess.secret_key = _udpClient->getSecretKey();
+        _message_compressor.serialize(mess, buffer);
+
+        std::cout << "je send" << std::endl;
+        if (_udpClient->sendMessageToDefault(buffer)) {
+            std::cout << "Message sent: " << std::endl;
+        } else {
+            std::cout << "failed " << std::endl;
+        }
+    }
+
+    void Client::send_server_start_game(LEVELS level)
+    {
+        std::vector<char> buffer;
+        ecs::udp::Message mess;
+        mess.id = level;
+        mess.action = RTYPE_ACTIONS::START_LEVEL;
         mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
@@ -564,7 +659,6 @@ namespace rtype
             _timer->waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
             handle_event();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
                 try {
@@ -574,6 +668,7 @@ namespace rtype
                               << e.what() << std::endl;
                 }
             }
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }

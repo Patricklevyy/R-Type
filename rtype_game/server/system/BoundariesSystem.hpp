@@ -20,6 +20,7 @@
     #include "../../../ecs/components/Direction.hpp"
     #include "../../shared/components/Health.hpp"
     #include "../components/Projectiles.hpp"
+    #include "../components/Monster.hpp"
 
     namespace rtype
     {
@@ -68,6 +69,7 @@
                                     ecs.killEntityFromRegistry<Hitbox>(i);
                                     ecs.killEntityFromRegistry<Allies>(i);
                                     ecs.killEntityFromRegistry<Ennemies>(i);
+                                    ecs.killEntityFromRegistry<Monster>(i);
                                     ecs.addDeadEntity(i);
                                     dead_entities.push_front(i);
                                 }

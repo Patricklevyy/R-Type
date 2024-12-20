@@ -112,12 +112,12 @@
             */
             void updatePlayerPositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int indexPlayer, int window_width, int window_height)
             {
-                if (indexPlayer == -1)
-                    return;
                 auto &positions = std::any_cast<SparseArray<Position> &>(components_array[typeid(Position)]);
                 auto &velocities = std::any_cast<SparseArray<Velocity> &>(components_array[typeid(Velocity)]);
                 auto &directions = std::any_cast<SparseArray<Direction> &>(components_array[typeid(Direction)]);
 
+                if (indexPlayer == -1 || !directions[indexPlayer].has_value() || !velocities[indexPlayer].has_value() || !positions[indexPlayer].has_value())
+                    return;
                 std::cout << "PLAYER POS " << positions[indexPlayer].value()._pos_x << " , " << positions[indexPlayer].value()._pos_y << std::endl;
                 switch (directions[indexPlayer].value()._x) {
                     case direction::LEFT:

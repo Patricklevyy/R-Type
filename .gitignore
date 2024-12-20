@@ -7,3 +7,4 @@ ecs_type.md
 rtype_game/config/udp_config.conf
 tests
 vcpkg*
+r-type_tests

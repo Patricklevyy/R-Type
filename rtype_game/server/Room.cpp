@@ -134,14 +134,27 @@ namespace rtype
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
-            std::list<size_t> dead_entites_id = _health_system.checkAndKillEntities(_ecs);
-                if (!dead_entites_id.empty())
-                    send_client_dead_entities(dead_entites_id);
-        });
-        _eventBus.subscribe(RTYPE_ACTIONS::START_GAME, [this](const std::vector<std::any> &args) {
-            (void)args;
+            std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkAndKillEntities(_ecs, _nb_client);
 
-            createMonster();
+            _score_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
+            std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
+            if (!dead_entites_id.empty())
+                send_client_dead_entities(dead_entites_id);
+            if (std::get<2>(dead_entities)) {
+                _nb_client--;
+                dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
+                send_client_dead_entities(dead_entites_id);
+                send_client_level_status(false);
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::START_LEVEL, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                startLevel(static_cast<LEVELS>(message.id));
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: dans" << e.what() << std::endl;
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::ENEMY_SHOOT, [this](const std::vector<std::any> &args) {
             (void)args;
@@ -149,13 +162,7 @@ namespace rtype
             std::list<std::tuple<size_t, std::pair<float, float>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
             size_t index;
             while (!monsters_pos.empty()) {
-                std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-                if (dead_entity.first) {
-                    index = dead_entity.second;
-                } else {
-                    index = index_ecs;
-                    index_ecs++;
-                }
+                index = getNextIndex();
                 std::tuple<size_t, std::pair<float, float>, SPRITES> monster = monsters_pos.front();
                 monsters_pos.pop_front();
 
@@ -167,8 +174,89 @@ namespace rtype
                 createEnemiesProjectiles(index, pos_dir_sprite);
             }
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::EXECUTE_LEVEL, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::list<SPRITES> monsters = _level_system.executeLevel(_ecs, _random_number);
+
+            SPRITES monster;
+            while (!monsters.empty()) {
+                monster = monsters.front();
+                createMonster(monster);
+                monsters.pop_front();
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            if (_score_system.isLevelFinished(_ecs._components_arrays)) {
+                std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
+                if (!dead_entites_id.empty())
+                    send_client_dead_entities(dead_entites_id);
+                send_client_level_status(true);
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::pair<float, float> position = get_player_start_position(getNbClient());
+
+            std::vector<char> send_message;
+            ecs::udp::Message mes;
+            mes.action = RTYPE_ACTIONS::CREATE_PLAYER;
+            mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second));
+
+            std::cout << "CREATE PLAYER \n\n\n\n : " << mes.params << std::endl;
+            mes.id = create_player(position, "new_player");
+            _message_compressor.serialize(mes, send_message);
+            for (const auto &clientAddr : _clientAddresses) {
+                _udp_server->sendMessage(send_message, clientAddr);
+            }
+            _nb_client++;
+            index_ecs++;
+        });
     }
 
+    void Room::send_client_level_status(bool win)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        if (win) {
+            responseMessage.action = RTYPE_ACTIONS::WIN_LEVEL;
+        } else {
+            responseMessage.action = RTYPE_ACTIONS::FAIL_LEVEL;
+        }
+        responseMessage.id = 0;
+
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    size_t Room::getNextIndex()
+    {
+        size_t index;
+        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
+        if (dead_entity.first) {
+            index = dead_entity.second;
+        } else {
+            index = index_ecs;
+            index_ecs++;
+        }
+        return index;
+    }
+
+    void Room::startLevel(LEVELS level)
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<Levels>(index, Levels(level));
+    }
+
+    //REFACTO EN UNE AVEC CELLE DU DESSOUS
     void Room::createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
     {
         ecs::Direction direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second));
@@ -268,35 +356,20 @@ namespace rtype
         }
     }
 
-    void Room::createMonster()
+    void Room::createMonster(SPRITES sprites)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = index_ecs;
-            index_ecs++;
-        }
-        int x = _window_width + 30;
-        int y = _random_number.generateRandomNumbers(20, _window_height - 100);
-        ecs::Position position(x, y);
-        ecs::Velocity velocity(80);
-        Health health(60);
-        Monster monster;
-        ecs::Direction direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
-        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::SIMPLE_MONSTER));
-        Ennemies ennemies;
+        size_t index = getNextIndex();
+        std::pair<int, int> positions = MonsterFactory::getMonsterSpawnCoordinates(_window_width, _window_height, _random_number);
 
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Monster>(index, monster);
-        _ecs.addComponents<Hitbox>(index, hitbox);
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<Ennemies>(index, ennemies);
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(positions.first, positions.second));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(MonsterFactory::getMonsterVelocity(sprites)));
+        _ecs.addComponents<Health>(index, Health(MonsterFactory::getMonsterLife(sprites)));
+        _ecs.addComponents<Monster>(index, Monster(sprites));
+        _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprites)));
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
+        _ecs.addComponents<Ennemies>(index, Ennemies());
 
-        send_client_new_monster(index, x, y, SPRITES::SIMPLE_MONSTER);
+        send_client_new_monster(index, positions.first, positions.second, sprites);
     }
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
@@ -304,7 +377,7 @@ namespace rtype
         (void)clientAddr; // POUR L'INSTANT ON NE L'UTILISE PAS, PEUT ETRE PLUS TARD POUR LES ROLLBACK ETC
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM :" << message.id << "action : " << message.action << ", " << message.params << std::endl;
+        std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
         _eventBus.emit(action, std::ref(message));
     }
@@ -318,6 +391,7 @@ namespace rtype
         _ecs.addRegistry<Hitbox>();
         _ecs.addRegistry<Ennemies>();
         _ecs.addRegistry<Allies>();
+        _ecs.addRegistry<Levels>();
     }
 
     void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
@@ -346,7 +420,7 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
             _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
-            _ecs.displayPlayableEntityComponents();
+            // _ecs.displayPlayableEntityComponents();
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages) {
@@ -355,6 +429,8 @@ namespace rtype
             }
             _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
+            _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
             sendUpdate();
         }
         _udp_server->stopReceiving();
@@ -419,14 +495,7 @@ namespace rtype
 
     size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
-        size_t index;
-        std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();
-        if (dead_entity.first) {
-            index = dead_entity.second;
-        } else {
-            index = index_ecs;
-            index_ecs++;
-        }
+        size_t index = getNextIndex();
 
         ecs::Direction direction;
         ecs::Playable playable(clientName);
@@ -445,6 +514,8 @@ namespace rtype
         _ecs.addComponents<SpriteId>(index, spriteId);
         _ecs.addComponents<Hitbox>(index, hitbox);
         _ecs.addComponents<Allies>(index, allies);
+
+        _nb_client++;
 
         return index;
     }
@@ -498,7 +569,6 @@ namespace rtype
             if (clientAddr != lastclientAdr)
                 _udp_server->sendMessage(send_message, clientAddr);
         }
-        setNbClient(getNbClient() + 1);
         index_ecs++;
     }
 

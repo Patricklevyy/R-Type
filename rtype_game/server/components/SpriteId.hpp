@@ -12,8 +12,8 @@
  * The SpriteId class is used to associate an entity with a specific sprite.
  */
 
-#ifndef SPRITE_HPP_
-    #define SPRITE_HPP_
+#ifndef SPRITEID_HPP_
+    #define SPRITEID_HPP_
 
     namespace rtype
     {
@@ -37,4 +37,4 @@
         };
     }
 
-#endif /* !SPRITE_HPP_ */
+#endif /* !SPRITEID_HPP_ */

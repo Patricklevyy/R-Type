@@ -20,13 +20,8 @@
 
         class Monster {
         public:
+            Monster(SPRITES type) : _intValue(5), _monster(type)
 
-            /**
-             * @brief Constructor for the Monster class.
-             *
-             * Initializes the timer and default integer value.
-             */
-            Monster() : _intValue(5)
             {
                 startTime = std::chrono::high_resolution_clock::now();
             }
@@ -78,6 +73,7 @@
             }
 
             int _intValue;
+            SPRITES _monster;
 
         protected:
         private:
