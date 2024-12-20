@@ -72,3 +72,41 @@ target_link_libraries(r-type_client PRIVATE sfml-system sfml-window sfml-graphic
 target_link_libraries(r-type_server PRIVATE sfml-system sfml-window sfml-graphics sfml-audio libconfig::config libconfig::config++)
 
 install(TARGETS r-type_client r-type_server RUNTIME DESTINATION ${CMAKE_SOURCE_DIR})
+
+# Activer CTest
+include(CTest)
+
+# Trouver les dépendances nécessaires
+find_package(GTest CONFIG REQUIRED)
+find_package(Catch2 CONFIG REQUIRED)
+
+# Définir les fichiers sources pour les tests
+file(GLOB_RECURSE TEST_SOURCES
+    "${CMAKE_SOURCE_DIR}/rtype_game/test_unitaire/*.cpp"
+    "${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp"
+    "${CMAKE_SOURCE_DIR}/ecs/*.cpp"
+)
+
+# Ajouter un exécutable pour les tests
+add_executable(r-type_tests ${TEST_SOURCES})
+
+# Lier les bibliothèques nécessaires
+target_link_libraries(r-type_tests PRIVATE
+    fmt::fmt
+    libconfig::config++
+    sfml-system
+    sfml-window
+    sfml-graphics
+    sfml-audio
+    GTest::gtest
+    GTest::gtest_main
+)
+
+# Activer les tests dans CTest
+add_test(NAME RTypeTests COMMAND r-type_tests)
+
+# Ajouter une commande personnalisée pour exécuter les tests
+add_custom_target(run_tests
+    COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+    DEPENDS r-type_tests
+)
