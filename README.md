@@ -17,3 +17,4 @@
 [UDP Manager documentation](documentation/Documentation%20Gestionnaire%20UDP%20pour%20le%20projet%20R-Type.pdf)
 [Documentation of our various classes and files used with docygen](https://patricklevyy.github.io/R-Type/)
 [Cmake Documentation](documentation/CMakeDocumentation.md)
+[Diagram des classes](documentation/diagram_class.pdf)
