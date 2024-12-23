@@ -1,4 +1,4 @@
-name: Push mirror
+name: Push Mirror
 
 on:
   push:
@@ -13,33 +13,27 @@ env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
 
 jobs:
-  build_and_verify:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Cache vcpkg
-        uses: actions/cache@v3
-        with:
-          path: ${{ runner.os }}-vcpkg
-          key: vcpkg-${{ runner.os }}-${{ hashFiles('**/vcpkg.json') }}
-          restore-keys: |
-            vcpkg-${{ runner.os }}-
-
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libx11-dev libxrandr-dev libudev-dev libgl1-mesa-dev
-          if [ ! -d "$VCPKG_ROOT" ]; then
-            git clone https://github.com/microsoft/vcpkg.git
-            ./vcpkg/bootstrap-vcpkg.sh
-          fi
-          $VCPKG_ROOT/vcpkg install --triplet x64-linux
+          sudo apt-get install -y cmake g++ make libconfig++-dev
 
-      - name: Build Project
+      - name: Setup vcpkg
         run: |
-          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
+          git clone https://github.com/microsoft/vcpkg.git
+          ./vcpkg/bootstrap-vcpkg.sh
+        env:
+          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+
+      - name: Build Project with vcpkg
+        run: |
+          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
           cmake --build build
 
       - name: Run Unit Tests
