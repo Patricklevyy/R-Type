@@ -1,4 +1,4 @@
-name: Push Mirror
+name: Push mirror
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
 
 jobs:
-  build_and_test:
+  build_and_verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -24,20 +24,13 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y cmake g++ make libconfig++-dev
 
-      - name: Setup vcpkg
+      - name: Build Project
         run: |
-          git clone https://github.com/microsoft/vcpkg.git
-          ./vcpkg/bootstrap-vcpkg.sh
-        env:
-          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
-
-      - name: Build Project with vcpkg
-        run: |
-          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -S . -B build
           cmake --build build
 
       - name: Run Unit Tests
-        run: ./build/r-type_tests 
+        run: ./build/r-type_tests
 
   generate_docs:
     runs-on: ubuntu-latest
