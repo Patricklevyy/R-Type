@@ -22,7 +22,15 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev
+          sudo apt-get install -y cmake g++ make libconfig++-dev libfmt-dev
+
+      - name: Build Project
+        run: |
+          cmake -S . -B build
+          cmake --build build
+
+      - name: Run Unit Tests
+        run: ./build/r-type_tests
 
   generate_docs:
     runs-on: ubuntu-latest
