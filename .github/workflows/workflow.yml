@@ -37,7 +37,7 @@ jobs:
           cmake --build build
 
       - name: Run Unit Tests
-        run: ./build/r-type_tests
+        run: ./build/r-type_tests 
 
   generate_docs:
     runs-on: ubuntu-latest
