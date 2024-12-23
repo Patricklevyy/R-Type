@@ -62,7 +62,7 @@ namespace rtype
         ecs::udp::Message mes;
         _compressor.deserialize(message, mes);
         if (!SecretKeyChecker::isMessageSafe(mes.secret_key, _udpManager->getSecretKey())) {
-            throw ERROR::MessageIsNotSafeException("Missiing secret key");
+            throw ERROR::MessageIsNotSafeException("Missing secret key");
         }
         _mes_checker.checkAction(mes);
         _mes_checker.checkFormatParams(mes.params);

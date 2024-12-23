@@ -42,21 +42,41 @@ namespace ecs
         {
             size_t offset = 0;
 
+            const size_t minSize = 2 + sizeof(uint32_t) + sizeof(uint32_t);
+            if (buffer.size() < minSize) {
+                throw std::runtime_error("Buffer too small to contain a valid message");
+            }
+
             unsigned short header = buffer[offset] | (buffer[offset + 1] << 8);
             msg.id = header & 0x3FF;
             msg.action = (header >> 10) & 0x3F;
             offset += 2;
 
             uint32_t paramsSize;
+            if (buffer.size() < offset + sizeof(paramsSize)) {
+                throw std::runtime_error("Buffer too small to contain params size");
+            }
             std::memcpy(&paramsSize, &buffer[offset], sizeof(paramsSize));
             offset += sizeof(paramsSize);
+
+            if (buffer.size() < offset + paramsSize) {
+                throw std::runtime_error("Buffer too small to contain params");
+            }
             msg.params = std::string(buffer.begin() + offset, buffer.begin() + offset + paramsSize);
             offset += paramsSize;
 
             uint32_t secretKeySize;
+            if (buffer.size() < offset + sizeof(secretKeySize)) {
+                throw std::runtime_error("Buffer too small to contain secret key size");
+            }
             std::memcpy(&secretKeySize, &buffer[offset], sizeof(secretKeySize));
             offset += sizeof(secretKeySize);
+
+            if (buffer.size() < offset + secretKeySize) {
+                throw std::runtime_error("Buffer too small to contain secret key");
+            }
             msg.secret_key = std::string(buffer.begin() + offset, buffer.begin() + offset + secretKeySize);
         }
+
     }
 }
