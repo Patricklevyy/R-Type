@@ -19,14 +19,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          path: ${{ runner.os }}-vcpkg
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('**/vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev libfmt-dev
+          sudo apt-get install -y cmake g++ make libx11-dev libxrandr-dev libudev-dev libgl1-mesa-dev
+          if [ ! -d "$VCPKG_ROOT" ]; then
+            git clone https://github.com/microsoft/vcpkg.git
+            ./vcpkg/bootstrap-vcpkg.sh
+          fi
+          $VCPKG_ROOT/vcpkg install --triplet x64-linux
 
       - name: Build Project
         run: |
-          cmake -S . -B build
+          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
           cmake --build build
 
       - name: Run Unit Tests
