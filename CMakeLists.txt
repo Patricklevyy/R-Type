@@ -33,6 +33,8 @@ if(VCPKG_MANIFEST_MODE)
     )
 endif()
 
+set(CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/vcpkg/installed/x64-linux/share" ${CMAKE_PREFIX_PATH})
+
 find_package(fmt CONFIG REQUIRED)
 find_package(libconfig CONFIG REQUIRED)
 find_package(SFML COMPONENTS system window graphics audio CONFIG REQUIRED)
