@@ -1,71 +1,47 @@
-name: Push mirror
+name: Test clang format
 
 on:
   push:
     branches:
-      - 'main'
-      - 'dev'
-  pull_request:
-    branches:
-      - 'dev'
-
-env:
-  MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
+      - 'feature/fix-ci-cd'
 
 jobs:
-  build_and_verify:
+  clang_format_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Check Code Format
+        id: clang_format
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev \
-          libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror -style=file
 
-      - name: Build Project
+  clang_format_fix:
+    runs-on: ubuntu-latest
+    needs: clang_format_check
+    if: failure()  # Se déclenche uniquement si clang_format_check échoue
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Apply Clang-Format Fixes
         run: |
-          cmake -S . -B build
-          cmake --build build
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
 
-      - name: Run Unit Tests
-        run: ./build/r-type_tests
-
-  generate_docs:
-    runs-on: ubuntu-latest
-    needs: build_and_verify
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
-
-      - name: Generate Documentation
-        run: doxygen ./Doxyfile
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/html
-
-  push_to_mirror:
-    runs-on: ubuntu-latest
-    needs: generate_docs
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Push to Mirror Repository
-        uses: pixta-dev/repository-mirroring-action@v1
-        with:
-          target_repo_url:
-            ${{ env.MIRROR_URL }}
-          ssh_private_key:
-            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+      - name: Commit and Push Fixes
+        run: |
+          git config user.name "GitHub Action Bot"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "style: auto-format code with clang-format"
+          git push origin ${{ github.head_ref }}
