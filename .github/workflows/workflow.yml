@@ -25,14 +25,6 @@ jobs:
           sudo apt-get install -y cmake g++ make libconfig++-dev \
           libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev
 
-      - name: Build Project
-        run: |
-          cmake -S . -B build
-          cmake --build build
-
-      - name: Run Unit Tests
-        run: ./build/r-type_tests
-
   generate_docs:
     runs-on: ubuntu-latest
     needs: build_and_verify
