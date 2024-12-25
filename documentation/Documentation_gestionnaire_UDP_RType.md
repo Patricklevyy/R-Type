@@ -68,7 +68,7 @@ void MessageCompressor::deserialize(const std::vector<char> &buffer, Message &ms
     std::memcpy(&secretKeySize, &buffer[offset], sizeof(secretKeySize));
     offset += sizeof(secretKeySize);
     msg.secret_key = std::string(buffer.begin() + offset, buffer.begin() + offset + secretKeySize);
-    
+}
 ```
 
 ### Processus détaillé
