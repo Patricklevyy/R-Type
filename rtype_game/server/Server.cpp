@@ -26,7 +26,8 @@ namespace rtype
     void Server::initializeCommands()
     {
         _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
-            createRoom(id, params, clientAddr);
+            (void)clientAddr;
+            createRoom(id, params);
         };
         _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
             joinRoom(id, params, clientAddr);
@@ -64,8 +65,7 @@ namespace rtype
         if (!SecretKeyChecker::isMessageSafe(mes.secret_key, _udpManager->getSecretKey())) {
             throw ERROR::MessageIsNotSafeException("Missing secret key");
         }
-        _mes_checker.checkAction(mes);
-        _mes_checker.checkFormatParams(mes.params);
+        Utils::checkAction(mes.action);
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         auto it = _commands.find(mes.action);
         if (it != _commands.end()) {

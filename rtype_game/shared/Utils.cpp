@@ -9,6 +9,14 @@
 
 namespace rtype
 {
+    void Utils::checkAction(int action)
+    {
+        if (action < 0 || action >= MAX_ACTION) {
+            std::string error_message = "Unknown action : " + std::to_string(action);
+            throw ERROR::InvalidActionExceptions(error_message);
+        }
+    }
+
     std::tuple<ecs::direction, ecs::direction, size_t> Utils::extractPlayerPosIndex(std::string params, unsigned int player_id)
     {
         int x = 0, y = 0;
@@ -51,5 +59,23 @@ namespace rtype
         SPRITES type_shoot = static_cast<SPRITES>(spriteValue);
 
         return std::make_tuple(std::make_pair(x, y), std::make_pair(dir_x, dir_y), type_shoot);
+    }
+
+    std::map<std::string, std::string> Utils::parseMessageParams(const std::string &params)
+    {
+        std::map<std::string, std::string> parsedParams;
+        std::stringstream ss(params);
+        std::string token;
+
+        while (std::getline(ss, token, ';')) {
+            size_t pos = token.find('=');
+            if (pos != std::string::npos) {
+                std::string key = token.substr(0, pos);
+                std::string value = token.substr(pos + 1);
+                parsedParams[key] = value;
+            }
+        }
+
+        return parsedParams;
     }
 }

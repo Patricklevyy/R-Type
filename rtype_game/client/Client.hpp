@@ -15,33 +15,47 @@
 #ifndef CLIENT_HPP_
     #define CLIENT_HPP_
 
+    // INCLUDES
+
     #include "../shared/Includes.hpp"
+    #include "../../ecs/Structures_ecs.hpp"
+
+    // CLASSES
+
+    #include "SFMLHandler.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Client.hpp"
-    #include "../../ecs/Structures_ecs.hpp"
     #include "../../ecs/ECS.hpp"
     #include "../shared/EventBus.hpp"
-    #include "components/Window.hpp"
-    #include "system/EventWindow.hpp"
     #include "../shared/Timer.hpp"
-    #include "../shared/MessageChecker.hpp"
-    #include "system/SetFilter.hpp"
     #include "Command_checker.hpp"
-    #include "../shared/system/DirectionSystem.hpp"
-    #include "../../ecs/system/PositionSystem.hpp"
+    #include "../shared/Utils.hpp"
+
+    // COMPONENTS
+
+    #include "components/Window.hpp"
+    #include "components/TempDisplay.hpp"
+    #include "components/Displayable.hpp"
     #include "components/Background.hpp"
     #include "components/Sprite.hpp"
-    #include "system/RenderWindow.hpp"
-    #include "../shared/components/Health.hpp"
-    #include "system/UpdateEntitySystem.hpp"
-    #include "components/Displayable.hpp"
-    #include "../shared/MessageChecker.hpp"
     #include "../shared/components/Levels.hpp"
+    #include "../shared/components/Health.hpp"
+
+    // SYSTEMS
+
+    #include "system/UpdateEntitySystem.hpp"
+    #include "system/RenderWindow.hpp"
+    #include "system/Filter.hpp"
     #include "system/ATH.hpp"
-    #include "components/TempDisplay.hpp"
+    #include "system/PlayerSystem.hpp"
+    #include "system/EventWindow.hpp"
+    #include "../shared/system/DirectionSystem.hpp"
+    #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+
     namespace rtype
     {
+        class SFMLHandler;
         class Client
         {
             public:
@@ -60,44 +74,52 @@
                 void start();
 
                 /**
-                 * @brief Handles events in the game.
-                 */
-                void handle_event();
-
-                /**
                  * @brief Handles messages from the server.
                  * @param message A vector of characters representing the message from the server.
                  */
                 void handle_message(std::vector<char>&);
 
+                void change_player_direction(ecs::direction, ecs::direction);
+
+                void send_server_create_room();
+
+                void send_server_join_room();
+
+                void set_window_filter(FILTER_MODE);
+
+                bool _in_menu = true;
+                bool _running = true;
+                EventBus _eventBus;
+
             protected:
             private:
                 int _window_width;
                 int _window_height;
-                bool _in_menu = true;
-                std::string _name; 
+                std::string _name;
                 std::map<unsigned int, unsigned int> ecs_server_to_client;
                 std::map<unsigned int, unsigned int> ecs_client_to_server;
-                EventBus _eventBus;
+                ecs::ECS _ecs;
+                std::queue<sf::Event> _events;
+                size_t _index_ecs_client = 0;
+
+                // CLASSES
+
+                std::shared_ptr<SFMLHandler> _sfml_handler;
+                ecs::udp::MessageCompressor _message_compressor;
                 std::shared_ptr<Timer> _timer;
                 std::shared_ptr<ecs::udp::UDP_Client> _udpClient;
-                ecs::ECS _ecs;
-                bool _running = true;
-                std::queue<sf::Event> _events;
-                ecs::udp::MessageCompressor _message_compressor;
-                MessageChecker _mes_checker;
-                size_t _index_ecs_client = 0;
 
                 // SYSTEMS
 
                 EventWindow _event_window_system;
                 DirectionSystem _direction_system;
-                ecs::PositionSystem _position_system;
+                PositionSystem _position_system;
                 RenderWindow _render_window_system;
-                SetFilter _set_filter_system;
+                Filter _filter_system;
                 UpdateEntitySystem _update_entity_system;
                 ATH _ath_system;
                 KillSystem _kill_system;
+                PlayerSystem _player_system;
 
 
                 /**
@@ -119,6 +141,13 @@
                  * @param y The initial y-coordinate of the player.
                  */
                 void createPlayer(unsigned int, float, float);
+
+                /**
+                 * @brief Sends a message to the server with the player's direction.
+                 * @param direction The player's current direction.
+                 * @param lastDirection The player's previous direction.
+                */
+                void send_server_player_direction(ecs::direction, ecs::direction);
 
                 /**
                  * @brief Initializes the game with the given message.
@@ -159,12 +188,6 @@
                  */
                 void send_server_new_shoot();
 
-                /**
-                 * @brief Sends a message to the server with the player's direction.
-                 * @param direction The player's current direction.
-                 * @param lastDirection The player's previous direction.
-                */
-                void send_server_player_direction(ecs::direction, ecs::direction);
                 void send_server_start_game(LEVELS);
 
                 // INITIALISATION

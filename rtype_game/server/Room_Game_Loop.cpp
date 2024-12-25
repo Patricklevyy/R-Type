@@ -9,7 +9,7 @@
 
 namespace rtype
 {
-    void Room::gameThreadFunction(int port, std::string lastClientAddr, std::string clientName, std::string window_width, std::string window_height)
+    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height)
     {
         _window_width = std::stoi(window_width);
         _window_height = std::stoi(window_height);
@@ -25,36 +25,34 @@ namespace rtype
         _udp_server->startReceiving();
         _timer.init("rtype_game/config/server_config.conf", true);
         _game_running = true;
-        createClient(lastClientAddr, clientName);
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
 
         while (_game_running) {
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
-            _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
+            // _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
-            _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
-            // _ecs.displayPlayableEntityComponents();
+            // _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages) {
                     handleCommand(message, clientAddress);
                 }
             }
-            _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
-            _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
-            _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
-            _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
+            // _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
+            // _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
+            // _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
+            // _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
             sendUpdate();
         }
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string lastclientAddr, std::string clientName, std::string window_width, std::string window_height)
+    void Room::start(int port, std::string window_width, std::string window_height)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, lastclientAddr, clientName, window_width, window_height);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height);
         _gameThread.detach();
     }
 }

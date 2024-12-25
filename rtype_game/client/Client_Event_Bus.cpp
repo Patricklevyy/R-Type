@@ -11,10 +11,6 @@ namespace rtype
 {
     void Client::init_subscribe_event_bus()
     {
-        _eventBus.subscribe(RTYPE_ACTIONS::GET_WINDOW_EVENT, [this](const std::vector<std::any> &args) {
-            (void)args;
-            _events = _event_window_system.fetchEvents();
-        });
         _eventBus.subscribe(RTYPE_ACTIONS::START_LISTEN_EVENT, [this](const std::vector<std::any> &args) {
             (void)args;
             _event_window_system.startListening(_ecs._components_arrays);
@@ -55,7 +51,7 @@ namespace rtype
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
             (void)args;
-            _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer(), _window_width, _window_height);
+            _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _player_system.getIndexPlayer(_ecs._components_arrays), _window_width, _window_height);
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
             try {
@@ -65,7 +61,7 @@ namespace rtype
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
-                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())]) {
+                    if (it != ecs_server_to_client.end() && _player_system.getIndexPlayer(_ecs._components_arrays) != ecs_server_to_client[std::get<0>(entities.front())]) {
                         _update_entity_system.updateEntity(_ecs._components_arrays, entities.front(), ecs_server_to_client[std::get<0>(entities.front())]);
                     }
                     entities.pop_front();

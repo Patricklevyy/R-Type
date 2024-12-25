@@ -51,7 +51,6 @@
             int _currentPort;
             std::shared_ptr<ecs::udp::UDP_Manager> _udpManager;
             ecs::udp::MessageCompressor _compressor;
-            MessageChecker _mes_checker;
             std::unordered_map<unsigned int, std::function<void(const unsigned int, std::string &, std::string &)>> _commands;
 
 
@@ -87,7 +86,7 @@
             * @param input The raw input string from the client.
             * @param output The response string to be sent back to the client.
             */
-            void createRoom(const unsigned int, std::string &, std::string &);
+            void createRoom(const unsigned int, std::string &);
 
             /**
             * @brief Handles a client's request to join an existing room.

@@ -20,7 +20,6 @@
 
     // CLASSES
 
-    #include "../shared/MessageChecker.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
     #include "../../ecs/ECS.hpp"
@@ -46,7 +45,7 @@
 
     #include "system/BoundariesSystem.hpp"
     #include "system/MonsterMovementSystem.hpp"
-    #include "../../ecs/system/PositionSystem.hpp"
+    #include "../shared/system/PositionSystem.hpp"
     #include "../../ecs/components/Direction.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "system/CollisionSystem.hpp"
@@ -82,12 +81,12 @@
             /**
              * @brief Starts the game in the room.
              */
-            void start(int, std::string, std::string, std::string, std::string);
+            void start(int, std::string, std::string);
 
             /**
              * @brief Handles the game thread functionality.
              */
-            void gameThreadFunction(int, std::string, std::string, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string);
 
             /**
              * @brief Sends a message to all clients in the room.
@@ -166,8 +165,8 @@
 
             // SYSTEMS
 
-            ecs::PositionSystem _positon_system;
-            rtype::DirectionSystem _direction_system;
+            PositionSystem _positon_system;
+            DirectionSystem _direction_system;
             BoundariesSystem _boundaries_system;
             MonsterMovementSystem _monster_movement_system;
             CollisionSystem _collision_system;
