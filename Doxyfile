@@ -4,7 +4,14 @@ PROJECT_BRIEF          = "A GAME ENGINE THAT ROARS !"
 PROJECT_NUMBER         = "1.0"
 
 # Dossiers d'entrée et de sortie
-INPUT                  = ./rtype_game ./ecs
+INPUT                  = ./rtype_game ./ecs \
+                         ./documentation/Documentation_gestionnaire_UDP_RType.md \
+                         ./documentation/CMakeDocumentation.md \
+                         ./documentation/Documentation_frameworks_bibliotheques_utilises.md
+
+# Activer le support de Markdown
+ENABLE_MARKDOWN        = YES
+
 OUTPUT_DIRECTORY       = ./docs
 
 # Génération de documentation HTML
