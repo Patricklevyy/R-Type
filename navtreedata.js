@@ -25,6 +25,74 @@
 var NAVTREE =
 [
   [ "R-TYPE", "index.html", [
+    [ "Documentation: Gestionnaire UDP pour le projet R-Type", "md_documentation_2Documentation__gestionnaire__UDP__RType.html", [
+      [ "1. Structure des messages UDP", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md1", [
+        [ "Description des champs", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md2", null ]
+      ] ],
+      [ "2. Sérialisation et Désérialisation", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md3", [
+        [ "Implémentation : Classe <tt>MessageCompressor</tt>", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md4", [
+          [ "Méthode <tt>serialize</tt>", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md5", null ],
+          [ "Méthode <tt>deserialize</tt>", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md6", null ]
+        ] ],
+        [ "Processus détaillé", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md7", null ]
+      ] ],
+      [ "3. Calcul de la bande passante", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md8", [
+        [ "Répartition de la taille des messages", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md9", null ],
+        [ "Exemple", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md10", null ],
+        [ "Formule de bande passante", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md11", [
+          [ "Exemple :", "md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md12", null ]
+        ] ]
+      ] ]
+    ] ],
+    [ "Système de Build CMake pour le Projet R-Type", "md_documentation_2CMakeDocumentation.html", [
+      [ "Prérequis", "md_documentation_2CMakeDocumentation.html#autotoc_md16", null ],
+      [ "Fonctionnalités", "md_documentation_2CMakeDocumentation.html#autotoc_md18", null ],
+      [ "Instructions d'installation et d'utilisation", "md_documentation_2CMakeDocumentation.html#autotoc_md20", [
+        [ "1. Cloner le dépôt", "md_documentation_2CMakeDocumentation.html#autotoc_md21", null ],
+        [ "2. Configurer le projet", "md_documentation_2CMakeDocumentation.html#autotoc_md22", null ],
+        [ "3. Compiler le projet", "md_documentation_2CMakeDocumentation.html#autotoc_md23", null ],
+        [ "4. Exécuter les binaires", "md_documentation_2CMakeDocumentation.html#autotoc_md24", null ]
+      ] ],
+      [ "Structure du Projet", "md_documentation_2CMakeDocumentation.html#autotoc_md26", null ],
+      [ "Sections techniques du script CMake", "md_documentation_2CMakeDocumentation.html#autotoc_md28", [
+        [ "Prérequis minimaux", "md_documentation_2CMakeDocumentation.html#autotoc_md29", null ],
+        [ "Intégration de Vcpkg", "md_documentation_2CMakeDocumentation.html#autotoc_md30", null ],
+        [ "Gestion des dépendances", "md_documentation_2CMakeDocumentation.html#autotoc_md31", null ],
+        [ "Organisation des fichiers sources", "md_documentation_2CMakeDocumentation.html#autotoc_md32", null ],
+        [ "Création des cibles", "md_documentation_2CMakeDocumentation.html#autotoc_md33", null ]
+      ] ],
+      [ "Résolution des problèmes", "md_documentation_2CMakeDocumentation.html#autotoc_md35", null ],
+      [ "- Vérifiez que <tt>vcpkg.json</tt> est correctement configuré pour inclure les versions des dépendances nécessaires.", "md_documentation_2CMakeDocumentation.html#autotoc_md36", null ],
+      [ "Notes supplémentaires", "md_documentation_2CMakeDocumentation.html#autotoc_md37", null ]
+    ] ],
+    [ "Documentation des Frameworks et Bibliothèques Utilisés", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html", [
+      [ "1. vcpkg", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md40", [
+        [ "Rôle", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md41", null ],
+        [ "Utilisation", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md42", null ],
+        [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md43", null ]
+      ] ],
+      [ "2. SFML (Simple and Fast Multimedia Library)", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45", [
+        [ "Rôle", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md46", null ],
+        [ "Utilisation", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md47", null ],
+        [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md48", null ],
+        [ "Comparatif avec SDL2 et Raylib", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md49", null ]
+      ] ],
+      [ "3. libconfig", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md51", [
+        [ "Rôle", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md52", null ],
+        [ "Utilisation", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md53", null ],
+        [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md54", null ]
+      ] ],
+      [ "4. CMake", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md56", [
+        [ "Rôle", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md57", null ],
+        [ "Utilisation", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md58", null ],
+        [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md59", null ]
+      ] ],
+      [ "5. Doxygen", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md61", [
+        [ "Rôle", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md62", null ],
+        [ "Utilisation", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md63", null ],
+        [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md64", null ]
+      ] ]
+    ] ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
@@ -62,7 +130,7 @@ var NAVTREEINDEX =
 "classecs_1_1ECS.html",
 "classrtype_1_1DirectionSystem.html",
 "classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60",
-"namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1c961b13a58c3e7cd4bf700fa2487efe"
+"md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md9"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

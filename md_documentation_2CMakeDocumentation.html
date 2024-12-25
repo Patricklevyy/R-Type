@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE: Système de Build CMake pour le Projet R-Type</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_documentation_2CMakeDocumentation.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Système de Build CMake pour le Projet R-Type</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md14"></a> Ce projet est un jeu avec une architecture client-serveur, configuré et construit à l'aide de CMake. Ce système de build gère automatiquement les dépendances via Vcpkg, organise les fichiers sources et génère deux exécutables : un pour le client et un pour le serveur.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md16"></a>
+Prérequis</h1>
+<p>Avant de commencer, assurez-vous que les outils suivants sont installés sur votre système :</p>
+<ul>
+<li><b>CMake</b> (version 3.21 ou supérieure)</li>
+<li><b>Git</b></li>
+<li><b>Vcpkg</b> (si absent, le script le configure automatiquement)</li>
+<li><b>Compilateur C++17</b></li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md18"></a>
+Fonctionnalités</h1>
+<ul>
+<li><b>Gestion des dépendances</b> :<ul>
+<li>Utilisation de <a href="https://github.com/microsoft/vcpkg">Vcpkg</a> pour la gestion des bibliothèques externes.</li>
+<li>Dépendances automatiquement configurées et installées si nécessaire.</li>
+<li>Activation du mode manifeste si un fichier <code>vcpkg.json</code> est présent.</li>
+</ul>
+</li>
+<li><b>Dépendances intégrées</b> :<ul>
+<li><code>fmt</code> : bibliothèque pour la mise en forme des sorties.</li>
+<li><code>libconfig</code> : bibliothèque pour les fichiers de configuration.</li>
+<li><code>SFML</code> : bibliothèque multimédia pour les graphismes et l'audio.</li>
+</ul>
+</li>
+<li><b>Organisation des fichiers sources</b> :<ul>
+<li>Code spécifique au client : <code>rtype_game/client/</code>.</li>
+<li>Code spécifique au serveur : <code>rtype_game/server/</code>.</li>
+<li>Code partagé entre client et serveur : <code>rtype_game/shared/</code>.</li>
+<li>Fonctionnalités additionnelles : <code>ecs/</code>.</li>
+</ul>
+</li>
+<li><b>Cibles générées</b> :<ul>
+<li><code>r-type_client</code> : exécutable pour le client.</li>
+<li><code>r-type_server</code> : exécutable pour le serveur.</li>
+</ul>
+</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md20"></a>
+Instructions d'installation et d'utilisation</h1>
+<h2><a class="anchor" id="autotoc_md21"></a>
+1. Cloner le dépôt</h2>
+<p>Cloner le projet dans votre répertoire de travail : </p><div class="fragment"><div class="line">git clone &lt;repository-url&gt;</div>
+<div class="line">cd &lt;repository-folder&gt;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+2. Configurer le projet</h2>
+<p>Exécuter la commande suivante pour générer les fichiers de configuration : </p><div class="fragment"><div class="line">cmake -S . -B build</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
+3. Compiler le projet</h2>
+<p>Compiler les cibles générées par CMake : </p><div class="fragment"><div class="line">cmake --build build</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
+4. Exécuter les binaires</h2>
+<p>Une fois la compilation terminée, vous pouvez exécuter les applications client et serveur : </p><div class="fragment"><div class="line">./build/r-type_server</div>
+<div class="line">./build/r-type_client</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md26"></a>
+Structure du Projet</h1>
+<p>Voici une description de la structure des fichiers du projet :</p>
+<ul>
+<li><b>rtype_game/client/</b> : Code spécifique au client.</li>
+<li><b>rtype_game/server/</b> : Code spécifique au serveur.</li>
+<li><b>rtype_game/shared/</b> : Code partagé entre le client et le serveur.</li>
+<li><b>ecs/</b> : Gestion des entités et des composants.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md28"></a>
+Sections techniques du script CMake</h1>
+<h2><a class="anchor" id="autotoc_md29"></a>
+Prérequis minimaux</h2>
+<div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.21)</div>
+<div class="line">project(RType LANGUAGES CXX)</div>
+<div class="line">set(CMAKE_CXX_STANDARD 17)</div>
+<div class="line">set(CMAKE_CXX_STANDARD_REQUIRED ON)</div>
+<div class="line">add_compile_options(-Wall -Wextra)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
+Intégration de Vcpkg</h2>
+<div class="fragment"><div class="line">if(NOT DEFINED ENV{VCPKG_ROOT})</div>
+<div class="line">    message(STATUS &quot;Vcpkg non trouvé dans l’environnement. Clonage et configuration en cours...&quot;)</div>
+<div class="line">    execute_process(COMMAND git clone https://github.com/microsoft/vcpkg.git ${CMAKE_BINARY_DIR}/vcpkg)</div>
+<div class="line">    execute_process(COMMAND ${CMAKE_BINARY_DIR}/vcpkg/bootstrap-vcpkg.sh WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/vcpkg)</div>
+<div class="line">    set(ENV{VCPKG_ROOT} &quot;${CMAKE_BINARY_DIR}/vcpkg&quot;)</div>
+<div class="line">endif()</div>
+<div class="line"> </div>
+<div class="line">set(CMAKE_TOOLCHAIN_FILE &quot;$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake&quot; CACHE STRING &quot;Fichier de chaîne d&#39;outils Vcpkg&quot;)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+Gestion des dépendances</h2>
+<div class="fragment"><div class="line">find_package(fmt CONFIG REQUIRED)</div>
+<div class="line">find_package(libconfig CONFIG REQUIRED)</div>
+<div class="line">find_package(SFML COMPONENTS system window graphics audio CONFIG REQUIRED)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md32"></a>
+Organisation des fichiers sources</h2>
+<div class="fragment"><div class="line">file(GLOB_RECURSE CLIENT_SRC</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/rtype_game/client/*.cpp&quot;</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp&quot;</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/ecs/*.cpp&quot;</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">file(GLOB_RECURSE SERVER_SRC</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/rtype_game/server/*.cpp&quot;</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/rtype_game/shared/*.cpp&quot;</div>
+<div class="line">    &quot;${CMAKE_SOURCE_DIR}/ecs/*.cpp&quot;</div>
+<div class="line">)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
+Création des cibles</h2>
+<div class="fragment"><div class="line">add_executable(r-type_client ${CLIENT_SRC})</div>
+<div class="line">add_executable(r-type_server ${SERVER_SRC})</div>
+<div class="line"> </div>
+<div class="line">target_link_libraries(r-type_client PRIVATE sfml-system sfml-window sfml-graphics sfml-audio libconfig::config libconfig::config++)</div>
+<div class="line">target_link_libraries(r-type_server PRIVATE sfml-system sfml-window sfml-graphics sfml-audio libconfig::config libconfig::config++)</div>
+</div><!-- fragment --> <hr  />
+<h1><a class="anchor" id="autotoc_md35"></a>
+Résolution des problèmes</h1>
+<ul>
+<li><b>Problèmes de dépendances :</b><ul>
+<li>Vérifiez que Vcpkg est bien cloné et initialisé. </li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md36"></a>
+- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.</h1>
+<h1><a class="anchor" id="autotoc_md37"></a>
+Notes supplémentaires</h1>
+<ul>
+<li><b>Dossier de sortie :</b> Les binaires sont placés dans <code>build/bin</code>.</li>
+<li><b>Personnalisation :</b><ul>
+<li>Il est possible d'ajouter des options spécifiques au compilateur dans <code>add_compile_options</code>.</li>
+<li>Les dépendances supplémentaires peuvent être ajoutées dans la section <code>find_package</code>. </li>
+</ul>
+</li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE: Documentation: Gestionnaire UDP pour le projet R-Type</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_documentation_2Documentation__gestionnaire__UDP__RType.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Documentation: Gestionnaire UDP pour le projet R-Type</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> Le gestionnaire UDP est une composante clé du projet R-Type, chargé de faciliter une communication rapide et efficace entre le serveur et les clients. Ce document fournit des détails sur sa conception, y compris la structure des messages, le processus de sérialisation/désérialisation et les considérations liées à la bande passante.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+1. Structure des messages UDP</h1>
+<p>Le gestionnaire UDP utilise un format de message bien défini pour la communication. Chaque message est représenté par la structure suivante :</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id : 10;    <span class="comment">/* 10 bits pour &#39;id&#39; (jusqu&#39;à 1024 id) */</span></div>
+<div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> action : 6; <span class="comment">/* 6 bits pour &#39;action&#39; (jusqu&#39;à 64 types) */</span></div>
+<div class="line">std::string params;</div>
+<div class="line">std::string <a class="code hl_variable" href="UDP__Manager_8hpp.html#ab264f401571f17849ca5dbd0e7887646">secret_key</a>; <span class="comment">/* Clé secrète pour l&#39;authentification */</span></div>
+<div class="ttc" id="aUDP__Manager_8hpp_html_ab264f401571f17849ca5dbd0e7887646"><div class="ttname"><a href="UDP__Manager_8hpp.html#ab264f401571f17849ca5dbd0e7887646">secret_key</a></div><div class="ttdeci">std::string secret_key</div><div class="ttdef"><b>Definition</b> UDP_Manager.hpp:93</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+Description des champs</h2>
+<ul>
+<li><b>id</b> : Correspond à l'identifiant unique d'une entité sur le serveur (index ECS). Prend en charge jusqu'à 1024 IDs uniques.</li>
+<li><b>action</b> : Spécifie l'action à effectuer, limitée à 64 types (liée à l'Enum des événements).</li>
+<li><b>params</b> : Contient des paramètres supplémentaires sous forme de chaîne de caractères.</li>
+<li><b>secret_key</b> : Une chaîne de caractères utilisée pour authentifier le message entre le client et le serveur.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+2. Sérialisation et Désérialisation</h1>
+<p>Pour envoyer et recevoir des messages efficacement via UDP, le gestionnaire convertit les messages en un format binaire. Cette fonctionnalité est implémentée dans la classe <code>MessageCompressor</code>.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Implémentation : Classe &lt;tt&gt;MessageCompressor&lt;/tt&gt;</h2>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Méthode &lt;tt&gt;serialize&lt;/tt&gt;</h3>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keywordtype">void</span> MessageCompressor::serialize(<span class="keyword">const</span> Message &amp;msg, std::vector&lt;char&gt; &amp;buffer)</div>
+<div class="line">{</div>
+<div class="line">    buffer.clear();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> header = (msg.id &amp; 0x3FF) | ((msg.action &amp; 0x3F) &lt;&lt; 10);</div>
+<div class="line">    buffer.push_back(header &amp; 0xFF);</div>
+<div class="line">    buffer.push_back((header &gt;&gt; 8) &amp; 0xFF);</div>
+<div class="line"> </div>
+<div class="line">    uint32_t paramsSize = msg.params.size();</div>
+<div class="line">    buffer.insert(buffer.end(), <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(&amp;paramsSize),</div>
+<div class="line">    <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(&amp;paramsSize) + <span class="keyword">sizeof</span>(paramsSize));</div>
+<div class="line">    buffer.insert(buffer.end(), msg.params.begin(), msg.params.end());</div>
+<div class="line"> </div>
+<div class="line">    uint32_t secretKeySize = msg.secret_key.size();</div>
+<div class="line">    buffer.insert(buffer.end(), <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(&amp;secretKeySize),</div>
+<div class="line">    <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(&amp;secretKeySize) + <span class="keyword">sizeof</span>(secretKeySize));</div>
+<div class="line">    buffer.insert(buffer.end(), msg.secret_key.begin(), msg.secret_key.end());</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+Méthode &lt;tt&gt;deserialize&lt;/tt&gt;</h3>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keywordtype">void</span> MessageCompressor::deserialize(<span class="keyword">const</span> std::vector&lt;char&gt; &amp;buffer, Message &amp;msg)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">size_t</span> offset = 0;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> header = buffer[offset] | (buffer[offset + 1] &lt;&lt; 8);</div>
+<div class="line">    msg.id = header &amp; 0x3FF;</div>
+<div class="line">    msg.action = (header &gt;&gt; 10) &amp; 0x3F;</div>
+<div class="line">    offset += 2;</div>
+<div class="line"> </div>
+<div class="line">    uint32_t paramsSize;</div>
+<div class="line">    std::memcpy(&amp;paramsSize, &amp;buffer[offset], <span class="keyword">sizeof</span>(paramsSize));</div>
+<div class="line">    offset += <span class="keyword">sizeof</span>(paramsSize);</div>
+<div class="line">    msg.params = std::string(buffer.begin() + offset, buffer.begin() + offset + paramsSize);</div>
+<div class="line">    offset += paramsSize;</div>
+<div class="line"> </div>
+<div class="line">    uint32_t secretKeySize;</div>
+<div class="line">    std::memcpy(&amp;secretKeySize, &amp;buffer[offset], <span class="keyword">sizeof</span>(secretKeySize));</div>
+<div class="line">    offset += <span class="keyword">sizeof</span>(secretKeySize);</div>
+<div class="line">    msg.secret_key = std::string(buffer.begin() + offset, buffer.begin() + offset + secretKeySize);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Processus détaillé</h2>
+<ol type="1">
+<li><b>Sérialisation</b> :<ul>
+<li>Combine <code>id</code> et <code>action</code> en un en-tête unique de 16 bits.</li>
+<li>Ajoute la taille et le contenu de <code>params</code>.</li>
+<li>Ajoute la taille et le contenu de <code>secret_key</code>.</li>
+</ul>
+</li>
+<li><b>Désérialisation</b> :<ul>
+<li>Extrait l'en-tête de 16 bits pour décoder <code>id</code> et <code>action</code>.</li>
+<li>Récupère la taille et le contenu de <code>params</code>.</li>
+<li>Récupère la taille et le contenu de <code>secret_key</code>.</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md8"></a>
+3. Calcul de la bande passante</h1>
+<p>La bande passante nécessaire pour la communication UDP dépend du nombre de messages envoyés par seconde et de la taille de chaque message.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Répartition de la taille des messages</h2>
+<ul>
+<li><b>En-tête</b> : 2 octets (16 bits pour <code>id</code> et <code>action</code>)</li>
+<li><b>Longueur de <code>params</code></b> : 4 octets</li>
+<li><b>Contenu de <code>params</code></b> : Variable (dépend du message)</li>
+<li><b>Longueur de <code>secret_key</code></b> : 4 octets</li>
+<li><b>Contenu de <code>secret_key</code></b> : Variable (dépend de la clé)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Exemple</h2>
+<p>Pour un message contenant :</p><ul>
+<li><code>params</code> : 100 octets</li>
+<li><code>secret_key</code> : 32 octets</li>
+</ul>
+<p>Taille totale = 2 octets (en-tête) + 4 octets (longueur <code>params</code>) + 100 octets (<code>params</code>) + 4 octets (longueur <code>secret_key</code>) + 32 octets (<code>secret_key</code>) = <b>142 octets</b></p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Formule de bande passante</h2>
+<p><b>Bande passante (octets/s) = Taille du message × Messages par seconde</b></p>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Exemple :</h3>
+<ul>
+<li>Taille du message : 142 octets</li>
+<li>Taux de ticks du serveur : 40 TPS (Ticks Par Seconde)</li>
+<li>Messages par tick : 100</li>
+</ul>
+<p>Bande passante = 142 × 40 × 100 = 568 000 octets/s = <b>568 Ko/s</b></p>
+<hr  />
+<p>Cette documentation reflète la mise à jour de la structure des messages UDP pour inclure une clé secrète et intègre l'implémentation des méthodes de sérialisation et de désérialisation. Pour toute question ou clarification, référez-vous à l'implémentation ou contactez l'équipe de développement. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classrtype_1_1Room.html#a72c691bb63ac161ea820170ad931aedf',1,'rtype::Room::operator=(const Room &amp;)=delete'],['../classrtype_1_1Room.html#a8fb3336de82537acdda33d41daef4b02',1,'rtype::Room::operator=(Room &amp;&amp;other) noexcept']]],
-  ['operator_5b_5d_1',['operator[]',['../classecs_1_1SparseArray.html#a2c472a9aeb6a2c31111000254de2543f',1,'ecs::SparseArray::operator[](std::size_t index)'],['../classecs_1_1SparseArray.html#a321a8cb5aac58a689b03cbbb2974c57c',1,'ecs::SparseArray::operator[](std::size_t index) const']]],
-  ['other_5fplayer_5fship_2',['OTHER_PLAYER_SHIP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662abce9dd9487d7ddf9cc0c8c5157737e91',1,'rtype']]]
+  ['id_0',['id',['../structecs_1_1udp_1_1Message.html#a328e826da0a9ff4824ee4719ae8e7ac1',1,'ecs::udp::Message']]],
+  ['idoutofrangeexceptions_1',['idoutofrangeexceptions',['../classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html',1,'ecs::ERROR::IdOutOfRangeExceptions'],['../classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html#a6baf86c9cc0c63b91a0acad826b75154',1,'ecs::ERROR::IdOutOfRangeExceptions::IdOutOfRangeExceptions()']]],
+  ['implémentation_20_3a_20classe_20tt_20messagecompressor_20tt_2',['Implémentation : Classe &lt;tt&gt;MessageCompressor&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md4',1,'']]],
+  ['includes_2ehpp_3',['Includes.hpp',['../Includes_8hpp.html',1,'']]],
+  ['includes_5fecs_2ehpp_4',['Includes_ecs.hpp',['../Includes__ecs_8hpp.html',1,'']]],
+  ['inclure_20les_20versions_20des_20dépendances_20nécessaires_5',['- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.',['../md_documentation_2CMakeDocumentation.html#autotoc_md36',1,'']]],
+  ['init_6',['init',['../classrtype_1_1Timer.html#ae8b2aedfb4c0eac9173ec03e7b5e8012',1,'rtype::Timer']]],
+  ['init_5fbasic_5fregistry_7',['init_basic_registry',['../classecs_1_1ECS.html#a5aa932ac8e3f3e3959118e2b96d7038e',1,'ecs::ECS']]],
+  ['init_5fevent_5fbus_8',['init_event_bus',['../classrtype_1_1Room.html#a4a92b4ba7fc348f7d3348c725ded018a',1,'rtype::Room']]],
+  ['initialize_9',['initialize',['../classUDP__Client.html#a399c94096557bf741cbace94f0116767',1,'UDP_Client::initialize()'],['../classecs_1_1udp_1_1UDP__Server.html#abacdeb5e9777dcb2f416a120899f74c1',1,'ecs::udp::UDP_Server::initialize()']]],
+  ['installation_20et_20d_20utilisation_10',['Instructions d&apos;installation et d&apos;utilisation',['../md_documentation_2CMakeDocumentation.html#autotoc_md20',1,'']]],
+  ['instructions_20d_20installation_20et_20d_20utilisation_11',['Instructions d&apos;installation et d&apos;utilisation',['../md_documentation_2CMakeDocumentation.html#autotoc_md20',1,'']]],
+  ['intégration_20de_20vcpkg_12',['Intégration de Vcpkg',['../md_documentation_2CMakeDocumentation.html#autotoc_md30',1,'']]],
+  ['invalidactionexceptions_13',['invalidactionexceptions',['../classrtype_1_1ERROR_1_1InvalidActionExceptions.html',1,'rtype::ERROR::InvalidActionExceptions'],['../classrtype_1_1ERROR_1_1InvalidActionExceptions.html#a96e169918ac00276965356f653567c36',1,'rtype::ERROR::InvalidActionExceptions::InvalidActionExceptions()']]],
+  ['invalidadressformatexceptions_14',['invalidadressformatexceptions',['../classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html#ac887f62c431d8a868665dee0cf27204a',1,'ecs::ERROR::InvalidAdressFormatExceptions::InvalidAdressFormatExceptions()'],['../classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html',1,'ecs::ERROR::InvalidAdressFormatExceptions']]],
+  ['invalidipadressexceptions_15',['invalidipadressexceptions',['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4',1,'ecs::ERROR::InvalidIpAdressExceptions::InvalidIpAdressExceptions()'],['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html',1,'ecs::ERROR::InvalidIpAdressExceptions']]],
+  ['invalidtpsorfpsexceptions_16',['invalidtpsorfpsexceptions',['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html#ae17590d148d444d4bcb155ab51175409',1,'rtype::ERROR::InvalidTpsOrFpsExceptions::InvalidTpsOrFpsExceptions()'],['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html',1,'rtype::ERROR::InvalidTpsOrFpsExceptions']]],
+  ['inverted_17',['Inverted',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76aaf2e2f4f071ebc35a949942fa0abc6af',1,'rtype']]],
+  ['islevelclicked_18',['isLevelClicked',['../classrtype_1_1ATH.html#a605d1aca3e9dea19992ce1ecd3ed9d17',1,'rtype::ATH']]],
+  ['islevelfinished_19',['isLevelFinished',['../classrtype_1_1ScoreSystem.html#a21644f8446f7d080ba28dfb9c704a532',1,'rtype::ScoreSystem']]],
+  ['islooseorwinclicked_20',['isLooseOrWinClicked',['../classrtype_1_1ATH.html#a4390c8402870e8f46ddba9eb54499076',1,'rtype::ATH']]],
+  ['ismessagesafe_21',['isMessageSafe',['../classrtype_1_1SecretKeyChecker.html#aa0c697296f62e73334642d2afde9f36e',1,'rtype::SecretKeyChecker']]],
+  ['isrunning_22',['isrunning',['../classrtype_1_1Window.html#aed3c4df8bb8f800cf4b045c5ff0945e5',1,'rtype::Window::isRunning()'],['../UDP__Manager_8hpp.html#a1211f4531df3e01ac5ad2b4750a85ed3',1,'isRunning:&#160;UDP_Manager.hpp']]]
 ];
