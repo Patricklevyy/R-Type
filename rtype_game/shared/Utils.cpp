@@ -9,7 +9,8 @@
 
 namespace rtype
 {
-    std::tuple<ecs::direction, ecs::direction, size_t> Utils::extractPlayerPosIndex(std::string params, unsigned int player_id)
+    std::tuple<ecs::direction, ecs::direction, size_t>
+    Utils::extractPlayerPosIndex(std::string params, unsigned int player_id)
     {
         int x = 0, y = 0;
 
@@ -26,10 +27,13 @@ namespace rtype
                 y = std::stoi(y_part.substr(2));
             }
         }
-        return std::tuple<ecs::direction, ecs::direction, size_t>(static_cast<ecs::direction>(x), static_cast<ecs::direction>(y), player_id);
+        return std::tuple<ecs::direction, ecs::direction, size_t>(
+            static_cast<ecs::direction>(x), static_cast<ecs::direction>(y),
+            player_id);
     }
 
-    std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> Utils::extractProjectilePosAndDir(std::string params)
+    std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>
+    Utils::extractProjectilePosAndDir(std::string params)
     {
         float x = 0.0f, y = 0.0f;
         int dir_x = 0, dir_y = 0;
@@ -50,6 +54,7 @@ namespace rtype
         int spriteValue = std::stoi(parts[4].substr(parts[4].find('=') + 1));
         SPRITES type_shoot = static_cast<SPRITES>(spriteValue);
 
-        return std::make_tuple(std::make_pair(x, y), std::make_pair(dir_x, dir_y), type_shoot);
+        return std::make_tuple(
+            std::make_pair(x, y), std::make_pair(dir_x, dir_y), type_shoot);
     }
-}
+} // namespace rtype

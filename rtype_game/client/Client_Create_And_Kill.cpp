@@ -19,7 +19,8 @@ namespace rtype
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<ecs::Position>(
+            index, ecs::Position(_window_width / 4, _window_height / 4));
         _ecs.addComponents<TempDisplay>(index, TempDisplay());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
@@ -47,7 +48,8 @@ namespace rtype
         }
     }
 
-    void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
+    void Client::createEntity(
+        unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
         std::cout << "JE CREATE : " << index << std::endl;
@@ -66,9 +68,11 @@ namespace rtype
     void Client::createMonster(ecs::udp::Message &message)
     {
         size_t index = getNextIndex();
-        std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
+        std::unordered_map<std::string, std::string> res =
+            MessageChecker::parseResponse(message.params);
         if (res.find("x") == res.end() || res.find("y") == res.end()) {
-            std::cerr << "Error: Missing x or y in message parameters" << std::endl;
+            std::cerr << "Error: Missing x or y in message parameters"
+                      << std::endl;
             return;
         }
         int x = std::stof(res["x"]);
@@ -81,7 +85,8 @@ namespace rtype
         _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Displayable>(index, displayable);
 
-        std::cout << "Monstre créé à l'index : " << index << " (" << x << ", " << y << ")" << std::endl;
+        std::cout << "Monstre créé à l'index : " << index << " (" << x << ", "
+                  << y << ")" << std::endl;
     }
 
     void Client::createPlayer(unsigned int server_id, float x, float y)
@@ -128,4 +133,4 @@ namespace rtype
 
         createEntity(message.id, x, y, spriteType);
     }
-}
+} // namespace rtype

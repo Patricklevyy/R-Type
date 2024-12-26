@@ -46,19 +46,25 @@ namespace rtype
 
     void Client::updateEntitiesFirstConnexion(const std::string &message)
     {
-        std::vector<std::tuple<std::pair<float, float>, int, int>> entities = Command_checker::parseUpdateEntities(message);
+        std::vector<std::tuple<std::pair<float, float>, int, int>> entities =
+            Command_checker::parseUpdateEntities(message);
 
         while (!entities.empty()) {
-            std::tuple<std::pair<float, float>, int, int> entity = entities.back();
-            std::cout << "XX : " << std::get<0>(entity).first << "yy : " << std::get<0>(entity).second << std::endl;
-            createEntity(std::get<1>(entity), std::get<0>(entity).first, std::get<0>(entity).second, static_cast<SPRITES>(std::get<2>(entity)));
+            std::tuple<std::pair<float, float>, int, int> entity =
+                entities.back();
+            std::cout << "XX : " << std::get<0>(entity).first
+                      << "yy : " << std::get<0>(entity).second << std::endl;
+            createEntity(std::get<1>(entity), std::get<0>(entity).first,
+                std::get<0>(entity).second,
+                static_cast<SPRITES>(std::get<2>(entity)));
             entities.pop_back();
         }
     }
 
     void Client::setRoomAdress(int port)
     {
-        std::string ip_port = Command_checker::check_adress(port, _udpClient->getServerIp());
+        std::string ip_port =
+            Command_checker::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
     }
 
@@ -67,8 +73,10 @@ namespace rtype
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         _mes_checker.checkAction(mes);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
-        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
+        std::cout << "id : " << mes.id << " action " << mes.action << " params "
+                  << mes.params << std::endl;
+        rtype::RTYPE_ACTIONS action =
+            static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
     }
 
@@ -110,8 +118,7 @@ namespace rtype
                 try {
                     handle_message(message);
                 } catch (std::exception &e) {
-                    std::cerr << std::endl
-                              << e.what() << std::endl;
+                    std::cerr << std::endl << e.what() << std::endl;
                 }
             }
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
@@ -120,4 +127,4 @@ namespace rtype
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
     }
-}
+} // namespace rtype

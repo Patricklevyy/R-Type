@@ -20,12 +20,14 @@ namespace rtype
     void MessageChecker::checkAction(const ecs::udp::Message &message) const
     {
         if (message.action < 0 || message.action >= MAX_ACTION) {
-            std::string error_message = "Unknown action : " + std::to_string(message.action);
+            std::string error_message =
+                "Unknown action : " + std::to_string(message.action);
             throw ERROR::InvalidActionExceptions(error_message);
         }
     }
 
-    std::map<std::string, std::string> MessageChecker::checkFormatParams(std::string &params)
+    std::map<std::string, std::string> MessageChecker::checkFormatParams(
+        std::string &params)
     {
         std::map<std::string, std::string> paramMap;
 
@@ -39,14 +41,16 @@ namespace rtype
                 std::string value = pair.substr(pos + 1);
                 paramMap[key] = value;
             } else {
-                throw ERROR::WrongFormatParamsExceptions("Must have format {key=value;key=value...}");
+                throw ERROR::WrongFormatParamsExceptions(
+                    "Must have format {key=value;key=value...}");
             }
         }
 
         return paramMap;
     }
 
-    std::unordered_map<std::string, std::string> MessageChecker::parseResponse(const std::string &response)
+    std::unordered_map<std::string, std::string> MessageChecker::parseResponse(
+        const std::string &response)
     {
         std::unordered_map<std::string, std::string> parsedData;
         std::istringstream stream(response);
@@ -63,4 +67,4 @@ namespace rtype
 
         return parsedData;
     }
-}
+} // namespace rtype
