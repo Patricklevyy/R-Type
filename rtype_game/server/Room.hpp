@@ -156,7 +156,7 @@
             ecs::ECS _ecs;
             EventBus _eventBus;
             std::string _name;
-            unsigned int _nb_client;
+            unsigned int _nb_client = 0;
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;

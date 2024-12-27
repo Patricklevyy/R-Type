@@ -148,5 +148,22 @@ namespace rtype
 
             _ath_system.removeLevels(_ecs);
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
+            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+            std::stringstream ss(message.params);
+            std::string token;
+
+            float x = 0.0f, y = 0.0f;
+            int port = 0;
+
+            std::getline(ss, token, ';');
+            x = std::stof(token);
+
+            std::getline(ss, token, ';');
+            y = std::stof(token);
+
+            createPlayer(message.id, x, y);
+        });
     }
 }

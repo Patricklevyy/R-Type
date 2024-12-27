@@ -37,14 +37,7 @@ namespace rtype
                 it = ecs_client_to_server.find(index_ecs_client);
                 ecs_client_to_server.erase(it);
 
-                _ecs.killEntityFromRegistry<ecs::Position>(index_ecs_client);
-                _ecs.killEntityFromRegistry<Health>(index_ecs_client);
-                _ecs.killEntityFromRegistry<Sprite>(index_ecs_client);
-                _ecs.killEntityFromRegistry<Displayable>(index_ecs_client);
-                _ecs.killEntityFromRegistry<ecs::Velocity>(index_ecs_client);
-                _ecs.killEntityFromRegistry<ecs::Direction>(index_ecs_client);
-                _ecs.killEntityFromRegistry<ecs::Playable>(index_ecs_client);
-                _ecs.addDeadEntity(index_ecs_client);
+                _kill_system.killEntity(_ecs, index_ecs_client);
             }
         }
     }

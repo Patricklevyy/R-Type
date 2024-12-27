@@ -48,6 +48,7 @@ namespace rtype
 
     size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
+        std::cout << "CREATE PLAYER \n\n\n\n : " << _nb_client << std::endl;
         size_t index = getNextIndex();
 
         ecs::Direction direction;
