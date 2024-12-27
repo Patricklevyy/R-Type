@@ -11,7 +11,7 @@ namespace rtype
 {
     void Room::init_event_bus()
     {
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITIONS, [this](const std::vector<std::any> &args) {
             (void)args;
             _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps(), _window_width, _window_height);
         });
@@ -25,11 +25,11 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::PLAYER_SHOOT, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PROJECTILE, [this](const std::vector<std::any> &args) {
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                createAlliesProjectile(message);
+                createProjectiles(message);
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
@@ -55,14 +55,18 @@ namespace rtype
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
-            std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkAndKillEntities(_ecs, _nb_client);
+            std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
 
             _score_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
             std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
+            for (const auto &entity_id : dead_entites_id) {
+                _kill_system.killEntity(_ecs, entity_id);
+            }
             if (!dead_entites_id.empty())
                 send_client_dead_entities(dead_entites_id);
             if (std::get<2>(dead_entities)) {
-                _nb_client--;
+                if (_nb_client > 0)
+                    _nb_client--;
                 dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 send_client_dead_entities(dead_entites_id);
                 send_client_level_status(false);
@@ -92,7 +96,7 @@ namespace rtype
                     std::make_pair(3, 0),
                     std::get<2>(monster)
                 );
-                createEnemiesProjectiles(index, pos_dir_sprite);
+                createEntityProjectiles(index, pos_dir_sprite);
             }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::EXECUTE_LEVEL, [this](const std::vector<std::any> &args) {
@@ -127,14 +131,12 @@ namespace rtype
             mes.action = RTYPE_ACTIONS::CREATE_PLAYER;
             mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second));
 
-            std::cout << "CREATE PLAYER \n\n\n\n : " << mes.params << std::endl;
             mes.id = create_player(position, "new_player");
             _message_compressor.serialize(mes, send_message);
             for (const auto &clientAddr : _clientAddresses) {
                 _udp_server->sendMessage(send_message, clientAddr);
             }
             _nb_client++;
-            index_ecs++;
         });
     }
 }

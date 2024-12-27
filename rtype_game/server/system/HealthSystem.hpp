@@ -41,7 +41,7 @@
                  */
                 ~HealthSystem() {}
 
-                std::tuple<std::list<size_t>, unsigned int, bool> checkAndKillEntities(ecs::ECS &ecs, unsigned int &player_alive)
+                std::tuple<std::list<size_t>, unsigned int, bool> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
                     {
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
                         auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
@@ -66,17 +66,6 @@
                                         if (player_alive <= 0)
                                             std::get<2>(dead_entities) = true;
                                     }
-                                    ecs.killEntityFromRegistry<ecs::Position>(i);
-                                    ecs.killEntityFromRegistry<ecs::Playable>(i);
-                                    ecs.killEntityFromRegistry<Hitbox>(i);
-                                    ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                    ecs.killEntityFromRegistry<Health>(i);
-                                    ecs.killEntityFromRegistry<Monster>(i);
-                                    ecs.killEntityFromRegistry<ecs::Direction>(i);
-                                    ecs.killEntityFromRegistry<Ennemies>(i);
-                                    ecs.killEntityFromRegistry<Allies>(i);
-                                    ecs.killEntityFromRegistry<Projectiles>(i);
-                                    ecs.addDeadEntity(i);
                                     std::get<0>(dead_entities).push_front(i);
                                 }
                             }

@@ -205,6 +205,19 @@
                 private:
                     std::string message_;
             };
+
+            class PlayerDontExistInEcsException : public std::exception {
+                public:
+                    explicit PlayerDontExistInEcsException(const std::string& message)
+                        : message_("PlayerDontExistInEcsException: " + message) {}
+
+                    const char* what() const noexcept override {
+                        return message_.c_str();
+                    }
+
+                private:
+                    std::string message_;
+            };
         }
     }
 #endif /* !RTYPEEXCEPTIONS_HPP_ */

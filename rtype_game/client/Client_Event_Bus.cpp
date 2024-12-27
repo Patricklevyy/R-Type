@@ -11,10 +11,6 @@ namespace rtype
 {
     void Client::init_subscribe_event_bus()
     {
-        _eventBus.subscribe(RTYPE_ACTIONS::GET_WINDOW_EVENT, [this](const std::vector<std::any> &args) {
-            (void)args;
-            _events = _event_window_system.fetchEvents();
-        });
         _eventBus.subscribe(RTYPE_ACTIONS::START_LISTEN_EVENT, [this](const std::vector<std::any> &args) {
             (void)args;
             _event_window_system.startListening(_ecs._components_arrays);
@@ -28,23 +24,6 @@ namespace rtype
 
             init_game(message);
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
-            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
-
-            std::stringstream ss(message.params);
-            std::string token;
-
-            float x = 0.0f, y = 0.0f;
-            int port = 0;
-
-            std::getline(ss, token, ';');
-            x = std::stof(token);
-
-            std::getline(ss, token, ';');
-            y = std::stof(token);
-
-            createPlayer(message.id, x, y);
-        });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, [this](const std::vector<std::any> &args) {
             try {
                 std::tuple<ecs::direction, ecs::direction, size_t> _x_y_index = std::any_cast<std::reference_wrapper<std::tuple<ecs::direction, ecs::direction, size_t>>>(args[0]).get();
@@ -53,11 +32,11 @@ namespace rtype
                 std::cerr << "Error during event handling: dans" << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PLAYER_POSITION, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITIONS, [this](const std::vector<std::any> &args) {
             (void)args;
-            _position_system.updatePlayerPositions(_ecs._components_arrays, _timer->getTps(), _ecs.getIndexPlayer(), _window_width, _window_height);
+            _position_system.updatePositions(_ecs._components_arrays, _timer->getTps(), _window_width, _window_height);
         });
-        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITION, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITIONS_FROM_SERVER, [this](const std::vector<std::any> &args) {
             try {
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
@@ -65,7 +44,7 @@ namespace rtype
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
-                    if (it != ecs_server_to_client.end() && _ecs.getIndexPlayer() != ecs_server_to_client[std::get<0>(entities.front())]) {
+                    if (it != ecs_server_to_client.end() && _player_system.getIndexPlayer(_ecs._components_arrays) != ecs_server_to_client[std::get<0>(entities.front())]) {
                         _update_entity_system.updateEntity(_ecs._components_arrays, entities.front(), ecs_server_to_client[std::get<0>(entities.front())]);
                     }
                     entities.pop_front();
@@ -168,6 +147,23 @@ namespace rtype
             (void)args;
 
             _ath_system.removeLevels(_ecs);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
+            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+            std::stringstream ss(message.params);
+            std::string token;
+
+            float x = 0.0f, y = 0.0f;
+            int port = 0;
+
+            std::getline(ss, token, ';');
+            x = std::stof(token);
+
+            std::getline(ss, token, ';');
+            y = std::stof(token);
+
+            createPlayer(message.id, x, y);
         });
     }
 }

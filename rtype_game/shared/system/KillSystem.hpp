@@ -13,6 +13,7 @@
     #include "../../../ecs/components/Position.hpp"
     #include "../../../ecs/components/Velocity.hpp"
     #include "../../../ecs/components/Direction.hpp"
+
     #include "../../shared/components/Health.hpp"
     #include "../../server/components/Projectiles.hpp"
     #include "../../server/components/Allies.hpp"
@@ -21,7 +22,11 @@
     #include "../../server/components/Hitbox.hpp"
     #include "../components/Levels.hpp"
     #include "../../client/components/TempDisplay.hpp"
+    #include "../../client/components/Window.hpp"
     #include "../../client/components/Displayable.hpp"
+    #include "../../client/components/Background.hpp"
+    #include "../../client/components/Shader.hpp"
+    #include "../../client/components/Sprite.hpp"
     #include "../../server/components/SpriteId.hpp"
 
     namespace rtype
@@ -30,6 +35,41 @@
             public:
                 KillSystem() {}
                 ~KillSystem() {}
+
+                void killEntity(ecs::ECS &ecs, size_t index)
+                {
+                    // ECS COMPONENTS
+
+                    ecs.killEntityFromRegistry<ecs::Position>(index);
+                    ecs.killEntityFromRegistry<ecs::Velocity>(index);
+                    ecs.killEntityFromRegistry<ecs::Direction>(index);
+                    ecs.killEntityFromRegistry<ecs::Playable>(index);
+
+                    // CLIENT COMPONENTS
+
+                    ecs.killEntityFromRegistry<Background>(index);
+                    ecs.killEntityFromRegistry<Displayable>(index);
+                    ecs.killEntityFromRegistry<Shader>(index);
+                    ecs.killEntityFromRegistry<Sprite>(index);
+                    ecs.killEntityFromRegistry<TempDisplay>(index);
+                    ecs.killEntityFromRegistry<Window>(index);
+
+                    // SHARED COMPONENTS
+
+                    ecs.killEntityFromRegistry<Health>(index);
+                    ecs.killEntityFromRegistry<Levels>(index);
+
+                    // SERVER COMPONENTS
+
+                    ecs.killEntityFromRegistry<Allies>(index);
+                    ecs.killEntityFromRegistry<Ennemies>(index);
+                    ecs.killEntityFromRegistry<Hitbox>(index);
+                    ecs.killEntityFromRegistry<Monster>(index);
+                    ecs.killEntityFromRegistry<Projectiles>(index);
+                    ecs.killEntityFromRegistry<SpriteId>(index);
+
+                    ecs.addDeadEntity(index);
+                }
 
                 std::list<size_t> killMonstersAndProjectiles(ecs::ECS &ecs)
                 {
@@ -43,16 +83,7 @@
                         {
                             if (monsters[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<ecs::Direction>(i);
-                                ecs.killEntityFromRegistry<ecs::Position>(i);
-                                ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                ecs.killEntityFromRegistry<Health>(i);
-                                ecs.killEntityFromRegistry<Projectiles>(i);
-                                ecs.killEntityFromRegistry<SpriteId>(i);
-                                ecs.killEntityFromRegistry<Hitbox>(i);
-                                ecs.killEntityFromRegistry<Allies>(i);
-                                ecs.killEntityFromRegistry<Ennemies>(i);
-                                ecs.addDeadEntity(i);
+                                killEntity(ecs, i);
                                 dead_entities.push_front(i);
                             }
                         }
@@ -60,17 +91,7 @@
                         {
                             if (levels[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<ecs::Direction>(i);
-                                ecs.killEntityFromRegistry<Levels>(i);
-                                ecs.killEntityFromRegistry<ecs::Position>(i);
-                                ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                ecs.killEntityFromRegistry<Health>(i);
-                                ecs.killEntityFromRegistry<Projectiles>(i);
-                                ecs.killEntityFromRegistry<SpriteId>(i);
-                                ecs.killEntityFromRegistry<Hitbox>(i);
-                                ecs.killEntityFromRegistry<Allies>(i);
-                                ecs.killEntityFromRegistry<Ennemies>(i);
-                                ecs.addDeadEntity(i);
+                                killEntity(ecs, i);
                                 dead_entities.push_front(i);
                             }
                         }
@@ -78,17 +99,7 @@
                         {
                             if (projectiles[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<ecs::Direction>(i);
-                                ecs.killEntityFromRegistry<Displayable>(i);
-                                ecs.killEntityFromRegistry<ecs::Position>(i);
-                                ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                ecs.killEntityFromRegistry<Health>(i);
-                                ecs.killEntityFromRegistry<Projectiles>(i);
-                                ecs.killEntityFromRegistry<SpriteId>(i);
-                                ecs.killEntityFromRegistry<Hitbox>(i);
-                                ecs.killEntityFromRegistry<Allies>(i);
-                                ecs.killEntityFromRegistry<Ennemies>(i);
-                                ecs.addDeadEntity(i);
+                                killEntity(ecs, i);
                                 dead_entities.push_front(i);
                             }
                         }
@@ -103,18 +114,7 @@
                         {
                             if (tempdisplays[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<ecs::Direction>(i);
-                                ecs.killEntityFromRegistry<ecs::Position>(i);
-                                ecs.killEntityFromRegistry<ecs::Velocity>(i);
-                                ecs.killEntityFromRegistry<Health>(i);
-                                ecs.killEntityFromRegistry<Projectiles>(i);
-                                ecs.killEntityFromRegistry<SpriteId>(i);
-                                ecs.killEntityFromRegistry<Hitbox>(i);
-                                ecs.killEntityFromRegistry<Allies>(i);
-                                ecs.killEntityFromRegistry<Ennemies>(i);
-                                ecs.killEntityFromRegistry<TempDisplay>(i);
-                                ecs.killEntityFromRegistry<Displayable>(i);
-                                ecs.addDeadEntity(i);
+                                killEntity(ecs, i);
                             }
                         }
                 }
