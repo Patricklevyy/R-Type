@@ -14,14 +14,24 @@
     #include <tuple>
     #include <sstream>
     #include "Enums.hpp"
+    #include "RTypeExceptions.hpp"
+    #include "Includes.hpp"
 
     namespace rtype
     {
         class Utils {
             public:
+                static std::map<std::string, std::string> parseMessageParams(const std::string &params);
+
+                static void checkAction(int);
+
                 static std::tuple<ecs::direction, ecs::direction, size_t> extractPlayerPosIndex(std::string, unsigned int);
 
                 static std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> extractProjectilePosAndDir(std::string);
+
+                static bool isAllie(SPRITES type);
+
+                static std::string projectilesInfoToString(std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>, int);
 
             protected:
             private:

@@ -20,7 +20,6 @@
 
     // CLASSES
 
-    #include "../shared/MessageChecker.hpp"
     #include "../../ecs/udp/MessageCompressor.hpp"
     #include "../../ecs/udp/UDP_Server.hpp"
     #include "../../ecs/ECS.hpp"
@@ -46,7 +45,7 @@
 
     #include "system/BoundariesSystem.hpp"
     #include "system/MonsterMovementSystem.hpp"
-    #include "../../ecs/system/PositionSystem.hpp"
+    #include "../shared/system/PositionSystem.hpp"
     #include "../../ecs/components/Direction.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "system/CollisionSystem.hpp"
@@ -82,12 +81,12 @@
             /**
              * @brief Starts the game in the room.
              */
-            void start(int, std::string, std::string, std::string, std::string);
+            void start(int, std::string, std::string);
 
             /**
              * @brief Handles the game thread functionality.
              */
-            void gameThreadFunction(int, std::string, std::string, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string);
 
             /**
              * @brief Sends a message to all clients in the room.
@@ -157,7 +156,7 @@
             ecs::ECS _ecs;
             EventBus _eventBus;
             std::string _name;
-            unsigned int _nb_client;
+            unsigned int _nb_client = 0;
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
@@ -166,8 +165,8 @@
 
             // SYSTEMS
 
-            ecs::PositionSystem _positon_system;
-            rtype::DirectionSystem _direction_system;
+            PositionSystem _positon_system;
+            DirectionSystem _direction_system;
             BoundariesSystem _boundaries_system;
             MonsterMovementSystem _monster_movement_system;
             CollisionSystem _collision_system;
@@ -224,7 +223,7 @@
             /**
              * @brief Sends updates to all clients about the current game state.
              */
-            void sendUpdate();
+            void send_client_positions_update();
 
             /**
              * @brief Sends information about a new projectile to a client.
@@ -233,13 +232,13 @@
              * @param y The y position of the projectile.
              * @param sprite The sprite ID of the projectile.
              */
-            void send_client_new_projectile(size_t, float, float, SPRITES);
+            void send_client_new_projectile(size_t, std::string&);
 
             /**
             * @brief Creates a new projectile for an allied entity.
             * @param message The message containing projectile data.
             */
-            void createAlliesProjectile(ecs::udp::Message&);
+            void createProjectiles(ecs::udp::Message&);
 
             /**
              * @brief Creates projectiles for a specific entity.
@@ -248,12 +247,6 @@
              */
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
-            /**
-             * @brief Creates projectiles for enemy entities.
-             * @param entityId The ID of the enemy creating the projectile.
-             * @param data The position, hitbox, and sprite data for the projectile.
-             */
-            void createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite);
             void createMonster(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
             size_t getNextIndex();

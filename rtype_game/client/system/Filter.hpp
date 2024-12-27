@@ -2,16 +2,16 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** SetFilter
+** Filter
 */
 
 /**
- * @file SetFilter.hpp
+ * @file Filter.hpp
  * @brief Manages the application of graphical filters (shaders) to game elements.
  */
 
-#ifndef SETFILTER_HPP_
-    #define SETFILTER_HPP_
+#ifndef FILTER_HPP_
+    #define FILTER_HPP_
 
     #include "../components/Window.hpp"
     #include "../components/Background.hpp"
@@ -24,7 +24,7 @@
 
     namespace rtype
     {
-        class SetFilter
+        class Filter
         {
             public:
 
@@ -45,4 +45,4 @@
         };
     }
 
-#endif /* !SETFILTER_HPP_ */
+#endif /* !FILTER_HPP_ */

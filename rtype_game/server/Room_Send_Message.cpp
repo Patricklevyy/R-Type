@@ -53,14 +53,13 @@ namespace rtype
         }
     }
 
-    void Room::send_client_new_projectile(size_t index_ecs_server, float x, float y, SPRITES sprite_type)
+    void Room::send_client_new_projectile(size_t index_ecs_server, std::string &params)
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
         responseMessage.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
         responseMessage.id = index_ecs_server;
-        std::cout << "JE SHOTT" << "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite_type) << std::endl;
-        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite_type);
+        responseMessage.params = params;
 
         _message_compressor.serialize(responseMessage, response);
 
@@ -69,20 +68,21 @@ namespace rtype
         }
     }
 
-    void Room::sendUpdate()
+    void Room::send_client_positions_update()
     {
         std::string updateMessage = "";
 
         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(_ecs._components_arrays[typeid(Health)]);
+        auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(_ecs._components_arrays[typeid(Monster)]);
+        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(_ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
-            if (positions[i].has_value() && healths[i].has_value()) {
-
+            if ((positions[i].has_value() && i < healths.size() && healths[i].has_value()) && (i < monsters.size() && monsters[i].has_value() || i < playables.size() && playables[i].has_value())) {
                 updateMessage += std::to_string(i) +
-                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
-                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
-                "," + std::to_string(healths[i].value()._health) + ";";
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
+                                "," + std::to_string(healths[i].value()._health) + ";";
             }
         }
 
@@ -92,7 +92,7 @@ namespace rtype
 
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITION;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITIONS_FROM_SERVER;
         responseMessage.id = 0;
         responseMessage.params = updateMessage;
 

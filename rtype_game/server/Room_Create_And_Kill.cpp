@@ -48,6 +48,7 @@ namespace rtype
 
     size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
+        std::cout << "CREATE PLAYER \n\n\n\n : " << _nb_client << std::endl;
         size_t index = getNextIndex();
 
         ecs::Direction direction;
@@ -73,51 +74,25 @@ namespace rtype
         return index;
     }
 
-    void Room::createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
-    {
-        ecs::Direction direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second));
-        ecs::Position position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second);
-        ecs::Velocity velocity(300);
-        Health health(20);
-        Hitbox hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite)));
-        Projectiles projectile;
-        SpriteId spriteId(std::get<2>(pos_dir_sprite));
-        Ennemies enemmies;
-
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Projectiles>(index, projectile);
-        _ecs.addComponents<SpriteId>(index, spriteId);
-        _ecs.addComponents<Hitbox>(index, hitbox);
-        _ecs.addComponents<Ennemies>(index, enemmies);
-        send_client_new_projectile(index, std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second, std::get<2>(pos_dir_sprite));
-    }
-
     void Room::createEntityProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
     {
-        ecs::Direction direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second));
-        ecs::Position position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second);
-        ecs::Velocity velocity(300);
-        Health health(20);
-        Hitbox hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite)));
-        Projectiles projectile;
-        SpriteId spriteId(std::get<2>(pos_dir_sprite));
-        Allies allies;
-
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
-        _ecs.addComponents<Projectiles>(index, projectile);
-        _ecs.addComponents<SpriteId>(index, spriteId);
-        _ecs.addComponents<Hitbox>(index, hitbox);
-        _ecs.addComponents<Allies>(index, allies);
-        send_client_new_projectile(index, std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second, std::get<2>(pos_dir_sprite));
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second)));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(300));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second));
+        _ecs.addComponents<Health>(index, Health(20));
+        _ecs.addComponents<Projectiles>(index, Projectiles());
+        _ecs.addComponents<SpriteId>(index, SpriteId(std::get<2>(pos_dir_sprite)));
+        _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite))));
+        if (Utils::isAllie(std::get<2>(pos_dir_sprite))) {
+            _ecs.addComponents<Allies>(index, Allies());
+        } else {
+            _ecs.addComponents<Ennemies>(index, Ennemies());
+        }
+        std::string projectileInfo = Utils::projectilesInfoToString(pos_dir_sprite, 300);
+        send_client_new_projectile(index, projectileInfo);
     }
 
-    void Room::createAlliesProjectile(ecs::udp::Message &message)
+    void Room::createProjectiles(ecs::udp::Message &message)
     {
         size_t index;
         std::pair<bool, int> dead_entity = _ecs.getDeadEntityIndex();

@@ -10,7 +10,7 @@
 
 namespace rtype
 {
-    Client::Client()
+    Client::Client() : _sfml_handler(std::make_shared<SFMLHandler>(*this))
     {
         _udpClient = std::make_shared<ecs::udp::UDP_Client>();
         _timer = std::make_shared<Timer>();
@@ -66,7 +66,7 @@ namespace rtype
     {
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
-        _mes_checker.checkAction(mes);
+        Utils::checkAction(mes.action);
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
@@ -76,7 +76,7 @@ namespace rtype
     {
         _kill_system.killTempDisplay(_ecs);
         init_levels_sprites();
-        if (_ecs.getIndexPlayer() == -1)
+        if (_player_system.getIndexPlayer(_ecs._components_arrays) == -1)
             send_server_new_player();
     }
 
@@ -101,10 +101,11 @@ namespace rtype
     {
         init_all();
 
+        std::queue<sf::Event> events;
         while (_running) {
             _timer->waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::GET_WINDOW_EVENT);
-            handle_event();
+            events = _event_window_system.fetchEvents();
+            _sfml_handler->handleEvents(events);
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
                 try {
@@ -114,7 +115,7 @@ namespace rtype
                               << e.what() << std::endl;
                 }
             }
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
