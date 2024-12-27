@@ -122,13 +122,7 @@ namespace rtype
 
     void SFMLHandler::processMouseButtonPressed(const sf::Event &event)
     {
-        // auto isLevelChosen = _client._ath_system.isLevelClicked(_client._ecs._components_arrays);
-        // if (isLevelChosen.first) {
-        //     _client.send_server_start_game(isLevelChosen.second);
-        // } else if (_client._ath_system.isLooseOrWinClicked(_client._ecs._components_arrays)) {
-        //     _client.restart_game();
-        // } else if (_client._ecs.getIndexPlayer() != -1) {
-        //     _client.send_server_new_shoot();
-        // }
+        (void)event;
+        _client.handleMouseClick();
     }
 }

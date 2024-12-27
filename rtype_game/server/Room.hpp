@@ -223,7 +223,7 @@
             /**
              * @brief Sends updates to all clients about the current game state.
              */
-            void sendUpdate();
+            void send_client_positions_update();
 
             /**
              * @brief Sends information about a new projectile to a client.
@@ -232,13 +232,13 @@
              * @param y The y position of the projectile.
              * @param sprite The sprite ID of the projectile.
              */
-            void send_client_new_projectile(size_t, float, float, SPRITES);
+            void send_client_new_projectile(size_t, std::string&);
 
             /**
             * @brief Creates a new projectile for an allied entity.
             * @param message The message containing projectile data.
             */
-            void createAlliesProjectile(ecs::udp::Message&);
+            void createProjectiles(ecs::udp::Message&);
 
             /**
              * @brief Creates projectiles for a specific entity.
@@ -247,12 +247,6 @@
              */
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
-            /**
-             * @brief Creates projectiles for enemy entities.
-             * @param entityId The ID of the enemy creating the projectile.
-             * @param data The position, hitbox, and sprite data for the projectile.
-             */
-            void createEnemiesProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite);
             void createMonster(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
             size_t getNextIndex();

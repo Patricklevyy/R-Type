@@ -78,4 +78,23 @@ namespace rtype
 
         return parsedParams;
     }
+
+    bool Utils::isAllie(SPRITES type)
+    {
+        if (type == SPRITES::PLAYER_SIMPLE_MISSILE)
+            return true;
+        return false;
+    }
+
+    std::string Utils::projectilesInfoToString(std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite, int velocity)
+    {
+        std::string info = "";
+
+        info += "x=" + std::to_string(std::get<0>(pos_dir_sprite).first) + ";y=" + std::to_string(std::get<0>(pos_dir_sprite).second);
+        info += ";dir_x=" + std::to_string(std::get<1>(pos_dir_sprite).first) + ";dir_y=" + std::to_string(std::get<1>(pos_dir_sprite).second);
+        info += ";v=" + std::to_string(velocity);
+        info += ";type=" + std::to_string(std::get<2>(pos_dir_sprite));
+
+        return info;
+    }
 }

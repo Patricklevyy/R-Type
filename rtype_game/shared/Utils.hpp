@@ -29,6 +29,10 @@
 
                 static std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> extractProjectilePosAndDir(std::string);
 
+                static bool isAllie(SPRITES type);
+
+                static std::string projectilesInfoToString(std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>, int);
+
             protected:
             private:
         };

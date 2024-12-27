@@ -115,7 +115,7 @@ namespace rtype
                               << e.what() << std::endl;
                 }
             }
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_POSITION);
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }

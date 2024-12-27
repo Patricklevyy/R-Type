@@ -58,6 +58,8 @@
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LEVEL2:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
+                        case SPRITES::LEVEL_BOSS:
+                            return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LOOSER_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::WIN_SCREEN:
@@ -154,6 +156,9 @@
                             break;
                         case SPRITES::LEVEL2:
                             textures.push_back(loadTexture("assets/level2.png"));
+                            break;
+                        case SPRITES::LEVEL_BOSS:
+                            textures.push_back(loadTexture("assets/final_level.png"));
                             break;
                         case SPRITES::LOOSER_SCREEN:
                             textures.push_back(loadTexture("assets/looser_screen_frame1.png"));

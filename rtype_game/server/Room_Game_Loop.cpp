@@ -30,21 +30,21 @@ namespace rtype
 
         while (_game_running) {
             _timer.waitTPS();
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITION);
-            // _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
+            _eventBus.emit(RTYPE_ACTIONS::MOVE_MONSTERS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_OFF_SCREEN);
-            // _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
+            _eventBus.emit(RTYPE_ACTIONS::ENEMY_SHOOT);
             auto messages = _udp_server->fetchAllMessages();
             if (messages.size() != 0) {
                 for (const auto &[clientAddress, message] : messages) {
                     handleCommand(message, clientAddress);
                 }
             }
-            // _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
-            // _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
-            // _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
-            // _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
-            sendUpdate();
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
+            _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
+            send_client_positions_update();
         }
         _udp_server->stopReceiving();
     }

@@ -41,6 +41,8 @@ namespace rtype
                 _ecs.killEntityFromRegistry<Health>(index_ecs_client);
                 _ecs.killEntityFromRegistry<Sprite>(index_ecs_client);
                 _ecs.killEntityFromRegistry<Displayable>(index_ecs_client);
+                _ecs.killEntityFromRegistry<ecs::Velocity>(index_ecs_client);
+                _ecs.killEntityFromRegistry<ecs::Direction>(index_ecs_client);
                 _ecs.killEntityFromRegistry<ecs::Playable>(index_ecs_client);
                 _ecs.addDeadEntity(index_ecs_client);
             }
@@ -107,10 +109,24 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
+    void Client::createEntityProjectile(unsigned int server_id, float x, float y, int dir_x, int dir_y, int velocity, int spriteId)
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(static_cast<ecs::direction>(dir_x), static_cast<ecs::direction>(dir_y)));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
+        _ecs.addComponents<Health>(index, Health(60));
+        _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
+
+        ecs_server_to_client[server_id] = index;
+        ecs_client_to_server[index] = server_id;
+    }
+
     void Client::createProjectile(ecs::udp::Message &message)
     {
         float x = 0.0f, y = 0.0f;
-        int type = 0;
+        int dir_x, dir_y, velocity, type;
 
         std::vector<std::string> parts;
         std::stringstream ss(message.params);
@@ -122,10 +138,16 @@ namespace rtype
 
         x = std::stof(parts[0].substr(parts[0].find('=') + 1));
         y = std::stof(parts[1].substr(parts[1].find('=') + 1));
-        type = std::stoi(parts[2].substr(parts[2].find('=') + 1));
+        dir_x = std::stoi(parts[2].substr(parts[2].find('=') + 1));
+        dir_y = std::stoi(parts[3].substr(parts[3].find('=') + 1));
+        velocity = std::stoi(parts[4].substr(parts[4].find('=') + 1));
+        type = std::stoi(parts[5].substr(parts[5].find('=') + 1));
 
-        SPRITES spriteType = static_cast<SPRITES>(type);
+        createEntityProjectile(message.id, x, y, dir_x, dir_y, velocity, type);
+    }
 
-        createEntity(message.id, x, y, spriteType);
+    void Client::create_new_player_shoot()
+    {
+        send_server_new_shoot();
     }
 }

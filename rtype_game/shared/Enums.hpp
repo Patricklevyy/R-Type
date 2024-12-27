@@ -34,10 +34,10 @@
             MOVE_DOWN_STOP,
             MOVE_LEFT,
             MOVE_LEFT_STOP,
-            UPDATE_POSITION,
             CHECK_EVENT_WINDOW,
             CREATE_CLIENT,
             CREATE_TEAMMATE,
+            UPDATE_POSITIONS,
             UPDATE_DIRECTION,
             UPDATE_PLAYER_DIRECTION,
             UPDATE_PLAYER_POSITION,
@@ -64,6 +64,7 @@
             CREATE_PLAYER,
             FAIL_LEVEL,
             WIN_LEVEL,
+            UPDATE_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
             MAX_ACTION
         };
@@ -86,13 +87,15 @@
             WIN_SCREEN,
             MONSTER_MULTIPLE_MISSILE,
             LEVEL1,
-            LEVEL2
+            LEVEL2,
+            LEVEL_BOSS
         };
 
         enum LEVELS
         {
             UN,
-            DEUX
+            DEUX,
+            BOSS
         };
 
         /**

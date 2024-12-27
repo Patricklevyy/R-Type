@@ -20,4 +20,16 @@ namespace rtype
         send_server_player_direction(x, y);
         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
     }
+
+    void Client::handleMouseClick()
+    {
+        auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
+        if (isLevelChosen.first) {
+            send_server_start_game(isLevelChosen.second);
+        } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
+            restart_game();
+        } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
+            send_server_new_shoot();
+        }
+    }
 }

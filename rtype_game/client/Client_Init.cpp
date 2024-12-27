@@ -67,13 +67,17 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
-        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 2) - 300, _window_height - 400));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 4) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL1).first / 2), _window_height - 400));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL1));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
         index = getNextIndex();
-        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 2) + 100 , _window_height - 400));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position((_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first / 2), _window_height - 400));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL2));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::DEUX));
+        index = getNextIndex();
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(((_window_width / 4) * 3) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL_BOSS).first / 2)  , _window_height - 400));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_BOSS));
+        _ecs.addComponents<Levels>(index, Levels(LEVELS::BOSS));
     }
 
     void Client::init_game(ecs::udp::Message &message)

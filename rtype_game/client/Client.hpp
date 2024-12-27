@@ -87,6 +87,10 @@
 
                 void set_window_filter(FILTER_MODE);
 
+                void create_new_player_shoot();
+
+                void handleMouseClick();
+
                 bool _in_menu = true;
                 bool _running = true;
                 EventBus _eventBus;
@@ -180,6 +184,7 @@
                 void createMonster(ecs::udp::Message&);
                 void restart_game();
                 void send_server_new_player();
+                void createEntityProjectile(unsigned int, float, float, int, int, int, int);
 
                 // MESSAGE TO SERVER
 
