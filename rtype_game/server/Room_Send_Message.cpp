@@ -75,9 +75,10 @@ namespace rtype
         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(_ecs._components_arrays[typeid(Health)]);
         auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(_ecs._components_arrays[typeid(Monster)]);
+        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(_ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
-            if (positions[i].has_value() && i < healths.size() && healths[i].has_value() && i < monsters.size() && monsters[i].has_value()) {
+            if ((positions[i].has_value() && i < healths.size() && healths[i].has_value()) && (i < monsters.size() && monsters[i].has_value() || i < playables.size() && playables[i].has_value())) {
                 updateMessage += std::to_string(i) +
                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
                                 "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
