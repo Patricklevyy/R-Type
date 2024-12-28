@@ -24,9 +24,9 @@
     #include "../../client/components/TempDisplay.hpp"
     #include "../../client/components/Window.hpp"
     #include "../../client/components/Displayable.hpp"
-    #include "../../client/components/Background.hpp"
     #include "../../client/components/Shader.hpp"
     #include "../../client/components/Sprite.hpp"
+    #include "../../client/components/Music.hpp"
     #include "../../server/components/SpriteId.hpp"
 
     namespace rtype
@@ -47,12 +47,12 @@
 
                     // CLIENT COMPONENTS
 
-                    ecs.killEntityFromRegistry<Background>(index);
                     ecs.killEntityFromRegistry<Displayable>(index);
                     ecs.killEntityFromRegistry<Shader>(index);
                     ecs.killEntityFromRegistry<Sprite>(index);
                     ecs.killEntityFromRegistry<TempDisplay>(index);
                     ecs.killEntityFromRegistry<Window>(index);
+                    ecs.killEntityFromRegistry<Music>(index);
 
                     // SHARED COMPONENTS
 

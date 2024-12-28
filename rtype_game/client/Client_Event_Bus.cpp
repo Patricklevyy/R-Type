@@ -155,7 +155,6 @@ namespace rtype
             std::string token;
 
             float x = 0.0f, y = 0.0f;
-            int port = 0;
 
             std::getline(ss, token, ';');
             x = std::stof(token);
