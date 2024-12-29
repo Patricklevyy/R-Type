@@ -20,7 +20,8 @@ target_include_directories(rtype_shared PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(rtype_shared PUBLIC ecs)
+# target_link_libraries(rtype_shared PUBLIC ecs)
+target_link_libraries(rtype_shared PUBLIC ecs sfml-system sfml-window sfml-graphics sfml-audio)
 
 # add_library(rtype_shared STATIC
 #     MessageChecker.cpp
