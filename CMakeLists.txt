@@ -101,6 +101,17 @@ find_package(SFML COMPONENTS system window graphics audio CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
 
+find_package(OpenGL REQUIRED)
+find_package(Freetype REQUIRED)
+
+if(NOT OpenGL_FOUND)
+    message(FATAL_ERROR "OpenGL libraries not found. Install libGL and libGLU.")
+endif()
+
+if(NOT Freetype_FOUND)
+    message(FATAL_ERROR "Freetype libraries not found. Install libfreetype6-dev.")
+endif()
+
 set(COMMON_LIBS
     fmt::fmt
     libconfig::config
@@ -109,6 +120,8 @@ set(COMMON_LIBS
     sfml-window
     sfml-graphics
     sfml-audio
+
+    Freetype::Freetype
 )
 
 function(link_common_libraries target)
