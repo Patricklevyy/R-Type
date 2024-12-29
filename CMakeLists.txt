@@ -88,7 +88,7 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/vcpkg.json")
     endif()
 endif()
 
-set(CMAKE_PREFIX_PATH 
+set(CMAKE_PREFIX_PATH
     "${CMAKE_BINARY_DIR}/vcpkg/installed/x64-linux/share"
     "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-linux/share"
     "$ENV{VCPKG_ROOT}/installed/x64-linux/share"
@@ -103,6 +103,8 @@ find_package(Catch2 CONFIG REQUIRED)
 
 find_package(OpenGL REQUIRED)
 find_package(Freetype REQUIRED)
+find_package(OpenAL REQUIRED)
+
 
 if(NOT OpenGL_FOUND)
     message(FATAL_ERROR "OpenGL libraries not found. Install libGL and libGLU.")
@@ -110,6 +112,9 @@ endif()
 
 if(NOT Freetype_FOUND)
     message(FATAL_ERROR "Freetype libraries not found. Install libfreetype6-dev.")
+endif()
+if(NOT OpenAL_FOUND)
+    message(FATAL_ERROR "OpenAL libraries not found. Install libopenal-dev.")
 endif()
 
 set(COMMON_LIBS
@@ -122,6 +127,7 @@ set(COMMON_LIBS
     sfml-audio
 
     Freetype::Freetype
+    OpenAL::OpenAL
 )
 
 function(link_common_libraries target)
