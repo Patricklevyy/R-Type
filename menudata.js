@@ -54,6 +54,7 @@ var menudata={children:[
 {text:"Énumérations",url:"namespacemembers_enum.html"},
 {text:"Valeurs énumérées",url:"namespacemembers_eval.html",children:[
 {text:"a",url:"namespacemembers_eval.html#index_a"},
+{text:"b",url:"namespacemembers_eval.html#index_b"},
 {text:"c",url:"namespacemembers_eval.html#index_c"},
 {text:"d",url:"namespacemembers_eval.html#index_d"},
 {text:"e",url:"namespacemembers_eval.html#index_e"},

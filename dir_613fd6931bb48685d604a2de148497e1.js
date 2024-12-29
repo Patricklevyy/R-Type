@@ -14,5 +14,5 @@ var dir_613fd6931bb48685d604a2de148497e1 =
     [ "Room_Send_Message.cpp", "Room__Send__Message_8cpp.html", null ],
     [ "Server.cpp", "Server_8cpp.html", null ],
     [ "Server.hpp", "Server_8hpp.html", "Server_8hpp" ],
-    [ "Server_Create_And_Join_Room.cpp", "Server__Create__And__Join__Room_8cpp.html", null ]
+    [ "Server_Create_Join_Room.cpp", "Server__Create__Join__Room_8cpp.html", null ]
 ];

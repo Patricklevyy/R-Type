@@ -111,12 +111,12 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:afc290a2753b43a504c71474d8fed3c93" id="r_afc290a2753b43a504c71474d8fed3c93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">~Room</a> ()</td></tr>
 <tr class="memdesc:afc290a2753b43a504c71474d8fed3c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classrtype_1_1Room.html" title="Represents a game room with associated entities, systems, and gameplay logic.">Room</a>.  <br /></td></tr>
 <tr class="separator:afc290a2753b43a504c71474d8fed3c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21687020018f950f212fff3af326564c" id="r_a21687020018f950f212fff3af326564c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a21687020018f950f212fff3af326564c">start</a> (int, std::string, std::string, std::string, std::string)</td></tr>
-<tr class="memdesc:a21687020018f950f212fff3af326564c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game in the room.  <br /></td></tr>
-<tr class="separator:a21687020018f950f212fff3af326564c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfb1f1aaa5bbb286efc2a26805e590a9" id="r_adfb1f1aaa5bbb286efc2a26805e590a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#adfb1f1aaa5bbb286efc2a26805e590a9">gameThreadFunction</a> (int, std::string, std::string, std::string, std::string)</td></tr>
-<tr class="memdesc:adfb1f1aaa5bbb286efc2a26805e590a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the game thread functionality.  <br /></td></tr>
-<tr class="separator:adfb1f1aaa5bbb286efc2a26805e590a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc153d2086ce4d297b2e476de8e9eae" id="r_a0bc153d2086ce4d297b2e476de8e9eae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae">start</a> (int, std::string, std::string)</td></tr>
+<tr class="memdesc:a0bc153d2086ce4d297b2e476de8e9eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game in the room.  <br /></td></tr>
+<tr class="separator:a0bc153d2086ce4d297b2e476de8e9eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6836d36e84e21f96be317982dc91303" id="r_ac6836d36e84e21f96be317982dc91303"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#ac6836d36e84e21f96be317982dc91303">gameThreadFunction</a> (int, std::string, std::string)</td></tr>
+<tr class="memdesc:ac6836d36e84e21f96be317982dc91303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the game thread functionality.  <br /></td></tr>
+<tr class="separator:ac6836d36e84e21f96be317982dc91303"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a964c22530b4a86a9db7da935e6f11d60" id="r_a964c22530b4a86a9db7da935e6f11d60"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60">sendMessage</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a964c22530b4a86a9db7da935e6f11d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to all clients in the room.  <br /></td></tr>
 <tr class="separator:a964c22530b4a86a9db7da935e6f11d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,8 +299,8 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<a id="adfb1f1aaa5bbb286efc2a26805e590a9" name="adfb1f1aaa5bbb286efc2a26805e590a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfb1f1aaa5bbb286efc2a26805e590a9">&#9670;&#160;</a></span>gameThreadFunction()</h2>
+<a id="ac6836d36e84e21f96be317982dc91303" name="ac6836d36e84e21f96be317982dc91303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6836d36e84e21f96be317982dc91303">&#9670;&#160;</a></span>gameThreadFunction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,18 +310,6 @@ Fonctions membres publiques</h2></td></tr>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>lastClientAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>clientName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -551,8 +539,8 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<a id="a21687020018f950f212fff3af326564c" name="a21687020018f950f212fff3af326564c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21687020018f950f212fff3af326564c">&#9670;&#160;</a></span>start()</h2>
+<a id="a0bc153d2086ce4d297b2e476de8e9eae" name="a0bc153d2086ce4d297b2e476de8e9eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc153d2086ce4d297b2e476de8e9eae">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -562,18 +550,6 @@ Fonctions membres publiques</h2></td></tr>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>lastclientAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>clientName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -127,12 +127,6 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:af42cfac51e77315331cca2d0341e3d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95bdf9be8be539e0c36643ddb8fad7a5" id="r_a95bdf9be8be539e0c36643ddb8fad7a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1ECS.html#a95bdf9be8be539e0c36643ddb8fad7a5">addDeadEntity</a> (<a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">size_t</a> <a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">index</a>)</td></tr>
 <tr class="separator:a95bdf9be8be539e0c36643ddb8fad7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afca5ef6203344da8dd3007c1090f453c" id="r_afca5ef6203344da8dd3007c1090f453c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1ECS.html#afca5ef6203344da8dd3007c1090f453c">getIndexPlayer</a> ()</td></tr>
-<tr class="memdesc:afca5ef6203344da8dd3007c1090f453c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the index of the player, used only by the client.  <br /></td></tr>
-<tr class="separator:afca5ef6203344da8dd3007c1090f453c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0580cc6ffce57cee9580fd2af5154fa3" id="r_a0580cc6ffce57cee9580fd2af5154fa3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1ECS.html#a0580cc6ffce57cee9580fd2af5154fa3">displayPlayableEntityComponents</a> ()</td></tr>
-<tr class="memdesc:a0580cc6ffce57cee9580fd2af5154fa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the components of all playable entities in the system.  <br /></td></tr>
-<tr class="separator:a0580cc6ffce57cee9580fd2af5154fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a32b3aebe2ec33c05f4b91347120251" id="r_a3a32b3aebe2ec33c05f4b91347120251"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">bool</a>, <a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">size_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251">getDeadEntityIndex</a> ()</td></tr>
 <tr class="memdesc:a3a32b3aebe2ec33c05f4b91347120251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows us the get the list of the dead entities.  <br /></td></tr>
 <tr class="separator:a3a32b3aebe2ec33c05f4b91347120251"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -322,33 +316,6 @@ template&lt;typename Component &gt; </div>
 
 </div>
 </div>
-<a id="a0580cc6ffce57cee9580fd2af5154fa3" name="a0580cc6ffce57cee9580fd2af5154fa3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0580cc6ffce57cee9580fd2af5154fa3">&#9670;&#160;</a></span>displayPlayableEntityComponents()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">void</a> ecs::ECS::displayPlayableEntityComponents </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Displays the components of all playable entities in the system. </p>
-
-</div>
-</div>
 <a id="a3a32b3aebe2ec33c05f4b91347120251" name="a3a32b3aebe2ec33c05f4b91347120251"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a32b3aebe2ec33c05f4b91347120251">&#9670;&#160;</a></span>getDeadEntityIndex()</h2>
 
@@ -373,33 +340,6 @@ template&lt;typename Component &gt; </div>
 </div><div class="memdoc">
 
 <p>Allows us the get the list of the dead entities. </p>
-
-</div>
-</div>
-<a id="afca5ef6203344da8dd3007c1090f453c" name="afca5ef6203344da8dd3007c1090f453c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afca5ef6203344da8dd3007c1090f453c">&#9670;&#160;</a></span>getIndexPlayer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classecs_1_1ECS.html#a886a3fc55b1d7106253c4af9d3dd0848">size_t</a> ecs::ECS::getIndexPlayer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Return the index of the player, used only by the client. </p>
 
 </div>
 </div>

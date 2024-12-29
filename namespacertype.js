@@ -13,6 +13,7 @@ var namespacertype =
     [ "Ennemies", "classrtype_1_1Ennemies.html", "classrtype_1_1Ennemies" ],
     [ "EventBus", "classrtype_1_1EventBus.html", "classrtype_1_1EventBus" ],
     [ "EventWindow", "classrtype_1_1EventWindow.html", "classrtype_1_1EventWindow" ],
+    [ "Filter", "classrtype_1_1Filter.html", "classrtype_1_1Filter" ],
     [ "Health", "classrtype_1_1Health.html", "classrtype_1_1Health" ],
     [ "HealthSystem", "classrtype_1_1HealthSystem.html", "classrtype_1_1HealthSystem" ],
     [ "Hitbox", "classrtype_1_1Hitbox.html", "classrtype_1_1Hitbox" ],
@@ -20,10 +21,11 @@ var namespacertype =
     [ "KillSystem", "classrtype_1_1KillSystem.html", "classrtype_1_1KillSystem" ],
     [ "Levels", "classrtype_1_1Levels.html", "classrtype_1_1Levels" ],
     [ "LevelSystem", "classrtype_1_1LevelSystem.html", "classrtype_1_1LevelSystem" ],
-    [ "MessageChecker", "classrtype_1_1MessageChecker.html", "classrtype_1_1MessageChecker" ],
     [ "Monster", "classrtype_1_1Monster.html", "classrtype_1_1Monster" ],
     [ "MonsterFactory", "classrtype_1_1MonsterFactory.html", null ],
     [ "MonsterMovementSystem", "classrtype_1_1MonsterMovementSystem.html", "classrtype_1_1MonsterMovementSystem" ],
+    [ "PlayerSystem", "classrtype_1_1PlayerSystem.html", "classrtype_1_1PlayerSystem" ],
+    [ "PositionSystem", "classrtype_1_1PositionSystem.html", "classrtype_1_1PositionSystem" ],
     [ "Projectiles", "classrtype_1_1Projectiles.html", "classrtype_1_1Projectiles" ],
     [ "RandomNumber", "classrtype_1_1RandomNumber.html", "classrtype_1_1RandomNumber" ],
     [ "RenderWindow", "classrtype_1_1RenderWindow.html", "classrtype_1_1RenderWindow" ],
@@ -31,7 +33,7 @@ var namespacertype =
     [ "ScoreSystem", "classrtype_1_1ScoreSystem.html", "classrtype_1_1ScoreSystem" ],
     [ "SecretKeyChecker", "classrtype_1_1SecretKeyChecker.html", null ],
     [ "Server", "classrtype_1_1Server.html", "classrtype_1_1Server" ],
-    [ "SetFilter", "classrtype_1_1SetFilter.html", "classrtype_1_1SetFilter" ],
+    [ "SFMLHandler", "classrtype_1_1SFMLHandler.html", "classrtype_1_1SFMLHandler" ],
     [ "Shader", "classrtype_1_1Shader.html", "classrtype_1_1Shader" ],
     [ "ShootingSystem", "classrtype_1_1ShootingSystem.html", "classrtype_1_1ShootingSystem" ],
     [ "Sprite", "classrtype_1_1Sprite.html", "classrtype_1_1Sprite" ],
@@ -51,7 +53,8 @@ var namespacertype =
     ] ],
     [ "LEVELS", "namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8", [
       [ "UN", "namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8a678371ee8ca4b36a20004f58c7df4ad3", null ],
-      [ "DEUX", "namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ]
+      [ "DEUX", "namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ],
+      [ "BOSS", "namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8adf68335189ffbd9d73ffdeddd0b9e40d", null ]
     ] ],
     [ "RTYPE_ACTIONS", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3", [
       [ "UNDEFINED", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ab2a6540696d8f40f08afe5703bced3f1", null ],
@@ -66,10 +69,10 @@ var namespacertype =
       [ "MOVE_DOWN_STOP", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a0f9b627c7263c848ffd5fd8f14a2df37", null ],
       [ "MOVE_LEFT", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ac300cb32923cc502bd39424fcc760528", null ],
       [ "MOVE_LEFT_STOP", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3af11a038259d17d8c27b91b48fa1ec2da", null ],
-      [ "UPDATE_POSITION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a09d501574ad9f724011255527e9ffac7", null ],
       [ "CHECK_EVENT_WINDOW", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a89c528b98522ce285bcccf20bc382491", null ],
       [ "CREATE_CLIENT", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a21d95be913fdca869444c5ee2c554d78", null ],
       [ "CREATE_TEAMMATE", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ae7d58cc0f5765d6aa5f33106b02d6170", null ],
+      [ "UPDATE_POSITIONS", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ac36243b4cbdc1b35c68f49391a74e0b9", null ],
       [ "UPDATE_DIRECTION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ae9b4a8d1239d71fbea222ee224e8d09a", null ],
       [ "UPDATE_PLAYER_DIRECTION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a54482700783d2521e9a9f3e760e51979", null ],
       [ "UPDATE_PLAYER_POSITION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1c961b13a58c3e7cd4bf700fa2487efe", null ],
@@ -96,6 +99,7 @@ var namespacertype =
       [ "CREATE_PLAYER", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ad917dcd88a57053879507297b91391dd", null ],
       [ "FAIL_LEVEL", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a046651e9c88c6ab5cce00a5750b3684c", null ],
       [ "WIN_LEVEL", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a9646eacc83a3479110711cdc53fdc2b5", null ],
+      [ "UPDATE_POSITIONS_FROM_SERVER", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a758f627eeccae21a5976e81c73aa4756", null ],
       [ "REMOVE_ATH", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a45881ffacd58cf9e8700faa7316f5e2b", null ],
       [ "MAX_ACTION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
@@ -112,6 +116,8 @@ var namespacertype =
       [ "WIN_SCREEN", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aac7ba080bbe2957b044cdae38e117e3d", null ],
       [ "MONSTER_MULTIPLE_MISSILE", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309", null ],
       [ "LEVEL1", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662acd77d78cec73faf3487efdc668234b9b", null ],
-      [ "LEVEL2", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ]
-    ] ]
+      [ "LEVEL2", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ],
+      [ "LEVEL_BOSS", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662afa321308dc2256410d73a7182d5c599b", null ]
+    ] ],
+    [ "BORDER_MARGIN", "namespacertype.html#abf0617890a62862b9bc9871a345b6194", null ]
 ];

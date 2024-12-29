@@ -6,9 +6,10 @@ var searchData=
   ['bibliothèques_20utilisés_3',['Documentation des Frameworks et Bibliothèques Utilisés',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html',1,'']]],
   ['binaires_4',['4. Exécuter les binaires',['../md_documentation_2CMakeDocumentation.html#autotoc_md24',1,'']]],
   ['bindfailedexceptions_5',['bindfailedexceptions',['../classecs_1_1ERROR_1_1BindFailedExceptions.html',1,'ecs::ERROR::BindFailedExceptions'],['../classecs_1_1ERROR_1_1BindFailedExceptions.html#a6109883bd22d37207dc33f05ea4a6c3d',1,'ecs::ERROR::BindFailedExceptions::BindFailedExceptions()']]],
-  ['border_5fmargin_6',['BORDER_MARGIN',['../namespaceecs.html#ada3acdce2091197a2335f5b9ed5aa29f',1,'ecs']]],
-  ['boundariessystem_7',['boundariessystem',['../classrtype_1_1BoundariesSystem.html',1,'rtype::BoundariesSystem'],['../classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a',1,'rtype::BoundariesSystem::BoundariesSystem()']]],
-  ['boundariessystem_2ehpp_8',['BoundariesSystem.hpp',['../BoundariesSystem_8hpp.html',1,'']]],
-  ['buffersize_9',['bufferSize',['../UDP__Manager_8hpp.html#a8556d19b129aa550f5b2819ed0320e83',1,'UDP_Manager.hpp']]],
-  ['build_20cmake_20pour_20le_20projet_20r_20type_10',['Système de Build CMake pour le Projet R-Type',['../md_documentation_2CMakeDocumentation.html',1,'']]]
+  ['border_5fmargin_6',['BORDER_MARGIN',['../namespacertype.html#abf0617890a62862b9bc9871a345b6194',1,'rtype']]],
+  ['boss_7',['BOSS',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8adf68335189ffbd9d73ffdeddd0b9e40d',1,'rtype']]],
+  ['boundariessystem_8',['boundariessystem',['../classrtype_1_1BoundariesSystem.html',1,'rtype::BoundariesSystem'],['../classrtype_1_1BoundariesSystem.html#a49c3223602cd504468b2bd23912aa09a',1,'rtype::BoundariesSystem::BoundariesSystem()']]],
+  ['boundariessystem_2ehpp_9',['BoundariesSystem.hpp',['../BoundariesSystem_8hpp.html',1,'']]],
+  ['buffersize_10',['bufferSize',['../UDP__Manager_8hpp.html#a8556d19b129aa550f5b2819ed0320e83',1,'UDP_Manager.hpp']]],
+  ['build_20cmake_20pour_20le_20projet_20r_20type_11',['Système de Build CMake pour le Projet R-Type',['../md_documentation_2CMakeDocumentation.html',1,'']]]
 ];

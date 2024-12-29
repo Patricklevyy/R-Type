@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['gamethreadfunction_0',['gameThreadFunction',['../classrtype_1_1Room.html#adfb1f1aaa5bbb286efc2a26805e590a9',1,'rtype::Room']]],
+  ['gamethreadfunction_0',['gameThreadFunction',['../classrtype_1_1Room.html#ac6836d36e84e21f96be317982dc91303',1,'rtype::Room']]],
   ['generate_5fsecret_5fkey_1',['generate_secret_key',['../namespacegenerateSecretKey.html#ac061c112737a83f03d8084c71ca65729',1,'generateSecretKey']]],
   ['generaterandomnumbers_2',['generateRandomNumbers',['../classrtype_1_1RandomNumber.html#ab92b9be4609c43e014ea3b1d6cb55211',1,'rtype::RandomNumber']]],
   ['getaddress_3',['getAddress',['../classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121',1,'rtype::Room']]],
   ['getdeadentityindex_4',['getDeadEntityIndex',['../classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251',1,'ecs::ECS']]],
   ['getelapsedtime_5',['getElapsedTime',['../classrtype_1_1Monster.html#a1c6d31c2b09e5b57f609375ea1d56e3a',1,'rtype::Monster']]],
-  ['getindexplayer_6',['getIndexPlayer',['../classecs_1_1ECS.html#afca5ef6203344da8dd3007c1090f453c',1,'ecs::ECS']]],
+  ['getindexplayer_6',['getIndexPlayer',['../classrtype_1_1PlayerSystem.html#afc92a946ccbeb9fe453e703e43be0a8e',1,'rtype::PlayerSystem']]],
   ['getintvalue_7',['getIntValue',['../classrtype_1_1Monster.html#a0c9deea5ca2150e28f0a38234370b1ab',1,'rtype::Monster']]],
   ['getmaxtexturesizeforsprite_8',['getMaxTextureSizeForSprite',['../classrtype_1_1SpriteFactory.html#a62c075a31fb9cd016f78d3af9a1deacc',1,'rtype::SpriteFactory']]],
   ['getmonsterlife_9',['getMonsterLife',['../classrtype_1_1MonsterFactory.html#a3907cf1f78acd31af484f8e8b2c419e2',1,'rtype::MonsterFactory']]],
@@ -15,7 +15,7 @@ var searchData=
   ['getmouseposition_12',['getMousePosition',['../classrtype_1_1ATH.html#a0237e29a376fabf6d88be3c86b85292b',1,'rtype::ATH']]],
   ['getname_13',['getName',['../classrtype_1_1Room.html#a569d1821621045bbf801706cc73fb9c5',1,'rtype::Room']]],
   ['getnbclient_14',['getNbClient',['../classrtype_1_1Room.html#ab6b42be3d4c5bd85776d02577d94198e',1,'rtype::Room']]],
-  ['getplayerposition_15',['getPlayerPosition',['../classecs_1_1PositionSystem.html#ae246182323b59247349b0d590e8cd5ab',1,'ecs::PositionSystem']]],
+  ['getplayerposition_15',['getPlayerPosition',['../classrtype_1_1PositionSystem.html#a2ec75828ad39672e9241a04c022fc120',1,'rtype::PositionSystem']]],
   ['getposition_16',['getPosition',['../classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72',1,'rtype::Sprite']]],
   ['getrenderwindow_17',['getRenderWindow',['../classrtype_1_1Window.html#a2f3ed09a1a402ff5478eb0cfb6a10927',1,'rtype::Window']]],
   ['getrotation_18',['getRotation',['../classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570',1,'rtype::Sprite']]],

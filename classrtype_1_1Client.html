@@ -93,12 +93,23 @@ $(document).ready(function(){initNavTree('classrtype_1_1Client.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-attribs">Attributs publics</a> &#124;
 <a href="classrtype_1_1Client-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle"><div class="title">Référence de la classe rtype::Client</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="Client_8hpp_source.html">Client.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Graphe de collaboration de rtype::Client:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrtype_1_1Client__coll__graph.png" border="0" usemap="#artype_1_1Client_coll__map" alt="Collaboration graph"/></div>
+<map name="artype_1_1Client_coll__map" id="artype_1_1Client_coll__map">
+<area shape="rect" title=" " alt="" coords="17,93,119,119"/>
+<area shape="rect" href="classrtype_1_1EventBus.html" title="A system for subscribing and emitting events in the game." alt="" coords="5,5,131,31"/>
+<area shape="poly" title=" " alt="" coords="71,45,71,93,65,93,65,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
@@ -111,12 +122,30 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a5bdb805662af176334a2235c0aafccc4" id="r_a5bdb805662af176334a2235c0aafccc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4">start</a> ()</td></tr>
 <tr class="memdesc:a5bdb805662af176334a2235c0aafccc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game client.  <br /></td></tr>
 <tr class="separator:a5bdb805662af176334a2235c0aafccc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa61d62e46c3604cecf2a8f0610c0b1c0" id="r_aa61d62e46c3604cecf2a8f0610c0b1c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aa61d62e46c3604cecf2a8f0610c0b1c0">handle_event</a> ()</td></tr>
-<tr class="memdesc:aa61d62e46c3604cecf2a8f0610c0b1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles events in the game.  <br /></td></tr>
-<tr class="separator:aa61d62e46c3604cecf2a8f0610c0b1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60bf11c57c5a6260f1c27fea743fba14" id="r_a60bf11c57c5a6260f1c27fea743fba14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a60bf11c57c5a6260f1c27fea743fba14">handle_message</a> (std::vector&lt; char &gt; &amp;)</td></tr>
 <tr class="memdesc:a60bf11c57c5a6260f1c27fea743fba14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles messages from the server.  <br /></td></tr>
 <tr class="separator:a60bf11c57c5a6260f1c27fea743fba14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a2e4bc190f25cdf4b01fb0d423368fa" id="r_a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a0a2e4bc190f25cdf4b01fb0d423368fa">change_player_direction</a> (<a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>, <a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>)</td></tr>
+<tr class="separator:a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2da174444e5133b39d6a48f3246a94" id="r_a8d2da174444e5133b39d6a48f3246a94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a8d2da174444e5133b39d6a48f3246a94">send_server_create_room</a> ()</td></tr>
+<tr class="separator:a8d2da174444e5133b39d6a48f3246a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ada38cb0644e0ffd81a35c57cfecb8" id="r_a52ada38cb0644e0ffd81a35c57cfecb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a52ada38cb0644e0ffd81a35c57cfecb8">send_server_join_room</a> ()</td></tr>
+<tr class="separator:a52ada38cb0644e0ffd81a35c57cfecb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4c1dca9657cfa4f489fe771590f1e1" id="r_a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a4b4c1dca9657cfa4f489fe771590f1e1">set_window_filter</a> (<a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a>)</td></tr>
+<tr class="separator:a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3f21141e62830ca3c413cff63e9680f" id="r_ab3f21141e62830ca3c413cff63e9680f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab3f21141e62830ca3c413cff63e9680f">create_new_player_shoot</a> ()</td></tr>
+<tr class="separator:ab3f21141e62830ca3c413cff63e9680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa94aa898889b74d47d82e4c060d74e93" id="r_aa94aa898889b74d47d82e4c060d74e93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aa94aa898889b74d47d82e4c060d74e93">handleMouseClick</a> ()</td></tr>
+<tr class="separator:aa94aa898889b74d47d82e4c060d74e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Attributs publics</h2></td></tr>
+<tr class="memitem:ac840cc7c68fc34edbf343ccd2a21427a" id="r_ac840cc7c68fc34edbf343ccd2a21427a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ac840cc7c68fc34edbf343ccd2a21427a">_in_menu</a> = true</td></tr>
+<tr class="separator:ac840cc7c68fc34edbf343ccd2a21427a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2563beae9bd38f7e95efe6bea1c114c5" id="r_a2563beae9bd38f7e95efe6bea1c114c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a2563beae9bd38f7e95efe6bea1c114c5">_running</a> = true</td></tr>
+<tr class="separator:a2563beae9bd38f7e95efe6bea1c114c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af361faea316896d608510962c341d0f4" id="r_af361faea316896d608510962c341d0f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrtype_1_1EventBus.html">EventBus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#af361faea316896d608510962c341d0f4">_eventBus</a></td></tr>
+<tr class="separator:af361faea316896d608510962c341d0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="aed5c20fac90ad07852bebc5d94382b30" name="aed5c20fac90ad07852bebc5d94382b30"></a>
@@ -158,22 +187,48 @@ Fonctions membres publiques</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="aa61d62e46c3604cecf2a8f0610c0b1c0" name="aa61d62e46c3604cecf2a8f0610c0b1c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa61d62e46c3604cecf2a8f0610c0b1c0">&#9670;&#160;</a></span>handle_event()</h2>
+<a id="a0a2e4bc190f25cdf4b01fb0d423368fa" name="a0a2e4bc190f25cdf4b01fb0d423368fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2e4bc190f25cdf4b01fb0d423368fa">&#9670;&#160;</a></span>change_player_direction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtype::Client::handle_event </td>
+          <td class="memname">void rtype::Client::change_player_direction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3f21141e62830ca3c413cff63e9680f" name="ab3f21141e62830ca3c413cff63e9680f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3f21141e62830ca3c413cff63e9680f">&#9670;&#160;</a></span>create_new_player_shoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::create_new_player_shoot </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Handles events in the game. </p>
 
 </div>
 </div>
@@ -203,6 +258,75 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
+<a id="aa94aa898889b74d47d82e4c060d74e93" name="aa94aa898889b74d47d82e4c060d74e93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa94aa898889b74d47d82e4c060d74e93">&#9670;&#160;</a></span>handleMouseClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::handleMouseClick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d2da174444e5133b39d6a48f3246a94" name="a8d2da174444e5133b39d6a48f3246a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d2da174444e5133b39d6a48f3246a94">&#9670;&#160;</a></span>send_server_create_room()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::send_server_create_room </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a52ada38cb0644e0ffd81a35c57cfecb8" name="a52ada38cb0644e0ffd81a35c57cfecb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ada38cb0644e0ffd81a35c57cfecb8">&#9670;&#160;</a></span>send_server_join_room()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::send_server_join_room </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b4c1dca9657cfa4f489fe771590f1e1" name="a4b4c1dca9657cfa4f489fe771590f1e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4c1dca9657cfa4f489fe771590f1e1">&#9670;&#160;</a></span>set_window_filter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::set_window_filter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a>&#160;</td>
+          <td class="paramname"><em>filter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5bdb805662af176334a2235c0aafccc4" name="a5bdb805662af176334a2235c0aafccc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5bdb805662af176334a2235c0aafccc4">&#9670;&#160;</a></span>start()</h2>
 
@@ -222,14 +346,57 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="af361faea316896d608510962c341d0f4" name="af361faea316896d608510962c341d0f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af361faea316896d608510962c341d0f4">&#9670;&#160;</a></span>_eventBus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classrtype_1_1EventBus.html">EventBus</a> rtype::Client::_eventBus</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac840cc7c68fc34edbf343ccd2a21427a" name="ac840cc7c68fc34edbf343ccd2a21427a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac840cc7c68fc34edbf343ccd2a21427a">&#9670;&#160;</a></span>_in_menu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rtype::Client::_in_menu = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2563beae9bd38f7e95efe6bea1c114c5" name="a2563beae9bd38f7e95efe6bea1c114c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2563beae9bd38f7e95efe6bea1c114c5">&#9670;&#160;</a></span>_running</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rtype::Client::_running = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>rtype_game/client/<a class="el" href="Client_8hpp_source.html">Client.hpp</a></li>
 <li>rtype_game/client/<a class="el" href="Client_8cpp.html">Client.cpp</a></li>
 <li>rtype_game/client/<a class="el" href="Client__Create__And__Kill_8cpp.html">Client_Create_And_Kill.cpp</a></li>
 <li>rtype_game/client/<a class="el" href="Client__Event__Bus_8cpp.html">Client_Event_Bus.cpp</a></li>
-<li>rtype_game/client/<a class="el" href="Client__Event__Sfml_8cpp.html">Client_Event_Sfml.cpp</a></li>
 <li>rtype_game/client/<a class="el" href="Client__Init_8cpp.html">Client_Init.cpp</a></li>
 <li>rtype_game/client/<a class="el" href="Client__Send__Message_8cpp.html">Client_Send_Message.cpp</a></li>
+<li>rtype_game/client/<a class="el" href="Client__Systems_8cpp.html">Client_Systems.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

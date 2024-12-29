@@ -13,13 +13,14 @@ var searchData=
   ['les_20versions_20des_20dépendances_20nécessaires_10',['- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.',['../md_documentation_2CMakeDocumentation.html#autotoc_md36',1,'']]],
   ['level1_11',['LEVEL1',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662acd77d78cec73faf3487efdc668234b9b',1,'rtype']]],
   ['level2_12',['LEVEL2',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36',1,'rtype']]],
-  ['levels_13',['levels',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8',1,'rtype::LEVELS'],['../classrtype_1_1Levels.html#a697b2aaf1127882caaaed81fbc4c18b4',1,'rtype::Levels::Levels()'],['../classrtype_1_1Levels.html',1,'rtype::Levels']]],
-  ['levels_2ehpp_14',['Levels.hpp',['../Levels_8hpp.html',1,'']]],
-  ['levelsystem_15',['levelsystem',['../classrtype_1_1LevelSystem.html',1,'rtype::LevelSystem'],['../classrtype_1_1LevelSystem.html#a88e58f9a91535f3ece68b8db84a3fc0a',1,'rtype::LevelSystem::LevelSystem()']]],
-  ['levelsystem_2ehpp_16',['LevelSystem.hpp',['../LevelSystem_8hpp.html',1,'']]],
-  ['libconfig_17',['3. libconfig',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md51',1,'']]],
-  ['library_18',['2. SFML (Simple and Fast Multimedia Library)',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45',1,'']]],
-  ['loadshader_19',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
-  ['loadtexturesforsprite_20',['loadTexturesForSprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory']]],
-  ['looser_5fscreen_21',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
+  ['level_5fboss_13',['LEVEL_BOSS',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662afa321308dc2256410d73a7182d5c599b',1,'rtype']]],
+  ['levels_14',['levels',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8',1,'rtype::LEVELS'],['../classrtype_1_1Levels.html#a697b2aaf1127882caaaed81fbc4c18b4',1,'rtype::Levels::Levels()'],['../classrtype_1_1Levels.html',1,'rtype::Levels']]],
+  ['levels_2ehpp_15',['Levels.hpp',['../Levels_8hpp.html',1,'']]],
+  ['levelsystem_16',['levelsystem',['../classrtype_1_1LevelSystem.html',1,'rtype::LevelSystem'],['../classrtype_1_1LevelSystem.html#a88e58f9a91535f3ece68b8db84a3fc0a',1,'rtype::LevelSystem::LevelSystem()']]],
+  ['levelsystem_2ehpp_17',['LevelSystem.hpp',['../LevelSystem_8hpp.html',1,'']]],
+  ['libconfig_18',['3. libconfig',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md51',1,'']]],
+  ['library_19',['2. SFML (Simple and Fast Multimedia Library)',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45',1,'']]],
+  ['loadshader_20',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
+  ['loadtexturesforsprite_21',['loadTexturesForSprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory']]],
+  ['looser_5fscreen_22',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
 ];

@@ -14,6 +14,5 @@ var EcsExceptions_8hpp =
     [ "ecs::ERROR::ComponentNotFoundExceptions", "classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html", "classecs_1_1ERROR_1_1ComponentNotFoundExceptions" ],
     [ "ecs::ERROR::IdOutOfRangeExceptions", "classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html", "classecs_1_1ERROR_1_1IdOutOfRangeExceptions" ],
     [ "ecs::ERROR::PlayerNotFoundInEcs", "classecs_1_1ERROR_1_1PlayerNotFoundInEcs.html", "classecs_1_1ERROR_1_1PlayerNotFoundInEcs" ],
-    [ "ecs::ERROR::MissingSecretKeyInConfigFileException", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException.html", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException" ],
-    [ "ecs::ERROR::PlayerDontExistInEcsException", "classecs_1_1ERROR_1_1PlayerDontExistInEcsException.html", "classecs_1_1ERROR_1_1PlayerDontExistInEcsException" ]
+    [ "ecs::ERROR::MissingSecretKeyInConfigFileException", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException.html", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException" ]
 ];

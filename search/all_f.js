@@ -18,9 +18,10 @@ var searchData=
   ['invalidipadressexceptions_15',['invalidipadressexceptions',['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html#aaf9546d84058f4aa16b9b46745782cc4',1,'ecs::ERROR::InvalidIpAdressExceptions::InvalidIpAdressExceptions()'],['../classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html',1,'ecs::ERROR::InvalidIpAdressExceptions']]],
   ['invalidtpsorfpsexceptions_16',['invalidtpsorfpsexceptions',['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html#ae17590d148d444d4bcb155ab51175409',1,'rtype::ERROR::InvalidTpsOrFpsExceptions::InvalidTpsOrFpsExceptions()'],['../classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html',1,'rtype::ERROR::InvalidTpsOrFpsExceptions']]],
   ['inverted_17',['Inverted',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76aaf2e2f4f071ebc35a949942fa0abc6af',1,'rtype']]],
-  ['islevelclicked_18',['isLevelClicked',['../classrtype_1_1ATH.html#a605d1aca3e9dea19992ce1ecd3ed9d17',1,'rtype::ATH']]],
-  ['islevelfinished_19',['isLevelFinished',['../classrtype_1_1ScoreSystem.html#a21644f8446f7d080ba28dfb9c704a532',1,'rtype::ScoreSystem']]],
-  ['islooseorwinclicked_20',['isLooseOrWinClicked',['../classrtype_1_1ATH.html#a4390c8402870e8f46ddba9eb54499076',1,'rtype::ATH']]],
-  ['ismessagesafe_21',['isMessageSafe',['../classrtype_1_1SecretKeyChecker.html#aa0c697296f62e73334642d2afde9f36e',1,'rtype::SecretKeyChecker']]],
-  ['isrunning_22',['isrunning',['../classrtype_1_1Window.html#aed3c4df8bb8f800cf4b045c5ff0945e5',1,'rtype::Window::isRunning()'],['../UDP__Manager_8hpp.html#a1211f4531df3e01ac5ad2b4750a85ed3',1,'isRunning:&#160;UDP_Manager.hpp']]]
+  ['isallie_18',['isAllie',['../classrtype_1_1Utils.html#a2f7c599b62579211f6ef87b783070c86',1,'rtype::Utils']]],
+  ['islevelclicked_19',['isLevelClicked',['../classrtype_1_1ATH.html#a605d1aca3e9dea19992ce1ecd3ed9d17',1,'rtype::ATH']]],
+  ['islevelfinished_20',['isLevelFinished',['../classrtype_1_1ScoreSystem.html#a21644f8446f7d080ba28dfb9c704a532',1,'rtype::ScoreSystem']]],
+  ['islooseorwinclicked_21',['isLooseOrWinClicked',['../classrtype_1_1ATH.html#a4390c8402870e8f46ddba9eb54499076',1,'rtype::ATH']]],
+  ['ismessagesafe_22',['isMessageSafe',['../classrtype_1_1SecretKeyChecker.html#aa0c697296f62e73334642d2afde9f36e',1,'rtype::SecretKeyChecker']]],
+  ['isrunning_23',['isrunning',['../classrtype_1_1Window.html#aed3c4df8bb8f800cf4b045c5ff0945e5',1,'rtype::Window::isRunning()'],['../UDP__Manager_8hpp.html#a1211f4531df3e01ac5ad2b4750a85ed3',1,'isRunning:&#160;UDP_Manager.hpp']]]
 ];

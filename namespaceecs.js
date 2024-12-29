@@ -7,7 +7,6 @@ var namespaceecs =
     [ "Entity", "classecs_1_1Entity.html", "classecs_1_1Entity" ],
     [ "Playable", "classecs_1_1Playable.html", "classecs_1_1Playable" ],
     [ "Position", "classecs_1_1Position.html", "classecs_1_1Position" ],
-    [ "PositionSystem", "classecs_1_1PositionSystem.html", "classecs_1_1PositionSystem" ],
     [ "SparseArray", "classecs_1_1SparseArray.html", "classecs_1_1SparseArray" ],
     [ "Velocity", "classecs_1_1Velocity.html", "classecs_1_1Velocity" ],
     [ "direction", "namespaceecs.html#a7a98367474612e41f7e1da1a57853776", [
@@ -17,6 +16,5 @@ var namespaceecs =
       [ "DOWN", "namespaceecs.html#a7a98367474612e41f7e1da1a57853776a92de4dae70ef2ef723a5f2cdd41c3d74", null ],
       [ "LEFT", "namespaceecs.html#a7a98367474612e41f7e1da1a57853776a8745782fa52c1bf575a18e1903d0bb12", null ],
       [ "RIGHT", "namespaceecs.html#a7a98367474612e41f7e1da1a57853776aeb3f8879cbd4e6495f06499cab434568", null ]
-    ] ],
-    [ "BORDER_MARGIN", "namespaceecs.html#ada3acdce2091197a2335f5b9ed5aa29f", null ]
+    ] ]
 ];

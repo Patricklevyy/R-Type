@@ -10,7 +10,6 @@ var namespaceecs_1_1ERROR =
     [ "InvalidIpAdressExceptions", "classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html", "classecs_1_1ERROR_1_1InvalidIpAdressExceptions" ],
     [ "MessageTooBigExceptions", "classecs_1_1ERROR_1_1MessageTooBigExceptions.html", "classecs_1_1ERROR_1_1MessageTooBigExceptions" ],
     [ "MissingSecretKeyInConfigFileException", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException.html", "classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException" ],
-    [ "PlayerDontExistInEcsException", "classecs_1_1ERROR_1_1PlayerDontExistInEcsException.html", "classecs_1_1ERROR_1_1PlayerDontExistInEcsException" ],
     [ "PlayerNotFoundInEcs", "classecs_1_1ERROR_1_1PlayerNotFoundInEcs.html", "classecs_1_1ERROR_1_1PlayerNotFoundInEcs" ],
     [ "RecvExceptions", "classecs_1_1ERROR_1_1RecvExceptions.html", "classecs_1_1ERROR_1_1RecvExceptions" ],
     [ "SocketNotInitializedExceptions", "classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html", "classecs_1_1ERROR_1_1SocketNotInitializedExceptions" ],

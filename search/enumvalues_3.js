@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['enemy_5fshoot_0',['ENEMY_SHOOT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a4504916e0f9f243ec5a2414be512707c',1,'rtype']]],
-  ['execute_5flevel_1',['EXECUTE_LEVEL',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a4585ff6202fa6e1e672813694a02b767',1,'rtype']]]
+  ['deuteranopia_0',['Deuteranopia',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76ae7eaa4f630758f8eda90371d748fe252',1,'rtype']]],
+  ['deux_1',['DEUX',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d',1,'rtype']]],
+  ['down_2',['DOWN',['../namespaceecs.html#a7a98367474612e41f7e1da1a57853776a92de4dae70ef2ef723a5f2cdd41c3d74',1,'ecs']]]
 ];

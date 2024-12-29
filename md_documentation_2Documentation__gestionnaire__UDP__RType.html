@@ -160,6 +160,7 @@ Méthode &lt;tt&gt;deserialize&lt;/tt&gt;</h3>
 <div class="line">    std::memcpy(&amp;secretKeySize, &amp;buffer[offset], <span class="keyword">sizeof</span>(secretKeySize));</div>
 <div class="line">    offset += <span class="keyword">sizeof</span>(secretKeySize);</div>
 <div class="line">    msg.secret_key = std::string(buffer.begin() + offset, buffer.begin() + offset + secretKeySize);</div>
+<div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Processus détaillé</h2>
 <ol type="1">

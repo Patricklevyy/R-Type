@@ -9,7 +9,8 @@ var Enums_8hpp =
     ] ],
     [ "LEVELS", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8", [
       [ "UN", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a678371ee8ca4b36a20004f58c7df4ad3", null ],
-      [ "DEUX", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ]
+      [ "DEUX", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ],
+      [ "BOSS", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8adf68335189ffbd9d73ffdeddd0b9e40d", null ]
     ] ],
     [ "RTYPE_ACTIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3", [
       [ "UNDEFINED", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ab2a6540696d8f40f08afe5703bced3f1", null ],
@@ -24,10 +25,10 @@ var Enums_8hpp =
       [ "MOVE_DOWN_STOP", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a0f9b627c7263c848ffd5fd8f14a2df37", null ],
       [ "MOVE_LEFT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ac300cb32923cc502bd39424fcc760528", null ],
       [ "MOVE_LEFT_STOP", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3af11a038259d17d8c27b91b48fa1ec2da", null ],
-      [ "UPDATE_POSITION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a09d501574ad9f724011255527e9ffac7", null ],
       [ "CHECK_EVENT_WINDOW", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a89c528b98522ce285bcccf20bc382491", null ],
       [ "CREATE_CLIENT", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a21d95be913fdca869444c5ee2c554d78", null ],
       [ "CREATE_TEAMMATE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ae7d58cc0f5765d6aa5f33106b02d6170", null ],
+      [ "UPDATE_POSITIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ac36243b4cbdc1b35c68f49391a74e0b9", null ],
       [ "UPDATE_DIRECTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ae9b4a8d1239d71fbea222ee224e8d09a", null ],
       [ "UPDATE_PLAYER_DIRECTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a54482700783d2521e9a9f3e760e51979", null ],
       [ "UPDATE_PLAYER_POSITION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a1c961b13a58c3e7cd4bf700fa2487efe", null ],
@@ -54,6 +55,7 @@ var Enums_8hpp =
       [ "CREATE_PLAYER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ad917dcd88a57053879507297b91391dd", null ],
       [ "FAIL_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a046651e9c88c6ab5cce00a5750b3684c", null ],
       [ "WIN_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a9646eacc83a3479110711cdc53fdc2b5", null ],
+      [ "UPDATE_POSITIONS_FROM_SERVER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a758f627eeccae21a5976e81c73aa4756", null ],
       [ "REMOVE_ATH", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a45881ffacd58cf9e8700faa7316f5e2b", null ],
       [ "MAX_ACTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
@@ -70,6 +72,7 @@ var Enums_8hpp =
       [ "WIN_SCREEN", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aac7ba080bbe2957b044cdae38e117e3d", null ],
       [ "MONSTER_MULTIPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309", null ],
       [ "LEVEL1", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662acd77d78cec73faf3487efdc668234b9b", null ],
-      [ "LEVEL2", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ]
+      [ "LEVEL2", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ],
+      [ "LEVEL_BOSS", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662afa321308dc2256410d73a7182d5c599b", null ]
     ] ]
 ];
