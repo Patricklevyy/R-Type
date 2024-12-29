@@ -19,11 +19,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Clean vcpkg cache
+        run: rm -rf ./build/vcpkg && mkdir -p ./build/vcpkg
+
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
+          sudo apt-get install -y libpng-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev libfreetype6-dev zlib1g-dev
           sudo apt-get install -y cmake g++ make libconfig++-dev \
-          libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev
+          libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev \
 
       - name: Build Project
         run: |
