@@ -88,7 +88,8 @@
             MONSTER_MULTIPLE_MISSILE,
             LEVEL1,
             LEVEL2,
-            LEVEL_BOSS
+            LEVEL_BOSS,
+            LEVEL_LOCK
         };
 
         enum LEVELS

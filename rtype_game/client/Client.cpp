@@ -14,6 +14,7 @@ namespace rtype
     {
         _udpClient = std::make_shared<ecs::udp::UDP_Client>();
         _timer = std::make_shared<Timer>();
+        reset_level_lock();
     }
 
     Client::~Client()

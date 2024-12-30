@@ -126,22 +126,25 @@ namespace rtype
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::MOVE_BACKGROUND, [this](const std::vector<std::any> &args) {
-            try {
-                (void)args;
-                _render_window_system.move_background(_ecs._components_arrays, _in_menu);
-            } catch (const std::exception &e) {
-                std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
-            }
+            _render_window_system.move_background(_ecs._components_arrays, _in_menu);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
-            (void)args;
+            try {
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-            add_level_status_screen(false); // CHNAGE HERE FOR WHICH LEVEL
+                add_level_status_screen(false, message);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::WIN_LEVEL, [this](const std::vector<std::any> &args) {
-            (void)args;
+            try {
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-            add_level_status_screen(true); // CHNAGE HERE FOR WHICH LEVEL
+                add_level_status_screen(true, message);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_ATH, [this](const std::vector<std::any> &args) {
             (void)args;

@@ -9,13 +9,14 @@
 
 namespace rtype
 {
-    void Client::add_level_status_screen(bool win)
+    void Client::add_level_status_screen(bool win, ecs::udp::Message &message)
     {
         size_t index = getNextIndex();
 
         SPRITES screen;
         if (win) {
             screen = SPRITES::WIN_SCREEN;
+            _levels_wins[static_cast<LEVELS>(std::stoi(message.params))] = true;
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }

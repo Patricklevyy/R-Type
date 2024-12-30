@@ -103,6 +103,7 @@
                 std::string _name;
                 std::map<int, int> ecs_server_to_client;
                 std::map<int, int> ecs_client_to_server;
+                std::map<LEVELS, bool> _levels_wins;
                 ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
@@ -182,11 +183,12 @@
                  */
                 void updateEntitiesFirstConnexion(const std::string &);
                 size_t getNextIndex();
-                void add_level_status_screen(bool);
+                void add_level_status_screen(bool, ecs::udp::Message &);
                 void restart_game();
                 void send_server_new_player();
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
-
+                void reset_level_lock();
+                void put_level_lock(LEVELS, int, int);
                 // MESSAGE TO SERVER
 
                 /**
