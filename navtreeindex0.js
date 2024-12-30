@@ -245,9 +245,9 @@ var NAVTREEINDEX0 =
 "classUDP__Client.html#adfdf3dfc825d19ce45ab0d27352c888d":[4,0,2,4],
 "classUDP__Client.html#afd65d7d2dd54f6e7005ea57d7ed336a9":[4,0,2,0],
 "classUDP__Manager.html":[4,0,3],
-"classecs_1_1Direction.html":[4,0,0,2],
 "classecs_1_1Direction.html":[3,0,0,2],
-"classecs_1_1Direction.html#a114078e2741b8bc155203353c5b1eff1":[3,0,0,2,3],
+"classecs_1_1Direction.html":[4,0,0,2],
 "classecs_1_1Direction.html#a114078e2741b8bc155203353c5b1eff1":[4,0,0,2,3],
-"classecs_1_1Direction.html#a1798b03d40c1e36df4defd0a05fca7be":[3,0,0,2,0]
+"classecs_1_1Direction.html#a114078e2741b8bc155203353c5b1eff1":[3,0,0,2,3],
+"classecs_1_1Direction.html#a1798b03d40c1e36df4defd0a05fca7be":[4,0,0,2,0]
 };

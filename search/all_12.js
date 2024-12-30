@@ -22,5 +22,6 @@ var searchData=
   ['library_19',['2. SFML (Simple and Fast Multimedia Library)',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45',1,'']]],
   ['loadshader_20',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
   ['loadtexturesforsprite_21',['loadTexturesForSprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory']]],
-  ['looser_5fscreen_22',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
+  ['local_5fip_22',['local_ip',['../namespacegetIpAddress.html#ad0201988c3ed8777c0907dd3f0ec3f6f',1,'getIpAddress']]],
+  ['looser_5fscreen_23',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
 ];
