@@ -9,7 +9,7 @@
 
 namespace rtype
 {
-     void Client::init_ecs_client_registry()
+    void Client::init_ecs_client_registry()
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
@@ -24,9 +24,12 @@ namespace rtype
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Music>(_index_ecs_client, Music("assets/musics/gad.ogg"));
-        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
-        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
+        _ecs.addComponents<Music>(
+            _index_ecs_client, Music("assets/musics/gad.ogg"));
+        _ecs.addComponents<Displayable>(
+            _index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
+        _ecs.addComponents<ecs::Position>(
+            _index_ecs_client, ecs::Position(0, 0));
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(10));
         _ecs.addComponents<Shader>(
             _index_ecs_client, Shader(FILTER_MODE::Neutral));
@@ -132,8 +135,10 @@ namespace rtype
         std::tuple<float, float, int> pos_port =
             Command_checker::parsePositionAndRoomPort(player_room);
 
-        _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
-        _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
+        _render_window_system.changeBackground(
+            _ecs._components_arrays, SPRITES::GAME_BACKGROUND);
+        _music_system.changeMusic(
+            _ecs._components_arrays, "assets/musics/macron.ogg");
         init_levels_sprites();
         setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
