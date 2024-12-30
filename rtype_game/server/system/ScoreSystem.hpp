@@ -37,7 +37,7 @@
                     }
                 }
 
-                bool isLevelFinished(std::unordered_map<std::type_index, std::any> &components_array)
+                std::pair<LEVELS, bool> isLevelFinished(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array[typeid(Levels)]);
 
@@ -49,23 +49,30 @@
                             case LEVELS::UN:
                                 if (levels[i].value()._score >= 12) {
                                     levels[i].value()._score = 0;
-                                    return true;
+                                    return std::make_pair(levels[i].value()._level, true);
                                 } else {
-                                    return false;
+                                    return std::make_pair(levels[i].value()._level, false);
                                 }
                             case LEVELS::DEUX:
                                 if (levels[i].value()._score >= 20) {
                                     levels[i].value()._score = 0;
-                                    return true;
+                                    return std::make_pair(levels[i].value()._level, true);
                                 } else {
-                                    return false;
+                                    return std::make_pair(levels[i].value()._level, false);
+                                }
+                            case LEVELS::BOSS:
+                                if (levels[i].value()._score >= 30) {
+                                    levels[i].value()._score = 0;
+                                    return std::make_pair(levels[i].value()._level, true);
+                                } else {
+                                    return std::make_pair(levels[i].value()._level, false);
                                 }
                             default:
                                 break;
                             }
                         }
                     }
-                    return false;
+                    return std::make_pair(LEVELS::UN, false);
                 }
 
             protected:

@@ -69,7 +69,7 @@ namespace rtype
                     _nb_client--;
                 dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 send_client_dead_entities(dead_entites_id);
-                send_client_level_status(false);
+                send_client_level_status(false, LEVELS::UN);
             }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::START_LEVEL, [this](const std::vector<std::any> &args) {
@@ -114,11 +114,12 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            if (_score_system.isLevelFinished(_ecs._components_arrays)) {
+            std::pair<LEVELS, bool> level = _score_system.isLevelFinished(_ecs._components_arrays);
+            if (level.second) {
                 std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
-                send_client_level_status(true);
+                send_client_level_status(level.second, level.first);
             }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {

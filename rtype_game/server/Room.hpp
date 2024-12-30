@@ -251,7 +251,7 @@
             void send_client_new_monster(size_t, float, float , int);
             size_t getNextIndex();
             void startLevel(LEVELS);
-            void send_client_level_status(bool);
+            void send_client_level_status(bool, LEVELS);
             void send_client_remove_ath();
         };
     }

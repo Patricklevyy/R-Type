@@ -136,12 +136,12 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            add_level_status_screen(false);
+            add_level_status_screen(false); // CHNAGE HERE FOR WHICH LEVEL
         });
         _eventBus.subscribe(RTYPE_ACTIONS::WIN_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            add_level_status_screen(true);
+            add_level_status_screen(true); // CHNAGE HERE FOR WHICH LEVEL
         });
         _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_ATH, [this](const std::vector<std::any> &args) {
             (void)args;
