@@ -82,17 +82,11 @@ namespace rtype
             _ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
-            if ((positions[i].has_value() && i < healths.size()
-                    && healths[i].has_value())
-                && (i < monsters.size() && monsters[i].has_value()
-                    || i < playables.size() && playables[i].has_value())) {
-                updateMessage += std::to_string(i) + ","
-                    + std::to_string(
-                        static_cast<int>(round(positions[i].value()._pos_x)))
-                    + ","
-                    + std::to_string(
-                        static_cast<int>(round(positions[i].value()._pos_y)))
-                    + "," + std::to_string(healths[i].value()._health) + ";";
+            if ((positions[i].has_value() && i < healths.size() && healths[i].has_value()) && ((i < monsters.size() && monsters[i].has_value()) || (i < playables.size() && playables[i].has_value()))) {
+                updateMessage += std::to_string(i) +
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) +
+                                "," + std::to_string(healths[i].value()._health) + ";";
             }
         }
 

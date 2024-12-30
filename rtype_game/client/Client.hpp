@@ -36,8 +36,8 @@
     #include "components/Window.hpp"
     #include "components/TempDisplay.hpp"
     #include "components/Displayable.hpp"
-    #include "components/Background.hpp"
     #include "components/Sprite.hpp"
+    #include "components/Music.hpp"
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
 
@@ -49,6 +49,7 @@
     #include "system/ATH.hpp"
     #include "system/PlayerSystem.hpp"
     #include "system/EventWindow.hpp"
+    #include "system/MusicSystem.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
@@ -100,8 +101,8 @@
                 int _window_width;
                 int _window_height;
                 std::string _name;
-                std::map<unsigned int, unsigned int> ecs_server_to_client;
-                std::map<unsigned int, unsigned int> ecs_client_to_server;
+                std::map<int, int> ecs_server_to_client;
+                std::map<int, int> ecs_client_to_server;
                 ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
@@ -124,6 +125,7 @@
                 ATH _ath_system;
                 KillSystem _kill_system;
                 PlayerSystem _player_system;
+                MusicSystem _music_system;
 
 
                 /**
@@ -181,7 +183,6 @@
                 void updateEntitiesFirstConnexion(const std::string &);
                 size_t getNextIndex();
                 void add_level_status_screen(bool);
-                void createMonster(ecs::udp::Message&);
                 void restart_game();
                 void send_server_new_player();
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);

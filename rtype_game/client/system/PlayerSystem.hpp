@@ -21,7 +21,7 @@
                 /**
                  * @brief Return the index of the player, used only by the client.
                  */
-                size_t getIndexPlayer(std::unordered_map<std::type_index, std::any> &components_array)
+                int getIndexPlayer(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
                         auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
@@ -37,6 +37,7 @@
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
+                    return -1;
                 }
 
             protected:

@@ -21,16 +21,6 @@ namespace rtype
         _udpClient->stopReceiving();
     }
 
-    void Client::init_ecs_client_registry()
-    {
-        _ecs.addRegistry<Window>();
-        _ecs.addRegistry<Displayable>();
-        _ecs.addRegistry<Health>();
-        _ecs.addRegistry<Shader>();
-        _ecs.addRegistry<Levels>();
-        _ecs.addRegistry<TempDisplay>();
-    }
-
     size_t Client::getNextIndex()
     {
         size_t index;

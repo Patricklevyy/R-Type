@@ -60,29 +60,6 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createMonster(ecs::udp::Message &message)
-    {
-        // size_t index = getNextIndex();
-        // std::unordered_map<std::string, std::string> res =
-        // MessageChecker::parseResponse(message.params); if (res.find("x") ==
-        // res.end() || res.find("y") == res.end()) {
-        //     std::cerr << "Error: Missing x or y in message parameters" <<
-        //     std::endl; return;
-        // }
-        // int x = std::stof(res["x"]);
-        // int y = std::stof(res["y"]);
-        // ecs::Position position(x, y);
-        // Displayable displayable(SPRITES::SIMPLE_MONSTER);
-        // Health health(60);
-
-        // _ecs.addComponents<ecs::Position>(index, position);
-        // _ecs.addComponents<Health>(index, health);
-        // _ecs.addComponents<Displayable>(index, displayable);
-
-        // std::cout << "Monstre créé à l'index : " << index << " (" << x << ",
-        // " << y << ")" << std::endl;
-    }
-
     void Client::createPlayer(unsigned int server_id, float x, float y)
     {
         std::cout << "NEW PLAYER \n\n\n\n\n\n\n" << std::endl;

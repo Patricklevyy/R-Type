@@ -15,7 +15,6 @@
     #define RENDERWINDOW_HPP_
 
     #include "../components/Window.hpp"
-    #include "../components/Background.hpp"
     #include "../components/Shader.hpp"
     #include "../../shared/Includes.hpp"
     #include <iostream>
