@@ -19,7 +19,8 @@ namespace rtype
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<ecs::Position>(
+            index, ecs::Position(_window_width / 4, _window_height / 4));
         _ecs.addComponents<TempDisplay>(index, TempDisplay());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
@@ -42,7 +43,8 @@ namespace rtype
         }
     }
 
-    void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
+    void Client::createEntity(
+        unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
         std::cout << "JE CREATE : " << index << std::endl;
@@ -61,10 +63,11 @@ namespace rtype
     void Client::createMonster(ecs::udp::Message &message)
     {
         // size_t index = getNextIndex();
-        // std::unordered_map<std::string, std::string> res = MessageChecker::parseResponse(message.params);
-        // if (res.find("x") == res.end() || res.find("y") == res.end()) {
-        //     std::cerr << "Error: Missing x or y in message parameters" << std::endl;
-        //     return;
+        // std::unordered_map<std::string, std::string> res =
+        // MessageChecker::parseResponse(message.params); if (res.find("x") ==
+        // res.end() || res.find("y") == res.end()) {
+        //     std::cerr << "Error: Missing x or y in message parameters" <<
+        //     std::endl; return;
         // }
         // int x = std::stof(res["x"]);
         // int y = std::stof(res["y"]);
@@ -76,7 +79,8 @@ namespace rtype
         // _ecs.addComponents<Health>(index, health);
         // _ecs.addComponents<Displayable>(index, displayable);
 
-        // std::cout << "Monstre créé à l'index : " << index << " (" << x << ", " << y << ")" << std::endl;
+        // std::cout << "Monstre créé à l'index : " << index << " (" << x << ",
+        // " << y << ")" << std::endl;
     }
 
     void Client::createPlayer(unsigned int server_id, float x, float y)
@@ -102,15 +106,19 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createEntityProjectile(unsigned int server_id, float x, float y, int dir_x, int dir_y, int velocity, int spriteId)
+    void Client::createEntityProjectile(unsigned int server_id, float x,
+        float y, int dir_x, int dir_y, int velocity, int spriteId)
     {
         size_t index = getNextIndex();
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(static_cast<ecs::direction>(dir_x), static_cast<ecs::direction>(dir_y)));
+        _ecs.addComponents<ecs::Direction>(index,
+            ecs::Direction(static_cast<ecs::direction>(dir_x),
+                static_cast<ecs::direction>(dir_y)));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
         _ecs.addComponents<Health>(index, Health(60));
-        _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(static_cast<SPRITES>(spriteId)));
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
@@ -143,4 +151,4 @@ namespace rtype
     {
         send_server_new_shoot();
     }
-}
+} // namespace rtype

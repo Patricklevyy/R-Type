@@ -11,14 +11,10 @@ int main()
 {
     rtype::Client RTYPE_CLIENT;
 
-    try
-    {
+    try {
         RTYPE_CLIENT.start();
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << std::endl
-                  << e.what() << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << std::endl << e.what() << std::endl;
         exit(84);
     }
 }

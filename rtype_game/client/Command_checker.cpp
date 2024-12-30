@@ -9,7 +9,8 @@
 
 namespace rtype
 {
-    std::string Command_checker::check_adress(int port, const std::string &server_ip)
+    std::string Command_checker::check_adress(
+        int port, const std::string &server_ip)
     {
         std::cout << "servir ipp" << server_ip << std::endl;
         std::cout << "servir ipp" << server_ip << std::endl;
@@ -19,8 +20,11 @@ namespace rtype
         return (server_ip + ":" + portStr);
     }
 
-    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(const std::string &params) {
-        std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parsed_data;
+    std::list<std::tuple<std::size_t, std::pair<float, float>, int>>
+    Command_checker::parse_update(const std::string &params)
+    {
+        std::list<std::tuple<std::size_t, std::pair<float, float>, int>>
+            parsed_data;
 
         std::stringstream ss(params);
         std::string block;
@@ -42,17 +46,10 @@ namespace rtype
                     case 0:
                         id = static_cast<std::size_t>(std::stoul(value));
                         break;
-                    case 1:
-                        x = std::stof(value);
-                        break;
-                    case 2:
-                        y = std::stof(value);
-                        break;
-                    case 3:
-                        health = std::stoi(value);
-                        break;
-                    default:
-                        break;
+                    case 1: x = std::stof(value); break;
+                    case 2: y = std::stof(value); break;
+                    case 3: health = std::stoi(value); break;
+                    default: break;
                 }
                 index++;
             }
@@ -63,14 +60,16 @@ namespace rtype
         return parsed_data;
     }
 
-    std::vector<std::tuple<std::pair<float, float>, int, int>> Command_checker::parseUpdateEntities(const std::string &message)
+    std::vector<std::tuple<std::pair<float, float>, int, int>>
+    Command_checker::parseUpdateEntities(const std::string &message)
     {
         std::vector<std::tuple<std::pair<float, float>, int, int>> result;
         std::stringstream ss(message);
         std::string block;
 
         while (std::getline(ss, block, ';')) {
-            if (block.empty()) continue;
+            if (block.empty())
+                continue;
 
             float x = 0.0f, y = 0.0f;
             int id = 0, type = 0;
@@ -78,10 +77,14 @@ namespace rtype
             std::stringstream blockStream(block);
             std::string value;
 
-            if (std::getline(blockStream, value, ',')) x = std::stof(value);
-            if (std::getline(blockStream, value, ',')) y = std::stof(value);
-            if (std::getline(blockStream, value, ',')) id = std::stoi(value);
-            if (std::getline(blockStream, value, ',')) type = std::stoi(value);
+            if (std::getline(blockStream, value, ','))
+                x = std::stof(value);
+            if (std::getline(blockStream, value, ','))
+                y = std::stof(value);
+            if (std::getline(blockStream, value, ','))
+                id = std::stoi(value);
+            if (std::getline(blockStream, value, ','))
+                type = std::stoi(value);
 
             result.emplace_back(std::make_pair(x, y), id, type);
         }
@@ -89,7 +92,8 @@ namespace rtype
         return result;
     }
 
-    std::tuple<float, float, int> Command_checker::parsePositionAndRoomPort(const std::string &input)
+    std::tuple<float, float, int> Command_checker::parsePositionAndRoomPort(
+        const std::string &input)
     {
         std::stringstream ss(input);
         std::string token;
@@ -108,4 +112,4 @@ namespace rtype
 
         return std::make_tuple(x, y, port);
     }
-}
+} // namespace rtype
