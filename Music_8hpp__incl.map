@@ -1,0 +1,13 @@
+<map id="rtype_game/client/components/Music.hpp" name="rtype_game/client/components/Music.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="175,5,399,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,132,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,48,115,91,113,86,234,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="157,93,234,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,48,221,86,218,82,263,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="258,93,317,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="290,46,290,79,285,79,285,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="341,93,421,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="312,44,358,82,354,86,308,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="445,93,532,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="337,43,447,86,445,91,335,48"/>
+</map>

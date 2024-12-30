@@ -10,5 +10,7 @@ var searchData=
   ['monster_7',['Monster',['../classrtype_1_1Monster.html#a4a14cdc60cf58aeae641bf6229ba75a9',1,'rtype::Monster']]],
   ['monster_5fshooting_8',['monster_shooting',['../classrtype_1_1ShootingSystem.html#a7c9aa55dfb02e473d7b514294470f295',1,'rtype::ShootingSystem']]],
   ['move_5fbackground_9',['move_background',['../classrtype_1_1RenderWindow.html#a9beb6ffcc850800485c292bb27295d44',1,'rtype::RenderWindow']]],
-  ['movemonsters_10',['moveMonsters',['../classrtype_1_1MonsterMovementSystem.html#abc56b3b3edc8877c8d99ebe41083c4bb',1,'rtype::MonsterMovementSystem']]]
+  ['movemonsters_10',['moveMonsters',['../classrtype_1_1MonsterMovementSystem.html#abc56b3b3edc8877c8d99ebe41083c4bb',1,'rtype::MonsterMovementSystem']]],
+  ['music_11',['Music',['../classrtype_1_1Music.html#ab8b6faefc5b94cc90af1a1dd1e253c1d',1,'rtype::Music']]],
+  ['musicsystem_12',['MusicSystem',['../classrtype_1_1MusicSystem.html#a688e8eb73befad966a02178f33591aff',1,'rtype::MusicSystem']]]
 ];

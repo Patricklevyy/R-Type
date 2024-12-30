@@ -2,7 +2,6 @@ var hierarchy =
 [
     [ "rtype::Allies", "classrtype_1_1Allies.html", null ],
     [ "rtype::ATH", "classrtype_1_1ATH.html", null ],
-    [ "rtype::Background", "classrtype_1_1Background.html", null ],
     [ "rtype::BoundariesSystem", "classrtype_1_1BoundariesSystem.html", null ],
     [ "rtype::Client", "classrtype_1_1Client.html", null ],
     [ "rtype::CollisionSystem", "classrtype_1_1CollisionSystem.html", null ],
@@ -57,6 +56,8 @@ var hierarchy =
     [ "rtype::Monster", "classrtype_1_1Monster.html", null ],
     [ "rtype::MonsterFactory", "classrtype_1_1MonsterFactory.html", null ],
     [ "rtype::MonsterMovementSystem", "classrtype_1_1MonsterMovementSystem.html", null ],
+    [ "rtype::Music", "classrtype_1_1Music.html", null ],
+    [ "rtype::MusicSystem", "classrtype_1_1MusicSystem.html", null ],
     [ "ecs::Playable", "classecs_1_1Playable.html", null ],
     [ "rtype::PlayerSystem", "classrtype_1_1PlayerSystem.html", null ],
     [ "ecs::Position", "classecs_1_1Position.html", null ],

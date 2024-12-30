@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('PlayerSystem_8hpp_source.html',''); in
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classrtype_1_1PlayerSystem.html#adda5d36b96f6b980b05f85af14abdc83">   19</a></span>                <a class="code hl_function" href="classrtype_1_1PlayerSystem.html#adda5d36b96f6b980b05f85af14abdc83">~PlayerSystem</a>() {}</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1PlayerSystem.html#afc92a946ccbeb9fe453e703e43be0a8e">   24</a></span>                <span class="keywordtype">size_t</span> <a class="code hl_function" href="classrtype_1_1PlayerSystem.html#afc92a946ccbeb9fe453e703e43be0a8e">getIndexPlayer</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1PlayerSystem.html#a0350540bcdc2293eaa8de22468a8f191">   24</a></span>                <span class="keywordtype">int</span> <a class="code hl_function" href="classrtype_1_1PlayerSystem.html#a0350540bcdc2293eaa8de22468a8f191">getIndexPlayer</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    <span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                        <span class="keyword">auto</span> &amp;playables = std::any_cast&lt;ecs::SparseArray&lt;ecs::Playable&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Playable.html">ecs::Playable</a>)]);</div>
@@ -137,21 +137,22 @@ $(document).ready(function(){initNavTree('PlayerSystem_8hpp_source.html',''); in
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    } <span class="keywordflow">catch</span> (...) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                        std::cerr &lt;&lt; <span class="stringliteral">&quot;[UNKNOWN ERROR] Une erreur inconnue s&#39;est produite.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                }</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        };</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        };</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">/* !PLAYERSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/* !PLAYERSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassecs_1_1Playable_html"><div class="ttname"><a href="classecs_1_1Playable.html">ecs::Playable</a></div><div class="ttdoc">Represents a playable entity in the game.</div><div class="ttdef"><b>Definition</b> Playable.hpp:23</div></div>
 <div class="ttc" id="aclassrtype_1_1PlayerSystem_html"><div class="ttname"><a href="classrtype_1_1PlayerSystem.html">rtype::PlayerSystem</a></div><div class="ttdef"><b>Definition</b> PlayerSystem.hpp:16</div></div>
+<div class="ttc" id="aclassrtype_1_1PlayerSystem_html_a0350540bcdc2293eaa8de22468a8f191"><div class="ttname"><a href="classrtype_1_1PlayerSystem.html#a0350540bcdc2293eaa8de22468a8f191">rtype::PlayerSystem::getIndexPlayer</a></div><div class="ttdeci">int getIndexPlayer(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdoc">Return the index of the player, used only by the client.</div><div class="ttdef"><b>Definition</b> PlayerSystem.hpp:24</div></div>
 <div class="ttc" id="aclassrtype_1_1PlayerSystem_html_a42fec4b747040ba61365af18baea5c7d"><div class="ttname"><a href="classrtype_1_1PlayerSystem.html#a42fec4b747040ba61365af18baea5c7d">rtype::PlayerSystem::PlayerSystem</a></div><div class="ttdeci">PlayerSystem()</div><div class="ttdef"><b>Definition</b> PlayerSystem.hpp:18</div></div>
 <div class="ttc" id="aclassrtype_1_1PlayerSystem_html_adda5d36b96f6b980b05f85af14abdc83"><div class="ttname"><a href="classrtype_1_1PlayerSystem.html#adda5d36b96f6b980b05f85af14abdc83">rtype::PlayerSystem::~PlayerSystem</a></div><div class="ttdeci">~PlayerSystem()</div><div class="ttdef"><b>Definition</b> PlayerSystem.hpp:19</div></div>
-<div class="ttc" id="aclassrtype_1_1PlayerSystem_html_afc92a946ccbeb9fe453e703e43be0a8e"><div class="ttname"><a href="classrtype_1_1PlayerSystem.html#afc92a946ccbeb9fe453e703e43be0a8e">rtype::PlayerSystem::getIndexPlayer</a></div><div class="ttdeci">size_t getIndexPlayer(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdoc">Return the index of the player, used only by the client.</div><div class="ttdef"><b>Definition</b> PlayerSystem.hpp:24</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

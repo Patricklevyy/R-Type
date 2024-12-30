@@ -7,7 +7,7 @@ var searchData=
   ['getaddress_4',['getAddress',['../classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121',1,'rtype::Room']]],
   ['getdeadentityindex_5',['getDeadEntityIndex',['../classecs_1_1ECS.html#a3a32b3aebe2ec33c05f4b91347120251',1,'ecs::ECS']]],
   ['getelapsedtime_6',['getElapsedTime',['../classrtype_1_1Monster.html#a1c6d31c2b09e5b57f609375ea1d56e3a',1,'rtype::Monster']]],
-  ['getindexplayer_7',['getIndexPlayer',['../classrtype_1_1PlayerSystem.html#afc92a946ccbeb9fe453e703e43be0a8e',1,'rtype::PlayerSystem']]],
+  ['getindexplayer_7',['getIndexPlayer',['../classrtype_1_1PlayerSystem.html#a0350540bcdc2293eaa8de22468a8f191',1,'rtype::PlayerSystem']]],
   ['getintvalue_8',['getIntValue',['../classrtype_1_1Monster.html#a0c9deea5ca2150e28f0a38234370b1ab',1,'rtype::Monster']]],
   ['getmaxtexturesizeforsprite_9',['getMaxTextureSizeForSprite',['../classrtype_1_1SpriteFactory.html#a62c075a31fb9cd016f78d3af9a1deacc',1,'rtype::SpriteFactory']]],
   ['getmonsterlife_10',['getMonsterLife',['../classrtype_1_1MonsterFactory.html#a3907cf1f78acd31af484f8e8b2c419e2',1,'rtype::MonsterFactory']]],
@@ -22,7 +22,7 @@ var searchData=
   ['getrotation_19',['getRotation',['../classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570',1,'rtype::Sprite']]],
   ['getserverip_20',['getServerIp',['../classUDP__Client.html#a43a803bc17bfeaac088e70c3381f5075',1,'UDP_Client']]],
   ['getshader_21',['getShader',['../classrtype_1_1Shader.html#ac7cb63f8650252ecf7a842e4d34681d1',1,'rtype::Shader']]],
-  ['getsprite_22',['getsprite',['../classrtype_1_1Background.html#a1e849137d2b3890f73e9f5ecfdd8129e',1,'rtype::Background::getSprite()'],['../classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a',1,'rtype::Displayable::getSprite()']]],
+  ['getsprite_22',['getSprite',['../classrtype_1_1Displayable.html#ad1bcb1d2c4565daa629f3d43af90b67a',1,'rtype::Displayable']]],
   ['getspritescaleandspeed_23',['getSpriteScaleAndSpeed',['../classrtype_1_1SpriteFactory.html#af79daa9bad34d0e3759ca18c287d3b15',1,'rtype::SpriteFactory']]],
   ['getspritesize_24',['getSpriteSize',['../classrtype_1_1Displayable.html#a40db3a896bca29987265ed06d3a2df36',1,'rtype::Displayable']]],
   ['gettps_25',['getTps',['../classrtype_1_1Timer.html#ab8a164494b7bcb9190909aefcbf777a8',1,'rtype::Timer']]]
