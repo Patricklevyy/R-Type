@@ -11,7 +11,8 @@ namespace rtype
 {
 
     Server::Server()
-        : _running(true), _currentPort(5000), _udpManager(std::make_shared<ecs::udp::UDP_Manager>())
+        : _running(true), _currentPort(5000),
+          _udpManager(std::make_shared<ecs::udp::UDP_Manager>())
     {
         std::cout << "START OF THE RTYPE SERVER" << std::endl;
         initializeCommands();
@@ -25,16 +26,22 @@ namespace rtype
 
     void Server::initializeCommands()
     {
-        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
-            (void)clientAddr;
+        _commands[RTYPE_ACTIONS::CREATE_ROOM] = [this](const unsigned int id,
+                                                    std::string &params,
+                                                    std::string &clientAddr) {
+            (void) clientAddr;
             createRoom(id, params);
         };
-        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
+        _commands[RTYPE_ACTIONS::JOIN_ROOM] = [this](const unsigned int id,
+                                                  std::string &params,
+                                                  std::string &clientAddr) {
             joinRoom(id, params, clientAddr);
         };
-        _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
-            (void)id;
-            (void)params;
+        _commands[RTYPE_ACTIONS::GET_ALL_ROOMS] = [this](const unsigned int id,
+                                                      std::string &params,
+                                                      std::string &clientAddr) {
+            (void) id;
+            (void) params;
 
             getAllRooms(clientAddr);
         };
@@ -44,7 +51,8 @@ namespace rtype
     {
         std::string roomList = "rooms=";
         for (const auto &room : _rooms) {
-            roomList += room.getName() + "," + std::to_string(room.getNbClient()) + ":";
+            roomList +=
+                room.getName() + "," + std::to_string(room.getNbClient()) + ":";
         }
         if (!roomList.empty() && roomList.back() == ':') {
             roomList.pop_back();
@@ -58,15 +66,18 @@ namespace rtype
         _udpManager->sendMessage(response, clientAddr);
     }
 
-    void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)
+    void Server::handleCommand(
+        const std::vector<char> &message, std::string clientAddr)
     {
         ecs::udp::Message mes;
         _compressor.deserialize(message, mes);
-        if (!SecretKeyChecker::isMessageSafe(mes.secret_key, _udpManager->getSecretKey())) {
+        if (!SecretKeyChecker::isMessageSafe(
+                mes.secret_key, _udpManager->getSecretKey())) {
             throw ERROR::MessageIsNotSafeException("Missing secret key");
         }
         Utils::checkAction(mes.action);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
+        std::cout << "id : " << mes.id << " action " << mes.action << " params "
+                  << mes.params << std::endl;
         auto it = _commands.find(mes.action);
         if (it != _commands.end()) {
             it->second(mes.id, mes.params, clientAddr);
@@ -78,7 +89,8 @@ namespace rtype
     void Server::start()
     {
         if (!_udpManager->initialize("rtype_game/config/udp_config.conf")) {
-            throw ERROR::FailedToInitializeServerExceptions("Failed to start the server.");
+            throw ERROR::FailedToInitializeServerExceptions(
+                "Failed to start the server.");
         }
         _timer.init("rtype_game/config/server_config.conf", true);
 
@@ -91,10 +103,9 @@ namespace rtype
                 try {
                     handleCommand(message, clientAddress);
                 } catch (std::exception &e) {
-                    std::cerr << std::endl
-                              << e.what() << std::endl;
+                    std::cerr << std::endl << e.what() << std::endl;
                 }
             }
         }
     }
-}
+} // namespace rtype

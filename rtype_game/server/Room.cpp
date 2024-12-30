@@ -9,8 +9,8 @@
 #include <arpa/inet.h>
 #include <cmath>
 #include <cstring>
-#include <sys/socket.h>
 #include <random>
+#include <sys/socket.h>
 
 namespace rtype
 {
@@ -31,7 +31,8 @@ namespace rtype
     }
 
     Room::Room(Room &&other) noexcept
-        : _port(other._port), _name(std::move(other._name)), _sockfd(other._sockfd), _addr(other._addr)
+        : _port(other._port), _name(std::move(other._name)),
+          _sockfd(other._sockfd), _addr(other._addr)
     {
         other._sockfd = -1;
     }
@@ -53,7 +54,8 @@ namespace rtype
     {
         _sockfd = socket(AF_INET, SOCK_DGRAM, 0);
         if (_sockfd < 0) {
-            std::cerr << "Socket creation failed for room " << _name << std::endl;
+            std::cerr << "Socket creation failed for room " << _name
+                      << std::endl;
             return false;
         }
 
@@ -61,13 +63,14 @@ namespace rtype
         _addr.sin_port = htons(_port);
         _addr.sin_addr.s_addr = INADDR_ANY;
 
-        if (bind(_sockfd, (struct sockaddr *)&_addr, sizeof(_addr)) < 0) {
+        if (bind(_sockfd, (struct sockaddr *) &_addr, sizeof(_addr)) < 0) {
             std::cerr << "Bind failed for room " << _name << std::endl;
             close(_sockfd);
             return false;
         }
 
-        std::cout << "Room " << _name << " is listening on port " << _port << std::endl;
+        std::cout << "Room " << _name << " is listening on port " << _port
+                  << std::endl;
         return true;
     }
 
@@ -83,7 +86,8 @@ namespace rtype
 
     bool Room::sendMessage(const std::string &message)
     {
-        ssize_t sent = sendto(_sockfd, message.c_str(), message.size(), 0, (struct sockaddr *)&_addr, sizeof(_addr));
+        ssize_t sent = sendto(_sockfd, message.c_str(), message.size(), 0,
+            (struct sockaddr *) &_addr, sizeof(_addr));
         return sent >= 0;
     }
 
@@ -108,13 +112,17 @@ namespace rtype
         send_client_remove_ath();
     }
 
-    void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)
+    void Room::handleCommand(
+        const std::vector<char> &compressed_message, std::string clientAddr)
     {
-        (void)clientAddr;
+        (void) clientAddr;
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
-        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
+        std::cout << "new message in the ROOOM : " << message.id
+                  << "action : " << message.action << " , " << message.params
+                  << std::endl;
+        rtype::RTYPE_ACTIONS action =
+            static_cast<rtype::RTYPE_ACTIONS>(message.action);
         _eventBus.emit(action, std::ref(message));
     }
 
@@ -133,16 +141,11 @@ namespace rtype
     std::pair<float, float> Room::get_player_start_position(int nb_client)
     {
         switch (nb_client) {
-        case 0:
-            return std::pair<int, float>(200, 200);
-        case 1:
-            return std::pair<float, float>(300, 300);
-        case 2:
-            return std::pair<float, float>(400, 400);
-        case 3:
-            return std::pair<float, float>(500, 500);
-        default:
-            return std::pair<float, float>(0, 0);
+            case 0: return std::pair<int, float>(200, 200);
+            case 1: return std::pair<float, float>(300, 300);
+            case 2: return std::pair<float, float>(400, 400);
+            case 3: return std::pair<float, float>(500, 500);
+            default: return std::pair<float, float>(0, 0);
         }
     }
 
@@ -163,7 +166,8 @@ namespace rtype
     {
         char ipStr[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(this->_addr.sin_addr), ipStr, INET_ADDRSTRLEN);
-        return std::string(ipStr) + ":" + std::to_string(ntohs(this->_addr.sin_port));
+        return std::string(ipStr) + ":"
+            + std::to_string(ntohs(this->_addr.sin_port));
     }
 
-}
+} // namespace rtype

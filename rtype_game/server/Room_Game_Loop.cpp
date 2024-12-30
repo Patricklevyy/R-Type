@@ -9,15 +9,18 @@
 
 namespace rtype
 {
-    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height)
+    void Room::gameThreadFunction(
+        int port, std::string window_width, std::string window_height)
     {
         _window_width = std::stoi(window_width);
         _window_height = std::stoi(window_height);
         _port = port;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
 
-        if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port)) {
-            std::cerr << "Failed to initialize socket for room " << _name << std::endl;
+        if (!_udp_server->initialize(
+                "rtype_game/config/udp_config.conf", port)) {
+            std::cerr << "Failed to initialize socket for room " << _name
+                      << std::endl;
             return;
         }
         _ecs.init_basic_registry();
@@ -49,10 +52,12 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string window_width, std::string window_height)
+    void Room::start(
+        int port, std::string window_width, std::string window_height)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height);
+        _gameThread = std::thread(
+            &Room::gameThreadFunction, this, port, window_width, window_height);
         _gameThread.detach();
     }
-}
+} // namespace rtype
