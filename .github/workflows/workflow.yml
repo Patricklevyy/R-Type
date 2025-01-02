@@ -19,10 +19,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Clean vcpkg cache
+        run: rm -rf ./build/vcpkg && mkdir -p ./build/vcpkg
+
       - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y cmake g++ make libconfig++-dev
+          sudo apt-get install -y libpng-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev libfreetype6-dev zlib1g-dev
+          sudo apt-get install -y cmake g++ make libconfig++-dev \
+          libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev \
+          libopenal-dev
 
       - name: Build Project
         run: |
@@ -30,7 +36,56 @@ jobs:
           cmake --build build
 
       - name: Run Unit Tests
-        run: ./build/r-type_tests
+        run: ./r-type_tests
+
+  clang_format_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Check Code Format
+        id: clang_format
+        run: |
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror -style=file
+
+  clang_format_fix:
+    runs-on: ubuntu-latest
+    needs: clang_format_check
+    if: failure()
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Apply Clang-Format Fixes
+        run: |
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
+
+      - name: Commit and Push Fixes
+        run: |
+          git config user.name "GitHub Action Bot"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "[ADD] auto-format code with clang-format"
+          git push origin ${{ github.head_ref }}
+
+  format_check_or_fix:
+    runs-on: ubuntu-latest
+    needs:
+      - clang_format_check
+      - clang_format_fix
+    steps:
+      - name: Ensure Format Check or Fix is Done
+        run: echo "Format check or fix complete"
 
   generate_docs:
     runs-on: ubuntu-latest
@@ -54,7 +109,9 @@ jobs:
 
   push_to_mirror:
     runs-on: ubuntu-latest
-    needs: generate_docs
+    needs:
+      - generate_docs
+      - format_check_or_fix
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
