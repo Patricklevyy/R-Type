@@ -9,6 +9,22 @@
 
 namespace rtype
 {
+    void Room::sendScore(unsigned int score)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+
+        responseMessage.id = 0;
+        responseMessage.action = UPDATE_SCORE;
+        responseMessage.params = std::to_string(score);
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
     void Room::send_client_level_status(bool win, LEVELS level)
     {
         std::vector<char> response;

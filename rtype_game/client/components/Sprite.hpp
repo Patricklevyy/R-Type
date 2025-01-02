@@ -19,9 +19,11 @@
 #include <stdexcept>
 #include <string>
 
-namespace rtype {
+namespace rtype
+{
 
-    class Sprite {
+    class Sprite
+    {
     public:
         /**
          * @brief Default constructor for the sprite.
@@ -36,8 +38,10 @@ namespace rtype {
          * @param height Height to scale the sprite to.
          * @throws std::runtime_error If the texture fails to load.
          */
-        Sprite(const std::string& texturePath, float width, float height) {
-            if (!texture->loadFromFile(texturePath)) {
+        Sprite(const std::string &texturePath, float width, float height)
+        {
+            if (!texture->loadFromFile(texturePath))
+            {
                 throw std::runtime_error("Failed to load texture: " + texturePath);
             }
             sprite.setTexture(*texture);
@@ -70,7 +74,7 @@ namespace rtype {
          *
          * @param window The SFML render window to draw the sprite on.
          */
-        void draw(sf::RenderWindow& window) const
+        void draw(sf::RenderWindow &window) const
         {
             window.draw(sprite);
         }

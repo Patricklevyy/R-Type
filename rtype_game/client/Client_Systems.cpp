@@ -25,6 +25,7 @@ namespace rtype
     {
         auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
+            init_score();
             send_server_start_game(isLevelChosen.second);
         } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
             restart_game();

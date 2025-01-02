@@ -16,8 +16,9 @@ namespace rtype
         _ecs.addRegistry<Health>();
         _ecs.addRegistry<Shader>();
         _ecs.addRegistry<Levels>();
-        _ecs.addRegistry<TempDisplay>();
+        _ecs.addRegistry<LevelStatus>();
         _ecs.addRegistry<Music>();
+        _ecs.addRegistry<Text>();
     }
 
     void Client::init_window_and_background()
@@ -122,6 +123,13 @@ namespace rtype
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_BOSS));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::BOSS));
         put_level_lock(LEVELS::BOSS, x, y);
+    }
+
+    void Client::init_score()
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<Text>(index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
     }
 
     void Client::init_game(ecs::udp::Message &message)

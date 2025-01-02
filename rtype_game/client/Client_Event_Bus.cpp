@@ -126,6 +126,7 @@ namespace rtype
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::MOVE_BACKGROUND, [this](const std::vector<std::any> &args) {
+            (void)args;
             _render_window_system.move_background(_ecs._components_arrays, _in_menu);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
@@ -166,6 +167,15 @@ namespace rtype
             y = std::stof(token);
 
             createPlayer(message.id, x, y);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_SCORE, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _score_system.updateScore(_ecs._components_arrays, message.params);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
         });
     }
 }

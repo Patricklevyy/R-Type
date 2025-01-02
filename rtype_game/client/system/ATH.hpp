@@ -15,7 +15,6 @@
     #include "../../shared/components/Levels.hpp"
     #include "../components/Displayable.hpp"
     #include "../components/Window.hpp"
-    #include "../components/TempDisplay.hpp"
 
     namespace rtype
     {
@@ -83,7 +82,7 @@
                 bool isLooseOrWinClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
-                        auto &tempdisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(components_array.at(typeid(TempDisplay)));
+                        auto &level_status = std::any_cast<ecs::SparseArray<LevelStatus> &>(components_array.at(typeid(LevelStatus)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
                         auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
 
@@ -93,7 +92,7 @@
                         float mouseY = mousePos.y;
 
                         for (std::size_t i = 0; i < positions.size(); ++i) {
-                            if (positions[i].has_value() && displayables[i].has_value() && tempdisplays[i].has_value()) {
+                            if (positions[i].has_value() && displayables[i].has_value() && level_status[i].has_value()) {
                                 auto size = displayables[i].value().getSpriteSize();
 
                                 if (mouseX >= positions[i].value()._pos_x && mouseX <= positions[i].value()._pos_x + size.x &&

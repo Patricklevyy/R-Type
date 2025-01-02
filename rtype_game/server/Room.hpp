@@ -53,7 +53,6 @@
     #include "system/HealthSystem.hpp"
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
-    #include "system/ScoreSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
 
     namespace rtype
@@ -173,7 +172,6 @@
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
             LevelSystem _level_system;
-            ScoreSystem _score_system;
             KillSystem _kill_system;
 
             /**
@@ -253,6 +251,7 @@
             void startLevel(LEVELS);
             void send_client_level_status(bool, LEVELS);
             void send_client_remove_ath();
+            void sendScore(unsigned int);
         };
     }
 
