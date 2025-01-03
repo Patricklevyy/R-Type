@@ -1,0 +1,2 @@
+/usr/bin/ar qc librtype_shared.a CMakeFiles/rtype_shared.dir/Timer.cpp.o CMakeFiles/rtype_shared.dir/Utils.cpp.o
+/usr/bin/ranlib librtype_shared.a

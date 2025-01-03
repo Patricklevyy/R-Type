@@ -1,0 +1,2 @@
+/usr/bin/ar qc libecs.a CMakeFiles/ecs.dir/udp/MessageCompressor.cpp.o CMakeFiles/ecs.dir/udp/UDP_Client.cpp.o CMakeFiles/ecs.dir/udp/UDP_Manager.cpp.o CMakeFiles/ecs.dir/udp/UDP_Server.cpp.o
+/usr/bin/ranlib libecs.a
