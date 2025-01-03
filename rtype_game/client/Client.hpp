@@ -217,6 +217,11 @@
                 void init_window_and_background();
 
                 /**
+                 * @brief Initializes the game menu.
+                 */
+                void init_menu();
+
+                /**
                  * @brief Initializes the ECS client registry.
                  */
                 void init_ecs_client_registry();

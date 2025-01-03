@@ -76,6 +76,7 @@
         enum SPRITES
         {
             MENU_BACKGROUND,
+            CREATE_ROOM_BTN,
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
             SIMPLE_MONSTER,

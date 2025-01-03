@@ -66,6 +66,18 @@ namespace rtype
         }
     }
 
+    void Client::init_menu()
+    {
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CREATE_ROOM_BTN));
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(100, 100));
+        _index_ecs_client++;
+        // for (const auto &room : _rooms) {
+        //     _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(room.sprite));
+        //     _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(room.x, room.y));
+        //     _index_ecs_client++;
+        // }
+    }
+
     void Client::init_all()
     {
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
@@ -77,6 +89,7 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_window_and_background();
+        init_menu();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
     }

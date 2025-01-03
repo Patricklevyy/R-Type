@@ -38,6 +38,8 @@
                     {
                         case SPRITES::MENU_BACKGROUND:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
+                        case SPRITES::CREATE_ROOM_BTN:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
                         case SPRITES::GAME_BACKGROUND:
                             return std::make_tuple<float, float, float>(1.0f, 1.0, 0.0f);
                         case SPRITES::MY_PLAYER_SHIP:
@@ -105,6 +107,9 @@
                     {
                         case SPRITES::MENU_BACKGROUND:
                             textures.push_back(loadTexture("assets/backgrounds/background.png"));
+                            break;
+                        case SPRITES::CREATE_ROOM_BTN:
+                            textures.push_back(loadTexture("assets/buttons/create_room_button.png"));
                             break;
                         case SPRITES::GAME_BACKGROUND:
                             textures.push_back(loadTexture("assets/backgrounds/background_loop.png"));

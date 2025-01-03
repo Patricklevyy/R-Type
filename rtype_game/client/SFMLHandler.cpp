@@ -95,7 +95,7 @@ namespace rtype
         {
             _client.set_window_filter(FILTER_MODE::Protanopia);
         }
-        if (event.key.code == sf::Keyboard::Num4)
+        if (event.key.code == sf::Keyboard::Quote)
         {
             _client.set_window_filter(FILTER_MODE::Deuteranopia);
         }
