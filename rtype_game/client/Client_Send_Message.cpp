@@ -9,7 +9,7 @@
 
 namespace rtype
 {
-    void Client::send_server_new_shoot()
+    void Client::send_server_new_shoot(bool charged)
     {
         ecs::udp::Message message;
         std::vector<char> buffer;
@@ -18,7 +18,12 @@ namespace rtype
         message.id = 0;
         message.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
         message.secret_key = _udpClient->getSecretKey();
-        message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
+        message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
+        if (!charged) {
+            message.params += ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
+        } else {
+            message.params += ";type=" + std::to_string(SPRITES::MONSTER_SIMPLE_MISSILE);
+        }
 
         _message_compressor.serialize(message, buffer);
 

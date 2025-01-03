@@ -92,6 +92,8 @@
 
                 void create_new_player_shoot();
 
+                void handleMousePress();
+                void handleMouseRelease();
                 void handleMouseClick();
 
                 bool _in_menu = true;
@@ -130,6 +132,11 @@
                 PlayerSystem _player_system;
                 MusicSystem _music_system;
                 ScoreSystem _score_system;
+
+                void send_server_new_shoot(bool charged = false);
+
+                bool _mouse_pressed = false;
+                std::chrono::steady_clock::time_point _mouse_press_time;
 
 
                 /**
@@ -193,11 +200,6 @@
                 void reset_level_lock();
                 void put_level_lock(LEVELS, int, int);
                 void init_score();
-
-                /**
-                 * @brief Sends a message to the server indicating a new shoot action.
-                 */
-                void send_server_new_shoot();
 
                 void send_server_start_game(LEVELS);
 
