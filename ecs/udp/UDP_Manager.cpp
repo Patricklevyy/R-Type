@@ -198,7 +198,6 @@ namespace ecs
                 throw ecs::ERROR::InvalidAdressFormatExceptions();
             }
 
-            std::cout << "BUFFER SIZE : " << message.size() << std::endl;
             if (message.size() > bufferSize) {
                 std::cerr << "[ERROR] Message size exceeds buffer size: " << message.size() << " > " << bufferSize << std::endl;
                 throw ecs::ERROR::MessageTooBigExceptions();

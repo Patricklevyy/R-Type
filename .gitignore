@@ -8,3 +8,5 @@ rtype_game/config/udp_config.conf
 tests
 vcpkg*
 r-type_tests
+poc-game_client
+poc-game_server
