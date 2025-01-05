@@ -9,7 +9,7 @@
 
 namespace poc_game
 {
-    void Client::add_level_status_screen(bool win, ecs::udp::Message &message)
+    void Client::add_level_status_screen()
     {
         killEntity(_kill_system.killPipes(_ecs));
         size_t index = getNextIndex();

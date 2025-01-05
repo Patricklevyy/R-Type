@@ -76,8 +76,8 @@ namespace poc_game
         _eventBus.subscribe(POC_GAME_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
             try {
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
-
-                add_level_status_screen(false, message);
+                 (void)message;
+                add_level_status_screen();
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }

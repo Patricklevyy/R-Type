@@ -36,7 +36,7 @@
              * @param components_array A map containing all component arrays.
              * @param tickRate The rate at which the system updates (used for time scaling).
              */
-            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int window_width, int window_height)
+            void updatePositions(std::unordered_map<std::type_index, std::any> &components_array, float tickRate, int window_width)
             {
                 auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
                 auto &velocities = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);

@@ -39,7 +39,6 @@ namespace poc_game
         std::string updateMessage = "";
 
         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
-        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(_ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value()) {

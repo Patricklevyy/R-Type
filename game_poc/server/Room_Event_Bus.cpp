@@ -13,7 +13,7 @@ namespace poc_game
     {
         _eventBus.subscribe(POC_GAME_ACTIONS::UPDATE_POSITIONS, [this](const std::vector<std::any> &args) {
             (void)args;
-            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps(), _window_width, _window_height);
+            _positon_system.updatePositions(_ecs._components_arrays, _timer.getTps(), _window_width);
         });
         _eventBus.subscribe(POC_GAME_ACTIONS::PLAY, [this](const std::vector<std::any> &args) {
             (void)args;

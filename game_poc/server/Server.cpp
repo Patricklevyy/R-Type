@@ -26,6 +26,7 @@ namespace poc_game
     void Server::initializeCommands()
     {
         _commands[POC_GAME_ACTIONS::START] = [this](const unsigned int id, std::string &params, std::string &clientAddr) {
+            (void)id;
             start_game(clientAddr, params);
         };
     }

@@ -79,15 +79,11 @@
                  */
                 void handle_message(std::vector<char>&);
 
-                void change_player_direction(ecs::direction, ecs::direction);
-
                 void send_server_playing();
 
                 void send_server_jump();
 
                 void send_server_restart_game();
-
-                void set_window_filter(FILTER_MODE);
 
                 void create_new_player_shoot();
 
@@ -172,7 +168,7 @@
                  * @param message The message containing the update data.
                  */
                 size_t getNextIndex();
-                void add_level_status_screen(bool, ecs::udp::Message &);
+                void add_level_status_screen();
                 void restart_game(ecs::udp::Message&);
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
                 // MESSAGE TO SERVER
