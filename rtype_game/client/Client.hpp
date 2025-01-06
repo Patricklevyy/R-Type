@@ -28,6 +28,7 @@
     #include "../../ecs/ECS.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
+    #include "../shared/Room.hpp"
     #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
 
@@ -107,6 +108,7 @@
                 ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
+                std::vector<Room> _rooms;
 
                 // CLASSES
 

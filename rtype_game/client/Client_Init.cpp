@@ -69,13 +69,37 @@ namespace rtype
     void Client::init_menu()
     {
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CREATE_ROOM_BTN));
-        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(100, 100));
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 100));
         _index_ecs_client++;
-        // for (const auto &room : _rooms) {
-        //     _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(room.sprite));
-        //     _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(room.x, room.y));
-        //     _index_ecs_client++;
-        // }
+        _eventBus.emit(RTYPE_ACTIONS::GET_ALL_ROOMS);
+
+        std::string response = _eventBus.getResponse();
+        std::istringstream responseStream(response);
+        std::string roomsInfo;
+
+        if (std::getline(responseStream, roomsInfo, '=')) {
+            std::istringstream roomsStream(roomsInfo);
+            std::string roomInfo;
+
+            while (std::getline(roomsStream, roomInfo, ':')) {
+            std::istringstream roomStream(roomInfo);
+            std::string roomName;
+            int nbClient = 0;
+
+            if (std::getline(roomStream, roomName, ',') && roomStream >> nbClient) {
+                Room room(roomName, nbClient);
+                _rooms.push_back(room);
+            }
+            }
+        }
+
+        for (const auto &room : _rooms) {
+            std::cout << "Salle : " << room.getName() 
+            << ", Nombre de clients : " << room.getNbClient() 
+            << std::endl;
+
+            _index_ecs_client++;
+        }
     }
 
     void Client::init_all()
