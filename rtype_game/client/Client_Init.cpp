@@ -71,9 +71,8 @@ namespace rtype
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CREATE_ROOM_BTN));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 100));
         _index_ecs_client++;
-        _eventBus.emit(RTYPE_ACTIONS::GET_ALL_ROOMS);
 
-        std::string response = _eventBus.getResponse();
+        std::string response = "Patrick";
         std::istringstream responseStream(response);
         std::string roomsInfo;
 
@@ -94,8 +93,8 @@ namespace rtype
         }
 
         for (const auto &room : _rooms) {
-            std::cout << "Salle : " << room.getName() 
-            << ", Nombre de clients : " << room.getNbClient() 
+            std::cout << "Salle : " << room.getName()
+            << ", Nombre de clients : " << room.getNbClient()
             << std::endl;
 
             _index_ecs_client++;
@@ -113,7 +112,8 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_window_and_background();
-        init_menu();
+        // init_menu();
+        requestRoomList();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
     }
