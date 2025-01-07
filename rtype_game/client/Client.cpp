@@ -88,6 +88,18 @@ namespace rtype
         }
     }
 
+    void Client::requestRoomList()
+    {
+        ecs::udp::Message request;
+        request.id = 0;
+        request.action = RTYPE_ACTIONS::GET_ALL_ROOMS;
+        request.secret_key = _udpClient->getSecretKey();
+        request.params = "";
+        std::vector<char> buffer;
+        _message_compressor.serialize(request, buffer);
+        _udpClient->sendMessageToDefault(buffer);
+    }
+
     void Client::start()
     {
         init_all();

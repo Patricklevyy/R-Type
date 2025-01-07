@@ -109,6 +109,7 @@
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::vector<Room> _rooms;
+                std::vector<std::pair<std::string, int>> _roomsList;
 
                 // CLASSES
 
@@ -200,6 +201,11 @@
 
                 void send_server_start_game(LEVELS);
 
+                /**
+                 * @brief Sends a message to the server to ask the list of all the rooms.
+                 */
+                void requestRoomList();
+
                 // INITIALISATION
 
                 /**
@@ -233,6 +239,7 @@
                  */
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
+                std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
         };
     }
 #endif /* !CLIENT_HPP_ */
