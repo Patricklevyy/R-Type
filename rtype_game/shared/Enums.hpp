@@ -93,6 +93,19 @@
             LEVEL_LOCK
         };
 
+        enum MONSTER
+        {
+            MONSTER1 = 1,
+            MONSTER2,
+            MAX_MONSTER
+        };
+
+        enum BOSSES
+        {
+            BOSS1 = 1,
+            MAX_BOSS
+        };
+
         enum LEVELS
         {
             UN,
