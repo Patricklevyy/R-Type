@@ -21,7 +21,7 @@ namespace rtype
             screen = SPRITES::LOOSER_SCREEN;
         }
         _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
-        _ecs.addComponents<TempDisplay>(index, TempDisplay());
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
 

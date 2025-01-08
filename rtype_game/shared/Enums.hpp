@@ -66,6 +66,7 @@
             WIN_LEVEL,
             UPDATE_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
+            UPDATE_SCORE,
             MAX_ACTION
         };
 
@@ -90,6 +91,19 @@
             LEVEL2,
             LEVEL_BOSS,
             LEVEL_LOCK
+        };
+
+        enum MONSTER
+        {
+            MONSTER1 = 1,
+            MONSTER2,
+            MAX_MONSTER
+        };
+
+        enum BOSSES
+        {
+            BOSS1 = 1,
+            MAX_BOSS
         };
 
         enum LEVELS

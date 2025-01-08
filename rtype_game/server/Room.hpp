@@ -29,6 +29,7 @@
     #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
     #include "MonsterFactory.hpp"
+    #include "GameplayFactory.hpp"
 
     // COMPONENTS
 
@@ -53,7 +54,6 @@
     #include "system/HealthSystem.hpp"
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
-    #include "system/ScoreSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
 
     namespace rtype
@@ -162,6 +162,7 @@
             std::thread _gameThread;
             std::vector<std::string> _clientAddresses;
             RandomNumber _random_number;
+            std::shared_ptr<GameplayFactory> _gampeplay_factory;
 
             // SYSTEMS
 
@@ -173,7 +174,6 @@
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
             LevelSystem _level_system;
-            ScoreSystem _score_system;
             KillSystem _kill_system;
 
             /**
@@ -253,6 +253,7 @@
             void startLevel(LEVELS);
             void send_client_level_status(bool, LEVELS);
             void send_client_remove_ath();
+            void sendScore(unsigned int);
         };
     }
 

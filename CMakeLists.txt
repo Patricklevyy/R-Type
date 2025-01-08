@@ -34,8 +34,8 @@ find_package(GTest CONFIG REQUIRED)
 
 set(COMMON_LIBS
     fmt::fmt
-    libconfig::config
-    libconfig::config++
+    config
+    config++
     sfml-system
     sfml-window
     sfml-graphics

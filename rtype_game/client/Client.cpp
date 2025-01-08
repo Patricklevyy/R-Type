@@ -65,7 +65,8 @@ namespace rtype
 
     void Client::restart_game()
     {
-        _kill_system.killTempDisplay(_ecs);
+        _kill_system.killLevelStatus(_ecs);
+        _kill_system.killTexts(_ecs);
         init_levels_sprites();
         if (_player_system.getIndexPlayer(_ecs._components_arrays) == -1)
             send_server_new_player();

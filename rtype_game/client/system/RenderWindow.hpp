@@ -22,6 +22,7 @@
     #include "../components/Displayable.hpp"
     #include "../../../ecs/components/Position.hpp"
     #include "../../../ecs/components/Velocity.hpp"
+    #include "../components/Text.hpp"
 
     namespace rtype
     {
@@ -43,6 +44,7 @@
                         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
                         auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(components_array.at(typeid(Shader)));
+                        auto& texts = std::any_cast<ecs::SparseArray<Text>&>(components_array.at(typeid(Text)));
 
                         auto lawindow = windows[0].value().getRenderWindow().get();
                         auto leshader = shader[0].value().getShader().get();
@@ -53,6 +55,13 @@
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
                                 lawindow->draw(*displayable[i].value().getSprite(), leshader);
                                 std::cout << "RENDER : " << i << std::endl;
+                            }
+                        }
+                        for (size_t i = 0; i < texts.size(); ++i) {
+                            if (texts[i].has_value()) {
+                                auto& text = texts[i].value();
+                                lawindow->draw(*text.getText());
+                                std::cout << "RENDER TEXT : " << i << " -> " << text.getText()->getString().toAnsiString() << std::endl;
                             }
                         }
                         lawindow->display();
