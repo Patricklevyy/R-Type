@@ -54,8 +54,8 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(clientName);
         ecs::Position position(positions.first, positions.second);
-        ecs::Velocity velocity(200);
-        Health health(100);
+        ecs::Velocity velocity(_gameplay_factory->getPlayerVelocity());
+        Health health(_gameplay_factory->getPlayerHealth());
         SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
         Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MY_PLAYER_SHIP));
         Allies allies;
@@ -109,16 +109,16 @@ namespace rtype
     void Room::createMonster(SPRITES sprites)
     {
         size_t index = getNextIndex();
-        std::pair<int, int> positions = MonsterFactory::getMonsterSpawnCoordinates(_window_width, _window_height, _random_number);
+        std::pair<int, int> positions = std::make_pair(_window_width + 30, _random_number.generateRandomNumbers(20, _window_height - 100));
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(positions.first, positions.second));
-        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(MonsterFactory::getMonsterVelocity(sprites)));
-        _ecs.addComponents<Health>(index, Health(MonsterFactory::getMonsterLife(sprites)));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getMonsterVelocity(sprites)));
+        _ecs.addComponents<Health>(index, Health(_gameplay_factory->getMonsterHealth(sprites)));
         _ecs.addComponents<Monster>(index, Monster(sprites));
         _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprites)));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<Ennemies>(index, Ennemies());
-
+        std::cout << "MONSTER CREER " << sprites << std::endl;
         send_client_new_monster(index, positions.first, positions.second, sprites);
     }
 }

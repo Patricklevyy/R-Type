@@ -19,8 +19,8 @@ namespace rtype
         return (server_ip + ":" + portStr);
     }
 
-    std::list<std::tuple<std::size_t, std::pair<float, float>, int>> Command_checker::parse_update(const std::string &params) {
-        std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parsed_data;
+    std::list<std::pair<std::size_t, std::pair<float, float>>> Command_checker::parse_update(const std::string &params) {
+        std::list<std::pair<std::size_t, std::pair<float, float>>> parsed_data;
 
         std::stringstream ss(params);
         std::string block;
@@ -31,7 +31,6 @@ namespace rtype
 
             std::size_t id = 0;
             float x = 0.0f, y = 0.0f;
-            int health = 0;
 
             std::stringstream block_ss(block);
             std::string value;
@@ -48,16 +47,13 @@ namespace rtype
                     case 2:
                         y = std::stof(value);
                         break;
-                    case 3:
-                        health = std::stoi(value);
-                        break;
                     default:
                         break;
                 }
                 index++;
             }
 
-            parsed_data.emplace_back(id, std::make_pair(x, y), health);
+            parsed_data.emplace_back(id, std::make_pair(x, y));
         }
 
         return parsed_data;

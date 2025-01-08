@@ -76,11 +76,12 @@
          */
         enum SPRITES
         {
+            SIMPLE_MONSTER = 1,
+            ADVANCED_MONSTER = 2,
+            SIMPLE_BOSS = 3,
             MENU_BACKGROUND,
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
-            SIMPLE_MONSTER,
-            ADVANCED_MONSTER,
             PLAYER_SIMPLE_MISSILE,
             MONSTER_SIMPLE_MISSILE,
             OTHER_PLAYER_SHIP,
@@ -108,9 +109,16 @@
 
         enum LEVELS
         {
-            UN,
+            UN = 1,
             DEUX,
             BOSS
+        };
+
+        enum DIFFICULTY
+        {
+            EASY,
+            MEDIUM,
+            HARD
         };
 
         /**

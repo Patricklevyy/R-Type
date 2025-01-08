@@ -40,7 +40,7 @@ namespace rtype
             try {
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                std::list<std::tuple<std::size_t, std::pair<float, float>, int>> entities = Command_checker::parse_update(message.params);
+                std::list<std::pair<std::size_t, std::pair<float, float>>> entities = Command_checker::parse_update(message.params);
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));

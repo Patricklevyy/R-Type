@@ -107,4 +107,21 @@ namespace rtype
             std::cout << "failed " << std::endl;
         }
     }
+
+    void Client::send_server_new_player()
+    {
+        std::vector<char> buffer;
+        ecs::udp::Message mess;
+        mess.id = 0;
+        mess.action = RTYPE_ACTIONS::CREATE_PLAYER;
+        mess.secret_key = _udpClient->getSecretKey();
+        _message_compressor.serialize(mess, buffer);
+
+        std::cout << "je send" << std::endl;
+        if (_udpClient->sendMessageToDefault(buffer)) {
+            std::cout << "Message sent: " << std::endl;
+        } else {
+            std::cout << "failed " << std::endl;
+        }
+    }
 }

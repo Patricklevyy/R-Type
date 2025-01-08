@@ -58,6 +58,8 @@
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LEVEL2:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
+                        case SPRITES::SIMPLE_BOSS:
+                            return std::make_tuple<float, float, float>(1.25f, 1.25f, 0.10f);
                         case SPRITES::LEVEL_BOSS:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LEVEL_LOCK:
@@ -219,6 +221,9 @@
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame4.png"));
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame3.png"));
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame2.png"));
+                            break;
+                        case SPRITES::SIMPLE_BOSS:
+                            textures.push_back(loadTexture("SPRITE A DEFINIR"));
                             break;
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);

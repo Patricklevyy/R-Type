@@ -19,6 +19,7 @@
     #include "../components/Hitbox.hpp"
     #include "../../shared/components/Levels.hpp"
     #include "../RandomNumber.hpp"
+    #include "../../shared/GameplayFactory.hpp"
 
     namespace rtype
     {
@@ -27,7 +28,7 @@
                 LevelSystem() {}
                 ~LevelSystem() {}
 
-                std::list<SPRITES> executeLevel(ecs::ECS &ecs, RandomNumber randomizer)
+                std::list<SPRITES> executeLevel(ecs::ECS &ecs, RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays.at(typeid(Levels)));
 
@@ -41,32 +42,39 @@
                     std::chrono::duration<float> deltaTime = currentTime - lastSpawnTime;
                     accumulatedTime += deltaTime.count();
 
+                    int monster;
+                    std::pair<int, int> monsterToSpwan;
+
                     for (std::size_t i = 0; i < levels.size(); ++i) {
                         if (levels[i].has_value() && (accumulatedTime >= spawnInterval)) {
                             auto currentTime = std::chrono::steady_clock::now();
                             std::chrono::duration<float> elapsedTime = currentTime - levels[i].value()._lastSpawnTime;
                             switch (levels[i].value()._level)
                             {
-                            case LEVELS::UN:
-                                if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
+                                case LEVELS::UN:
+                                    gameplayFactory->printConfig();
+                                    monsterToSpwan = gameplayFactory->getLevelSpawn(LEVELS::UN);
+                                    monster = randomizer.generateRandomNumbers(monsterToSpwan.first, monsterToSpwan.second);
+                                    std::cout << "SPAW MONSS " << monsterToSpwan.first << " , " << monsterToSpwan.second << ", " << monster << std::endl;
+                                    if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
 
-                                    monsters.push_back(SPRITES::SIMPLE_MONSTER);
+                                        monsters.push_back(static_cast<SPRITES>(monster));
 
-                                    levels[i].value()._lastSpawnTime = currentTime;
-                                    levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(2.0f, 4.0f);
-                                }
-                                break;
-                            case LEVELS::DEUX:
-                                if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
+                                        levels[i].value()._lastSpawnTime = currentTime;
+                                        levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(2.0f, 4.0f);
+                                    }
+                                    break;
+                                case LEVELS::DEUX:
+                                    if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
 
-                                    monsters.push_back(SPRITES::ADVANCED_MONSTER);
+                                        monsters.push_back(SPRITES::ADVANCED_MONSTER);
 
-                                    levels[i].value()._lastSpawnTime = currentTime;
-                                    levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(1.5f, 4.0f);
-                                }
-                                break;
-                            default:
-                                break;
+                                        levels[i].value()._lastSpawnTime = currentTime;
+                                        levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(1.5f, 4.0f);
+                                    }
+                                    break;
+                                default:
+                                    break;
                             }
                         }
                     }

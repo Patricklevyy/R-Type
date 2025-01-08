@@ -118,18 +118,6 @@ namespace rtype
         _eventBus.emit(action, std::ref(message));
     }
 
-    void Room::init_ecs_server_registry()
-    {
-        _ecs.addRegistry<Health>();
-        _ecs.addRegistry<Projectiles>();
-        _ecs.addRegistry<SpriteId>();
-        _ecs.addRegistry<Monster>();
-        _ecs.addRegistry<Hitbox>();
-        _ecs.addRegistry<Ennemies>();
-        _ecs.addRegistry<Allies>();
-        _ecs.addRegistry<Levels>();
-    }
-
     std::pair<float, float> Room::get_player_start_position(int nb_client)
     {
         switch (nb_client) {

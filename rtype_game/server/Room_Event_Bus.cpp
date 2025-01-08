@@ -105,7 +105,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::EXECUTE_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::list<SPRITES> monsters = _level_system.executeLevel(_ecs, _random_number);
+            std::list<SPRITES> monsters = _level_system.executeLevel(_ecs, _random_number, _gameplay_factory);
 
             SPRITES monster;
             while (!monsters.empty()) {

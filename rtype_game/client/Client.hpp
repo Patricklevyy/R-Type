@@ -30,6 +30,7 @@
     #include "../shared/Timer.hpp"
     #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
+    #include "../shared/GameplayFactory.hpp"
 
     // COMPONENTS
 
@@ -111,6 +112,7 @@
                 ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
+                std::shared_ptr<GameplayFactory> _gameplay_factory;
 
                 // CLASSES
 

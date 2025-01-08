@@ -13,7 +13,6 @@ namespace rtype
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
-        _ecs.addRegistry<Health>();
         _ecs.addRegistry<Shader>();
         _ecs.addRegistry<Levels>();
         _ecs.addRegistry<LevelStatus>();
@@ -72,6 +71,8 @@ namespace rtype
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
         }
+        _gameplay_factory = std::make_shared<GameplayFactory>();
+        _gameplay_factory->init("rtype_game/config/gameplay_config.conf");
         init_window_size("rtype_game/config/client_config.conf");
         _timer->init("rtype_game/config/client_config.conf", false);
         _udpClient->startReceiving();
@@ -104,8 +105,6 @@ namespace rtype
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL1));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
-
-        put_level_lock(LEVELS::UN, x, y);
 
         index = getNextIndex();
         x = (_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first / 2);
@@ -144,9 +143,9 @@ namespace rtype
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
-        init_levels_sprites();
         setRoomAdress(std::get<2>(pos_port));
         createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
+        init_levels_sprites();
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;
     }

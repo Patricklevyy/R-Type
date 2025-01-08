@@ -14,7 +14,7 @@
 #include <list>
 #include <tuple>
 #include <string>
-#include "../shared/Enums.hpp"
+#include "Enums.hpp"
 
 namespace rtype {
     class GameplayFactory {
@@ -101,7 +101,6 @@ namespace rtype {
 
         }
 
-        // Function to print all the parsed data
         void printConfig() const {
             std::cout << "Player Config:" << std::endl;
             std::cout << "  Health: " << std::get<0>(player) << std::endl;
@@ -143,6 +142,48 @@ namespace rtype {
             }
         }
 
+        int getPlayerVelocity() {
+            return std::get<1>(player);
+        }
+
+        int getPlayerHealth() {
+            return std::get<0>(player);
+        }
+
+        int getPlayerPlayerDamage() {
+            return std::get<2>(player);
+        }
+
+        void changeDifficulty(DIFFICULTY dif) {
+            if (_difficulty == dif) {
+                return;
+            } else {
+                _difficulty = dif;
+                changeGameplayDifficulty();
+            }
+        }
+
+        void changeGameplayDifficulty() {
+            // CHANGE LIFE DAMAGES ETC EN FONCTION DE _difficulty
+        }
+
+        int getMonsterVelocity(SPRITES id) {
+            return std::get<1>(monsters[id]);
+        }
+
+        int getMonsterHealth(SPRITES id) {
+            return std::get<0>(monsters[id]);
+        }
+
+        int getMonsterDamage(SPRITES id) {
+            return std::get<2>(monsters[id]);
+        }
+
+        std::pair<int, int> getLevelSpawn(int level) {
+            std::list<int> levelMonsters = levels[level];
+            return std::make_pair(levelMonsters.front(), levelMonsters.size());
+        }
+
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
@@ -150,6 +191,8 @@ namespace rtype {
         std::map<int, std::list<int>> levels;
         std::map<int, std::list<int>> final_levels;
         std::tuple<int, int, int> player;
+
+        DIFFICULTY _difficulty = EASY;
     };
 }
 

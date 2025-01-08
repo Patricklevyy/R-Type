@@ -28,8 +28,7 @@
     #include "../shared/Utils.hpp"
     #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
-    #include "MonsterFactory.hpp"
-    #include "GameplayFactory.hpp"
+    #include "../shared/GameplayFactory.hpp"
 
     // COMPONENTS
 
@@ -132,10 +131,6 @@
              */
             std::string getAddress() const;
 
-            /**
-             * @brief Initializes the event bus for the room.
-             */
-            void init_event_bus();
 
             /**
              * @brief Sends the existing entities in the room to the clients.
@@ -162,7 +157,7 @@
             std::thread _gameThread;
             std::vector<std::string> _clientAddresses;
             RandomNumber _random_number;
-            std::shared_ptr<GameplayFactory> _gampeplay_factory;
+            std::shared_ptr<GameplayFactory> _gameplay_factory;
 
             // SYSTEMS
 
@@ -181,6 +176,13 @@
              * @param deadEntities A list of IDs for the dead entities.
              */
             void send_client_dead_entities(std::list<size_t>);
+
+            /**
+             * @brief Initializes the event bus for the room.
+             */
+            void init_event_bus();
+
+            void init_all(int, std::string, std::string);
 
             /**
              * @brief Initializes the room's network socket.
