@@ -57,7 +57,10 @@ namespace rtype
             (void)args;
             std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
 
-            _score_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
+            if (std::get<1>(dead_entities) != 0) {
+                _level_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
+                sendScore(_level_system.getScore(_ecs._components_arrays));
+            }
             std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
             for (const auto &entity_id : dead_entites_id) {
                 _kill_system.killEntity(_ecs, entity_id);
@@ -114,7 +117,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::pair<LEVELS, bool> level = _score_system.isLevelFinished(_ecs._components_arrays);
+            std::pair<LEVELS, bool> level = _level_system.isLevelFinished(_ecs._components_arrays);
             if (level.second) {
                 std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 if (!dead_entites_id.empty())

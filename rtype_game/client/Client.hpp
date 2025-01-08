@@ -34,12 +34,13 @@
     // COMPONENTS
 
     #include "components/Window.hpp"
-    #include "components/TempDisplay.hpp"
+    #include "components/LevelStatus.hpp"
     #include "components/Displayable.hpp"
     #include "components/Sprite.hpp"
     #include "components/Music.hpp"
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
+    #include "components/Text.hpp"
 
     // SYSTEMS
 
@@ -50,6 +51,7 @@
     #include "system/PlayerSystem.hpp"
     #include "system/EventWindow.hpp"
     #include "system/MusicSystem.hpp"
+    #include "system/ScoreSystem.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
@@ -90,6 +92,8 @@
 
                 void create_new_player_shoot();
 
+                void handleMousePress();
+                void handleMouseRelease();
                 void handleMouseClick();
 
                 bool _in_menu = true;
@@ -127,6 +131,12 @@
                 KillSystem _kill_system;
                 PlayerSystem _player_system;
                 MusicSystem _music_system;
+                ScoreSystem _score_system;
+
+                void send_server_new_shoot(bool charged = false);
+
+                bool _mouse_pressed = false;
+                std::chrono::steady_clock::time_point _mouse_press_time;
 
 
                 /**
@@ -189,12 +199,7 @@
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
                 void reset_level_lock();
                 void put_level_lock(LEVELS, int, int);
-                // MESSAGE TO SERVER
-
-                /**
-                 * @brief Sends a message to the server indicating a new shoot action.
-                 */
-                void send_server_new_shoot();
+                void init_score();
 
                 void send_server_start_game(LEVELS);
 

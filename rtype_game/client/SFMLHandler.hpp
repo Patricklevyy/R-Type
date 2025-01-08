@@ -22,9 +22,10 @@
                 void handleEvents(std::queue<sf::Event> &);
 
             private:
-                void processKeyPressed(const sf::Event &);
-                void processKeyReleased(const sf::Event &);
-                void processMouseButtonPressed(const sf::Event &);
+                void processKeyPressed(const sf::Event &event);
+                void processKeyReleased(const sf::Event &event);
+                void processMouseButtonPressed(const sf::Event &event);
+                void processMouseButtonReleased(const sf::Event &event);
 
                 Client &_client;
             };
