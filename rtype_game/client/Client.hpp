@@ -31,6 +31,7 @@
     #include "../shared/Room.hpp"
     #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
+    #include "inputManager.hpp"
 
     // COMPONENTS
 
@@ -75,10 +76,13 @@
                  */
                 void start();
 
+
                 /**
                  * @brief Handles messages from the server.
                  * @param message A vector of characters representing the message from the server.
                  */
+
+                InputManager _inputManager;
                 void handle_message(std::vector<char>&);
 
                 void change_player_direction(ecs::direction, ecs::direction);
@@ -95,7 +99,7 @@
 
                 bool _in_menu = true;
                 bool _running = true;
-                EventBus _eventBus;
+                EventBus _eventBus;                
 
             protected:
             private:

@@ -40,6 +40,8 @@
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
                         case SPRITES::CREATE_ROOM_BTN:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
+                        case SPRITES::CHANGE_KEY_BUTTON:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
                         case SPRITES::GAME_BACKGROUND:
                             return std::make_tuple<float, float, float>(1.0f, 1.0, 0.0f);
                         case SPRITES::MY_PLAYER_SHIP:
@@ -68,6 +70,9 @@
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::WIN_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
+                        case SPRITES::EXIT_BUTTON:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.0f);
+
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -108,6 +113,14 @@
                         case SPRITES::MENU_BACKGROUND:
                             textures.push_back(loadTexture("assets/backgrounds/background.png"));
                             break;
+                        case SPRITES::EXIT_BUTTON:
+                            textures.push_back(loadTexture("assets/buttons/create_room_button.png")); // Ajoute une texture pour le bouton "Exit"
+                            break;
+
+                        case SPRITES::CHANGE_KEY_BUTTON:
+                            textures.push_back(loadTexture("assets/buttons/create_room_button.png"));
+                            break;
+
                         case SPRITES::CREATE_ROOM_BTN:
                             textures.push_back(loadTexture("assets/buttons/create_room_button.png"));
                             break;

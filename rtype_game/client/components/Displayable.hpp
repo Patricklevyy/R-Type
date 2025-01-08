@@ -30,7 +30,7 @@ namespace rtype {
          * @throws std::runtime_error If no textures are available for the sprite ID.
          */
         Displayable(SPRITES sprite_id)
-            : currentFrame(0), elapsedTime(0.0f)
+            : spriteId(sprite_id), currentFrame(0), elapsedTime(0.0f)
         {
             textures = SpriteFactory::loadTexturesForSprite(sprite_id);
             std::tuple<float, float, float> scales_and_speed = SpriteFactory::getSpriteScaleAndSpeed(sprite_id);
@@ -113,7 +113,12 @@ namespace rtype {
             return sf::Vector2f(0, 0);
         }
 
+        SPRITES getSpriteId() const {
+            return spriteId;
+        }
+
     private:
+        SPRITES spriteId;
         std::shared_ptr<sf::Sprite> sprite;
         std::vector<std::shared_ptr<sf::Texture>> textures;
         size_t currentFrame;

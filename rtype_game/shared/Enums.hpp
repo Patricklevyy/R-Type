@@ -66,7 +66,7 @@
             WIN_LEVEL,
             UPDATE_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
-            MAX_ACTION
+            MAX_ACTION,
         };
 
         /**
@@ -90,7 +90,9 @@
             LEVEL1,
             LEVEL2,
             LEVEL_BOSS,
-            LEVEL_LOCK
+            LEVEL_LOCK,
+            EXIT_BUTTON,
+            CHANGE_KEY_BUTTON
         };
 
         enum LEVELS

@@ -1,17 +1,17 @@
-find_package(Python3 REQUIRED)
+# find_package(Python3 REQUIRED)
 
-execute_process(
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/generateSecretKey.py
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE PYTHON_SCRIPT_RESULT
-)
+# execute_process(
+#     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/generateSecretKey.py
+#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#     RESULT_VARIABLE PYTHON_SCRIPT_RESULT
+# )
 
-execute_process(
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/getIpAddress.py
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE GET_IP_ADDRESS_RESULT
-)
+# execute_process(
+#     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/getIpAddress.py
+#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#     RESULT_VARIABLE GET_IP_ADDRESS_RESULT
+# )
 
-if(NOT PYTHON_SCRIPT_RESULT EQUAL 0)
-    message(WARNING "La génération de la clé secrète a échoué avec le code : ${PYTHON_SCRIPT_RESULT}")
-endif()
+# if(NOT PYTHON_SCRIPT_RESULT EQUAL 0)
+#     message(WARNING "La génération de la clé secrète a échoué avec le code : ${PYTHON_SCRIPT_RESULT}")
+# endif()

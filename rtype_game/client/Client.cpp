@@ -21,6 +21,7 @@ namespace rtype
     {
         _udpClient->stopReceiving();
     }
+    
 
     size_t Client::getNextIndex()
     {

@@ -54,6 +54,10 @@
                 }
             }
 
+            std::string getResponse() const {
+                return "Response string";
+            }
+
         private:
             std::unordered_map<RTYPE_ACTIONS, std::vector<std::function<void(const std::vector<std::any> &)>>> subscribers;
         };

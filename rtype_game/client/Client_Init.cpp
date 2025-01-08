@@ -68,9 +68,22 @@ namespace rtype
 
     void Client::init_menu()
     {
+        // Création du bouton "Create Room"
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CREATE_ROOM_BTN));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 100));
         _index_ecs_client++;
+
+        // Création du bouton "Exit"
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::EXIT_BUTTON)); // SPRITES::EXIT_BUTTON à ajouter
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 300));
+        _index_ecs_client++;
+
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CHANGE_KEY_BUTTON)); // SPRITES::EXIT_BUTTON à ajouter
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 600));
+        _index_ecs_client++;
+
+        
+
         _eventBus.emit(RTYPE_ACTIONS::GET_ALL_ROOMS);
 
         std::string response = _eventBus.getResponse();
@@ -82,25 +95,25 @@ namespace rtype
             std::string roomInfo;
 
             while (std::getline(roomsStream, roomInfo, ':')) {
-            std::istringstream roomStream(roomInfo);
-            std::string roomName;
-            int nbClient = 0;
+                std::istringstream roomStream(roomInfo);
+                std::string roomName;
+                int nbClient = 0;
 
-            if (std::getline(roomStream, roomName, ',') && roomStream >> nbClient) {
-                Room room(roomName, nbClient);
-                _rooms.push_back(room);
-            }
+                if (std::getline(roomStream, roomName, ',') && roomStream >> nbClient) {
+                    Room room(roomName, nbClient);
+                    _rooms.push_back(room);
+                }
             }
         }
 
         for (const auto &room : _rooms) {
-            std::cout << "Salle : " << room.getName() 
-            << ", Nombre de clients : " << room.getNbClient() 
-            << std::endl;
-
+            std::cout << "Salle : " << room.getName()
+                    << ", Nombre de clients : " << room.getNbClient()
+                    << std::endl;
             _index_ecs_client++;
         }
     }
+
 
     void Client::init_all()
     {
