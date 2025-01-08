@@ -45,6 +45,25 @@
             }
 
             /**
+             * @brief Retrieves a component from an entity.
+             * @tparam Component The type of component to retrieve.
+             * @param index The ID of the entity.
+             * @return A reference to the component.
+             * @throws ComponentNotFoundExceptions If the component type is not registered.
+             */
+            template <typename Component>
+            Component &getComponent(size_t index)
+            {
+                auto type = std::type_index(typeid(Component));
+                if (_components_arrays.find(type) == _components_arrays.end())
+                {
+                    throw ERROR::ComponentNotFoundExceptions();
+                }
+                auto &sparse_array = std::any_cast<SparseArray<Component> &>(_components_arrays.at(type));
+                return sparse_array[index].value();
+            }
+
+            /**
              * @brief Adds a registry for a specific component type.
              * @tparam Component The type of component to register.
              * @throws ComponentTypeAlreadyExistException If the component type is already registered.

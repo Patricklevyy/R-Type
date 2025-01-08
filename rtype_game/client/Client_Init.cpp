@@ -29,7 +29,6 @@ namespace rtype
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
         _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(10));
         _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
-        _index_ecs_client++;
     }
 
     void Client::reset_level_lock()
@@ -70,36 +69,21 @@ namespace rtype
     {
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::CREATE_ROOM_BTN));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position((_window_width / 2) - 100, 100));
-        _index_ecs_client++;
 
-        std::string response = "Patrick";
-        std::istringstream responseStream(response);
-        std::string roomsInfo;
-
-        if (std::getline(responseStream, roomsInfo, '=')) {
-            std::istringstream roomsStream(roomsInfo);
-            std::string roomInfo;
-
-            while (std::getline(roomsStream, roomInfo, ':')) {
-            std::istringstream roomStream(roomInfo);
-            std::string roomName;
-            int nbClient = 0;
-
-            if (std::getline(roomStream, roomName, ',') && roomStream >> nbClient) {
-                Room room(roomName, nbClient);
-                _rooms.push_back(room);
-            }
-            }
-        }
-
-        for (const auto &room : _rooms) {
-            std::cout << "Salle : " << room.getName()
-            << ", Nombre de clients : " << room.getNbClient()
+        Menu menu;
+        for (const auto &room : _roomsList) {
+            menu.add_room(room.first);
+            std::cout << "Salle : " << room.first
+            << ", Nombre de clients : " << room.second
             << std::endl;
-
-            _index_ecs_client++;
         }
+
+        auto& window = _ecs.getComponent<Window>(_index_ecs_client);
+        menu.draw(*window.getRenderWindow());
+        _index_ecs_client++;
     }
+
+    
 
     void Client::init_all()
     {
@@ -112,8 +96,8 @@ namespace rtype
         _ecs.init_basic_registry();
         init_ecs_client_registry();
         init_window_and_background();
-        // init_menu();
         requestRoomList();
+        init_menu();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
     }

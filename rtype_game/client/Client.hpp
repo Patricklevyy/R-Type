@@ -31,6 +31,7 @@
     #include "../shared/Room.hpp"
     #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
+    #include "./Menu.hpp"
 
     // COMPONENTS
 
@@ -110,6 +111,7 @@
                 size_t _index_ecs_client = 0;
                 std::vector<Room> _rooms;
                 std::vector<std::pair<std::string, int>> _roomsList;
+                
 
                 // CLASSES
 
