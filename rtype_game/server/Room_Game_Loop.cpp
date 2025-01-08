@@ -15,6 +15,9 @@ namespace rtype
         _window_height = std::stoi(window_height);
         _port = port;
         _udp_server = std::make_shared<ecs::udp::UDP_Server>();
+        _gampeplay_factory = std::make_shared<GameplayFactory>();
+
+        _gampeplay_factory->init("rtype_game/config/gameplay_config.conf");
 
         if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port)) {
             std::cerr << "Failed to initialize socket for room " << _name << std::endl;
