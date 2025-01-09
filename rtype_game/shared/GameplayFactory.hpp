@@ -181,7 +181,7 @@ namespace rtype {
 
         std::pair<int, int> getLevelSpawn(int level) {
             std::list<int> levelMonsters = levels[level];
-            return std::make_pair(levelMonsters.front(), levelMonsters.size());
+            return std::make_pair(levelMonsters.front(), levelMonsters.back());
         }
 
     protected:
