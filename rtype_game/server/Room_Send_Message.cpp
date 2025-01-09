@@ -108,7 +108,7 @@ namespace rtype
 
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITIONS_FROM_SERVER;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_PARTIALS_POSITIONS_FROM_SERVER;
         responseMessage.id = 0;
         responseMessage.params = updateMessage;
 
@@ -164,6 +164,36 @@ namespace rtype
 
         _message_compressor.serialize(responseMessage, response);
 
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    void Room::send_roll_back()
+    {
+        std::string updateMessage = "";
+
+        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
+
+        for (size_t i = 0; i < positions.size(); ++i) {
+            if (positions[i].has_value()) {
+                updateMessage += std::to_string(i) +
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
+                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) + ";";
+            }
+        }
+
+        if (!updateMessage.empty() && updateMessage.back() == ';') {
+            updateMessage.pop_back();
+        }
+
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_POSITIONS_FROM_SERVER;
+        responseMessage.id = 0;
+        responseMessage.params = updateMessage;
+
+        _message_compressor.serialize(responseMessage, response);
         for (const auto &clientAddr : _clientAddresses) {
             _udp_server->sendMessage(response, clientAddr);
         }

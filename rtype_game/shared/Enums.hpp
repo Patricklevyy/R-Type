@@ -65,6 +65,7 @@
             FAIL_LEVEL,
             WIN_LEVEL,
             UPDATE_POSITIONS_FROM_SERVER,
+            UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
             UPDATE_SCORE,
             MAX_ACTION

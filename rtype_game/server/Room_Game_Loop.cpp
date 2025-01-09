@@ -13,6 +13,8 @@ namespace rtype
     {
         init_all(port, window_width, window_height, difficulty);
 
+        auto lastClientUpdate = std::chrono::steady_clock::now();
+
         while (_game_running) {
             _timer.waitTPS();
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
@@ -24,6 +26,13 @@ namespace rtype
                 for (const auto &[clientAddress, message] : messages) {
                     handleCommand(message, clientAddress);
                 }
+            }
+            auto currentTime = std::chrono::steady_clock::now();
+            auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastClientUpdate);
+
+            if (elapsedTime.count() >= 2) {
+                send_roll_back();
+                lastClientUpdate = currentTime;
             }
             _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
