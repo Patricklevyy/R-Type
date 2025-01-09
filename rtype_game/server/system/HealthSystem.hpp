@@ -21,6 +21,7 @@
     #include "../components/Hitbox.hpp"
     #include "../../../ecs/components/Direction.hpp"
     #include "../../../ecs/components/Playable.hpp"
+    #include "../../../ecs/components/Position.hpp"
 
     namespace rtype
     {
@@ -41,12 +42,15 @@
                  */
                 ~HealthSystem() {}
 
-                std::tuple<std::list<size_t>, unsigned int, bool> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
+                std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
+                // std::tuple<std::list<size_t>, unsigned int, bool> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
                     {
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
                         auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
                         auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(ecs._components_arrays[typeid(ecs::Playable)]);
-                        std::tuple<std::list<size_t>, unsigned int, bool> dead_entities;
+                        // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities;
+                        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);
+                        std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities;
                         std::get<1>(dead_entities) = 0;
                         std::get<2>(dead_entities) = false;
 
@@ -67,6 +71,10 @@
                                             std::get<2>(dead_entities) = true;
                                     }
                                     std::get<0>(dead_entities).push_front(i);
+                                    if (i < positions.size() && positions[i].has_value()) {
+                                        auto &pos = positions[i].value();
+                                        std::get<3>(dead_entities).push_front({pos._pos_x, pos._pos_y});
+                                    }
                                 }
                             }
                         }
