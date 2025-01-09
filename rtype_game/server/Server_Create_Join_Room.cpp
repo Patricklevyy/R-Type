@@ -20,7 +20,7 @@ namespace rtype
 
         Room newRoom(_currentPort, map_params["room_name"]);
         _rooms.push_back(std::move(newRoom));
-        _rooms.back().start(_currentPort, map_params["x"], map_params["y"]);
+        _rooms.back().start(_currentPort, map_params["x"], map_params["y"], map_params["dif"]);
         _currentPort++;
     }
 

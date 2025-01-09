@@ -9,9 +9,9 @@
 
 namespace rtype
 {
-    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height)
+    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height, std::string difficulty)
     {
-        init_all(port, window_width, window_height);
+        init_all(port, window_width, window_height, difficulty);
 
         while (_game_running) {
             _timer.waitTPS();
@@ -34,10 +34,10 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string window_width, std::string window_height)
+    void Room::start(int port, std::string window_width, std::string window_height, std::string difficulty)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height, difficulty);
         _gameThread.detach();
     }
 }

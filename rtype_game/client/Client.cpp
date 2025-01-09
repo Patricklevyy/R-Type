@@ -53,6 +53,10 @@ namespace rtype
         _udpClient->setDefaultAddress(ip_port);
     }
 
+    void Client::changeDifficulty(DIFFICULTY difficulty) {
+        _gameplay_factory->changeDifficulty(difficulty);
+    }
+
     void Client::handle_message(std::vector<char> &message)
     {
         ecs::udp::Message mes;

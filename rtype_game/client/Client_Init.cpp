@@ -139,12 +139,13 @@ namespace rtype
         std::string entities = message.params.substr(pos + 1);
 
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
-        std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
+        std::tuple<std::pair<float, float>, int, int> pos_port_dif = Command_checker::parsePositionAndRoomPort(player_room);
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
-        setRoomAdress(std::get<2>(pos_port));
-        createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
+        setRoomAdress(std::get<1>(pos_port_dif));
+        _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
+        createPlayer(message.id, std::get<0>(pos_port_dif).first, std::get<0>(pos_port_dif).second);
         init_levels_sprites();
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;

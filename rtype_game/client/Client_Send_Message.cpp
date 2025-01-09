@@ -77,7 +77,7 @@ namespace rtype
         mess.id = 0;
         mess.action = 0;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "room_name=room1;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "room_name=room1;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height) + ";dif=" + std::to_string(_difficulty);
 
         _message_compressor.serialize(mess, buffer);
 

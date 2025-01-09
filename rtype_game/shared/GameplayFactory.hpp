@@ -117,7 +117,20 @@ namespace rtype {
         }
 
         void changeGameplayDifficulty() {
-            // CHANGE LIFE DAMAGES ETC EN FONCTION DE _difficulty
+            switch (_difficulty)
+            {
+                case DIFFICULTY::EASY:
+                    std::get<1>(player) = 40;
+                    break;
+                case DIFFICULTY::MEDIUM:
+                    std::get<1>(player) = 0;
+                    break;
+                case DIFFICULTY::HARD:
+                    std::get<1>(player) = 1000;
+                    break;
+                default:
+                    break;
+            }
         }
 
         int getMonsterVelocity(SPRITES id) {
@@ -135,6 +148,10 @@ namespace rtype {
         std::pair<int, int> getLevelSpawn(int level) {
             std::list<int> levelMonsters = levels[level];
             return std::make_pair(levelMonsters.front(), levelMonsters.back());
+        }
+
+        DIFFICULTY getDifficulty() {
+            return _difficulty;
         }
 
     protected:

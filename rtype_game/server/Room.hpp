@@ -80,12 +80,12 @@
             /**
              * @brief Starts the game in the room.
              */
-            void start(int, std::string, std::string);
+            void start(int, std::string, std::string, std::string);
 
             /**
              * @brief Handles the game thread functionality.
              */
-            void gameThreadFunction(int, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string, std::string);
 
             /**
              * @brief Sends a message to all clients in the room.
@@ -182,7 +182,7 @@
              */
             void init_event_bus();
 
-            void init_all(int, std::string, std::string);
+            void init_all(int, std::string, std::string, std::string);
 
             /**
              * @brief Initializes the room's network socket.
