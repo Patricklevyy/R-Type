@@ -143,6 +143,8 @@
              */
             std::string sendExistingEntities();
 
+            void spawnWeaponDrop(ecs::ECS &ecs, const std::pair<float, float> &position, size_t index);
+
 
         private:
             int _window_width = 0;
