@@ -36,7 +36,7 @@ namespace rtype
     {
         _levels_wins[LEVELS::UN] = true;
         _levels_wins[LEVELS::DEUX] = true;
-        _levels_wins[LEVELS::BOSS] = false;
+        _levels_wins[LEVELS::BOSS] = true;
     }
 
     void Client::init_window_size(const std::string &file_path)

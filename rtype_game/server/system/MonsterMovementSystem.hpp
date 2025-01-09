@@ -123,6 +123,31 @@ namespace rtype
                                 directions[i].value()._y = ecs::direction::UP;
                             }
                             break;
+                        case SPRITES::SUPER_MONSTER:
+                            if (positions[i].value()._pos_x
+                                    <= (window_width - 150)
+                                && directions[i].value()._x
+                                    != ecs::direction::NO_DIRECTION) {
+                                directions[i].value()._x =
+                                    ecs::direction::NO_DIRECTION;
+                                int random =
+                                    randomizer.generateRandomNumbers(0, 1);
+                                if (random == 0) {
+                                    directions[i].value()._y =
+                                        ecs::direction::DOWN;
+                                } else {
+                                    directions[i].value()._y =
+                                        ecs::direction::UP;
+                                }
+                            }
+
+                            if (positions[i].value()._pos_y <= 150) {
+                                directions[i].value()._y = ecs::direction::DOWN;
+                            } else if (positions[i].value()._pos_y
+                                >= window_height - 150) {
+                                directions[i].value()._y = ecs::direction::UP;
+                            }
+                            break;
                         default:
                             break;
                     }

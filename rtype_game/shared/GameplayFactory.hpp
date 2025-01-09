@@ -38,7 +38,6 @@ namespace rtype {
 
             const libconfig::Setting& root = cfg.getRoot();
 
-            // Parse player data
             const libconfig::Setting& playerSettings = root["gameplay"]["players"];
             int playerHealth, playerVelocity, playerDamage;
             playerSettings.lookupValue("health", playerHealth);
@@ -47,7 +46,6 @@ namespace rtype {
 
             player = std::make_tuple(playerHealth, playerVelocity, playerDamage);
 
-            // Parse monsters data
             const libconfig::Setting& monsterSettings = root["gameplay"]["monsters"];
             for (int i = 0; i < monsterSettings.getLength(); ++i) {
                 const libconfig::Setting& monster = monsterSettings[i];
@@ -57,48 +55,20 @@ namespace rtype {
                 monster.lookupValue("velocity", velocity);
                 monster.lookupValue("damage", damage);
 
-                monsters[i + 1] = std::make_tuple(health, velocity, damage); // Monster IDs start at 1
+                monsters[i + 1] = std::make_tuple(health, velocity, damage);
             }
 
-            // Parse boss data
-            const libconfig::Setting& bossSettings = root["gameplay"]["boss"];
-            for (int i = 0; i < bossSettings.getLength(); ++i) {
-                const libconfig::Setting& bossEntry = bossSettings[i];
-                int health, velocity, damage;
-
-                bossEntry.lookupValue("health", health);
-                bossEntry.lookupValue("velocity", velocity);
-                bossEntry.lookupValue("damage", damage);
-
-                boss[i + 1] = std::make_tuple(health, velocity, damage); // Boss IDs start at 1
-            }
-
-            // Parse levels data
             const libconfig::Setting& levelsSettings = root["gameplay"]["levels"];
             for (int i = 0; i < levelsSettings.getLength(); ++i) {
                 const libconfig::Setting& level = levelsSettings[i];
                 std::list<int> ids;
 
                 for (int j = 0; j < level.getLength(); ++j) {
-                    int id = level[j]; // Accès par indice pour récupérer les IDs directement
+                    int id = level[j];
                     ids.push_back(id);
                 }
-                levels[i + 1] = ids; // Store level data
+                levels[i + 1] = ids;
             }
-
-            // Parse final levels data
-            const libconfig::Setting& finalLevelsSettings = root["gameplay"]["final_levels"];
-            for (int i = 0; i < finalLevelsSettings.getLength(); ++i) {
-                const libconfig::Setting& finalLevel = finalLevelsSettings[i];
-                std::list<int> ids;
-
-                for (int j = 0; j < finalLevel.getLength(); ++j) {
-                    int id = finalLevel[j]; // Accès par indice pour récupérer les IDs directement
-                    ids.push_back(id);
-                }
-                final_levels[i + 1] = ids; // Store final level data
-            }
-
         }
 
         void printConfig() const {
@@ -115,26 +85,9 @@ namespace rtype {
                 std::cout << "    Damage: " << std::get<2>(config) << std::endl;
             }
 
-            std::cout << "Boss Configs:" << std::endl;
-            for (const auto& [id, config] : boss) {
-                std::cout << "  Boss " << id << ":" << std::endl;
-                std::cout << "    Health: " << std::get<0>(config) << std::endl;
-                std::cout << "    Velocity: " << std::get<1>(config) << std::endl;
-                std::cout << "    Damage: " << std::get<2>(config) << std::endl;
-            }
-
             std::cout << "Levels Config:" << std::endl;
             for (const auto& [level, ids] : levels) {
                 std::cout << "  Level " << level << ": ";
-                for (int id : ids) {
-                    std::cout << id << " ";
-                }
-                std::cout << std::endl;
-            }
-
-            std::cout << "Final Levels Config:" << std::endl;
-            for (const auto& [level, ids] : final_levels) {
-                std::cout << "  Final Level " << level << ": ";
                 for (int id : ids) {
                     std::cout << id << " ";
                 }
@@ -187,9 +140,7 @@ namespace rtype {
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
-        std::map<int, std::tuple<int, int, int>> boss;
         std::map<int, std::list<int>> levels;
-        std::map<int, std::list<int>> final_levels;
         std::tuple<int, int, int> player;
 
         DIFFICULTY _difficulty = EASY;

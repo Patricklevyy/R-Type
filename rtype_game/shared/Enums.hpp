@@ -78,7 +78,8 @@
         {
             SIMPLE_MONSTER = 1,
             ADVANCED_MONSTER = 2,
-            SIMPLE_BOSS = 3,
+            SUPER_MONSTER = 3,
+            SIMPLE_BOSS = 4,
             MENU_BACKGROUND,
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,

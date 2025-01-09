@@ -61,6 +61,9 @@ namespace rtype
             case SPRITES::MONSTER_MULTIPLE_MISSILE: {
                 return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MONSTER_MULTIPLE_MISSILE);
             }
+            case SPRITES::SUPER_MONSTER: {
+                return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::SUPER_MONSTER);
+            }
             default: {
                 throw std::invalid_argument("Invalid sprite ID in hit box.");
             }
