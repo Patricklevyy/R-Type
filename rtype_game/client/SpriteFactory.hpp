@@ -66,6 +66,8 @@
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::WIN_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
+                        case SPRITES::WEAPON_DROP:
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.4);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
