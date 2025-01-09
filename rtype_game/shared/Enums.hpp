@@ -90,7 +90,8 @@
             LEVEL1,
             LEVEL2,
             LEVEL_BOSS,
-            LEVEL_LOCK
+            LEVEL_LOCK,
+            WEAPON_DROP
         };
 
         enum MONSTER
