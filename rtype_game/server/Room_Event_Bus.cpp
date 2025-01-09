@@ -87,16 +87,16 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::ENEMY_SHOOT, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::list<std::tuple<size_t, std::pair<float, float>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
             size_t index;
             while (!monsters_pos.empty()) {
                 index = getNextIndex();
-                std::tuple<size_t, std::pair<float, float>, SPRITES> monster = monsters_pos.front();
+                std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES> monster = monsters_pos.front();
                 monsters_pos.pop_front();
 
                 std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite = std::make_tuple(
-                    std::get<1>(monster),
-                    std::make_pair(3, 0),
+                    std::get<1>(monster).first,
+                    std::get<1>(monster).second,
                     std::get<2>(monster)
                 );
                 createEntityProjectiles(index, pos_dir_sprite);

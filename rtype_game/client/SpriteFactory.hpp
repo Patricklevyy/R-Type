@@ -54,6 +54,8 @@
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.10f);
                         case SPRITES::MONSTER_SIMPLE_MISSILE:
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.10f);
+                        case SPRITES::FIRE_BALL:
+                            return std::make_tuple<float, float, float>(5.0f, 5.0f, 0.50f);
                         case SPRITES::LEVEL1:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LEVEL2:
@@ -70,6 +72,10 @@
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::SUPER_MONSTER:
                             return std::make_tuple<float, float, float>(-2.0f, 2.0f, 0.35);
+                        case SPRITES::MEGA_MONSTER:
+                            return std::make_tuple<float, float, float>(4.0f, 4.0f, 0.35);
+                        case SPRITES::BABY_PROJECTILE:
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -267,6 +273,24 @@
                             break;
                         case SPRITES::SIMPLE_BOSS:
                             textures.push_back(loadTexture("SPRITE A DEFINIR"));
+                            break;
+                        case SPRITES::MEGA_MONSTER:
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame0.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame1.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame2.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame3.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame4.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame3.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame2.png"));
+                            textures.push_back(loadTexture("assets/monsters/monster_3_frame1.png"));
+                            break;
+                        case SPRITES::FIRE_BALL:
+                            textures.push_back(loadTexture("assets/projectiles/fire_ball_frame0.png"));
+                            textures.push_back(loadTexture("assets/projectiles/fire_ball_frame1.png"));
+                            break;
+                        case SPRITES::BABY_PROJECTILE:
+                            textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame0.png"));
+                            textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame1.png"));
                             break;
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
