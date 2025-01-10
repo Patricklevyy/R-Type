@@ -68,6 +68,7 @@ namespace rtype
         _ecs.addComponents<SpriteId>(index, spriteId);
         _ecs.addComponents<Hitbox>(index, hitbox);
         _ecs.addComponents<Allies>(index, allies);
+        _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getPlayerBodyDamage()));
 
         _nb_client++;
 
@@ -117,7 +118,7 @@ namespace rtype
         _ecs.addComponents<Health>(index, Health(_gameplay_factory->getMonsterHealth(sprites)));
         _ecs.addComponents<Monster>(index, Monster(sprites));
         _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprites)));
-        _ecs.addComponents<Damage>(index, Damage(20));
+        _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getMonsterBodyDamage(sprites)));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<Ennemies>(index, Ennemies());
         std::cout << "MONSTER CREER " << sprites << std::endl;

@@ -189,10 +189,34 @@ namespace rtype {
                 return getMonsterDamage(SPRITES::BABY_PROJECTILE);
             case FIRE_BALL:
                 return getMonsterDamage(SPRITES::MEGA_MONSTER);
+            case ASTEROIDE:
+                return 20;
             default:
                 std::cerr << "Monster Id not found" << std::endl;
                 return 0;
             }
+        }
+
+        int getMonsterBodyDamage(SPRITES sprite) {
+            switch (sprite)
+            {
+            case SPRITES::SIMPLE_MONSTER:
+                return 20;
+            case SPRITES::ADVANCED_MONSTER:
+                return 30;
+            case SPRITES::BABY_PROJECTILE:
+                return 20;
+            case SPRITES::MEGA_MONSTER:
+                return 50;
+            case SPRITES::SIMPLE_BOSS:
+                return 500;
+            default:
+                return 0;
+            }
+        }
+
+        int getPlayerBodyDamage() {
+            return 20;
         }
 
     protected:
