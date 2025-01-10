@@ -19,6 +19,7 @@ namespace rtype
         _ecs.addRegistry<Ennemies>();
         _ecs.addRegistry<Allies>();
         _ecs.addRegistry<Levels>();
+        _ecs.addRegistry<Damage>();
     }
 
     void Room::init_all(int port, std::string window_width, std::string window_height, std::string difficulty)

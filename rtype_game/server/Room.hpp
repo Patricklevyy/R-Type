@@ -39,6 +39,7 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "components/Damage.hpp"
     #include "../shared/components/Levels.hpp"
 
     // SYSTEMS

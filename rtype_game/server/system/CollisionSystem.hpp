@@ -20,6 +20,7 @@
 #include "../components/Allies.hpp"
 #include "../components/Ennemies.hpp"
 #include "../components/Hitbox.hpp"
+#include "../components/Damage.hpp"
 
 namespace rtype
 {
@@ -39,6 +40,7 @@ namespace rtype
         void detectCollisions(std::unordered_map<std::type_index, std::any> &components_array)
         {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
+            auto &damages = std::any_cast<ecs::SparseArray<Damage> &>(components_array[typeid(Damage)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
             auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
             auto &allies = std::any_cast<ecs::SparseArray<Allies> &>(components_array[typeid(Allies)]);
@@ -55,11 +57,9 @@ namespace rtype
                                     continue;
                                 }
                                 std::cout << "Collision detected between Entity " << i << " and Entity " << j << std::endl;
-                                if (i < healths.size() && j < healths.size() && healths[i].has_value() && healths[j].has_value()) {
-                                    healths[i].value()._health -= 20;
-                                    healths[j].value()._health -= 20;
-                                    std::cout << "Entity " << i << " health reduced to " << healths[i].value()._health << std::endl;
-                                    std::cout << "Entity " << j << " health reduced to " << healths[j].value()._health << std::endl;
+                                if (i < healths.size() && j < healths.size() && healths[i].has_value() && healths[j].has_value() && i < damages.size() && damages[i].has_value() && j < damages.size() && damages[j].has_value()) {
+                                    healths[i].value()._health -= damages[j].value()._damages;
+                                    healths[j].value()._health -= damages[i].value()._damages;
                                 }
                             }
                         }

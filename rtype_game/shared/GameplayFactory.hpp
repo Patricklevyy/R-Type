@@ -78,30 +78,6 @@ namespace rtype {
             asteroids = std::make_pair(spawningTime, number);
         }
 
-        void printConfig() const {
-            std::cout << "Player Config:" << std::endl;
-            std::cout << "  Health: " << std::get<0>(player) << std::endl;
-            std::cout << "  Velocity: " << std::get<1>(player) << std::endl;
-            std::cout << "  Damage: " << std::get<2>(player) << std::endl;
-
-            std::cout << "Monster Configs:" << std::endl;
-            for (const auto& [id, config] : monsters) {
-                std::cout << "  Monster " << id << ":" << std::endl;
-                std::cout << "    Health: " << std::get<0>(config) << std::endl;
-                std::cout << "    Velocity: " << std::get<1>(config) << std::endl;
-                std::cout << "    Damage: " << std::get<2>(config) << std::endl;
-            }
-
-            std::cout << "Levels Config:" << std::endl;
-            for (const auto& [level, ids] : levels) {
-                std::cout << "  Level " << level << ": ";
-                for (int id : ids) {
-                    std::cout << id << " ";
-                }
-                std::cout << std::endl;
-            }
-        }
-
         int getPlayerVelocity() {
             return std::get<1>(player);
         }
@@ -167,6 +143,56 @@ namespace rtype {
 
         int getAsteroidsNumberOfSpawn() {
             return asteroids.second;
+        }
+
+        int getProjectilesHealth(SPRITES sprite) {
+            switch (sprite)
+            {
+                case SPRITES::ASTEROIDE:
+                    return 10000;
+                case SPRITES::PLAYER_SIMPLE_MISSILE:
+                    return 10;
+                case SPRITES::MONSTER_MULTIPLE_MISSILE:
+                    return 10;
+                case SPRITES::BABY_PROJECTILE:
+                    return 60;
+                case SPRITES::FIRE_BALL:
+                    return 10;
+                default:
+                    std::cerr << "Id of this projectiles not found" << std::endl;
+                    return 0;
+            }
+        }
+
+        int getProjectilesVelocity(SPRITES sprite) {
+            switch (sprite)
+            {
+            case BABY_PROJECTILE:
+                return 200;
+            default:
+                return 300;
+            }
+        }
+
+        int getProjectilesDamage(SPRITES sprite) {
+            switch (sprite)
+            {
+            case PLAYER_SIMPLE_MISSILE:
+                return getPlayerPlayerDamage();
+            case PLAYER_CHARGED_SHOOT:
+                return (getPlayerPlayerDamage() * 3);
+            case MONSTER_SIMPLE_MISSILE:
+                return getMonsterDamage(SPRITES::SIMPLE_MONSTER);
+            case MONSTER_MULTIPLE_MISSILE:
+                return getMonsterDamage(SPRITES::ADVANCED_MONSTER);
+            case BABY_PROJECTILE:
+                return getMonsterDamage(SPRITES::BABY_PROJECTILE);
+            case FIRE_BALL:
+                return getMonsterDamage(SPRITES::MEGA_MONSTER);
+            default:
+                std::cerr << "Monster Id not found" << std::endl;
+                return 0;
+            }
         }
 
     protected:

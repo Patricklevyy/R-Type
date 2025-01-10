@@ -77,12 +77,13 @@ namespace rtype
     void Room::createEntityProjectiles(size_t index, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite)
     {
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).first), static_cast<ecs::direction>(std::get<1>(pos_dir_sprite).second)));
-        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(300));
+        _ecs.addComponents<ecs::Velocity>(index, _gameplay_factory->getProjectilesVelocity(std::get<2>(pos_dir_sprite)));
         _ecs.addComponents<ecs::Position>(index, ecs::Position(std::get<0>(pos_dir_sprite).first, std::get<0>(pos_dir_sprite).second));
-        _ecs.addComponents<Health>(index, Health(20));
+        _ecs.addComponents<Health>(index, _gameplay_factory->getProjectilesHealth(std::get<2>(pos_dir_sprite)));
         _ecs.addComponents<Projectiles>(index, Projectiles());
         _ecs.addComponents<SpriteId>(index, SpriteId(std::get<2>(pos_dir_sprite)));
         _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite))));
+        _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getProjectilesDamage(std::get<2>(pos_dir_sprite))));
         if (Utils::isAllie(std::get<2>(pos_dir_sprite))) {
             _ecs.addComponents<Allies>(index, Allies());
         } else {
@@ -116,6 +117,7 @@ namespace rtype
         _ecs.addComponents<Health>(index, Health(_gameplay_factory->getMonsterHealth(sprites)));
         _ecs.addComponents<Monster>(index, Monster(sprites));
         _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprites)));
+        _ecs.addComponents<Damage>(index, Damage(20));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<Ennemies>(index, Ennemies());
         std::cout << "MONSTER CREER " << sprites << std::endl;

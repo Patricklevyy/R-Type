@@ -20,6 +20,7 @@
     #include "../../server/components/Ennemies.hpp"
     #include "../../server/components/Monster.hpp"
     #include "../../server/components/Hitbox.hpp"
+    #include "../../server/components/Damage.hpp"
     #include "../components/Levels.hpp"
     #include "../../client/components/LevelStatus.hpp"
     #include "../../client/components/Window.hpp"
@@ -69,6 +70,7 @@
                     ecs.killEntityFromRegistry<Monster>(index);
                     ecs.killEntityFromRegistry<Projectiles>(index);
                     ecs.killEntityFromRegistry<SpriteId>(index);
+                    ecs.killEntityFromRegistry<Damage>(index);
 
                     ecs.addDeadEntity(index);
                 }
