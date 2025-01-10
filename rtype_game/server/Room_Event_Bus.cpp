@@ -72,6 +72,7 @@ namespace rtype
                     _nb_client--;
                 dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(false, LEVELS::UN);
             }
         });
@@ -122,6 +123,7 @@ namespace rtype
                 std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(level.second, level.first);
             }
         });
@@ -145,7 +147,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::SPAWN_ASTEROIDE, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroides = _asteroide_system.spwan_asteroide(_random_number, _gameplay_factory, _window_height, _window_width);
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroides = _asteroide_system.spwan_asteroide(_random_number, _gameplay_factory, _window_height, _window_width, playingInLevel);
 
             if (asteroides.empty())
                 return;

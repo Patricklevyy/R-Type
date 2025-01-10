@@ -69,6 +69,13 @@ namespace rtype {
                 }
                 levels[i + 1] = ids;
             }
+
+            const libconfig::Setting& asteroidSettings = root["gameplay"]["asteroides"];
+            int spawningTime, number;
+            asteroidSettings.lookupValue("spwaningTime", spawningTime);
+            asteroidSettings.lookupValue("number", number);
+
+            asteroids = std::make_pair(spawningTime, number);
         }
 
         void printConfig() const {
@@ -123,7 +130,7 @@ namespace rtype {
                     std::get<1>(player) = 40;
                     break;
                 case DIFFICULTY::MEDIUM:
-                    std::get<1>(player) = 200;
+                    std::get<1>(player) = 500;
                     break;
                 case DIFFICULTY::HARD:
                     std::get<1>(player) = 1000;
@@ -154,11 +161,20 @@ namespace rtype {
             return _difficulty;
         }
 
+        int getAsteroidsSpawnInterval() {
+            return asteroids.first;
+        }
+
+        int getAsteroidsNumberOfSpawn() {
+            return asteroids.second;
+        }
+
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
         std::map<int, std::list<int>> levels;
         std::tuple<int, int, int> player;
+        std::pair<int, int> asteroids;
 
         DIFFICULTY _difficulty = EASY;
     };

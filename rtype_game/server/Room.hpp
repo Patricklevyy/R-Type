@@ -152,6 +152,7 @@
             ecs::ECS _ecs;
             EventBus _eventBus;
             std::string _name;
+            bool playingInLevel = false;
             unsigned int _nb_client = 0;
             int _sockfd;
             struct sockaddr_in _addr;

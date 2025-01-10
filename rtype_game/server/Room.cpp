@@ -104,6 +104,7 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
+        playingInLevel = true;
         _ecs.addComponents<Levels>(index, Levels(level));
         send_client_remove_ath();
     }

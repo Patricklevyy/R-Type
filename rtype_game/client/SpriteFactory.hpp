@@ -77,7 +77,7 @@
                         case SPRITES::BABY_PROJECTILE:
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
                         case SPRITES::ASTEROIDE:
-                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.1);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -233,45 +233,21 @@
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame2.png"));
                             break;
                         case SPRITES::SUPER_MONSTER:
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_0.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_1.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_2.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_3.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_4.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_5.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_6.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_7.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_8.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_9.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_10.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_11.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_12.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_13.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_14.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_15.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_16.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_17.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_18.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_19.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_18.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_17.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_16.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_15.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_14.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_13.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_12.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_11.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_10.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_9.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_8.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_7.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_6.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_5.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_4.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_3.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_2.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_1.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_2_frame_0.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame0.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame1.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame2.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame3.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame4.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame5.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame6.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame7.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame8.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame9.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame10.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame11.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame12.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame13.png"));
+                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame14.png"));
                             break;
                         case SPRITES::SIMPLE_BOSS:
                             textures.push_back(loadTexture("SPRITE A DEFINIR"));
@@ -307,16 +283,6 @@
                             textures.push_back(loadTexture("assets/projectiles/asteroide_frame9.png"));
                             textures.push_back(loadTexture("assets/projectiles/asteroide_frame10.png"));
                             textures.push_back(loadTexture("assets/projectiles/asteroide_frame11.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame10.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame9.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame8.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame7.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame6.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame5.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame4.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame3.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame2.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame1.png"));
                             break;
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
