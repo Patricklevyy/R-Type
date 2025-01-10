@@ -11,7 +11,7 @@ namespace rtype
 {
     SFMLHandler::SFMLHandler(Client &client) : _client(client), _menu(nullptr)
     {
-        if (!_font.loadFromFile("Menu/Georgia Regular font.ttf")) {
+        if (!_font.loadFromFile("assets/fonts/Georgia Regular font.ttf")) {
             throw std::runtime_error("Failed to load font");
         }
         _menu = std::make_shared<Menu>(_font);
@@ -24,37 +24,6 @@ namespace rtype
     {
     }
 
-    // void SFMLHandler::handleEvents(std::queue<sf::Event> &events)
-    // {
-    //     while (!events.empty())
-    //     {
-    //         sf::Event event = events.front();
-    //         events.pop();
-
-    //         switch (event.type)
-    //         {
-    //         case sf::Event::Closed:
-    //             _client._running = false;
-    //             return;
-
-    //         case sf::Event::KeyPressed:
-    //             processKeyPressed(event);
-    //             break;
-
-    //         case sf::Event::KeyReleased:
-    //             processKeyReleased(event);
-    //             break;
-
-    //         case sf::Event::MouseButtonPressed:
-    //             processMouseButtonPressed(event);
-    //             break;
-
-    //         default:
-    //             std::cout << "Unhandled event type." << std::endl;
-    //             break;
-    //         }
-    //     }
-    // }
     void SFMLHandler::handleEvents(std::queue<sf::Event> &events)
     {
         while (!events.empty()) {
