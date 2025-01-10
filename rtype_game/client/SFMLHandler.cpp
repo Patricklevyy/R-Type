@@ -102,9 +102,13 @@ namespace rtype
                     processMouseButtonPressed(event);
                     break;
 
-                default:
-                    std::cout << "Unhandled event type." << std::endl;
-                    break;
+            case sf::Event::MouseButtonReleased:
+                processMouseButtonReleased(event);
+                break;
+
+            default:
+                std::cout << "Unhandled event type." << std::endl;
+                break;
             }
         }
     }
@@ -183,7 +187,15 @@ namespace rtype
 
     void SFMLHandler::processMouseButtonPressed(const sf::Event &event)
     {
-        (void) event;
-        _client.handleMouseClick();
+        if (event.mouseButton.button == sf::Mouse::Left) {
+            _client.handleMousePress(); // Commence un tir
+        }
+    }
+
+    void SFMLHandler::processMouseButtonReleased(const sf::Event &event)
+    {
+        if (event.mouseButton.button == sf::Mouse::Left) {
+            _client.handleMouseRelease(); // Termine le tir
+        }
     }
 } // namespace rtype

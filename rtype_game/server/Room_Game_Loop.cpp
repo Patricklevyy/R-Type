@@ -9,24 +9,11 @@
 
 namespace rtype
 {
-    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height)
+    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height, std::string difficulty)
     {
-        _window_width = std::stoi(window_width);
-        _window_height = std::stoi(window_height);
-        _port = port;
-        _udp_server = std::make_shared<ecs::udp::UDP_Server>();
+        init_all(port, window_width, window_height, difficulty);
 
-        if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port)) {
-            std::cerr << "Failed to initialize socket for room " << _name << std::endl;
-            return;
-        }
-        _ecs.init_basic_registry();
-        init_ecs_server_registry();
-        _udp_server->startReceiving();
-        _timer.init("rtype_game/config/server_config.conf", true);
-        _game_running = true;
-        std::cout << "je suis dans le game thread" << std::endl;
-        init_event_bus();
+        auto lastClientUpdate = std::chrono::steady_clock::now();
 
         while (_game_running) {
             _timer.waitTPS();
@@ -40,6 +27,13 @@ namespace rtype
                     handleCommand(message, clientAddress);
                 }
             }
+            auto currentTime = std::chrono::steady_clock::now();
+            auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastClientUpdate);
+
+            if (elapsedTime.count() >= 2) {
+                send_roll_back();
+                lastClientUpdate = currentTime;
+            }
             _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
             _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
@@ -49,10 +43,10 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string window_width, std::string window_height)
+    void Room::start(int port, std::string window_width, std::string window_height, std::string difficulty)
     {
         std::cout << "j'inite et je creer les threads" << std::endl;
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height, difficulty);
         _gameThread.detach();
     }
 }

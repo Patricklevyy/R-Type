@@ -53,6 +53,10 @@ namespace rtype
         _udpClient->setDefaultAddress(ip_port);
     }
 
+    void Client::changeDifficulty(DIFFICULTY difficulty) {
+        _gameplay_factory->changeDifficulty(difficulty);
+    }
+
     void Client::handle_message(std::vector<char> &message)
     {
         ecs::udp::Message mes;
@@ -65,27 +69,11 @@ namespace rtype
 
     void Client::restart_game()
     {
-        _kill_system.killTempDisplay(_ecs);
+        _kill_system.killLevelStatus(_ecs);
+        _kill_system.killTexts(_ecs);
         init_levels_sprites();
         if (_player_system.getIndexPlayer(_ecs._components_arrays) == -1)
             send_server_new_player();
-    }
-
-    void Client::send_server_new_player()
-    {
-        std::vector<char> buffer;
-        ecs::udp::Message mess;
-        mess.id = 0;
-        mess.action = RTYPE_ACTIONS::CREATE_PLAYER;
-        mess.secret_key = _udpClient->getSecretKey();
-        _message_compressor.serialize(mess, buffer);
-
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
     }
 
     void Client::start()

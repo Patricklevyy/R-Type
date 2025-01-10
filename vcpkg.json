@@ -5,8 +5,7 @@
         "fmt",
         "libconfig",
         "sfml",
-        "gtest",
-        "catch2"
+        "gtest"
     ],
     "builtin-baseline": "26abb5b33f976246a5f2cdc45cdd073d51caff06"
 }

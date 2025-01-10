@@ -13,11 +13,11 @@ namespace rtype
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
-        _ecs.addRegistry<Health>();
         _ecs.addRegistry<Shader>();
         _ecs.addRegistry<Levels>();
-        _ecs.addRegistry<TempDisplay>();
+        _ecs.addRegistry<LevelStatus>();
         _ecs.addRegistry<Music>();
+        _ecs.addRegistry<Text>();
     }
 
     void Client::init_window_and_background()
@@ -35,8 +35,8 @@ namespace rtype
     void Client::reset_level_lock()
     {
         _levels_wins[LEVELS::UN] = true;
-        _levels_wins[LEVELS::DEUX] = false;
-        _levels_wins[LEVELS::BOSS] = false;
+        _levels_wins[LEVELS::DEUX] = true;
+        _levels_wins[LEVELS::BOSS] = true;
     }
 
     void Client::init_window_size(const std::string &file_path)
@@ -71,6 +71,8 @@ namespace rtype
         if (!_udpClient->initialize("rtype_game/config/udp_config.conf")) {
             throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
         }
+        _gameplay_factory = std::make_shared<GameplayFactory>();
+        _gameplay_factory->init("rtype_game/config/gameplay_config.conf");
         init_window_size("rtype_game/config/client_config.conf");
         _timer->init("rtype_game/config/client_config.conf", false);
         _udpClient->startReceiving();
@@ -104,8 +106,6 @@ namespace rtype
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL1));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
 
-        put_level_lock(LEVELS::UN, x, y);
-
         index = getNextIndex();
         x = (_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first / 2);
 
@@ -124,6 +124,13 @@ namespace rtype
         put_level_lock(LEVELS::BOSS, x, y);
     }
 
+    void Client::init_score()
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<Text>(index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
+    }
+
     void Client::init_game(ecs::udp::Message &message)
     {
         size_t pos = message.params.find(':');
@@ -132,13 +139,14 @@ namespace rtype
         std::string entities = message.params.substr(pos + 1);
 
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
-        std::tuple<float, float, int> pos_port = Command_checker::parsePositionAndRoomPort(player_room);
+        std::tuple<std::pair<float, float>, int, int> pos_port_dif = Command_checker::parsePositionAndRoomPort(player_room);
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
+        setRoomAdress(std::get<1>(pos_port_dif));
+        _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
+        createPlayer(message.id, std::get<0>(pos_port_dif).first, std::get<0>(pos_port_dif).second);
         init_levels_sprites();
-        setRoomAdress(std::get<2>(pos_port));
-        createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;
     }

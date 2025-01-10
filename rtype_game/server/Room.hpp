@@ -28,7 +28,7 @@
     #include "../shared/Utils.hpp"
     #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
-    #include "MonsterFactory.hpp"
+    #include "../shared/GameplayFactory.hpp"
 
     // COMPONENTS
 
@@ -53,7 +53,6 @@
     #include "system/HealthSystem.hpp"
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
-    #include "system/ScoreSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
 
     namespace rtype
@@ -81,12 +80,12 @@
             /**
              * @brief Starts the game in the room.
              */
-            void start(int, std::string, std::string);
+            void start(int, std::string, std::string, std::string);
 
             /**
              * @brief Handles the game thread functionality.
              */
-            void gameThreadFunction(int, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string, std::string);
 
             /**
              * @brief Sends a message to all clients in the room.
@@ -132,10 +131,6 @@
              */
             std::string getAddress() const;
 
-            /**
-             * @brief Initializes the event bus for the room.
-             */
-            void init_event_bus();
 
             /**
              * @brief Sends the existing entities in the room to the clients.
@@ -162,6 +157,7 @@
             std::thread _gameThread;
             std::vector<std::string> _clientAddresses;
             RandomNumber _random_number;
+            std::shared_ptr<GameplayFactory> _gameplay_factory;
 
             // SYSTEMS
 
@@ -173,7 +169,6 @@
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
             LevelSystem _level_system;
-            ScoreSystem _score_system;
             KillSystem _kill_system;
 
             /**
@@ -181,6 +176,13 @@
              * @param deadEntities A list of IDs for the dead entities.
              */
             void send_client_dead_entities(std::list<size_t>);
+
+            /**
+             * @brief Initializes the event bus for the room.
+             */
+            void init_event_bus();
+
+            void init_all(int, std::string, std::string, std::string);
 
             /**
              * @brief Initializes the room's network socket.
@@ -253,6 +255,8 @@
             void startLevel(LEVELS);
             void send_client_level_status(bool, LEVELS);
             void send_client_remove_ath();
+            void sendScore(unsigned int);
+            void send_roll_back();
         };
     }
 

@@ -36,11 +36,28 @@ namespace rtype
             (void)args;
             _position_system.updatePositions(_ecs._components_arrays, _timer->getTps(), _window_width, _window_height);
         });
+        _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_PARTIALS_POSITIONS_FROM_SERVER, [this](const std::vector<std::any> &args) {
+            try {
+                auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                std::list<std::pair<std::size_t, std::pair<float, float>>> entities = Command_checker::parse_update(message.params);
+
+                while (!entities.empty()) {
+                    auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
+                    if (it != ecs_server_to_client.end() && _player_system.getIndexPlayer(_ecs._components_arrays) != ecs_server_to_client[std::get<0>(entities.front())]) {
+                        _update_entity_system.updateEntity(_ecs._components_arrays, entities.front(), ecs_server_to_client[std::get<0>(entities.front())]);
+                    }
+                    entities.pop_front();
+                }
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: UPDATE POSSSS" << e.what() << std::endl;
+            }
+        });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITIONS_FROM_SERVER, [this](const std::vector<std::any> &args) {
             try {
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                std::list<std::tuple<std::size_t, std::pair<float, float>, int>> entities = Command_checker::parse_update(message.params);
+                std::list<std::pair<std::size_t, std::pair<float, float>>> entities = Command_checker::parse_update(message.params);
 
                 while (!entities.empty()) {
                     auto it = ecs_server_to_client.find(std::get<0>(entities.front()));
@@ -126,6 +143,7 @@ namespace rtype
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::MOVE_BACKGROUND, [this](const std::vector<std::any> &args) {
+            (void)args;
             _render_window_system.move_background(_ecs._components_arrays, _in_menu);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
@@ -166,6 +184,15 @@ namespace rtype
             y = std::stof(token);
 
             createPlayer(message.id, x, y);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_SCORE, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _score_system.updateScore(_ecs._components_arrays, message.params);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
         });
     }
 }
