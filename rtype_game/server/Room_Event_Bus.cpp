@@ -142,5 +142,23 @@ namespace rtype
             }
             _nb_client++;
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::SPAWN_ASTEROIDE, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroides = _asteroide_system.spwan_asteroide(_random_number, _gameplay_factory, _window_height, _window_width);
+
+            if (asteroides.empty())
+                return;
+            size_t index;
+            for (const auto &asteroide : asteroides) {
+                index = getNextIndex();
+                std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite = std::make_tuple(
+                    std::get<1>(asteroide).first,
+                    std::get<1>(asteroide).second,
+                    std::get<2>(asteroide)
+                );
+                createEntityProjectiles(index, pos_dir_sprite);
+            }
+        });
     }
 }

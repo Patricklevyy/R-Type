@@ -73,6 +73,9 @@ namespace rtype
             case SPRITES::BABY_PROJECTILE: {
                 return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::BABY_PROJECTILE);
             }
+            case SPRITES::ASTEROIDE: {
+                return SpriteFactory::getMaxTextureSizeForSprite(SPRITES::ASTEROIDE);
+            }
             default: {
                 throw std::invalid_argument("Invalid sprite ID in hit box.");
             }

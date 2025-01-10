@@ -38,6 +38,7 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
             _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
+            _eventBus.emit(RTYPE_ACTIONS::SPAWN_ASTEROIDE);
             send_client_positions_update();
         }
         _udp_server->stopReceiving();

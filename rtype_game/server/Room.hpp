@@ -51,6 +51,7 @@
     #include "system/CollisionSystem.hpp"
     #include "system/ShootingSystem.hpp"
     #include "system/HealthSystem.hpp"
+    #include "system/AsteroideSystem.hpp"
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
@@ -170,6 +171,7 @@
             ShootingSystem _shooting_system;
             LevelSystem _level_system;
             KillSystem _kill_system;
+            AsteroideSystem _asteroide_system;
 
             /**
              * @brief Sends information about dead entities to clients.

@@ -68,6 +68,7 @@
             UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
             UPDATE_SCORE,
+            SPAWN_ASTEROIDE,
             MAX_ACTION
         };
 
@@ -96,7 +97,8 @@
             LEVEL1,
             LEVEL2,
             LEVEL_BOSS,
-            LEVEL_LOCK
+            LEVEL_LOCK,
+            ASTEROIDE
         };
 
         enum MONSTER

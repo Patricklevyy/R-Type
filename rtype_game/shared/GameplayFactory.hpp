@@ -123,7 +123,7 @@ namespace rtype {
                     std::get<1>(player) = 40;
                     break;
                 case DIFFICULTY::MEDIUM:
-                    std::get<1>(player) = 0;
+                    std::get<1>(player) = 200;
                     break;
                 case DIFFICULTY::HARD:
                     std::get<1>(player) = 1000;

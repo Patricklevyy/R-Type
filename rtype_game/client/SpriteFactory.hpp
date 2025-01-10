@@ -76,6 +76,8 @@
                             return std::make_tuple<float, float, float>(4.0f, 4.0f, 0.35);
                         case SPRITES::BABY_PROJECTILE:
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
+                        case SPRITES::ASTEROIDE:
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -291,6 +293,30 @@
                         case SPRITES::BABY_PROJECTILE:
                             textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame0.png"));
                             textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame1.png"));
+                            break;
+                        case SPRITES::ASTEROIDE:
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame0.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame1.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame2.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame3.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame4.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame5.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame6.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame7.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame8.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame9.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame10.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame11.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame10.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame9.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame8.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame7.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame6.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame5.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame4.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame3.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame2.png"));
+                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame1.png"));
                             break;
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
