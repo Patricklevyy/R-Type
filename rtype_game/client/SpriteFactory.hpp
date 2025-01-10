@@ -45,7 +45,7 @@
                         case SPRITES::SIMPLE_MONSTER:
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.2f);
                         case SPRITES::ADVANCED_MONSTER:
-                            return std::make_tuple<float, float, float>(-2.0f, 2.0f, 0.2f);
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.2f);
                         case SPRITES::OTHER_PLAYER_SHIP:
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
                         case SPRITES::PLAYER_SIMPLE_MISSILE:
@@ -71,7 +71,7 @@
                         case SPRITES::WIN_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::SUPER_MONSTER:
-                            return std::make_tuple<float, float, float>(-2.0f, 2.0f, 0.35);
+                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
                         case SPRITES::MEGA_MONSTER:
                             return std::make_tuple<float, float, float>(4.0f, 4.0f, 0.35);
                         case SPRITES::BABY_PROJECTILE:
@@ -243,11 +243,6 @@
                             textures.push_back(loadTexture("assets/monsters/advanced_monster_frame7.png"));
                             textures.push_back(loadTexture("assets/monsters/advanced_monster_frame8.png"));
                             textures.push_back(loadTexture("assets/monsters/advanced_monster_frame9.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame10.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame11.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame12.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame13.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame14.png"));
                             break;
                         case SPRITES::SIMPLE_BOSS:
                             textures.push_back(loadTexture("SPRITE A DEFINIR"));
