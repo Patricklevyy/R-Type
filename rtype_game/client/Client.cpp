@@ -93,6 +93,10 @@ namespace rtype
         init_all();
 
         std::queue<sf::Event> events;
+        auto &windows = std::any_cast<ecs::SparseArray<Window> &>(_ecs._components_arrays.at(typeid(Window)));
+
+        auto lawindow = windows[0].value().getRenderWindow().get();
+
         while (_running) {
             _timer->waitTPS();
             events = _event_window_system.fetchEvents();
@@ -106,9 +110,17 @@ namespace rtype
                               << e.what() << std::endl;
                 }
             }
-            _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
-            _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
-            _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
+            // _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
+            // _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
+            // _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
+            if (_in_menu) {
+                _sfml_handler->renderMenu(*lawindow);
+            }
+            else {
+                _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
+                _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
+                _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
+            }
         }
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
     }

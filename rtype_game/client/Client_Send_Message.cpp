@@ -65,18 +65,18 @@ namespace rtype
         }
     }
 
-    void Client::send_server_create_room()
+    void Client::send_server_create_room(std::string roomName)
     {
         std::vector<char> buffer;
         ecs::udp::Message mess;
         mess.id = 0;
         mess.action = 0;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "room_name=room1;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "room_name=" + roomName + ";x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
+        std::cout << "je send" << mess.params << " ccccccreate"<<std::endl;
         if (_udpClient->sendMessageToDefault(buffer)) {
             std::cout << "Message sent: " << std::endl;
         } else {
@@ -84,18 +84,18 @@ namespace rtype
         }
     }
 
-    void Client::send_server_join_room()
+    void Client::send_server_join_room(std::string roomName, std::string clientName)
     {
         std::vector<char> buffer;
         ecs::udp::Message mess;
         mess.id = 1;
         mess.action = 1;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "room_name=room1;client_name=patrick;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "room_name="+ roomName + ";client_name="+ clientName + ";x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
+        std::cout << "je send" << mess.params << " jjjjjjoin"<<std::endl;
         if (_udpClient->sendMessageToDefault(buffer)) {
             std::cout << "Message sent: " << std::endl;
         } else {

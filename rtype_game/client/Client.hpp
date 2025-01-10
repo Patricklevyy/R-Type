@@ -82,9 +82,9 @@
 
                 void change_player_direction(ecs::direction, ecs::direction);
 
-                void send_server_create_room();
+                void send_server_create_room(std::string roomName);
 
-                void send_server_join_room();
+                void send_server_join_room(std::string roomName, std::string clientName);
 
                 void set_window_filter(FILTER_MODE);
 
