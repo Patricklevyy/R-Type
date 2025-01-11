@@ -88,6 +88,7 @@
             MY_PLAYER_SHIP,
             PLAYER_SIMPLE_MISSILE,
             PLAYER_CHARGED_SHOOT,
+            CHARGED_ANIMATION,
             MONSTER_SIMPLE_MISSILE,
             MONSTER_MULTIPLE_MISSILE,
             BABY_PROJECTILE,

@@ -79,6 +79,8 @@
                             return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.1);
                         case SPRITES::PLAYER_CHARGED_SHOOT:
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4);
+                        case SPRITES::CHARGED_ANIMATION:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.1);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -125,6 +127,13 @@
                         case SPRITES::PLAYER_CHARGED_SHOOT:
                             textures.push_back(loadTexture("assets/projectiles/charged_shoot_frame0.png"));
                             textures.push_back(loadTexture("assets/projectiles/charged_shoot_frame1.png"));
+                            break;
+                        case SPRITES::CHARGED_ANIMATION:
+                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame0.png"));
+                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame1.png"));
+                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame2.png"));
+                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame3.png"));
+                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame4.png"));
                             break;
                         case SPRITES::MY_PLAYER_SHIP:
                             textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame1.png"));

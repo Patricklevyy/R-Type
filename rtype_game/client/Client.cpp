@@ -95,6 +95,7 @@ namespace rtype
                 }
             }
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
+            execute_animation();
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }

@@ -23,6 +23,7 @@
     #include "../../server/components/Damage.hpp"
     #include "../components/Levels.hpp"
     #include "../../client/components/LevelStatus.hpp"
+    #include "../../client/components/Animation.hpp"
     #include "../../client/components/Window.hpp"
     #include "../../client/components/Displayable.hpp"
     #include "../../client/components/Shader.hpp"
@@ -56,6 +57,7 @@
                     ecs.killEntityFromRegistry<Window>(index);
                     ecs.killEntityFromRegistry<Music>(index);
                     ecs.killEntityFromRegistry<Text>(index);
+                    ecs.killEntityFromRegistry<Animation>(index);
 
                     // SHARED COMPONENTS
 

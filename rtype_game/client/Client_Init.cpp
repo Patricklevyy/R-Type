@@ -18,6 +18,7 @@ namespace rtype
         _ecs.addRegistry<LevelStatus>();
         _ecs.addRegistry<Music>();
         _ecs.addRegistry<Text>();
+        _ecs.addRegistry<Animation>();
     }
 
     void Client::init_window_and_background()

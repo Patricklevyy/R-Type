@@ -39,6 +39,7 @@
     #include "components/Displayable.hpp"
     #include "components/Sprite.hpp"
     #include "components/Music.hpp"
+    #include "components/Animation.hpp"
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
     #include "components/Text.hpp"
@@ -53,6 +54,7 @@
     #include "system/EventWindow.hpp"
     #include "system/MusicSystem.hpp"
     #include "system/ScoreSystem.hpp"
+    #include "system/AnimationSystem.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
@@ -136,6 +138,7 @@
                 PlayerSystem _player_system;
                 MusicSystem _music_system;
                 ScoreSystem _score_system;
+                AnimationSystem _animation_system;
 
                 void send_server_new_shoot(bool charged = false);
 
@@ -235,6 +238,7 @@
                  */
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
+                void execute_animation();
         };
     }
 #endif /* !CLIENT_HPP_ */
