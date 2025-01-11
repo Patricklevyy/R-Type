@@ -60,7 +60,7 @@
                         case SPRITES::LEVEL2:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::SIMPLE_BOSS:
-                            return std::make_tuple<float, float, float>(1.25f, 1.25f, 0.10f);
+                            return std::make_tuple<float, float, float>(5.0f, 5.0f, 0.5);
                         case SPRITES::LEVEL_BOSS:
                             return std::make_tuple<float, float, float>(0.25f, 0.25f, 0.10f);
                         case SPRITES::LEVEL_LOCK:

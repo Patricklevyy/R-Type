@@ -254,6 +254,7 @@
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
             void createMonster(SPRITES);
+            void createBoss(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
             size_t getNextIndex();
             void startLevel(LEVELS);

@@ -44,7 +44,6 @@
                 std::pair<std::pair<float, float>, std::pair<float, float>> nested_pair;
                 for (size_t i = 0; i < monsters.size(); ++i) {
                     if (monsters[i].has_value() && positions[i].has_value()) {
-                        std::cout << "HAS VALUE " << std::endl;
                         switch (monsters[i].value()._monster)
                         {
                         case SPRITES::SIMPLE_MONSTER:

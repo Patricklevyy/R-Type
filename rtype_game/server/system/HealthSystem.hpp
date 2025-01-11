@@ -58,9 +58,8 @@
 
                                 if (health._health <= 0)
                                 {
-                                    std::cout << "KILLL, deaddddd" << std::endl;
                                     if (i < monsters.size() && monsters[i].has_value())
-                                        std::get<1>(dead_entities)++;
+                                        std::get<1>(dead_entities) += monsters[i].value()._score_value;
                                     if (i < playables.size() && playables[i].has_value()) {
                                         player_alive--;
                                         if (player_alive <= 0)

@@ -28,7 +28,7 @@ namespace rtype
         _ecs.addComponents<Music>(_index_ecs_client, Music("assets/musics/gad.ogg"));
         _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
         _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
-        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(10));
+        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(_gameplay_factory->getBackgroundSpeed()));
         _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
     }

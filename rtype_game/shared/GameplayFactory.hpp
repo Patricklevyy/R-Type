@@ -58,6 +58,19 @@ namespace rtype {
                 monsters[i + 1] = std::make_tuple(health, velocity, damage);
             }
 
+            const libconfig::Setting& bossSettings = root["gameplay"]["bosses"];
+            for (int i = 0; i < bossSettings.getLength(); ++i) {
+                const libconfig::Setting& boss = bossSettings[i];
+                int health, velocity, damage;
+
+                boss.lookupValue("health", health);
+                boss.lookupValue("velocity", velocity);
+                boss.lookupValue("damage", damage);
+
+                bosses[i + SIMPLE_BOSS] = std::make_tuple(health, velocity, damage);
+            }
+
+
             const libconfig::Setting& levelsSettings = root["gameplay"]["levels"];
             for (int i = 0; i < levelsSettings.getLength(); ++i) {
                 const libconfig::Setting& level = levelsSettings[i];
@@ -76,6 +89,12 @@ namespace rtype {
             asteroidSettings.lookupValue("number", number);
 
             asteroids = std::make_pair(spawningTime, number);
+
+            const libconfig::Setting& backgroundSettings = root["display"];
+            int speed;
+            backgroundSettings.lookupValue("background_speed", speed);
+
+            background_speed = speed;
         }
 
         int getPlayerVelocity() {
@@ -128,9 +147,25 @@ namespace rtype {
             return std::get<2>(monsters[id]);
         }
 
-        std::pair<int, int> getLevelSpawn(int level) {
+        int getBossVelocity(SPRITES id) {
+            return std::get<1>(bosses[id]);
+        }
+
+        int getBossHealth(SPRITES id) {
+            return std::get<0>(bosses[id]);
+        }
+
+        int getBossDamage(SPRITES id) {
+            return std::get<2>(bosses[id]);
+        }
+
+        std::pair<int, int> getMonsterLevelSpawn(int level) {
             std::list<int> levelMonsters = levels[level];
             return std::make_pair(levelMonsters.front(), levelMonsters.back());
+        }
+
+        std::pair<int, int> getBossLevelSpawn() {
+            return std::make_pair(SIMPLE_BOSS, SIMPLE_BOSS);
         }
 
         DIFFICULTY getDifficulty() {
@@ -219,16 +254,32 @@ namespace rtype {
             }
         }
 
+        int getMonsterScoreValue(SPRITES sprite) {
+            switch (sprite)
+            {
+            case SPRITES::SIMPLE_BOSS:
+                return 1000;
+            default:
+                return 1;
+            }
+        }
+
         int getPlayerBodyDamage() {
             return 20;
+        }
+
+        float getBackgroundSpeed() {
+            return background_speed;
         }
 
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
+        std::map<int, std::tuple<int, int, int>> bosses;
         std::map<int, std::list<int>> levels;
         std::tuple<int, int, int> player;
         std::pair<int, int> asteroids;
+        float background_speed = 0;
 
         DIFFICULTY _difficulty = EASY;
     };

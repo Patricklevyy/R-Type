@@ -20,7 +20,7 @@ namespace rtype
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(((_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(screen).first / 2)), _window_height / 4));
         _ecs.addComponents<LevelStatus>(index, LevelStatus());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
@@ -46,7 +46,7 @@ namespace rtype
     void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
-        std::cout << "JE CREATE : " << index << std::endl;
+        std::cout << "JE CREATE : BOSS " << sprite_id << " , "  << x << " , " << y << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id);
 
@@ -87,7 +87,6 @@ namespace rtype
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
         _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
 
-        std::cout << "VELOCITY  " << velocity << std::endl;
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
     }

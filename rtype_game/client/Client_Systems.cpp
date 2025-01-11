@@ -44,10 +44,8 @@ namespace rtype
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
 
             if (duration >= 2000) {
-                std::cout << "Charged shot fired!" << std::endl;
                 send_server_new_shoot(true);
             } else {
-                std::cout << "Normal shot fired!" << std::endl;
                 send_server_new_shoot(false);
             }
         }

@@ -34,11 +34,7 @@ namespace rtype
 
         _message_compressor.serialize(message, buffer);
 
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_player_direction(ecs::direction x, ecs::direction y)
@@ -53,11 +49,7 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_start_game(LEVELS level)
@@ -69,12 +61,7 @@ namespace rtype
         mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_create_room()
@@ -88,12 +75,7 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_join_room()
@@ -107,12 +89,7 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_new_player()
@@ -124,11 +101,6 @@ namespace rtype
         mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 }

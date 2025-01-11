@@ -114,6 +114,13 @@ namespace rtype
                 createMonster(monster);
                 monsters.pop_front();
             }
+            monsters = _level_system.spwanBoss(_ecs, _random_number, _gameplay_factory);
+
+            while (!monsters.empty()) {
+                monster = monsters.front();
+                createBoss(monster);
+                monsters.pop_front();
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
             (void)args;

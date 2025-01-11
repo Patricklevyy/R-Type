@@ -125,6 +125,22 @@ namespace rtype
         send_client_new_monster(index, positions.first, positions.second, sprites);
     }
 
+    void Room::createBoss(SPRITES sprites)
+    {
+        size_t index = getNextIndex();
+        std::pair<int, int> positions = std::make_pair(_window_width + 100, 0);
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(positions.first, positions.second));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getBossVelocity(sprites)));
+        _ecs.addComponents<Health>(index, Health(_gameplay_factory->getBossHealth(sprites)));
+        _ecs.addComponents<Monster>(index, Monster(sprites, _gameplay_factory->getMonsterScoreValue(sprites)));
+        _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(sprites)));
+        _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getMonsterBodyDamage(sprites)));
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
+        _ecs.addComponents<Ennemies>(index, Ennemies());
+        send_client_new_monster(index, positions.first, positions.second, sprites);
+    }
+
     std::pair<int, int> Room::createHitbox(SPRITES id)
     {
         if (id <= 0 || id >= MAX_SPRITE)

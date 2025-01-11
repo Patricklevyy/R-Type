@@ -56,7 +56,6 @@ namespace rtype
                                 if (isAllies || isEnemies) {
                                     continue;
                                 }
-                                std::cout << "Collision detected between Entity " << i << " and Entity " << j << std::endl;
                                 if (i < healths.size() && j < healths.size() && healths[i].has_value() && healths[j].has_value() && i < damages.size() && damages[i].has_value() && j < damages.size() && damages[j].has_value()) {
                                     healths[i].value()._health -= damages[j].value()._damages;
                                     healths[j].value()._health -= damages[i].value()._damages;

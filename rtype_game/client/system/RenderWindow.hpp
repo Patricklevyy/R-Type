@@ -95,7 +95,7 @@
                  * @param components_array The array of ECS components.
                  * @param menu Whether the game is in menu mode (background does not move).
                  */
-                void move_background(std::unordered_map<std::type_index, std::any> &components_array, bool menu)
+                void move_background(std::unordered_map<std::type_index, std::any> &components_array, bool menu, float tickRate)
                 {
                     if (menu)
                         return;
@@ -107,7 +107,7 @@
                         if (positions[0].value()._pos_x <= -1920) {
                             positions[0].value()._pos_x = 0;
                         } else {
-                            positions[0].value()._pos_x -= velocity[0].value().velocity;
+                            positions[0].value()._pos_x -= velocity[0].value().velocity / tickRate;
                         }
                     }
                 }

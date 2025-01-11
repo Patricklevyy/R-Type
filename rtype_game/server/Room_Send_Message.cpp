@@ -61,7 +61,6 @@ namespace rtype
         }
 
         responseMessage.params = ids;
-        std::cout << "DEAD ENTITIES : " << responseMessage.params << std::endl;
 
         _message_compressor.serialize(responseMessage, response);
 
