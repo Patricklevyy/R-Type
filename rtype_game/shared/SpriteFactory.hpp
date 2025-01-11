@@ -259,7 +259,10 @@
                             textures.push_back(loadTexture("assets/monsters/advanced_monster_frame9.png"));
                             break;
                         case SPRITES::SIMPLE_BOSS:
-                            textures.push_back(loadTexture("SPRITE A DEFINIR"));
+                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame0.png"));
+                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame1.png"));
+                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame2.png"));
+                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame3.png"));
                             break;
                         case SPRITES::MEGA_MONSTER:
                             textures.push_back(loadTexture("assets/monsters/monster_3_frame0.png"));

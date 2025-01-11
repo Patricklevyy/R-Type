@@ -50,9 +50,7 @@
                             auto currentTime = std::chrono::steady_clock::now();
                             std::chrono::duration<float> elapsedTime = currentTime - levels[i].value()._lastSpawnTime;
                             if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
-                                std::cout << "gte spwaning" << std::endl;
                                 monsterToSpwan = gameplayFactory->getLevelSpawn(levels[i].value()._level);
-                                std::cout << "ecnore bon " << monsterToSpwan.first <<  ", " << monsterToSpwan.second << std::endl;
                                 monster = randomizer.generateRandomNumbers(monsterToSpwan.first, monsterToSpwan.second);
 
                                 monsters.push_back(static_cast<SPRITES>(monster));
