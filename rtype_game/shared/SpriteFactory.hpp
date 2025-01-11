@@ -115,195 +115,75 @@
                  */
                 static std::vector<std::shared_ptr<sf::Texture>> loadTexturesForSprite(SPRITES id)
                 {
-                    std::vector<std::shared_ptr<sf::Texture>> textures;
                     switch (id)
                     {
                         case SPRITES::MENU_BACKGROUND:
-                            textures.push_back(loadTexture("assets/backgrounds/background.png"));
-                            break;
+                            return {loadTexture("assets/backgrounds/background.png")};
                         case SPRITES::GAME_BACKGROUND:
-                            textures.push_back(loadTexture("assets/backgrounds/background_loop.png"));
-                            break;
+                            return {loadTexture("assets/backgrounds/background_loop.png")};
                         case SPRITES::PLAYER_CHARGED_SHOOT:
-                            textures.push_back(loadTexture("assets/projectiles/charged_shoot_frame0.png"));
-                            textures.push_back(loadTexture("assets/projectiles/charged_shoot_frame1.png"));
-                            break;
+                            return loadTextures("projectiles/charged_shoot", 0, 1);
                         case SPRITES::CHARGED_ANIMATION:
-                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame0.png"));
-                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame1.png"));
-                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame2.png"));
-                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame3.png"));
-                            textures.push_back(loadTexture("assets/projectiles/charged_animation_frame4.png"));
-                            break;
+                            return loadTextures("projectiles/charged_animation", 0, 4);
                         case SPRITES::MY_PLAYER_SHIP:
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame1.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame2.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame3.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame4.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame5.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame4.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame3.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_blue_ship_frame2.png"));
-                            break;
+                            return loadTextures("player_ship/player_blue_ship", 0, 4);
                         case SPRITES::SIMPLE_MONSTER:
-                            textures.push_back(loadTexture("assets/monsters/simple_monster_frame1.png"));
-                            textures.push_back(loadTexture("assets/monsters/simple_monster_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/simple_monster_frame3.png"));
-                            break;
+                            return loadTextures("monsters/simple_monster", 0, 2);
                         case SPRITES::OTHER_PLAYER_SHIP:
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame1.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame2.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame3.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame4.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame5.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame4.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame3.png"));
-                            textures.push_back(loadTexture("assets/player_ship/player_red_ship_frame2.png"));
-                            break;
+                            return loadTextures("player_ship/player_red_ship", 0, 4);
                         case SPRITES::PLAYER_SIMPLE_MISSILE:
-                            textures.push_back(loadTexture("assets/projectiles/simple_player_missile_frame1.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_player_missile_frame2.png"));
-                            break;
+                            return loadTextures("projectiles/simple_player_missile", 0, 1);
                         case SPRITES::MONSTER_SIMPLE_MISSILE:
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame1.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame2.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame3.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame4.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame5.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame6.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame7.png"));
-                            textures.push_back(loadTexture("assets/projectiles/simple_monster_missile_frame8.png"));
-                            break;
+                            return loadTextures("projectiles/simple_monster_missile", 0, 7);
                         case SPRITES::MONSTER_MULTIPLE_MISSILE:
-                            textures.push_back(loadTexture("assets/projectiles/advanced_monster_missile_frame1.png"));
-                            textures.push_back(loadTexture("assets/projectiles/advanced_monster_missile_frame2.png"));
-                            textures.push_back(loadTexture("assets/projectiles/advanced_monster_missile_frame3.png"));
-                            break;
+                            return loadTextures("projectiles/advanced_monster_missile", 0, 2);
                         case SPRITES::LEVEL1:
-                            textures.push_back(loadTexture("assets/levels/level1.png"));
-                            break;
+                            return {loadTexture("assets/levels/level1.png")};
                         case SPRITES::LEVEL2:
-                            textures.push_back(loadTexture("assets/levels/level2.png"));
-                            break;
+                            return {loadTexture("assets/levels/level2.png")};
                         case SPRITES::LEVEL_BOSS:
-                            textures.push_back(loadTexture("assets/levels/final_level.png"));
-                            break;
+                            return {loadTexture("assets/levels/final_level.png")};
                         case SPRITES::LEVEL_LOCK:
-                            textures.push_back(loadTexture("assets/levels/level_lock.png"));
-                            break;
+                            return {loadTexture("assets/levels/level_lock.png")};
                         case SPRITES::LOOSER_SCREEN:
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame1.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame2.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame3.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame4.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame5.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame6.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame7.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame6.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame5.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame4.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame3.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/looser_screen_frame2.png"));
-                            break;
+                            return loadTextures("winner_looser/looser_screen", 0, 7);
                         case SPRITES::WIN_SCREEN:
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame1.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame2.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame3.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame4.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame5.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame6.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame7.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame8.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame9.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame8.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame7.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame6.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame5.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame4.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame3.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame2.png"));
-                            textures.push_back(loadTexture("assets/winner_looser/win_screen_frame1.png"));
-                            break;
+                            return loadTextures("winner_looser/win_screen", 0, 9);
                         case SPRITES::ADVANCED_MONSTER:
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame1.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame3.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame4.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame5.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame6.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame7.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame8.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame9.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame10.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame11.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame10.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame9.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame8.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame7.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame6.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame5.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame4.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame3.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_2_frame2.png"));
-                            break;
+                            return loadTextures("monsters/monster_2", 0, 10);
                         case SPRITES::SUPER_MONSTER:
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame0.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame1.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame3.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame4.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame5.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame6.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame7.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame8.png"));
-                            textures.push_back(loadTexture("assets/monsters/advanced_monster_frame9.png"));
-                            break;
+                            return loadTextures("monsters/advanced_monster", 0, 9);
                         case SPRITES::SIMPLE_BOSS:
-                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame0.png"));
-                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame1.png"));
-                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/simple_boss_frame3.png"));
-                            break;
+                            return loadTextures("monsters/simple_boss", 0, 3);
                         case SPRITES::MEGA_MONSTER:
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame0.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame1.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame3.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame4.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame3.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame2.png"));
-                            textures.push_back(loadTexture("assets/monsters/monster_3_frame1.png"));
-                            break;
+                            return loadTextures("monsters/monster_3", 0, 4);
                         case SPRITES::FIRE_BALL:
-                            textures.push_back(loadTexture("assets/projectiles/fire_ball_frame0.png"));
-                            textures.push_back(loadTexture("assets/projectiles/fire_ball_frame1.png"));
-                            break;
+                            return loadTextures("projectiles/fire_ball", 0, 1);
                         case SPRITES::BABY_PROJECTILE:
-                            textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame0.png"));
-                            textures.push_back(loadTexture("assets/projectiles/baby_projectile_frame1.png"));
-                            break;
+                            return loadTextures("projectiles/baby_projectile", 0, 1);
                         case SPRITES::ASTEROIDE:
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame0.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame1.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame2.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame3.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame4.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame5.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame6.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame7.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame8.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame9.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame10.png"));
-                            textures.push_back(loadTexture("assets/projectiles/asteroide_frame11.png"));
-                            break;
+                            return loadTextures("projectiles/asteroide", 0, 11);
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
+                    }
+                }
+
+            private:
+                static std::vector<std::shared_ptr<sf::Texture>> loadTextures(const std::string& category, int startFrame, int endFrame) {
+                    std::vector<std::shared_ptr<sf::Texture>> textures;
+
+                    for (int frame = startFrame; frame <= endFrame; ++frame) {
+                        std::string filepath = generateFilePath(category, frame);
+                        textures.push_back(loadTexture(filepath));
                     }
 
                     return textures;
                 }
 
-            private:
+                static std::string generateFilePath(const std::string& category, int frame) {
+                    return "assets/" + category + "_frame" + std::to_string(frame) + ".png";
+                }
+
                  /**
                  * @brief Retrieves the texture cache for the sprite factory.
                  * @return A reference to the texture cache map.

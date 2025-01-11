@@ -195,8 +195,10 @@ namespace rtype {
                     return 60;
                 case SPRITES::FIRE_BALL:
                     return 10;
+                case SPRITES::MONSTER_SIMPLE_MISSILE:
+                    return 10;
                 default:
-                    std::cerr << "Id of this projectiles not found" << std::endl;
+                    std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
                     return 0;
             }
         }
@@ -258,7 +260,7 @@ namespace rtype {
             switch (sprite)
             {
             case SPRITES::SIMPLE_BOSS:
-                return 1000;
+                return 100;
             default:
                 return 1;
             }
