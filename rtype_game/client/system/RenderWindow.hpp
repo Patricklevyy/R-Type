@@ -54,19 +54,17 @@
                                 displayable[i].value().update(deltaTime);
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
                                 lawindow->draw(*displayable[i].value().getSprite(), leshader);
-                                std::cout << "RENDER : " << i << std::endl;
                             }
                         }
                         for (size_t i = 0; i < texts.size(); ++i) {
                             if (texts[i].has_value()) {
                                 auto& text = texts[i].value();
                                 lawindow->draw(*text.getText());
-                                std::cout << "RENDER TEXT : " << i << " -> " << text.getText()->getString().toAnsiString() << std::endl;
                             }
                         }
                         lawindow->display();
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPTIO] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
@@ -86,7 +84,7 @@
                             displayable[0].value().setSprite(sprite);
                         }
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPION] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }

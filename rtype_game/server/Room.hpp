@@ -26,9 +26,9 @@
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
     #include "../shared/Utils.hpp"
-    #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
     #include "../shared/GameplayFactory.hpp"
+    #include "../shared/SpriteFactory.hpp"
 
     // COMPONENTS
 
@@ -261,6 +261,7 @@
             void send_client_remove_ath();
             void sendScore(unsigned int);
             void send_roll_back();
+            std::pair<int, int> createHitbox(SPRITES);
         };
     }
 

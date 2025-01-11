@@ -99,7 +99,8 @@
             LEVEL2,
             LEVEL_BOSS,
             LEVEL_LOCK,
-            ASTEROIDE
+            ASTEROIDE,
+            MAX_SPRITE
         };
 
         enum MONSTER

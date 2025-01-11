@@ -48,7 +48,6 @@ namespace rtype
                 break;
 
             default:
-                std::cout << "Unhandled event type." << std::endl;
                 break;
             }
         }

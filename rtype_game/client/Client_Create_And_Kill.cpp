@@ -87,6 +87,7 @@ namespace rtype
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
         _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
 
+        std::cout << "VELOCITY  " << velocity << std::endl;
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
     }

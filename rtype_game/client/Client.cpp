@@ -62,7 +62,7 @@ namespace rtype
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         Utils::checkAction(mes.action);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
+        // std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
     }

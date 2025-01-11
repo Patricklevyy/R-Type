@@ -57,7 +57,7 @@ namespace rtype
         ecs::Velocity velocity(_gameplay_factory->getPlayerVelocity());
         Health health(_gameplay_factory->getPlayerHealth());
         SpriteId spriteId(SPRITES::MY_PLAYER_SHIP);
-        Hitbox hitbox(HitboxFactory::createHitbox(SPRITES::MY_PLAYER_SHIP));
+        Hitbox hitbox(createHitbox(SPRITES::MY_PLAYER_SHIP));
         Allies allies;
 
         _ecs.addComponents<ecs::Direction>(index, direction);
@@ -83,14 +83,14 @@ namespace rtype
         _ecs.addComponents<Health>(index, _gameplay_factory->getProjectilesHealth(std::get<2>(pos_dir_sprite)));
         _ecs.addComponents<Projectiles>(index, Projectiles());
         _ecs.addComponents<SpriteId>(index, SpriteId(std::get<2>(pos_dir_sprite)));
-        _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(std::get<2>(pos_dir_sprite))));
+        _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(std::get<2>(pos_dir_sprite))));
         _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getProjectilesDamage(std::get<2>(pos_dir_sprite))));
         if (Utils::isAllie(std::get<2>(pos_dir_sprite))) {
             _ecs.addComponents<Allies>(index, Allies());
         } else {
             _ecs.addComponents<Ennemies>(index, Ennemies());
         }
-        std::string projectileInfo = Utils::projectilesInfoToString(pos_dir_sprite, 300);
+        std::string projectileInfo = Utils::projectilesInfoToString(pos_dir_sprite, _gameplay_factory->getProjectilesVelocity(std::get<2>(pos_dir_sprite)));
         send_client_new_projectile(index, projectileInfo);
     }
 
@@ -117,11 +117,18 @@ namespace rtype
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getMonsterVelocity(sprites)));
         _ecs.addComponents<Health>(index, Health(_gameplay_factory->getMonsterHealth(sprites)));
         _ecs.addComponents<Monster>(index, Monster(sprites));
-        _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprites)));
+        _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(sprites)));
         _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getMonsterBodyDamage(sprites)));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<Ennemies>(index, Ennemies());
         std::cout << "MONSTER CREER " << sprites << std::endl;
         send_client_new_monster(index, positions.first, positions.second, sprites);
+    }
+
+    std::pair<int, int> Room::createHitbox(SPRITES id)
+    {
+        if (id <= 0 || id >= MAX_SPRITE)
+            throw std::invalid_argument("Invalid sprite ID in hit box.");
+        return SpriteFactory::getMaxTextureSizeForSprite(id);
     }
 }
