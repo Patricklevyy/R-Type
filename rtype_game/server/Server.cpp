@@ -44,7 +44,7 @@ namespace rtype
     {
         std::string roomList = "rooms=";
         for (const auto &room : _rooms) {
-            roomList += room.getName() + "," + std::to_string(room.getNbClient()) + ":";
+            roomList += room->getName() + "," + std::to_string(room->getNbClient()) + ":";
         }
         if (!roomList.empty() && roomList.back() == ':') {
             roomList.pop_back();
@@ -69,6 +69,7 @@ namespace rtype
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         auto it = _commands.find(mes.action);
         if (it != _commands.end()) {
+            std::cout << "JE FAIS LA OMMAND" << std::endl;
             it->second(mes.id, mes.params, clientAddr);
         } else {
             throw ERROR::InvalidActionExceptions("Invalid action");
