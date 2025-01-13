@@ -68,6 +68,7 @@
             UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
             UPDATE_SCORE,
+            SPAWN_ASTEROIDE,
             MAX_ACTION
         };
 
@@ -86,17 +87,21 @@
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
             PLAYER_SIMPLE_MISSILE,
+            PLAYER_CHARGED_SHOOT,
+            CHARGED_ANIMATION,
             MONSTER_SIMPLE_MISSILE,
+            MONSTER_MULTIPLE_MISSILE,
             BABY_PROJECTILE,
+            FIRE_BALL,
             OTHER_PLAYER_SHIP,
             LOOSER_SCREEN,
             WIN_SCREEN,
-            MONSTER_MULTIPLE_MISSILE,
-            FIRE_BALL,
             LEVEL1,
             LEVEL2,
             LEVEL_BOSS,
-            LEVEL_LOCK
+            LEVEL_LOCK,
+            ASTEROIDE,
+            MAX_SPRITE
         };
 
         enum MONSTER

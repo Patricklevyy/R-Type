@@ -19,6 +19,7 @@
                     _lastSpawnTime = std::chrono::steady_clock::now();
                 }
 
+                bool bossSpawned = false;
                 unsigned int _score = 0;
                 LEVELS _level;
                 float _spawnInterval;

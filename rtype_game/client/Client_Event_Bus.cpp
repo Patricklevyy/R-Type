@@ -128,23 +128,18 @@ namespace rtype
                     throw std::runtime_error("Malformed params string");
                 }
 
-                // Extraction des valeurs
                 float x = std::stof(message.params.substr(x_pos + 2, message.params.find(';', x_pos) - (x_pos + 2)));
                 float y = std::stof(message.params.substr(y_pos + 2, message.params.find(';', y_pos) - (y_pos + 2)));
                 int typeInt = std::stoi(message.params.substr(type_pos + 5));
 
-                // Cast explicite de `typeInt` en SPRITES
-                SPRITES spriteType = static_cast<SPRITES>(typeInt);
-
-                // Création de l'entité
-                createEntity(message.id, x, y, spriteType);
+                createEntity(message.id, x, y, static_cast<SPRITES>(typeInt));
             } catch (const std::exception &e) {
                 std::cerr << "Error handling CREATE_MONSTER event: " << e.what() << std::endl;
             }
         });
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::MOVE_BACKGROUND, [this](const std::vector<std::any> &args) {
             (void)args;
-            _render_window_system.move_background(_ecs._components_arrays, _in_menu);
+            _render_window_system.move_background(_ecs._components_arrays, _in_menu, _timer->getTps());
         });
         _eventBus.subscribe(RTYPE_ACTIONS::FAIL_LEVEL, [this](const std::vector<std::any> &args) {
             try {

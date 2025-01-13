@@ -39,6 +39,7 @@
     #include "components/Displayable.hpp"
     #include "components/Sprite.hpp"
     #include "components/Music.hpp"
+    #include "components/Animation.hpp"
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
     #include "components/Text.hpp"
@@ -53,6 +54,7 @@
     #include "system/EventWindow.hpp"
     #include "system/MusicSystem.hpp"
     #include "system/ScoreSystem.hpp"
+    #include "system/AnimationSystem.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
@@ -118,7 +120,7 @@
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::shared_ptr<GameplayFactory> _gameplay_factory;
-                DIFFICULTY _difficulty = DIFFICULTY::EASY;
+                DIFFICULTY _difficulty = DIFFICULTY::MEDIUM;
 
                 // CLASSES
 
@@ -140,6 +142,7 @@
                 PlayerSystem _player_system;
                 MusicSystem _music_system;
                 ScoreSystem _score_system;
+                AnimationSystem _animation_system;
 
                 void send_server_new_shoot(bool charged = false);
 
@@ -245,6 +248,7 @@
                  * @brief Sends a message to the server to ask the list of all the rooms.
                  */
                 void requestRoomList();
+                void execute_animation();
         };
     }
 #endif /* !CLIENT_HPP_ */

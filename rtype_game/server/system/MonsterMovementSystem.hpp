@@ -173,6 +173,15 @@ namespace rtype
                                 directions[i].value()._y = ecs::direction::UP;
                             }
                             break;
+                        case SPRITES::SIMPLE_BOSS:
+                            if (positions[i].value()._pos_x
+                                    <= (window_width - 600)
+                                && directions[i].value()._x
+                                    != ecs::direction::NO_DIRECTION) {
+                                directions[i].value()._x =
+                                    ecs::direction::NO_DIRECTION;
+                            }
+                            break;
                         default:
                             break;
                     }

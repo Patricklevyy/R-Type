@@ -72,6 +72,7 @@ namespace rtype
                     _nb_client--;
                 dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(false, LEVELS::UN);
             }
         });
@@ -113,6 +114,13 @@ namespace rtype
                 createMonster(monster);
                 monsters.pop_front();
             }
+            monsters = _level_system.spwanBoss(_ecs, _random_number, _gameplay_factory);
+
+            while (!monsters.empty()) {
+                monster = monsters.front();
+                createBoss(monster);
+                monsters.pop_front();
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
             (void)args;
@@ -122,6 +130,7 @@ namespace rtype
                 std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(level.second, level.first);
             }
         });
@@ -141,6 +150,24 @@ namespace rtype
                 _udp_server->sendMessage(send_message, clientAddr);
             }
             _nb_client++;
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::SPAWN_ASTEROIDE, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroides = _asteroide_system.spwan_asteroide(_random_number, _gameplay_factory, _window_height, _window_width, playingInLevel);
+
+            if (asteroides.empty())
+                return;
+            size_t index;
+            for (const auto &asteroide : asteroides) {
+                index = getNextIndex();
+                std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite = std::make_tuple(
+                    std::get<1>(asteroide).first,
+                    std::get<1>(asteroide).second,
+                    std::get<2>(asteroide)
+                );
+                createEntityProjectiles(index, pos_dir_sprite);
+            }
         });
     }
 }

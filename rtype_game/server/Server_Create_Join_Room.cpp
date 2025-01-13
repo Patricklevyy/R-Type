@@ -14,13 +14,15 @@ namespace rtype
 
         (void)id;
 
+        std::cout << "JE parse" << std::endl;
         std::map<std::string, std::string> map_params = Utils::parseMessageParams(params);
-
+        std::cout << "JE check" << std::endl;
         checkCreateRoomArgs(map_params);
 
-        Room newRoom(_currentPort, map_params["room_name"]);
-        _rooms.push_back(std::move(newRoom));
-        _rooms.back().start(_currentPort, map_params["x"], map_params["y"], map_params["dif"]);
+        std::cout << "JE set LA OMMAND" << std::endl;
+        auto newRoom = std::make_shared<Room>(_currentPort, map_params["room_name"]);
+        newRoom->start(_currentPort, map_params["x"], map_params["y"], map_params["dif"]);
+        _rooms.push_back(newRoom);
         _currentPort++;
     }
 
@@ -34,15 +36,15 @@ namespace rtype
 
         for (auto &room : _rooms)
         {
-            if (room.getName() == map_params["room_name"])
+            if (room->getName() == map_params["room_name"])
             {
                 if (map_params.find("client_name") != map_params.end())
                 {
-                    room.createClient(lastclientAdr, map_params["client_name"]);
+                    room->createClient(lastclientAdr, map_params["client_name"]);
                 }
                 else
                 {
-                    room.createClient(lastclientAdr, "");
+                    room->createClient(lastclientAdr, "");
                 }
             }
         }
@@ -53,8 +55,8 @@ namespace rtype
         if (params.find("room_name") == params.end())
             throw ERROR::MissingRoomsParamsExceptions("Missing 'room_name' param");
 
-        for (const Room &room : _rooms) {
-            if (room.getName() == params["room_name"]) {
+        for (auto &room : _rooms) {
+            if (room->getName() == params["room_name"]) {
                 throw ERROR::RoomAlreadyExistingExceptions("This name is already taken for a room");
             }
         }
@@ -67,10 +69,10 @@ namespace rtype
 
         bool roomFound = false;
 
-        for (const Room &room : _rooms) {
-            if (room.getName() == params["room_name"]) {
+        for (auto &room : _rooms) {
+            if (room->getName() == params["room_name"]) {
                 roomFound = true;
-                if (room.getNbClient() >= 4) {
+                if (room->getNbClient() >= 4) {
                     throw ERROR::RoomIsFullExceptions("The room is full of client (4 MAX PER ROOM)");
                 }
             }

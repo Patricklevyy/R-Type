@@ -38,9 +38,8 @@ namespace rtype
                     processMouseButtonReleased(event);
                     break;
 
-                default:
-                    std::cout << "Unhandled event type." << std::endl;
-                    break;
+            default:
+                break;
             }
         }
     }

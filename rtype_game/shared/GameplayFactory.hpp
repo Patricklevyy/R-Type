@@ -58,6 +58,19 @@ namespace rtype {
                 monsters[i + 1] = std::make_tuple(health, velocity, damage);
             }
 
+            const libconfig::Setting& bossSettings = root["gameplay"]["bosses"];
+            for (int i = 0; i < bossSettings.getLength(); ++i) {
+                const libconfig::Setting& boss = bossSettings[i];
+                int health, velocity, damage;
+
+                boss.lookupValue("health", health);
+                boss.lookupValue("velocity", velocity);
+                boss.lookupValue("damage", damage);
+
+                bosses[i + SIMPLE_BOSS] = std::make_tuple(health, velocity, damage);
+            }
+
+
             const libconfig::Setting& levelsSettings = root["gameplay"]["levels"];
             for (int i = 0; i < levelsSettings.getLength(); ++i) {
                 const libconfig::Setting& level = levelsSettings[i];
@@ -69,30 +82,19 @@ namespace rtype {
                 }
                 levels[i + 1] = ids;
             }
-        }
 
-        void printConfig() const {
-            std::cout << "Player Config:" << std::endl;
-            std::cout << "  Health: " << std::get<0>(player) << std::endl;
-            std::cout << "  Velocity: " << std::get<1>(player) << std::endl;
-            std::cout << "  Damage: " << std::get<2>(player) << std::endl;
+            const libconfig::Setting& asteroidSettings = root["gameplay"]["asteroides"];
+            int spawningTime, number;
+            asteroidSettings.lookupValue("spwaningTime", spawningTime);
+            asteroidSettings.lookupValue("number", number);
 
-            std::cout << "Monster Configs:" << std::endl;
-            for (const auto& [id, config] : monsters) {
-                std::cout << "  Monster " << id << ":" << std::endl;
-                std::cout << "    Health: " << std::get<0>(config) << std::endl;
-                std::cout << "    Velocity: " << std::get<1>(config) << std::endl;
-                std::cout << "    Damage: " << std::get<2>(config) << std::endl;
-            }
+            asteroids = std::make_pair(spawningTime, number);
 
-            std::cout << "Levels Config:" << std::endl;
-            for (const auto& [level, ids] : levels) {
-                std::cout << "  Level " << level << ": ";
-                for (int id : ids) {
-                    std::cout << id << " ";
-                }
-                std::cout << std::endl;
-            }
+            const libconfig::Setting& backgroundSettings = root["display"];
+            int speed;
+            backgroundSettings.lookupValue("background_speed", speed);
+
+            background_speed = speed;
         }
 
         int getPlayerVelocity() {
@@ -123,7 +125,7 @@ namespace rtype {
                     std::get<1>(player) = 40;
                     break;
                 case DIFFICULTY::MEDIUM:
-                    std::get<1>(player) = 0;
+                    std::get<1>(player) = 500;
                     break;
                 case DIFFICULTY::HARD:
                     std::get<1>(player) = 1000;
@@ -145,20 +147,141 @@ namespace rtype {
             return std::get<2>(monsters[id]);
         }
 
-        std::pair<int, int> getLevelSpawn(int level) {
+        int getBossVelocity(SPRITES id) {
+            return std::get<1>(bosses[id]);
+        }
+
+        int getBossHealth(SPRITES id) {
+            return std::get<0>(bosses[id]);
+        }
+
+        int getBossDamage(SPRITES id) {
+            return std::get<2>(bosses[id]);
+        }
+
+        std::pair<int, int> getMonsterLevelSpawn(int level) {
             std::list<int> levelMonsters = levels[level];
             return std::make_pair(levelMonsters.front(), levelMonsters.back());
+        }
+
+        std::pair<int, int> getBossLevelSpawn() {
+            return std::make_pair(SIMPLE_BOSS, SIMPLE_BOSS);
         }
 
         DIFFICULTY getDifficulty() {
             return _difficulty;
         }
 
+        int getAsteroidsSpawnInterval() {
+            return asteroids.first;
+        }
+
+        int getAsteroidsNumberOfSpawn() {
+            return asteroids.second;
+        }
+
+        int getProjectilesHealth(SPRITES sprite) {
+            switch (sprite)
+            {
+                case SPRITES::ASTEROIDE:
+                    return 10000;
+                case SPRITES::PLAYER_SIMPLE_MISSILE:
+                    return 10;
+                case SPRITES::PLAYER_CHARGED_SHOOT:
+                    return 50;
+                case SPRITES::MONSTER_MULTIPLE_MISSILE:
+                    return 10;
+                case SPRITES::BABY_PROJECTILE:
+                    return 60;
+                case SPRITES::FIRE_BALL:
+                    return 10;
+                case SPRITES::MONSTER_SIMPLE_MISSILE:
+                    return 10;
+                default:
+                    std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
+                    return 0;
+            }
+        }
+
+        int getProjectilesVelocity(SPRITES sprite) {
+            switch (sprite)
+            {
+            case BABY_PROJECTILE:
+                return 200;
+            case PLAYER_CHARGED_SHOOT:
+                return 400;
+            default:
+                return 300;
+            }
+        }
+
+        int getProjectilesDamage(SPRITES sprite) {
+            switch (sprite)
+            {
+            case PLAYER_SIMPLE_MISSILE:
+                return getPlayerPlayerDamage();
+            case PLAYER_CHARGED_SHOOT:
+                return (getPlayerPlayerDamage() * 3);
+            case MONSTER_SIMPLE_MISSILE:
+                return getMonsterDamage(SPRITES::SIMPLE_MONSTER);
+            case MONSTER_MULTIPLE_MISSILE:
+                return getMonsterDamage(SPRITES::ADVANCED_MONSTER);
+            case BABY_PROJECTILE:
+                return getMonsterDamage(SPRITES::BABY_PROJECTILE);
+            case FIRE_BALL:
+                return getMonsterDamage(SPRITES::MEGA_MONSTER);
+            case ASTEROIDE:
+                return 20;
+            default:
+                std::cerr << "Monster Id not found" << std::endl;
+                return 0;
+            }
+        }
+
+        int getMonsterBodyDamage(SPRITES sprite) {
+            switch (sprite)
+            {
+            case SPRITES::SIMPLE_MONSTER:
+                return 20;
+            case SPRITES::ADVANCED_MONSTER:
+                return 30;
+            case SPRITES::BABY_PROJECTILE:
+                return 20;
+            case SPRITES::MEGA_MONSTER:
+                return 50;
+            case SPRITES::SIMPLE_BOSS:
+                return 500;
+            default:
+                return 0;
+            }
+        }
+
+        int getMonsterScoreValue(SPRITES sprite) {
+            switch (sprite)
+            {
+            case SPRITES::SIMPLE_BOSS:
+                return 100;
+            default:
+                return 1;
+            }
+        }
+
+        int getPlayerBodyDamage() {
+            return 20;
+        }
+
+        float getBackgroundSpeed() {
+            return background_speed;
+        }
+
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
+        std::map<int, std::tuple<int, int, int>> bosses;
         std::map<int, std::list<int>> levels;
         std::tuple<int, int, int> player;
+        std::pair<int, int> asteroids;
+        float background_speed = 0;
 
         DIFFICULTY _difficulty = EASY;
     };

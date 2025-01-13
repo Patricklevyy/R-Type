@@ -44,10 +44,8 @@ namespace rtype
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
 
             if (duration >= 2000) {
-                std::cout << "Charged shot fired!" << std::endl;
                 send_server_new_shoot(true);
             } else {
-                std::cout << "Normal shot fired!" << std::endl;
                 send_server_new_shoot(false);
             }
         }
@@ -63,6 +61,33 @@ namespace rtype
             restart_game();
         } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
             send_server_new_shoot();
+        }
+    }
+
+    void Client::execute_animation() {
+        if (!_mouse_pressed)
+        {
+            size_t index = _animation_system.getChargedAnimationIndex(_ecs._components_arrays);
+            if (index != 0)
+                _kill_system.killEntity(_ecs, index);
+            return;
+        }
+        std::pair<float, float> player_positions = _position_system.getPlayerPosition(_player_system.getIndexPlayer(_ecs._components_arrays), _ecs._components_arrays);
+        player_positions.first += 100;
+
+        if (_animation_system.isAlreadyAnimation(_ecs._components_arrays)) {
+            _animation_system.updateChargedAnimation(_ecs._components_arrays, player_positions);
+            return;
+        }
+
+        auto release_time = std::chrono::steady_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
+
+        if (duration > 100) {
+            size_t index =  getNextIndex();
+            _ecs.addComponents<ecs::Position>(index, ecs::Position(player_positions.first, player_positions.second));
+            _ecs.addComponents<Displayable>(index, Displayable(SPRITES::CHARGED_ANIMATION));
+            _ecs.addComponents<Animation>(index, Animation());
         }
     }
 }

@@ -27,7 +27,7 @@
                             musics[0].value().setMusic(musicFilePath);
                         }
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPTON] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
