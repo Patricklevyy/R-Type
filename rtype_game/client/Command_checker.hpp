@@ -23,9 +23,9 @@
         {
         public:
             static std::string check_adress(int, const std::string&);
-            static std::list<std::tuple<std::size_t, std::pair<float, float>, int>> parse_update(const std::string&);
+            static std::list<std::pair<std::size_t, std::pair<float, float>>> parse_update(const std::string&);
             static std::vector<std::tuple<std::pair<float, float>, int, int>> parseUpdateEntities(const std::string&);
-            static std::tuple<float, float, int> parsePositionAndRoomPort(const std::string &);
+            static std::tuple<std::pair<float, float>, int, int> parsePositionAndRoomPort(const std::string &);
 
         protected:
         private:

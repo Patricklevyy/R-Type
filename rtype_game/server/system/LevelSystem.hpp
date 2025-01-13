@@ -19,6 +19,7 @@
     #include "../components/Hitbox.hpp"
     #include "../../shared/components/Levels.hpp"
     #include "../RandomNumber.hpp"
+    #include "../../shared/GameplayFactory.hpp"
 
     namespace rtype
     {
@@ -27,7 +28,32 @@
                 LevelSystem() {}
                 ~LevelSystem() {}
 
-                std::list<SPRITES> executeLevel(ecs::ECS &ecs, RandomNumber randomizer)
+                std::list<SPRITES> spwanBoss(ecs::ECS &ecs, RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory)
+                {
+                    auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays.at(typeid(Levels)));
+
+                    std::list<SPRITES> monsters;
+
+                    int monster;
+                    std::pair<int, int> monsterToSpwan;
+
+                    for (std::size_t i = 0; i < levels.size(); ++i) {
+                        if (levels[i].has_value() && !levels[i].value().bossSpawned && levels[i].value()._level == LEVELS::BOSS &&
+                            levels[i].value()._score >= 20) {
+
+                            levels[i].value().bossSpawned = true;
+                            monsterToSpwan = gameplayFactory->getBossLevelSpawn();
+                            monster = randomizer.generateRandomNumbers(monsterToSpwan.first, monsterToSpwan.second);
+
+                            monsters.push_back(static_cast<SPRITES>(monster));
+
+                            levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(2.0f, 4.0f);
+                        }
+                    }
+                    return monsters;
+                }
+
+                std::list<SPRITES> executeLevel(ecs::ECS &ecs, RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays.at(typeid(Levels)));
 
@@ -41,32 +67,21 @@
                     std::chrono::duration<float> deltaTime = currentTime - lastSpawnTime;
                     accumulatedTime += deltaTime.count();
 
+                    int monster;
+                    std::pair<int, int> monsterToSpwan;
+
                     for (std::size_t i = 0; i < levels.size(); ++i) {
-                        if (levels[i].has_value() && (accumulatedTime >= spawnInterval)) {
+                        if (levels[i].has_value() && (accumulatedTime >= spawnInterval) && !levels[i].value().bossSpawned) {
                             auto currentTime = std::chrono::steady_clock::now();
                             std::chrono::duration<float> elapsedTime = currentTime - levels[i].value()._lastSpawnTime;
-                            switch (levels[i].value()._level)
-                            {
-                            case LEVELS::UN:
-                                if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
+                            if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
+                                monsterToSpwan = gameplayFactory->getMonsterLevelSpawn(levels[i].value()._level);
+                                monster = randomizer.generateRandomNumbers(monsterToSpwan.first, monsterToSpwan.second);
 
-                                    monsters.push_back(SPRITES::SIMPLE_MONSTER);
+                                monsters.push_back(static_cast<SPRITES>(monster));
 
-                                    levels[i].value()._lastSpawnTime = currentTime;
-                                    levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(2.0f, 4.0f);
-                                }
-                                break;
-                            case LEVELS::DEUX:
-                                if (elapsedTime.count() >= levels[i].value()._spawnInterval) {
-
-                                    monsters.push_back(SPRITES::ADVANCED_MONSTER);
-
-                                    levels[i].value()._lastSpawnTime = currentTime;
-                                    levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(1.5f, 4.0f);
-                                }
-                                break;
-                            default:
-                                break;
+                                levels[i].value()._lastSpawnTime = currentTime;
+                                levels[i].value()._spawnInterval = randomizer.generateRandomNumbers(2.0f, 4.0f);
                             }
                         }
                     }
@@ -102,7 +117,6 @@
 
                     for (std::size_t i = 0; i < levels.size(); ++i) {
                         if (levels[i].has_value()) {
-                            std::cout << "SCOREEEE \n\n\n\n" << levels[i].value()._score << std::endl;
                             switch (levels[i].value()._level)
                             {
                             case LEVELS::UN:

@@ -59,7 +59,7 @@
                         float mouseY = mousePos.y;
 
                         for (std::size_t i = 0; i < positions.size(); ++i) {
-                            if (positions[i].has_value() && displayables[i].has_value() && levels[i].has_value()) {
+                            if (positions[i].has_value() && i < displayables.size() && displayables[i].has_value() && i < levels.size() && levels[i].has_value()) {
                                 auto size = displayables[i].value().getSpriteSize();
 
                                 if (mouseX >= positions[i].value()._pos_x && mouseX <= positions[i].value()._pos_x + size.x &&
@@ -71,7 +71,7 @@
                         }
                         return std::make_pair(false, LEVELS{});
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCption] " << e.what() << std::endl;
                         return std::make_pair(false, LEVELS{});
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
@@ -92,7 +92,7 @@
                         float mouseY = mousePos.y;
 
                         for (std::size_t i = 0; i < positions.size(); ++i) {
-                            if (positions[i].has_value() && displayables[i].has_value() && level_status[i].has_value()) {
+                            if (positions[i].has_value() && i < displayables.size() && displayables[i].has_value() && i < level_status.size() && level_status[i].has_value()) {
                                 auto size = displayables[i].value().getSpriteSize();
 
                                 if (mouseX >= positions[i].value()._pos_x && mouseX <= positions[i].value()._pos_x + size.x &&

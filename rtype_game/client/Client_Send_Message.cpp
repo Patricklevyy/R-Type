@@ -18,20 +18,23 @@ namespace rtype
         message.id = 0;
         message.action = RTYPE_ACTIONS::CREATE_PROJECTILE;
         message.secret_key = _udpClient->getSecretKey();
-        message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=" + std::to_string(player_positions.second + 20) + ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
+        message.params = "x=" + std::to_string(player_positions.first + 100) + ";y=";
+        if (!charged) {
+            message.params += std::to_string(player_positions.second + 20);
+        } else {
+            message.params += std::to_string(player_positions.second - 20);
+        }
+        message.params += std::to_string(player_positions.second + 20);
+        message.params += ";dir_x=" + std::to_string(ecs::direction::RIGHT) + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION);
         if (!charged) {
             message.params += ";type=" + std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
         } else {
-            message.params += ";type=" + std::to_string(SPRITES::MONSTER_SIMPLE_MISSILE);
+            message.params += ";type=" + std::to_string(SPRITES::PLAYER_CHARGED_SHOOT);
         }
 
         _message_compressor.serialize(message, buffer);
 
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_player_direction(ecs::direction x, ecs::direction y)
@@ -46,11 +49,7 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_start_game(LEVELS level)
@@ -62,12 +61,7 @@ namespace rtype
         mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_create_room()
@@ -77,16 +71,11 @@ namespace rtype
         mess.id = 0;
         mess.action = 0;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "room_name=room1;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "room_name=room1;x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height) + ";dif=" + std::to_string(_difficulty);
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
     }
 
     void Client::send_server_join_room()
@@ -100,11 +89,18 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
-        }
+        _udpClient->sendMessageToDefault(buffer);
+    }
+
+    void Client::send_server_new_player()
+    {
+        std::vector<char> buffer;
+        ecs::udp::Message mess;
+        mess.id = 0;
+        mess.action = RTYPE_ACTIONS::CREATE_PLAYER;
+        mess.secret_key = _udpClient->getSecretKey();
+        _message_compressor.serialize(mess, buffer);
+
+        _udpClient->sendMessageToDefault(buffer);
     }
 }

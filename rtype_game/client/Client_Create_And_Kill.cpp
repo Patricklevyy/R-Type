@@ -20,7 +20,7 @@ namespace rtype
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(((_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(screen).first / 2)), _window_height / 4));
         _ecs.addComponents<LevelStatus>(index, LevelStatus());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
@@ -46,13 +46,11 @@ namespace rtype
     void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
-        std::cout << "JE CREATE : " << index << std::endl;
+        std::cout << "JE CREATE : BOSS " << sprite_id << " , "  << x << " , " << y << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id);
-        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Displayable>(index, displayable);
 
         ecs_server_to_client[server_id] = index;
@@ -67,16 +65,14 @@ namespace rtype
         ecs::Direction direction;
         ecs::Playable playable(_name);
         ecs::Position position(x, y);
-        ecs::Velocity velocity(200);
+        ecs::Velocity velocity(_gameplay_factory->getPlayerVelocity());
         Displayable displayable(SPRITES::MY_PLAYER_SHIP);
-        Health health(100);
 
         _ecs.addComponents<ecs::Direction>(index, direction);
         _ecs.addComponents<ecs::Playable>(index, playable);
         _ecs.addComponents<ecs::Velocity>(index, velocity);
         _ecs.addComponents<ecs::Position>(index, position);
         _ecs.addComponents<Displayable>(index, displayable);
-        _ecs.addComponents<Health>(index, health);
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
@@ -89,7 +85,6 @@ namespace rtype
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(static_cast<ecs::direction>(dir_x), static_cast<ecs::direction>(dir_y)));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
-        _ecs.addComponents<Health>(index, Health(60));
         _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
 
         ecs_server_to_client[server_id] = index;
