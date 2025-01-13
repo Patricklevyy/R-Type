@@ -67,67 +67,35 @@ namespace rtype
             }
         }
 
-        std::list<std::pair<size_t, BONUS>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
-            std::cout << "Début de detectCollisionsBonus" << std::endl;
-
+        std::pair<std::list<size_t>, std::list<BONUS>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
             auto &bonus = std::any_cast<ecs::SparseArray<Bonus> &>(components_array[typeid(Bonus)]);
             auto &playable = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
 
-            std::cout << "Composants récupérés :\n";
-            std::cout << "- Positions size: " << positions.size() << "\n";
-            std::cout << "- Hitboxes size: " << hitboxes.size() << "\n";
-            std::cout << "- Bonus size: " << bonus.size() << "\n";
-            std::cout << "- Playable size: " << playable.size() << "\n";
-
-            std::list<std::pair<size_t, BONUS>> dead_bonus;
+            std::pair<std::list<size_t>, std::list<BONUS>> dead_bonus;
 
             for (std::size_t i = 0; i < bonus.size(); ++i) {
-                std::cout << "Vérification du bonus " << i << std::endl;
-                if (!bonus[i].has_value()) {
-                    std::cout << "  -> Bonus " << i << " n'existe pas, continue." << std::endl;
-                    continue;
-                }
-                if (!positions[i].has_value()) {
-                    std::cout << "  -> Position pour Bonus " << i << " inexistante, continue." << std::endl;
-                    continue;
-                }
-                if (!hitboxes[i].has_value()) {
-                    std::cout << "  -> Hitbox pour Bonus " << i << " inexistante, continue." << std::endl;
+                if (!bonus[i].has_value() || !positions[i].has_value() || !hitboxes[i].has_value()) {
                     continue;
                 }
 
                 for (std::size_t j = 0; j < playable.size(); ++j) {
-                    std::cout << "  Vérification contre Playable " << j << std::endl;
-                    if (!playable[j].has_value()) {
-                        std::cout << "    -> Playable " << j << " n'existe pas, continue." << std::endl;
-                        continue;
-                    }
-                    if (!positions[j].has_value()) {
-                        std::cout << "    -> Position pour Playable " << j << " inexistante, continue." << std::endl;
-                        continue;
-                    }
-                    if (!hitboxes[j].has_value()) {
-                        std::cout << "    -> Hitbox pour Playable " << j << " inexistante, continue." << std::endl;
+                    if (!playable[j].has_value() || !positions[j].has_value() || !hitboxes[j].has_value()) {
                         continue;
                     }
 
-                    std::cout << "    -> Vérification de collision entre Bonus " << i << " et Playable " << j << std::endl;
                     if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
-                        std::cout << "      -> COLLISION DETECTED: Bonus " << i << " -> Playable " << j << std::endl;
-                        dead_bonus.push_back(std::make_pair(i, bonus[i].value()._type));
-                        break; // Bonus collecté, passer au suivant
-                    } else {
-                        std::cout << "      -> Pas de collision entre Bonus " << i << " et Playable " << j << std::endl;
+                        std::cout << "COLLISION DETECTED: Bonus " << i << " -> Playable " << j << std::endl;
+                        dead_bonus.first.push_back(i);
+                        dead_bonus.second.push_back(bonus[i].value()._type);
+                        break;
                     }
                 }
             }
 
-            std::cout << "Fin de detectCollisionsBonus, " << dead_bonus.size() << " bonus détectés comme collectés." << std::endl;
             return dead_bonus;
         }
-
 
 
     protected:

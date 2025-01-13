@@ -69,6 +69,7 @@
             REMOVE_ATH,
             UPDATE_SCORE,
             SPAWN_ASTEROIDE,
+            CHECK_BONUS_COLLISIONS,
             MAX_ACTION
         };
 

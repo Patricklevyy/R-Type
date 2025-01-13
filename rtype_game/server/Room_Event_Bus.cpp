@@ -52,9 +52,15 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_COLLISIONS, [this](const std::vector<std::any> &args) {
             (void)args;
             _collision_system.detectCollisions(_ecs._components_arrays);
-            std::list<std::pair<size_t, BONUS>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);
-            for (auto bonus : list_bonuses) {
-                _kill_system.killEntity(_ecs, bonus.first);
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::pair<std::list<size_t>, std::list<BONUS>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);
+            if (!list_bonuses.first.empty()) {
+                for (auto bonus : list_bonuses.first) {
+                    _kill_system.killEntity(_ecs, bonus);
+                }
+                send_client_dead_entities(list_bonuses.first);
             }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {

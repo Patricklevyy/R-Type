@@ -127,8 +127,7 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
-        SPRITES sprite = WEAPON_DROP;
-        ecs::Direction direction = ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
+        SPRITES sprite = SPRITES::WEAPON_DROP;
 
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getBonusVelocity()));
