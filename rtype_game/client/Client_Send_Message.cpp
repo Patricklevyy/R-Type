@@ -81,12 +81,13 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << mess.params << " ccccccreate"<<std::endl;
+        std::cout << "je send" << std::endl;
         if (_udpClient->sendMessageToDefault(buffer)) {
             std::cout << "Message sent: " << std::endl;
         } else {
             std::cout << "failed " << std::endl;
         }
+        requestRoomList();
     }
 
     void Client::send_server_join_room(std::string roomName, std::string clientName)
@@ -100,12 +101,13 @@ namespace rtype
 
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << mess.params << " jjjjjjoin"<<std::endl;
+        std::cout << "je send" <<std::endl;
         if (_udpClient->sendMessageToDefault(buffer)) {
             std::cout << "Message sent: " << std::endl;
         } else {
             std::cout << "failed " << std::endl;
         }
+        requestRoomList();
     }
 
     void Client::send_server_new_player()
@@ -117,11 +119,23 @@ namespace rtype
         mess.secret_key = _udpClient->getSecretKey();
         _message_compressor.serialize(mess, buffer);
 
-        std::cout << "je send" << mess.params << " jjjjjjoin"<<std::endl;
+        std::cout << "je send" <<std::endl;
         if (_udpClient->sendMessageToDefault(buffer)) {
             std::cout << "Message sent: " << std::endl;
         } else {
             std::cout << "failed " << std::endl;
         }
+    }
+
+    void Client::requestRoomList()
+    {
+        ecs::udp::Message request;
+        request.id = 0;
+        request.action = RTYPE_ACTIONS::GET_ALL_ROOMS;
+        request.secret_key = _udpClient->getSecretKey();
+        request.params = "";
+        std::vector<char> buffer;
+        _message_compressor.serialize(request, buffer);
+        _udpClient->sendMessageToDefault(buffer);
     }
 }
