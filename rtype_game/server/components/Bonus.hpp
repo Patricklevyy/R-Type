@@ -15,6 +15,8 @@
 #ifndef BONUS_HPP_
     #define BONUS_HPP_
 
+    #include "../../shared/Enums.hpp"
+
     namespace rtype
     {
         class Bonus {
@@ -22,12 +24,14 @@
                 /**
                  * @brief Constructor for the Bonus class.
                  */
-                Bonus() {}
+                Bonus(BONUS type) : _type(type) {}
 
                 /**
                  * @brief Destructor for the Bonus class.
                  */
                 ~Bonus() {}
+
+                BONUS _type;
 
             protected:
             private:

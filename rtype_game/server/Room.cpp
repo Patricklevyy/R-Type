@@ -115,7 +115,7 @@ namespace rtype
         (void)clientAddr;
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
+        // std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
         rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
         _eventBus.emit(action, std::ref(message));
     }

@@ -149,9 +149,10 @@
          * @brief Spawn a weapon when a monster is killed
          */
         enum BONUS {
-            Velocity,
-            Life,
-            Weapon
+            VECOCITY = 1,
+            LIFE,
+            WEAPON,
+            MAX_BONUS
         };
     }
 

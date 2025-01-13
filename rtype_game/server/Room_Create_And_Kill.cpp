@@ -48,7 +48,6 @@ namespace rtype
 
     size_t Room::create_player(std::pair<float, float> positions, std::string clientName)
     {
-        std::cout << "CREATE PLAYER \n\n\n\n : " << _nb_client << std::endl;
         size_t index = getNextIndex();
 
         ecs::Direction direction;
@@ -121,7 +120,6 @@ namespace rtype
         _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getMonsterBodyDamage(sprites)));
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<Ennemies>(index, Ennemies());
-        std::cout << "MONSTER CREER " << sprites << std::endl;
         send_client_new_monster(index, positions.first, positions.second, sprites);
     }
 
@@ -138,7 +136,8 @@ namespace rtype
         _ecs.addComponents<SpriteId>(index, SpriteId(sprite));
         _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(sprite)));
         _ecs.addComponents<Ennemies>(index, Ennemies());
-        _ecs.addComponents<Bonus>(index, Bonus());
+        // _ecs.addComponents<Bonus>(index, Bonus(_gameplay_factory->getRandomBonuses(_random_number.generateRandomNumbers(1, 3))));
+        _ecs.addComponents<Bonus>(index, Bonus(_gameplay_factory->getRandomBonuses(1)));
 
         std::string projectileInfo = Utils::bonusInfoToString(position, ecs::direction::LEFT, ecs::direction::NO_DIRECTION, sprite, _gameplay_factory->getBonusVelocity());
         send_client_new_projectile(index, projectileInfo);

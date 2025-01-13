@@ -278,6 +278,16 @@ namespace rtype {
             return 100;
         }
 
+        int getBonusHealth() {
+            return 10;
+        }
+
+        BONUS getRandomBonuses(int rand) {
+            if (rand <= 0 || rand >= BONUS::MAX_BONUS)
+                throw std::invalid_argument("Id for bonus not found.");
+            return static_cast<BONUS>(rand);
+        }
+
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;
