@@ -121,4 +121,23 @@ namespace rtype
 
         send_client_new_monster(index, positions.first, positions.second, sprites);
     }
+
+    void Room::spawnWeaponDrop(const std::pair<float, float> &position)
+    {
+        size_t index = getNextIndex();
+
+        SPRITES sprite = WEAPON_DROP;
+        ecs::Direction direction = ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION);
+
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(100));
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(position.first, position.second));
+        _ecs.addComponents<SpriteId>(index, SpriteId(sprite));
+        _ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(sprite)));
+        _ecs.addComponents<Ennemies>(index, Ennemies());
+        _ecs.addComponents<Bonus>(index, Bonus());
+
+        std::string projectileInfo = Utils::bonusInfoToString(position, direction, sprite, 300);
+        send_client_new_projectile(index, projectileInfo);
+    }
 }
