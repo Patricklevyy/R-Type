@@ -197,6 +197,8 @@ namespace rtype {
                     return 10;
                 case SPRITES::MONSTER_SIMPLE_MISSILE:
                     return 10;
+                case SPRITES::BOSS_PROJECTILE:
+                    return 500;
                 default:
                     std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
                     return 0;
@@ -210,6 +212,8 @@ namespace rtype {
                 return 200;
             case PLAYER_CHARGED_SHOOT:
                 return 400;
+            case BOSS_PROJECTILE:
+                return 500;
             default:
                 return 300;
             }
@@ -230,10 +234,12 @@ namespace rtype {
                 return getMonsterDamage(SPRITES::BABY_PROJECTILE);
             case FIRE_BALL:
                 return getMonsterDamage(SPRITES::MEGA_MONSTER);
+            case BOSS_PROJECTILE:
+                return getMonsterDamage(SPRITES::SIMPLE_BOSS);
             case ASTEROIDE:
                 return 20;
             default:
-                std::cerr << "Monster Id not found" << std::endl;
+                std::cerr << " not found" << std::endl;
                 return 0;
             }
         }
@@ -245,10 +251,10 @@ namespace rtype {
                 return 20;
             case SPRITES::ADVANCED_MONSTER:
                 return 30;
-            case SPRITES::BABY_PROJECTILE:
-                return 20;
-            case SPRITES::MEGA_MONSTER:
+            case SPRITES::SUPER_MONSTER:
                 return 50;
+            case SPRITES::MEGA_MONSTER:
+                return 75;
             case SPRITES::SIMPLE_BOSS:
                 return 500;
             default:

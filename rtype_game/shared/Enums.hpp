@@ -93,6 +93,7 @@
             MONSTER_MULTIPLE_MISSILE,
             BABY_PROJECTILE,
             FIRE_BALL,
+            BOSS_PROJECTILE,
             OTHER_PLAYER_SHIP,
             LOOSER_SCREEN,
             WIN_SCREEN,
