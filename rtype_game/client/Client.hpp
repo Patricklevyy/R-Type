@@ -57,9 +57,12 @@
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
 
+    #include "menu/Menu.hpp"
+
     namespace rtype
     {
         class SFMLHandler;
+        class Menu;
         class Client
         {
             public:
@@ -101,6 +104,8 @@
                 bool _in_menu = true;
                 bool _running = true;
                 EventBus _eventBus;
+                std::vector<std::pair<std::string, int>> _roomsList;
+                ecs::ECS _ecs;
 
             protected:
             private:
@@ -110,7 +115,6 @@
                 std::map<int, int> ecs_server_to_client;
                 std::map<int, int> ecs_client_to_server;
                 std::map<LEVELS, bool> _levels_wins;
-                ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::shared_ptr<GameplayFactory> _gameplay_factory;
@@ -204,6 +208,7 @@
                 void reset_level_lock();
                 void put_level_lock(LEVELS, int, int);
                 void init_score();
+                std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
 
                 void send_server_start_game(LEVELS);
 
@@ -235,6 +240,11 @@
                  */
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
+
+                /**
+                 * @brief Sends a message to the server to ask the list of all the rooms.
+                 */
+                void requestRoomList();
         };
     }
 #endif /* !CLIENT_HPP_ */
