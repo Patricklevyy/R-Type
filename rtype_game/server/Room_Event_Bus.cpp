@@ -9,30 +9,6 @@
 
 namespace rtype
 {
-    void Room::spawnWeaponDrop(ecs::ECS &ecs, const std::pair<float, float> &position, size_t index)
-    {
-        // Room room(0, "room1");
-        std::cout << "OK CA RENTRE PELOOOOOO |||||||||||||||||||||||||||" << std::endl;
-        // size_t index = room.getNextIndex();
-        // size_t index = room.getNextIndex();
-        // SpriteId spriteId(SPRITES::WEAPON_DROP);
-        // // Displayable displayable(SPRITES::WEAPON_DROP);
-        // ecs::Position positions(position.first, position.second);
-
-        // std::cout << "pos x = " << positions._pos_x << " , pos y = " << positions._pos_y << " , index = " << index << std::endl;
-        // ecs.addComponents<SpriteId>(index, spriteId);
-        // std::cout << "c'est venu jusque la pelo donc bon" << std::endl;
-        // ecs.addComponents<ecs::Position>(index, positions);
-        // ecs.addComponents<Hitbox>(index, Hitbox(HitboxFactory::createHitbox(WEAPON_DROP)));
-        // ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(MonsterFactory::getMonsterVelocity(WEAPON_DROP)));
-        // ecs.addComponents<Monster>(index, Monster(WEAPON_DROP));
-        // // ecs.addComponents<Displayable>(index, displayable);
-        // // send_client_new_monster(index, positions._pos_x, positions._pos_y, WEAPON_DROP);
-        // // room->send_client_new_monster(index, positions._pos_x, positions._pos_y, WEAPON_DROP);
-        // // _ecs.addComponents<ecs::Position>(index, positions);
-        // std::cout << "Weapon drop entity created at X: " << position.first << ", Y: " << position.second << std::endl;
-    }
-
     void Room::init_event_bus()
     {
         _eventBus.subscribe(rtype::RTYPE_ACTIONS::UPDATE_POSITIONS, [this](const std::vector<std::any> &args) {
@@ -76,6 +52,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_COLLISIONS, [this](const std::vector<std::any> &args) {
             (void)args;
             _collision_system.detectCollisions(_ecs._components_arrays);
+            _collision_system.detectCollisionsBonus(_ecs._components_arrays);
         });
         // _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
         //     (void)args;
@@ -149,7 +126,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            // size_t index = getNextIndex();
+            // std::cout << "index = ça peloooooo = " << index << std::endl;
             std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities = _health_system.checkLife(_ecs, _nb_client);
             // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
 
@@ -168,9 +145,9 @@ namespace rtype
                         std::cout << "ouais raconte pas ta vie frérot" << std::endl;
                         const auto &position = *position_it;
                         ++position_it;
-                        // spawnWeaponDrop(_ecs, position, index);
+                        spawnWeaponDrop(position);
                     }
-                 }
+                }
                 _kill_system.killEntity(_ecs, entity_id);
             }
             if (!dead_entites_id.empty())

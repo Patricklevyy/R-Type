@@ -28,6 +28,7 @@
     #include "../../client/components/Sprite.hpp"
     #include "../../client/components/Music.hpp"
     #include "../../server/components/SpriteId.hpp"
+    #include "../../server/components/Bonus.hpp"
     #include "../../client/components/Text.hpp"
 
     namespace rtype
@@ -69,6 +70,7 @@
                     ecs.killEntityFromRegistry<Monster>(index);
                     ecs.killEntityFromRegistry<Projectiles>(index);
                     ecs.killEntityFromRegistry<SpriteId>(index);
+                    ecs.killEntityFromRegistry<Bonus>(index);
 
                     ecs.addDeadEntity(index);
                 }

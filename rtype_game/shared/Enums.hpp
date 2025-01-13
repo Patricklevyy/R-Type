@@ -125,6 +125,16 @@
             Tritanopia,
             Inverted
         };
+
+        /**
+         * @enum BONUS
+         * @brief Spawn a weapon when a monster is killed
+         */
+        enum BONUS {
+            Velocity,
+            Life,
+            Weapon
+        };
     }
 
 #endif /* !ENUMS_HPP_ */

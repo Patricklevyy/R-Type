@@ -40,6 +40,7 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "components/Bonus.hpp"
     #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
@@ -143,7 +144,7 @@
              */
             std::string sendExistingEntities();
 
-            void spawnWeaponDrop(ecs::ECS &ecs, const std::pair<float, float> &position, size_t index);
+            void spawnWeaponDrop(const std::pair<float, float> &position);
 
 
         private:

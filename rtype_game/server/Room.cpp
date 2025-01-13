@@ -97,6 +97,7 @@ namespace rtype
             index = index_ecs;
             index_ecs++;
         }
+        std::cout << "?????????????????????????????? = " << index << std::endl;
         return index;
     }
 
@@ -128,6 +129,7 @@ namespace rtype
         _ecs.addRegistry<Ennemies>();
         _ecs.addRegistry<Allies>();
         _ecs.addRegistry<Levels>();
+        _ecs.addRegistry<Bonus>();
     }
 
     std::pair<float, float> Room::get_player_start_position(int nb_client)

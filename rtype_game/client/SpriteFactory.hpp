@@ -67,7 +67,7 @@
                         case SPRITES::WIN_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::WEAPON_DROP:
-                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.4);
+                            return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.30);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -221,6 +221,9 @@
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame4.png"));
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame3.png"));
                             textures.push_back(loadTexture("assets/monsters/monster_2_frame2.png"));
+                            break;
+                        case SPRITES::WEAPON_DROP:
+                            textures.push_back(loadTexture("assets/weapon.png"));
                             break;
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
