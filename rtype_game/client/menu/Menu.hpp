@@ -8,41 +8,44 @@
 #ifndef MENU_HPP_
 #define MENU_HPP_
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <memory>
-#include <vector>
-#include "Button.hpp"
+#include "../SFMLHandler.hpp"
+#include "InputScreen.hpp"
 #include "RoomHandling.hpp"
 #include "TextInput.hpp"
 
 namespace rtype
 {
-
+    class Client;
     class Menu {
       public:
-        Menu(sf::Font &font);
+        Menu(sf::RenderWindow &window, const std::string &name, Client &client);
         ~Menu() {};
-        void draw(sf::RenderWindow &window);
-        void handleClick(
-            const sf::Vector2i &mousePos, const std::string &clientName);
-        void handleEvent(const sf::Event &event);
-        const std::string &getSelectedRoom() const;
-        void addRoom(const std::string &name, int occupied);
-        bool isCreatingRoom() const;
-        const std::string &getRoomName() const;
-        void clearRoomInput();
-        void stopCreatingRoom();
+        void run(bool &isRunning);
+        void handleEvents(bool &_in_menu);
+        void update();
+        void render();
+        std::string getPlayerName() const { return _playerName; }
+        std::string getCreatedRoom() const { return _createdRoom; }
+        std::shared_ptr<RoomHandling> _roomHandling;
+        std::shared_ptr<TextInput> _textInput;
+
 
       protected:
       private:
-        sf::Font &font;
-        Button joinButton;
-        Button createButton;
-        TextInput textInput;
-        std::vector<std::shared_ptr<RoomHandling>> rooms;
-        bool showRoomList;
-        bool creatingRoom;
-        std::string selectedRoom;
+        sf::RenderWindow &_window;
+        sf::Font _font;
+        sf::Texture _logoTexture;
+        sf::Texture _createRoomTexture;
+        sf::Sprite _logo;
+        sf::Sprite _validateButton;
+        sf::RectangleShape _roomContainer;
+        sf::RectangleShape _outerContainer;
+
+        sf::Text _playerNameText;
+        std::string _playerName;
+        std::string _createdRoom;
+        Client &_client;
     };
 } // namespace rtype
 

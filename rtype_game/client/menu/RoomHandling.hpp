@@ -7,56 +7,89 @@
 
 #ifndef ROOMHANDLING_HPP_
 #define ROOMHANDLING_HPP_
-
+#include <SFML/Graphics.hpp>
 #include <iostream>
-#include <sstream>
 
 namespace rtype
 {
     class RoomHandling {
       public:
-        RoomHandling(const std::string &name, int occupied, sf::Font &font,
-            sf::Vector2f position)
-            : name(name), occupied(occupied)
-        {
-            shape.setSize({400, 40});
-            shape.setPosition(position);
-            shape.setFillColor(sf::Color(200, 200, 200));
-
-            std::ostringstream roomInfo;
-            roomInfo << name << " (" << occupied << "/4)";
-            roomText.setFont(font);
-            roomText.setString(roomInfo.str());
-            roomText.setCharacterSize(20);
-            roomText.setFillColor(sf::Color::Black);
-            roomText.setPosition(position.x + 10, position.y + 5);
-        }
-
+        RoomHandling(sf::Font &_font) : _font(_font), _scrollOffset(0) {};
         ~RoomHandling() {};
 
-        void draw(sf::RenderWindow &window)
+        void addRoom(const std::string &name)
         {
-            window.draw(shape);
-            window.draw(roomText);
+            _rooms.emplace_back(name, 2);
         }
 
-        bool isClicked(const sf::Vector2i &mousePos) const
+        std::string handleClick(
+            const sf::Vector2f &mousePos, const sf::RectangleShape &container)
         {
-            return shape.getGlobalBounds().contains(
-                static_cast<sf::Vector2f>(mousePos));
+            for (std::size_t i = 0; i < _rooms.size(); ++i) {
+                float yPosition =
+                    container.getPosition().y + 20 + i * 45 - _scrollOffset;
+                sf::RectangleShape roomShape;
+                roomShape.setSize({container.getSize().x - 40, 40});
+                roomShape.setPosition(
+                    {container.getPosition().x + 20, yPosition});
+                if (roomShape.getGlobalBounds().contains(mousePos)) {
+                    _selectedRoom = _rooms[i].first;
+                    return _selectedRoom;
+                }
+            }
+            _selectedRoom = "";
+            return _selectedRoom;
         }
 
-        const std::string &getName() const
+        void handleScroll(float delta)
         {
-            return name;
+            _scrollOffset += delta * 20;
+            if (_scrollOffset < 0)
+                _scrollOffset = 0;
+        }
+
+        void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
+        {
+            for (std::size_t i = 0; i < _rooms.size(); ++i) {
+                float yPosition =
+                    container.getPosition().y + 20 + i * 45 - _scrollOffset;
+                if (yPosition >= container.getPosition().y
+                    && yPosition
+                        <= container.getPosition().y + container.getSize().y) {
+                    sf::RectangleShape roomShape;
+                    roomShape.setSize({container.getSize().x - 40, 40});
+                    roomShape.setPosition(
+                        {container.getPosition().x + 20, yPosition});
+                    roomShape.setFillColor(sf::Color(30, 30, 30));
+                    roomShape.setOutlineColor(sf::Color::White);
+                    roomShape.setOutlineThickness(1);
+
+                    sf::Text roomText;
+                    roomText.setFont(_font);
+                    roomText.setString(_rooms[i].first + " ("
+                        + std::to_string(_rooms[i].second) + "/4)");
+                    roomText.setCharacterSize(18);
+                    roomText.setFillColor(sf::Color::White);
+                    roomText.setPosition(roomShape.getPosition().x + 10,
+                        roomShape.getPosition().y + 8);
+
+                    window.draw(roomShape);
+                    window.draw(roomText);
+                }
+            }
+        }
+
+        std::string getSelectedRoom() const
+        {
+            return _selectedRoom;
         }
 
       protected:
       private:
-        std::string name;
-        int occupied;
-        sf::RectangleShape shape;
-        sf::Text roomText;
+        sf::Font &_font;
+        std::vector<std::pair<std::string, int>> _rooms;
+        float _scrollOffset;
+        std::string _selectedRoom;
     };
 } // namespace rtype
 

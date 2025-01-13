@@ -9,25 +9,26 @@
 
 namespace rtype
 {
-    TextInput::TextInput(sf::Font &font, sf::Vector2f position)
-        : isActive(false)
+    TextInput::TextInput(
+        sf::Font &font, sf::Vector2f position, sf::Vector2f size)
+        : _isActive(false)
     {
-        shape.setSize({400, 50});
-        shape.setPosition(position);
-        shape.setFillColor(sf::Color::White);
-        shape.setOutlineColor(sf::Color::Black);
-        shape.setOutlineThickness(2);
+        _shape.setSize(size);
+        _shape.setPosition(position);
+        _shape.setFillColor(sf::Color::White);
+        _shape.setOutlineColor(sf::Color::Black);
+        _shape.setOutlineThickness(2);
 
-        text.setFont(font);
-        text.setCharacterSize(24);
-        text.setFillColor(sf::Color::Black);
-        text.setPosition(position.x + 10, position.y + 10);
+        _text.setFont(font);
+        _text.setCharacterSize(18);
+        _text.setFillColor(sf::Color::Black);
+        _text.setPosition(position.x + 10, position.y + 8);
     }
 
     void TextInput::draw(sf::RenderWindow &window)
     {
-        window.draw(shape);
-        window.draw(text);
+        window.draw(_shape);
+        window.draw(_text);
     }
 
     void TextInput::handleEvent(const sf::Event &event)
@@ -35,33 +36,35 @@ namespace rtype
         if (event.type == sf::Event::MouseButtonPressed
             && event.mouseButton.button == sf::Mouse::Left) {
             sf::Vector2i mousePos(event.mouseButton.x, event.mouseButton.y);
-            isActive = shape.getGlobalBounds().contains(
+            _isActive = _shape.getGlobalBounds().contains(
                 static_cast<sf::Vector2f>(mousePos));
         }
 
-        if (isActive && event.type == sf::Event::TextEntered) {
-            if (event.text.unicode == '\b') {
-                if (!input.empty()) {
-                    input.pop_back();
-                }
-            } else if (event.text.unicode == '\r') {
-                isActive = false;
-            } else if (event.text.unicode
-                < 128) {
-                input += static_cast<char>(event.text.unicode);
+        if (_isActive && event.type == sf::Event::TextEntered) {
+            if (event.text.unicode == '\b' && !_input.empty()) {
+                _input.pop_back();
+            } else if (event.text.unicode < 128 && event.text.unicode != '\b'
+                && event.text.unicode != '\r') {
+                _input += static_cast<char>(event.text.unicode);
             }
-            text.setString(input);
+            _text.setString(_input);
         }
     }
 
     const std::string &TextInput::getText() const
     {
-        return input;
+        return _input;
     }
 
     void TextInput::clear()
     {
-        input.clear();
-        text.setString("");
+        _input.clear();
+        _text.setString("");
+    }
+
+    void TextInput::setPosition(sf::Vector2f position)
+    {
+        _shape.setPosition(position);
+        _text.setPosition(position.x + 10, position.y + 8);
     }
 } // namespace rtype
