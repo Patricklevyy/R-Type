@@ -81,22 +81,6 @@ namespace rtype
             auto &playable = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
             auto &projectile = std::any_cast<ecs::SparseArray<Projectiles> &>(components_array[typeid(Projectiles)]);
 
-            // for (std::size_t i = 0; i < positions.size(); ++i) {
-            //     if (positions[i].has_value() && hitboxes[i].has_value() && i < bonus.size() && bonus[i].has_value()) {
-            //         // L'entité `i` est un Bonus
-            //         for (std::size_t j = 0; j < positions.size(); ++j) {
-            //             if (i == j) continue; // Évite de vérifier une entité contre elle-même
-            //             // if (positions[j].has_value() && hitboxes[j].has_value() && j < allies.size() && allies[j].has_value() && j < playable.size() && playable[j].has_value() && !(j < projectile.size() && projectile[j].has_value())) {
-            //             if ( j < playable.size() && playable[j].has_value()) {
-            //                 // L'entité `j` est un Allies
-            //                 if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
-            //                     std::cout << "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHCollision detected between Entity " << i << " and Entity " << j << std::endl;
-            //                     exit(84);
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
             for (std::size_t i = 0; i < positions.size(); ++i) {
                 if (positions[i].has_value() && hitboxes[i].has_value()) {
                     for (std::size_t j = i + 1; j < positions.size(); ++j) {

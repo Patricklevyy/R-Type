@@ -98,12 +98,12 @@ namespace rtype
         return info;
     }
 
-    std::string Utils::bonusInfoToString(const std::pair<float, float> &position, const ecs::Direction &direction, SPRITES sprite, int velocity)
+    std::string Utils::bonusInfoToString(const std::pair<float, float> &position, int direction_x, int direction_y, SPRITES sprite, int velocity)
     {
         std::string info = "";
 
         info += "x=" + std::to_string(position.first) + ";y=" + std::to_string(position.second);
-        info += ";dir_x=" + std::to_string(static_cast<int>(direction._x)) + ";dir_y=" + std::to_string(static_cast<int>(direction._y));
+        info += ";dir_x=" + std::to_string(direction_x) + ";dir_y=" + std::to_string(direction_y);
         info += ";v=" + std::to_string(velocity);
         info += ";type=" + std::to_string(sprite);
 

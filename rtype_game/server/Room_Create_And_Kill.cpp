@@ -137,7 +137,7 @@ namespace rtype
         _ecs.addComponents<Ennemies>(index, Ennemies());
         _ecs.addComponents<Bonus>(index, Bonus());
 
-        std::string projectileInfo = Utils::bonusInfoToString(position, direction, sprite, 300);
+        std::string projectileInfo = Utils::bonusInfoToString(position, ecs::direction::LEFT, ecs::direction::NO_DIRECTION, sprite, 300);
         send_client_new_projectile(index, projectileInfo);
     }
 }

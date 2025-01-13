@@ -54,81 +54,10 @@ namespace rtype
             _collision_system.detectCollisions(_ecs._components_arrays);
             _collision_system.detectCollisionsBonus(_ecs._components_arrays);
         });
-        // _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
-        //     (void)args;
-
-        //     size_t index = getNextIndex();
-        //     std::cout << "temp value with back = " << index << std::endl;
-        //     std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities = _health_system.checkLife(_ecs, _nb_client);
-        //     // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
-
-        //     std::list<std::pair<float, float>> dead_entities_positions = std::get<3>(dead_entities);
-        //     auto position_it = dead_entities_positions.begin();
-
-        //     if (std::get<1>(dead_entities) != 0) {
-        //         _level_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
-        //         sendScore(_level_system.getScore(_ecs._components_arrays));
-        //     }
-        //     std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
-        //     auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(_ecs._components_arrays[typeid(Monster)]);
-        //     for (const auto &entity_id : dead_entites_id) {
-        //         // std::cout << "OKKKKKKKKKKKKKKK||||||||||||" << entity_id << std::endl;
-        //         // if (entity_id < monsters.size() && monsters[entity_id].has_value()) {
-        //         //     int lucky = rand() % 100;
-        //         //     // if (lucky <= 5) {
-        //         //     if (lucky <= 100) {
-        //         //         std::cout << "Ah ouais, tu es un chanceux toi peloooooo" << std::endl; // a enlever
-        //         //         // std::cout << "Position du monstre tué: X = " << position._pos_x << ", Y = " << position._pos_y << std::endl;
-        //         //         const auto &position = *position_it;
-        //         //         std::cout << "Position du monstre tué : X = " << position.first << ", Y = " << position.second << std::endl;
-        //         //         // spawnWeaponDrop(_ecs, position, index);
-        //         //         ++position_it;
-        //         //         std::cout << "OK, c'est revenu dans la fonction de base pelloooooooo" << std::endl;
-        //         //     }
-        //         // }
-        //         _kill_system.killEntity(_ecs, entity_id);
-        //     }
-        //     if (!dead_entites_id.empty())
-        //         send_client_dead_entities(dead_entites_id);
-        //     if (std::get<2>(dead_entities)) {
-        //         if (_nb_client > 0)
-        //             _nb_client--;
-        //         dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
-        //         send_client_dead_entities(dead_entites_id);
-        //         send_client_level_status(false, LEVELS::UN);
-        //     }
-        // });
-        // _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
-        //     (void)args;
-
-        //     size_t index = getNextIndex();
-        //     std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities = _health_system.checkLife(_ecs, _nb_client);
-        //     // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
-
-        //     if (std::get<1>(dead_entities) != 0) {
-        //         _level_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
-        //         sendScore(_level_system.getScore(_ecs._components_arrays));
-        //     }
-        //     std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
-        //     for (const auto &entity_id : dead_entites_id) {
-        //         _kill_system.killEntity(_ecs, entity_id);
-        //     }
-        //     if (!dead_entites_id.empty())
-        //         send_client_dead_entities(dead_entites_id);
-        //     if (std::get<2>(dead_entities)) {
-        //         if (_nb_client > 0)
-        //             _nb_client--;
-        //         dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
-        //         send_client_dead_entities(dead_entites_id);
-        //         send_client_level_status(false, LEVELS::UN);
-        //     }
-        // });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            // std::cout << "index = ça peloooooo = " << index << std::endl;
             std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities = _health_system.checkLife(_ecs, _nb_client);
-            // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
 
             if (std::get<1>(dead_entities) != 0) {
                 _level_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
@@ -142,7 +71,6 @@ namespace rtype
                 if (entity_id < monsters.size() && monsters[entity_id].has_value()) {
                     int lucky = rand() % 100;
                     if (lucky <= 100) {
-                        std::cout << "ouais raconte pas ta vie frérot" << std::endl;
                         const auto &position = *position_it;
                         ++position_it;
                         spawnWeaponDrop(position);

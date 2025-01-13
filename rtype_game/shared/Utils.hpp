@@ -16,7 +16,7 @@
     #include "Enums.hpp"
     #include "RTypeExceptions.hpp"
     #include "Includes.hpp"
-    #include "../../../ecs/components/Direction.hpp"
+    #include "../../ecs/components/Direction.hpp"
 
     namespace rtype
     {
@@ -34,7 +34,7 @@
 
                 static std::string projectilesInfoToString(std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>, int);
 
-                static std::string bonusInfoToString(const std::pair<float, float> &position, const ecs::Direction &direction, SPRITES sprite, int velocity);
+                static std::string bonusInfoToString(const std::pair<float, float> &position, int direction_x, int direction_y, SPRITES sprite, int velocity);
 
             protected:
             private:
