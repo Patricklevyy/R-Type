@@ -9,8 +9,6 @@
 #define SFMLHANDLER_HPP_
 
     #include "Client.hpp"
-    #include "menu/Menu.hpp"
-
     namespace rtype
     {
         class Client;
@@ -21,8 +19,6 @@
                 ~SFMLHandler();
 
                 void handleEvents(std::queue<sf::Event> &);
-                void renderMenu(sf::RenderWindow &window);
-
 
             private:
                 void processKeyPressed(const sf::Event &event);
@@ -31,8 +27,7 @@
                 void processMouseButtonReleased(const sf::Event &event);
 
                 Client &_client;
-                std::shared_ptr<Menu> _menu;
-                sf::Font _font;
+                
             };
     }
 
