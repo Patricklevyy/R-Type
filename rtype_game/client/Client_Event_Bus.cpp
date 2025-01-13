@@ -194,5 +194,30 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
+
+        _eventBus.subscribe(RTYPE_ACTIONS::GET_ALL_ROOMS, [this](const std::vector<std::any> &args) {
+            ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+            std::cout << "Les putains de rooms sont: -> " << message.params << std::endl;
+            // _roomsList = parseRoomList(message.params);
+            // for (const auto &room : _roomsList) {
+            //     std::cout << "Room Name: " << room.first << ", Number of Clients: " << room.second << std::endl;
+            // }
+        });
+    }
+
+    std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
+    {
+        std::stringstream ss(roomList);
+        std::string roomData;
+
+        while (std::getline(ss, roomData, ':')) {
+            size_t delimiterPos = roomData.find(',');
+            if (delimiterPos != std::string::npos) {
+                std::string roomName = roomData.substr(0, delimiterPos);
+                int nbClients = std::stoi(roomData.substr(delimiterPos + 1));
+                _roomsList.emplace_back(roomName, nbClients);
+            }
+        }
+        return _roomsList;
     }
 }
