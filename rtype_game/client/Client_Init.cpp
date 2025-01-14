@@ -82,6 +82,7 @@ namespace rtype
         init_window_and_background();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
+        requestRoomList();
     }
 
     void Client::put_level_lock(LEVELS level, int x, int y)

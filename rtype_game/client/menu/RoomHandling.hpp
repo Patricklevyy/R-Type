@@ -14,12 +14,14 @@ namespace rtype
 {
     class RoomHandling {
       public:
-        RoomHandling(sf::Font &_font) : _font(_font), _scrollOffset(0) {};
+        RoomHandling(
+            sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
+            : _font(_font), _scrollOffset(0), _rooms(rooms) {};
         ~RoomHandling() {};
 
-        void addRoom(const std::string &name)
+        void addRoom(const std::string &name, int nb_places)
         {
-            _rooms.emplace_back(name, 2);
+            _rooms.emplace_back(name, nb_places);
         }
 
         std::string handleClick(
@@ -51,6 +53,7 @@ namespace rtype
         void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
         {
             for (std::size_t i = 0; i < _rooms.size(); ++i) {
+                std::cout << "when drawing" << _rooms[i].first << "->" << _rooms[i].second << std::endl;
                 float yPosition =
                     container.getPosition().y + 20 + i * 45 - _scrollOffset;
                 if (yPosition >= container.getPosition().y
@@ -84,10 +87,11 @@ namespace rtype
             return _selectedRoom;
         }
 
+        std::vector<std::pair<std::string, int>> &_rooms;
+
       protected:
       private:
         sf::Font &_font;
-        std::vector<std::pair<std::string, int>> _rooms;
         float _scrollOffset;
         std::string _selectedRoom;
     };

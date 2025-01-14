@@ -140,6 +140,8 @@
              */
             std::string sendExistingEntities();
 
+            std::vector<std::string> _clientAddresses;
+
 
         private:
             int _window_width = 0;
@@ -158,7 +160,6 @@
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
-            std::vector<std::string> _clientAddresses;
             RandomNumber _random_number;
             std::shared_ptr<GameplayFactory> _gameplay_factory;
 

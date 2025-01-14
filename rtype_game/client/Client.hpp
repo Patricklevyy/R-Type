@@ -109,6 +109,11 @@
                 std::vector<std::pair<std::string, int>> _roomsList;
                 ecs::ECS _ecs;
 
+                /**
+                 * @brief Sends a message to the server to ask the list of all the rooms.
+                 */
+                void requestRoomList();
+
             protected:
             private:
                 int _window_width;
@@ -244,10 +249,6 @@
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
 
-                /**
-                 * @brief Sends a message to the server to ask the list of all the rooms.
-                 */
-                void requestRoomList();
                 void execute_animation();
         };
     }

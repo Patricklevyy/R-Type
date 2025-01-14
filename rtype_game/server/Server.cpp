@@ -42,6 +42,13 @@ namespace rtype
 
     void Server::getAllRooms(std::string &clientAddr)
     {
+        // for (const auto &room : _rooms) {
+        // for (const auto &clientAddrr : room->_clientAddresses) {
+        //     std::cout << "id adressssssss -> " << clientAddrr << std::endl;
+        // }
+        // }
+        std::cout << "id adressssssss -> " << clientAddr << std::endl;
+
         std::string roomList = "rooms=";
         for (const auto &room : _rooms) {
             roomList += room->getName() + "," + std::to_string(room->getNbClient()) + ":";
@@ -55,7 +62,15 @@ namespace rtype
         responseMessage.id = 0;
         responseMessage.params = roomList;
         _compressor.serialize(responseMessage, response);
-        _udpManager->sendMessage(response, clientAddr);
+        std::cout << "Merdeeee" << std::endl;
+        // for (const auto &room : _rooms) {
+        // for (const auto &clientAddrr : room->_clientAddresses) {
+        //     if(_udpManager->sendMessage(response, clientAddrr))
+        //     std::cout << "Pas Merdeeee" << std::endl;
+        // }
+    // }
+        if(_udpManager->sendMessage(response, clientAddr))
+            std::cout << "Pas Merdeeee" << responseMessage.params << std::endl;
     }
 
     void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)

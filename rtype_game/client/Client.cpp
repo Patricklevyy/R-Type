@@ -69,8 +69,10 @@ namespace rtype
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         Utils::checkAction(mes.action);
-        // std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
-        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(mes.action);
+        // std::cout << "id : " << mes.id << " action " << mes.action << "
+        // params " << mes.params << std::endl;
+        rtype::RTYPE_ACTIONS action =
+            static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
     }
 
@@ -95,6 +97,8 @@ namespace rtype
         try {
             InputScreen inputScreen(*lawindow);
             bool isRunning = true;
+            // requestRoomList();
+
             inputScreen.run(isRunning, playerName);
         } catch (const std::exception &e) {
             std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
@@ -102,16 +106,22 @@ namespace rtype
             return;
         }
 
-        try {
-            Menu menu(*lawindow, playerName, *this);
-            menu.run(_in_menu);
-            std::cout << "Menu exécuté avec succès." << std::endl;
-        } catch (const std::exception &e) {
-            std::cerr << "Erreur lors du chargement du menu principal : "
-                      << e.what() << "\n";
-            return;
-        }
+        // try {
+        Menu menu(*lawindow, playerName, *this);
+        // requestRoomList();
+        menu.run(_in_menu);
+        // std::cout << "Menu exécuté avec succès." << std::endl;
+        // } catch (const std::exception &e) {
+        //     std::cerr << "Erreur lors du chargement du menu principal : "
+        //               << e.what() << "\n";
+        //     return;
+        // }
         std::queue<sf::Event> events;
+
+        // for (const auto &room : _roomsList) {
+        //     std::cout << "Room Name: " << room.first
+        //               << ", Number of Clients: " << room.second << std::endl;
+        // }
 
         while (_running) {
             _timer->waitTPS();

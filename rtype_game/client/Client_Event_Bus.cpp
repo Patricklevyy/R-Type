@@ -192,8 +192,8 @@ namespace rtype
 
         _eventBus.subscribe(RTYPE_ACTIONS::GET_ALL_ROOMS, [this](const std::vector<std::any> &args) {
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
-            std::cout << "Les putains de rooms sont: -> " << message.params << std::endl;
-            // _roomsList = parseRoomList(message.params);
+            // std::cout << "Les putains de rooms sont: -> " << message.params << std::endl;
+            _roomsList = parseRoomList(message.params);
             // for (const auto &room : _roomsList) {
             //     std::cout << "Room Name: " << room.first << ", Number of Clients: " << room.second << std::endl;
             // }
@@ -202,17 +202,23 @@ namespace rtype
 
     std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
     {
+        std::vector<std::pair<std::string, int>> parsedRooms;
         std::stringstream ss(roomList);
-        std::string roomData;
+        std::string roomEntry;
 
-        while (std::getline(ss, roomData, ':')) {
-            size_t delimiterPos = roomData.find(',');
-            if (delimiterPos != std::string::npos) {
-                std::string roomName = roomData.substr(0, delimiterPos);
-                int nbClients = std::stoi(roomData.substr(delimiterPos + 1));
-                _roomsList.emplace_back(roomName, nbClients);
+        while (std::getline(ss, roomEntry, ':')) {
+            size_t prefixPos = roomEntry.find("rooms=");
+            if (prefixPos != std::string::npos) {
+                roomEntry = roomEntry.substr(prefixPos + 6);
+
+                size_t delimiterPos = roomEntry.find(',');
+                if (delimiterPos != std::string::npos) {
+                    std::string roomName = roomEntry.substr(0, delimiterPos);
+                    int nbClients = std::stoi(roomEntry.substr(delimiterPos + 1));
+                    parsedRooms.emplace_back(roomName, nbClients);
+                }
             }
         }
-        return _roomsList;
+        return parsedRooms;
     }
 }

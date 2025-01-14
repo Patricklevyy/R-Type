@@ -29,7 +29,8 @@ namespace rtype
         std::string getCreatedRoom() const { return _createdRoom; }
         std::shared_ptr<RoomHandling> _roomHandling;
         std::shared_ptr<TextInput> _textInput;
-
+        void syncRooms();
+        std::vector<std::pair<std::string, int>> roomsList;
 
       protected:
       private:

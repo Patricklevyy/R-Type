@@ -26,7 +26,15 @@ namespace rtype
 
         _textInput = std::make_shared<TextInput>(
             _font, sf::Vector2f(0, 0), sf::Vector2f(400, 40));
-        _roomHandling = std::make_shared<RoomHandling>(_font);
+        _roomHandling =
+            std::make_shared<RoomHandling>(_font, client._roomsList);
+        _client.requestRoomList();
+        roomsList = _client._roomsList;
+        for (const auto &room : roomsList) {
+            std::cout << "COUCOUUUUUUUUUUUUUUUUUUUUUUUU" << std::endl;
+            std::cout << room.first << "->" << room.second << std::endl;
+            _roomHandling->addRoom(room.first, room.second);
+        }
 
         _roomContainer.setFillColor(sf::Color(20, 20, 20));
         _roomContainer.setOutlineColor(sf::Color::White);
@@ -45,6 +53,7 @@ namespace rtype
     void Menu::run(bool &isRunning)
     {
         while (isRunning) {
+            syncRooms();
             handleEvents(isRunning);
             update();
             render();
@@ -56,6 +65,7 @@ namespace rtype
         sf::Event event;
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
+                _in_menu = false;
                 _window.close();
             }
 
@@ -65,11 +75,25 @@ namespace rtype
                     static_cast<float>(mousePos.y));
 
                 if (_validateButton.getGlobalBounds().contains(mousePosF)) {
-                    if (!_textInput->getText().empty()) {
-                        _createdRoom = _textInput->getText();
-                        _roomHandling->addRoom(_textInput->getText());
+                    const std::string roomName = _textInput->getText();
+
+                    if (!roomName.empty()) {
+                        roomsList = _client._roomsList;
+
+                        auto it = std::find_if(roomsList.begin(),
+                            roomsList.end(), [&roomName](const auto &room) {
+                                return room.first == roomName;
+                            });
+                        int nb_places = 0;
+                        if (it != roomsList.end()) {
+                            nb_places = it->second;
+                        }
+                        _roomHandling->addRoom(roomName, nb_places);
                         _textInput->clear();
-                        _client.send_server_create_room(_createdRoom);
+                        _client.send_server_create_room(roomName);
+                        // _client.requestRoomList();
+                        // std::cout << "bonnnnnnnn, marche putainn" <<
+                        // std::endl;
                     }
                 }
 
@@ -114,6 +138,27 @@ namespace rtype
             _roomContainer.getPosition().y + _roomContainer.getSize().y + 10);
         _playerNameText.setPosition(
             windowSize.x - _playerNameText.getLocalBounds().width - 20, 10);
+    }
+
+    void Menu::syncRooms()
+    {
+        // roomsList = _client._roomsList;
+        for (const auto &frjifr : roomsList)
+            std::cout << frjifr.first << "syncRooms jjnrfjnfjnfrj-w<-" << frjifr.second << std::endl;
+        for (const auto &room : roomsList) {
+            auto it = std::find_if(_roomHandling->_rooms.begin(),
+                _roomHandling->_rooms.end(), [&room](const auto &existingRoom) {
+                    return existingRoom.first == room.first;
+                });
+
+            if (it != _roomHandling->_rooms.end()) {
+                if (it->second != room.second) {
+                    it->second = room.second;
+                }
+            } else {
+                _roomHandling->addRoom(room.first, room.second);
+            }
+        }
     }
 
     void Menu::render()
