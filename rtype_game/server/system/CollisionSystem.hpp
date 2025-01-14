@@ -67,13 +67,13 @@ namespace rtype
             }
         }
 
-        std::pair<std::list<size_t>, std::list<BONUS>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
+        std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
             auto &bonus = std::any_cast<ecs::SparseArray<Bonus> &>(components_array[typeid(Bonus)]);
             auto &playable = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
 
-            std::pair<std::list<size_t>, std::list<BONUS>> dead_bonus;
+            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> dead_bonus;
 
             for (std::size_t i = 0; i < bonus.size(); ++i) {
                 if (!bonus[i].has_value() || !positions[i].has_value() || !hitboxes[i].has_value()) {
@@ -88,7 +88,7 @@ namespace rtype
                     if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
                         std::cout << "COLLISION DETECTED: Bonus " << i << " -> Playable " << j << std::endl;
                         dead_bonus.first.push_back(i);
-                        dead_bonus.second.push_back(bonus[i].value()._type);
+                        dead_bonus.second.push_back(std::make_pair(bonus[i].value()._type, std::tuple(j, positions[j].value()._pos_x, positions[j].value()._pos_y)));
                         break;
                     }
                 }

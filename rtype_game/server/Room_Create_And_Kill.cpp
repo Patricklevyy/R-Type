@@ -123,11 +123,12 @@ namespace rtype
         send_client_new_monster(index, positions.first, positions.second, sprites);
     }
 
-    void Room::spawnWeaponDrop(const std::pair<float, float> &position)
+    void Room::spawnBonus(const std::pair<float, float> &position)
     {
         size_t index = getNextIndex();
 
-        SPRITES sprite = SPRITES::WEAPON_DROP;
+        BONUS bonus = _gameplay_factory->getRandomBonuses(_random_number.generateRandomNumbers(1, BONUS::MAX_BONUS - 1));
+        SPRITES sprite = _gameplay_factory->getSpriteBonus(bonus);
 
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getBonusVelocity()));
@@ -135,8 +136,7 @@ namespace rtype
         _ecs.addComponents<SpriteId>(index, SpriteId(sprite));
         _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(sprite)));
         _ecs.addComponents<Ennemies>(index, Ennemies());
-        // _ecs.addComponents<Bonus>(index, Bonus(_gameplay_factory->getRandomBonuses(_random_number.generateRandomNumbers(1, 3))));
-        _ecs.addComponents<Bonus>(index, Bonus(_gameplay_factory->getRandomBonuses(1)));
+        _ecs.addComponents<Bonus>(index, Bonus(bonus));
 
         std::string projectileInfo = Utils::bonusInfoToString(position, ecs::direction::LEFT, ecs::direction::NO_DIRECTION, sprite, _gameplay_factory->getBonusVelocity());
         send_client_new_projectile(index, projectileInfo);
@@ -163,5 +163,21 @@ namespace rtype
         if (id <= 0 || id >= SPRITES::MAX_SPRITE)
             throw std::invalid_argument("Invalid sprite ID in hit box.");
         return SpriteFactory::getMaxTextureSizeForSprite(id);
+    }
+
+    void Room::create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>> bonus_info) {
+        switch (bonus_info.first)
+        {
+            case BONUS::LIFE:
+                _bonus_system.addPlayerLife(_ecs._components_arrays, std::get<0>(bonus_info.second), 10000);
+                break;
+            case BONUS::VELOCITY:
+                _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), 100);
+                break;
+            // case BONUS::LIFE:
+
+            default:
+                break;
+        }
     }
 }

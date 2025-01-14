@@ -55,13 +55,17 @@ namespace rtype
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS, [this](const std::vector<std::any> &args) {
             (void)args;
-            std::pair<std::list<size_t>, std::list<BONUS>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);
+            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);;
             if (!list_bonuses.first.empty()) {
-                for (auto bonus : list_bonuses.first) {
-                    _kill_system.killEntity(_ecs, bonus);
+                for (auto bonus : list_bonuses.second) {
+                    create_bonus(bonus);
+                }
+                for (auto dead_bonus : list_bonuses.first) {
+                    _kill_system.killEntity(_ecs, dead_bonus);
                 }
                 send_client_dead_entities(list_bonuses.first);
             }
+
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
@@ -84,7 +88,7 @@ namespace rtype
                 std::pair<float, float> position = *pos_it;
 
                 if (entity_id < monsters.size() && monsters[entity_id].has_value()) {
-                    spawnWeaponDrop(position);
+                    spawnBonus(position);
                 }
                 _kill_system.killEntity(_ecs, entity_id);
             }

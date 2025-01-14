@@ -57,6 +57,7 @@
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "system/BonusSystem.hpp"
 
     namespace rtype
     {
@@ -141,7 +142,7 @@
              */
             std::string sendExistingEntities();
 
-            void spawnWeaponDrop(const std::pair<float, float> &position);
+            void spawnBonus(const std::pair<float, float> &position);
 
 
         private:
@@ -177,6 +178,7 @@
             LevelSystem _level_system;
             KillSystem _kill_system;
             AsteroideSystem _asteroide_system;
+            BonusSystem _bonus_system;
 
             /**
              * @brief Sends information about dead entities to clients.
@@ -266,6 +268,7 @@
             void sendScore(unsigned int);
             void send_roll_back();
             std::pair<int, int> createHitbox(SPRITES);
+            void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
         };
     }
 

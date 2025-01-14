@@ -64,6 +64,8 @@
             CREATE_PLAYER,
             FAIL_LEVEL,
             WIN_LEVEL,
+            START_BONUS,
+            STOP_BONUS,
             UPDATE_POSITIONS_FROM_SERVER,
             UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
@@ -102,6 +104,10 @@
             LEVEL_BOSS,
             LEVEL_LOCK,
             WEAPON_DROP,
+            LIFE_DROP,
+            VELOCITY_DROP,
+            SHIELD_DROP,
+            SPEED_DROP,
             ASTEROIDE,
             MAX_SPRITE
         };
@@ -150,9 +156,10 @@
          * @brief Spawn a weapon when a monster is killed
          */
         enum BONUS {
-            VECOCITY = 1,
+            VELOCITY = 1,
             LIFE,
             WEAPON,
+            SHIELD,
             MAX_BONUS
         };
     }

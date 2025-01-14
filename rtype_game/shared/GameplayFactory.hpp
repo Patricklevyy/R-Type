@@ -288,6 +288,22 @@ namespace rtype {
             return static_cast<BONUS>(rand);
         }
 
+        SPRITES getSpriteBonus(BONUS bonus) {
+            switch (bonus)
+            {
+            case VELOCITY:
+                return SPRITES::SPEED_DROP;
+            case LIFE:
+                return SPRITES::LIFE_DROP;
+            case WEAPON:
+                return SPRITES::WEAPON_DROP;
+            case SHIELD:
+                return SPRITES::SHIELD_DROP;
+            default:
+                throw std::invalid_argument("No Id found for bonus sprite");
+            }
+        }
+
     protected:
     private:
         std::map<int, std::tuple<int, int, int>> monsters;

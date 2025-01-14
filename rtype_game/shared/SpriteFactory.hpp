@@ -83,6 +83,12 @@
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.1);
                         case SPRITES::WEAPON_DROP:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
+                        case SPRITES::LIFE_DROP:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
+                        case SPRITES::SPEED_DROP:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
+                        case SPRITES::SHIELD_DROP:
+                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -166,7 +172,13 @@
                         case SPRITES::ASTEROIDE:
                             return loadTextures("projectiles/asteroide", 0, 11);
                         case SPRITES::WEAPON_DROP:
-                            return {loadTexture("assets/bonuses/weapon.png")};
+                            return {loadTexture("assets/bonuses/bonus_weapon.png")};
+                        case SPRITES::LIFE_DROP:
+                            return {loadTexture("assets/bonuses/bonus_life.png")};
+                        case SPRITES::SPEED_DROP:
+                            return {loadTexture("assets/bonuses/bonus_eclaire.png")};
+                        case SPRITES::SHIELD_DROP:
+                            return {loadTexture("assets/bonuses/bonus_shield.png")};
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
                     }
