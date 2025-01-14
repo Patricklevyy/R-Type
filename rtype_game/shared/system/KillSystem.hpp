@@ -21,6 +21,7 @@
     #include "../../server/components/Monster.hpp"
     #include "../../server/components/Hitbox.hpp"
     #include "../../server/components/Damage.hpp"
+    #include "../../server/components/PowerUp.hpp"
     #include "../components/Levels.hpp"
     #include "../../client/components/LevelStatus.hpp"
     #include "../../client/components/Animation.hpp"
@@ -75,6 +76,7 @@
                     ecs.killEntityFromRegistry<SpriteId>(index);
                     ecs.killEntityFromRegistry<Bonus>(index);
                     ecs.killEntityFromRegistry<Damage>(index);
+                    ecs.killEntityFromRegistry<PowerUp>(index);
 
                     ecs.addDeadEntity(index);
                 }

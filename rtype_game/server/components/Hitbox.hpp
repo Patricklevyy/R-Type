@@ -33,6 +33,7 @@
 
                 int _width;
                 int _height;
+                bool _invicible = false;
             protected:
             private:
         };

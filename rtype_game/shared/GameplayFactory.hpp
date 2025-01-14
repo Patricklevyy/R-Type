@@ -95,6 +95,37 @@ namespace rtype {
             backgroundSettings.lookupValue("background_speed", speed);
 
             background_speed = speed;
+
+            const libconfig::Setting& bonusVelocitySettings = root["gameplay"]["bonus"]["velocity"];
+            int boost, duration;
+            bonusVelocitySettings.lookupValue("boost", boost);
+            bonusVelocitySettings.lookupValue("duration", duration);
+
+            bonuses[BONUS::VELOCITY] = std::make_pair(boost, duration);
+
+            const libconfig::Setting& bonusLifeSettings = root["gameplay"]["bonus"]["life"];
+            bonusLifeSettings.lookupValue("boost", boost);
+            bonuses[BONUS::LIFE] = std::make_pair(boost, duration);
+
+            const libconfig::Setting& bonusShieldSettings = root["gameplay"]["bonus"]["shield"];
+            bonusShieldSettings.lookupValue("duration", duration);
+            bonuses[BONUS::SHIELD] = std::make_pair(boost, duration);
+        }
+
+        int getShieldDuration() {
+            return bonuses[BONUS::SHIELD].second;
+        }
+
+        int getLifeBonus() {
+            return bonuses[BONUS::LIFE].first;
+        }
+
+        int getVelocityDurationBonus() {
+            return bonuses[BONUS::VELOCITY].second;
+        }
+
+        int getVelocityBoostBonus() {
+            return bonuses[BONUS::VELOCITY].first;
         }
 
         int getPlayerVelocity() {
@@ -311,6 +342,7 @@ namespace rtype {
         std::map<int, std::list<int>> levels;
         std::tuple<int, int, int> player;
         std::pair<int, int> asteroids;
+        std::map<int, std::pair<int, int>> bonuses;
         float background_speed = 0;
 
         DIFFICULTY _difficulty = EASY;

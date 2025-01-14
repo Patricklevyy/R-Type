@@ -64,14 +64,17 @@
             CREATE_PLAYER,
             FAIL_LEVEL,
             WIN_LEVEL,
-            START_BONUS,
-            STOP_BONUS,
             UPDATE_POSITIONS_FROM_SERVER,
             UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
             UPDATE_SCORE,
             SPAWN_ASTEROIDE,
             CHECK_BONUS_COLLISIONS,
+            CHECK_BONUS,
+            PUT_SHIELD,
+            REMOVE_SHIELD,
+            UP_VELOCITY,
+            DOWN_VELOCITY,
             MAX_ACTION
         };
 
@@ -109,6 +112,7 @@
             SHIELD_DROP,
             SPEED_DROP,
             ASTEROIDE,
+            SHIP_SHIELD,
             MAX_SPRITE
         };
 

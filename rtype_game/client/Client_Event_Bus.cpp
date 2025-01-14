@@ -189,5 +189,43 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
+        _eventBus.subscribe(RTYPE_ACTIONS::UP_VELOCITY, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _bonus_system.changePlayerVelocity(_ecs._components_arrays, _player_system.getIndexPlayer(_ecs._components_arrays), _gameplay_factory->getVelocityBoostBonus());
+
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::DOWN_VELOCITY, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _bonus_system.changePlayerVelocity(_ecs._components_arrays, _player_system.getIndexPlayer(_ecs._components_arrays), -_gameplay_factory->getVelocityBoostBonus());
+
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::PUT_SHIELD, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::SHIP_SHIELD);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_SHIELD, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::MY_PLAYER_SHIP);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
     }
 }

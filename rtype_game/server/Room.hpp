@@ -41,6 +41,7 @@
     #include "components/Ennemies.hpp"
     #include "components/Bonus.hpp"
     #include "components/Damage.hpp"
+    #include "components/PowerUp.hpp"
     #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
@@ -57,7 +58,7 @@
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
-    #include "system/BonusSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
 
     namespace rtype
     {
@@ -269,6 +270,9 @@
             void send_roll_back();
             std::pair<int, int> createHitbox(SPRITES);
             void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
+            void send_client_change_player_velocity(bool);
+            void send_client_player_shield(size_t, bool);
+            void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
         };
     }
 

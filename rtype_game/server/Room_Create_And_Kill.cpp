@@ -68,6 +68,7 @@ namespace rtype
         _ecs.addComponents<Hitbox>(index, hitbox);
         _ecs.addComponents<Allies>(index, allies);
         _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getPlayerBodyDamage()));
+        _ecs.addComponents<PowerUp>(index, PowerUp());
 
         _nb_client++;
 
@@ -166,16 +167,22 @@ namespace rtype
     }
 
     void Room::create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>> bonus_info) {
+
         switch (bonus_info.first)
         {
             case BONUS::LIFE:
-                _bonus_system.addPlayerLife(_ecs._components_arrays, std::get<0>(bonus_info.second), 10000);
+                _bonus_system.addPlayerLife(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getLifeBonus());
                 break;
             case BONUS::VELOCITY:
-                _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), 100);
+                _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getVelocityBoostBonus());
+                _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getVelocityDurationBonus());
+                send_client_change_player_velocity(true);
                 break;
-            // case BONUS::LIFE:
-
+            case BONUS::SHIELD:
+                _bonus_system.createPlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second));
+                _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getShieldDuration());
+                send_client_player_shield(std::get<0>(bonus_info.second), true);
+                break;
             default:
                 break;
         }
