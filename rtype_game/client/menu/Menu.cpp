@@ -11,7 +11,7 @@ namespace rtype
     Menu::Menu(sf::RenderWindow &win, const std::string &name, Client &client)
         : _window(win), _playerName(name), _createdRoom(""), _client(client)
     {
-        if (!_font.loadFromFile("Menu/Georgia Regular font.ttf")
+        if (!_font.loadFromFile("assets/fonts/Georgia Regular font.ttf")
             || !_logoTexture.loadFromFile("assets/backgrounds/logo.png")
             || !_createRoomTexture.loadFromFile(
                 "assets/backgrounds/create_room_button.png")) {
