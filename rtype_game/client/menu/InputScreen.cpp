@@ -94,7 +94,7 @@ namespace rtype
                 if (_validateButton.getGlobalBounds().contains(
                         mousePos.x, mousePos.y)) {
                     playerName = _inputString;
-                    isRunning = false; // Quitte cet écran
+                    isRunning = false;
                 }
                 _isButtonPressed = false;
                 _validateButton.setScale(0.35f, 0.35f);
@@ -104,11 +104,11 @@ namespace rtype
 
     void InputScreen::update()
     {
-        if (!_window.isOpen()) {
-            std::cerr << "Erreur : la fenêtre n'est pas valide ou est fermée."
-                      << std::endl;
-            return;
-        }
+        // if (!_window.isOpen()) {
+        //     std::cerr << "Erreur : la fenêtre n'est pas valide ou est fermée."
+        //               << std::endl;
+        //     return;
+        // }
 
         // sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
 

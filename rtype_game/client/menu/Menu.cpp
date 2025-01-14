@@ -142,9 +142,6 @@ namespace rtype
 
     void Menu::syncRooms()
     {
-        // roomsList = _client._roomsList;
-        for (const auto &frjifr : roomsList)
-            std::cout << frjifr.first << "syncRooms jjnrfjnfjnfrj-w<-" << frjifr.second << std::endl;
         for (const auto &room : roomsList) {
             auto it = std::find_if(_roomHandling->_rooms.begin(),
                 _roomHandling->_rooms.end(), [&room](const auto &existingRoom) {

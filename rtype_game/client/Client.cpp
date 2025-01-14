@@ -108,7 +108,9 @@ namespace rtype
 
         // try {
         Menu menu(*lawindow, playerName, *this);
-        // requestRoomList();
+        requestRoomList();
+        // std::cout << "Room list updated: " << _roomsList.size()
+        //           << " rooms found." << std::endl;
         menu.run(_in_menu);
         // std::cout << "Menu exécuté avec succès." << std::endl;
         // } catch (const std::exception &e) {
