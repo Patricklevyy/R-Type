@@ -116,7 +116,7 @@
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::shared_ptr<GameplayFactory> _gameplay_factory;
-                DIFFICULTY _difficulty = DIFFICULTY::MEDIUM;
+                DIFFICULTY _difficulty = DIFFICULTY::EASY;
 
                 // CLASSES
 

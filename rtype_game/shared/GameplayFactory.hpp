@@ -119,18 +119,54 @@ namespace rtype {
         }
 
         void changeGameplayDifficulty() {
-            switch (_difficulty)
-            {
+            switch (_difficulty) {
                 case DIFFICULTY::EASY:
-                    std::get<1>(player) = 40;
                     break;
+
                 case DIFFICULTY::MEDIUM:
-                    std::get<1>(player) = 500;
+                    std::get<0>(player) = std::get<0>(player) * 0.67;
+                    std::get<1>(player) = std::get<1>(player) * 0.83;
+                    std::get<2>(player) = std::get<2>(player) * 0.67;
+
+                    for (auto& monster : monsters) {
+                        std::get<0>(monster.second) *= 1.25;
+                        std::get<1>(monster.second) *= 1.2;
+                        std::get<2>(monster.second) *= 1.33;
+                    }
+
+                    for (auto& boss : bosses) {
+                        std::get<0>(boss.second) *= 1.25;
+                        std::get<1>(boss.second) *= 1.25;
+                        std::get<2>(boss.second) *= 1.33;
+                    }
+
+                    asteroids.first *= 0.71;
+                    asteroids.second = 4;
+
+                    background_speed *= 1.25;
                     break;
+
                 case DIFFICULTY::HARD:
-                    std::get<1>(player) = 1000;
-                    break;
-                default:
+                    std::get<0>(player) = std::get<0>(player) * 0.53;
+                    std::get<1>(player) = std::get<1>(player) * 0.75;
+                    std::get<2>(player) = std::get<2>(player) * 0.53;
+
+                    for (auto& monster : monsters) {
+                        std::get<0>(monster.second) *= 1.625;
+                        std::get<1>(monster.second) *= 1.4;
+                        std::get<2>(monster.second) *= 1.67;
+                    }
+
+                    for (auto& boss : bosses) {
+                        std::get<0>(boss.second) *= 1.5;
+                        std::get<1>(boss.second) *= 1.5;
+                        std::get<2>(boss.second) *= 2.0;
+                    }
+
+                    asteroids.first *= 0.50;
+                    asteroids.second = 5;
+
+                    background_speed *= 1.5;
                     break;
             }
         }
@@ -184,7 +220,7 @@ namespace rtype {
             switch (sprite)
             {
                 case SPRITES::ASTEROIDE:
-                    return 10000;
+                    return 1000;
                 case SPRITES::PLAYER_SIMPLE_MISSILE:
                     return 10;
                 case SPRITES::PLAYER_CHARGED_SHOOT:
