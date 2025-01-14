@@ -9,7 +9,7 @@
 #define SFMLHANDLER_HPP_
 
     #include "Client.hpp"
-
+    #include "KeyBinding.hpp"
     namespace rtype
     {
         class Client;
@@ -28,6 +28,7 @@
                 void processMouseButtonReleased(const sf::Event &event);
 
                 Client &_client;
+                KeyBindingManager _keyBindingManager;
             };
     }
 
