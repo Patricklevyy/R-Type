@@ -49,7 +49,6 @@
                 std::pair<bool, LEVELS> isLevelClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
-                        std::cout << "checl level" << std::endl;
                         auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array.at(typeid(Levels)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
                         auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
@@ -70,7 +69,6 @@
                                 }
                             }
                         }
-                        std::cout << "end check leve" << std::endl;
                         return std::make_pair(false, LEVELS{});
                     } catch (const std::exception &e) {
                         std::cerr << "[EXCption] " << e.what() << std::endl;

@@ -74,7 +74,7 @@ namespace rtype
                 _kill_system.killEntity(_ecs, index);
             return;
         }
-        size_t index_player = _player_system.getIndexPlayer(_ecs._components_arrays);
+        int index_player = _player_system.getIndexPlayer(_ecs._components_arrays);
         if (index_player == -1)
             return;
         std::pair<float, float> player_positions = _position_system.getPlayerPosition(index_player, _ecs._components_arrays);

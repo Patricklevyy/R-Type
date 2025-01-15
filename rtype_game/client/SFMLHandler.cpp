@@ -51,7 +51,6 @@ namespace rtype
                 break;
             }
         }
-        std::cout << "fninse handle event " << std::endl;
     }
 
     void SFMLHandler::processKeyPressed(const sf::Event &event)
