@@ -48,23 +48,23 @@ namespace rtype
         _playerNameText.setFillColor(sf::Color::White);
     }
 
-    void Menu::run(bool &inMenu, bool &isRunning)
+    void Menu::run(bool &inMenu)
     {
         while (inMenu) {
             syncRooms();
-            handleEvents(inMenu, isRunning);
+            handleEvents(inMenu);
             update();
             render();
         }
     }
 
-    void Menu::handleEvents(bool &_in_menu, bool &isRunning)
+    void Menu::handleEvents(bool &_in_menu)
     {
         sf::Event event;
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 _in_menu = false;
-                isRunning = false;
+                _client._running = false;
                 _window.close();
             }
 

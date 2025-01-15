@@ -21,8 +21,8 @@ namespace rtype
       public:
         Menu(sf::RenderWindow &window, const std::string &name, Client &client);
         ~Menu() {};
-        void run(bool &, bool&);
-        void handleEvents(bool &_in_menu, bool&);
+        void run(bool &);
+        void handleEvents(bool &_in_menu);
         void update();
         void render();
         std::string getPlayerName() const { return _playerName; }

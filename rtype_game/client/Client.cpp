@@ -94,10 +94,6 @@ namespace rtype
             InputScreen inputScreen(*lawindow);
             bool isInputScreen = true;
             inputScreen.run(isInputScreen, playerName);
-            // std::cout << isInputScreen << std::endl;
-            // if (!isInputScreen) {
-            //     _running = false;
-            // }
         } catch (const std::exception &e) {
             std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
                       << e.what() << "\n";
@@ -122,7 +118,7 @@ namespace rtype
         try {
             requestRoomList();
             Menu menu(*lawindow, playerName, *this);
-            menu.run(_in_menu, _running);
+            menu.run(_in_menu);
         } catch (const std::exception &e) {
             std::cerr << "Erreur lors du chargement du menu principal : "
                       << e.what() << "\n";
@@ -133,7 +129,6 @@ namespace rtype
         if (networkThread.joinable()) {
             networkThread.join();
         }
-        // return _running;
     }
 
     void Client::start()
