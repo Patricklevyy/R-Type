@@ -16,6 +16,7 @@
     #include "Enums.hpp"
     #include "RTypeExceptions.hpp"
     #include "Includes.hpp"
+    #include <list>
     #include "../../ecs/components/Direction.hpp"
 
     namespace rtype
@@ -36,6 +37,13 @@
 
                 static std::string bonusInfoToString(const std::pair<float, float> &position, int direction_x, int direction_y, SPRITES sprite, int velocity);
 
+                static std::string check_adress(int, const std::string&);
+
+                static std::list<std::pair<std::size_t, std::pair<float, float>>> parse_update(const std::string&);
+
+                static std::vector<std::tuple<std::pair<float, float>, int, int>> parseUpdateEntities(const std::string&);
+
+                static std::tuple<std::pair<float, float>, int, int> parsePositionAndRoomPort(const std::string &);
             protected:
             private:
         };

@@ -140,7 +140,7 @@ namespace rtype
         std::string entities = message.params.substr(pos + 1);
 
         std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
-        std::tuple<std::pair<float, float>, int, int> pos_port_dif = Command_checker::parsePositionAndRoomPort(player_room);
+        std::tuple<std::pair<float, float>, int, int> pos_port_dif = Utils::parsePositionAndRoomPort(player_room);
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
