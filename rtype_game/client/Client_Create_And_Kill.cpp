@@ -46,7 +46,6 @@ namespace rtype
     void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
-        std::cout << "JE CREATE : BOSS " << sprite_id << " , "  << x << " , " << y << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id);
 
@@ -59,7 +58,6 @@ namespace rtype
 
     void Client::createPlayer(unsigned int server_id, float x, float y)
     {
-        std::cout << "NEW PLAYER \n\n\n\n\n\n\n" << std::endl;
         size_t index = getNextIndex();
 
         ecs::Direction direction;

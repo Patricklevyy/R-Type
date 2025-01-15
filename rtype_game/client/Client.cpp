@@ -38,8 +38,7 @@ namespace rtype
 
     void Client::updateEntitiesFirstConnexion(const std::string &message)
     {
-        std::vector<std::tuple<std::pair<float, float>, int, int>> entities =
-            Command_checker::parseUpdateEntities(message);
+        std::vector<std::tuple<std::pair<float, float>, int, int>> entities = Utils::parseUpdateEntities(message);
 
         while (!entities.empty()) {
             std::tuple<std::pair<float, float>, int, int> entity =
@@ -55,8 +54,7 @@ namespace rtype
 
     void Client::setRoomAdress(int port)
     {
-        std::string ip_port =
-            Command_checker::check_adress(port, _udpClient->getServerIp());
+        std::string ip_port = Utils::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
     }
 

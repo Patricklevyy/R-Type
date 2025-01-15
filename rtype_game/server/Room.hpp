@@ -39,7 +39,9 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "components/Bonus.hpp"
     #include "components/Damage.hpp"
+    #include "components/PowerUp.hpp"
     #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
@@ -56,6 +58,7 @@
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
 
     namespace rtype
     {
@@ -140,6 +143,7 @@
              */
             std::string sendExistingEntities();
 
+            void spawnBonus(const std::pair<float, float> &position);
             std::vector<std::string> _clientAddresses;
 
 
@@ -175,6 +179,7 @@
             LevelSystem _level_system;
             KillSystem _kill_system;
             AsteroideSystem _asteroide_system;
+            BonusSystem _bonus_system;
 
             /**
              * @brief Sends information about dead entities to clients.
@@ -264,6 +269,10 @@
             void sendScore(unsigned int);
             void send_roll_back();
             std::pair<int, int> createHitbox(SPRITES);
+            void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
+            void send_client_change_player_velocity(bool);
+            void send_client_player_shield(size_t, bool);
+            void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
         };
     }
 

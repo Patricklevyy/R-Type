@@ -28,7 +28,6 @@
     #include "../../ecs/ECS.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
-    #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
     #include "../shared/GameplayFactory.hpp"
 
@@ -58,6 +57,7 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
 
     #include "menu/Menu.hpp"
 
@@ -131,7 +131,7 @@
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::shared_ptr<GameplayFactory> _gameplay_factory;
-                DIFFICULTY _difficulty = DIFFICULTY::MEDIUM;
+                DIFFICULTY _difficulty = DIFFICULTY::EASY;
 
                 // CLASSES
 
@@ -154,6 +154,7 @@
                 MusicSystem _music_system;
                 ScoreSystem _score_system;
                 AnimationSystem _animation_system;
+                BonusSystem _bonus_system;
 
                 void send_server_new_shoot(bool charged = false);
 
@@ -256,6 +257,7 @@
                 void init_levels_sprites();
 
                 void execute_animation();
+                void changePlayerSprite(int, SPRITES);
         };
     }
 #endif /* !CLIENT_HPP_ */

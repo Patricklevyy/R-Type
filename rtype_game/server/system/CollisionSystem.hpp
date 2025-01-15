@@ -57,8 +57,10 @@ namespace rtype
                                     continue;
                                 }
                                 if (i < healths.size() && j < healths.size() && healths[i].has_value() && healths[j].has_value() && i < damages.size() && damages[i].has_value() && j < damages.size() && damages[j].has_value()) {
-                                    healths[i].value()._health -= damages[j].value()._damages;
-                                    healths[j].value()._health -= damages[i].value()._damages;
+                                    if (!hitboxes[i].value()._invicible)
+                                        healths[i].value()._health -= damages[j].value()._damages;
+                                    if (!hitboxes[j].value()._invicible)
+                                        healths[j].value()._health -= damages[i].value()._damages;
                                 }
                             }
                         }
@@ -66,6 +68,37 @@ namespace rtype
                 }
             }
         }
+
+        std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
+            auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
+            auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
+            auto &bonus = std::any_cast<ecs::SparseArray<Bonus> &>(components_array[typeid(Bonus)]);
+            auto &playable = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
+
+            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> dead_bonus;
+
+            for (std::size_t i = 0; i < bonus.size(); ++i) {
+                if (!bonus[i].has_value() || !positions[i].has_value() || !hitboxes[i].has_value()) {
+                    continue;
+                }
+
+                for (std::size_t j = 0; j < playable.size(); ++j) {
+                    if (!playable[j].has_value() || !positions[j].has_value() || !hitboxes[j].has_value()) {
+                        continue;
+                    }
+
+                    if (isColliding(positions[i].value(), hitboxes[i].value(), positions[j].value(), hitboxes[j].value())) {
+                        std::cout << "COLLISION DETECTED: Bonus " << i << " -> Playable " << j << std::endl;
+                        dead_bonus.first.push_back(i);
+                        dead_bonus.second.push_back(std::make_pair(bonus[i].value()._type, std::tuple(j, positions[j].value()._pos_x, positions[j].value()._pos_y)));
+                        break;
+                    }
+                }
+            }
+
+            return dead_bonus;
+        }
+
 
     protected:
     private:
