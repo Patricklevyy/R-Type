@@ -27,12 +27,10 @@ namespace rtype
         _textInput = std::make_shared<TextInput>(
             _font, sf::Vector2f(0, 0), sf::Vector2f(400, 40));
         _roomHandling =
-            std::make_shared<RoomHandling>(_font, client._roomsList);
+            std::make_shared<RoomHandling>(_font, _client._roomsList);
         _client.requestRoomList();
         roomsList = _client._roomsList;
         for (const auto &room : roomsList) {
-            std::cout << "COUCOUUUUUUUUUUUUUUUUUUUUUUUU" << std::endl;
-            std::cout << room.first << "->" << room.second << std::endl;
             _roomHandling->addRoom(room.first, room.second);
         }
 
@@ -142,6 +140,7 @@ namespace rtype
 
     void Menu::syncRooms()
     {
+        std::lock_guard<std::mutex> lock(_client.roomListMutex);
         for (const auto &room : roomsList) {
             auto it = std::find_if(_roomHandling->_rooms.begin(),
                 _roomHandling->_rooms.end(), [&room](const auto &existingRoom) {

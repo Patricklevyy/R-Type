@@ -102,17 +102,23 @@
                 void handleMouseRelease();
                 void handleMouseClick();
                 void changeDifficulty(DIFFICULTY);
+                void launchMenu();
+
 
                 bool _in_menu = true;
                 bool _running = true;
                 EventBus _eventBus;
-                std::vector<std::pair<std::string, int>> _roomsList;
                 ecs::ECS _ecs;
 
                 /**
                  * @brief Sends a message to the server to ask the list of all the rooms.
                  */
                 void requestRoomList();
+
+                // std::vector<std::pair<std::string, int>> getRoomsList();
+                std::mutex roomListMutex;
+                std::vector<std::pair<std::string, int>> _roomsList;
+
 
             protected:
             private:

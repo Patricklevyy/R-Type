@@ -9,13 +9,14 @@
 #define ROOMHANDLING_HPP_
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <memory>
 
 namespace rtype
 {
     class RoomHandling {
       public:
         RoomHandling(
-            sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
+            sf::Font &_font,  std::vector<std::pair<std::string, int>> &rooms)
             : _font(_font), _scrollOffset(0), _rooms(rooms) {};
         ~RoomHandling() {};
 
@@ -53,7 +54,7 @@ namespace rtype
         void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
         {
             for (std::size_t i = 0; i < _rooms.size(); ++i) {
-                // std::cout << "when drawing" << _rooms[i].first << "->" << _rooms[i].second << std::endl;
+                // std::cout << "when drawing->" << _rooms[i].first << "->" << _rooms[i].second << std::endl;
                 float yPosition =
                     container.getPosition().y + 20 + i * 45 - _scrollOffset;
                 if (yPosition >= container.getPosition().y
