@@ -68,6 +68,7 @@ namespace rtype
         _ecs.addComponents<Hitbox>(index, hitbox);
         _ecs.addComponents<Allies>(index, allies);
         _ecs.addComponents<Damage>(index, Damage(_gameplay_factory->getPlayerBodyDamage()));
+        _ecs.addComponents<PowerUp>(index, PowerUp());
 
         _nb_client++;
 
@@ -129,16 +130,17 @@ namespace rtype
 
         BONUS bonus = _gameplay_factory->getRandomBonuses(_random_number.generateRandomNumbers(1, BONUS::MAX_BONUS - 1));
         SPRITES sprite = _gameplay_factory->getSpriteBonus(bonus);
+        int bonus_speed = _gameplay_factory->getBonusSpeed();
 
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction(ecs::direction::LEFT, ecs::direction::NO_DIRECTION));
-        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getBonusVelocity()));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(bonus_speed));
         _ecs.addComponents<ecs::Position>(index, ecs::Position(position.first, position.second));
         _ecs.addComponents<SpriteId>(index, SpriteId(sprite));
         _ecs.addComponents<Hitbox>(index, Hitbox(createHitbox(sprite)));
         _ecs.addComponents<Ennemies>(index, Ennemies());
         _ecs.addComponents<Bonus>(index, Bonus(bonus));
 
-        std::string projectileInfo = Utils::bonusInfoToString(position, ecs::direction::LEFT, ecs::direction::NO_DIRECTION, sprite, _gameplay_factory->getBonusVelocity());
+        std::string projectileInfo = Utils::bonusInfoToString(position, ecs::direction::LEFT, ecs::direction::NO_DIRECTION, sprite, bonus_speed);
         send_client_new_projectile(index, projectileInfo);
     }
 
@@ -166,16 +168,22 @@ namespace rtype
     }
 
     void Room::create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>> bonus_info) {
+
         switch (bonus_info.first)
         {
             case BONUS::LIFE:
-                _bonus_system.addPlayerLife(_ecs._components_arrays, std::get<0>(bonus_info.second), 10000);
+                _bonus_system.addPlayerLife(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getLifeBonus());
                 break;
             case BONUS::VELOCITY:
-                _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), 100);
+                _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getVelocityBoostBonus());
+                _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getVelocityDurationBonus());
+                send_client_change_player_velocity(true);
                 break;
-            // case BONUS::LIFE:
-
+            case BONUS::SHIELD:
+                _bonus_system.updatePlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second), SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_SHIELD), true);
+                _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getShieldDuration());
+                send_client_player_shield(std::get<0>(bonus_info.second), true);
+                break;
             default:
                 break;
         }

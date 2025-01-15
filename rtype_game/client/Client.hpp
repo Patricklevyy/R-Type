@@ -58,6 +58,7 @@
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
 
     namespace rtype
     {
@@ -139,6 +140,7 @@
                 MusicSystem _music_system;
                 ScoreSystem _score_system;
                 AnimationSystem _animation_system;
+                BonusSystem _bonus_system;
 
                 void send_server_new_shoot(bool charged = false);
 
@@ -239,6 +241,7 @@
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
                 void execute_animation();
+                void changePlayerSprite(int, SPRITES);
         };
     }
 #endif /* !CLIENT_HPP_ */

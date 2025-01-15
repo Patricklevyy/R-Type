@@ -53,20 +53,6 @@ namespace rtype
             (void)args;
             _collision_system.detectCollisions(_ecs._components_arrays);
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS, [this](const std::vector<std::any> &args) {
-            (void)args;
-            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);;
-            if (!list_bonuses.first.empty()) {
-                for (auto bonus : list_bonuses.second) {
-                    create_bonus(bonus);
-                }
-                for (auto dead_bonus : list_bonuses.first) {
-                    _kill_system.killEntity(_ecs, dead_bonus);
-                }
-                send_client_dead_entities(list_bonuses.first);
-            }
-
-        });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
 
@@ -194,6 +180,30 @@ namespace rtype
                     std::get<2>(asteroide)
                 );
                 createEntityProjectiles(index, pos_dir_sprite);
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);;
+            if (!list_bonuses.first.empty()) {
+                for (auto bonus : list_bonuses.second) {
+                    create_bonus(bonus);
+                }
+                for (auto dead_bonus : list_bonuses.first) {
+                    _kill_system.killEntity(_ecs, dead_bonus);
+                }
+                send_client_dead_entities(list_bonuses.first);
+            }
+
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::list<std::pair<size_t, std::list<BONUS>>> bonuses = _bonus_system.checkBonus(_ecs._components_arrays);
+
+            if (!bonuses.empty()) {
+                for (auto bonus : bonuses) {
+                    desactivateBonus(bonus);
+                }
             }
         });
     }
