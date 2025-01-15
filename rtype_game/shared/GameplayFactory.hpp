@@ -22,359 +22,67 @@ namespace rtype {
         GameplayFactory() {}
         ~GameplayFactory() {}
 
-        void init(const std::string& filename) {
-            libconfig::Config cfg;
+        void init(const std::string&);
 
-            try {
-                cfg.readFile(filename.c_str());
-            } catch (const libconfig::FileIOException& fioex) {
-                std::cerr << "I/O error while reading file." << std::endl;
-                throw;
-            } catch (const libconfig::ParseException& pex) {
-                std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
-                          << " - " << pex.getError() << std::endl;
-                throw;
-            }
+        BONUS getRandomBonuses(int);
 
-            const libconfig::Setting& root = cfg.getRoot();
+        SPRITES getSpriteBonus(BONUS);
 
-            const libconfig::Setting& playerSettings = root["gameplay"]["players"];
-            int playerHealth, playerVelocity, playerDamage;
-            playerSettings.lookupValue("health", playerHealth);
-            playerSettings.lookupValue("velocity", playerVelocity);
-            playerSettings.lookupValue("damage", playerDamage);
+        int getBonusSpeed() const;
 
-            player = std::make_tuple(playerHealth, playerVelocity, playerDamage);
+        int getShieldDuration();
 
-            const libconfig::Setting& monsterSettings = root["gameplay"]["monsters"];
-            for (int i = 0; i < monsterSettings.getLength(); ++i) {
-                const libconfig::Setting& monster = monsterSettings[i];
-                int health, velocity, damage;
+        int getLifeBonus();
 
-                monster.lookupValue("health", health);
-                monster.lookupValue("velocity", velocity);
-                monster.lookupValue("damage", damage);
+        int getVelocityDurationBonus();
 
-                monsters[i + 1] = std::make_tuple(health, velocity, damage);
-            }
+        int getVelocityBoostBonus();
 
-            const libconfig::Setting& bossSettings = root["gameplay"]["bosses"];
-            for (int i = 0; i < bossSettings.getLength(); ++i) {
-                const libconfig::Setting& boss = bossSettings[i];
-                int health, velocity, damage;
+        int getPlayerVelocity();
 
-                boss.lookupValue("health", health);
-                boss.lookupValue("velocity", velocity);
-                boss.lookupValue("damage", damage);
+        int getPlayerHealth();
 
-                bosses[i + SIMPLE_BOSS] = std::make_tuple(health, velocity, damage);
-            }
+        int getPlayerPlayerDamage();
 
+        int getMonsterVelocity(SPRITES);
 
-            const libconfig::Setting& levelsSettings = root["gameplay"]["levels"];
-            for (int i = 0; i < levelsSettings.getLength(); ++i) {
-                const libconfig::Setting& level = levelsSettings[i];
-                std::list<int> ids;
+        int getMonsterHealth(SPRITES);
 
-                for (int j = 0; j < level.getLength(); ++j) {
-                    int id = level[j];
-                    ids.push_back(id);
-                }
-                levels[i + 1] = ids;
-            }
+        int getMonsterDamage(SPRITES);
 
-            const libconfig::Setting& asteroidSettings = root["gameplay"]["asteroides"];
-            int spawningTime, number;
-            asteroidSettings.lookupValue("spwaningTime", spawningTime);
-            asteroidSettings.lookupValue("number", number);
+        int getBossVelocity(SPRITES);
 
-            asteroids = std::make_pair(spawningTime, number);
+        int getBossHealth(SPRITES);
 
-            const libconfig::Setting& backgroundSettings = root["display"];
-            int speed;
-            backgroundSettings.lookupValue("background_speed", speed);
+        int getBossDamage(SPRITES);
 
-            background_speed = speed;
+        int getMonsterBodyDamage(SPRITES);
 
-            const libconfig::Setting& bonusSpeedSettings = root["gameplay"]["bonus"];
-            int bonus_spe;
-            bonusSpeedSettings.lookupValue("speed", bonus_spe);
-            bonus_speed = bonus_spe;
+        int getProjectilesDamage(SPRITES);
 
-            const libconfig::Setting& bonusVelocitySettings = root["gameplay"]["bonus"]["velocity"];
-            int boost, duration;
-            bonusVelocitySettings.lookupValue("boost", boost);
-            bonusVelocitySettings.lookupValue("duration", duration);
+        int getMonsterScoreValue(SPRITES);
 
-            bonuses[BONUS::VELOCITY] = std::make_pair(boost, duration);
+        int getPlayerBodyDamage();
 
-            const libconfig::Setting& bonusLifeSettings = root["gameplay"]["bonus"]["life"];
-            bonusLifeSettings.lookupValue("boost", boost);
-            bonuses[BONUS::LIFE] = std::make_pair(boost, duration);
+        std::pair<int, int> getMonsterLevelSpawn(int);
 
-            const libconfig::Setting& bonusShieldSettings = root["gameplay"]["bonus"]["shield"];
-            bonusShieldSettings.lookupValue("duration", duration);
-            bonuses[BONUS::SHIELD] = std::make_pair(boost, duration);
-        }
+        std::pair<int, int> getBossLevelSpawn();
 
-        int getBonusSpeed() {
-            return bonus_speed;
-        }
+        void changeDifficulty(DIFFICULTY);
 
-        int getShieldDuration() {
-            return bonuses[BONUS::SHIELD].second;
-        }
+        void changeGameplayDifficulty();
 
-        int getLifeBonus() {
-            return bonuses[BONUS::LIFE].first;
-        }
+        DIFFICULTY getDifficulty();
 
-        int getVelocityDurationBonus() {
-            return bonuses[BONUS::VELOCITY].second;
-        }
+        int getAsteroidsSpawnInterval();
 
-        int getVelocityBoostBonus() {
-            return bonuses[BONUS::VELOCITY].first;
-        }
+        int getAsteroidsNumberOfSpawn();
 
-        int getPlayerVelocity() {
-            return std::get<1>(player);
-        }
+        int getProjectilesHealth(SPRITES);
 
-        int getPlayerHealth() {
-            return std::get<0>(player);
-        }
+        int getProjectilesVelocity(SPRITES);
 
-        int getPlayerPlayerDamage() {
-            return std::get<2>(player);
-        }
-
-        void changeDifficulty(DIFFICULTY dif) {
-            if (_difficulty == dif) {
-                return;
-            } else {
-                _difficulty = dif;
-                changeGameplayDifficulty();
-            }
-        }
-
-        void changeGameplayDifficulty() {
-            switch (_difficulty) {
-                case DIFFICULTY::EASY:
-                    break;
-
-                case DIFFICULTY::MEDIUM:
-                    std::get<0>(player) = std::get<0>(player) * 0.67;
-                    std::get<1>(player) = std::get<1>(player) * 0.83;
-                    std::get<2>(player) = std::get<2>(player) * 0.67;
-
-                    for (auto& monster : monsters) {
-                        std::get<0>(monster.second) *= 1.25;
-                        std::get<1>(monster.second) *= 1.2;
-                        std::get<2>(monster.second) *= 1.33;
-                    }
-
-                    for (auto& boss : bosses) {
-                        std::get<0>(boss.second) *= 1.25;
-                        std::get<1>(boss.second) *= 1.25;
-                        std::get<2>(boss.second) *= 1.33;
-                    }
-
-                    asteroids.first *= 0.71;
-                    asteroids.second = 4;
-
-                    background_speed *= 1.25;
-                    break;
-
-                case DIFFICULTY::HARD:
-                    std::get<0>(player) = std::get<0>(player) * 0.53;
-                    std::get<1>(player) = std::get<1>(player) * 0.75;
-                    std::get<2>(player) = std::get<2>(player) * 0.53;
-
-                    for (auto& monster : monsters) {
-                        std::get<0>(monster.second) *= 1.625;
-                        std::get<1>(monster.second) *= 1.4;
-                        std::get<2>(monster.second) *= 1.67;
-                    }
-
-                    for (auto& boss : bosses) {
-                        std::get<0>(boss.second) *= 1.5;
-                        std::get<1>(boss.second) *= 1.5;
-                        std::get<2>(boss.second) *= 2.0;
-                    }
-
-                    asteroids.first *= 0.50;
-                    asteroids.second = 5;
-
-                    background_speed *= 1.5;
-                    break;
-            }
-        }
-
-        int getMonsterVelocity(SPRITES id) {
-            return std::get<1>(monsters[id]);
-        }
-
-        int getMonsterHealth(SPRITES id) {
-            return std::get<0>(monsters[id]);
-        }
-
-        int getMonsterDamage(SPRITES id) {
-            return std::get<2>(monsters[id]);
-        }
-
-        int getBossVelocity(SPRITES id) {
-            return std::get<1>(bosses[id]);
-        }
-
-        int getBossHealth(SPRITES id) {
-            return std::get<0>(bosses[id]);
-        }
-
-        int getBossDamage(SPRITES id) {
-            return std::get<2>(bosses[id]);
-        }
-
-        std::pair<int, int> getMonsterLevelSpawn(int level) {
-            std::list<int> levelMonsters = levels[level];
-            return std::make_pair(levelMonsters.front(), levelMonsters.back());
-        }
-
-        std::pair<int, int> getBossLevelSpawn() {
-            return std::make_pair(SIMPLE_BOSS, SIMPLE_BOSS);
-        }
-
-        DIFFICULTY getDifficulty() {
-            return _difficulty;
-        }
-
-        int getAsteroidsSpawnInterval() {
-            return asteroids.first;
-        }
-
-        int getAsteroidsNumberOfSpawn() {
-            return asteroids.second;
-        }
-
-        int getProjectilesHealth(SPRITES sprite) {
-            switch (sprite)
-            {
-                case SPRITES::ASTEROIDE:
-                    return 1000;
-                case SPRITES::PLAYER_SIMPLE_MISSILE:
-                    return 10;
-                case SPRITES::PLAYER_CHARGED_SHOOT:
-                    return 50;
-                case SPRITES::MONSTER_MULTIPLE_MISSILE:
-                    return 10;
-                case SPRITES::BABY_PROJECTILE:
-                    return 60;
-                case SPRITES::FIRE_BALL:
-                    return 10;
-                case SPRITES::MONSTER_SIMPLE_MISSILE:
-                    return 10;
-                default:
-                    std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
-                    return 0;
-            }
-        }
-
-        int getProjectilesVelocity(SPRITES sprite) {
-            switch (sprite)
-            {
-            case BABY_PROJECTILE:
-                return 200;
-            case PLAYER_CHARGED_SHOOT:
-                return 400;
-            default:
-                return 300;
-            }
-        }
-
-        int getProjectilesDamage(SPRITES sprite) {
-            switch (sprite)
-            {
-            case PLAYER_SIMPLE_MISSILE:
-                return getPlayerPlayerDamage();
-            case PLAYER_CHARGED_SHOOT:
-                return (getPlayerPlayerDamage() * 3);
-            case MONSTER_SIMPLE_MISSILE:
-                return getMonsterDamage(SPRITES::SIMPLE_MONSTER);
-            case MONSTER_MULTIPLE_MISSILE:
-                return getMonsterDamage(SPRITES::ADVANCED_MONSTER);
-            case BABY_PROJECTILE:
-                return getMonsterDamage(SPRITES::BABY_PROJECTILE);
-            case FIRE_BALL:
-                return getMonsterDamage(SPRITES::MEGA_MONSTER);
-            case ASTEROIDE:
-                return 20;
-            default:
-                std::cerr << "Monster Id not found" << std::endl;
-                return 0;
-            }
-        }
-
-        int getMonsterBodyDamage(SPRITES sprite) {
-            switch (sprite)
-            {
-            case SPRITES::SIMPLE_MONSTER:
-                return 20;
-            case SPRITES::ADVANCED_MONSTER:
-                return 30;
-            case SPRITES::BABY_PROJECTILE:
-                return 20;
-            case SPRITES::MEGA_MONSTER:
-                return 50;
-            case SPRITES::SIMPLE_BOSS:
-                return 500;
-            default:
-                return 0;
-            }
-        }
-
-        int getMonsterScoreValue(SPRITES sprite) {
-            switch (sprite)
-            {
-            case SPRITES::SIMPLE_BOSS:
-                return 100;
-            default:
-                return 1;
-            }
-        }
-
-        int getPlayerBodyDamage() {
-            return 20;
-        }
-
-        float getBackgroundSpeed() {
-            return background_speed;
-        }
-
-        int getBonusHealth() {
-            return 10;
-        }
-
-        BONUS getRandomBonuses(int rand) {
-            if (rand <= 0 || rand >= BONUS::MAX_BONUS)
-                throw std::invalid_argument("Id for bonus not found.");
-            return static_cast<BONUS>(rand);
-        }
-
-        SPRITES getSpriteBonus(BONUS bonus) {
-            switch (bonus)
-            {
-            case VELOCITY:
-                return SPRITES::SPEED_DROP;
-            case LIFE:
-                return SPRITES::LIFE_DROP;
-            case WEAPON:
-                return SPRITES::WEAPON_DROP;
-            case SHIELD:
-                return SPRITES::SHIELD_DROP;
-            default:
-                throw std::invalid_argument("No Id found for bonus sprite");
-            }
-        }
+        float getBackgroundSpeed();
 
     protected:
     private:
