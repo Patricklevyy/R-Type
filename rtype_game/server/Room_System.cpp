@@ -17,7 +17,7 @@ namespace rtype
             switch (bonus)
             {
             case BONUS::SHIELD:
-                _bonus_system.destroyPlayerTempShield(_ecs._components_arrays, player_index);
+                _bonus_system.updatePlayerTempShield(_ecs._components_arrays, player_index, SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP), false);
                 send_client_player_shield(player_index, false);
                 break;
             case BONUS::VELOCITY:

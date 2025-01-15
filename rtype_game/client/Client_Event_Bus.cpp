@@ -213,7 +213,7 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::SHIP_SHIELD);
+                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::MY_PLAYER_SHIP_SHIELD);
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }

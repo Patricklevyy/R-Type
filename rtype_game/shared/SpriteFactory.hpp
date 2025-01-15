@@ -89,8 +89,8 @@
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
                         case SPRITES::SHIELD_DROP:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
-                        case SPRITES::SHIP_SHIELD:
-                            return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
+                        case SPRITES::MY_PLAYER_SHIP_SHIELD:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -181,8 +181,8 @@
                             return {loadTexture("assets/bonuses/bonus_eclaire.png")};
                         case SPRITES::SHIELD_DROP:
                             return {loadTexture("assets/bonuses/bonus_shield.png")};
-                        case SPRITES::SHIP_SHIELD:
-                            return {loadTexture("assets/bonuses/axel_alien_vert.jpg")};
+                        case SPRITES::MY_PLAYER_SHIP_SHIELD:
+                            return loadTextures("player_ship/player_blue_ship_shield", 0, 4);
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
                     }

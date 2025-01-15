@@ -52,22 +52,14 @@
                     }
                 }
 
-                void createPlayerTempShield(std::unordered_map<std::type_index, std::any> &components_array, size_t index) {
+                void updatePlayerTempShield(std::unordered_map<std::type_index, std::any> &components_array, size_t index, std::pair<int, int> x_y, bool invicible) {
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                     auto &hitbox = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
 
                     if (index < playables.size() && playables[index].has_value() && index < hitbox.size() && hitbox[index].has_value() && index < powerups.size() && powerups[index].has_value()) {
-                        hitbox[index].value()._invicible = true;
-                    }
-                }
-
-                void destroyPlayerTempShield(std::unordered_map<std::type_index, std::any> &components_array, size_t index) {
-                    auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
-                    auto &hitbox = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
-
-                    if (index < playables.size() && playables[index].has_value() && index < hitbox.size() && hitbox[index].has_value()) {
-                        hitbox[index].value()._invicible = false;
+                        hitbox[index].value()._invicible = invicible;
+                        hitbox[index].value().setHitbox(x_y);
                     }
                 }
 

@@ -112,7 +112,7 @@
             SHIELD_DROP,
             SPEED_DROP,
             ASTEROIDE,
-            SHIP_SHIELD,
+            MY_PLAYER_SHIP_SHIELD,
             MAX_SPRITE
         };
 

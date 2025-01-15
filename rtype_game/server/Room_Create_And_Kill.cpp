@@ -179,7 +179,7 @@ namespace rtype
                 send_client_change_player_velocity(true);
                 break;
             case BONUS::SHIELD:
-                _bonus_system.createPlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second));
+                _bonus_system.updatePlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second), SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_SHIELD), true);
                 _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getShieldDuration());
                 send_client_player_shield(std::get<0>(bonus_info.second), true);
                 break;
