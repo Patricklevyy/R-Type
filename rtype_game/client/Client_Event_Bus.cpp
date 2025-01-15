@@ -192,7 +192,7 @@ namespace rtype
 
         _eventBus.subscribe(RTYPE_ACTIONS::GET_ALL_ROOMS, [this](const std::vector<std::any> &args) {
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
-            std::cout << "J'ai reçu du serveur -> " << message.params << std::endl;
+            std::cout << "J'ai reçu du serveur pour les rooms -> " << message.params << std::endl;
             auto newRooms = parseRoomList(message.params);
             for (const auto& newRoom : newRooms) {
                 auto it = std::find_if(_roomsList.begin(), _roomsList.end(), [&](const auto& room) {
@@ -203,9 +203,6 @@ namespace rtype
                 } else {
                     _roomsList.push_back(newRoom);
                 }
-            }
-            for (const auto &patoche : _roomsList) {
-                std::cout << "roomName=" << patoche.first << "->" << patoche.second << std::endl;
             }
         });
     }

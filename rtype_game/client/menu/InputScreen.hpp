@@ -8,10 +8,10 @@ namespace rtype
       public:
         InputScreen(sf::RenderWindow &win);
         ~InputScreen() {};
-        void handleEvent(sf::Event &event, bool &isRunning, std::string &playerName);
+        void handleEvent(sf::Event &event, bool &isInputScreen, std::string &playerName);
         void update();
         void render();
-        void run(bool &isRunning, std::string &playerName);
+        void run(bool &isInputScreen, std::string &playerName);
 
 
       protected:

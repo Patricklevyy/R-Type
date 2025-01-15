@@ -123,7 +123,6 @@ namespace rtype
 
     void Client::requestRoomList()
     {
-        // std::cout << "J'ai demandé au serveur avant les rooms" << std::endl;
         ecs::udp::Message request;
         request.id = 0;
         request.action = RTYPE_ACTIONS::GET_ALL_ROOMS;
@@ -132,7 +131,5 @@ namespace rtype
         std::vector<char> buffer;
         _message_compressor.serialize(request, buffer);
         _udpClient->sendMessageToDefault(buffer);
-        // std::cout << "Room list updated: " << _roomsList.size()
-        //           << " rooms found." << std::endl;
     }
 } // namespace rtype

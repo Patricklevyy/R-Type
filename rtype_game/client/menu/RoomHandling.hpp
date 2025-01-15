@@ -10,14 +10,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
+#include <unordered_set>
 
 namespace rtype
 {
     class RoomHandling {
       public:
         RoomHandling(
-            sf::Font &_font,  std::vector<std::pair<std::string, int>> &rooms)
-            : _font(_font), _scrollOffset(0), _rooms(rooms) {};
+            sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
+            : _font(_font), _rooms(rooms), _scrollOffset(0) {};
         ~RoomHandling() {};
 
         void addRoom(const std::string &name, int nb_places)
@@ -53,8 +54,11 @@ namespace rtype
 
         void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
         {
+            std::unordered_set<std::string> drawnRooms;
             for (std::size_t i = 0; i < _rooms.size(); ++i) {
-                // std::cout << "when drawing->" << _rooms[i].first << "->" << _rooms[i].second << std::endl;
+                if (drawnRooms.count(_rooms[i].first) > 0) {
+                    continue;
+                }
                 float yPosition =
                     container.getPosition().y + 20 + i * 45 - _scrollOffset;
                 if (yPosition >= container.getPosition().y
@@ -79,6 +83,7 @@ namespace rtype
 
                     window.draw(roomShape);
                     window.draw(roomText);
+                    drawnRooms.insert(_rooms[i].first);
                 }
             }
         }

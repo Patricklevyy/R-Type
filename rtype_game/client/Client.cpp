@@ -71,8 +71,6 @@ namespace rtype
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         Utils::checkAction(mes.action);
-        // std::cout << "id : " << mes.id << " action " << mes.action << "
-        // params " << mes.params << std::endl;
         rtype::RTYPE_ACTIONS action =
             static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
@@ -87,78 +85,6 @@ namespace rtype
             send_server_new_player();
     }
 
-    // void Client::start()
-    // {
-    //     init_all();
-    //     std::string playerName;
-
-    //     auto &windows = std::any_cast<ecs::SparseArray<Window> &>(
-    //         _ecs._components_arrays.at(typeid(Window)));
-    //     auto lawindow = windows[0].value().getRenderWindow().get();
-
-    //     try {
-    //         InputScreen inputScreen(*lawindow);
-    //         bool isRunning = true;
-    //         // requestRoomList();
-
-    //         inputScreen.run(isRunning, playerName);
-    //     } catch (const std::exception &e) {
-    //         std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
-    //                   << e.what() << "\n";
-    //         return;
-    //     }
-
-    //     // try {
-    //     requestRoomList();
-    //     Menu menu(*lawindow, playerName, *this);
-    //     // std::cout << "Room list updated: " << _roomsList.size()
-    //     //           << " rooms found." << std::endl;
-    //     menu.run(_in_menu);
-    //     // std::cout << "Menu exécuté avec succès." << std::endl;
-    //     // } catch (const std::exception &e) {
-    //     //     std::cerr << "Erreur lors du chargement du menu principal : "
-    //     //               << e.what() << "\n";
-    //     //     return;
-    //     // }
-    //     std::queue<sf::Event> events;
-
-    //     // for (const auto &room : _roomsList) {
-    //     //     std::cout << "Room Name: " << room.first
-    //     //               << ", Number of Clients: " << room.second <<
-    //     std::endl;
-    //     // }
-
-    //     while (_running) {
-    //         _timer->waitTPS();
-
-    //         events = _event_window_system.fetchEvents();
-
-    //         _sfml_handler->handleEvents(events);
-
-    //         auto messages = _udpClient->fetchAllMessages();
-    //         for (auto &[clientAddress, message] : messages) {
-    //             try {
-    //                 handle_message(message);
-    //             } catch (std::exception &e) {
-    //                 std::cerr << std::endl << e.what() << std::endl;
-    //             }
-    //         }
-
-    //         _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
-    //         execute_animation();
-    //         _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
-    //         _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
-    //     }
-
-    //     _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
-    // }
-
-    // std::vector<std::pair<std::string, int>> Client::getRoomsList()
-    // {
-    //     std::lock_guard<std::mutex> lock(roomListMutex);
-    //     return _roomsList;
-    // }
-
     void Client::launchMenu()
     {
         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(
@@ -168,8 +94,12 @@ namespace rtype
 
         try {
             InputScreen inputScreen(*lawindow);
-            bool isRunning = true;
-            inputScreen.run(isRunning, playerName);
+            bool isInputScreen = true;
+            inputScreen.run(isInputScreen, playerName);
+            // std::cout << isInputScreen << std::endl;
+            // if (!isInputScreen) {
+            //     _running = false;
+            // }
         } catch (const std::exception &e) {
             std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
                       << e.what() << "\n";
@@ -194,7 +124,7 @@ namespace rtype
         try {
             requestRoomList();
             Menu menu(*lawindow, playerName, *this);
-            menu.run(_in_menu);
+            menu.run(_in_menu, _running);
         } catch (const std::exception &e) {
             std::cerr << "Erreur lors du chargement du menu principal : "
                       << e.what() << "\n";
@@ -205,56 +135,15 @@ namespace rtype
         if (networkThread.joinable()) {
             networkThread.join();
         }
+        // return _running;
     }
 
     void Client::start()
     {
         init_all();
         launchMenu();
-        // std::string playerName;
-        // auto &windows = std::any_cast<ecs::SparseArray<Window> &>(
-        //     _ecs._components_arrays.at(typeid(Window)));
-        // auto lawindow = windows[0].value().getRenderWindow().get();
 
-        // try {
-        //     InputScreen inputScreen(*lawindow);
-        //     bool isRunning = true;
-        //     inputScreen.run(isRunning, playerName);
-        // } catch (const std::exception &e) {
-        //     std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
-        //               << e.what() << "\n";
-        //     return;
-        // }
-
-        // std::atomic<bool> runningNetworkThread{true};
-        // std::thread networkThread([&]() {
-        //     while (runningNetworkThread) {
-        //         auto messages = _udpClient->fetchAllMessages();
-        //         for (auto &[clientAddress, message] : messages) {
-        //             try {
-        //                 handle_message(message);
-        //             } catch (std::exception &e) {
-        //                 std::cerr << std::endl << e.what() << std::endl;
-        //             }
-        //         }
-        //         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        //     }
-        // });
-
-        // try {
-        //     requestRoomList();
-        //     Menu menu(*lawindow, playerName, *this);
-        //     menu.run(_in_menu);
-        // } catch (const std::exception &e) {
-        //     std::cerr << "Erreur lors du chargement du menu principal : "
-        //               << e.what() << "\n";
-        //     return;
-        // }
-
-        // runningNetworkThread = false;
-        // if (networkThread.joinable()) {
-        //     networkThread.join();
-        // }
+        std::cout << _running << std::endl;
 
         while (_running) {
             _timer->waitTPS();

@@ -48,13 +48,13 @@ namespace rtype
         _validateButton.setScale(0.35f, 0.35f);
     }
 
-    void InputScreen::run(bool &isRunning, std::string &playerName)
+    void InputScreen::run(bool &isInputScreen, std::string &playerName)
     {
-        while (_window.isOpen() && isRunning) {
+        while (_window.isOpen() && isInputScreen) {
             sf::Event event;
 
             while (_window.pollEvent(event)) {
-                handleEvent(event, isRunning, playerName);
+                handleEvent(event, isInputScreen, playerName);
             }
             update();
             _window.clear(sf::Color(10, 10, 40));
@@ -64,10 +64,10 @@ namespace rtype
     }
 
     void InputScreen::handleEvent(
-        sf::Event &event, bool &isRunning, std::string &playerName)
+        sf::Event &event, bool &isInputScreen, std::string &playerName)
     {
         if (event.type == sf::Event::Closed) {
-            isRunning = false;
+            isInputScreen = false;
             _window.close();
         }
         if (event.type == sf::Event::TextEntered) {
@@ -94,7 +94,7 @@ namespace rtype
                 if (_validateButton.getGlobalBounds().contains(
                         mousePos.x, mousePos.y)) {
                     playerName = _inputString;
-                    isRunning = false;
+                    isInputScreen = false;
                 }
                 _isButtonPressed = false;
                 _validateButton.setScale(0.35f, 0.35f);
@@ -104,28 +104,6 @@ namespace rtype
 
     void InputScreen::update()
     {
-        // if (!_window.isOpen()) {
-        //     std::cerr << "Erreur : la fenêtre n'est pas valide ou est fermée."
-        //               << std::endl;
-        //     return;
-        // }
-
-        // sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
-
-        // Effet de survol
-        // if (_validateButton.getGlobalBounds().contains(
-        //         mousePos.x, mousePos.y)) {
-        //     if (!_isHovering) {
-        //         _isHovering = true;
-        //         _validateButton.setScale(0.37f, 0.37f);
-        //     }
-        // } else {
-        //     if (_isHovering) {
-        //         _isHovering = false;
-        //         _validateButton.setScale(0.35f, 0.35f);
-        //     }
-        // }
-
         sf::Vector2u winSize = _window.getSize();
 
         _title.setPosition(

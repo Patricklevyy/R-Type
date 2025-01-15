@@ -48,22 +48,23 @@ namespace rtype
         _playerNameText.setFillColor(sf::Color::White);
     }
 
-    void Menu::run(bool &isRunning)
+    void Menu::run(bool &inMenu, bool &isRunning)
     {
-        while (isRunning) {
+        while (inMenu) {
             syncRooms();
-            handleEvents(isRunning);
+            handleEvents(inMenu, isRunning);
             update();
             render();
         }
     }
 
-    void Menu::handleEvents(bool &_in_menu)
+    void Menu::handleEvents(bool &_in_menu, bool &isRunning)
     {
         sf::Event event;
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 _in_menu = false;
+                isRunning = false;
                 _window.close();
             }
 
@@ -89,9 +90,6 @@ namespace rtype
                         _roomHandling->addRoom(roomName, nb_places);
                         _textInput->clear();
                         _client.send_server_create_room(roomName);
-                        // _client.requestRoomList();
-                        // std::cout << "bonnnnnnnn, marche putainn" <<
-                        // std::endl;
                     }
                 }
 
