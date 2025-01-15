@@ -10,7 +10,16 @@
 
 namespace rtype
 {
-    Client::Client() : _sfml_handler(std::make_shared<SFMLHandler>(*this))
+    Client::Client() : _sfml_handler(std::make_shared<SFMLHandler>(*this)),
+      _actionKeyBindings{
+          {RTYPE_ACTIONS::CREATE_ROOM, sf::Keyboard::A},
+          {RTYPE_ACTIONS::JOIN_ROOM, sf::Keyboard::B},
+          {RTYPE_ACTIONS::MOVE_UP, sf::Keyboard::Z},
+          {RTYPE_ACTIONS::MOVE_RIGHT, sf::Keyboard::D},
+          {RTYPE_ACTIONS::MOVE_DOWN, sf::Keyboard::S},
+          {RTYPE_ACTIONS::MOVE_LEFT, sf::Keyboard::Q},
+          // Ajoute les autres actions ici si nécessaire
+      }
     {
         _udpClient = std::make_shared<ecs::udp::UDP_Client>();
         _timer = std::make_shared<Timer>();

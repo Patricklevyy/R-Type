@@ -103,6 +103,7 @@
                 bool _in_menu = true;
                 bool _running = true;
                 EventBus _eventBus;
+                std::map<RTYPE_ACTIONS, int> _actionKeyBindings;
 
             protected:
             private:
