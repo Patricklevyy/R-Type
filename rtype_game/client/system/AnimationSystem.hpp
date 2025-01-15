@@ -41,7 +41,7 @@
                 {
                     auto &animations = std::any_cast<ecs::SparseArray<Animation> &>(components_array.at(typeid(Animation)));
 
-                    for (std::size_t i = 0; i < animations.size(); ++i) {
+                    for (std::size_t i = 0; i < animations.size(); i++) {
                         if (animations[i].has_value()) {
                             return i;
                         }

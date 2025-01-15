@@ -51,13 +51,13 @@ namespace rtype
                 break;
             }
         }
+        std::cout << "fninse handle event " << std::endl;
     }
 
     void SFMLHandler::processKeyPressed(const sf::Event &event)
     {
         if (event.key.code == sf::Keyboard::Escape)
         {
-            // Close the client
             _client._running = false;
             return;
         }
@@ -126,14 +126,14 @@ namespace rtype
     void SFMLHandler::processMouseButtonPressed(const sf::Event &event)
     {
         if (event.mouseButton.button == sf::Mouse::Left) {
-            _client.handleMousePress(); // Commence un tir
+            _client.handleMousePress();
         }
     }
 
     void SFMLHandler::processMouseButtonReleased(const sf::Event &event)
     {
         if (event.mouseButton.button == sf::Mouse::Left) {
-            _client.handleMouseRelease(); // Termine le tir
+            _client.handleMouseRelease();
         }
     }
 }
