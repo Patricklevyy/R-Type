@@ -69,6 +69,12 @@
             REMOVE_ATH,
             UPDATE_SCORE,
             SPAWN_ASTEROIDE,
+            CHECK_BONUS_COLLISIONS,
+            CHECK_BONUS,
+            PUT_SHIELD,
+            REMOVE_SHIELD,
+            UP_VELOCITY,
+            DOWN_VELOCITY,
             MAX_ACTION
         };
 
@@ -101,7 +107,13 @@
             LEVEL2,
             LEVEL_BOSS,
             LEVEL_LOCK,
+            WEAPON_DROP,
+            LIFE_DROP,
+            VELOCITY_DROP,
+            SHIELD_DROP,
+            SPEED_DROP,
             ASTEROIDE,
+            MY_PLAYER_SHIP_SHIELD,
             MAX_SPRITE
         };
 
@@ -142,6 +154,18 @@
             Deuteranopia,
             Tritanopia,
             Inverted
+        };
+
+        /**
+         * @enum BONUS
+         * @brief Spawn a weapon when a monster is killed
+         */
+        enum BONUS {
+            VELOCITY = 1,
+            LIFE,
+            WEAPON,
+            SHIELD,
+            MAX_BONUS
         };
     }
 

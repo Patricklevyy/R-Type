@@ -35,7 +35,9 @@ namespace rtype
                 lastClientUpdate = currentTime;
             }
             _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
+            _eventBus.emit(RTYPE_ACTIONS::CHECK_BONUS);
             _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
             _eventBus.emit(RTYPE_ACTIONS::SPAWN_ASTEROIDE);

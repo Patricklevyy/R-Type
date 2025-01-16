@@ -55,7 +55,14 @@ namespace rtype
         responseMessage.id = 0;
         responseMessage.params = roomList;
         _compressor.serialize(responseMessage, response);
-        _udpManager->sendMessage(response, clientAddr);
+
+        if(_udpManager->sendMessage(response, clientAddr)) {
+            std::cout << "Envoyé à ->"
+                    << clientAddr << "->"
+                    << responseMessage.params
+                    << std::endl;
+        } else
+            std::cout << "Merdeeee" << std::endl;
     }
 
     void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)

@@ -25,12 +25,14 @@ namespace rtype
     {
         _mouse_pressed = true;
         _mouse_press_time = std::chrono::steady_clock::now();
+        std::cout << "press" << std::endl;
     }
 
     void Client::handleMouseRelease()
     {
         if (!_mouse_pressed)
             return;
+
 
         _mouse_pressed = false;
         auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
@@ -72,14 +74,15 @@ namespace rtype
                 _kill_system.killEntity(_ecs, index);
             return;
         }
-        std::pair<float, float> player_positions = _position_system.getPlayerPosition(_player_system.getIndexPlayer(_ecs._components_arrays), _ecs._components_arrays);
+        int index_player = _player_system.getIndexPlayer(_ecs._components_arrays);
+        if (index_player == -1)
+            return;
+        std::pair<float, float> player_positions = _position_system.getPlayerPosition(index_player, _ecs._components_arrays);
         player_positions.first += 100;
-
         if (_animation_system.isAlreadyAnimation(_ecs._components_arrays)) {
             _animation_system.updateChargedAnimation(_ecs._components_arrays, player_positions);
             return;
         }
-
         auto release_time = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
 

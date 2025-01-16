@@ -197,4 +197,41 @@ namespace rtype
             _udp_server->sendMessage(response, clientAddr);
         }
     }
+
+    void Room::send_client_change_player_velocity(bool up)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        if (up) {
+            responseMessage.action = RTYPE_ACTIONS::UP_VELOCITY;
+        } else {
+            responseMessage.action = RTYPE_ACTIONS::DOWN_VELOCITY;
+        }
+        responseMessage.id = 0;
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    void Room::send_client_player_shield(size_t index, bool put)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        if (put) {
+            responseMessage.action = RTYPE_ACTIONS::PUT_SHIELD;
+        } else {
+            responseMessage.action = RTYPE_ACTIONS::REMOVE_SHIELD;
+        }
+        responseMessage.id = 0;
+        responseMessage.params = std::to_string(index);
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
 }

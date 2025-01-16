@@ -21,6 +21,7 @@
     #include "../../server/components/Monster.hpp"
     #include "../../server/components/Hitbox.hpp"
     #include "../../server/components/Damage.hpp"
+    #include "../../server/components/PowerUp.hpp"
     #include "../components/Levels.hpp"
     #include "../../client/components/LevelStatus.hpp"
     #include "../../client/components/Animation.hpp"
@@ -30,6 +31,7 @@
     #include "../../client/components/Sprite.hpp"
     #include "../../client/components/Music.hpp"
     #include "../../server/components/SpriteId.hpp"
+    #include "../../server/components/Bonus.hpp"
     #include "../../client/components/Text.hpp"
 
     namespace rtype
@@ -72,7 +74,9 @@
                     ecs.killEntityFromRegistry<Monster>(index);
                     ecs.killEntityFromRegistry<Projectiles>(index);
                     ecs.killEntityFromRegistry<SpriteId>(index);
+                    ecs.killEntityFromRegistry<Bonus>(index);
                     ecs.killEntityFromRegistry<Damage>(index);
+                    ecs.killEntityFromRegistry<PowerUp>(index);
 
                     ecs.addDeadEntity(index);
                 }
