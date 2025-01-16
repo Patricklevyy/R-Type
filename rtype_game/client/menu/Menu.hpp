@@ -31,6 +31,7 @@ namespace rtype
         std::shared_ptr<TextInput> _textInput;
         void syncRooms();
         std::vector<std::pair<std::string, int>> roomsList;
+        void joinRoomEvent();
 
       protected:
       private:

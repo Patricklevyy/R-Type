@@ -58,6 +58,27 @@ namespace rtype
         }
     }
 
+    void Menu::joinRoomEvent()
+    {
+        const std::string roomName = _textInput->getText();
+
+        if (!roomName.empty()) {
+            roomsList = _client._roomsList;
+
+            auto it = std::find_if(roomsList.begin(), roomsList.end(),
+                [&roomName](const auto &room) {
+                    return room.first == roomName;
+                });
+            int nb_places = 0;
+            if (it != roomsList.end()) {
+                nb_places = it->second;
+            }
+            _roomHandling->addRoom(roomName, nb_places);
+            _textInput->clear();
+            _client.send_server_create_room(roomName);
+        }
+    }
+
     void Menu::handleEvents(bool &_in_menu)
     {
         sf::Event event;
@@ -74,23 +95,7 @@ namespace rtype
                     static_cast<float>(mousePos.y));
 
                 if (_validateButton.getGlobalBounds().contains(mousePosF)) {
-                    const std::string roomName = _textInput->getText();
-
-                    if (!roomName.empty()) {
-                        roomsList = _client._roomsList;
-
-                        auto it = std::find_if(roomsList.begin(),
-                            roomsList.end(), [&roomName](const auto &room) {
-                                return room.first == roomName;
-                            });
-                        int nb_places = 0;
-                        if (it != roomsList.end()) {
-                            nb_places = it->second;
-                        }
-                        _roomHandling->addRoom(roomName, nb_places);
-                        _textInput->clear();
-                        _client.send_server_create_room(roomName);
-                    }
+                    joinRoomEvent();
                 }
 
                 std::string selectedRoom =
@@ -98,6 +103,12 @@ namespace rtype
                 if (!selectedRoom.empty()) {
                     _client.send_server_join_room(selectedRoom, _playerName);
                     _in_menu = false;
+                }
+            }
+
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Enter) {
+                    joinRoomEvent();
                 }
             }
 

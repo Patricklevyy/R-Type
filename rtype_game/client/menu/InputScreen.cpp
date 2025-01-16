@@ -41,7 +41,6 @@ namespace rtype
         _logo.setScale(0.3f, 0.3f);
 
         _backgroundSprite.setTexture(_backgroundTexture);
-        // _backgroundSprite.setScale(0.3f, 0.3f);
 
         _inputBox.setSize(sf::Vector2f(300.f, 50.f));
         _inputBox.setFillColor(sf::Color(20, 20, 20));
@@ -106,6 +105,12 @@ namespace rtype
                 }
                 _isButtonPressed = false;
                 _validateButton.setScale(0.35f, 0.35f);
+            }
+        }
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::Enter) {
+                playerName = _inputString;
+                isInputScreen = false;
             }
         }
     }
