@@ -22,11 +22,13 @@ namespace rtype
 
         sf::Text _title;
         sf::Sprite _logo;
+        sf::Sprite _backgroundSprite;
         sf::RectangleShape _inputBox;
         sf::Text _userInput;
         sf::Sprite _validateButton;
 
         sf::Texture _logoTexture;
+        sf::Texture _backgroundTexture;
         sf::Texture _validateTexture;
 
         std::string _inputString;

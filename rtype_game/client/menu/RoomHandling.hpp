@@ -16,9 +16,8 @@ namespace rtype
 {
     class RoomHandling {
       public:
-        RoomHandling(
-            sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
-            : _font(_font), _rooms(rooms), _scrollOffset(0) {};
+        RoomHandling(sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
+        : _rooms(rooms), _font(_font), _scrollOffset(0) {};
         ~RoomHandling() {};
 
         void addRoom(const std::string &name, int nb_places)

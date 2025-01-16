@@ -25,6 +25,11 @@ namespace rtype
             throw std::runtime_error(
                 "Erreur de chargement de l'image du bouton");
         }
+        if (!_backgroundTexture.loadFromFile(
+                "assets/backgrounds/menu_background.jpg")) {
+            throw std::runtime_error(
+                "Erreur de chargement de l'image du background");
+        }
 
         _title.setFont(_font);
         _title.setString("ENTER YOUR NAME");
@@ -34,6 +39,9 @@ namespace rtype
 
         _logo.setTexture(_logoTexture);
         _logo.setScale(0.3f, 0.3f);
+
+        _backgroundSprite.setTexture(_backgroundTexture);
+        // _backgroundSprite.setScale(0.3f, 0.3f);
 
         _inputBox.setSize(sf::Vector2f(300.f, 50.f));
         _inputBox.setFillColor(sf::Color(20, 20, 20));
@@ -116,10 +124,12 @@ namespace rtype
         _validateButton.setPosition(
             (winSize.x - _validateButton.getGlobalBounds().width) / 2,
             _inputBox.getPosition().y + _inputBox.getSize().y + 20);
+        _backgroundSprite.setPosition(1, 1);
     }
 
     void InputScreen::render()
     {
+        _window.draw(_backgroundSprite);
         _window.draw(_title);
         _window.draw(_logo);
         _window.draw(_inputBox);
