@@ -98,14 +98,6 @@ namespace rtype
         {
             _client.change_player_direction(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
         }
-        if (event.key.code == _keyBindings[sf::Keyboard::A])
-        {
-            _client.send_server_create_room();
-        }
-        if (event.key.code == _keyBindings[sf::Keyboard::B])
-        {
-            _client.send_server_join_room();
-        }
         if (event.key.code == sf::Keyboard::Num1)
         {
             _client.set_window_filter(FILTER_MODE::Neutral);
