@@ -70,17 +70,19 @@
                         case SPRITES::WIN_SCREEN:
                             return std::make_tuple<float, float, float>(0.5f, 0.5f, 0.35);
                         case SPRITES::SUPER_MONSTER:
-                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
+                            return std::make_tuple<float, float, float>(4.0f, 4.0f, 0.35);
                         case SPRITES::MEGA_MONSTER:
                             return std::make_tuple<float, float, float>(4.0f, 4.0f, 0.35);
                         case SPRITES::BABY_PROJECTILE:
-                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.35);
+                            return std::make_tuple<float, float, float>(2.5f, 2.5f, 0.35);
                         case SPRITES::ASTEROIDE:
-                            return std::make_tuple<float, float, float>(2.0f, 2.0f, 0.1);
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.1);
                         case SPRITES::PLAYER_CHARGED_SHOOT:
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4);
                         case SPRITES::CHARGED_ANIMATION:
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.1);
+                        case SPRITES::BOSS_PROJECTILE:
+                            return std::make_tuple<float, float, float>(5.0f, 5.0f, 0.1);
                         case SPRITES::WEAPON_DROP:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
                         case SPRITES::LIFE_DROP:
@@ -155,6 +157,8 @@
                             return {loadTexture("assets/levels/final_level.png")};
                         case SPRITES::LEVEL_LOCK:
                             return {loadTexture("assets/levels/level_lock.png")};
+                        case SPRITES::BOSS_PROJECTILE:
+                            return {loadTexture("assets/projectiles/boss_projectile.png")};
                         case SPRITES::LOOSER_SCREEN:
                             return loadTextures("winner_looser/looser_screen", 0, 7);
                         case SPRITES::WIN_SCREEN:

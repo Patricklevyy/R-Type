@@ -78,6 +78,8 @@ namespace rtype
                 return getMonsterDamage(SPRITES::BABY_PROJECTILE);
             case FIRE_BALL:
                 return getMonsterDamage(SPRITES::MEGA_MONSTER);
+            case BOSS_PROJECTILE:
+                return getMonsterDamage(SPRITES::SIMPLE_BOSS);
             case ASTEROIDE:
                 return 20;
             default:

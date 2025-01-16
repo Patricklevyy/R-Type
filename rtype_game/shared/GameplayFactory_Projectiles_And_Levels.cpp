@@ -100,6 +100,8 @@ namespace rtype
                     return 10;
                 case SPRITES::MONSTER_SIMPLE_MISSILE:
                     return 10;
+                case SPRITES::BOSS_PROJECTILE:
+                    return 1000;
                 default:
                     std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
                     return 0;
