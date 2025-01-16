@@ -55,11 +55,27 @@ namespace rtype
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LIFES, [this](const std::vector<std::any> &args) {
             (void)args;
-            std::tuple<std::list<size_t>, unsigned int, bool> dead_entities = _health_system.checkLife(_ecs, _nb_client);
 
-            _score_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
+            std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities = _health_system.checkLife(_ecs, _nb_client);
+
+            if (std::get<1>(dead_entities) != 0) {
+                _level_system.addToScore(_ecs._components_arrays, std::get<1>(dead_entities));
+                sendScore(_level_system.getScore(_ecs._components_arrays));
+            }
             std::list<size_t> dead_entites_id = std::get<0>(dead_entities);
-            for (const auto &entity_id : dead_entites_id) {
+            std::list<std::pair<float, float>> dead_entities_positions = std::get<3>(dead_entities);
+            auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(_ecs._components_arrays[typeid(Monster)]);
+
+            auto id_it = dead_entites_id.begin();
+            auto pos_it = dead_entities_positions.begin();
+
+            for (; id_it != dead_entites_id.end() && pos_it != dead_entities_positions.end(); ++id_it, ++pos_it) {
+                size_t entity_id = *id_it;
+                std::pair<float, float> position = *pos_it;
+
+                if (entity_id < monsters.size() && monsters[entity_id].has_value()) {
+                    spawnBonus(position);
+                }
                 _kill_system.killEntity(_ecs, entity_id);
             }
             if (!dead_entites_id.empty())
@@ -69,6 +85,7 @@ namespace rtype
                     _nb_client--;
                 dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(false, LEVELS::UN);
             }
         });
@@ -84,16 +101,16 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::ENEMY_SHOOT, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::list<std::tuple<size_t, std::pair<float, float>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> monsters_pos = _shooting_system.monster_shooting(_ecs._components_arrays, _random_number);
             size_t index;
             while (!monsters_pos.empty()) {
                 index = getNextIndex();
-                std::tuple<size_t, std::pair<float, float>, SPRITES> monster = monsters_pos.front();
+                std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES> monster = monsters_pos.front();
                 monsters_pos.pop_front();
 
                 std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite = std::make_tuple(
-                    std::get<1>(monster),
-                    std::make_pair(3, 0),
+                    std::get<1>(monster).first,
+                    std::get<1>(monster).second,
                     std::get<2>(monster)
                 );
                 createEntityProjectiles(index, pos_dir_sprite);
@@ -102,7 +119,7 @@ namespace rtype
         _eventBus.subscribe(RTYPE_ACTIONS::EXECUTE_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::list<SPRITES> monsters = _level_system.executeLevel(_ecs, _random_number);
+            std::list<SPRITES> monsters = _level_system.executeLevel(_ecs, _random_number, _gameplay_factory);
 
             SPRITES monster;
             while (!monsters.empty()) {
@@ -110,15 +127,23 @@ namespace rtype
                 createMonster(monster);
                 monsters.pop_front();
             }
+            monsters = _level_system.spwanBoss(_ecs, _random_number, _gameplay_factory);
+
+            while (!monsters.empty()) {
+                monster = monsters.front();
+                createBoss(monster);
+                monsters.pop_front();
+            }
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED, [this](const std::vector<std::any> &args) {
             (void)args;
 
-            std::pair<LEVELS, bool> level = _score_system.isLevelFinished(_ecs._components_arrays);
+            std::pair<LEVELS, bool> level = _level_system.isLevelFinished(_ecs._components_arrays);
             if (level.second) {
                 std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
+                playingInLevel = false;
                 send_client_level_status(level.second, level.first);
             }
         });
@@ -138,6 +163,48 @@ namespace rtype
                 _udp_server->sendMessage(send_message, clientAddr);
             }
             _nb_client++;
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::SPAWN_ASTEROIDE, [this](const std::vector<std::any> &args) {
+            (void)args;
+
+            std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroides = _asteroide_system.spwan_asteroide(_random_number, _gameplay_factory, _window_height, _window_width, playingInLevel);
+
+            if (asteroides.empty())
+                return;
+            size_t index;
+            for (const auto &asteroide : asteroides) {
+                index = getNextIndex();
+                std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES> pos_dir_sprite = std::make_tuple(
+                    std::get<1>(asteroide).first,
+                    std::get<1>(asteroide).second,
+                    std::get<2>(asteroide)
+                );
+                createEntityProjectiles(index, pos_dir_sprite);
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> list_bonuses = _collision_system.detectCollisionsBonus(_ecs._components_arrays);;
+            if (!list_bonuses.first.empty()) {
+                for (auto bonus : list_bonuses.second) {
+                    create_bonus(bonus);
+                }
+                for (auto dead_bonus : list_bonuses.first) {
+                    _kill_system.killEntity(_ecs, dead_bonus);
+                }
+                send_client_dead_entities(list_bonuses.first);
+            }
+
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::CHECK_BONUS, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::list<std::pair<size_t, std::list<BONUS>>> bonuses = _bonus_system.checkBonus(_ecs._components_arrays);
+
+            if (!bonuses.empty()) {
+                for (auto bonus : bonuses) {
+                    desactivateBonus(bonus);
+                }
+            }
         });
     }
 }

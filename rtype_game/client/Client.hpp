@@ -28,18 +28,20 @@
     #include "../../ecs/ECS.hpp"
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
-    #include "Command_checker.hpp"
     #include "../shared/Utils.hpp"
+    #include "../shared/GameplayFactory.hpp"
 
     // COMPONENTS
 
     #include "components/Window.hpp"
-    #include "components/TempDisplay.hpp"
+    #include "components/LevelStatus.hpp"
     #include "components/Displayable.hpp"
     #include "components/Sprite.hpp"
     #include "components/Music.hpp"
+    #include "components/Animation.hpp"
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
+    #include "components/Text.hpp"
 
     // SYSTEMS
 
@@ -50,13 +52,19 @@
     #include "system/PlayerSystem.hpp"
     #include "system/EventWindow.hpp"
     #include "system/MusicSystem.hpp"
+    #include "system/ScoreSystem.hpp"
+    #include "system/AnimationSystem.hpp"
     #include "../shared/system/DirectionSystem.hpp"
     #include "../shared/system/PositionSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
+
+    #include "menu/Menu.hpp"
 
     namespace rtype
     {
         class SFMLHandler;
+        class Menu;
         class Client
         {
             public:
@@ -82,19 +90,35 @@
 
                 void change_player_direction(ecs::direction, ecs::direction);
 
-                void send_server_create_room();
+                void send_server_create_room(std::string roomName);
 
-                void send_server_join_room();
+                void send_server_join_room(std::string roomName, std::string clientName);
 
                 void set_window_filter(FILTER_MODE);
 
                 void create_new_player_shoot();
 
+                void handleMousePress();
+                void handleMouseRelease();
                 void handleMouseClick();
+                void changeDifficulty(DIFFICULTY);
+                void launchMenu();
+
 
                 bool _in_menu = true;
                 bool _running = true;
                 EventBus _eventBus;
+                ecs::ECS _ecs;
+
+                /**
+                 * @brief Sends a message to the server to ask the list of all the rooms.
+                 */
+                void requestRoomList();
+
+                // std::vector<std::pair<std::string, int>> getRoomsList();
+                std::mutex roomListMutex;
+                std::vector<std::pair<std::string, int>> _roomsList;
+
 
             protected:
             private:
@@ -104,9 +128,10 @@
                 std::map<int, int> ecs_server_to_client;
                 std::map<int, int> ecs_client_to_server;
                 std::map<LEVELS, bool> _levels_wins;
-                ecs::ECS _ecs;
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
+                std::shared_ptr<GameplayFactory> _gameplay_factory;
+                DIFFICULTY _difficulty = DIFFICULTY::EASY;
 
                 // CLASSES
 
@@ -127,6 +152,14 @@
                 KillSystem _kill_system;
                 PlayerSystem _player_system;
                 MusicSystem _music_system;
+                ScoreSystem _score_system;
+                AnimationSystem _animation_system;
+                BonusSystem _bonus_system;
+
+                void send_server_new_shoot(bool charged = false);
+
+                bool _mouse_pressed = false;
+                std::chrono::steady_clock::time_point _mouse_press_time;
 
 
                 /**
@@ -189,12 +222,8 @@
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
                 void reset_level_lock();
                 void put_level_lock(LEVELS, int, int);
-                // MESSAGE TO SERVER
-
-                /**
-                 * @brief Sends a message to the server indicating a new shoot action.
-                 */
-                void send_server_new_shoot();
+                void init_score();
+                std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
 
                 void send_server_start_game(LEVELS);
 
@@ -226,6 +255,9 @@
                  */
                 void init_subscribe_event_bus();
                 void init_levels_sprites();
+
+                void execute_animation();
+                void changePlayerSprite(int, SPRITES);
         };
     }
 #endif /* !CLIENT_HPP_ */

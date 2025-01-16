@@ -65,7 +65,16 @@
             FAIL_LEVEL,
             WIN_LEVEL,
             UPDATE_POSITIONS_FROM_SERVER,
+            UPDATE_PARTIALS_POSITIONS_FROM_SERVER,
             REMOVE_ATH,
+            UPDATE_SCORE,
+            SPAWN_ASTEROIDE,
+            CHECK_BONUS_COLLISIONS,
+            CHECK_BONUS,
+            PUT_SHIELD,
+            REMOVE_SHIELD,
+            UP_VELOCITY,
+            DOWN_VELOCITY,
             MAX_ACTION
         };
 
@@ -75,28 +84,63 @@
          */
         enum SPRITES
         {
+            SIMPLE_MONSTER = 1,
+            ADVANCED_MONSTER = 2,
+            SUPER_MONSTER = 3,
+            MEGA_MONSTER = 4,
+            SIMPLE_BOSS = 5,
             MENU_BACKGROUND,
             GAME_BACKGROUND,
             MY_PLAYER_SHIP,
-            SIMPLE_MONSTER,
-            ADVANCED_MONSTER,
             PLAYER_SIMPLE_MISSILE,
+            PLAYER_CHARGED_SHOOT,
+            CHARGED_ANIMATION,
             MONSTER_SIMPLE_MISSILE,
+            MONSTER_MULTIPLE_MISSILE,
+            BABY_PROJECTILE,
+            FIRE_BALL,
             OTHER_PLAYER_SHIP,
             LOOSER_SCREEN,
             WIN_SCREEN,
-            MONSTER_MULTIPLE_MISSILE,
             LEVEL1,
             LEVEL2,
             LEVEL_BOSS,
-            LEVEL_LOCK
+            LEVEL_LOCK,
+            WEAPON_DROP,
+            LIFE_DROP,
+            VELOCITY_DROP,
+            SHIELD_DROP,
+            SPEED_DROP,
+            ASTEROIDE,
+            MY_PLAYER_SHIP_SHIELD,
+            MAX_SPRITE
+        };
+
+        enum MONSTER
+        {
+            MONSTER1 = 1,
+            MONSTER2,
+            MAX_MONSTER
+        };
+
+        enum BOSSES
+        {
+            BOSS1 = 1,
+            MAX_BOSS
         };
 
         enum LEVELS
         {
-            UN,
+            UN = 1,
             DEUX,
             BOSS
+        };
+
+        enum DIFFICULTY
+        {
+            EASY,
+            MEDIUM,
+            HARD
         };
 
         /**
@@ -109,6 +153,18 @@
             Deuteranopia,
             Tritanopia,
             Inverted
+        };
+
+        /**
+         * @enum BONUS
+         * @brief Spawn a weapon when a monster is killed
+         */
+        enum BONUS {
+            VELOCITY = 1,
+            LIFE,
+            WEAPON,
+            SHIELD,
+            MAX_BONUS
         };
     }
 

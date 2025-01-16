@@ -61,7 +61,6 @@
                                 if (position._pos_x > (windowWidth + 100) || position._pos_y > windowHeight ||
                                     position._pos_x < 0 || position._pos_y < 0)
                                 {
-                                    std::cout << "KILLL" << std::endl;
                                     ecs.killEntityFromRegistry<ecs::Position>(i);
                                     ecs.killEntityFromRegistry<ecs::Velocity>(i);
                                     ecs.killEntityFromRegistry<Health>(i);

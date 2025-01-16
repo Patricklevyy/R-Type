@@ -44,7 +44,7 @@ namespace rtype
     {
         std::string roomList = "rooms=";
         for (const auto &room : _rooms) {
-            roomList += room.getName() + "," + std::to_string(room.getNbClient()) + ":";
+            roomList += room->getName() + "," + std::to_string(room->getNbClient()) + ":";
         }
         if (!roomList.empty() && roomList.back() == ':') {
             roomList.pop_back();
@@ -55,7 +55,14 @@ namespace rtype
         responseMessage.id = 0;
         responseMessage.params = roomList;
         _compressor.serialize(responseMessage, response);
-        _udpManager->sendMessage(response, clientAddr);
+
+        if(_udpManager->sendMessage(response, clientAddr)) {
+            std::cout << "Envoyé à ->"
+                    << clientAddr << "->"
+                    << responseMessage.params
+                    << std::endl;
+        } else
+            std::cout << "Merdeeee" << std::endl;
     }
 
     void Server::handleCommand(const std::vector<char> &message, std::string clientAddr)
@@ -69,6 +76,7 @@ namespace rtype
         std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
         auto it = _commands.find(mes.action);
         if (it != _commands.end()) {
+            std::cout << "JE FAIS LA OMMAND" << std::endl;
             it->second(mes.id, mes.params, clientAddr);
         } else {
             throw ERROR::InvalidActionExceptions("Invalid action");

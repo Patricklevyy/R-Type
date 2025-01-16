@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <string>
-#include "../SpriteFactory.hpp"
+#include "../../shared/SpriteFactory.hpp"
 
 namespace rtype {
     class Displayable {

@@ -10,6 +10,7 @@
 
     #include "../../../ecs/components/Playable.hpp"
     #include "../../../ecs/SparseArray.hpp"
+    #include "../components/Displayable.hpp"
 
     namespace rtype
     {
@@ -33,11 +34,27 @@
                         }
                         return -1;
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPTIN] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
                     return -1;
+                }
+
+                void changePlayerSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
+                {
+                    try {
+                        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
+                        auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array[typeid(Displayable)]);
+
+                        if (index < playables.size() && playables[index].has_value() && index < displayables.size() && displayables[index].has_value()) {
+                            displayables[index].value().setSprite(sprite);
+                        }
+                    } catch (const std::exception &e) {
+                        std::cerr << "[EXCEPTIN] " << e.what() << std::endl;
+                    } catch (...) {
+                        std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
+                    }
                 }
 
             protected:

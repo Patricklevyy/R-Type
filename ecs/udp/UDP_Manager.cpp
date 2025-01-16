@@ -197,7 +197,6 @@ namespace ecs
                 std::cerr << "[ERROR] Failed to parse IP address: " << ip << std::endl;
                 throw ecs::ERROR::InvalidAdressFormatExceptions();
             }
-
             if (message.size() > bufferSize) {
                 std::cerr << "[ERROR] Message size exceeds buffer size: " << message.size() << " > " << bufferSize << std::endl;
                 throw ecs::ERROR::MessageTooBigExceptions();

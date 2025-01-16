@@ -20,14 +20,19 @@
     #include "../../server/components/Ennemies.hpp"
     #include "../../server/components/Monster.hpp"
     #include "../../server/components/Hitbox.hpp"
+    #include "../../server/components/Damage.hpp"
+    #include "../../server/components/PowerUp.hpp"
     #include "../components/Levels.hpp"
-    #include "../../client/components/TempDisplay.hpp"
+    #include "../../client/components/LevelStatus.hpp"
+    #include "../../client/components/Animation.hpp"
     #include "../../client/components/Window.hpp"
     #include "../../client/components/Displayable.hpp"
     #include "../../client/components/Shader.hpp"
     #include "../../client/components/Sprite.hpp"
     #include "../../client/components/Music.hpp"
     #include "../../server/components/SpriteId.hpp"
+    #include "../../server/components/Bonus.hpp"
+    #include "../../client/components/Text.hpp"
 
     namespace rtype
     {
@@ -50,9 +55,11 @@
                     ecs.killEntityFromRegistry<Displayable>(index);
                     ecs.killEntityFromRegistry<Shader>(index);
                     ecs.killEntityFromRegistry<Sprite>(index);
-                    ecs.killEntityFromRegistry<TempDisplay>(index);
+                    ecs.killEntityFromRegistry<LevelStatus>(index);
                     ecs.killEntityFromRegistry<Window>(index);
                     ecs.killEntityFromRegistry<Music>(index);
+                    ecs.killEntityFromRegistry<Text>(index);
+                    ecs.killEntityFromRegistry<Animation>(index);
 
                     // SHARED COMPONENTS
 
@@ -67,6 +74,9 @@
                     ecs.killEntityFromRegistry<Monster>(index);
                     ecs.killEntityFromRegistry<Projectiles>(index);
                     ecs.killEntityFromRegistry<SpriteId>(index);
+                    ecs.killEntityFromRegistry<Bonus>(index);
+                    ecs.killEntityFromRegistry<Damage>(index);
+                    ecs.killEntityFromRegistry<PowerUp>(index);
 
                     ecs.addDeadEntity(index);
                 }
@@ -106,15 +116,28 @@
                     return dead_entities;
                 }
 
-                void killTempDisplay(ecs::ECS &ecs)
+                void killLevelStatus(ecs::ECS &ecs)
                 {
-                    auto &tempdisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(ecs._components_arrays[typeid(TempDisplay)]);
+                    auto &level_status = std::any_cast<ecs::SparseArray<LevelStatus> &>(ecs._components_arrays[typeid(LevelStatus)]);
 
-                    for (size_t i = 0; i < tempdisplays.size(); ++i)
+                    for (size_t i = 0; i < level_status.size(); ++i)
                         {
-                            if (tempdisplays[i].has_value())
+                            if (level_status[i].has_value())
                             {
                                 killEntity(ecs, i);
+                            }
+                        }
+                }
+
+                void killTexts(ecs::ECS &ecs)
+                {
+                    auto &texts = std::any_cast<ecs::SparseArray<Text> &>(ecs._components_arrays[typeid(Text)]);
+
+                    for (size_t i = 0; i < texts.size(); ++i)
+                        {
+                            if (texts[i].has_value())
+                            {
+                                ecs.killEntityFromRegistry<Text>(i);
                             }
                         }
                 }
