@@ -19,12 +19,18 @@
                 ~SFMLHandler();
 
                 void handleEvents(std::queue<sf::Event> &);
+                void bindKey(sf::Keyboard::Key, sf::Keyboard::Key);
+                void unbind(sf::Keyboard::Key);
+                void resetBind();
 
             private:
                 void processKeyPressed(const sf::Event &event);
                 void processKeyReleased(const sf::Event &event);
                 void processMouseButtonPressed(const sf::Event &event);
                 void processMouseButtonReleased(const sf::Event &event);
+                void init_keys();
+
+                std::map<sf::Keyboard::Key, sf::Keyboard::Key> _keyBindings;
 
                 Client &_client;
                 
