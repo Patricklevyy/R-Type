@@ -42,6 +42,7 @@
     #include "../shared/components/Levels.hpp"
     #include "../shared/components/Health.hpp"
     #include "components/Text.hpp"
+    #include "components/Life.hpp"
 
     // SYSTEMS
 
@@ -180,7 +181,7 @@
                  * @param x The initial x-coordinate of the player.
                  * @param y The initial y-coordinate of the player.
                  */
-                void createPlayer(unsigned int, float, float);
+                void createPlayer(unsigned int, float, float, int);
 
                 /**
                  * @brief Sends a message to the server with the player's direction.
@@ -223,6 +224,7 @@
                 void reset_level_lock();
                 void put_level_lock(LEVELS, int, int);
                 void init_score();
+                void init_life();
                 std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
 
                 void send_server_start_game(LEVELS);
@@ -257,7 +259,7 @@
                 void init_levels_sprites();
 
                 void execute_animation();
-                void changePlayerSprite(int, SPRITES);
+                void updatePlayerLife(std::string);
         };
     }
 #endif /* !CLIENT_HPP_ */

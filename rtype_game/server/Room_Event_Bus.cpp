@@ -155,7 +155,7 @@ namespace rtype
             std::vector<char> send_message;
             ecs::udp::Message mes;
             mes.action = RTYPE_ACTIONS::CREATE_PLAYER;
-            mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second));
+            mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_gameplay_factory->getPlayerHealth());
 
             mes.id = create_player(position, "new_player");
             _message_compressor.serialize(mes, send_message);
@@ -204,6 +204,14 @@ namespace rtype
                 for (auto bonus : bonuses) {
                     desactivateBonus(bonus);
                 }
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_LIFE, [this](const std::vector<std::any> &args) {
+            (void)args;
+            std::list<std::pair<size_t, int>> player_life = _health_system.updatePlayerLife(_ecs._components_arrays);
+
+            if (!player_life.empty()) {
+                send_client_player_lifes(player_life);
             }
         });
     }

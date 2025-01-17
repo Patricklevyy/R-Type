@@ -33,6 +33,7 @@
     #include "../../server/components/SpriteId.hpp"
     #include "../../server/components/Bonus.hpp"
     #include "../../client/components/Text.hpp"
+    #include "../../client/components/Life.hpp"
 
     namespace rtype
     {
@@ -60,6 +61,7 @@
                     ecs.killEntityFromRegistry<Music>(index);
                     ecs.killEntityFromRegistry<Text>(index);
                     ecs.killEntityFromRegistry<Animation>(index);
+                    ecs.killEntityFromRegistry<Life>(index);
 
                     // SHARED COMPONENTS
 
@@ -137,7 +139,7 @@
                         {
                             if (texts[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<Text>(i);
+                                killEntity(ecs, i);
                             }
                         }
                 }

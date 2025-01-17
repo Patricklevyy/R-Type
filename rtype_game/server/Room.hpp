@@ -273,6 +273,7 @@
             void send_client_change_player_velocity(bool);
             void send_client_player_shield(size_t, bool);
             void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
+            void send_client_player_lifes(std::list<std::pair<size_t, int>>);
         };
     }
 

@@ -234,4 +234,22 @@ namespace rtype
             _udp_server->sendMessage(response, clientAddr);
         }
     }
+
+    void Room::send_client_player_lifes(std::list<std::pair<size_t, int>> lifes)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        responseMessage.id = 0;
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_LIFE;
+
+        for (auto life : lifes) {
+            responseMessage.params += std::to_string(life.first) + "," + std::to_string(life.second) + ";";
+        }
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
 }

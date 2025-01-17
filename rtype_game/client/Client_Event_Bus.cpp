@@ -171,6 +171,7 @@ namespace rtype
             std::string token;
 
             float x = 0.0f, y = 0.0f;
+            int health = 0;
 
             std::getline(ss, token, ';');
             x = std::stof(token);
@@ -178,7 +179,10 @@ namespace rtype
             std::getline(ss, token, ';');
             y = std::stof(token);
 
-            createPlayer(message.id, x, y);
+            std::getline(ss, token, ';');
+            health = std::stof(token);
+
+            createPlayer(message.id, x, y, health);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_SCORE, [this](const std::vector<std::any> &args) {
             try {
@@ -243,27 +247,14 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-    }
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_LIFE, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-    std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
-    {
-        std::vector<std::pair<std::string, int>> parsedRooms;
-        std::stringstream ss(roomList);
-        std::string roomEntry;
-
-        while (std::getline(ss, roomEntry, ':')) {
-            size_t prefixPos = roomEntry.find("rooms=");
-            if (prefixPos != std::string::npos) {
-                roomEntry = roomEntry.substr(prefixPos + 6);
-
-                size_t delimiterPos = roomEntry.find(',');
-                if (delimiterPos != std::string::npos) {
-                    std::string roomName = roomEntry.substr(0, delimiterPos);
-                    int nbClients = std::stoi(roomEntry.substr(delimiterPos + 1));
-                    parsedRooms.emplace_back(roomName, nbClients);
-                }
+                updatePlayerLife(message.params);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
-        }
-        return parsedRooms;
+        });
     }
 }

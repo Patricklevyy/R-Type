@@ -75,6 +75,7 @@
             REMOVE_SHIELD,
             UP_VELOCITY,
             DOWN_VELOCITY,
+            UPDATE_LIFE,
             MAX_ACTION
         };
 
@@ -114,6 +115,9 @@
             SPEED_DROP,
             ASTEROIDE,
             MY_PLAYER_SHIP_SHIELD,
+            LIFE_RECTANGLE,
+            LIFE_RED,
+            LIFE_HEART,
             MAX_SPRITE
         };
 

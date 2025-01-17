@@ -20,7 +20,7 @@ namespace rtype
         std::vector<char> send_message;
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ";" + std::to_string(_gameplay_factory->getDifficulty()) + ":" + sendExistingEntities();
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_gameplay_factory->getPlayerHealth()) + ";" + std::to_string(_port) + ";" + std::to_string(_gameplay_factory->getDifficulty()) + ":" + sendExistingEntities();
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position, clientName);

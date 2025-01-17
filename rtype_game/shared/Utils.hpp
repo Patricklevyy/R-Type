@@ -43,7 +43,9 @@
 
                 static std::vector<std::tuple<std::pair<float, float>, int, int>> parseUpdateEntities(const std::string&);
 
-                static std::tuple<std::pair<float, float>, int, int> parsePositionAndRoomPort(const std::string &);
+                static std::tuple<std::tuple<float, float, int>, int, int> parsePositionAndRoomPort(const std::string &);
+
+                static std::list<std::pair<std::size_t, int>> parse_update_life(const std::string &);
             protected:
             private:
         };

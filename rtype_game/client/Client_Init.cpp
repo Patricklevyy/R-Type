@@ -15,10 +15,12 @@ namespace rtype
         _ecs.addRegistry<Displayable>();
         _ecs.addRegistry<Shader>();
         _ecs.addRegistry<Levels>();
+        _ecs.addRegistry<Health>();
         _ecs.addRegistry<LevelStatus>();
         _ecs.addRegistry<Music>();
         _ecs.addRegistry<Text>();
         _ecs.addRegistry<Animation>();
+        _ecs.addRegistry<Life>();
     }
 
     void Client::init_window_and_background()
@@ -133,6 +135,38 @@ namespace rtype
         _ecs.addComponents<Text>(index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
     }
 
+    void Client::init_life()
+    {
+        size_t index = getNextIndex();
+
+        int x, y;
+
+        x = (_window_width / 3);
+        y = 20;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_HEART));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+
+        index = getNextIndex();
+
+        x += 100;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_RECTANGLE));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+
+        index = getNextIndex();
+
+        x += 8;
+        y += 8;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_RED));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+        _ecs.addComponents<Life>(index, Life());
+    }
+
     void Client::init_game(ecs::udp::Message &message)
     {
         size_t pos = message.params.find(':');
@@ -140,14 +174,13 @@ namespace rtype
         std::string player_room = message.params.substr(0, pos);
         std::string entities = message.params.substr(pos + 1);
 
-        std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
-        std::tuple<std::pair<float, float>, int, int> pos_port_dif = Utils::parsePositionAndRoomPort(player_room);
+        std::tuple<std::tuple<float, float, int>, int, int> pos_port_dif = Utils::parsePositionAndRoomPort(player_room);
 
         _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
         _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
         setRoomAdress(std::get<1>(pos_port_dif));
         _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
-        createPlayer(message.id, std::get<0>(pos_port_dif).first, std::get<0>(pos_port_dif).second);
+        createPlayer(message.id, std::get<0>(std::get<0>(pos_port_dif)), std::get<1>(std::get<0>(pos_port_dif)), std::get<2>(std::get<0>(pos_port_dif)));
         init_levels_sprites();
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;

@@ -31,6 +31,9 @@
 
                     if (index < playables.size() && playables[index].has_value() && index < healths.size() && healths[index].has_value()) {
                         healths[index].value()._health += life;
+                        if (healths[index].value()._health > healths[index].value()._max_heath) {
+                            healths[index].value()._health = healths[index].value()._max_heath;
+                        }
                     }
                 }
 
