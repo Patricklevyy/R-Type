@@ -198,7 +198,7 @@ namespace rtype
         }
     }
 
-    void Room::send_client_change_player_velocity(bool up)
+    void Room::send_client_change_player_velocity(size_t player_index, bool up)
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
@@ -207,7 +207,7 @@ namespace rtype
         } else {
             responseMessage.action = RTYPE_ACTIONS::DOWN_VELOCITY;
         }
-        responseMessage.id = 0;
+        responseMessage.id = player_index;
 
         _message_compressor.serialize(responseMessage, response);
 
@@ -225,8 +225,7 @@ namespace rtype
         } else {
             responseMessage.action = RTYPE_ACTIONS::REMOVE_SHIELD;
         }
-        responseMessage.id = 0;
-        responseMessage.params = std::to_string(index);
+        responseMessage.id = index;
 
         _message_compressor.serialize(responseMessage, response);
 

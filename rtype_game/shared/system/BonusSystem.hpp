@@ -46,6 +46,14 @@
                     }
                 }
 
+                void changeEntityVelocity(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int velocity) {
+                    auto &velocities = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);
+
+                    if (index < velocities.size() && velocities[index].has_value()) {
+                        velocities[index].value().velocity += velocity;
+                    }
+                }
+
                 void powerUp(std::unordered_map<std::type_index, std::any> &components_array, size_t index, BONUS bonus, int bonus_duration) {
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
 

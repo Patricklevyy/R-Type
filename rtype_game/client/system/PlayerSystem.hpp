@@ -44,13 +44,31 @@
                     return -1;
                 }
 
-                void changePlayerSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
+                bool changePlayerSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
                 {
                     try {
                         auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                         auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array[typeid(Displayable)]);
 
                         if (index < playables.size() && playables[index].has_value() && index < displayables.size() && displayables[index].has_value()) {
+                            displayables[index].value().setSprite(sprite);
+                            return true;
+                        }
+                        return false;
+                    } catch (const std::exception &e) {
+                        std::cerr << "[EXCEPTIN] " << e.what() << std::endl;
+                    } catch (...) {
+                        std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
+                    }
+                    return false;
+                }
+
+                void changeTeamateSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
+                {
+                    try {
+                        auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array[typeid(Displayable)]);
+
+                        if (index < displayables.size() && displayables[index].has_value()) {
                             displayables[index].value().setSprite(sprite);
                         }
                     } catch (const std::exception &e) {

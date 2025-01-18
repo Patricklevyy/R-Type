@@ -93,6 +93,8 @@
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.1);
                         case SPRITES::MY_PLAYER_SHIP_SHIELD:
                             return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
+                        case SPRITES::OTHER_PLAYER_SHIP_SHIELD:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
                         case SPRITES::LIFE_RECTANGLE:
                             return std::make_tuple<float, float, float>(1.5f, 0.8f, 0.4f);
                         case SPRITES::LIFE_RED:
@@ -193,6 +195,8 @@
                             return {loadTexture("assets/bonuses/bonus_shield.png")};
                         case SPRITES::MY_PLAYER_SHIP_SHIELD:
                             return loadTextures("player_ship/player_blue_ship_shield", 0, 4);
+                        case SPRITES::OTHER_PLAYER_SHIP_SHIELD:
+                            return loadTextures("player_ship/player_red_ship_shield", 0, 4);
                         case SPRITES::LIFE_RED:
                             return {loadTexture("assets/ath/red_life_rectangle.png")};
                         case SPRITES::LIFE_RECTANGLE:

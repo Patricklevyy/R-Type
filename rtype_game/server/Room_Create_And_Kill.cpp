@@ -177,7 +177,7 @@ namespace rtype
             case BONUS::VELOCITY:
                 _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getVelocityBoostBonus());
                 _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getVelocityDurationBonus());
-                send_client_change_player_velocity(true);
+                send_client_change_player_velocity(std::get<0>(bonus_info.second), true);
                 break;
             case BONUS::SHIELD:
                 _bonus_system.updatePlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second), SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_SHIELD), true);

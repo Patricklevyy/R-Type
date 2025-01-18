@@ -22,7 +22,7 @@ namespace rtype
                 break;
             case BONUS::VELOCITY:
                 _bonus_system.changePlayerVelocity(_ecs._components_arrays, player_index, -_gameplay_factory->getVelocityBoostBonus());
-                send_client_change_player_velocity(false);
+                send_client_change_player_velocity(player_index, false);
             default:
                 break;
             }

@@ -102,6 +102,7 @@
             FIRE_BALL,
             BOSS_PROJECTILE,
             OTHER_PLAYER_SHIP,
+            OTHER_PLAYER_SHIP_SHIELD,
             LOOSER_SCREEN,
             WIN_SCREEN,
             LEVEL1,
