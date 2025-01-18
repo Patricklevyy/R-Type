@@ -83,7 +83,7 @@ namespace rtype
             if (std::get<2>(dead_entities)) {
                 if (_nb_client > 0)
                     _nb_client--;
-                dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
+                dead_entites_id = _kill_system.killAllExceptPlayer(_ecs);
                 send_client_dead_entities(dead_entites_id);
                 playingInLevel = false;
                 send_client_level_status(false, LEVELS::UN);
@@ -140,7 +140,7 @@ namespace rtype
 
             std::pair<LEVELS, bool> level = _level_system.isLevelFinished(_ecs._components_arrays);
             if (level.second) {
-                std::list<size_t> dead_entites_id = _kill_system.killMonstersAndProjectiles(_ecs);
+                std::list<size_t> dead_entites_id = _kill_system.killAllExceptPlayer(_ecs);
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
                 playingInLevel = false;
