@@ -19,6 +19,7 @@
 
     #include "Includes.hpp"
     #include "Enums.hpp"
+    #include <SFML/Graphics.hpp>
 
     namespace rtype
     {
