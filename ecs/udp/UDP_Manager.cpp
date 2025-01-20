@@ -24,7 +24,7 @@ namespace ecs
 
         bool UDP_Manager::initialize(const std::string &configFile, int port)
         {
-            (void)port;
+            (void) port;
             libconfig::Config cfg;
 
             try {
