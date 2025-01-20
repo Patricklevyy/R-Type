@@ -2,179 +2,109 @@
 ** EPITECH PROJECT, 2025
 ** R-Type
 ** File description:
-** RoomHandling
+** Menu
 */
 
-/**
- * @file RoomHandling.hpp
- * @brief Provides the definition of the RoomHandling class for managing and rendering game rooms.
- * 
- * This file defines the RoomHandling class, which is responsible for handling 
- * the list of game rooms, managing user interactions with these rooms, and rendering 
- * the room list on the screen.
- */
-
-#ifndef ROOMHANDLING_HPP_
-#define ROOMHANDLING_HPP_
-
+#ifndef MENU_HPP_
+#define MENU_HPP_
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <memory>
-#include <unordered_set>
+#include "../SFMLHandler.hpp"
+#include "InputScreen.hpp"
+#include "RoomHandling.hpp"
+#include "TextInput.hpp"
+#include "Settings.hpp"
 
 namespace rtype
 {
+    class Client;
     /**
-     * @class RoomHandling
-     * @brief Manages the list of rooms and user interactions with them.
-     * 
-     * The RoomHandling class provides functionality to:
-     * - Add rooms to a room list.
-     * - Handle clicks on room names.
-     * - Scroll through a list of rooms.
-     * - Render the list of rooms within a graphical container.
-     * 
-     * The class operates on a reference to a vector of rooms, each represented as a
-     * pair containing the room name and the number of current players.
+     * @class Menu
+     * @brief A class to manage the Menu of the game.
      */
-    class RoomHandling {
+    class Menu {
       public:
         /**
-         * @brief Constructs a new RoomHandling object.
-         * 
-         * @param _font Reference to the font used for rendering text.
-         * @param rooms Reference to a vector of pairs representing room names and player counts.
+         * @brief A class to manage the Menu of the game.
+         * @param window the window that will display the menu.
+         * @param name name of the window.
+         * @param client The client that display the menu.
          */
-        RoomHandling(sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
-        : _rooms(rooms), _font(_font), _scrollOffset(0) {};
+        Menu(sf::RenderWindow &window, const std::string &name, Client &client);
 
         /**
-         * @brief Destructor for RoomHandling.
+         * @brief Destructor for the class Menu.
          */
-        ~RoomHandling() {};
+        ~Menu() {};
 
         /**
-         * @brief Adds a room to the list of rooms.
-         * 
-         * @param name The name of the new room.
-         * @param nb_places The number of players in the room.
+         * @brief function that will run the game.
+         * @param bool say if the menu is actually used or not.
          */
-        void addRoom(const std::string &name, int nb_places)
-        {
-            _rooms.emplace_back(name, nb_places);
-        }
+        void run(bool &);
 
         /**
-         * @brief Handles clicks on rooms.
-         * 
-         * Checks if a given mouse position is within the bounds of a room's clickable area.
-         * If so, the selected room is updated and returned.
-         * 
-         * @param mousePos The position of the mouse click.
-         * @param container The container that bounds the list of rooms.
-         * @return The name of the selected room, or an empty string if no room was selected.
+         * @brief Function to handle actions in the lenu.
+         * @param in_menu bool that says if the player is in menu or not.
          */
-        std::string handleClick(
-            const sf::Vector2f &mousePos, const sf::RectangleShape &container)
-        {
-            for (std::size_t i = 0; i < _rooms.size(); ++i) {
-                float yPosition =
-                    container.getPosition().y + 20 + i * 45 - _scrollOffset;
-                sf::RectangleShape roomShape;
-                roomShape.setSize({container.getSize().x - 40, 40});
-                roomShape.setPosition(
-                    {container.getPosition().x + 20, yPosition});
-                if (roomShape.getGlobalBounds().contains(mousePos)) {
-                    _selectedRoom = _rooms[i].first;
-                    return _selectedRoom;
-                }
-            }
-            _selectedRoom = "";
-            return _selectedRoom;
-        }
+        void handleEvents(bool &_in_menu);
 
         /**
-         * @brief Handles scrolling within the list of rooms.
-         * 
-         * Adjusts the scroll offset by a delta value, keeping it within valid bounds.
-         * 
-         * @param delta The amount to scroll (positive or negative).
+         * @brief Function to update the menu.
          */
-        void handleScroll(float delta)
-        {
-            _scrollOffset += delta * 20;
-            if (_scrollOffset < 0)
-                _scrollOffset = 0;
-        }
+        void update();
 
         /**
-         * @brief Draws the list of rooms within a container.
-         * 
-         * Renders each room that falls within the visible area of the container. Rooms
-         * are displayed as rectangles with their names and player counts.
-         * 
-         * @param window The window to render the rooms into.
-         * @param container The container bounding the room list.
+         * @brief Function to render the menu.
          */
-        void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
-        {
-            std::unordered_set<std::string> drawnRooms;
-            for (std::size_t i = 0; i < _rooms.size(); ++i) {
-                if (drawnRooms.count(_rooms[i].first) > 0) {
-                    continue;
-                }
-                float yPosition =
-                    container.getPosition().y + 20 + i * 45 - _scrollOffset;
-                if (yPosition >= container.getPosition().y
-                    && yPosition
-                        <= container.getPosition().y + container.getSize().y) {
-                    sf::RectangleShape roomShape;
-                    roomShape.setSize({container.getSize().x - 40, 40});
-                    roomShape.setPosition(
-                        {container.getPosition().x + 20, yPosition});
-                    roomShape.setFillColor(sf::Color(30, 30, 30));
-                    roomShape.setOutlineColor(sf::Color::White);
-                    roomShape.setOutlineThickness(1);
-
-                    sf::Text roomText;
-                    roomText.setFont(_font);
-                    roomText.setString(_rooms[i].first + " ("
-                        + std::to_string(_rooms[i].second) + "/4)");
-                    roomText.setCharacterSize(18);
-                    roomText.setFillColor(sf::Color::White);
-                    roomText.setPosition(roomShape.getPosition().x + 10,
-                        roomShape.getPosition().y + 8);
-
-                    window.draw(roomShape);
-                    window.draw(roomText);
-                    drawnRooms.insert(_rooms[i].first);
-                }
-            }
-        }
+        void render();
 
         /**
-         * @brief Gets the currently selected room.
-         * 
-         * @return The name of the currently selected room, or an empty string if none is selected.
+         * @brief Function to get the player name.
          */
-        std::string getSelectedRoom() const
-        {
-            return _selectedRoom;
-        }
+        std::string getPlayerName() const { return _playerName; }
 
         /**
-         * @brief Reference to the list of rooms.
-         * 
-         * Each room is represented as a pair of a room name and a player count.
+         * @brief Get the created room.
          */
-        std::vector<std::pair<std::string, int>> &_rooms;
+        std::string getCreatedRoom() const { return _createdRoom; }
+
+        std::shared_ptr<RoomHandling> _roomHandling;
+        std::shared_ptr<TextInput> _textInput;
+
+        /**
+         * @brief Synchronisation of the rooms.
+         */
+        void syncRooms();
+        std::vector<std::pair<std::string, int>> roomsList;
+
+        /**
+         * @brief Event to join a room, and play game.
+         */
+        void joinRoomEvent();
 
       protected:
       private:
-        sf::Font &_font; ///< Reference to the font used for room text rendering.
-        float _scrollOffset; ///< Offset for scrolling through the room list.
-        std::string _selectedRoom; ///< Name of the currently selected room.
+        sf::RenderWindow &_window;
+        sf::Font _font;
+        sf::Font font_2;
+        sf::Texture _logoTexture;
+        sf::Texture _createRoomTexture;
+        sf::Texture _settingsTexture;
+        sf::Sprite _logo;
+        sf::Sprite _settings;
+        sf::Sprite _validateButton;
+        sf::RectangleShape _roomContainer;
+        sf::RectangleShape _outerContainer;
+        sf::Texture _backgroundTexture;
+        sf::Sprite _background;
+
+        sf::Text _playerNameText;
+        sf::Text _playerText;
+        std::string _playerName;
+        std::string _createdRoom;
+        Client &_client;
     };
 } // namespace rtype
 
-#endif /* !ROOMHANDLING_HPP_ */
+#endif /* !MENU_HPP_ */

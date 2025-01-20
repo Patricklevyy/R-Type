@@ -66,6 +66,21 @@
                     }
                 }
 
+                void shootMusic(std::unordered_map<std::type_index, std::any> &components_array, std::string musicFilePath)
+                {
+                    try {
+                        auto &musics = std::any_cast<ecs::SparseArray<Music> &>(components_array.at(typeid(Music)));
+
+                        if (musics[0].has_value()) {
+                            musics[0].value().setShootMusic(musicFilePath);
+                        }
+                    } catch (const std::exception &e) {
+                        std::cerr << "[EXCEPTON] " << e.what() << std::endl;
+                    } catch (...) {
+                        std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
+                    }
+                }
+
             protected:
             private:
         };

@@ -69,6 +69,16 @@ namespace rtype {
         /**
          * @brief Get the speed duration that is set in the config file.
          */
+        int getWeaponDurationBonus();
+
+        /**
+         * @brief Get the speed that is set in the config file.
+         */
+        int getWeaponBoostBonus();
+
+        /**
+         * @brief Get the speed duration that is set in the config file.
+         */
         int getVelocityDurationBonus();
 
         /**

@@ -43,6 +43,24 @@ namespace rtype
         SFMLHandler(Client &client);
 
         /**
+         * @brief Gets the current key bindings.
+         *
+         * Returns the current key bindings for the handler.
+         *
+         * @return A map of key bindings.
+         */
+        std::map<sf::Keyboard::Key, sf::Keyboard::Key> getKeyBindings();
+
+        /**
+         * @brief Updates the key bindings.
+         *
+         * Updates the key bindings with a new set of key mappings.
+         *
+         * @param newBindings A map of new key bindings.
+         */
+        void updateKeyBindings(const std::map<sf::Keyboard::Key, sf::Keyboard::Key> &newBindings);
+
+        /**
          * @brief Destructor for the SFMLHandler class.
          */
         ~SFMLHandler();

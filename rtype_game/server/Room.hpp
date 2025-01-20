@@ -363,6 +363,14 @@
              * @param playerLives A list of player ids and their updated life values.
              */
             void send_client_player_lifes(std::list<std::pair<size_t, int>> playerLives);
+            
+            /**
+             * @brief Sends the client a request to change the player's weapon.
+             * 
+             * @param playerId The player id whose weapon is to be changed.
+             * @param put Whether the weapon should be put or removed.
+             */
+            void send_client_player_weapon(size_t index, bool put);
         };
     }
 

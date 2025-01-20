@@ -73,6 +73,18 @@
                     music->play();
                 }
 
+                void setShootMusic(const std::string& filePath)
+                {
+                    if (!music->openFromFile(filePath)) {
+                        throw std::runtime_error("Erreur : Impossible de charger le fichier audio : " + filePath);
+                    }
+                    if (music->getStatus() == sf::Sound::Playing) {
+                        music->stop();
+                    }
+                    music->setLoop(false);
+                    music->play();
+                }
+
             protected:
             private:
                 std::shared_ptr<sf::Music> music;
