@@ -108,6 +108,12 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:a2f4fae74ef5f92f8000775f5ead6a758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c68860990fe3ec502fd4ab231eda31d" id="r_a8c68860990fe3ec502fd4ab231eda31d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a8c68860990fe3ec502fd4ab231eda31d">handleEvents</a> (std::queue&lt; sf::Event &gt; &amp;)</td></tr>
 <tr class="separator:a8c68860990fe3ec502fd4ab231eda31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89fe9c476940100cbe8752767a440be2" id="r_a89fe9c476940100cbe8752767a440be2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a89fe9c476940100cbe8752767a440be2">bindKey</a> (sf::Keyboard::Key, sf::Keyboard::Key)</td></tr>
+<tr class="separator:a89fe9c476940100cbe8752767a440be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c793cfbba8418c4875140d8e6d7706" id="r_ad4c793cfbba8418c4875140d8e6d7706"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#ad4c793cfbba8418c4875140d8e6d7706">unbind</a> (sf::Keyboard::Key)</td></tr>
+<tr class="separator:ad4c793cfbba8418c4875140d8e6d7706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895b7eaa07f01a5bec6e962115f152e7" id="r_a895b7eaa07f01a5bec6e962115f152e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a895b7eaa07f01a5bec6e962115f152e7">resetBind</a> ()</td></tr>
+<tr class="separator:a895b7eaa07f01a5bec6e962115f152e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a0dbc49a7f286c81daa4b95f0cfa077b7" name="a0dbc49a7f286c81daa4b95f0cfa077b7"></a>
@@ -146,6 +152,34 @@ Fonctions membres publiques</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="a89fe9c476940100cbe8752767a440be2" name="a89fe9c476940100cbe8752767a440be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89fe9c476940100cbe8752767a440be2">&#9670;&#160;</a></span>bindKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::SFMLHandler::bindKey </td>
+          <td>(</td>
+          <td class="paramtype">sf::Keyboard::Key&#160;</td>
+          <td class="paramname"><em>former_key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Keyboard::Key&#160;</td>
+          <td class="paramname"><em>new_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8c68860990fe3ec502fd4ab231eda31d" name="a8c68860990fe3ec502fd4ab231eda31d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c68860990fe3ec502fd4ab231eda31d">&#9670;&#160;</a></span>handleEvents()</h2>
 
@@ -157,6 +191,41 @@ Fonctions membres publiques</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::queue&lt; sf::Event &gt; &amp;&#160;</td>
           <td class="paramname"><em>events</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a895b7eaa07f01a5bec6e962115f152e7" name="a895b7eaa07f01a5bec6e962115f152e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895b7eaa07f01a5bec6e962115f152e7">&#9670;&#160;</a></span>resetBind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::SFMLHandler::resetBind </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4c793cfbba8418c4875140d8e6d7706" name="ad4c793cfbba8418c4875140d8e6d7706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c793cfbba8418c4875140d8e6d7706">&#9670;&#160;</a></span>unbind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::SFMLHandler::unbind </td>
+          <td>(</td>
+          <td class="paramtype">sf::Keyboard::Key&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

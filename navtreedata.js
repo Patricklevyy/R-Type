@@ -110,7 +110,8 @@ var NAVTREE =
       [ "Membres de classe", "functions.html", [
         [ "Tout", "functions.html", "functions_dup" ],
         [ "Fonctions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Définitions de type", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Fichiers", "files.html", [
@@ -127,10 +128,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ATH_8hpp.html",
-"classecs_1_1Direction.html#a114078e2741b8bc155203353c5b1eff1",
-"classrtype_1_1DirectionSystem.html#ae1f2cfd0bd67a1e221767c9c8178b358",
-"classrtype_1_1RenderWindow.html#a1302c6ce89bc11d67645629112156fbc",
-"md_documentation_2CMakeDocumentation.html#autotoc_md30"
+"Room__Init_8cpp.html",
+"classecs_1_1udp_1_1MessageCompressor.html#a58c1f899b5a0f62cff0e78e799c55342",
+"classrtype_1_1EventBus.html#a67e96467e1e27fa41bb57a4aaf18c430",
+"classrtype_1_1Music.html#a1f6fc807edb7887fd8649d3d70194f38",
+"classrtype_1_1Window.html",
+"namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a0650ad755ca007de6142b7506846fb68"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

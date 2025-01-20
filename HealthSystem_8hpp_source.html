@@ -117,69 +117,108 @@ $(document).ready(function(){initNavTree('HealthSystem_8hpp_source.html',''); in
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #include &quot;../components/Hitbox.hpp&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #include &quot;../../../ecs/components/Direction.hpp&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #include &quot;../../../ecs/components/Playable.hpp&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
-<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html">   31</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1HealthSystem.html">HealthSystem</a> {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">   37</a></span>                <a class="code hl_function" href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">HealthSystem</a>() {}</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">   42</a></span>                <a class="code hl_function" href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">~HealthSystem</a>() {}</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#a4efe1710f7ed2e13b9a9e61a09b6650f">   44</a></span>                std::tuple&lt;std::list&lt;size_t&gt;, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">bool</span>&gt; <a class="code hl_function" href="classrtype_1_1HealthSystem.html#a4efe1710f7ed2e13b9a9e61a09b6650f">checkLife</a>(<a class="code hl_class" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;<a class="code hl_namespace" href="namespaceecs.html">ecs</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;player_alive)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                        <span class="keyword">auto</span> &amp;healths = std::any_cast&lt;ecs::SparseArray&lt;Health&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>)]);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                        <span class="keyword">auto</span> &amp;monsters = std::any_cast&lt;ecs::SparseArray&lt;Monster&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Monster.html">Monster</a>)]);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                        <span class="keyword">auto</span> &amp;playables = std::any_cast&lt;ecs::SparseArray&lt;ecs::Playable&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Playable.html">ecs::Playable</a>)]);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        std::tuple&lt;std::list&lt;size_t&gt;, <span class="keywordtype">unsigned</span> int, <span class="keywordtype">bool</span>&gt; dead_entities;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        std::get&lt;1&gt;(dead_entities) = 0;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        std::get&lt;2&gt;(dead_entities) = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; healths.size(); ++i)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                            <span class="keywordflow">if</span> (healths[i].has_value())</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                            {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                <span class="keyword">auto</span> &amp;health = healths[i].value();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                <span class="keywordflow">if</span> (health._health &lt;= 0)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                    std::cout &lt;&lt; <span class="stringliteral">&quot;KILLL, deaddddd&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                    <span class="keywordflow">if</span> (i &lt; monsters.size() &amp;&amp; monsters[i].has_value())</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                        std::get&lt;1&gt;(dead_entities)++;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                    <span class="keywordflow">if</span> (i &lt; playables.size() &amp;&amp; playables[i].has_value()) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                        player_alive--;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                        <span class="keywordflow">if</span> (player_alive &lt;= 0)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                            std::get&lt;2&gt;(dead_entities) = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                    }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                    std::get&lt;0&gt;(dead_entities).push_front(i);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                            }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                        }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                        <span class="keywordflow">return</span> dead_entities;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    #include &quot;../../../ecs/components/Position.hpp&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html">   32</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1HealthSystem.html">HealthSystem</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">   38</a></span>                <a class="code hl_function" href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">HealthSystem</a>() {}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">   43</a></span>                <a class="code hl_function" href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">~HealthSystem</a>() {}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#a8802b5a5e228cec0a2fa27d7818c3205">   45</a></span>                std::tuple&lt;std::list&lt;size_t&gt;, <span class="keywordtype">unsigned</span> int, bool, std::list&lt;std::pair&lt;float, float&gt;&gt;&gt; <a class="code hl_function" href="classrtype_1_1HealthSystem.html#a8802b5a5e228cec0a2fa27d7818c3205">checkLife</a>(<a class="code hl_class" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;<a class="code hl_namespace" href="namespaceecs.html">ecs</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;player_alive)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="comment">// std::tuple&lt;std::list&lt;size_t&gt;, unsigned int, bool&gt; checkLife(ecs::ECS &amp;ecs, unsigned int &amp;player_alive)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                        <span class="keyword">auto</span> &amp;healths = std::any_cast&lt;ecs::SparseArray&lt;Health&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>)]);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        <span class="keyword">auto</span> &amp;monsters = std::any_cast&lt;ecs::SparseArray&lt;Monster&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Monster.html">Monster</a>)]);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        <span class="keyword">auto</span> &amp;playables = std::any_cast&lt;ecs::SparseArray&lt;ecs::Playable&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Playable.html">ecs::Playable</a>)]);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        <span class="comment">// std::tuple&lt;std::list&lt;size_t&gt;, unsigned int, bool&gt; dead_entities;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(<a class="code hl_namespace" href="namespaceecs.html">ecs</a>._components_arrays[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)]);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        std::tuple&lt;std::list&lt;size_t&gt;, <span class="keywordtype">unsigned</span> int, bool, std::list&lt;std::pair&lt;float, float&gt;&gt;&gt; dead_entities;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                        std::get&lt;1&gt;(dead_entities) = 0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                        std::get&lt;2&gt;(dead_entities) = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; healths.size(); ++i)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                        {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                            <span class="keywordflow">if</span> (healths[i].has_value())</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                            {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                <span class="keyword">auto</span> &amp;health = healths[i].value();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                <span class="keywordflow">if</span> (health._health &lt;= 0)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                    <span class="keywordflow">if</span> (i &lt; monsters.size() &amp;&amp; monsters[i].has_value())</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                        std::get&lt;1&gt;(dead_entities) += monsters[i].value()._score_value;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                    <span class="keywordflow">if</span> (i &lt; playables.size() &amp;&amp; playables[i].has_value()) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                        player_alive--;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                        <span class="keywordflow">if</span> (player_alive &lt;= 0)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                            std::get&lt;2&gt;(dead_entities) = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                    std::get&lt;0&gt;(dead_entities).push_front(i);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                    <span class="keywordflow">if</span> (i &lt; positions.size() &amp;&amp; positions[i].has_value()) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                        <span class="keyword">auto</span> &amp;pos = positions[i].value();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                        std::get&lt;3&gt;(dead_entities).push_front({pos._pos_x, pos._pos_y});</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                            }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                        }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        <span class="keywordflow">return</span> dead_entities;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                    }</div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        };</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classrtype_1_1HealthSystem.html#afa4115262d1f2df6a7dcd1975e6b7ba6">   83</a></span>                    std::list&lt;std::pair&lt;size_t, int&gt;&gt; <a class="code hl_function" href="classrtype_1_1HealthSystem.html#afa4115262d1f2df6a7dcd1975e6b7ba6">updatePlayerLife</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                        <span class="keyword">auto</span> &amp;healths = std::any_cast&lt;ecs::SparseArray&lt;Health&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>)]);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                        <span class="keyword">auto</span> &amp;playables = std::any_cast&lt;ecs::SparseArray&lt;ecs::Playable&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Playable.html">ecs::Playable</a>)]);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                        std::list&lt;std::pair&lt;size_t, int&gt;&gt; lifes_updates;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                        <span class="keyword">static</span> <span class="keyword">auto</span> last_execution_time = std::chrono::steady_clock::now();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                        <span class="keyword">auto</span> now = std::chrono::steady_clock::now();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                        <span class="keyword">auto</span> elapsed = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(now - last_execution_time);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                        <span class="keywordflow">if</span> (elapsed.count() &lt; 500) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                            <span class="keywordflow">return</span> lifes_updates;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                        last_execution_time = now;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; playables.size(); ++i)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                        {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                            <span class="keywordflow">if</span> (playables[i].has_value() &amp;&amp; i &lt; healths.size() &amp;&amp; healths[i].has_value())</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                            {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                lifes_updates.push_front(std::make_pair(i, healths[i].value()._health));</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                            }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                        <span class="keywordflow">return</span> lifes_updates;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif </span><span class="comment">/* !HEALTHSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        };</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif </span><span class="comment">/* !HEALTHSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassecs_1_1ECS_html"><div class="ttname"><a href="classecs_1_1ECS.html">ecs::ECS</a></div><div class="ttdoc">Manages entities and their components in an ECS architecture.</div><div class="ttdef"><b>Definition</b> ECS.hpp:31</div></div>
 <div class="ttc" id="aclassecs_1_1Playable_html"><div class="ttname"><a href="classecs_1_1Playable.html">ecs::Playable</a></div><div class="ttdoc">Represents a playable entity in the game.</div><div class="ttdef"><b>Definition</b> Playable.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1HealthSystem_html"><div class="ttname"><a href="classrtype_1_1HealthSystem.html">rtype::HealthSystem</a></div><div class="ttdoc">Manages entity health and removes entities with zero or negative health.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:31</div></div>
-<div class="ttc" id="aclassrtype_1_1HealthSystem_html_a4efe1710f7ed2e13b9a9e61a09b6650f"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#a4efe1710f7ed2e13b9a9e61a09b6650f">rtype::HealthSystem::checkLife</a></div><div class="ttdeci">std::tuple&lt; std::list&lt; size_t &gt;, unsigned int, bool &gt; checkLife(ecs::ECS &amp;ecs, unsigned int &amp;player_alive)</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:44</div></div>
-<div class="ttc" id="aclassrtype_1_1HealthSystem_html_aa5df994e8813ad26703191cc9bfb90d0"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">rtype::HealthSystem::~HealthSystem</a></div><div class="ttdeci">~HealthSystem()</div><div class="ttdoc">Destructor for HealthSystem.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:42</div></div>
-<div class="ttc" id="aclassrtype_1_1HealthSystem_html_aa64ec901e902d16d57df34eabb55c247"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">rtype::HealthSystem::HealthSystem</a></div><div class="ttdeci">HealthSystem()</div><div class="ttdoc">Constructor for HealthSystem.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:37</div></div>
+<div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
+<div class="ttc" id="aclassrtype_1_1HealthSystem_html"><div class="ttname"><a href="classrtype_1_1HealthSystem.html">rtype::HealthSystem</a></div><div class="ttdoc">Manages entity health and removes entities with zero or negative health.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:32</div></div>
+<div class="ttc" id="aclassrtype_1_1HealthSystem_html_a8802b5a5e228cec0a2fa27d7818c3205"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#a8802b5a5e228cec0a2fa27d7818c3205">rtype::HealthSystem::checkLife</a></div><div class="ttdeci">std::tuple&lt; std::list&lt; size_t &gt;, unsigned int, bool, std::list&lt; std::pair&lt; float, float &gt; &gt; &gt; checkLife(ecs::ECS &amp;ecs, unsigned int &amp;player_alive)</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:45</div></div>
+<div class="ttc" id="aclassrtype_1_1HealthSystem_html_aa5df994e8813ad26703191cc9bfb90d0"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#aa5df994e8813ad26703191cc9bfb90d0">rtype::HealthSystem::~HealthSystem</a></div><div class="ttdeci">~HealthSystem()</div><div class="ttdoc">Destructor for HealthSystem.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:43</div></div>
+<div class="ttc" id="aclassrtype_1_1HealthSystem_html_aa64ec901e902d16d57df34eabb55c247"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#aa64ec901e902d16d57df34eabb55c247">rtype::HealthSystem::HealthSystem</a></div><div class="ttdeci">HealthSystem()</div><div class="ttdoc">Constructor for HealthSystem.</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:38</div></div>
+<div class="ttc" id="aclassrtype_1_1HealthSystem_html_afa4115262d1f2df6a7dcd1975e6b7ba6"><div class="ttname"><a href="classrtype_1_1HealthSystem.html#afa4115262d1f2df6a7dcd1975e6b7ba6">rtype::HealthSystem::updatePlayerLife</a></div><div class="ttdeci">std::list&lt; std::pair&lt; size_t, int &gt; &gt; updatePlayerLife(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</div><div class="ttdef"><b>Definition</b> HealthSystem.hpp:83</div></div>
 <div class="ttc" id="aclassrtype_1_1Health_html"><div class="ttname"><a href="classrtype_1_1Health.html">rtype::Health</a></div><div class="ttdef"><b>Definition</b> Health.hpp:20</div></div>
 <div class="ttc" id="aclassrtype_1_1Monster_html"><div class="ttname"><a href="classrtype_1_1Monster.html">rtype::Monster</a></div><div class="ttdef"><b>Definition</b> Monster.hpp:21</div></div>
 <div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="namespaceecs.html">ecs</a></div><div class="ttdef"><b>Definition</b> Direction.hpp:19</div></div>
-<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

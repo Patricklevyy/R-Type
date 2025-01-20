@@ -1,6 +1,27 @@
 var searchData=
 [
-  ['neutral_0',['Neutral',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559',1,'rtype']]],
-  ['no_5fchange_1',['NO_CHANGE',['../namespaceecs.html#a7a98367474612e41f7e1da1a57853776ac49df9ae840826f8305ef8ea0b91aa18',1,'ecs']]],
-  ['no_5fdirection_2',['NO_DIRECTION',['../namespaceecs.html#a7a98367474612e41f7e1da1a57853776ae8a681694134a62f9d7db1714ab8e79b',1,'ecs']]]
+  ['max_5faction_0',['MAX_ACTION',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e',1,'rtype']]],
+  ['max_5fbonus_1',['MAX_BONUS',['../namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd',1,'rtype']]],
+  ['max_5fboss_2',['MAX_BOSS',['../namespacertype.html#a701d30d6e53d47a1f10e4833b3eabb6dab806d548d1414b74404a8981487ab34a',1,'rtype']]],
+  ['max_5fmonster_3',['MAX_MONSTER',['../namespacertype.html#ae93815409cda024c90db1bf23e0a22f6a9e35b95074e9e0a92506d654ef331cfd',1,'rtype']]],
+  ['max_5fsprite_4',['MAX_SPRITE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1',1,'rtype']]],
+  ['medium_5',['MEDIUM',['../namespacertype.html#a54b260e928f16526373dff8bab381a13a52c41364989848f4e1bbee8b65cb52f2',1,'rtype']]],
+  ['mega_5fmonster_6',['MEGA_MONSTER',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ab8e8d6bf87631e2615b94b138984667f',1,'rtype']]],
+  ['menu_5fbackground_7',['MENU_BACKGROUND',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aa47073e059f184ce7a62ab010d7e67fb',1,'rtype']]],
+  ['monster1_8',['MONSTER1',['../namespacertype.html#ae93815409cda024c90db1bf23e0a22f6abda7c264d5ee8773fc2a5b4b5bbfc0d9',1,'rtype']]],
+  ['monster2_9',['MONSTER2',['../namespacertype.html#ae93815409cda024c90db1bf23e0a22f6aadef702a3352707067fa43fd862adade',1,'rtype']]],
+  ['monster_5fmultiple_5fmissile_10',['MONSTER_MULTIPLE_MISSILE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309',1,'rtype']]],
+  ['monster_5fsimple_5fmissile_11',['MONSTER_SIMPLE_MISSILE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662af1db3068c29c70dc182f728519949781',1,'rtype']]],
+  ['move_5fbackground_12',['MOVE_BACKGROUND',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3adfbdf0b263f7d9825e01b353e9c690dc',1,'rtype']]],
+  ['move_5fdown_13',['MOVE_DOWN',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ae2ddcacf8f271b18078220b87e39a618',1,'rtype']]],
+  ['move_5fdown_5fstop_14',['MOVE_DOWN_STOP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a0f9b627c7263c848ffd5fd8f14a2df37',1,'rtype']]],
+  ['move_5fleft_15',['MOVE_LEFT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ac300cb32923cc502bd39424fcc760528',1,'rtype']]],
+  ['move_5fleft_5fstop_16',['MOVE_LEFT_STOP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3af11a038259d17d8c27b91b48fa1ec2da',1,'rtype']]],
+  ['move_5fmonsters_17',['MOVE_MONSTERS',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a1261f9d61e9712285ceae9c1fa985af9',1,'rtype']]],
+  ['move_5fright_18',['MOVE_RIGHT',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a5bc053130d458bbd4b6b60eaaa672ea5',1,'rtype']]],
+  ['move_5fright_5fstop_19',['MOVE_RIGHT_STOP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3adb12ba6298eca0f58b8e69559dd57a92',1,'rtype']]],
+  ['move_5fup_20',['MOVE_UP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a5bbacaed72784a2b29845e6eca3c965e',1,'rtype']]],
+  ['move_5fup_5fstop_21',['MOVE_UP_STOP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ab4631450225b810a5689e469ad543b06',1,'rtype']]],
+  ['my_5fplayer_5fship_22',['MY_PLAYER_SHIP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a629b51c371016e65912d9e81d785ed8b',1,'rtype']]],
+  ['my_5fplayer_5fship_5fshield_23',['MY_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216',1,'rtype']]]
 ];

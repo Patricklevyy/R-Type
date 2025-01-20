@@ -120,21 +120,31 @@ $(document).ready(function(){initNavTree('Hitbox_8hpp_source.html',''); initResi
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#acf98d1f346949a8082e2e33c2fc5c4ad">   32</a></span>                <a class="code hl_function" href="classrtype_1_1Hitbox.html#acf98d1f346949a8082e2e33c2fc5c4ad">~Hitbox</a>() {};</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">   34</a></span>                <span class="keywordtype">int</span> <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">_width</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">   35</a></span>                <span class="keywordtype">int</span> <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">_height</a>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        };</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a1c935d5d098c1ce72501f51aea1e3368">   34</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Hitbox.html#a1c935d5d098c1ce72501f51aea1e3368">setHitbox</a>(std::pair&lt;int, int&gt; x_y) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">_width</a> = x_y.first;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">_height</a> = x_y.second;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                }</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">/* !HITBOX_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">   39</a></span>                <span class="keywordtype">int</span> <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">_width</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">   40</a></span>                <span class="keywordtype">int</span> <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">_height</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classrtype_1_1Hitbox.html#a9f219f98426b85e77ee0b14d42c0b367">   41</a></span>                <span class="keywordtype">bool</span> <a class="code hl_variable" href="classrtype_1_1Hitbox.html#a9f219f98426b85e77ee0b14d42c0b367">_invicible</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        };</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">/* !HITBOX_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassrtype_1_1Hitbox_html"><div class="ttname"><a href="classrtype_1_1Hitbox.html">rtype::Hitbox</a></div><div class="ttdef"><b>Definition</b> Hitbox.hpp:21</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a1c935d5d098c1ce72501f51aea1e3368"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a1c935d5d098c1ce72501f51aea1e3368">rtype::Hitbox::setHitbox</a></div><div class="ttdeci">void setHitbox(std::pair&lt; int, int &gt; x_y)</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:34</div></div>
 <div class="ttc" id="aclassrtype_1_1Hitbox_html_a1cd79f484c5673e70e046d10f04d558c"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a1cd79f484c5673e70e046d10f04d558c">rtype::Hitbox::Hitbox</a></div><div class="ttdeci">Hitbox(std::pair&lt; int, int &gt; x_y)</div><div class="ttdoc">Constructor for the Ennemies class.</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:27</div></div>
-<div class="ttc" id="aclassrtype_1_1Hitbox_html_a4c896e316333b1a5f90c73c0e5f6cd84"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">rtype::Hitbox::_height</a></div><div class="ttdeci">int _height</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:35</div></div>
-<div class="ttc" id="aclassrtype_1_1Hitbox_html_a91f6b4ab543e673645b8b316a1636e74"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">rtype::Hitbox::_width</a></div><div class="ttdeci">int _width</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:34</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a4c896e316333b1a5f90c73c0e5f6cd84"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a4c896e316333b1a5f90c73c0e5f6cd84">rtype::Hitbox::_height</a></div><div class="ttdeci">int _height</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:40</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a91f6b4ab543e673645b8b316a1636e74"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a91f6b4ab543e673645b8b316a1636e74">rtype::Hitbox::_width</a></div><div class="ttdeci">int _width</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:39</div></div>
+<div class="ttc" id="aclassrtype_1_1Hitbox_html_a9f219f98426b85e77ee0b14d42c0b367"><div class="ttname"><a href="classrtype_1_1Hitbox.html#a9f219f98426b85e77ee0b14d42c0b367">rtype::Hitbox::_invicible</a></div><div class="ttdeci">bool _invicible</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:41</div></div>
 <div class="ttc" id="aclassrtype_1_1Hitbox_html_acf98d1f346949a8082e2e33c2fc5c4ad"><div class="ttname"><a href="classrtype_1_1Hitbox.html#acf98d1f346949a8082e2e33c2fc5c4ad">rtype::Hitbox::~Hitbox</a></div><div class="ttdeci">~Hitbox()</div><div class="ttdoc">Destructor for the Ennemies class.</div><div class="ttdef"><b>Definition</b> Hitbox.hpp:32</div></div>
-<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

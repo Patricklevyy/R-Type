@@ -124,31 +124,28 @@ $(document).ready(function(){initNavTree('UpdateEntitySystem_8hpp_source.html','
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classrtype_1_1UpdateEntitySystem.html#a75ae808d6e31a858c29334a498f3a48d">   33</a></span>                <a class="code hl_function" href="classrtype_1_1UpdateEntitySystem.html#a75ae808d6e31a858c29334a498f3a48d">~UpdateEntitySystem</a>() {}</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classrtype_1_1UpdateEntitySystem.html#ab68c83d89de30ea2c40715fc0a0e7837">   44</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1UpdateEntitySystem.html#ab68c83d89de30ea2c40715fc0a0e7837">updateEntity</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array, std::tuple&lt;<span class="keywordtype">size_t</span>, std::pair&lt;float, float&gt;, <span class="keywordtype">int</span>&gt; params, <span class="keywordtype">size_t</span> entity_id)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classrtype_1_1UpdateEntitySystem.html#ad50a019a1cb5386eb030ce46b06a59b4">   44</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1UpdateEntitySystem.html#ad50a019a1cb5386eb030ce46b06a59b4">updateEntity</a>(std::unordered_map&lt;std::type_index, std::any&gt; &amp;components_array, std::pair&lt;<span class="keywordtype">size_t</span>, std::pair&lt;float, float&gt;&gt; params, <span class="keywordtype">size_t</span> entity_id)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    <span class="keyword">auto</span> &amp;positions = std::any_cast&lt;ecs::SparseArray&lt;ecs::Position&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classecs_1_1Position.html">ecs::Position</a>)]);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keyword">auto</span> &amp;healths = std::any_cast&lt;ecs::SparseArray&lt;Health&gt; &amp;&gt;(components_array[<span class="keyword">typeid</span>(<a class="code hl_class" href="classrtype_1_1Health.html">Health</a>)]);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    <span class="keywordflow">if</span> (positions[entity_id].has_value() &amp;&amp; healths[entity_id].has_value()) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        positions[entity_id].value()._pos_x = std::get&lt;1&gt;(params).first;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        positions[entity_id].value()._pos_y = std::get&lt;1&gt;(params).second;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        healths[entity_id].value()._health = std::get&lt;2&gt;(params);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <span class="keywordflow">if</span> (positions[entity_id].has_value()) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        positions[entity_id].value()._pos_x = params.second.first;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                        positions[entity_id].value()._pos_y = params.second.second;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                }</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        };</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        };</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif </span><span class="comment">/* !UPDATEENTITYSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif </span><span class="comment">/* !UPDATEENTITYSYSTEM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassecs_1_1Position_html"><div class="ttname"><a href="classecs_1_1Position.html">ecs::Position</a></div><div class="ttdoc">Represents a 2D position with X and Y coordinates.</div><div class="ttdef"><b>Definition</b> Position.hpp:23</div></div>
-<div class="ttc" id="aclassrtype_1_1Health_html"><div class="ttname"><a href="classrtype_1_1Health.html">rtype::Health</a></div><div class="ttdef"><b>Definition</b> Health.hpp:20</div></div>
 <div class="ttc" id="aclassrtype_1_1UpdateEntitySystem_html"><div class="ttname"><a href="classrtype_1_1UpdateEntitySystem.html">rtype::UpdateEntitySystem</a></div><div class="ttdef"><b>Definition</b> UpdateEntitySystem.hpp:23</div></div>
 <div class="ttc" id="aclassrtype_1_1UpdateEntitySystem_html_a404b20a7194bd7a05ad63236558d3c28"><div class="ttname"><a href="classrtype_1_1UpdateEntitySystem.html#a404b20a7194bd7a05ad63236558d3c28">rtype::UpdateEntitySystem::UpdateEntitySystem</a></div><div class="ttdeci">UpdateEntitySystem()</div><div class="ttdoc">Constructs the UpdateEntitySystem.</div><div class="ttdef"><b>Definition</b> UpdateEntitySystem.hpp:28</div></div>
 <div class="ttc" id="aclassrtype_1_1UpdateEntitySystem_html_a75ae808d6e31a858c29334a498f3a48d"><div class="ttname"><a href="classrtype_1_1UpdateEntitySystem.html#a75ae808d6e31a858c29334a498f3a48d">rtype::UpdateEntitySystem::~UpdateEntitySystem</a></div><div class="ttdeci">~UpdateEntitySystem()</div><div class="ttdoc">Destructor for UpdateEntitySystem.</div><div class="ttdef"><b>Definition</b> UpdateEntitySystem.hpp:33</div></div>
-<div class="ttc" id="aclassrtype_1_1UpdateEntitySystem_html_ab68c83d89de30ea2c40715fc0a0e7837"><div class="ttname"><a href="classrtype_1_1UpdateEntitySystem.html#ab68c83d89de30ea2c40715fc0a0e7837">rtype::UpdateEntitySystem::updateEntity</a></div><div class="ttdeci">void updateEntity(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, std::tuple&lt; size_t, std::pair&lt; float, float &gt;, int &gt; params, size_t entity_id)</div><div class="ttdoc">Updates an entity's properties such as position and health.</div><div class="ttdef"><b>Definition</b> UpdateEntitySystem.hpp:44</div></div>
-<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
+<div class="ttc" id="aclassrtype_1_1UpdateEntitySystem_html_ad50a019a1cb5386eb030ce46b06a59b4"><div class="ttname"><a href="classrtype_1_1UpdateEntitySystem.html#ad50a019a1cb5386eb030ce46b06a59b4">rtype::UpdateEntitySystem::updateEntity</a></div><div class="ttdeci">void updateEntity(std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, std::pair&lt; size_t, std::pair&lt; float, float &gt; &gt; params, size_t entity_id)</div><div class="ttdoc">Updates an entity's properties such as position and health.</div><div class="ttdef"><b>Definition</b> UpdateEntitySystem.hpp:44</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

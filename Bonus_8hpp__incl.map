@@ -1,0 +1,5 @@
+<map id="rtype_game/server/components/Bonus.hpp" name="rtype_game/server/components/Bonus.hpp">
+<area shape="rect" id="Node000001" title="Class representing bonus in the game." alt="" coords="5,5,235,45"/>
+<area shape="rect" id="Node000002" href="$Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="37,93,203,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,46,123,79,117,79,117,46"/>
+</map>

@@ -106,12 +106,12 @@ $(document).ready(function(){initNavTree('Includes_8hpp.html',''); initResizable
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;libconfig.h++&gt;</code><br />
-<code>#include &lt;SFML/Graphics.hpp&gt;</code><br />
 <code>#include &lt;any&gt;</code><br />
 <code>#include &lt;typeindex&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &quot;<a class="el" href="Enums_8hpp_source.html">Enums.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="RTypeExceptions_8hpp_source.html">RTypeExceptions.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -124,8 +124,8 @@ Graphe des dépendances par inclusion de Includes.hpp:</div>
 <area shape="poly" title=" " alt="" coords="833,23,684,26,497,36,289,53,78,82,77,76,289,48,497,30,684,21,833,17"/>
 <area shape="rect" title=" " alt="" coords="88,79,152,104"/>
 <area shape="poly" title=" " alt="" coords="833,26,532,43,351,59,171,81,166,82,165,77,170,76,351,53,532,37,833,20"/>
-<area shape="rect" title=" " alt="" coords="1075,152,1155,177"/>
-<area shape="poly" title=" " alt="" coords="833,23,659,27,465,37,301,54,246,66,227,73,217,80,212,91,217,102,233,112,261,122,346,137,459,148,590,155,859,161,1061,161,1061,167,859,167,590,160,459,153,345,142,259,127,231,117,213,106,206,91,213,77,225,68,244,61,300,49,465,31,659,22,833,18"/>
+<area shape="rect" title=" " alt="" coords="1032,152,1112,177"/>
+<area shape="poly" title=" " alt="" coords="833,23,659,27,465,37,301,54,246,66,227,73,217,80,212,91,217,102,232,112,258,121,338,136,446,146,569,154,824,160,1018,161,1018,166,824,166,569,159,445,152,338,141,257,126,230,117,213,106,206,91,213,77,225,68,244,61,300,49,465,31,659,22,833,18"/>
 <area shape="rect" title=" " alt="" coords="227,79,301,104"/>
 <area shape="poly" title=" " alt="" coords="833,28,598,47,458,62,315,81,315,76,458,56,598,41,833,23"/>
 <area shape="rect" title=" " alt="" coords="325,79,421,104"/>
@@ -144,23 +144,23 @@ Graphe des dépendances par inclusion de Includes.hpp:</div>
 <area shape="poly" title=" " alt="" coords="961,30,986,66,981,69,956,33"/>
 <area shape="rect" title=" " alt="" coords="1057,79,1167,104"/>
 <area shape="poly" title=" " alt="" coords="978,28,1074,71,1072,75,976,33"/>
-<area shape="rect" title=" " alt="" coords="1192,79,1339,104"/>
-<area shape="poly" title=" " alt="" coords="1002,28,1202,73,1201,78,1001,33"/>
-<area shape="rect" title=" " alt="" coords="1363,79,1410,104"/>
-<area shape="poly" title=" " alt="" coords="1059,28,1194,47,1350,76,1349,82,1193,52,1059,33"/>
-<area shape="rect" title=" " alt="" coords="1434,79,1521,104"/>
-<area shape="poly" title=" " alt="" coords="1061,28,1227,48,1421,76,1420,81,1226,53,1061,33"/>
-<area shape="rect" title=" " alt="" coords="1545,79,1623,104"/>
-<area shape="poly" title=" " alt="" coords="1069,25,1280,43,1532,76,1531,81,1280,49,1068,30"/>
-<area shape="rect" title=" " alt="" coords="1647,79,1734,104"/>
-<area shape="poly" title=" " alt="" coords="1069,23,1324,41,1477,57,1634,76,1633,81,1477,62,1324,47,1068,28"/>
-<area shape="rect" title=" " alt="" coords="1759,79,1817,104"/>
-<area shape="poly" title=" " alt="" coords="1068,18,1204,23,1372,33,1557,50,1745,76,1745,82,1556,55,1371,38,1204,28,1068,24"/>
-<area shape="rect" href="Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="1842,79,1937,104"/>
-<area shape="poly" title=" " alt="" coords="1068,20,1406,37,1615,53,1829,76,1828,81,1615,59,1406,42,1068,25"/>
-<area shape="rect" href="RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="1961,79,2119,104"/>
-<area shape="poly" title=" " alt="" coords="1068,21,1455,40,1698,56,1947,76,1947,81,1698,61,1454,46,1068,26"/>
-<area shape="poly" title=" " alt="" coords="1961,106,1950,107,1498,143,1168,163,1168,158,1498,138,1949,101,1960,100"/>
+<area shape="rect" title=" " alt="" coords="1191,79,1238,104"/>
+<area shape="poly" title=" " alt="" coords="999,28,1179,76,1178,81,998,33"/>
+<area shape="rect" title=" " alt="" coords="1262,79,1349,104"/>
+<area shape="poly" title=" " alt="" coords="1010,28,1249,76,1248,81,1009,33"/>
+<area shape="rect" title=" " alt="" coords="1373,79,1451,104"/>
+<area shape="poly" title=" " alt="" coords="1044,28,1189,48,1360,76,1359,81,1188,53,1043,33"/>
+<area shape="rect" title=" " alt="" coords="1475,79,1562,104"/>
+<area shape="poly" title=" " alt="" coords="1069,27,1250,47,1462,76,1462,81,1249,52,1068,33"/>
+<area shape="rect" title=" " alt="" coords="1587,79,1645,104"/>
+<area shape="poly" title=" " alt="" coords="1068,22,1299,39,1435,55,1574,76,1573,81,1434,60,1298,44,1068,27"/>
+<area shape="rect" title=" " alt="" coords="1670,79,1733,104"/>
+<area shape="poly" title=" " alt="" coords="1069,20,1334,37,1494,53,1657,76,1656,82,1493,59,1333,43,1068,26"/>
+<area shape="rect" href="Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="1757,79,1851,104"/>
+<area shape="poly" title=" " alt="" coords="1068,21,1370,39,1555,55,1743,76,1742,81,1554,60,1370,44,1068,26"/>
+<area shape="rect" href="RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="1875,79,2034,104"/>
+<area shape="poly" title=" " alt="" coords="1068,22,1420,42,1862,76,1861,81,1419,47,1068,27"/>
+<area shape="poly" title=" " alt="" coords="1875,105,1864,107,1439,142,1126,163,1125,158,1438,137,1864,101,1875,100"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -168,111 +168,131 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <div class="dyncontent">
 <div class="center"><img src="Includes_8hpp__dep__incl.png" border="0" usemap="#artype__game_2shared_2Includes_8hppdep" alt=""/></div>
 <map name="artype__game_2shared_2Includes_8hppdep" id="artype__game_2shared_2Includes_8hppdep">
-<area shape="rect" title=" " alt="" coords="1369,5,1604,31"/>
-<area shape="rect" href="Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="733,343,944,368"/>
-<area shape="poly" title=" " alt="" coords="1356,23,1055,29,696,39,388,56,288,68,258,74,243,81,208,109,191,124,179,143,175,167,183,199,208,240,252,293,275,304,318,314,444,331,595,341,733,348,733,353,594,347,444,336,317,320,273,309,249,297,204,243,178,201,170,168,174,141,187,121,204,105,240,76,256,69,287,62,387,51,696,34,1055,23,1356,18"/>
-<area shape="rect" href="SpriteFactory_8hpp.html" title="Factory class for creating and handling sprites." alt="" coords="1461,79,1643,119"/>
-<area shape="poly" title=" " alt="" coords="1507,39,1538,77,1534,80,1503,43"/>
-<area shape="rect" href="Filter_8hpp.html" title="Manages the application of graphical filters (shaders) to game elements." alt="" coords="285,255,477,295"/>
-<area shape="poly" title=" " alt="" coords="1356,28,1159,45,1050,61,942,81,791,122,644,171,517,219,425,257,423,252,515,214,642,166,789,117,941,76,1049,55,1159,40,1355,23"/>
-<area shape="rect" href="RenderWindow_8hpp.html" title="Responsible for rendering entities, backgrounds, and applying shaders to the game window." alt="" coords="501,255,693,295"/>
-<area shape="poly" title=" " alt="" coords="1375,35,1252,53,1104,81,945,119,789,169,743,189,698,213,626,257,623,252,695,208,740,184,787,164,943,114,1103,76,1251,48,1374,30"/>
-<area shape="rect" href="Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="2202,343,2417,368"/>
-<area shape="poly" title=" " alt="" coords="1618,18,1933,29,2125,42,2324,63,2516,93,2605,112,2687,133,2760,158,2824,186,2876,218,2914,253,2923,275,2921,286,2914,297,2889,310,2844,320,2714,337,2559,348,2417,354,2417,348,2559,342,2714,332,2844,315,2887,305,2910,293,2916,284,2918,275,2910,256,2872,222,2821,191,2758,163,2685,138,2603,117,2515,98,2324,68,2125,47,1932,34,1618,23"/>
-<area shape="rect" href="Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="2871,423,3089,449"/>
-<area shape="poly" title=" " alt="" coords="1618,19,2401,38,2797,54,2941,65,3026,76,3109,88,3184,97,3215,106,3240,122,3256,148,3261,185,3261,276,3260,327,3252,348,3235,370,3203,395,3167,413,3128,425,3090,433,3089,428,3127,420,3165,408,3200,390,3231,366,3248,346,3255,326,3256,276,3256,186,3251,150,3236,126,3213,111,3183,102,3108,93,3025,81,2940,70,2797,60,2401,43,1618,24"/>
-<area shape="rect" href="HitboxFactory_8hpp.html" title="Provides a factory for creating hitboxes for different sprites." alt="" coords="1585,167,1777,207"/>
-<area shape="poly" title=" " alt="" coords="1582,32,1623,49,1658,77,1672,98,1680,122,1685,166,1679,167,1675,123,1667,100,1654,80,1620,54,1580,37"/>
-<area shape="rect" href="EventWindow_8hpp.html" title="Handles event listening and processing." alt="" coords="253,79,445,119"/>
-<area shape="poly" title=" " alt="" coords="1356,31,606,81,446,93,445,88,605,76,1355,25"/>
-<area shape="rect" href="RandomNumber_8hpp.html" title="Provides utilities for generating random numbers." alt="" coords="2220,167,2423,207"/>
-<area shape="poly" title=" " alt="" coords="1558,31,2228,164,2227,169,1557,36"/>
-<area shape="rect" href="EventBus_8hpp.html" title="Implements an event bus system for handling game events and actions." alt="" coords="1209,262,1450,287"/>
-<area shape="poly" title=" " alt="" coords="1470,43,1441,80,1378,185,1337,263,1333,261,1373,182,1436,77,1466,39"/>
-<area shape="rect" href="Timer_8hpp.html" title="Manages time&#45;related functionalities such as ticks per second (TPS) and frames per second (FPS)." alt="" coords="3003,262,3221,287"/>
-<area shape="poly" title=" " alt="" coords="1618,19,1972,25,2412,37,2796,54,2923,64,2963,70,2985,76,3012,95,3035,118,3072,172,3097,223,3111,261,3106,263,3092,225,3068,174,3031,122,3009,99,2983,81,2962,75,2923,70,2795,59,2411,42,1972,31,1618,24"/>
-<area shape="rect" href="Utils_8hpp.html" title=" " alt="" coords="1475,262,1685,287"/>
-<area shape="poly" title=" " alt="" coords="1471,43,1460,60,1452,79,1448,99,1452,118,1475,163,1507,204,1540,237,1567,260,1563,264,1536,241,1503,207,1471,166,1447,120,1443,99,1447,78,1455,58,1466,40"/>
-<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="514,423,723,449"/>
-<area shape="poly" title=" " alt="" coords="795,375,652,426,650,421,793,370"/>
-<area shape="rect" href="Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="747,416,930,456"/>
-<area shape="poly" title=" " alt="" coords="841,382,841,416,836,416,836,382"/>
-<area shape="rect" href="Client__Event__Bus_8cpp.html" title=" " alt="" coords="954,416,1137,456"/>
-<area shape="poly" title=" " alt="" coords="882,370,997,413,995,418,880,375"/>
-<area shape="rect" href="Client__Init_8cpp.html" title=" " alt="" coords="1161,416,1343,456"/>
-<area shape="poly" title=" " alt="" coords="913,368,1161,415,1160,420,912,373"/>
-<area shape="rect" href="Client__Send__Message_8cpp.html" title=" " alt="" coords="1367,416,1550,456"/>
-<area shape="poly" title=" " alt="" coords="959,365,1146,386,1356,413,1367,415,1367,420,1356,419,1145,391,958,371"/>
-<area shape="rect" href="Client__Systems_8cpp.html" title=" " alt="" coords="1574,416,1757,456"/>
-<area shape="poly" title=" " alt="" coords="958,360,1235,379,1399,394,1563,413,1574,415,1573,420,1562,419,1399,400,1235,385,958,366"/>
-<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="5,423,208,449"/>
-<area shape="poly" title=" " alt="" coords="720,368,488,389,220,419,172,426,171,421,220,413,488,383,719,363"/>
-<area shape="rect" href="SFMLHandler_8hpp.html" title=" " alt="" coords="233,423,490,449"/>
-<area shape="poly" title=" " alt="" coords="750,373,425,426,424,421,749,368"/>
-<area shape="poly" title=" " alt="" coords="451,419,775,365,776,371,451,424"/>
-<area shape="rect" href="SFMLHandler_8cpp.html" title=" " alt="" coords="233,511,489,537"/>
-<area shape="poly" title=" " alt="" coords="364,463,364,511,359,511,359,463"/>
-<area shape="rect" href="Displayable_8hpp.html" title="Defines classes to represent a displayable Component." alt="" coords="800,167,1024,207"/>
-<area shape="poly" title=" " alt="" coords="1448,117,1024,173,1024,168,1447,111"/>
-<area shape="poly" title=" " alt="" coords="1594,124,1654,164,1651,169,1591,129"/>
-<area shape="poly" title=" " alt="" coords="926,220,932,257,930,277,924,296,913,312,898,326,867,345,865,340,895,321,909,309,919,293,925,276,926,257,921,221"/>
-<area shape="rect" href="ATH_8hpp.html" title=" " alt="" coords="717,255,909,295"/>
-<area shape="poly" title=" " alt="" coords="882,218,837,256,833,252,878,214"/>
-<area shape="poly" title=" " alt="" coords="787,210,490,257,478,259,477,254,489,252,786,205"/>
-<area shape="poly" title=" " alt="" coords="830,213,667,257,666,252,829,208"/>
-<area shape="rect" href="KillSystem_8hpp.html" title=" " alt="" coords="984,255,1184,295"/>
-<area shape="poly" title=" " alt="" coords="963,210,1048,252,1045,257,961,215"/>
-<area shape="poly" title=" " alt="" coords="826,307,837,341,832,343,821,309"/>
-<area shape="poly" title=" " alt="" coords="492,292,771,340,771,345,491,298"/>
-<area shape="poly" title=" " alt="" coords="669,296,804,340,803,345,667,301"/>
-<area shape="poly" title=" " alt="" coords="1013,301,875,345,874,340,1011,296"/>
-<area shape="poly" title=" " alt="" coords="1197,292,1198,292,1481,317,1763,334,2202,350,2202,355,1762,339,1481,323,1197,297,1197,297"/>
-<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="2421,423,2635,449"/>
-<area shape="poly" title=" " alt="" coords="2355,370,2497,421,2495,426,2353,375"/>
-<area shape="rect" href="Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="2660,416,2847,456"/>
-<area shape="poly" title=" " alt="" coords="2388,368,2648,413,2660,415,2659,421,2648,419,2387,373"/>
-<area shape="rect" href="Room__Event__Bus_8cpp.html" title=" " alt="" coords="1788,416,1975,456"/>
-<area shape="poly" title=" " alt="" coords="2234,373,1975,420,1974,415,2233,368"/>
-<area shape="rect" href="Room__Game__Loop_8cpp.html" title=" " alt="" coords="1999,416,2185,456"/>
-<area shape="poly" title=" " alt="" coords="2266,375,2145,418,2143,413,2264,370"/>
-<area shape="rect" href="Room__Send__Message_8cpp.html" title=" " alt="" coords="2209,416,2396,456"/>
-<area shape="poly" title=" " alt="" coords="2310,382,2307,416,2302,416,2305,382"/>
-<area shape="poly" title=" " alt="" coords="2430,365,2631,386,2859,413,2910,421,2909,426,2858,419,2631,392,2430,371"/>
-<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="3100,511,3308,537"/>
-<area shape="poly" title=" " alt="" coords="3024,451,3175,509,3173,514,3022,456"/>
-<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="2643,511,2861,537"/>
-<area shape="poly" title=" " alt="" coords="2938,456,2784,514,2782,509,2936,451"/>
-<area shape="rect" href="Server__Create__Join__Room_8cpp.html" title=" " alt="" coords="2885,504,3075,544"/>
-<area shape="poly" title=" " alt="" coords="2983,462,2983,504,2977,504,2977,462"/>
-<area shape="poly" title=" " alt="" coords="1695,218,1716,258,1731,277,1749,292,1784,308,1830,320,1950,338,2082,347,2202,351,2202,356,2081,353,1949,343,1829,326,1782,313,1747,297,1727,281,1711,261,1690,221"/>
-<area shape="poly" title=" " alt="" coords="323,131,294,167,270,210,262,233,260,254,264,274,275,293,296,304,337,314,457,330,600,341,733,348,733,353,600,346,456,335,336,319,294,309,272,297,259,276,255,254,257,231,265,208,290,164,319,127"/>
-<area shape="poly" title=" " alt="" coords="2437,191,2570,199,2711,212,2829,230,2869,240,2891,253,2898,264,2901,275,2898,286,2891,297,2868,309,2825,320,2701,336,2554,347,2417,353,2417,348,2553,341,2701,331,2824,314,2866,304,2888,293,2894,284,2896,275,2894,266,2888,257,2867,245,2828,235,2710,217,2569,205,2436,196"/>
-<area shape="rect" href="MonsterFactory_8hpp.html" title=" " alt="" coords="1760,255,1963,295"/>
-<area shape="poly" title=" " alt="" coords="2208,212,1963,257,1962,252,2207,207"/>
-<area shape="rect" href="LevelSystem_8hpp.html" title=" " alt="" coords="1987,255,2184,295"/>
-<area shape="poly" title=" " alt="" coords="2258,214,2138,257,2136,252,2256,209"/>
-<area shape="rect" href="MonsterMovementSystem_8hpp.html" title="Handles the movement of monster entities." alt="" coords="2208,255,2435,295"/>
-<area shape="poly" title=" " alt="" coords="2324,221,2324,254,2319,254,2319,221"/>
-<area shape="rect" href="ScoreSystem_8hpp.html" title=" " alt="" coords="2459,255,2656,295"/>
-<area shape="poly" title=" " alt="" coords="2387,209,2507,252,2505,257,2385,214"/>
-<area shape="rect" href="ShootingSystem_8hpp.html" title="Handles shooting mechanics for monster entities." alt="" coords="2680,255,2877,295"/>
-<area shape="poly" title=" " alt="" coords="2435,207,2680,252,2679,257,2434,212"/>
-<area shape="poly" title=" " alt="" coords="1977,293,2245,340,2244,345,1976,299"/>
-<area shape="poly" title=" " alt="" coords="2153,297,2277,340,2275,345,2151,302"/>
-<area shape="poly" title=" " alt="" coords="2319,309,2314,343,2308,342,2314,308"/>
-<area shape="poly" title=" " alt="" coords="2486,301,2346,345,2345,340,2484,296"/>
-<area shape="poly" title=" " alt="" coords="2667,298,2379,345,2378,340,2666,292"/>
-<area shape="poly" title=" " alt="" coords="1245,292,911,345,910,340,1244,287"/>
-<area shape="poly" title=" " alt="" coords="1418,287,1463,292,1668,311,1871,326,2202,346,2202,352,1871,332,1667,316,1462,297,1417,292"/>
-<area shape="poly" title=" " alt="" coords="2990,290,2889,297,2475,314,1909,331,945,354,944,349,1909,326,2474,309,2889,292,2989,285"/>
-<area shape="poly" title=" " alt="" coords="3026,292,2984,297,2676,328,2417,349,2417,344,2675,323,2984,292,3026,287"/>
-<area shape="poly" title=" " alt="" coords="3063,295,3026,315,3009,328,2996,344,2986,364,2982,385,2981,423,2976,423,2976,385,2981,362,2991,341,3005,324,3023,310,3060,290"/>
-<area shape="rect" href="Timer_8cpp.html" title=" " alt="" coords="3005,343,3221,368"/>
-<area shape="poly" title=" " alt="" coords="3115,301,3116,342,3110,342,3110,301"/>
-<area shape="poly" title=" " alt="" coords="1500,292,1463,297,1182,328,945,349,944,343,1182,323,1462,292,1499,287"/>
-<area shape="poly" title=" " alt="" coords="1665,287,1704,292,1973,321,2202,343,2202,348,1973,327,1704,297,1665,292"/>
-<area shape="rect" href="Utils_8cpp.html" title=" " alt="" coords="1475,343,1685,368"/>
-<area shape="poly" title=" " alt="" coords="1583,301,1583,342,1577,342,1577,301"/>
+<area shape="rect" title=" " alt="" coords="2097,5,2331,31"/>
+<area shape="rect" href="Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="879,343,1090,368"/>
+<area shape="poly" title=" " alt="" coords="2083,23,1644,30,1077,41,574,58,405,69,352,75,324,81,294,97,275,115,240,168,217,203,200,234,195,249,195,263,200,278,211,293,223,301,243,308,304,321,388,331,485,339,696,348,879,351,879,356,696,353,485,344,387,337,303,327,241,314,220,306,207,297,195,280,190,264,190,248,195,232,213,200,236,165,271,112,291,93,322,76,351,70,405,64,574,53,1077,36,1644,24,2083,18"/>
+<area shape="rect" href="client_2SpriteFactory_8hpp.html" title="Factory class for creating and handling sprites." alt="" coords="3561,79,3744,119"/>
+<area shape="poly" title=" " alt="" coords="2345,17,2572,21,2869,30,3205,48,3542,76,3561,78,3561,84,3542,81,3204,53,2869,35,2571,26,2345,23"/>
+<area shape="rect" href="HitboxFactory_8hpp.html" title="Provides a factory for creating hitboxes for different sprites." alt="" coords="3533,167,3725,207"/>
+<area shape="poly" title=" " alt="" coords="2345,18,2638,24,2993,34,3311,51,3425,63,3492,76,3542,111,3608,164,3604,168,3539,115,3490,81,3424,68,3310,57,2993,40,2638,29,2345,24"/>
+<area shape="rect" href="EventWindow_8hpp.html" title="Handles event listening and processing." alt="" coords="335,79,527,119"/>
+<area shape="poly" title=" " alt="" coords="2083,23,1810,27,1438,37,1014,54,584,81,528,87,527,82,583,76,1013,49,1438,31,1810,22,2083,18"/>
+<area shape="rect" href="Filter_8hpp.html" title="Manages the application of graphical filters (shaders) to game elements." alt="" coords="241,255,433,295"/>
+<area shape="poly" title=" " alt="" coords="2083,27,1753,46,1555,61,1357,81,1209,101,1095,119,835,169,608,215,419,257,418,252,607,210,833,164,1094,114,1208,95,1356,76,1554,56,1753,40,2083,22"/>
+<area shape="rect" href="RenderWindow_8hpp.html" title="Responsible for rendering entities, backgrounds, and applying shaders to the game window." alt="" coords="457,255,649,295"/>
+<area shape="poly" title=" " alt="" coords="2083,35,1622,86,1332,124,1041,169,816,214,629,257,628,252,815,209,1040,164,1331,119,1621,81,2083,29"/>
+<area shape="rect" href="RandomNumber_8hpp.html" title="Provides utilities for generating random numbers." alt="" coords="2606,167,2809,207"/>
+<area shape="poly" title=" " alt="" coords="2346,28,2446,45,2497,59,2547,76,2588,96,2627,120,2687,164,2684,169,2624,124,2585,101,2545,81,2496,64,2445,51,2345,33"/>
+<area shape="rect" href="Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="2396,343,2611,368"/>
+<area shape="poly" title=" " alt="" coords="2242,37,2307,92,2379,165,2405,199,2423,228,2463,293,2497,341,2493,344,2458,296,2419,230,2401,202,2375,168,2303,96,2238,41"/>
+<area shape="rect" href="Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="3338,423,3557,449"/>
+<area shape="poly" title=" " alt="" coords="2346,20,2658,35,2844,47,3030,63,3201,85,3343,111,3397,127,3439,144,3465,163,3473,174,3475,185,3475,276,3473,319,3467,361,3453,424,3448,423,3461,360,3467,319,3470,276,3470,186,3468,176,3462,167,3436,149,3395,132,3341,117,3201,90,3030,69,2844,52,2658,40,2345,26"/>
+<area shape="rect" href="AsteroideSystem_8hpp.html" title=" " alt="" coords="2473,255,2670,295"/>
+<area shape="poly" title=" " alt="" coords="2346,30,2403,48,2456,76,2478,96,2498,118,2531,168,2554,216,2568,253,2563,255,2549,218,2526,170,2494,122,2474,100,2452,81,2401,53,2344,35"/>
+<area shape="rect" href="PowerUp_8hpp.html" title=" " alt="" coords="2099,167,2329,207"/>
+<area shape="poly" title=" " alt="" coords="2217,44,2217,166,2211,166,2211,44"/>
+<area shape="rect" href="EventBus_8hpp.html" title="Implements an event bus system for handling game events and actions." alt="" coords="1831,262,2072,287"/>
+<area shape="poly" title=" " alt="" coords="2194,42,1965,264,1962,260,2190,38"/>
+<area shape="rect" href="shared_2SpriteFactory_8hpp.html" title="Factory class for creating and handling sprites." alt="" coords="1833,79,2024,119"/>
+<area shape="poly" title=" " alt="" coords="2160,37,1998,81,1997,76,2159,32"/>
+<area shape="rect" href="Timer_8hpp.html" title="Manages time&#45;related functionalities such as ticks per second (TPS) and frames per second (FPS)." alt="" coords="3217,262,3435,287"/>
+<area shape="poly" title=" " alt="" coords="2321,30,2456,49,2603,76,2808,124,3007,177,3290,259,3289,265,3005,182,2806,129,2601,81,2455,55,2321,35"/>
+<area shape="rect" href="Utils_8hpp.html" title=" " alt="" coords="1595,262,1806,287"/>
+<area shape="poly" title=" " alt="" coords="2083,30,1932,48,1867,63,1822,81,1798,100,1777,124,1742,176,1719,226,1707,263,1701,261,1714,224,1738,173,1772,120,1794,96,1819,76,1865,57,1931,43,2083,25"/>
+<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="773,423,983,449"/>
+<area shape="poly" title=" " alt="" coords="960,378,895,425,892,421,956,374"/>
+<area shape="rect" href="Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="1007,416,1189,456"/>
+<area shape="poly" title=" " alt="" coords="1014,374,1072,414,1069,418,1011,378"/>
+<area shape="rect" href="Client__Event__Bus_8cpp.html" title=" " alt="" coords="1213,416,1396,456"/>
+<area shape="poly" title=" " alt="" coords="1045,369,1228,413,1227,419,1044,374"/>
+<area shape="rect" href="Client__Init_8cpp.html" title=" " alt="" coords="1420,416,1603,456"/>
+<area shape="poly" title=" " alt="" coords="1086,367,1408,413,1420,415,1419,421,1407,419,1086,372"/>
+<area shape="rect" href="Client__Send__Message_8cpp.html" title=" " alt="" coords="1627,416,1809,456"/>
+<area shape="poly" title=" " alt="" coords="1104,362,1340,382,1614,413,1627,415,1626,420,1614,419,1340,388,1104,368"/>
+<area shape="rect" href="Client__Systems_8cpp.html" title=" " alt="" coords="5,416,188,456"/>
+<area shape="poly" title=" " alt="" coords="866,365,563,383,382,399,201,419,189,420,188,415,200,413,382,393,563,378,865,359"/>
+<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="213,423,415,449"/>
+<area shape="poly" title=" " alt="" coords="866,370,661,391,428,419,380,426,379,421,427,413,660,385,865,365"/>
+<area shape="rect" href="SFMLHandler_8hpp.html" title=" " alt="" coords="440,423,697,449"/>
+<area shape="poly" title=" " alt="" coords="905,373,623,426,622,421,904,368"/>
+<area shape="poly" title=" " alt="" coords="649,418,930,365,931,371,650,424"/>
+<area shape="rect" href="SFMLHandler_8cpp.html" title=" " alt="" coords="365,511,621,537"/>
+<area shape="poly" title=" " alt="" coords="551,461,505,513,501,509,547,457"/>
+<area shape="rect" href="Menu_8hpp.html" title=" " alt="" coords="645,504,826,544"/>
+<area shape="poly" title=" " alt="" coords="604,453,700,501,697,506,602,457"/>
+<area shape="poly" title=" " alt="" coords="732,490,738,451,746,431,759,414,785,393,814,377,846,366,878,359,879,364,848,371,817,382,788,397,763,418,751,434,744,452,737,491"/>
+<area shape="rect" href="Menu_8cpp.html" title=" " alt="" coords="645,592,826,632"/>
+<area shape="poly" title=" " alt="" coords="738,558,738,592,733,592,733,558"/>
+<area shape="poly" title=" " alt="" coords="3646,133,3637,167,3631,166,3641,131"/>
+<area shape="poly" title=" " alt="" coords="374,127,310,159,278,179,250,201,229,223,217,247,217,270,231,293,242,301,262,308,321,321,402,331,496,338,700,347,879,351,879,356,700,353,496,343,401,336,320,326,260,313,240,305,227,296,212,271,212,245,225,220,247,197,275,175,307,155,371,122"/>
+<area shape="poly" title=" " alt="" coords="447,292,682,321,879,342,879,347,682,327,446,298"/>
+<area shape="poly" title=" " alt="" coords="663,293,922,340,921,345,662,298"/>
+<area shape="poly" title=" " alt="" coords="2710,221,2704,259,2696,279,2684,296,2665,314,2642,327,2594,345,2592,340,2640,322,2661,309,2680,293,2691,277,2699,258,2705,220"/>
+<area shape="poly" title=" " alt="" coords="2667,216,2603,257,2600,252,2664,212"/>
+<area shape="rect" href="LevelSystem_8hpp.html" title=" " alt="" coords="2745,255,2942,295"/>
+<area shape="poly" title=" " alt="" coords="2750,212,2815,252,2812,257,2748,216"/>
+<area shape="rect" href="MonsterMovementSystem_8hpp.html" title="Handles the movement of monster entities." alt="" coords="2966,255,3193,295"/>
+<area shape="poly" title=" " alt="" coords="2803,207,2998,252,2997,257,2801,212"/>
+<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="3099,423,3313,449"/>
+<area shape="poly" title=" " alt="" coords="2625,364,2840,385,3086,413,3137,421,3137,426,3086,419,2839,391,2624,370"/>
+<area shape="rect" href="Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="1834,416,2021,456"/>
+<area shape="poly" title=" " alt="" coords="2388,372,2033,419,2021,420,2020,415,2032,413,2387,367"/>
+<area shape="rect" href="Room__Event__Bus_8cpp.html" title=" " alt="" coords="2045,416,2231,456"/>
+<area shape="poly" title=" " alt="" coords="2437,373,2226,419,2225,413,2436,368"/>
+<area shape="rect" href="Room__Game__Loop_8cpp.html" title=" " alt="" coords="2255,416,2442,456"/>
+<area shape="poly" title=" " alt="" coords="2470,377,2387,418,2385,413,2467,372"/>
+<area shape="rect" href="Room__Init_8cpp.html" title=" " alt="" coords="2466,416,2653,456"/>
+<area shape="poly" title=" " alt="" coords="2522,378,2548,414,2544,417,2517,381"/>
+<area shape="rect" href="Room__Send__Message_8cpp.html" title=" " alt="" coords="2677,416,2863,456"/>
+<area shape="poly" title=" " alt="" coords="2556,369,2707,413,2705,418,2555,374"/>
+<area shape="rect" href="Room__System_8cpp.html" title=" " alt="" coords="2887,416,3074,456"/>
+<area shape="poly" title=" " alt="" coords="2590,367,2876,413,2888,415,2887,421,2875,419,2590,373"/>
+<area shape="poly" title=" " alt="" coords="2625,360,2942,379,3134,394,3325,413,3379,421,3378,426,3324,419,3133,400,2942,385,2625,365"/>
+<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="3343,511,3551,537"/>
+<area shape="poly" title=" " alt="" coords="3450,463,3450,511,3445,511,3445,463"/>
+<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="3576,511,3793,537"/>
+<area shape="poly" title=" " alt="" coords="3493,451,3654,509,3652,514,3492,456"/>
+<area shape="rect" href="Server__Create__Join__Room_8cpp.html" title=" " alt="" coords="3128,504,3319,544"/>
+<area shape="poly" title=" " alt="" coords="3406,456,3274,506,3272,501,3404,451"/>
+<area shape="poly" title=" " alt="" coords="2548,307,2516,344,2512,341,2544,303"/>
+<area shape="poly" title=" " alt="" coords="2749,300,2554,345,2552,340,2748,295"/>
+<area shape="poly" title=" " alt="" coords="2953,297,2594,345,2593,340,2952,292"/>
+<area shape="poly" title=" " alt="" coords="2254,213,2367,292,2422,319,2473,340,2471,345,2420,324,2365,297,2251,217"/>
+<area shape="rect" href="BonusSystem_8hpp.html" title=" " alt="" coords="2097,255,2297,295"/>
+<area shape="poly" title=" " alt="" coords="2210,221,2203,255,2198,254,2205,220"/>
+<area shape="rect" href="KillSystem_8hpp.html" title=" " alt="" coords="1371,255,1571,295"/>
+<area shape="poly" title=" " alt="" coords="2086,202,1852,225,1584,257,1572,259,1571,254,1583,252,1851,220,2085,197"/>
+<area shape="poly" title=" " alt="" coords="2084,297,2084,297,1803,322,1524,339,1090,355,1090,349,1524,334,1802,317,2083,292,2083,292"/>
+<area shape="poly" title=" " alt="" coords="2284,295,2459,340,2458,345,2282,301"/>
+<area shape="poly" title=" " alt="" coords="1358,297,1056,345,1055,340,1357,292"/>
+<area shape="poly" title=" " alt="" coords="1585,292,1815,314,2040,330,2396,348,2396,353,2040,336,1815,320,1585,297"/>
+<area shape="poly" title=" " alt="" coords="1863,292,1818,297,1416,332,1090,351,1090,346,1415,326,1818,292,1863,287"/>
+<area shape="poly" title=" " alt="" coords="2045,287,2423,340,2423,345,2044,292"/>
+<area shape="poly" title=" " alt="" coords="2038,105,2123,113,2211,125,2289,142,2319,153,2342,164,2360,179,2372,194,2385,226,2396,258,2405,275,2419,293,2451,320,2483,340,2480,345,2448,324,2415,297,2400,278,2391,261,2380,227,2367,197,2356,183,2339,169,2317,158,2287,147,2210,131,2123,118,2038,110"/>
+<area shape="rect" href="Displayable_8hpp.html" title="Defines classes to represent a displayable Component." alt="" coords="1053,167,1277,207"/>
+<area shape="poly" title=" " alt="" coords="1820,115,1277,175,1277,170,1819,110"/>
+<area shape="poly" title=" " alt="" coords="1241,209,1276,225,1305,245,1315,257,1319,269,1318,283,1311,296,1296,308,1276,319,1221,334,1156,345,1091,352,1090,346,1156,340,1220,329,1274,314,1293,304,1307,293,1313,281,1314,270,1310,260,1301,249,1274,230,1238,214"/>
+<area shape="poly" title=" " alt="" coords="1039,199,766,222,445,257,434,259,433,254,444,252,765,217,1038,194"/>
+<area shape="poly" title=" " alt="" coords="1039,206,661,257,650,259,649,254,660,252,1039,201"/>
+<area shape="poly" title=" " alt="" coords="1246,208,1405,252,1403,257,1244,213"/>
+<area shape="rect" href="ATH_8hpp.html" title=" " alt="" coords="673,255,865,295"/>
+<area shape="poly" title=" " alt="" coords="1065,212,856,257,855,252,1064,207"/>
+<area shape="rect" href="AnimationSystem_8hpp.html" title=" " alt="" coords="889,255,1081,295"/>
+<area shape="poly" title=" " alt="" coords="1114,215,1025,257,1023,252,1112,210"/>
+<area shape="rect" href="PlayerSystem_8hpp.html" title=" " alt="" coords="1105,255,1297,295"/>
+<area shape="poly" title=" " alt="" coords="1180,218,1195,253,1190,255,1175,221"/>
+<area shape="poly" title=" " alt="" coords="834,297,954,340,952,345,832,302"/>
+<area shape="poly" title=" " alt="" coords="987,308,987,342,982,342,982,308"/>
+<area shape="poly" title=" " alt="" coords="1137,302,1017,345,1016,340,1135,297"/>
+<area shape="poly" title=" " alt="" coords="3249,292,3205,297,2843,313,2223,330,1090,355,1090,349,2223,325,2843,308,3204,292,3248,287"/>
+<area shape="poly" title=" " alt="" coords="3244,292,3205,297,2881,329,2611,350,2611,345,2881,324,3204,292,3244,287"/>
+<area shape="poly" title=" " alt="" coords="3353,294,3399,341,3427,385,3445,422,3440,424,3422,387,3395,344,3349,298"/>
+<area shape="rect" href="Timer_8cpp.html" title=" " alt="" coords="3169,343,3385,368"/>
+<area shape="poly" title=" " alt="" coords="3314,300,3286,344,3282,341,3309,298"/>
+<area shape="poly" title=" " alt="" coords="1621,292,1584,297,1317,327,1091,348,1090,343,1317,322,1583,292,1620,287"/>
+<area shape="poly" title=" " alt="" coords="1781,287,1818,292,2133,324,2396,344,2395,350,2132,329,1818,297,1780,292"/>
+<area shape="rect" href="Utils_8cpp.html" title=" " alt="" coords="1596,343,1805,368"/>
+<area shape="poly" title=" " alt="" coords="1703,301,1703,342,1698,342,1698,301"/>
 </map>
 </div>
 </div>

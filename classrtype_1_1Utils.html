@@ -114,8 +114,110 @@ Fonctions membres publiques statiques</h2></td></tr>
 <tr class="separator:a2f7c599b62579211f6ef87b783070c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cd9ebf0c23be392ab8b4ba099ad617b" id="r_a4cd9ebf0c23be392ab8b4ba099ad617b"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a4cd9ebf0c23be392ab8b4ba099ad617b">projectilesInfoToString</a> (std::tuple&lt; std::pair&lt; float, float &gt;, std::pair&lt; int, int &gt;, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> &gt;, int)</td></tr>
 <tr class="separator:a4cd9ebf0c23be392ab8b4ba099ad617b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae571fdfdd41c04e1f754ea013db4378b" id="r_ae571fdfdd41c04e1f754ea013db4378b"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#ae571fdfdd41c04e1f754ea013db4378b">bonusInfoToString</a> (const std::pair&lt; float, float &gt; &amp;position, int direction_x, int direction_y, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite, int velocity)</td></tr>
+<tr class="separator:ae571fdfdd41c04e1f754ea013db4378b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521e3de13752f088631f07d19de2317a" id="r_a521e3de13752f088631f07d19de2317a"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a521e3de13752f088631f07d19de2317a">check_adress</a> (int, const std::string &amp;)</td></tr>
+<tr class="separator:a521e3de13752f088631f07d19de2317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb318bfe826e6d575c1bf127051fd0a5" id="r_afb318bfe826e6d575c1bf127051fd0a5"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::pair&lt; std::size_t, std::pair&lt; float, float &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#afb318bfe826e6d575c1bf127051fd0a5">parse_update</a> (const std::string &amp;)</td></tr>
+<tr class="separator:afb318bfe826e6d575c1bf127051fd0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a845910332ea6ca46b5dfe00110db5241" id="r_a845910332ea6ca46b5dfe00110db5241"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::tuple&lt; std::pair&lt; float, float &gt;, int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a845910332ea6ca46b5dfe00110db5241">parseUpdateEntities</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a845910332ea6ca46b5dfe00110db5241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca2a794d187377a8c2e94ac81f14a96c" id="r_aca2a794d187377a8c2e94ac81f14a96c"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; std::tuple&lt; float, float, int &gt;, int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#aca2a794d187377a8c2e94ac81f14a96c">parsePositionAndRoomPort</a> (const std::string &amp;)</td></tr>
+<tr class="separator:aca2a794d187377a8c2e94ac81f14a96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771955ff64e65f6145a016402fa2ed49" id="r_a771955ff64e65f6145a016402fa2ed49"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::pair&lt; std::size_t, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a771955ff64e65f6145a016402fa2ed49">parse_update_life</a> (const std::string &amp;)</td></tr>
+<tr class="separator:a771955ff64e65f6145a016402fa2ed49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="ae571fdfdd41c04e1f754ea013db4378b" name="ae571fdfdd41c04e1f754ea013db4378b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae571fdfdd41c04e1f754ea013db4378b">&#9670;&#160;</a></span>bonusInfoToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string rtype::Utils::bonusInfoToString </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; float, float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a>&#160;</td>
+          <td class="paramname"><em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>velocity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a521e3de13752f088631f07d19de2317a" name="a521e3de13752f088631f07d19de2317a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521e3de13752f088631f07d19de2317a">&#9670;&#160;</a></span>check_adress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string rtype::Utils::check_adress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>server_ip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a29b3f1ae5b73d24e5ec8fa25402c1493" name="a29b3f1ae5b73d24e5ec8fa25402c1493"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29b3f1ae5b73d24e5ec8fa25402c1493">&#9670;&#160;</a></span>checkAction()</h2>
 
@@ -230,6 +332,58 @@ Fonctions membres publiques statiques</h2></td></tr>
 
 </div>
 </div>
+<a id="afb318bfe826e6d575c1bf127051fd0a5" name="afb318bfe826e6d575c1bf127051fd0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb318bfe826e6d575c1bf127051fd0a5">&#9670;&#160;</a></span>parse_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt; std::pair&lt; std::size_t, std::pair&lt; float, float &gt; &gt; &gt; rtype::Utils::parse_update </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a771955ff64e65f6145a016402fa2ed49" name="a771955ff64e65f6145a016402fa2ed49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771955ff64e65f6145a016402fa2ed49">&#9670;&#160;</a></span>parse_update_life()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt; std::pair&lt; std::size_t, int &gt; &gt; rtype::Utils::parse_update_life </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a50f60e732d25bf44412dc959dca6e3e9" name="a50f60e732d25bf44412dc959dca6e3e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50f60e732d25bf44412dc959dca6e3e9">&#9670;&#160;</a></span>parseMessageParams()</h2>
 
@@ -244,6 +398,58 @@ Fonctions membres publiques statiques</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca2a794d187377a8c2e94ac81f14a96c" name="aca2a794d187377a8c2e94ac81f14a96c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca2a794d187377a8c2e94ac81f14a96c">&#9670;&#160;</a></span>parsePositionAndRoomPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; std::tuple&lt; float, float, int &gt;, int, int &gt; rtype::Utils::parsePositionAndRoomPort </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a845910332ea6ca46b5dfe00110db5241" name="a845910332ea6ca46b5dfe00110db5241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a845910332ea6ca46b5dfe00110db5241">&#9670;&#160;</a></span>parseUpdateEntities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::tuple&lt; std::pair&lt; float, float &gt;, int, int &gt; &gt; rtype::Utils::parseUpdateEntities </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['filter_5fmode_0',['FILTER_MODE',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76',1,'rtype']]]
+  ['difficulty_0',['DIFFICULTY',['../namespacertype.html#a54b260e928f16526373dff8bab381a13',1,'rtype']]],
+  ['direction_1',['direction',['../namespaceecs.html#a7a98367474612e41f7e1da1a57853776',1,'ecs']]]
 ];

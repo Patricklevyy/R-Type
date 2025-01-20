@@ -106,10 +106,8 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:aed64d78ce51ff6b7bff2f82322c5f8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e7753155127e6ac12daf3928eca55d0" id="r_a5e7753155127e6ac12daf3928eca55d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1ScoreSystem.html#a5e7753155127e6ac12daf3928eca55d0">~ScoreSystem</a> ()</td></tr>
 <tr class="separator:a5e7753155127e6ac12daf3928eca55d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a523fcc9854798a40249ee9558f865648" id="r_a523fcc9854798a40249ee9558f865648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1ScoreSystem.html#a523fcc9854798a40249ee9558f865648">addToScore</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, unsigned int score)</td></tr>
-<tr class="separator:a523fcc9854798a40249ee9558f865648"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21644f8446f7d080ba28dfb9c704a532" id="r_a21644f8446f7d080ba28dfb9c704a532"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1ScoreSystem.html#a21644f8446f7d080ba28dfb9c704a532">isLevelFinished</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
-<tr class="separator:a21644f8446f7d080ba28dfb9c704a532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7f01ec33ba650f126d36ebc72e62ea" id="r_aed7f01ec33ba650f126d36ebc72e62ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1ScoreSystem.html#aed7f01ec33ba650f126d36ebc72e62ea">updateScore</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, std::string score)</td></tr>
+<tr class="separator:aed7f01ec33ba650f126d36ebc72e62ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="aed64d78ce51ff6b7bff2f82322c5f8d2" name="aed64d78ce51ff6b7bff2f82322c5f8d2"></a>
@@ -163,8 +161,8 @@ Fonctions membres publiques</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a id="a523fcc9854798a40249ee9558f865648" name="a523fcc9854798a40249ee9558f865648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a523fcc9854798a40249ee9558f865648">&#9670;&#160;</a></span>addToScore()</h2>
+<a id="aed7f01ec33ba650f126d36ebc72e62ea" name="aed7f01ec33ba650f126d36ebc72e62ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7f01ec33ba650f126d36ebc72e62ea">&#9670;&#160;</a></span>updateScore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +171,7 @@ Fonctions membres publiques</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void rtype::ScoreSystem::addToScore </td>
+          <td class="memname">void rtype::ScoreSystem::updateScore </td>
           <td>(</td>
           <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
           <td class="paramname"><em>components_array</em>, </td>
@@ -181,7 +179,7 @@ Fonctions membres publiques</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>score</em>&#160;</td>
         </tr>
         <tr>
@@ -199,34 +197,8 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<a id="a21644f8446f7d080ba28dfb9c704a532" name="a21644f8446f7d080ba28dfb9c704a532"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21644f8446f7d080ba28dfb9c704a532">&#9670;&#160;</a></span>isLevelFinished()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool rtype::ScoreSystem::isLevelFinished </td>
-          <td>(</td>
-          <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
-          <td class="paramname"><em>components_array</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
-<li>rtype_game/server/system/<a class="el" href="ScoreSystem_8hpp_source.html">ScoreSystem.hpp</a></li>
+<li>rtype_game/client/system/<a class="el" href="ScoreSystem_8hpp_source.html">ScoreSystem.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

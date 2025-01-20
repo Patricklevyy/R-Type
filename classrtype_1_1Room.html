@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classrtype_1_1Room.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-attribs">Attributs publics</a> &#124;
 <a href="classrtype_1_1Room-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle"><div class="title">Référence de la classe rtype::Room</div></div>
 </div><!--header-->
@@ -111,12 +112,12 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:afc290a2753b43a504c71474d8fed3c93" id="r_afc290a2753b43a504c71474d8fed3c93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#afc290a2753b43a504c71474d8fed3c93">~Room</a> ()</td></tr>
 <tr class="memdesc:afc290a2753b43a504c71474d8fed3c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classrtype_1_1Room.html" title="Represents a game room with associated entities, systems, and gameplay logic.">Room</a>.  <br /></td></tr>
 <tr class="separator:afc290a2753b43a504c71474d8fed3c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bc153d2086ce4d297b2e476de8e9eae" id="r_a0bc153d2086ce4d297b2e476de8e9eae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a0bc153d2086ce4d297b2e476de8e9eae">start</a> (int, std::string, std::string)</td></tr>
-<tr class="memdesc:a0bc153d2086ce4d297b2e476de8e9eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game in the room.  <br /></td></tr>
-<tr class="separator:a0bc153d2086ce4d297b2e476de8e9eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6836d36e84e21f96be317982dc91303" id="r_ac6836d36e84e21f96be317982dc91303"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#ac6836d36e84e21f96be317982dc91303">gameThreadFunction</a> (int, std::string, std::string)</td></tr>
-<tr class="memdesc:ac6836d36e84e21f96be317982dc91303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the game thread functionality.  <br /></td></tr>
-<tr class="separator:ac6836d36e84e21f96be317982dc91303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeea485e44482aa649ebc7596936ffa4" id="r_aaeea485e44482aa649ebc7596936ffa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#aaeea485e44482aa649ebc7596936ffa4">start</a> (int, std::string, std::string, std::string)</td></tr>
+<tr class="memdesc:aaeea485e44482aa649ebc7596936ffa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game in the room.  <br /></td></tr>
+<tr class="separator:aaeea485e44482aa649ebc7596936ffa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5568e91ffbf71d616af4e52011ab3db4" id="r_a5568e91ffbf71d616af4e52011ab3db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a5568e91ffbf71d616af4e52011ab3db4">gameThreadFunction</a> (int, std::string, std::string, std::string)</td></tr>
+<tr class="memdesc:a5568e91ffbf71d616af4e52011ab3db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the game thread functionality.  <br /></td></tr>
+<tr class="separator:a5568e91ffbf71d616af4e52011ab3db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a964c22530b4a86a9db7da935e6f11d60" id="r_a964c22530b4a86a9db7da935e6f11d60"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a964c22530b4a86a9db7da935e6f11d60">sendMessage</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a964c22530b4a86a9db7da935e6f11d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to all clients in the room.  <br /></td></tr>
 <tr class="separator:a964c22530b4a86a9db7da935e6f11d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,12 +144,16 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a6cbef2ef5a86f4812abc26f4375c4121" id="r_a6cbef2ef5a86f4812abc26f4375c4121"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a6cbef2ef5a86f4812abc26f4375c4121">getAddress</a> () const</td></tr>
 <tr class="memdesc:a6cbef2ef5a86f4812abc26f4375c4121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the address of the room.  <br /></td></tr>
 <tr class="separator:a6cbef2ef5a86f4812abc26f4375c4121"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a92b4ba7fc348f7d3348c725ded018a" id="r_a4a92b4ba7fc348f7d3348c725ded018a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a4a92b4ba7fc348f7d3348c725ded018a">init_event_bus</a> ()</td></tr>
-<tr class="memdesc:a4a92b4ba7fc348f7d3348c725ded018a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the event bus for the room.  <br /></td></tr>
-<tr class="separator:a4a92b4ba7fc348f7d3348c725ded018a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a081c6ddf34138cca600c3ac19f66ade5" id="r_a081c6ddf34138cca600c3ac19f66ade5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a081c6ddf34138cca600c3ac19f66ade5">sendExistingEntities</a> ()</td></tr>
 <tr class="memdesc:a081c6ddf34138cca600c3ac19f66ade5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the existing entities in the room to the clients.  <br /></td></tr>
 <tr class="separator:a081c6ddf34138cca600c3ac19f66ade5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeca0ddf2aef4cf17737abec242af7f3" id="r_adeca0ddf2aef4cf17737abec242af7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#adeca0ddf2aef4cf17737abec242af7f3">spawnBonus</a> (const std::pair&lt; float, float &gt; &amp;position)</td></tr>
+<tr class="separator:adeca0ddf2aef4cf17737abec242af7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Attributs publics</h2></td></tr>
+<tr class="memitem:a6904b1e30110c3844aae802c9a5ba6bf" id="r_a6904b1e30110c3844aae802c9a5ba6bf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Room.html#a6904b1e30110c3844aae802c9a5ba6bf">_clientAddresses</a></td></tr>
+<tr class="separator:a6904b1e30110c3844aae802c9a5ba6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Represents a game room with associated entities, systems, and gameplay logic. </p>
@@ -299,8 +304,8 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<a id="ac6836d36e84e21f96be317982dc91303" name="ac6836d36e84e21f96be317982dc91303"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6836d36e84e21f96be317982dc91303">&#9670;&#160;</a></span>gameThreadFunction()</h2>
+<a id="a5568e91ffbf71d616af4e52011ab3db4" name="a5568e91ffbf71d616af4e52011ab3db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5568e91ffbf71d616af4e52011ab3db4">&#9670;&#160;</a></span>gameThreadFunction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -321,7 +326,13 @@ Fonctions membres publiques</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>window_height</em>&#160;</td>
+          <td class="paramname"><em>window_height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>difficulty</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -392,25 +403,6 @@ Fonctions membres publiques</h2></td></tr>
 
 <p>Retrieves the number of connected clients. </p>
 <dl class="section return"><dt>Renvoie</dt><dd>The number of connected clients. </dd></dl>
-
-</div>
-</div>
-<a id="a4a92b4ba7fc348f7d3348c725ded018a" name="a4a92b4ba7fc348f7d3348c725ded018a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a92b4ba7fc348f7d3348c725ded018a">&#9670;&#160;</a></span>init_event_bus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rtype::Room::init_event_bus </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the event bus for the room. </p>
 
 </div>
 </div>
@@ -539,8 +531,26 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<a id="a0bc153d2086ce4d297b2e476de8e9eae" name="a0bc153d2086ce4d297b2e476de8e9eae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bc153d2086ce4d297b2e476de8e9eae">&#9670;&#160;</a></span>start()</h2>
+<a id="adeca0ddf2aef4cf17737abec242af7f3" name="adeca0ddf2aef4cf17737abec242af7f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeca0ddf2aef4cf17737abec242af7f3">&#9670;&#160;</a></span>spawnBonus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Room::spawnBonus </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; float, float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaeea485e44482aa649ebc7596936ffa4" name="aaeea485e44482aa649ebc7596936ffa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeea485e44482aa649ebc7596936ffa4">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -561,7 +571,13 @@ Fonctions membres publiques</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>window_height</em>&#160;</td>
+          <td class="paramname"><em>window_height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>difficulty</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -575,13 +591,30 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a id="a6904b1e30110c3844aae802c9a5ba6bf" name="a6904b1e30110c3844aae802c9a5ba6bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6904b1e30110c3844aae802c9a5ba6bf">&#9670;&#160;</a></span>_clientAddresses</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; rtype::Room::_clientAddresses</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>rtype_game/server/<a class="el" href="Room_8hpp_source.html">Room.hpp</a></li>
 <li>rtype_game/server/<a class="el" href="Room_8cpp.html">Room.cpp</a></li>
 <li>rtype_game/server/<a class="el" href="Room__Create__And__Kill_8cpp.html">Room_Create_And_Kill.cpp</a></li>
 <li>rtype_game/server/<a class="el" href="Room__Event__Bus_8cpp.html">Room_Event_Bus.cpp</a></li>
 <li>rtype_game/server/<a class="el" href="Room__Game__Loop_8cpp.html">Room_Game_Loop.cpp</a></li>
+<li>rtype_game/server/<a class="el" href="Room__Init_8cpp.html">Room_Init.cpp</a></li>
 <li>rtype_game/server/<a class="el" href="Room__Send__Message_8cpp.html">Room_Send_Message.cpp</a></li>
+<li>rtype_game/server/<a class="el" href="Room__System_8cpp.html">Room_System.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,57 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,817,120,843"/>
+<area shape="rect" id="Node000001" href="$classecs_1_1ERROR_1_1BindFailedExceptions.html" title="Exception for failed socket binding." alt="" coords="168,5,411,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="61,803,62,648,73,419,86,301,104,192,131,103,147,68,166,41,182,29,185,33,170,45,152,71,136,105,110,193,91,301,78,420,67,648,66,803"/>
+<area shape="rect" id="Node000002" href="$classecs_1_1ERROR_1_1CantParseConfigFileExceptions.html" title="Exception for errors parsing the configuration file." alt="" coords="184,55,395,95"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="61,803,65,660,78,451,91,343,110,244,134,162,149,130,166,106,182,92,185,96,170,109,154,133,139,164,115,245,97,344,84,451,70,660,67,804"/>
+<area shape="rect" id="Node000003" href="$classecs_1_1ERROR_1_1CantReadConfigFileExceptions.html" title="Exception for errors reading the configuration file." alt="" coords="185,119,394,159"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="62,803,67,671,82,481,95,384,113,294,136,220,150,192,166,170,183,156,186,160,170,173,155,194,141,222,118,295,101,384,88,482,72,671,67,803"/>
+<area shape="rect" id="Node000004" href="$classecs_1_1ERROR_1_1ComponentNotFoundExceptions.html" title="Exception for missing components." alt="" coords="188,183,391,223"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="62,803,69,682,86,512,100,424,117,345,139,279,152,253,166,233,186,218,189,222,170,237,156,256,144,281,122,346,105,425,92,512,75,683,68,804"/>
+<area shape="rect" id="Node000005" href="$classecs_1_1ERROR_1_1ComponentTypeAlreadyExistException.html" title="Exception for duplicate component types." alt="" coords="184,247,395,287"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="63,804,72,695,90,543,104,466,121,395,141,337,166,298,182,284,186,288,170,301,146,340,126,397,109,467,95,544,77,695,68,804"/>
+<area shape="rect" id="Node000006" href="$classecs_1_1ERROR_1_1IdOutOfRangeExceptions.html" title="Exception for out&#45;of&#45;range entity IDs." alt="" coords="191,311,387,351"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="64,803,74,706,94,574,108,507,125,446,144,396,166,361,189,345,192,349,170,365,149,398,130,448,113,508,100,575,80,707,69,804"/>
+<area shape="rect" id="Node000007" href="$classecs_1_1ERROR_1_1InvalidAdressFormatExceptions.html" title="Exception for invalid address format." alt="" coords="193,375,386,415"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="65,803,77,718,99,605,128,497,146,455,166,425,191,408,194,413,170,429,151,457,134,499,104,606,83,719,70,804"/>
+<area shape="rect" id="Node000008" href="$classecs_1_1ERROR_1_1InvalidIpAdressExceptions.html" title="Exception for invalid IP addresses." alt="" coords="187,439,392,479"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="61,803,66,740,80,655,93,610,112,566,136,525,166,489,185,476,188,480,170,493,140,529,116,569,99,612,85,657,71,740,67,804"/>
+<area shape="rect" id="Node000009" href="$classecs_1_1ERROR_1_1MessageTooBigExceptions.html" title="Exception for messages exceeding buffer size." alt="" coords="186,503,393,543"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="64,803,72,750,89,683,102,648,119,613,140,581,166,553,184,541,187,545,170,557,145,585,124,616,107,650,94,685,77,751,69,804"/>
+<area shape="rect" id="Node000010" href="$classecs_1_1ERROR_1_1MissingSecretKeyInConfigFileException.html" title="Exception for missing the secret key in the config file." alt="" coords="191,567,387,607"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="67,803,78,762,98,712,127,661,145,638,166,617,190,603,193,607,170,621,149,641,131,664,103,714,84,764,72,805"/>
+<area shape="rect" id="Node000011" href="$classecs_1_1ERROR_1_1PlayerNotFoundInEcs.html" title="Exception for player not found." alt="" coords="185,631,393,671"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="73,803,109,742,135,709,166,681,188,669,190,674,170,686,139,713,113,745,77,806"/>
+<area shape="rect" id="Node000012" href="$classecs_1_1ERROR_1_1RecvExceptions.html" title="Exception for failed reception of data." alt="" coords="185,696,393,721"/>
+<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="81,805,118,767,141,748,167,732,199,719,201,724,169,736,144,752,121,771,85,808"/>
+<area shape="rect" id="Node000013" href="$classecs_1_1ERROR_1_1SocketNotInitializedExceptions.html" title="Exception for uninitialized socket operations." alt="" coords="172,746,407,786"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="117,811,167,795,210,783,212,789,169,801,118,816"/>
+<area shape="rect" id="Node000014" href="$classecs_1_1ERROR_1_1WrongBufferSizeExceptions.html" title="Exception for buffer size exceeding safe UDP message size." alt="" coords="183,810,396,850"/>
+<area shape="poly" id="edge14_Node000000_Node000014" title=" " alt="" coords="134,827,183,827,183,833,134,833"/>
+<area shape="rect" id="Node000015" href="$classecs_1_1ERROR_1_1WrongConfigurationExceptions.html" title="Exception for incorrect or missing configuration settings." alt="" coords="172,874,407,914"/>
+<area shape="poly" id="edge15_Node000000_Node000015" title=" " alt="" coords="118,844,169,859,212,871,210,877,167,865,117,849"/>
+<area shape="rect" id="Node000016" href="$classrtype_1_1ERROR_1_1FailedToInitializeClientExceptions.html" title="Exception thrown when failing to initialize the server." alt="" coords="177,938,402,978"/>
+<area shape="poly" id="edge16_Node000000_Node000016" title=" " alt="" coords="85,852,122,889,169,924,196,935,193,940,167,928,119,893,82,856"/>
+<area shape="rect" id="Node000017" href="$classrtype_1_1ERROR_1_1FailedToInitializeServerExceptions.html" title="Exception thrown when failing to initialize the server." alt="" coords="177,1002,402,1042"/>
+<area shape="poly" id="edge17_Node000000_Node000017" title=" " alt="" coords="76,854,111,922,137,958,170,988,190,1000,187,1004,166,992,133,961,106,925,71,857"/>
+<area shape="rect" id="Node000018" href="$classrtype_1_1ERROR_1_1InvalidActionExceptions.html" title="Exception thrown for invalid actions in the game." alt="" coords="188,1066,391,1106"/>
+<area shape="poly" id="edge18_Node000000_Node000018" title=" " alt="" coords="71,856,82,899,101,952,130,1006,148,1031,170,1052,189,1065,186,1069,166,1056,144,1034,125,1009,96,954,77,900,66,857"/>
+<area shape="rect" id="Node000019" href="$classrtype_1_1ERROR_1_1InvalidTpsOrFpsExceptions.html" title="Exception thrown for invalid tps or fps ." alt="" coords="197,1130,381,1170"/>
+<area shape="poly" id="edge19_Node000000_Node000019" title=" " alt="" coords="68,856,75,911,92,981,105,1018,122,1054,144,1087,170,1116,199,1134,196,1138,166,1120,139,1090,118,1056,100,1020,87,983,70,912,63,857"/>
+<area shape="rect" id="Node000020" href="$classrtype_1_1ERROR_1_1MessageIsNotSafeException.html" title="Exception thrown when the message is not safe." alt="" coords="185,1194,394,1234"/>
+<area shape="poly" id="edge20_Node000000_Node000020" title=" " alt="" coords="66,856,70,922,84,1009,97,1055,115,1101,139,1143,170,1180,186,1192,183,1197,166,1184,135,1146,110,1103,92,1057,78,1010,64,922,61,856"/>
+<area shape="rect" id="Node000021" href="$classrtype_1_1ERROR_1_1MissingPortParamsExceptions.html" title="Exception thrown when the port params is missing." alt="" coords="193,1258,386,1298"/>
+<area shape="poly" id="edge21_Node000000_Node000021" title=" " alt="" coords="70,856,82,943,103,1060,133,1172,150,1215,170,1244,194,1261,191,1265,166,1248,146,1218,128,1174,98,1061,77,944,64,857"/>
+<area shape="rect" id="Node000022" href="$classrtype_1_1ERROR_1_1MissingRoomsParamsExceptions.html" title="Exception thrown for missing romms parameter." alt="" coords="183,1322,395,1362"/>
+<area shape="poly" id="edge22_Node000000_Node000022" title=" " alt="" coords="69,856,79,956,99,1092,113,1161,129,1223,148,1274,170,1308,185,1320,181,1324,166,1312,143,1276,124,1225,107,1162,94,1093,74,957,64,857"/>
+<area shape="rect" id="Node000023" href="$classrtype_1_1ERROR_1_1PlayerDontExistInEcsException.html" title=" " alt="" coords="195,1386,384,1426"/>
+<area shape="poly" id="edge23_Node000000_Node000023" title=" " alt="" coords="68,856,76,967,95,1123,108,1202,125,1274,146,1333,170,1372,196,1390,193,1395,166,1376,141,1335,120,1275,103,1203,89,1123,71,968,63,856"/>
+<area shape="rect" id="Node000024" href="$classrtype_1_1ERROR_1_1RoomAlreadyExistingExceptions.html" title="Exception thrown for already existing room." alt="" coords="187,1450,392,1490"/>
+<area shape="poly" id="edge24_Node000000_Node000024" title=" " alt="" coords="68,856,74,980,91,1154,104,1243,121,1325,143,1391,156,1417,170,1436,188,1451,185,1455,166,1440,151,1420,138,1393,116,1326,99,1244,85,1155,69,980,62,857"/>
+<area shape="rect" id="Node000025" href="$classrtype_1_1ERROR_1_1RoomIsFullExceptions.html" title="Exception thrown when the room is full." alt="" coords="195,1514,384,1554"/>
+<area shape="poly" id="edge25_Node000000_Node000025" title=" " alt="" coords="67,856,72,991,87,1184,100,1284,118,1375,141,1450,155,1479,170,1500,196,1519,193,1523,166,1504,150,1481,136,1452,112,1376,95,1285,81,1185,66,991,62,857"/>
+<area shape="rect" id="Node000026" href="$classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html" title="Exception thrown for not found room." alt="" coords="181,1578,398,1618"/>
+<area shape="poly" id="edge26_Node000000_Node000026" title=" " alt="" coords="67,856,70,1002,83,1215,96,1325,114,1425,138,1508,153,1540,170,1564,183,1576,180,1580,166,1568,149,1543,134,1510,109,1427,90,1325,78,1215,64,1002,61,856"/>
+<area shape="rect" id="Node000027" href="$classrtype_1_1ERROR_1_1WrongFormatParamsExceptions.html" title="Exception thrown for incorrect parameter formats." alt="" coords="187,1642,392,1682"/>
+<area shape="poly" id="edge27_Node000000_Node000027" title=" " alt="" coords="66,856,67,1013,79,1245,92,1365,110,1476,136,1567,152,1602,170,1628,188,1643,185,1647,166,1632,147,1604,131,1569,105,1477,86,1366,74,1245,62,1013,61,856"/>
+</map>

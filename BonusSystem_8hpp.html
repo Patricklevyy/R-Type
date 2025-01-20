@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE: Référence du fichier rtype_game/shared/system/BonusSystem.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('BonusSystem_8hpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Espaces de nommage</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier BonusSystem.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="ECS_8hpp_source.html">../../../ecs/ECS.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Playable_8hpp_source.html">../../../ecs/components/Playable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Position_8hpp_source.html">../../../ecs/components/Position.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Enums__ecs_8hpp_source.html">../../../ecs/Enums_ecs.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Includes__ecs_8hpp_source.html">../../../ecs/Includes_ecs.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SparseArray_8hpp_source.html">../../../ecs/SparseArray.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Hitbox_8hpp_source.html">../../server/components/Hitbox.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PowerUp_8hpp_source.html">../../server/components/PowerUp.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de BonusSystem.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="BonusSystem_8hpp__incl.png" border="0" usemap="#artype__game_2shared_2system_2BonusSystem_8hpp" alt=""/></div>
+<map name="artype__game_2shared_2system_2BonusSystem_8hpp" id="artype__game_2shared_2system_2BonusSystem_8hpp">
+<area shape="rect" title=" " alt="" coords="2040,5,2240,45"/>
+<area shape="rect" href="ECS_8hpp.html" title="Core of the Entity&#45;Component&#45;System (ECS) architecture for managing entities and components." alt="" coords="2183,101,2321,126"/>
+<area shape="poly" title=" " alt="" coords="2167,43,2227,90,2224,94,2163,48"/>
+<area shape="rect" href="Includes__ecs_8hpp.html" title=" " alt="" coords="1949,255,2083,280"/>
+<area shape="poly" title=" " alt="" coords="2051,48,1994,67,1935,95,1882,133,1860,156,1841,183,1836,197,1837,209,1845,220,1857,229,1893,244,1936,254,1935,260,1891,249,1854,234,1841,224,1832,211,1831,196,1836,180,1856,153,1879,129,1933,90,1992,62,2049,43"/>
+<area shape="rect" href="Position_8hpp.html" title="Defines the Position component for 2D positioning." alt="" coords="2675,181,2861,207"/>
+<area shape="poly" title=" " alt="" coords="2212,43,2713,175,2711,180,2210,48"/>
+<area shape="rect" href="Enums__ecs_8hpp.html" title="Define the possible direction of the player or monsters in the game." alt="" coords="2669,255,2803,280"/>
+<area shape="poly" title=" " alt="" coords="2240,25,2452,32,2578,41,2708,55,2833,75,2943,101,2991,117,3033,136,3066,156,3092,180,3098,194,3092,208,3073,223,3046,235,2976,252,2895,262,2817,267,2817,261,2894,256,2975,246,3045,230,3070,218,3087,205,3092,194,3087,183,3063,161,3030,140,2989,122,2942,106,2832,80,2707,60,2578,46,2451,37,2240,30"/>
+<area shape="rect" href="Playable_8hpp.html" title="Defines the Playable component, representing a playable entity." alt="" coords="2886,181,3077,207"/>
+<area shape="poly" title=" " alt="" coords="2237,43,2483,91,2912,176,2911,181,2482,96,2236,48"/>
+<area shape="rect" href="SparseArray_8hpp.html" title="Defines a sparse array template for efficient data storage." alt="" coords="1851,181,1978,207"/>
+<area shape="poly" title=" " alt="" coords="2116,48,1943,175,1940,171,2113,43"/>
+<area shape="rect" href="Hitbox_8hpp.html" title="Class representing enemies in the game." alt="" coords="447,93,617,133"/>
+<area shape="poly" title=" " alt="" coords="2040,35,632,109,631,104,2039,29"/>
+<area shape="rect" href="PowerUp_8hpp.html" title=" " alt="" coords="1352,93,1523,133"/>
+<area shape="poly" title=" " alt="" coords="2040,41,1537,103,1536,97,2040,36"/>
+<area shape="poly" title=" " alt="" coords="2184,123,2148,130,2110,142,2074,159,2043,183,2034,196,2027,211,2020,242,2015,240,2022,209,2029,193,2040,179,2071,155,2108,137,2146,125,2183,117"/>
+<area shape="rect" href="Entity_8hpp.html" title="Defines the Entity class for the ECS framework." alt="" coords="2480,181,2651,207"/>
+<area shape="poly" title=" " alt="" coords="2298,123,2507,175,2506,181,2297,129"/>
+<area shape="poly" title=" " alt="" coords="2322,122,2680,177,2679,182,2321,128"/>
+<area shape="rect" href="Velocity_8hpp.html" title="Defines the Velocity component for movement speed." alt="" coords="2053,181,2237,207"/>
+<area shape="poly" title=" " alt="" coords="2238,128,2174,175,2171,171,2235,124"/>
+<area shape="rect" href="Direction_8hpp.html" title="Defines the Direction component used for managing directional movement." alt="" coords="2262,181,2455,207"/>
+<area shape="poly" title=" " alt="" coords="2269,124,2334,171,2330,175,2266,128"/>
+<area shape="poly" title=" " alt="" coords="2322,119,2873,178,2872,184,2321,125"/>
+<area shape="poly" title=" " alt="" coords="2204,129,1978,181,1977,176,2202,123"/>
+<area shape="rect" title=" " alt="" coords="568,401,648,427"/>
+<area shape="poly" title=" " alt="" coords="2083,267,2224,273,2383,286,2451,297,2502,311,2519,320,2529,330,2531,342,2523,355,2499,362,2445,368,2260,379,1694,397,662,415,662,409,1694,391,2260,374,2444,363,2498,357,2520,351,2526,341,2524,333,2516,324,2500,316,2449,302,2382,291,2224,278,2083,272"/>
+<area shape="rect" title=" " alt="" coords="1617,328,1676,353"/>
+<area shape="poly" title=" " alt="" coords="1950,282,1832,302,1690,330,1689,325,1831,296,1949,276"/>
+<area shape="rect" title=" " alt="" coords="2586,328,2689,353"/>
+<area shape="poly" title=" " alt="" coords="2083,272,2299,294,2567,325,2572,326,2572,331,2566,331,2298,299,2083,277"/>
+<area shape="rect" title=" " alt="" coords="2713,328,2805,353"/>
+<area shape="poly" title=" " alt="" coords="2083,269,2349,288,2521,304,2700,325,2699,331,2521,309,2348,293,2083,275"/>
+<area shape="rect" title=" " alt="" coords="2001,328,2076,353"/>
+<area shape="poly" title=" " alt="" coords="2022,280,2034,314,2028,316,2017,281"/>
+<area shape="rect" title=" " alt="" coords="1061,328,1171,353"/>
+<area shape="poly" title=" " alt="" coords="1949,274,1624,291,1408,308,1185,331,1185,325,1408,303,1624,286,1949,269"/>
+<area shape="rect" title=" " alt="" coords="1195,328,1319,353"/>
+<area shape="poly" title=" " alt="" coords="1949,276,1684,296,1333,331,1333,325,1684,291,1949,270"/>
+<area shape="rect" title=" " alt="" coords="1344,328,1395,353"/>
+<area shape="poly" title=" " alt="" coords="1949,274,1714,289,1563,306,1409,331,1408,326,1563,301,1713,284,1949,268"/>
+<area shape="rect" title=" " alt="" coords="1530,328,1593,353"/>
+<area shape="poly" title=" " alt="" coords="1950,279,1797,299,1607,331,1606,325,1796,293,1949,273"/>
+<area shape="rect" title=" " alt="" coords="2829,328,2896,353"/>
+<area shape="poly" title=" " alt="" coords="2083,270,2490,298,2816,325,2817,325,2816,331,2816,331,2490,303,2083,276"/>
+<area shape="rect" title=" " alt="" coords="1802,328,1889,353"/>
+<area shape="poly" title=" " alt="" coords="1990,282,1887,325,1885,320,1988,278"/>
+<area shape="rect" title=" " alt="" coords="3008,328,3051,353"/>
+<area shape="poly" title=" " alt="" coords="2083,270,2576,299,2994,327,2994,332,2576,304,2083,275"/>
+<area shape="rect" title=" " alt="" coords="770,328,817,353"/>
+<area shape="poly" title=" " alt="" coords="1949,272,1718,278,1400,288,1077,306,939,317,831,331,830,326,939,312,1077,300,1400,283,1718,272,1949,267"/>
+<area shape="rect" title=" " alt="" coords="3075,328,3149,353"/>
+<area shape="poly" title=" " alt="" coords="2083,268,2565,289,2846,306,3061,325,3061,331,2845,311,2565,294,2083,274"/>
+<area shape="rect" title=" " alt="" coords="1419,328,1506,353"/>
+<area shape="poly" title=" " alt="" coords="1950,277,1760,298,1520,330,1520,325,1760,292,1949,272"/>
+<area shape="rect" title=" " alt="" coords="1700,328,1777,353"/>
+<area shape="poly" title=" " alt="" coords="1972,283,1791,329,1790,323,1971,277"/>
+<area shape="rect" title=" " alt="" coords="2921,328,2983,353"/>
+<area shape="poly" title=" " alt="" coords="2083,270,2519,296,2753,312,2907,326,2907,331,2752,317,2518,301,2083,275"/>
+<area shape="rect" title=" " alt="" coords="2100,328,2164,353"/>
+<area shape="poly" title=" " alt="" coords="2036,278,2103,318,2100,323,2033,282"/>
+<area shape="rect" title=" " alt="" coords="2189,328,2331,353"/>
+<area shape="poly" title=" " alt="" coords="2056,277,2208,322,2207,327,2055,283"/>
+<area shape="rect" title=" " alt="" coords="1913,328,1977,353"/>
+<area shape="poly" title=" " alt="" coords="2006,282,1968,320,1965,316,2003,278"/>
+<area shape="rect" title=" " alt="" coords="2356,328,2423,353"/>
+<area shape="poly" title=" " alt="" coords="2084,277,2343,325,2344,325,2343,331,2342,331,2083,282"/>
+<area shape="rect" title=" " alt="" coords="2447,328,2510,353"/>
+<area shape="poly" title=" " alt="" coords="2083,273,2240,293,2434,325,2434,331,2239,298,2083,278"/>
+<area shape="poly" title=" " alt="" coords="2420,204,2662,249,2661,255,2419,209"/>
+<area shape="poly" title=" " alt="" coords="1933,204,1990,244,1987,249,1930,209"/>
+<area shape="poly" title=" " alt="" coords="1912,208,1859,317,1855,314,1907,206"/>
+<area shape="poly" title=" " alt="" coords="1979,203,2208,238,2498,277,2636,289,2746,294,2856,302,2995,326,2994,331,2855,308,2745,299,2636,295,2497,283,2207,243,1978,208"/>
+<area shape="poly" title=" " alt="" coords="1851,200,1427,217,1189,234,1091,245,1017,257,965,271,914,289,830,324,828,320,912,284,963,266,1016,252,1090,240,1189,229,1427,212,1851,194"/>
+<area shape="poly" title=" " alt="" coords="1979,200,3061,326,3061,331,1978,205"/>
+<area shape="poly" title=" " alt="" coords="447,127,291,152,206,172,127,197,63,227,38,244,21,263,11,282,9,304,16,327,34,351,60,364,110,375,255,392,420,403,554,408,554,414,420,408,255,398,109,381,58,369,30,355,12,329,4,304,6,281,16,260,35,240,60,222,125,192,205,167,290,147,446,122"/>
+<area shape="rect" href="Includes_8hpp.html" title=" " alt="" coords="1028,255,1204,280"/>
+<area shape="poly" title=" " alt="" coords="1399,136,1154,251,1152,246,1396,131"/>
+<area shape="poly" title=" " alt="" coords="1028,275,900,281,758,293,638,309,598,319,577,330,571,343,572,358,590,389,585,392,567,360,565,342,573,326,596,314,637,304,758,287,900,276,1028,269"/>
+<area shape="poly" title=" " alt="" coords="1205,273,1385,292,1604,326,1603,331,1384,297,1204,278"/>
+<area shape="poly" title=" " alt="" coords="1205,267,1352,272,1545,282,1764,299,1988,325,1987,331,1763,304,1544,287,1351,277,1205,273"/>
+<area shape="poly" title=" " alt="" coords="1119,280,1119,314,1113,314,1113,280"/>
+<area shape="poly" title=" " alt="" coords="1140,278,1224,319,1221,324,1138,282"/>
+<area shape="poly" title=" " alt="" coords="1159,278,1332,325,1332,326,1330,331,1330,331,1157,283"/>
+<area shape="poly" title=" " alt="" coords="1205,276,1347,296,1517,325,1516,331,1346,301,1204,282"/>
+<area shape="poly" title=" " alt="" coords="1204,271,1462,289,1623,305,1788,325,1788,331,1623,310,1462,294,1204,276"/>
+<area shape="poly" title=" " alt="" coords="1052,283,952,302,831,331,829,326,951,297,1051,277"/>
+<area shape="poly" title=" " alt="" coords="1172,277,1407,325,1406,330,1171,283"/>
+<area shape="poly" title=" " alt="" coords="1205,272,1420,291,1552,306,1687,325,1686,331,1551,311,1419,296,1204,277"/>
+<area shape="poly" title=" " alt="" coords="1204,268,1339,273,1513,283,1707,300,1901,325,1901,325,1900,331,1900,331,1706,305,1513,288,1339,278,1204,273"/>
+<area shape="rect" title=" " alt="" coords="841,328,937,353"/>
+<area shape="poly" title=" " alt="" coords="1081,283,940,326,938,321,1079,277"/>
+<area shape="rect" title=" " alt="" coords="961,328,1036,353"/>
+<area shape="poly" title=" " alt="" coords="1099,282,1031,323,1028,318,1096,278"/>
+<area shape="rect" title=" " alt="" coords="44,328,111,353"/>
+<area shape="poly" title=" " alt="" coords="1028,271,862,274,639,282,385,300,254,314,125,331,124,325,254,308,385,295,639,277,862,268,1028,266"/>
+<area shape="rect" title=" " alt="" coords="135,328,222,353"/>
+<area shape="poly" title=" " alt="" coords="1028,273,685,289,463,305,236,331,235,325,462,300,684,283,1028,268"/>
+<area shape="rect" title=" " alt="" coords="365,328,424,353"/>
+<area shape="poly" title=" " alt="" coords="1028,274,767,290,605,306,439,331,438,325,604,301,767,284,1028,269"/>
+<area shape="rect" title=" " alt="" coords="449,328,511,353"/>
+<area shape="poly" title=" " alt="" coords="1028,277,802,296,667,311,531,331,525,332,524,326,530,325,666,306,802,291,1028,272"/>
+<area shape="rect" href="Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="246,328,341,353"/>
+<area shape="poly" title=" " alt="" coords="1028,275,733,293,547,309,355,331,354,325,546,304,733,288,1028,270"/>
+<area shape="rect" href="RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="587,328,746,353"/>
+<area shape="poly" title=" " alt="" coords="1044,283,753,328,752,323,1044,277"/>
+<area shape="poly" title=" " alt="" coords="659,355,628,393,624,389,655,352"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="BonusSystem_8hpp__dep__incl.png" border="0" usemap="#artype__game_2shared_2system_2BonusSystem_8hppdep" alt=""/></div>
+<map name="artype__game_2shared_2system_2BonusSystem_8hppdep" id="artype__game_2shared_2system_2BonusSystem_8hppdep">
+<area shape="rect" title=" " alt="" coords="1771,5,1971,45"/>
+<area shape="rect" href="Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="1051,93,1262,119"/>
+<area shape="poly" title=" " alt="" coords="1758,42,1261,96,1260,91,1758,36"/>
+<area shape="rect" href="Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="2480,93,2695,119"/>
+<area shape="poly" title=" " alt="" coords="1985,36,2483,91,2483,96,1985,42"/>
+<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="5,174,215,199"/>
+<area shape="poly" title=" " alt="" coords="1038,114,674,132,451,148,226,169,174,177,173,171,226,164,450,143,674,127,1037,109"/>
+<area shape="rect" href="Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="239,167,421,207"/>
+<area shape="poly" title=" " alt="" coords="1037,116,761,135,597,150,433,169,422,171,421,166,432,164,596,145,760,130,1037,111"/>
+<area shape="rect" href="Client__Event__Bus_8cpp.html" title=" " alt="" coords="445,167,628,207"/>
+<area shape="poly" title=" " alt="" coords="1037,121,850,142,640,169,629,171,628,166,639,164,849,137,1037,116"/>
+<area shape="rect" href="Client__Init_8cpp.html" title=" " alt="" coords="652,167,835,207"/>
+<area shape="poly" title=" " alt="" coords="1084,124,835,171,834,165,1083,119"/>
+<area shape="rect" href="Client__Send__Message_8cpp.html" title=" " alt="" coords="859,167,1041,207"/>
+<area shape="poly" title=" " alt="" coords="1115,126,1001,169,999,164,1113,121"/>
+<area shape="rect" href="Client__Systems_8cpp.html" title=" " alt="" coords="1065,167,1248,207"/>
+<area shape="poly" title=" " alt="" coords="1159,132,1159,167,1154,167,1154,132"/>
+<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="1273,174,1475,199"/>
+<area shape="poly" title=" " alt="" coords="1202,121,1343,171,1341,176,1200,126"/>
+<area shape="rect" href="SFMLHandler_8hpp.html" title=" " alt="" coords="1500,174,1757,199"/>
+<area shape="poly" title=" " alt="" coords="1233,118,1554,171,1553,177,1232,124"/>
+<area shape="poly" title=" " alt="" coords="1552,174,1231,121,1232,116,1553,169"/>
+<area shape="rect" href="SFMLHandler_8cpp.html" title=" " alt="" coords="1425,262,1681,287"/>
+<area shape="poly" title=" " alt="" coords="1611,212,1565,263,1561,260,1607,208"/>
+<area shape="rect" href="Menu_8hpp.html" title=" " alt="" coords="1705,255,1886,295"/>
+<area shape="poly" title=" " alt="" coords="1664,203,1760,252,1757,257,1662,208"/>
+<area shape="poly" title=" " alt="" coords="1794,241,1788,202,1779,184,1767,169,1742,158,1696,148,1563,132,1405,121,1262,114,1262,108,1406,115,1563,127,1697,143,1744,153,1770,165,1784,181,1793,201,1799,241"/>
+<area shape="rect" href="Menu_8cpp.html" title=" " alt="" coords="1705,343,1886,383"/>
+<area shape="poly" title=" " alt="" coords="1798,309,1798,342,1793,342,1793,309"/>
+<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="1833,174,2048,199"/>
+<area shape="poly" title=" " alt="" coords="2467,122,2061,169,2011,177,2010,171,2060,164,2466,117"/>
+<area shape="rect" href="Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="2073,167,2259,207"/>
+<area shape="poly" title=" " alt="" coords="2513,124,2260,171,2259,165,2512,118"/>
+<area shape="rect" href="Room__Event__Bus_8cpp.html" title=" " alt="" coords="2283,167,2470,207"/>
+<area shape="poly" title=" " alt="" coords="2545,126,2428,169,2426,164,2543,121"/>
+<area shape="rect" href="Room__Game__Loop_8cpp.html" title=" " alt="" coords="2494,167,2681,207"/>
+<area shape="poly" title=" " alt="" coords="2590,132,2590,167,2585,167,2585,132"/>
+<area shape="rect" href="Room__Init_8cpp.html" title=" " alt="" coords="2705,167,2891,207"/>
+<area shape="poly" title=" " alt="" coords="2632,121,2748,164,2746,169,2630,126"/>
+<area shape="rect" href="Room__Send__Message_8cpp.html" title=" " alt="" coords="2915,167,3102,207"/>
+<area shape="poly" title=" " alt="" coords="2662,118,2916,165,2915,171,2661,124"/>
+<area shape="rect" href="Room__System_8cpp.html" title=" " alt="" coords="3126,167,3313,207"/>
+<area shape="poly" title=" " alt="" coords="2709,116,2900,137,3114,164,3126,166,3125,171,3114,169,2899,142,2708,121"/>
+<area shape="rect" href="Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="3337,174,3555,199"/>
+<area shape="poly" title=" " alt="" coords="2709,112,2990,132,3325,164,3378,171,3377,177,3324,169,2990,137,2708,117"/>
+<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="3105,262,3313,287"/>
+<area shape="poly" title=" " alt="" coords="3402,207,3241,264,3240,259,3400,202"/>
+<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="3337,262,3555,287"/>
+<area shape="poly" title=" " alt="" coords="3449,213,3449,261,3443,261,3443,213"/>
+<area shape="rect" href="Server__Create__Join__Room_8cpp.html" title=" " alt="" coords="3579,255,3769,295"/>
+<area shape="poly" title=" " alt="" coords="3490,202,3625,252,3623,257,3489,207"/>
+</map>
+</div>
+</div>
+<p><a href="BonusSystem_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1BonusSystem.html">rtype::BonusSystem</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Espaces de nommage</h2></td></tr>
+<tr class="memitem:namespacertype" id="r_namespacertype"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacertype.html">rtype</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1a7e174f8daab5f721a016525c062f0f.html">rtype_game</a></li><li class="navelem"><a class="el" href="dir_97a2af54c838c108dea6558752a410d7.html">shared</a></li><li class="navelem"><a class="el" href="dir_2a2b207a7c1be6236497ea1abee92f4e.html">system</a></li><li class="navelem"><a class="el" href="BonusSystem_8hpp.html">BonusSystem.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

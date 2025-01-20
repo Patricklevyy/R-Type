@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('classrtype_1_1SpriteFactory.html','');
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="SpriteFactory_8hpp_source.html">SpriteFactory.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="client_2SpriteFactory_8hpp_source.html">SpriteFactory.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
@@ -111,10 +111,54 @@ Fonctions membres publiques statiques</h2></td></tr>
 <tr class="memitem:a85ebb8defb7f39e7d10a33f5181837e5" id="r_a85ebb8defb7f39e7d10a33f5181837e5"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::shared_ptr&lt; sf::Texture &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5">loadTexturesForSprite</a> (<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> id)</td></tr>
 <tr class="memdesc:a85ebb8defb7f39e7d10a33f5181837e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the textures for a given sprite type.  <br /></td></tr>
 <tr class="separator:a85ebb8defb7f39e7d10a33f5181837e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79daa9bad34d0e3759ca18c287d3b15" id="r_af79daa9bad34d0e3759ca18c287d3b15"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; float, float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SpriteFactory.html#af79daa9bad34d0e3759ca18c287d3b15">getSpriteScaleAndSpeed</a> (<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> id)</td></tr>
+<tr class="memdesc:af79daa9bad34d0e3759ca18c287d3b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the scale and speed for a given sprite type.  <br /></td></tr>
+<tr class="separator:af79daa9bad34d0e3759ca18c287d3b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c075a31fb9cd016f78d3af9a1deacc" id="r_a62c075a31fb9cd016f78d3af9a1deacc"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SpriteFactory.html#a62c075a31fb9cd016f78d3af9a1deacc">getMaxTextureSizeForSprite</a> (<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> id)</td></tr>
+<tr class="memdesc:a62c075a31fb9cd016f78d3af9a1deacc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the maximum texture size for a given sprite type.  <br /></td></tr>
+<tr class="separator:a62c075a31fb9cd016f78d3af9a1deacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ebb8defb7f39e7d10a33f5181837e5" id="r_a85ebb8defb7f39e7d10a33f5181837e5"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::shared_ptr&lt; sf::Texture &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5">loadTexturesForSprite</a> (<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> id)</td></tr>
+<tr class="memdesc:a85ebb8defb7f39e7d10a33f5181837e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the textures for a given sprite type.  <br /></td></tr>
+<tr class="separator:a85ebb8defb7f39e7d10a33f5181837e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
 <a id="a62c075a31fb9cd016f78d3af9a1deacc" name="a62c075a31fb9cd016f78d3af9a1deacc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62c075a31fb9cd016f78d3af9a1deacc">&#9670;&#160;</a></span>getMaxTextureSizeForSprite()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c075a31fb9cd016f78d3af9a1deacc">&#9670;&#160;</a></span>getMaxTextureSizeForSprite() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::pair&lt; int, int &gt; rtype::SpriteFactory::getMaxTextureSizeForSprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the maximum texture size for a given sprite type. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The sprite identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A pair containing the maximum width and height for the sprite. </dd></dl>
+
+</div>
+</div>
+<a id="a62c075a31fb9cd016f78d3af9a1deacc" name="a62c075a31fb9cd016f78d3af9a1deacc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c075a31fb9cd016f78d3af9a1deacc">&#9670;&#160;</a></span>getMaxTextureSizeForSprite() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +193,42 @@ Fonctions membres publiques statiques</h2></td></tr>
 </div>
 </div>
 <a id="af79daa9bad34d0e3759ca18c287d3b15" name="af79daa9bad34d0e3759ca18c287d3b15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af79daa9bad34d0e3759ca18c287d3b15">&#9670;&#160;</a></span>getSpriteScaleAndSpeed()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af79daa9bad34d0e3759ca18c287d3b15">&#9670;&#160;</a></span>getSpriteScaleAndSpeed() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::tuple&lt; float, float, float &gt; rtype::SpriteFactory::getSpriteScaleAndSpeed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the scale and speed for a given sprite type. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The sprite identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A tuple containing the scale (x, y) and speed for the sprite. </dd></dl>
+
+</div>
+</div>
+<a id="af79daa9bad34d0e3759ca18c287d3b15" name="af79daa9bad34d0e3759ca18c287d3b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79daa9bad34d0e3759ca18c287d3b15">&#9670;&#160;</a></span>getSpriteScaleAndSpeed() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +263,7 @@ Fonctions membres publiques statiques</h2></td></tr>
 </div>
 </div>
 <a id="a85ebb8defb7f39e7d10a33f5181837e5" name="a85ebb8defb7f39e7d10a33f5181837e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85ebb8defb7f39e7d10a33f5181837e5">&#9670;&#160;</a></span>loadTexturesForSprite()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a85ebb8defb7f39e7d10a33f5181837e5">&#9670;&#160;</a></span>loadTexturesForSprite() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,8 +297,44 @@ Fonctions membres publiques statiques</h2></td></tr>
 
 </div>
 </div>
-<hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
-<li>rtype_game/client/<a class="el" href="SpriteFactory_8hpp_source.html">SpriteFactory.hpp</a></li>
+<a id="a85ebb8defb7f39e7d10a33f5181837e5" name="a85ebb8defb7f39e7d10a33f5181837e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85ebb8defb7f39e7d10a33f5181837e5">&#9670;&#160;</a></span>loadTexturesForSprite() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::vector&lt; std::shared_ptr&lt; sf::Texture &gt; &gt; rtype::SpriteFactory::loadTexturesForSprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads the textures for a given sprite type. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The sprite identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A vector of shared pointers to sf::Texture objects for the sprite. </dd></dl>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>rtype_game/client/<a class="el" href="client_2SpriteFactory_8hpp_source.html">SpriteFactory.hpp</a></li>
+<li>rtype_game/shared/<a class="el" href="shared_2SpriteFactory_8hpp_source.html">SpriteFactory.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

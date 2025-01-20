@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['levels_0',['LEVELS',['../namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8',1,'rtype']]]
+  ['filter_5fmode_0',['FILTER_MODE',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76',1,'rtype']]]
 ];

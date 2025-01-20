@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['levels_0',['Levels',['../classrtype_1_1Levels.html#a697b2aaf1127882caaaed81fbc4c18b4',1,'rtype::Levels']]],
-  ['levelsystem_1',['LevelSystem',['../classrtype_1_1LevelSystem.html#a88e58f9a91535f3ece68b8db84a3fc0a',1,'rtype::LevelSystem']]],
-  ['loadshader_2',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
-  ['loadtexturesforsprite_3',['loadTexturesForSprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory']]]
+  ['killallexceptplayer_0',['killAllExceptPlayer',['../classrtype_1_1KillSystem.html#ab2a8e1ad50c3939585bcfc9bf8607ffb',1,'rtype::KillSystem']]],
+  ['killentity_1',['killEntity',['../classrtype_1_1KillSystem.html#a227a9b7af739a16cb11868cdce37335f',1,'rtype::KillSystem']]],
+  ['killentityfromregistry_2',['killEntityFromRegistry',['../classecs_1_1ECS.html#af42cfac51e77315331cca2d0341e3d61',1,'ecs::ECS']]],
+  ['killlevelstatus_3',['killLevelStatus',['../classrtype_1_1KillSystem.html#a00f9005ade92512faa8307ba9e8038cb',1,'rtype::KillSystem']]],
+  ['killsystem_4',['KillSystem',['../classrtype_1_1KillSystem.html#a44e7390a8533a0991a88b7b565e0b0fd',1,'rtype::KillSystem']]],
+  ['killtexts_5',['killTexts',['../classrtype_1_1KillSystem.html#a8394dd986c10290d18d5ca0de4a3c894',1,'rtype::KillSystem']]]
 ];

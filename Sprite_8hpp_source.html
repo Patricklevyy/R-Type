@@ -115,75 +115,79 @@ $(document).ready(function(){initNavTree('Sprite_8hpp_source.html',''); initResi
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html">   24</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Sprite.html">Sprite</a> {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9">   29</a></span>        <a class="code hl_function" href="classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9">Sprite</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">   39</a></span>        <a class="code hl_function" href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">Sprite</a>(<span class="keyword">const</span> std::string&amp; texturePath, <span class="keywordtype">float</span> width, <span class="keywordtype">float</span> height) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">if</span> (!texture-&gt;loadFromFile(texturePath)) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture: &quot;</span> + texturePath);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            sprite.setTexture(*texture);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            sprite.setScale(width / texture-&gt;getSize().x, height / texture-&gt;getSize().y);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Sprite.html">Sprite</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9">   31</a></span>        <a class="code hl_function" href="classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9">Sprite</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">   41</a></span>        <a class="code hl_function" href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">Sprite</a>(<span class="keyword">const</span> std::string &amp;texturePath, <span class="keywordtype">float</span> width, <span class="keywordtype">float</span> height)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">if</span> (!texture-&gt;loadFromFile(texturePath))</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture: &quot;</span> + texturePath);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            sprite.setTexture(*texture);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            sprite.setScale(width / texture-&gt;getSize().x, height / texture-&gt;getSize().y);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">   53</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">setPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            sprite.setPosition(x, y);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">   57</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">setPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            sprite.setPosition(x, y);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">   63</a></span>        sf::Vector2f <a class="code hl_function" href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">getPosition</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">return</span> sprite.getPosition();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">   67</a></span>        sf::Vector2f <a class="code hl_function" href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">getPosition</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> sprite.getPosition();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">   73</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">draw</a>(sf::RenderWindow&amp; window)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            window.draw(sprite);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">   77</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">draw</a>(sf::RenderWindow &amp;window)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            window.draw(sprite);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
 </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">   83</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">setRotation</a>(<span class="keywordtype">float</span> angle)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            sprite.setRotation(angle);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">   87</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">setRotation</a>(<span class="keywordtype">float</span> angle)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            sprite.setRotation(angle);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
 </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">   93</a></span>        <span class="keywordtype">float</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">getRotation</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">return</span> sprite.getRotation();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">   97</a></span>        <span class="keywordtype">float</span> <a class="code hl_function" href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">getRotation</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">return</span> sprite.getRotation();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
 </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        std::shared_ptr&lt;sf::Texture&gt; texture;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        sf::Sprite sprite;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        std::shared_ptr&lt;sf::Texture&gt; texture;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        sf::Sprite sprite;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    };</div>
 </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif </span><span class="comment">/* SPRITE_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html"><div class="ttname"><a href="classrtype_1_1Sprite.html">rtype::Sprite</a></div><div class="ttdef"><b>Definition</b> Sprite.hpp:24</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_a44889b58292e3fe28c9f3a139ef03455"><div class="ttname"><a href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">rtype::Sprite::draw</a></div><div class="ttdeci">void draw(sf::RenderWindow &amp;window) const</div><div class="ttdoc">Draws the sprite to the specified render window.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:73</div></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#endif </span><span class="comment">/* SPRITE_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html"><div class="ttname"><a href="classrtype_1_1Sprite.html">rtype::Sprite</a></div><div class="ttdef"><b>Definition</b> Sprite.hpp:26</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_a44889b58292e3fe28c9f3a139ef03455"><div class="ttname"><a href="classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455">rtype::Sprite::draw</a></div><div class="ttdeci">void draw(sf::RenderWindow &amp;window) const</div><div class="ttdoc">Draws the sprite to the specified render window.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:77</div></div>
 <div class="ttc" id="aclassrtype_1_1Sprite_html_a4a5b7585777743ecdc7624b241ca2fc9"><div class="ttname"><a href="classrtype_1_1Sprite.html#a4a5b7585777743ecdc7624b241ca2fc9">rtype::Sprite::Sprite</a></div><div class="ttdeci">Sprite()=default</div><div class="ttdoc">Default constructor for the sprite.</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_a598e0afc030008d43d5daf74b89b1570"><div class="ttname"><a href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">rtype::Sprite::getRotation</a></div><div class="ttdeci">float getRotation() const</div><div class="ttdoc">Gets the current rotation angle of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:93</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_a6b014658153baf69abfef86a16b83d25"><div class="ttname"><a href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">rtype::Sprite::Sprite</a></div><div class="ttdeci">Sprite(const std::string &amp;texturePath, float width, float height)</div><div class="ttdoc">Constructs a sprite object with a texture, width, and height.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:39</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_ad3303a7396ae272f05e965dbf54947b5"><div class="ttname"><a href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">rtype::Sprite::setRotation</a></div><div class="ttdeci">void setRotation(float angle)</div><div class="ttdoc">Sets the rotation of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:83</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_ae168ab5d63785ddcf25da5c6035413f7"><div class="ttname"><a href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">rtype::Sprite::setPosition</a></div><div class="ttdeci">void setPosition(float x, float y)</div><div class="ttdoc">Sets the position of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:53</div></div>
-<div class="ttc" id="aclassrtype_1_1Sprite_html_aeebe77f1f588452c438ae4fd145f4e72"><div class="ttname"><a href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">rtype::Sprite::getPosition</a></div><div class="ttdeci">sf::Vector2f getPosition() const</div><div class="ttdoc">Gets the position of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:63</div></div>
-<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:12</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_a598e0afc030008d43d5daf74b89b1570"><div class="ttname"><a href="classrtype_1_1Sprite.html#a598e0afc030008d43d5daf74b89b1570">rtype::Sprite::getRotation</a></div><div class="ttdeci">float getRotation() const</div><div class="ttdoc">Gets the current rotation angle of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:97</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_a6b014658153baf69abfef86a16b83d25"><div class="ttname"><a href="classrtype_1_1Sprite.html#a6b014658153baf69abfef86a16b83d25">rtype::Sprite::Sprite</a></div><div class="ttdeci">Sprite(const std::string &amp;texturePath, float width, float height)</div><div class="ttdoc">Constructs a sprite object with a texture, width, and height.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:41</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_ad3303a7396ae272f05e965dbf54947b5"><div class="ttname"><a href="classrtype_1_1Sprite.html#ad3303a7396ae272f05e965dbf54947b5">rtype::Sprite::setRotation</a></div><div class="ttdeci">void setRotation(float angle)</div><div class="ttdoc">Sets the rotation of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:87</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_ae168ab5d63785ddcf25da5c6035413f7"><div class="ttname"><a href="classrtype_1_1Sprite.html#ae168ab5d63785ddcf25da5c6035413f7">rtype::Sprite::setPosition</a></div><div class="ttdeci">void setPosition(float x, float y)</div><div class="ttdoc">Sets the position of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:57</div></div>
+<div class="ttc" id="aclassrtype_1_1Sprite_html_aeebe77f1f588452c438ae4fd145f4e72"><div class="ttname"><a href="classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72">rtype::Sprite::getPosition</a></div><div class="ttdeci">sf::Vector2f getPosition() const</div><div class="ttdoc">Gets the position of the sprite.</div><div class="ttdef"><b>Definition</b> Sprite.hpp:67</div></div>
+<div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

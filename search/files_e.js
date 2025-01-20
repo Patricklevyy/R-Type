@@ -11,7 +11,7 @@ var searchData=
   ['shootingsystem_2ehpp_8',['ShootingSystem.hpp',['../ShootingSystem_8hpp.html',1,'']]],
   ['sparsearray_2ehpp_9',['SparseArray.hpp',['../SparseArray_8hpp.html',1,'']]],
   ['sprite_2ehpp_10',['Sprite.hpp',['../Sprite_8hpp.html',1,'']]],
-  ['spritefactory_2ehpp_11',['SpriteFactory.hpp',['../SpriteFactory_8hpp.html',1,'']]],
+  ['spritefactory_2ehpp_11',['spritefactory.hpp',['../client_2SpriteFactory_8hpp.html',1,'(Espace de nommage global)'],['../shared_2SpriteFactory_8hpp.html',1,'(Espace de nommage global)']]],
   ['spriteid_2ehpp_12',['SpriteId.hpp',['../SpriteId_8hpp.html',1,'']]],
   ['structures_5fecs_2ehpp_13',['Structures_ecs.hpp',['../Structures__ecs_8hpp.html',1,'']]]
 ];

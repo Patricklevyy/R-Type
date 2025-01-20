@@ -4,5 +4,6 @@ var classrtype_1_1Levels =
     [ "_lastSpawnTime", "classrtype_1_1Levels.html#ada39572d7483bc358cb249bcde532f0c", null ],
     [ "_level", "classrtype_1_1Levels.html#a8f99f8b28d31d376f41a8fc9286765ca", null ],
     [ "_score", "classrtype_1_1Levels.html#ad9d174fe172e3db9bffa8944a2b16626", null ],
-    [ "_spawnInterval", "classrtype_1_1Levels.html#abaeb2ec47220594ab18a862b3168a88e", null ]
+    [ "_spawnInterval", "classrtype_1_1Levels.html#abaeb2ec47220594ab18a862b3168a88e", null ],
+    [ "bossSpawned", "classrtype_1_1Levels.html#a51cc8b996e2523f66a36a3120fec62fc", null ]
 ];

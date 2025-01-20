@@ -4,8 +4,8 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="833,23,684,26,497,36,289,53,78,82,77,76,289,48,497,30,684,21,833,17"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="88,79,152,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="833,26,532,43,351,59,171,81,166,82,165,77,170,76,351,53,532,37,833,20"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="1075,152,1155,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="833,23,659,27,465,37,301,54,246,66,227,73,217,80,212,91,217,102,233,112,261,122,346,137,459,148,590,155,859,161,1061,161,1061,167,859,167,590,160,459,153,345,142,259,127,231,117,213,106,206,91,213,77,225,68,244,61,300,49,465,31,659,22,833,18"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="1032,152,1112,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="833,23,659,27,465,37,301,54,246,66,227,73,217,80,212,91,217,102,232,112,258,121,338,136,446,146,569,154,824,160,1018,161,1018,166,824,166,569,159,445,152,338,141,257,126,230,117,213,106,206,91,213,77,225,68,244,61,300,49,465,31,659,22,833,18"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="227,79,301,104"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="833,28,598,47,458,62,315,81,315,76,458,56,598,41,833,23"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="325,79,421,104"/>
@@ -24,21 +24,21 @@
 <area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="961,30,986,66,981,69,956,33"/>
 <area shape="rect" id="Node000013" title=" " alt="" coords="1057,79,1167,104"/>
 <area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="978,28,1074,71,1072,75,976,33"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="1192,79,1339,104"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1002,28,1202,73,1201,78,1001,33"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="1363,79,1410,104"/>
-<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1059,28,1194,47,1350,76,1349,82,1193,52,1059,33"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="1434,79,1521,104"/>
-<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1061,28,1227,48,1421,76,1420,81,1226,53,1061,33"/>
-<area shape="rect" id="Node000017" title=" " alt="" coords="1545,79,1623,104"/>
-<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="1069,25,1280,43,1532,76,1531,81,1280,49,1068,30"/>
-<area shape="rect" id="Node000018" title=" " alt="" coords="1647,79,1734,104"/>
-<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="1069,23,1324,41,1477,57,1634,76,1633,81,1477,62,1324,47,1068,28"/>
-<area shape="rect" id="Node000019" title=" " alt="" coords="1759,79,1817,104"/>
-<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="1068,18,1204,23,1372,33,1557,50,1745,76,1745,82,1556,55,1371,38,1204,28,1068,24"/>
-<area shape="rect" id="Node000020" href="$Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="1842,79,1937,104"/>
-<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="1068,20,1406,37,1615,53,1829,76,1828,81,1615,59,1406,42,1068,25"/>
-<area shape="rect" id="Node000021" href="$RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="1961,79,2119,104"/>
-<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="1068,21,1455,40,1698,56,1947,76,1947,81,1698,61,1454,46,1068,26"/>
-<area shape="poly" id="edge21_Node000021_Node000004" title=" " alt="" coords="1961,106,1950,107,1498,143,1168,163,1168,158,1498,138,1949,101,1960,100"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1191,79,1238,104"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="999,28,1179,76,1178,81,998,33"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1262,79,1349,104"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1010,28,1249,76,1248,81,1009,33"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1373,79,1451,104"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1044,28,1189,48,1360,76,1359,81,1188,53,1043,33"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1475,79,1562,104"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="1069,27,1250,47,1462,76,1462,81,1249,52,1068,33"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1587,79,1645,104"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="1068,22,1299,39,1435,55,1574,76,1573,81,1434,60,1298,44,1068,27"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1670,79,1733,104"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="1069,20,1334,37,1494,53,1657,76,1656,82,1493,59,1333,43,1068,26"/>
+<area shape="rect" id="Node000020" href="$Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="1757,79,1851,104"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="1068,21,1370,39,1555,55,1743,76,1742,81,1554,60,1370,44,1068,26"/>
+<area shape="rect" id="Node000021" href="$RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="1875,79,2034,104"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="1068,22,1420,42,1862,76,1861,81,1419,47,1068,27"/>
+<area shape="poly" id="edge21_Node000021_Node000004" title=" " alt="" coords="1875,105,1864,107,1439,142,1126,163,1125,158,1438,137,1864,101,1875,100"/>
 </map>

@@ -1,4 +1,7 @@
 <map id="rtype_game/client/components" name="rtype_game/client/components">
 <area shape="rect" id="node1" href="dir_1b5feeb3904a71f860d61960eb524c0f.html" title="components" alt="" coords="27,52,130,77"/>
+<area shape="rect" id="node2" href="dir_97a2af54c838c108dea6558752a410d7.html" title="shared" alt="" coords="45,125,112,151"/>
+<area shape="poly" id="edge1" href="dir_000002_000011.html" alt="" coords="81,78,81,112,76,112,76,78"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000002_000011.html" title="1" alt="" coords="82,100,92,114"/>
 <area shape="rect" id="clust1" href="dir_d3f376c9734fe2a6e6a221fa8762e65e.html" title="client" alt="" coords="16,16,141,88"/>
 </map>

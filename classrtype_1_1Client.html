@@ -105,9 +105,11 @@ Graphe de collaboration de rtype::Client:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtype_1_1Client__coll__graph.png" border="0" usemap="#artype_1_1Client_coll__map" alt="Collaboration graph"/></div>
 <map name="artype_1_1Client_coll__map" id="artype_1_1Client_coll__map">
-<area shape="rect" title=" " alt="" coords="17,93,119,119"/>
+<area shape="rect" title=" " alt="" coords="79,93,182,119"/>
 <area shape="rect" href="classrtype_1_1EventBus.html" title="A system for subscribing and emitting events in the game." alt="" coords="5,5,131,31"/>
-<area shape="poly" title=" " alt="" coords="71,45,71,93,65,93,65,45"/>
+<area shape="poly" title=" " alt="" coords="79,42,93,68,117,91,113,95,89,71,74,45"/>
+<area shape="rect" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture." alt="" coords="155,5,232,31"/>
+<area shape="poly" title=" " alt="" coords="183,45,166,71,145,95,141,91,162,68,179,42"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
@@ -127,16 +129,25 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:a60bf11c57c5a6260f1c27fea743fba14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a2e4bc190f25cdf4b01fb0d423368fa" id="r_a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a0a2e4bc190f25cdf4b01fb0d423368fa">change_player_direction</a> (<a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>, <a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>)</td></tr>
 <tr class="separator:a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d2da174444e5133b39d6a48f3246a94" id="r_a8d2da174444e5133b39d6a48f3246a94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a8d2da174444e5133b39d6a48f3246a94">send_server_create_room</a> ()</td></tr>
-<tr class="separator:a8d2da174444e5133b39d6a48f3246a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ada38cb0644e0ffd81a35c57cfecb8" id="r_a52ada38cb0644e0ffd81a35c57cfecb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a52ada38cb0644e0ffd81a35c57cfecb8">send_server_join_room</a> ()</td></tr>
-<tr class="separator:a52ada38cb0644e0ffd81a35c57cfecb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b7d52bef8b7f6e67d23171b14293d46" id="r_a6b7d52bef8b7f6e67d23171b14293d46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a6b7d52bef8b7f6e67d23171b14293d46">send_server_create_room</a> (std::string roomName)</td></tr>
+<tr class="separator:a6b7d52bef8b7f6e67d23171b14293d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab633d05ad0965489928393569d89ad71" id="r_ab633d05ad0965489928393569d89ad71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab633d05ad0965489928393569d89ad71">send_server_join_room</a> (std::string roomName, std::string clientName)</td></tr>
+<tr class="separator:ab633d05ad0965489928393569d89ad71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b4c1dca9657cfa4f489fe771590f1e1" id="r_a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a4b4c1dca9657cfa4f489fe771590f1e1">set_window_filter</a> (<a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a>)</td></tr>
 <tr class="separator:a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3f21141e62830ca3c413cff63e9680f" id="r_ab3f21141e62830ca3c413cff63e9680f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab3f21141e62830ca3c413cff63e9680f">create_new_player_shoot</a> ()</td></tr>
 <tr class="separator:ab3f21141e62830ca3c413cff63e9680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa94aa898889b74d47d82e4c060d74e93" id="r_aa94aa898889b74d47d82e4c060d74e93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aa94aa898889b74d47d82e4c060d74e93">handleMouseClick</a> ()</td></tr>
-<tr class="separator:aa94aa898889b74d47d82e4c060d74e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3556f5162eba0ec2c26d838e6fd9b98" id="r_ab3556f5162eba0ec2c26d838e6fd9b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab3556f5162eba0ec2c26d838e6fd9b98">handleMousePress</a> ()</td></tr>
+<tr class="separator:ab3556f5162eba0ec2c26d838e6fd9b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2e8c8f2e756e614fa9ed95b384f78a" id="r_abe2e8c8f2e756e614fa9ed95b384f78a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#abe2e8c8f2e756e614fa9ed95b384f78a">handleMouseRelease</a> ()</td></tr>
+<tr class="separator:abe2e8c8f2e756e614fa9ed95b384f78a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeabdcfceae20ed8a5f160f0757fffcb" id="r_aaeabdcfceae20ed8a5f160f0757fffcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aaeabdcfceae20ed8a5f160f0757fffcb">changeDifficulty</a> (<a class="el" href="namespacertype.html#a54b260e928f16526373dff8bab381a13">DIFFICULTY</a>)</td></tr>
+<tr class="separator:aaeabdcfceae20ed8a5f160f0757fffcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9126531902e39a79ef6a5ab19d2be12f" id="r_a9126531902e39a79ef6a5ab19d2be12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a9126531902e39a79ef6a5ab19d2be12f">launchMenu</a> ()</td></tr>
+<tr class="separator:a9126531902e39a79ef6a5ab19d2be12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a625e82d95bb41484b434e99e9ecf02a3" id="r_a625e82d95bb41484b434e99e9ecf02a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a625e82d95bb41484b434e99e9ecf02a3">requestRoomList</a> ()</td></tr>
+<tr class="memdesc:a625e82d95bb41484b434e99e9ecf02a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the server to ask the list of all the rooms.  <br /></td></tr>
+<tr class="separator:a625e82d95bb41484b434e99e9ecf02a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Attributs publics</h2></td></tr>
@@ -146,6 +157,12 @@ Attributs publics</h2></td></tr>
 <tr class="separator:a2563beae9bd38f7e95efe6bea1c114c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af361faea316896d608510962c341d0f4" id="r_af361faea316896d608510962c341d0f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrtype_1_1EventBus.html">EventBus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#af361faea316896d608510962c341d0f4">_eventBus</a></td></tr>
 <tr class="separator:af361faea316896d608510962c341d0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9273a9238fb958e38961baaa9f8fe7c" id="r_ad9273a9238fb958e38961baaa9f8fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classecs_1_1ECS.html">ecs::ECS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ad9273a9238fb958e38961baaa9f8fe7c">_ecs</a></td></tr>
+<tr class="separator:ad9273a9238fb958e38961baaa9f8fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7665eb4a2bd57d0e4397970d99347b81" id="r_a7665eb4a2bd57d0e4397970d99347b81"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a7665eb4a2bd57d0e4397970d99347b81">roomListMutex</a></td></tr>
+<tr class="separator:a7665eb4a2bd57d0e4397970d99347b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b4bda91cd69cd60eef61aa97e8a6252" id="r_a1b4bda91cd69cd60eef61aa97e8a6252"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; std::string, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a1b4bda91cd69cd60eef61aa97e8a6252">_roomsList</a></td></tr>
+<tr class="separator:a1b4bda91cd69cd60eef61aa97e8a6252"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="aed5c20fac90ad07852bebc5d94382b30" name="aed5c20fac90ad07852bebc5d94382b30"></a>
@@ -215,6 +232,24 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
+<a id="aaeabdcfceae20ed8a5f160f0757fffcb" name="aaeabdcfceae20ed8a5f160f0757fffcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeabdcfceae20ed8a5f160f0757fffcb">&#9670;&#160;</a></span>changeDifficulty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::changeDifficulty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacertype.html#a54b260e928f16526373dff8bab381a13">DIFFICULTY</a>&#160;</td>
+          <td class="paramname"><em>difficulty</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab3f21141e62830ca3c413cff63e9680f" name="ab3f21141e62830ca3c413cff63e9680f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3f21141e62830ca3c413cff63e9680f">&#9670;&#160;</a></span>create_new_player_shoot()</h2>
 
@@ -258,14 +293,14 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
-<a id="aa94aa898889b74d47d82e4c060d74e93" name="aa94aa898889b74d47d82e4c060d74e93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa94aa898889b74d47d82e4c060d74e93">&#9670;&#160;</a></span>handleMouseClick()</h2>
+<a id="ab3556f5162eba0ec2c26d838e6fd9b98" name="ab3556f5162eba0ec2c26d838e6fd9b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3556f5162eba0ec2c26d838e6fd9b98">&#9670;&#160;</a></span>handleMousePress()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtype::Client::handleMouseClick </td>
+          <td class="memname">void rtype::Client::handleMousePress </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -275,8 +310,61 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
-<a id="a8d2da174444e5133b39d6a48f3246a94" name="a8d2da174444e5133b39d6a48f3246a94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d2da174444e5133b39d6a48f3246a94">&#9670;&#160;</a></span>send_server_create_room()</h2>
+<a id="abe2e8c8f2e756e614fa9ed95b384f78a" name="abe2e8c8f2e756e614fa9ed95b384f78a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2e8c8f2e756e614fa9ed95b384f78a">&#9670;&#160;</a></span>handleMouseRelease()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::handleMouseRelease </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9126531902e39a79ef6a5ab19d2be12f" name="a9126531902e39a79ef6a5ab19d2be12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9126531902e39a79ef6a5ab19d2be12f">&#9670;&#160;</a></span>launchMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::launchMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a625e82d95bb41484b434e99e9ecf02a3" name="a625e82d95bb41484b434e99e9ecf02a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625e82d95bb41484b434e99e9ecf02a3">&#9670;&#160;</a></span>requestRoomList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Client::requestRoomList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the server to ask the list of all the rooms. </p>
+
+</div>
+</div>
+<a id="a6b7d52bef8b7f6e67d23171b14293d46" name="a6b7d52bef8b7f6e67d23171b14293d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b7d52bef8b7f6e67d23171b14293d46">&#9670;&#160;</a></span>send_server_create_room()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +372,8 @@ Attributs publics</h2></td></tr>
         <tr>
           <td class="memname">void rtype::Client::send_server_create_room </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>roomName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -292,8 +381,8 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
-<a id="a52ada38cb0644e0ffd81a35c57cfecb8" name="a52ada38cb0644e0ffd81a35c57cfecb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52ada38cb0644e0ffd81a35c57cfecb8">&#9670;&#160;</a></span>send_server_join_room()</h2>
+<a id="ab633d05ad0965489928393569d89ad71" name="ab633d05ad0965489928393569d89ad71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab633d05ad0965489928393569d89ad71">&#9670;&#160;</a></span>send_server_join_room()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,8 +390,19 @@ Attributs publics</h2></td></tr>
         <tr>
           <td class="memname">void rtype::Client::send_server_join_room </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>roomName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>clientName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -347,6 +447,20 @@ Attributs publics</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
+<a id="ad9273a9238fb958e38961baaa9f8fe7c" name="ad9273a9238fb958e38961baaa9f8fe7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9273a9238fb958e38961baaa9f8fe7c">&#9670;&#160;</a></span>_ecs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> rtype::Client::_ecs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af361faea316896d608510962c341d0f4" name="af361faea316896d608510962c341d0f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af361faea316896d608510962c341d0f4">&#9670;&#160;</a></span>_eventBus</h2>
 
@@ -375,6 +489,20 @@ Attributs publics</h2></td></tr>
 
 </div>
 </div>
+<a id="a1b4bda91cd69cd60eef61aa97e8a6252" name="a1b4bda91cd69cd60eef61aa97e8a6252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b4bda91cd69cd60eef61aa97e8a6252">&#9670;&#160;</a></span>_roomsList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;std::string, int&gt; &gt; rtype::Client::_roomsList</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2563beae9bd38f7e95efe6bea1c114c5" name="a2563beae9bd38f7e95efe6bea1c114c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2563beae9bd38f7e95efe6bea1c114c5">&#9670;&#160;</a></span>_running</h2>
 
@@ -383,6 +511,20 @@ Attributs publics</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool rtype::Client::_running = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7665eb4a2bd57d0e4397970d99347b81" name="a7665eb4a2bd57d0e4397970d99347b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7665eb4a2bd57d0e4397970d99347b81">&#9670;&#160;</a></span>roomListMutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex rtype::Client::roomListMutex</td>
         </tr>
       </table>
 </div><div class="memdoc">

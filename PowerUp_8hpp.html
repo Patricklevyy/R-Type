@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>R-TYPE: Référence du fichier rtype_game/server/components/PowerUp.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">A GAME ENGINE THAT ROARS !</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('PowerUp_8hpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Espaces de nommage</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier PowerUp.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="Includes_8hpp_source.html">../../shared/Includes.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de PowerUp.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="PowerUp_8hpp__incl.png" border="0" usemap="#artype__game_2server_2components_2PowerUp_8hpp" alt=""/></div>
+<map name="artype__game_2server_2components_2PowerUp_8hpp" id="artype__game_2server_2components_2PowerUp_8hpp">
+<area shape="rect" title=" " alt="" coords="836,5,1065,45"/>
+<area shape="rect" href="Includes_8hpp.html" title=" " alt="" coords="863,93,1039,119"/>
+<area shape="poly" title=" " alt="" coords="953,46,953,79,948,79,948,46"/>
+<area shape="rect" title=" " alt="" coords="5,167,64,192"/>
+<area shape="poly" title=" " alt="" coords="863,110,715,113,522,122,302,140,78,169,77,164,302,135,521,117,715,108,862,105"/>
+<area shape="rect" title=" " alt="" coords="88,167,152,192"/>
+<area shape="poly" title=" " alt="" coords="863,113,556,129,364,146,171,169,166,170,165,165,170,164,363,140,555,124,862,107"/>
+<area shape="rect" title=" " alt="" coords="1032,240,1112,265"/>
+<area shape="poly" title=" " alt="" coords="863,111,689,114,485,123,390,131,308,141,248,153,228,161,217,168,212,179,217,190,232,200,258,209,338,224,446,234,569,242,824,248,1018,249,1018,254,824,254,569,247,445,240,338,229,257,214,230,205,213,194,206,179,213,165,226,156,247,148,308,135,389,125,485,118,689,109,862,105"/>
+<area shape="rect" title=" " alt="" coords="227,167,301,192"/>
+<area shape="poly" title=" " alt="" coords="863,114,620,133,470,148,315,169,315,164,469,143,619,127,862,109"/>
+<area shape="rect" title=" " alt="" coords="325,167,421,192"/>
+<area shape="poly" title=" " alt="" coords="863,118,671,138,435,169,435,164,670,133,862,113"/>
+<area shape="rect" title=" " alt="" coords="446,167,509,192"/>
+<area shape="poly" title=" " alt="" coords="863,119,708,138,523,169,522,164,707,133,862,114"/>
+<area shape="rect" title=" " alt="" coords="533,167,657,192"/>
+<area shape="poly" title=" " alt="" coords="894,121,666,167,665,161,893,116"/>
+<area shape="rect" title=" " alt="" coords="681,167,767,192"/>
+<area shape="poly" title=" " alt="" coords="915,121,775,165,773,160,913,116"/>
+<area shape="rect" title=" " alt="" coords="792,167,843,192"/>
+<area shape="poly" title=" " alt="" coords="930,121,852,162,850,158,928,116"/>
+<area shape="rect" title=" " alt="" coords="867,167,941,192"/>
+<area shape="poly" title=" " alt="" coords="945,120,921,157,917,154,941,118"/>
+<area shape="rect" title=" " alt="" coords="965,167,1032,192"/>
+<area shape="poly" title=" " alt="" coords="961,118,986,154,981,157,956,121"/>
+<area shape="rect" title=" " alt="" coords="1057,167,1167,192"/>
+<area shape="poly" title=" " alt="" coords="978,116,1074,159,1072,163,976,121"/>
+<area shape="rect" title=" " alt="" coords="1191,167,1238,192"/>
+<area shape="poly" title=" " alt="" coords="999,116,1179,164,1178,169,998,121"/>
+<area shape="rect" title=" " alt="" coords="1262,167,1349,192"/>
+<area shape="poly" title=" " alt="" coords="1010,116,1249,164,1248,169,1009,121"/>
+<area shape="rect" title=" " alt="" coords="1373,167,1451,192"/>
+<area shape="poly" title=" " alt="" coords="1039,115,1185,135,1360,164,1359,169,1185,141,1038,121"/>
+<area shape="rect" title=" " alt="" coords="1475,167,1562,192"/>
+<area shape="poly" title=" " alt="" coords="1039,113,1229,133,1462,164,1462,169,1229,138,1039,118"/>
+<area shape="rect" title=" " alt="" coords="1587,167,1645,192"/>
+<area shape="poly" title=" " alt="" coords="1039,108,1277,125,1423,141,1573,164,1572,169,1423,147,1276,130,1039,114"/>
+<area shape="rect" title=" " alt="" coords="1670,167,1733,192"/>
+<area shape="poly" title=" " alt="" coords="1039,107,1311,123,1482,140,1657,164,1656,170,1481,145,1311,129,1039,113"/>
+<area shape="rect" href="Enums_8hpp.html" title="Defines various enumerations for actions, sprites, and visual filters in the R&#45;Type game." alt="" coords="1757,167,1851,192"/>
+<area shape="poly" title=" " alt="" coords="1039,108,1347,125,1543,141,1743,164,1742,169,1542,147,1347,131,1039,113"/>
+<area shape="rect" href="RTypeExceptions_8hpp.html" title="Defines custom exception classes for error handling in the R&#45;Type game." alt="" coords="1875,167,2034,192"/>
+<area shape="poly" title=" " alt="" coords="1039,109,1395,128,1625,144,1862,164,1862,169,1625,149,1394,134,1039,114"/>
+<area shape="poly" title=" " alt="" coords="1875,193,1864,195,1439,230,1126,251,1125,246,1438,225,1864,189,1875,188"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="PowerUp_8hpp__dep__incl.png" border="0" usemap="#artype__game_2server_2components_2PowerUp_8hppdep" alt=""/></div>
+<map name="artype__game_2server_2components_2PowerUp_8hppdep" id="artype__game_2server_2components_2PowerUp_8hppdep">
+<area shape="rect" title=" " alt="" coords="1101,5,1331,45"/>
+<area shape="rect" href="Room_8hpp.html" title="Manages game rooms and handles gameplay logic." alt="" coords="971,181,1186,207"/>
+<area shape="poly" title=" " alt="" coords="1156,54,1129,72,1106,95,1094,117,1087,140,1081,181,1076,181,1082,139,1089,115,1102,92,1126,68,1153,50"/>
+<area shape="rect" href="BonusSystem_8hpp.html" title=" " alt="" coords="1340,93,1540,133"/>
+<area shape="poly" title=" " alt="" coords="1279,48,1392,91,1390,96,1277,53"/>
+<area shape="rect" href="KillSystem_8hpp.html" title=" " alt="" coords="1116,93,1316,133"/>
+<area shape="poly" title=" " alt="" coords="1219,59,1219,93,1213,93,1213,59"/>
+<area shape="rect" href="Room_8cpp.html" title=" " alt="" coords="1091,262,1306,287"/>
+<area shape="poly" title=" " alt="" coords="1110,212,1182,260,1179,264,1107,217"/>
+<area shape="rect" href="Room__Create__And__Kill_8cpp.html" title=" " alt="" coords="1331,255,1517,295"/>
+<area shape="poly" title=" " alt="" coords="1143,207,1342,252,1341,257,1142,212"/>
+<area shape="rect" href="Room__Event__Bus_8cpp.html" title=" " alt="" coords="1541,255,1728,295"/>
+<area shape="poly" title=" " alt="" coords="1189,206,1530,252,1542,254,1541,259,1529,257,1188,211"/>
+<area shape="rect" href="Room__Game__Loop_8cpp.html" title=" " alt="" coords="5,255,192,295"/>
+<area shape="poly" title=" " alt="" coords="958,202,618,220,411,236,204,257,193,259,192,254,204,252,411,230,618,215,958,197"/>
+<area shape="rect" href="Room__Init_8cpp.html" title=" " alt="" coords="216,255,403,295"/>
+<area shape="poly" title=" " alt="" coords="958,206,707,226,415,257,403,259,403,254,414,252,707,220,957,200"/>
+<area shape="rect" href="Room__Send__Message_8cpp.html" title=" " alt="" coords="427,255,613,295"/>
+<area shape="poly" title=" " alt="" coords="969,211,626,257,614,259,613,254,625,252,968,206"/>
+<area shape="rect" href="Room__System_8cpp.html" title=" " alt="" coords="637,255,824,295"/>
+<area shape="poly" title=" " alt="" coords="1016,212,815,257,813,252,1014,207"/>
+<area shape="rect" href="Server_8hpp.html" title="Manages the overall server and its rooms." alt="" coords="848,262,1067,287"/>
+<area shape="poly" title=" " alt="" coords="1050,217,977,264,974,260,1047,212"/>
+<area shape="rect" href="server_2Main_8cpp.html" title=" " alt="" coords="616,350,824,375"/>
+<area shape="poly" title=" " alt="" coords="913,295,753,352,751,347,911,290"/>
+<area shape="rect" href="Server_8cpp.html" title=" " alt="" coords="849,350,1066,375"/>
+<area shape="poly" title=" " alt="" coords="960,301,960,349,955,349,955,301"/>
+<area shape="rect" href="Server__Create__Join__Room_8cpp.html" title=" " alt="" coords="1090,343,1281,383"/>
+<area shape="poly" title=" " alt="" coords="1002,290,1136,340,1134,345,1000,295"/>
+<area shape="poly" title=" " alt="" coords="1341,139,1132,184,1131,179,1340,134"/>
+<area shape="rect" href="Client_8hpp.html" title="Class representing the client for the game. The Client class handles all the client&#45;side logic of the..." alt="" coords="2240,181,2451,207"/>
+<area shape="poly" title=" " alt="" coords="1554,122,2240,181,2239,186,1554,127"/>
+<area shape="rect" href="Client_8cpp.html" title=" " alt="" coords="2313,262,2522,287"/>
+<area shape="poly" title=" " alt="" coords="2367,215,2409,260,2405,264,2363,219"/>
+<area shape="rect" href="Client__Create__And__Kill_8cpp.html" title=" " alt="" coords="2546,255,2729,295"/>
+<area shape="poly" title=" " alt="" coords="2402,208,2568,252,2566,257,2400,213"/>
+<area shape="rect" href="Client__Event__Bus_8cpp.html" title=" " alt="" coords="2753,255,2935,295"/>
+<area shape="poly" title=" " alt="" coords="2440,206,2742,252,2753,254,2752,259,2741,257,2439,211"/>
+<area shape="rect" href="Client__Init_8cpp.html" title=" " alt="" coords="2959,255,3142,295"/>
+<area shape="poly" title=" " alt="" coords="2464,201,2689,222,2948,252,2959,254,2959,259,2948,257,2689,227,2464,207"/>
+<area shape="rect" href="Client__Send__Message_8cpp.html" title=" " alt="" coords="3166,255,3349,295"/>
+<area shape="poly" title=" " alt="" coords="2465,197,2778,216,2966,231,3155,252,3166,254,3165,259,3154,257,2966,237,2777,221,2464,203"/>
+<area shape="rect" href="Client__Systems_8cpp.html" title=" " alt="" coords="3373,255,3555,295"/>
+<area shape="poly" title=" " alt="" coords="2464,195,2863,211,3112,227,3362,252,3373,253,3372,259,3361,257,3111,233,2863,216,2464,200"/>
+<area shape="rect" href="client_2Main_8cpp.html" title=" " alt="" coords="1752,262,1955,287"/>
+<area shape="poly" title=" " alt="" coords="2259,211,1967,257,1922,265,1921,259,1966,252,2258,206"/>
+<area shape="rect" href="SFMLHandler_8hpp.html" title=" " alt="" coords="1979,262,2237,287"/>
+<area shape="poly" title=" " alt="" coords="2292,213,2137,265,2135,259,2290,208"/>
+<area shape="poly" title=" " alt="" coords="2161,255,2317,204,2318,209,2163,260"/>
+<area shape="rect" href="SFMLHandler_8cpp.html" title=" " alt="" coords="1904,350,2160,375"/>
+<area shape="poly" title=" " alt="" coords="2091,300,2045,351,2041,348,2087,296"/>
+<area shape="rect" href="Menu_8hpp.html" title=" " alt="" coords="2184,343,2365,383"/>
+<area shape="poly" title=" " alt="" coords="2144,291,2239,340,2237,345,2141,296"/>
+<area shape="poly" title=" " alt="" coords="2276,328,2284,292,2298,254,2314,227,2332,205,2336,209,2319,230,2302,256,2289,293,2281,329"/>
+<area shape="rect" href="Menu_8cpp.html" title=" " alt="" coords="2184,431,2365,471"/>
+<area shape="poly" title=" " alt="" coords="2277,397,2277,430,2272,430,2272,397"/>
+<area shape="poly" title=" " alt="" coords="1173,142,1100,183,1098,179,1170,138"/>
+<area shape="poly" title=" " alt="" coords="1330,131,1590,155,1844,171,2240,188,2240,193,1844,177,1590,160,1329,136"/>
+</map>
+</div>
+</div>
+<p><a href="PowerUp_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PowerUp.html">rtype::PowerUp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Espaces de nommage</h2></td></tr>
+<tr class="memitem:namespacertype" id="r_namespacertype"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacertype.html">rtype</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1a7e174f8daab5f721a016525c062f0f.html">rtype_game</a></li><li class="navelem"><a class="el" href="dir_613fd6931bb48685d604a2de148497e1.html">server</a></li><li class="navelem"><a class="el" href="dir_8e246c79f11e44c724a821f3dfd0a885.html">components</a></li><li class="navelem"><a class="el" href="PowerUp_8hpp.html">PowerUp.hpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

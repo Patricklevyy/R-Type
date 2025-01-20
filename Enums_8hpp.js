@@ -1,5 +1,21 @@
 var Enums_8hpp =
 [
+    [ "BONUS", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62", [
+      [ "VELOCITY", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0f7f17ae926a679df70f241b6e75d374", null ],
+      [ "LIFE", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315", null ],
+      [ "WEAPON", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3", null ],
+      [ "SHIELD", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62adaec1e35b11ab0b5346e8cc14773343e", null ],
+      [ "MAX_BONUS", "Enums_8hpp.html#a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd", null ]
+    ] ],
+    [ "BOSSES", "Enums_8hpp.html#a701d30d6e53d47a1f10e4833b3eabb6d", [
+      [ "BOSS1", "Enums_8hpp.html#a701d30d6e53d47a1f10e4833b3eabb6da52ceb555b9c54a966341988301dc4c11", null ],
+      [ "MAX_BOSS", "Enums_8hpp.html#a701d30d6e53d47a1f10e4833b3eabb6dab806d548d1414b74404a8981487ab34a", null ]
+    ] ],
+    [ "DIFFICULTY", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13", [
+      [ "EASY", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13acc7b4b03cc2410885c0656ce94b664b3", null ],
+      [ "MEDIUM", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a52c41364989848f4e1bbee8b65cb52f2", null ],
+      [ "HARD", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a5a7efc8ba176e689a1e926e57a1c4f48", null ]
+    ] ],
     [ "FILTER_MODE", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76", [
       [ "Neutral", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559", null ],
       [ "Protanopia", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76a6158d5d76217b83ce9e706363fd606ff", null ],
@@ -11,6 +27,11 @@ var Enums_8hpp =
       [ "UN", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a678371ee8ca4b36a20004f58c7df4ad3", null ],
       [ "DEUX", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8a3fe5aba6fd718659dfd6c2c4c5a9a13d", null ],
       [ "BOSS", "Enums_8hpp.html#a3a5c65b39ed5a357de62dc4fece0d7a8adf68335189ffbd9d73ffdeddd0b9e40d", null ]
+    ] ],
+    [ "MONSTER", "Enums_8hpp.html#ae93815409cda024c90db1bf23e0a22f6", [
+      [ "MONSTER1", "Enums_8hpp.html#ae93815409cda024c90db1bf23e0a22f6abda7c264d5ee8773fc2a5b4b5bbfc0d9", null ],
+      [ "MONSTER2", "Enums_8hpp.html#ae93815409cda024c90db1bf23e0a22f6aadef702a3352707067fa43fd862adade", null ],
+      [ "MAX_MONSTER", "Enums_8hpp.html#ae93815409cda024c90db1bf23e0a22f6a9e35b95074e9e0a92506d654ef331cfd", null ]
     ] ],
     [ "RTYPE_ACTIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3", [
       [ "UNDEFINED", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ab2a6540696d8f40f08afe5703bced3f1", null ],
@@ -56,23 +77,54 @@ var Enums_8hpp =
       [ "FAIL_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a046651e9c88c6ab5cce00a5750b3684c", null ],
       [ "WIN_LEVEL", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a9646eacc83a3479110711cdc53fdc2b5", null ],
       [ "UPDATE_POSITIONS_FROM_SERVER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a758f627eeccae21a5976e81c73aa4756", null ],
+      [ "UPDATE_PARTIALS_POSITIONS_FROM_SERVER", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3af5b48da6df22891a07bdaf365ce2359f", null ],
       [ "REMOVE_ATH", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a45881ffacd58cf9e8700faa7316f5e2b", null ],
+      [ "UPDATE_SCORE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3afe39f24e40d3d054e47372a723e388d7", null ],
+      [ "SPAWN_ASTEROIDE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a60d38f1fb62e21c629305d6b9712ec80", null ],
+      [ "CHECK_BONUS_COLLISIONS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a0c5f56de8fd849610ebecd310ec3fc82", null ],
+      [ "CHECK_BONUS", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a2f31281a4b69d8b421ec9e6e132edaba", null ],
+      [ "PUT_SHIELD", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a99d276707e91c2c533c379273bae3e14", null ],
+      [ "REMOVE_SHIELD", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a0650ad755ca007de6142b7506846fb68", null ],
+      [ "UP_VELOCITY", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a449e3cce26ee25cb78201e5f5ccd34f8", null ],
+      [ "DOWN_VELOCITY", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a81e0f92de503b2995bfadab84efe15ec", null ],
+      [ "UPDATE_LIFE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706", null ],
       [ "MAX_ACTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
     [ "SPRITES", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662", [
+      [ "SIMPLE_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad88d9ec34276371eb7ab0a016c31716a", null ],
+      [ "ADVANCED_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ab6655f396c15c1ac66057e50da493e5a", null ],
+      [ "SUPER_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a3bd3b4702a375eff021f3dd35c3a1752", null ],
+      [ "MEGA_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ab8e8d6bf87631e2615b94b138984667f", null ],
+      [ "SIMPLE_BOSS", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad705ca056c686c59eaa58dd2d62a1fff", null ],
       [ "MENU_BACKGROUND", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aa47073e059f184ce7a62ab010d7e67fb", null ],
       [ "GAME_BACKGROUND", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a9780a8d75a5383abc00c1f44c8627237", null ],
       [ "MY_PLAYER_SHIP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a629b51c371016e65912d9e81d785ed8b", null ],
-      [ "SIMPLE_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad88d9ec34276371eb7ab0a016c31716a", null ],
-      [ "ADVANCED_MONSTER", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ab6655f396c15c1ac66057e50da493e5a", null ],
       [ "PLAYER_SIMPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad0602f7555125293abdd7fadfce67803", null ],
+      [ "PLAYER_CHARGED_SHOOT", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662adb13f3b520c279e9fd01ee909a611d71", null ],
+      [ "CHARGED_ANIMATION", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aec56af931ac19c28f8e85d1172d6ad94", null ],
       [ "MONSTER_SIMPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662af1db3068c29c70dc182f728519949781", null ],
+      [ "MONSTER_MULTIPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309", null ],
+      [ "BABY_PROJECTILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a5e9004b314aab1dc9aabe08868d9742d", null ],
+      [ "FIRE_BALL", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ac89bb905f02d6f29d6d90edd3829c54a", null ],
+      [ "BOSS_PROJECTILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a630152a63219c2f45e6d0b039062666c", null ],
       [ "OTHER_PLAYER_SHIP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662abce9dd9487d7ddf9cc0c8c5157737e91", null ],
+      [ "OTHER_PLAYER_SHIP_SHIELD", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aad8901ee210050b6ba4b5bfbde2df22b", null ],
       [ "LOOSER_SCREEN", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c", null ],
       [ "WIN_SCREEN", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aac7ba080bbe2957b044cdae38e117e3d", null ],
-      [ "MONSTER_MULTIPLE_MISSILE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aba9feea74492ba2401102054a4f88309", null ],
       [ "LEVEL1", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662acd77d78cec73faf3487efdc668234b9b", null ],
       [ "LEVEL2", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d4fae9f00d131688198fb07f2850f36", null ],
-      [ "LEVEL_BOSS", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662afa321308dc2256410d73a7182d5c599b", null ]
+      [ "LEVEL_BOSS", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662afa321308dc2256410d73a7182d5c599b", null ],
+      [ "LEVEL_LOCK", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a139d8fa1ddfdec713644fc100e8eb760", null ],
+      [ "WEAPON_DROP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad05d63278440a40588b8ec4e490b31c6", null ],
+      [ "LIFE_DROP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662abcda16fb42b7b019f483e9d3ee34d148", null ],
+      [ "VELOCITY_DROP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662aa62bd780f49f162d54acf6c6a13e8dbd", null ],
+      [ "SHIELD_DROP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a595f5c0108b8d62d84e9ef4e90e6a8e4", null ],
+      [ "SPEED_DROP", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ae6d241dc5ab4d5ea1bd16be77068d42e", null ],
+      [ "ASTEROIDE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a77a03b976af3becde3153a7b05734bbe", null ],
+      [ "MY_PLAYER_SHIP_SHIELD", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216", null ],
+      [ "LIFE_RECTANGLE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a1d4a8e81265bcc49eef0fb5523eb6eac", null ],
+      [ "LIFE_RED", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5", null ],
+      [ "LIFE_HEART", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae", null ],
+      [ "MAX_SPRITE", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1", null ]
     ] ]
 ];
