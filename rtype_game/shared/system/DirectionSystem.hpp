@@ -20,6 +20,12 @@
 
     namespace rtype
     {
+        /**
+         * @class DirectionSystem
+         * @brief A class that handles the Direction.
+         *
+         * The Direction class is managing the direction of entities
+         */
         class DirectionSystem
         {
         public:
