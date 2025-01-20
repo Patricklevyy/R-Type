@@ -69,6 +69,11 @@ namespace rtype
             }
         }
 
+        /**
+         * @brief Detects collisions between entities and processes health reductions.
+         * @param components_array A map containing all component arrays.
+         * @return A pair containing the list of dead entities and the list of dead ennemies.
+         */
         std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);

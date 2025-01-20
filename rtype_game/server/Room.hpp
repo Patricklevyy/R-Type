@@ -259,21 +259,110 @@
              */
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
+            /**
+             * @brief Creates a new monster entity.
+             * @param sprite The sprite ID of the monster.
+             */
             void createMonster(SPRITES);
+
+            /**
+             * @brief Creates a new boss entity.
+             * @param sprite The sprite ID of the boss.
+             */
             void createBoss(SPRITES);
+
+            /**
+             * @brief Sends information about a new monster to a client.
+             * @param entityId The ECS ID of the monster.
+             * @param x The x position of the monster.
+             * @param y The y position of the monster.
+             * @param sprite The sprite ID of the monster.
+             */
             void send_client_new_monster(size_t, float, float , int);
+
+            /**
+             * @brief Returns the next available index for a new entity.
+             * 
+             * @return The index of the next available entity.
+             */
             size_t getNextIndex();
-            void startLevel(LEVELS);
-            void send_client_level_status(bool, LEVELS);
+
+            /**
+             * @brief Starts the level with a specific difficulty or settings.
+             * 
+             * @param level The level to be started.
+             */
+            void startLevel(LEVELS level);
+
+            /**
+             * @brief Sends the client the status of a specific level.
+             * 
+             * @param status The status of the level (true or false).
+             * @param level The level to send the status for.
+             */
+            void send_client_level_status(bool status, LEVELS level);
+
+            /**
+             * @brief Sends a message to the server to start the level.
+             */
             void send_client_start_level();
-            void sendScore(unsigned int);
+
+            /**
+             * @brief Sends the current score to the server.
+             * 
+             * @param score The player's current score to send.
+             */
+            void sendScore(unsigned int score);
+
+            /**
+             * @brief Sends a request to roll back an action or state.
+             */
             void send_roll_back();
-            std::pair<int, int> createHitbox(SPRITES);
-            void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
-            void send_client_change_player_velocity(size_t, bool);
-            void send_client_player_shield(size_t, bool);
-            void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
-            void send_client_player_lifes(std::list<std::pair<size_t, int>>);
+
+            /**
+             * @brief Creates a hitbox for a sprite.
+             * 
+             * @param sprite The sprite for which the hitbox will be created.
+             * @return A pair containing the hitbox width and height.
+             */
+            std::pair<int, int> createHitbox(SPRITES sprite);
+
+            /**
+             * @brief Creates a bonus entity with additional data.
+             * 
+             * @param bonus A pair containing the bonus type and its additional data (id, x, y).
+             */
+            void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>> bonus);
+
+            /**
+             * @brief Sends the client a request to change the player's velocity.
+             * 
+             * @param playerId The player id whose velocity is to be changed.
+             * @param isIncreasing Whether the velocity should be increased or decreased.
+             */
+            void send_client_change_player_velocity(size_t playerId, bool isIncreasing);
+
+            /**
+             * @brief Sends the client a request to toggle the player's shield state.
+             * 
+             * @param playerId The player id whose shield state is to be toggled.
+             * @param isActive Whether the shield is activated or deactivated.
+             */
+            void send_client_player_shield(size_t playerId, bool isActive);
+
+            /**
+             * @brief Deactivates a specific bonus for a player.
+             * 
+             * @param player A pair containing the player id and the list of bonuses to deactivate.
+             */
+            void desactivateBonus(std::pair<size_t, std::list<BONUS>> player);
+
+            /**
+             * @brief Sends the client the updated life values for multiple players.
+             * 
+             * @param playerLives A list of player ids and their updated life values.
+             */
+            void send_client_player_lifes(std::list<std::pair<size_t, int>> playerLives);
         };
     }
 

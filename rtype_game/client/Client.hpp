@@ -89,21 +89,62 @@
                  */
                 void handle_message(std::vector<char>&);
 
-                void change_player_direction(ecs::direction, ecs::direction);
+                /**
+                 * @brief Changes the direction of the player.
+                 * 
+                 * @param oldDir The player's current direction.
+                 * @param newDir The player's new direction.
+                 */
+                void change_player_direction(ecs::direction oldDir, ecs::direction newDir);
 
+                /**
+                 * @brief Sends a request to the server to create a new room.
+                 * 
+                 * @param roomName The name of the room.
+                 */
                 void send_server_create_room(std::string roomName);
 
+                /**
+                 * @brief Sends a request to the server to join an existing room.
+                 * 
+                 * @param roomName The name of the room.
+                 * @param clientName The client's name.
+                 */
                 void send_server_join_room(std::string roomName, std::string clientName);
 
-                void set_window_filter(FILTER_MODE);
+                /**
+                 * @brief Sets the display filter for the game window.
+                 * 
+                 * @param filter The filter mode to set.
+                 */
+                void set_window_filter(FILTER_MODE filter);
 
+                /**
+                 * @brief Creates a new player shoot action in the game.
+                 */
                 void create_new_player_shoot();
 
+                /**
+                 * @brief Handles mouse button press events.
+                 */
                 void handleMousePress();
-                void handleMouseRelease();
-                void changeDifficulty(DIFFICULTY);
-                void launchMenu();
 
+                /**
+                 * @brief Handles mouse button release events.
+                 */
+                void handleMouseRelease();
+
+                /**
+                 * @brief Changes the game's difficulty level.
+                 * 
+                 * @param difficulty The new difficulty setting.
+                 */
+                void changeDifficulty(DIFFICULTY difficulty);
+
+                /**
+                 * @brief Launches the main menu of the game.
+                 */
+                void launchMenu();
 
                 bool _in_menu = true;
                 bool _running = true;
@@ -156,6 +197,9 @@
                 AnimationSystem _animation_system;
                 BonusSystem _bonus_system;
 
+                /**
+                 * @brief Sends a message to the server to shoot.
+                 */
                 void send_server_new_shoot(bool charged = false);
 
                 bool _mouse_pressed = false;
@@ -215,18 +259,82 @@
                  * @param message The message containing the update data.
                  */
                 void updateEntitiesFirstConnexion(const std::string &);
+                /**
+                 * @brief Gets the index of the next entity.
+                 * 
+                 * @return The next available index.
+                 */
                 size_t getNextIndex();
-                void add_level_status_screen(bool, ecs::udp::Message &);
-                void restart_game();
-                void send_server_new_player();
-                void createEntityProjectile(unsigned int, float, float, int, int, int, int);
-                void reset_level_lock();
-                void put_level_lock(LEVELS, int, int);
-                void init_score();
-                void init_life();
-                std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
 
-                void send_server_start_game(LEVELS);
+                /**
+                 * @brief Adds the level status to the screen.
+                 * 
+                 * @param status The status to display (true/false).
+                 * @param message The UDP message containing the status data.
+                 */
+                void add_level_status_screen(bool status, ecs::udp::Message &message);
+
+                /**
+                 * @brief Restarts the game to its initial state.
+                 */
+                void restart_game();
+
+                /**
+                 * @brief Sends a message to the server to create a new player.
+                 */
+                void send_server_new_player();
+
+                /**
+                 * @brief Creates a new projectile entity in the game.
+                 * 
+                 * @param id The entity ID.
+                 * @param x The x-coordinate of the projectile.
+                 * @param y The y-coordinate of the projectile.
+                 * @param velocityX The velocity on the X-axis.
+                 * @param velocityY The velocity on the Y-axis.
+                 * @param direction The projectile's direction.
+                 * @param type The type of the projectile.
+                 */
+                void createEntityProjectile(unsigned int id, float x, float y, int velocityX, int velocityY, int direction, int type);
+
+                /**
+                 * @brief Resets the level lock state.
+                 */
+                void reset_level_lock();
+
+                /**
+                 * @brief Sets a lock for a specific level.
+                 * 
+                 * @param level The level to lock.
+                 * @param x The x-coordinate of the lock position.
+                 * @param y The y-coordinate of the lock position.
+                 */
+                void put_level_lock(LEVELS level, int x, int y);
+
+                /**
+                 * @brief Initializes the score for the game.
+                 */
+                void init_score();
+
+                /**
+                 * @brief Initializes the life for the game.
+                 */
+                void init_life();
+
+                /**
+                 * @brief Parses a room list string into a vector of room names and player counts.
+                 * 
+                 * @param roomList The raw string containing the room data.
+                 * @return A vector of pairs where each pair contains a room name and its player count.
+                 */
+                std::vector<std::pair<std::string, int>> parseRoomList(const std::string &roomList);
+
+                /**
+                 * @brief Sends a message to the server to start the game with a specific level.
+                 * 
+                 * @param level The level to start the game at.
+                 */
+                void send_server_start_game(LEVELS level);
 
                 // INITIALISATION
 
@@ -255,9 +363,20 @@
                  * @brief Initializes the event bus subscription.
                  */
                 void init_subscribe_event_bus();
+
+                /**
+                 * @brief Initializes the levels sprites.
+                 */
                 void init_levels_sprites();
 
+                /**
+                 * @brief Execute the animation of levels.
+                 */
                 void execute_animation();
+
+                /**
+                 * @brief Update the health of the player.
+                 */
                 void updatePlayerLife(std::string);
         };
     }

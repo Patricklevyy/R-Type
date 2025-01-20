@@ -42,6 +42,12 @@
                  */
                 ~HealthSystem() {}
 
+                /**
+                 * @brief Checks the health of all entities and removes entities with zero or negative health.
+                 * @param ecs The ECS object containing all entities and components.
+                 * @param player_alive The number of players alive.
+                 * @return A tuple containing the list of dead entities, the total score, and a boolean indicating if all players are dead.
+                 */
                 std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
                 // std::tuple<std::list<size_t>, unsigned int, bool> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
                     {
@@ -80,6 +86,11 @@
                         return dead_entities;
                     }
 
+                    /**
+                     * @brief Updates the health of all entities.
+                     * @param components_array The ECS component map that contains all components.
+                     * @return A list of pairs containing the entity index and its updated health value.
+                     */
                     std::list<std::pair<size_t, int>> updatePlayerLife(std::unordered_map<std::type_index, std::any> &components_array) {
 
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
