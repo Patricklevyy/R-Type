@@ -11,6 +11,9 @@
     #include "../../ecs/ECS.hpp"
     #include "../../ecs/components/Position.hpp"
 
+    /**
+     * @brief Test behavior when attempting to add a registry that already exists.
+     */
     void add_registry_already_exist()
     {
         ecs::ECS ecs;
@@ -19,6 +22,9 @@
         ecs.addRegistry<ecs::Position>();
     }
 
+    /**
+     * @brief Test behavior when adding a component to an entity in a registry that does not exist.
+     */
     void add_component_dont_exist()
     {
         ecs::ECS ecs;
