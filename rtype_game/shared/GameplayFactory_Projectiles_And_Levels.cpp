@@ -116,24 +116,6 @@ namespace rtype
             }
         }
 
-        int GameplayFactory::getProjectilesVelocity(SPRITES sprite) {
-            switch (sprite)
-            {
-            case BABY_PROJECTILE:
-                return 200;
-            case PLAYER_CHARGED_SHOOT:
-                return 400;
-            case PLAYER_RED_MISSILE:
-                return 700;
-            case PLAYER_RED_CHARGED_SHOOT:
-                return 1000;
-            default:
-                std::cerr << "Id of this projectilesss not found : " << sprite
-                          << std::endl;
-                return 0;
-        }
-    }
-
     int GameplayFactory::getProjectilesVelocity(SPRITES sprite) {
             switch (sprite)
             {
