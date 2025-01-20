@@ -80,7 +80,6 @@
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
 
                     if (index < playables.size() && playables[index].has_value() && index < hitbox.size() && hitbox[index].has_value() && index < powerups.size() && powerups[index].has_value()) {
-                        hitbox[index].value()._invicible = invicible;
                         hitbox[index].value().setHitbox(x_y);
                     }
                 }

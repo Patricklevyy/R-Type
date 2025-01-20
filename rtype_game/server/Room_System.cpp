@@ -25,6 +25,7 @@ namespace rtype
                 send_client_change_player_velocity(player_index, false);
                 break;
             case BONUS::WEAPON:
+                _bonus_system.updatePlayerTempWeapon(_ecs._components_arrays, player_index, SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_WEAPON), false);
                 send_client_player_weapon(player_index, false);
                 break;
             default:

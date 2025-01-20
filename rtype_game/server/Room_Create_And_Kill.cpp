@@ -128,6 +128,8 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
+        if (_random_number.generateRandomNumbers(1, 5) != 3)
+            return;
         BONUS bonus = _gameplay_factory->getRandomBonuses(_random_number.generateRandomNumbers(1, BONUS::MAX_BONUS - 1));
         SPRITES sprite = _gameplay_factory->getSpriteBonus(bonus);
         int bonus_speed = _gameplay_factory->getBonusSpeed();
