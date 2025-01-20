@@ -132,8 +132,8 @@ var NAVTREEINDEX =
 "classecs_1_1Velocity.html#a66a876eb44be18c90424db147d36691c",
 "classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html#a96037359c024a9315875be4b54ca33d0",
 "classrtype_1_1Monster.html#a28c4daa57a8a29f6f0c91c65bd58ada1",
-"classrtype_1_1Text.html",
-"namespacertype.html#a54b260e928f16526373dff8bab381a13a52c41364989848f4e1bbee8b65cb52f2"
+"classrtype_1_1SpriteId.html#a40452dc854bf65f9e05228b8bbef4c49",
+"namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

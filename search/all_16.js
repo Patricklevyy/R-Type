@@ -24,7 +24,7 @@ var searchData=
   ['positionsystem_2ehpp_21',['PositionSystem.hpp',['../PositionSystem_8hpp.html',1,'']]],
   ['pour_20inclure_20les_20versions_20des_20dépendances_20nécessaires_22',['- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.',['../md_documentation_2CMakeDocumentation.html#autotoc_md36',1,'']]],
   ['pour_20le_20projet_20r_20type_23',['pour le projet r type',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html',1,'Documentation: Gestionnaire UDP pour le projet R-Type'],['../md_documentation_2CMakeDocumentation.html',1,'Système de Build CMake pour le Projet R-Type']]],
-  ['powerup_24',['powerup',['../classrtype_1_1PowerUp.html',1,'rtype::PowerUp'],['../classrtype_1_1PowerUp.html#a8ccc2cba55b789c6bf283f66bf80cd0e',1,'rtype::PowerUp::PowerUp()'],['../classrtype_1_1BonusSystem.html#a4a4aa096ee2f8334a659ca4c42e29aee',1,'rtype::BonusSystem::powerUp()']]],
+  ['powerup_24',['powerup',['../classrtype_1_1PowerUp.html',1,'rtype::PowerUp'],['../classrtype_1_1BonusSystem.html#a4a4aa096ee2f8334a659ca4c42e29aee',1,'rtype::BonusSystem::powerUp()'],['../classrtype_1_1PowerUp.html#a8ccc2cba55b789c6bf283f66bf80cd0e',1,'rtype::PowerUp::PowerUp()']]],
   ['powerup_2ehpp_25',['PowerUp.hpp',['../PowerUp_8hpp.html',1,'']]],
   ['prérequis_26',['Prérequis',['../md_documentation_2CMakeDocumentation.html#autotoc_md16',1,'']]],
   ['prérequis_20minimaux_27',['Prérequis minimaux',['../md_documentation_2CMakeDocumentation.html#autotoc_md29',1,'']]],

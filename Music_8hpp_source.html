@@ -151,18 +151,33 @@ $(document).ready(function(){initNavTree('Music_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                }</div>
 </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                std::shared_ptr&lt;sf::Music&gt; music;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        };</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classrtype_1_1Music.html#af1d106f420edbe7d0fe3f28d18940269">   46</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Music.html#af1d106f420edbe7d0fe3f28d18940269">setShootMusic</a>(<span class="keyword">const</span> std::string&amp; filePath)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <span class="keywordflow">if</span> (!music-&gt;openFromFile(filePath)) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Erreur : Impossible de charger le fichier audio : &quot;</span> + filePath);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    <span class="keywordflow">if</span> (music-&gt;getStatus() == sf::Sound::Playing) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        music-&gt;stop();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    music-&gt;setLoop(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    music-&gt;play();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                }</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">/* !MUSIC_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                std::shared_ptr&lt;sf::Music&gt; music;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        };</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">/* !MUSIC_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassrtype_1_1Music_html"><div class="ttname"><a href="classrtype_1_1Music.html">rtype::Music</a></div><div class="ttdef"><b>Definition</b> Music.hpp:19</div></div>
 <div class="ttc" id="aclassrtype_1_1Music_html_a1f6fc807edb7887fd8649d3d70194f38"><div class="ttname"><a href="classrtype_1_1Music.html#a1f6fc807edb7887fd8649d3d70194f38">rtype::Music::~Music</a></div><div class="ttdeci">~Music()</div><div class="ttdef"><b>Definition</b> Music.hpp:30</div></div>
 <div class="ttc" id="aclassrtype_1_1Music_html_a70ae4080f6692d11ea61e79da83ca45c"><div class="ttname"><a href="classrtype_1_1Music.html#a70ae4080f6692d11ea61e79da83ca45c">rtype::Music::setMusic</a></div><div class="ttdeci">void setMusic(const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> Music.hpp:37</div></div>
 <div class="ttc" id="aclassrtype_1_1Music_html_ab8b6faefc5b94cc90af1a1dd1e253c1d"><div class="ttname"><a href="classrtype_1_1Music.html#ab8b6faefc5b94cc90af1a1dd1e253c1d">rtype::Music::Music</a></div><div class="ttdeci">Music(const std::string &amp;musicFilePath)</div><div class="ttdef"><b>Definition</b> Music.hpp:21</div></div>
+<div class="ttc" id="aclassrtype_1_1Music_html_af1d106f420edbe7d0fe3f28d18940269"><div class="ttname"><a href="classrtype_1_1Music.html#af1d106f420edbe7d0fe3f28d18940269">rtype::Music::setShootMusic</a></div><div class="ttdeci">void setShootMusic(const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> Music.hpp:46</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
