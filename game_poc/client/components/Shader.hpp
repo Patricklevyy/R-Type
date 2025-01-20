@@ -21,6 +21,11 @@
 
 namespace poc_game
 {
+
+    /**
+     * @enum FILTER_MODE
+     * @brief Represents the different types of filters that can be applied to the game.
+     */
     class Shader
     {
     public:

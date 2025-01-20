@@ -5,6 +5,11 @@
 ** VelocitySystem
 */
 
+/**
+ * @file VelocitySystem.hpp
+ * @brief Handles velocity updates for entities in the ECS framework.
+ */
+
 #ifndef VELOCITYSYSTEM_HPP_
 #define VELOCITYSYSTEM_HPP_
 
@@ -25,6 +30,17 @@
         class VelocitySystem
         {
         public:
+            /**
+             * @brief Updates the velocity of the player in the game.
+             *
+             * This function updates the velocity of the player by iterating through the 
+             * playables and velocity components. If a playable component and a corresponding 
+             * velocity component are found, the velocity is updated to the specified value.
+             *
+             * @param components_array A reference to an unordered map containing the components 
+             *                         of the entities, indexed by their type.
+             * @param vel The new velocity value to be set for the player.
+             */
             void updatePlayerVelocity(std::unordered_map<std::type_index, std::any> &components_array, float vel)
             {
                 auto &velocity = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);

@@ -5,6 +5,11 @@
 ** GravitySystem
 */
 
+/**
+ * @file GravitySystem.hpp
+ * @brief Defines the GravitySystem class for handling gravity effects on entities.
+ */
+
 #ifndef GRAVITYSYSTEM_HPP_
 #define GRAVITYSYSTEM_HPP_
 
@@ -16,8 +21,23 @@
 
     namespace poc_game
     {
+        /**
+         * @class GravitySystem
+         * @brief A system that applies gravity to entities with direction and velocity components.
+         */
         class GravitySystem {
             public:
+                /**
+                 * @brief Executes gravity effects on the provided components.
+                 * 
+                 * This function applies gravity to entities based on their direction and velocity.
+                 * If the entity is moving up, its velocity is divided by a multiplier.
+                 * If the entity is moving down, its velocity is multiplied by a different multiplier
+                 * and capped at a maximum fall speed. Additionally, if the velocity is below a certain
+                 * threshold and the entity is moving up, the direction is flipped to down.
+                 * 
+                 * @param components_array A map of component arrays indexed by their type.
+                 */
                 void executeGravity(std::unordered_map<std::type_index, std::any> &components_array) {
                     constexpr float GRAVITY_MULTIPLIER_UP = 2.0f;
                     constexpr float GRAVITY_MULTIPLIER_DOWN = 5.0f;

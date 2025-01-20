@@ -17,6 +17,11 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class Ennemies
+         * @brief Represents the Ennemies class.
+         */
         class Ennemies {
             public:
                 /**

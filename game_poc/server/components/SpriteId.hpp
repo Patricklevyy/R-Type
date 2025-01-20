@@ -17,6 +17,11 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class SpriteId
+         * @brief Represents the SpriteId class.
+         */
         class SpriteId {
             public:
 

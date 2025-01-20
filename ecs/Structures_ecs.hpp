@@ -14,6 +14,10 @@
     {
         namespace udp
         {
+
+            /**
+             * @brief Structure for a message sent over the network.
+             */
             struct Message
             {
                 unsigned int id : 10;    /* 10 bits pour 'id' (jusqu'à 1024 id) */

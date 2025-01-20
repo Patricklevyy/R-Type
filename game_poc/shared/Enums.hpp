@@ -88,6 +88,10 @@
             REPLAY_BUTTON
         };
 
+        /**
+         * @enum LEVELS
+         * @brief Defines game levels for the R-Type game.
+         */
         enum LEVELS
         {
             UN,

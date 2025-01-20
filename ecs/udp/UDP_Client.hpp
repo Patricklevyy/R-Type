@@ -57,6 +57,11 @@
                  */
                 bool sendMessageToDefault(const std::vector<char>);
 
+                /**
+                 * @brief Retrieves the IP address of the server.
+                 * @return The IP address as a string.
+                 */
+
                 std::string getServerIp() const;
 
             protected:

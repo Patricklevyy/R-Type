@@ -13,10 +13,19 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class MusicSystem
+         * @internal This class is used to manage the music in the game.
+         */
         class MusicSystem {
             public:
                 MusicSystem() {}
                 ~MusicSystem() {}
+
+                /**
+                 * @internal This method is used to change the music in the game.
+                 */
 
                 void changeMusic(std::unordered_map<std::type_index, std::any> &components_array, std::string musicFilePath)
                 {

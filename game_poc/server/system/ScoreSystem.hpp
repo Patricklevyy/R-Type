@@ -21,11 +21,29 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class ScoreSystem
+         * @brief Represents the ScoreSystem system.
+         */
         class ScoreSystem {
             public:
-                ScoreSystem() {}
-                ~ScoreSystem() {}
+                /**
+                 * @brief Default constructor for the ScoreSystem class.
+                 */
+                ScoreSystem();
 
+                /**
+                 * @brief Destructor for the ScoreSystem class.
+                 */
+                ~ScoreSystem();
+
+                /**
+                 * @brief Adds a specified score to the levels in the components array.
+                 * 
+                 * @param components_array A reference to the unordered map containing the components.
+                 * @param score The score to be added.
+                 */
                 void addToScore(std::unordered_map<std::type_index, std::any> &components_array, unsigned int score)
                 {
                     // auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array[typeid(Levels)]);

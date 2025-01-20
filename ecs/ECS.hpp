@@ -101,6 +101,13 @@
                 }
             }
 
+            /**
+             * @brief Retrieves a component from an entity.
+             * @tparam Component The type of component to retrieve.
+             * @param index The ID of the entity.
+             * @return The component associated with the entity.
+             * @throws ComponentNotFoundExceptions If the component type is not registered.
+             */
             void addDeadEntity(size_t index)
             {
                 _dead_entities.push_back(Entity(index));

@@ -200,19 +200,54 @@
              */
             void init_ecs_server_registry();
 
+            /**
+             * @brief Sends information about losing the game to clients.
+             */
             void send_client_loose_game();
 
-
+            /**
+             * @brief Retrieves the next available index.
+             * @return The next available index.
+             */
             size_t getNextIndex();
 
-            size_t create_player(std::pair<float, float>);
+            /**
+             * @brief Creates a player entity.
+             * @param position The position of the player.
+             * @return The ID of the created player.
+             */
+            size_t create_player(std::pair<float, float> position);
 
-            void handleCommand(const std::vector<char> &, std::string);
+            /**
+             * @brief Handles a command received from a client.
+             * @param command The command data.
+             * @param clientAddress The address of the client.
+             */
+            void handleCommand(const std::vector<char> &command, std::string clientAddress);
 
+            /**
+             * @brief Starts the game.
+             */
             void start_game();
+
+            /**
+             * @brief Makes the player jump.
+             */
             void player_jump();
+
+            /**
+             * @brief Restarts the game.
+             */
             void restart_game();
+
+            /**
+             * @brief Sends information about creating a player to clients.
+             */
             void send_client_create_player();
+
+            /**
+             * @brief Spawns pipes in the game.
+             */
             void spawn_pipes();
         };
     }

@@ -10,11 +10,24 @@
 
     #include "../../shared/Enums.hpp"
 
+    /**
+     * @file Levels.hpp
+     * @brief Defines the Levels class for the poc_game namespace.
+     */
     namespace poc_game
     {
+
+        /**
+         * @class Levels
+         * @brief Manages the game levels and related properties.
+         */
         class Levels
         {
             public:
+                /**
+                 * @brief Constructs the Levels object with a specified level.
+                 * @param level The level to set.
+                 */
                 Levels(LEVELS level) : _level(level), _spawnInterval(2.0f) {
                     _lastSpawnTime = std::chrono::steady_clock::now();
                 }

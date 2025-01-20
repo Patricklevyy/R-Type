@@ -21,6 +21,11 @@
 
 namespace poc_game {
 
+    /**
+     * @class Sprite
+     * @brief Represents a drawable sprite with various transformations.
+     */
+
     class Sprite {
     public:
         /**

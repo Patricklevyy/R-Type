@@ -10,6 +10,11 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class TempDisplay
+         * @brief Represents a displayable Component for an entity.
+         */
         class TempDisplay {
             public:
                 TempDisplay() {}

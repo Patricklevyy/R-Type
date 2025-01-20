@@ -5,6 +5,11 @@
 ** KillSystem
 */
 
+/**
+ * @file KillSystem.hpp
+ * @brief System responsible for killing entities and managing their components.
+ */
+
 #ifndef KILLSYSTEM_HPP_
     #define KILLSYSTEM_HPP_
 
@@ -28,11 +33,33 @@
 
     namespace poc_game
     {
+        /**
+         * @brief Class responsible for managing the removal (killing) of entities in the game.
+         * 
+         * This class encapsulates logic to remove various game components from entities
+         * across all subsystems (client, shared, server) by their unique identifiers (indices).
+         */
         class KillSystem {
             public:
+                /**
+                 * @brief Default constructor for the KillSystem class.
+                 */
                 KillSystem() {}
+
+                /**
+                 * @brief Destructor for the KillSystem class.
+                 */
                 ~KillSystem() {}
 
+                /**
+                 * @brief Removes an entity by its index from the ECS and its associated components.
+                 * 
+                 * This function calls `killEntityFromRegistry` for each relevant component associated 
+                 * with the entity to ensure complete cleanup. It marks the entity as dead.
+                 * 
+                 * @param ecs Reference to the ECS (Entity Component System) that holds the entities.
+                 * @param index The unique index of the entity to remove.
+                 */
                 void killEntity(ecs::ECS &ecs, size_t index)
                 {
                     // ECS COMPONENTS
@@ -65,6 +92,14 @@
                     ecs.addDeadEntity(index);
                 }
 
+                /**
+                 * @brief Removes all entities that have a temporary display component.
+                 * 
+                 * This function iterates over all entities that have a `TempDisplay` component and
+                 * removes them by calling `killEntity` for each one.
+                 * 
+                 * @param ecs Reference to the ECS (Entity Component System) that holds the entities.
+                 */
                 void killTempDisplay(ecs::ECS &ecs)
                 {
                     auto &tempdisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(ecs._components_arrays[typeid(TempDisplay)]);
@@ -78,6 +113,16 @@
                         }
                 }
 
+                /**
+                 * @brief Removes entities based on their health status (e.g., dead).
+                 * 
+                 * This function checks the health of all entities and if an entity's health is not
+                 * valid (indicating that it is dead or should be removed), the entity is queued for
+                 * removal by returning the entity's index.
+                 * 
+                 * @param ecs Reference to the ECS (Entity Component System) that holds the entities.
+                 * @return A list of entity indices marked for removal.
+                 */
                 std::list<size_t> killPipes(ecs::ECS &ecs)
                 {
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
@@ -93,6 +138,15 @@
                     return deads;
                 }
 
+                /**
+                 * @brief Removes all entities from the game world.
+                 * 
+                 * This function iterates over all entities with a `Position` component and removes 
+                 * them from the ECS, marking them as dead and clearing their associated components.
+                 * 
+                 * @param ecs Reference to the ECS (Entity Component System) that holds the entities.
+                 * @return A list of entity indices that have been removed.
+                 */
                 std::list<size_t> killEverything(ecs::ECS &ecs)
                 {
                     auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);
@@ -113,5 +167,5 @@
             private:
         };
     }
-#endif /* !KILLSYSTEM_HPP_ */
 
+#endif /* !KILLSYSTEM_HPP_ */

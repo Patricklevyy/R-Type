@@ -19,6 +19,11 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class Hitbox
+         * @brief Represents the Hitbox class.
+         */
         class Hitbox {
             public:
 

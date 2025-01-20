@@ -55,38 +55,87 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class Client
+         * @brief Represents the game client.
+         */
         class SFMLHandler;
         class Client
         {
             public:
                 /**
                  * @brief Default constructor for the Client class.
+                 * 
+                 * Initializes the client object. This constructor sets up the necessary
+                 * data structures and prepares the client for use.
                  */
                 Client();
+
                 /**
                  * @brief Destructor for the Client class.
+                 * 
+                 * Cleans up resources used by the client before it is destroyed.
+                 * This includes closing any open connections and releasing allocated memory.
                  */
                 ~Client();
 
                 /**
                  * @brief Starts the game client.
+                 * 
+                 * This function initializes all game-related components and starts the
+                 * communication with the server to begin the game.
                  */
                 void start();
 
                 /**
-                 * @brief Handles messages from the server.
+                 * @brief Handles messages received from the server.
+                 * 
+                 * This function processes the message received from the server,
+                 * handling different types of commands and updating the client state accordingly.
+                 * 
                  * @param message A vector of characters representing the message from the server.
                  */
-                void handle_message(std::vector<char>&);
+                void handle_message(std::vector<char>& message);
 
+                /**
+                 * @brief Notifies the server that the client is currently playing.
+                 * 
+                 * This function sends a message to the server indicating that the client
+                 * has started playing and is actively participating in the game.
+                 */
                 void send_server_playing();
 
+                /**
+                 * @brief Informs the server of a player jump action.
+                 * 
+                 * This function sends a message to the server whenever the client performs a jump
+                 * action in the game.
+                 */
                 void send_server_jump();
 
+                /**
+                 * @brief Notifies the server that the game is being restarted.
+                 * 
+                 * This function sends a restart signal to the server to indicate that
+                 * the client has restarted the game.
+                 */
                 void send_server_restart_game();
 
+                /**
+                 * @brief Creates a new player shoot action.
+                 * 
+                 * This function sends a message to the server when the player initiates
+                 * a shooting action in the game.
+                 */
                 void create_new_player_shoot();
 
+                /**
+                 * @brief Handles the mouse click event.
+                 * 
+                 * This function processes mouse clicks, typically to interact with game objects
+                 * or interface elements, such as buttons or menus.
+                 */
                 void handleMouseClick();
 
                 bool _in_menu = true;

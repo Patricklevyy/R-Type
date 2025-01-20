@@ -19,6 +19,10 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class UpdateEntitySystem
+         */
         class UpdateEntitySystem
         {
             public:

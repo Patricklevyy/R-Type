@@ -19,10 +19,18 @@
 
     namespace poc_game
     {
+        /**
+         * @class ATH
+         * @brief Represents the ATH system.
+         */
         class ATH {
             public:
                 ATH() {}
                 ~ATH() {}
+
+                /**
+                 * @return The mouse position in the window.
+                 */
 
                 sf::Vector2f getMousePosition(std::unordered_map<std::type_index, std::any> &components_array)
                 {
@@ -32,6 +40,10 @@
                     sf::Vector2i mousePosPixel = sf::Mouse::getPosition(*lawindow);
                     return lawindow->mapPixelToCoords(mousePosPixel);
                 }
+
+                /**
+                 * @brief Removes all play buttons from the screen.
+                 */
 
                 std::list<size_t> removePlayButtons(ecs::ECS &ecs)
                 {
@@ -47,6 +59,9 @@
                     return deads;
                 }
 
+                /**
+                 * @brief Target the current level to display.
+                 */
 
                 std::pair<bool, LEVELS> isLevelClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
@@ -80,6 +95,10 @@
                         return std::make_pair(false, LEVELS{});
                     }
                 }
+
+                /**
+                 * @brief Checks if the play button is clicked.
+                 */
 
                 bool isPlayButtonClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {

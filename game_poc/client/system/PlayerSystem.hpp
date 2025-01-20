@@ -13,6 +13,11 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class PlayerSystem
+         * @brief Represents the PlayerSystem system.
+         */
         class PlayerSystem {
             public:
                 PlayerSystem() {}

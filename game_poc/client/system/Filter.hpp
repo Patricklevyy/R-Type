@@ -23,6 +23,10 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class Filter
+         */
         class Filter
         {
             public:

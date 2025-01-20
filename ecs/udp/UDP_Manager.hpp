@@ -81,6 +81,11 @@
              */
             virtual std::string getLastClientAddress() const;
 
+            /**
+             * @brief Retrieves the secret key for the server.
+             * @return The secret key as a string.
+             */
+
             virtual std::string getSecretKey() const;
 
         protected:

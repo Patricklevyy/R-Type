@@ -16,8 +16,17 @@
 
     namespace poc_game
     {
+
+        /**
+         * @class Music
+         * @brief Represents a music object for playing audio.
+         */
         class Music {
             public:
+
+                /**
+                 * @brief Constructs a music object with a given file path.
+                 */
                 Music(const std::string& musicFilePath) : music(std::make_shared<sf::Music>())
                 {
                     if (!music->openFromFile(musicFilePath)) {
@@ -33,6 +42,10 @@
                         music->stop();
                     }
                 }
+
+                /**
+                 * @brief Plays the music.
+                 */
 
                 void setMusic(const std::string& filePath)
                 {
