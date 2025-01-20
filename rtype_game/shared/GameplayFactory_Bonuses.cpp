@@ -34,12 +34,21 @@ namespace rtype
         return bonuses[BONUS::VELOCITY].first;
     }
 
-    BONUS GameplayFactory::getRandomBonuses(int rand)
+    int GameplayFactory::getWeaponDurationBonus()
     {
-        if (rand <= 0 || rand >= BONUS::MAX_BONUS)
-            throw std::invalid_argument("Id for bonus not found.");
-        return static_cast<BONUS>(rand);
+        return bonuses[BONUS::WEAPON].second;
     }
+
+    int GameplayFactory::getWeaponBoostBonus()
+    {
+        return bonuses[BONUS::WEAPON].first;
+    }
+
+    BONUS GameplayFactory::getRandomBonuses(int rand) {
+            if (rand <= 0 || rand >= BONUS::MAX_BONUS)
+                throw std::invalid_argument("Id for bonus not found.");
+            return static_cast<BONUS>(rand);
+        }
 
     SPRITES GameplayFactory::getSpriteBonus(BONUS bonus)
     {

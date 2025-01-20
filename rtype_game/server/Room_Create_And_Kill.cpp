@@ -245,7 +245,13 @@ namespace rtype
                     _gameplay_factory->getShieldDuration());
                 send_client_player_shield(std::get<0>(bonus_info.second), true);
                 break;
-            default: break;
+            case BONUS::WEAPON:
+                _bonus_system.updatePlayerTempWeapon(_ecs._components_arrays, std::get<0>(bonus_info.second), SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_WEAPON), true);
+                _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getWeaponDurationBonus());
+                send_client_player_weapon(std::get<0>(bonus_info.second), true);
+                break;
+            default:
+                break;
         }
     }
 } // namespace rtype

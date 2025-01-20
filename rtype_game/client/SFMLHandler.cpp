@@ -20,28 +20,20 @@ namespace rtype
 
     void SFMLHandler::init_keys()
     {
-        _keyBindings = {{sf::Keyboard::A, sf::Keyboard::A},
-            {sf::Keyboard::B, sf::Keyboard::B},
-            {sf::Keyboard::Z, sf::Keyboard::Z},
+        _keyBindings = {{sf::Keyboard::Z, sf::Keyboard::Z},
             {sf::Keyboard::S, sf::Keyboard::S},
             {sf::Keyboard::Q, sf::Keyboard::Q},
             {sf::Keyboard::D, sf::Keyboard::D}};
     }
 
-    void SFMLHandler::bindKey(
-        sf::Keyboard::Key former_key, sf::Keyboard::Key new_key)
-    {
-        _keyBindings[former_key] = new_key;
-    }
-
-    void SFMLHandler::unbind(sf::Keyboard::Key key)
-    {
-        _keyBindings[key] = key;
-    }
-
     void SFMLHandler::resetBind()
     {
         init_keys();
+    }
+
+    std::map<sf::Keyboard::Key, sf::Keyboard::Key> SFMLHandler::getKeyBindings()
+    {
+        return _keyBindings;
     }
 
     void SFMLHandler::handleEvents(std::queue<sf::Event> &events)
@@ -143,4 +135,11 @@ namespace rtype
             _client.handleMouseRelease();
         }
     }
+
+    void SFMLHandler::updateKeyBindings(
+        const std::map<sf::Keyboard::Key, sf::Keyboard::Key> &newBindings)
+    {
+        _keyBindings = newBindings;
+    }
+
 } // namespace rtype

@@ -87,17 +87,46 @@ namespace rtype
         return asteroids.second;
     }
 
-    int GameplayFactory::getProjectilesHealth(SPRITES sprite)
-    {
-        switch (sprite) {
-            case SPRITES::ASTEROIDE: return 1000;
-            case SPRITES::PLAYER_SIMPLE_MISSILE: return 10;
-            case SPRITES::PLAYER_CHARGED_SHOOT: return 50;
-            case SPRITES::MONSTER_MULTIPLE_MISSILE: return 10;
-            case SPRITES::BABY_PROJECTILE: return 60;
-            case SPRITES::FIRE_BALL: return 10;
-            case SPRITES::MONSTER_SIMPLE_MISSILE: return 10;
-            case SPRITES::BOSS_PROJECTILE: return 1000;
+        int GameplayFactory::getProjectilesHealth(SPRITES sprite) {
+            switch (sprite)
+            {
+                case SPRITES::ASTEROIDE:
+                    return 1000;
+                case SPRITES::PLAYER_SIMPLE_MISSILE:
+                    return 10;
+                case SPRITES::PLAYER_RED_MISSILE:
+                    return 50;
+                case SPRITES::PLAYER_CHARGED_SHOOT:
+                    return 200;
+                case SPRITES::PLAYER_RED_CHARGED_SHOOT:
+                    return 100;
+                case SPRITES::MONSTER_MULTIPLE_MISSILE:
+                    return 10;
+                case SPRITES::BABY_PROJECTILE:
+                    return 60;
+                case SPRITES::FIRE_BALL:
+                    return 10;
+                case SPRITES::MONSTER_SIMPLE_MISSILE:
+                    return 10;
+                case SPRITES::BOSS_PROJECTILE:
+                    return 1000;
+                default:
+                    std::cerr << "Id of this projectilesss not found : "<< sprite << std::endl;
+                    return 0;
+            }
+        }
+
+        int GameplayFactory::getProjectilesVelocity(SPRITES sprite) {
+            switch (sprite)
+            {
+            case BABY_PROJECTILE:
+                return 200;
+            case PLAYER_CHARGED_SHOOT:
+                return 400;
+            case PLAYER_RED_MISSILE:
+                return 700;
+            case PLAYER_RED_CHARGED_SHOOT:
+                return 1000;
             default:
                 std::cerr << "Id of this projectilesss not found : " << sprite
                           << std::endl;
@@ -105,14 +134,21 @@ namespace rtype
         }
     }
 
-    int GameplayFactory::getProjectilesVelocity(SPRITES sprite)
-    {
-        switch (sprite) {
-            case BABY_PROJECTILE: return 200;
-            case PLAYER_CHARGED_SHOOT: return 400;
-            default: return 300;
+    int GameplayFactory::getProjectilesVelocity(SPRITES sprite) {
+            switch (sprite)
+            {
+            case BABY_PROJECTILE:
+                return 200;
+            case PLAYER_CHARGED_SHOOT:
+                return 400;
+            case PLAYER_RED_MISSILE:
+                return 700;
+            case PLAYER_RED_CHARGED_SHOOT:
+                return 1000;
+            default:
+                return 300;
+            }
         }
-    }
 
     float GameplayFactory::getBackgroundSpeed()
     {

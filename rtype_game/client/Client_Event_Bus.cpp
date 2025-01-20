@@ -358,13 +358,39 @@ namespace rtype
                     std::cerr << "Error during event handling: " << e.what()
                               << std::endl;
                 }
-            });
-        _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_SHIELD,
-            [this](const std::vector<std::any> &args) {
-                try {
-                    ecs::udp::Message message = std::any_cast<
-                        std::reference_wrapper<ecs::udp::Message>>(args[0])
-                                                    .get();
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::PUT_WEAPON, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+
+                if (!_player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::MY_PLAYER_SHIP_WEAPON))
+                {
+                    _player_system.changeTeamateSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::OTHER_PLAYER_SHIP_WEAPON);
+                } else {
+                    _isBoosted = true;
+                }
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_WEAPON, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
+
+                if (!_player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::MY_PLAYER_SHIP))
+                {
+                    _player_system.changeTeamateSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::OTHER_PLAYER_SHIP);
+                } else {
+                    _isBoosted = false;
+                }
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
+            }
+        });
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_LIFE, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                     if (!_player_system.changePlayerSprite(
                             _ecs._components_arrays,

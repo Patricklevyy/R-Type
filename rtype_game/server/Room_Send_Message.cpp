@@ -255,6 +255,24 @@ namespace rtype
         }
     }
 
+    void Room::send_client_player_weapon(size_t index, bool put)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
+        if (put) {
+            responseMessage.action = RTYPE_ACTIONS::PUT_WEAPON;
+        } else {
+            responseMessage.action = RTYPE_ACTIONS::REMOVE_WEAPON;
+        }
+        responseMessage.id = index;
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
     void Room::send_client_player_lifes(std::list<std::pair<size_t, int>> lifes)
     {
         std::vector<char> response;
