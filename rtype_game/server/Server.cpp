@@ -51,7 +51,8 @@ namespace rtype
     {
         std::string roomList = "rooms=";
         for (const auto &room : _rooms) {
-            roomList += room->getName() + "," + std::to_string(room->getNbClient()) + ":";
+            roomList += room->getName() + ","
+                + std::to_string(room->getNbClient()) + ":";
         }
         if (!roomList.empty() && roomList.back() == ':') {
             roomList.pop_back();
@@ -63,11 +64,9 @@ namespace rtype
         responseMessage.params = roomList;
         _compressor.serialize(responseMessage, response);
 
-        if(_udpManager->sendMessage(response, clientAddr)) {
-            std::cout << "Envoyé à ->"
-                    << clientAddr << "->"
-                    << responseMessage.params
-                    << std::endl;
+        if (_udpManager->sendMessage(response, clientAddr)) {
+            std::cout << "Envoyé à ->" << clientAddr << "->"
+                      << responseMessage.params << std::endl;
         } else
             std::cout << "Merdeeee" << std::endl;
     }

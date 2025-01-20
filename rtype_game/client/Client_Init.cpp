@@ -27,11 +27,16 @@ namespace rtype
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Music>(_index_ecs_client, Music("assets/musics/gad.ogg"));
-        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
-        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
-        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(_gameplay_factory->getBackgroundSpeed()));
-        _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
+        _ecs.addComponents<Music>(
+            _index_ecs_client, Music("assets/musics/gad.ogg"));
+        _ecs.addComponents<Displayable>(
+            _index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
+        _ecs.addComponents<ecs::Position>(
+            _index_ecs_client, ecs::Position(0, 0));
+        _ecs.addComponents<ecs::Velocity>(_index_ecs_client,
+            ecs::Velocity(_gameplay_factory->getBackgroundSpeed()));
+        _ecs.addComponents<Shader>(
+            _index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
     }
 
@@ -100,8 +105,10 @@ namespace rtype
     {
         if (!_levels_wins[level]) {
             size_t index = getNextIndex();
-            _ecs.addComponents<ecs::Position>(index, ecs::Position(x + 55, y + 50));
-            _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_LOCK));
+            _ecs.addComponents<ecs::Position>(
+                index, ecs::Position(x + 55, y + 50));
+            _ecs.addComponents<Displayable>(
+                index, Displayable(SPRITES::LEVEL_LOCK));
             _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
         }
     }
@@ -112,7 +119,9 @@ namespace rtype
 
         int x, y;
 
-        x = (_window_width / 4) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL1).first / 2);
+        x = (_window_width / 4)
+            - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL1).first
+                / 2);
         y = _window_height - 400;
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
@@ -120,7 +129,9 @@ namespace rtype
         _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
 
         index = getNextIndex();
-        x = (_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first / 2);
+        x = (_window_width / 2)
+            - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first
+                / 2);
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL2));
@@ -129,10 +140,14 @@ namespace rtype
         put_level_lock(LEVELS::DEUX, x, y);
 
         index = getNextIndex();
-        x = ((_window_width / 4) * 3) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL_BOSS).first / 2);
+        x = ((_window_width / 4) * 3)
+            - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL_BOSS)
+                    .first
+                / 2);
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_BOSS));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::LEVEL_BOSS));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::BOSS));
         put_level_lock(LEVELS::BOSS, x, y);
     }
@@ -141,7 +156,8 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
-        _ecs.addComponents<Text>(index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
+        _ecs.addComponents<Text>(
+            index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
     }
 
     void Client::init_life()
@@ -154,7 +170,8 @@ namespace rtype
         y = 20;
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_HEART));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::LIFE_HEART));
         _ecs.addComponents<LevelStatus>(index, LevelStatus());
 
         index = getNextIndex();
@@ -162,7 +179,8 @@ namespace rtype
         x += 100;
 
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_RECTANGLE));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::LIFE_RECTANGLE));
         _ecs.addComponents<LevelStatus>(index, LevelStatus());
 
         index = getNextIndex();
@@ -183,13 +201,19 @@ namespace rtype
         std::string player_room = message.params.substr(0, pos);
         std::string entities = message.params.substr(pos + 1);
 
-        std::tuple<std::tuple<float, float, int>, int, int> pos_port_dif = Utils::parsePositionAndRoomPort(player_room);
+        std::tuple<std::tuple<float, float, int>, int, int> pos_port_dif =
+            Utils::parsePositionAndRoomPort(player_room);
 
-        _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
-        _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
+        _render_window_system.changeBackground(
+            _ecs._components_arrays, SPRITES::GAME_BACKGROUND);
+        _music_system.changeMusic(
+            _ecs._components_arrays, "assets/musics/macron.ogg");
         setRoomAdress(std::get<1>(pos_port_dif));
-        _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
-        createPlayer(message.id, std::get<0>(std::get<0>(pos_port_dif)), std::get<1>(std::get<0>(pos_port_dif)), std::get<2>(std::get<0>(pos_port_dif)));
+        _gameplay_factory->changeDifficulty(
+            static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
+        createPlayer(message.id, std::get<0>(std::get<0>(pos_port_dif)),
+            std::get<1>(std::get<0>(pos_port_dif)),
+            std::get<2>(std::get<0>(pos_port_dif)));
         init_levels_sprites();
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;

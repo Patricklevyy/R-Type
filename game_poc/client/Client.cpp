@@ -36,7 +36,8 @@ namespace poc_game
 
     void Client::setRoomAdress(int port)
     {
-        std::string ip_port = Utils::check_adress(port, _udpClient->getServerIp());
+        std::string ip_port =
+            Utils::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
     }
 
@@ -45,7 +46,8 @@ namespace poc_game
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         Utils::checkAction(mes.action);
-        // std::cout << "id : " << mes.id << " action " << mes.action << " params " << mes.params << std::endl;
+        // std::cout << "id : " << mes.id << " action " << mes.action << "
+        // params " << mes.params << std::endl;
         POC_GAME_ACTIONS action = static_cast<POC_GAME_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
     }
@@ -64,8 +66,7 @@ namespace poc_game
                 try {
                     handle_message(message);
                 } catch (std::exception &e) {
-                    std::cerr << std::endl
-                              << e.what() << std::endl;
+                    std::cerr << std::endl << e.what() << std::endl;
                 }
             }
             _eventBus.emit(POC_GAME_ACTIONS::UPDATE_POSITIONS);
@@ -74,4 +75,4 @@ namespace poc_game
         }
         _eventBus.emit(POC_GAME_ACTIONS::STOP_LISTEN_EVENT);
     }
-}
+} // namespace poc_game

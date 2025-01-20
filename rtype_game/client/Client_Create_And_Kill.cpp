@@ -16,11 +16,17 @@ namespace rtype
         SPRITES screen;
         if (win) {
             screen = SPRITES::WIN_SCREEN;
-            _levels_wins[static_cast<LEVELS>(std::stoi(message.params) + 1)] = true;
+            _levels_wins[static_cast<LEVELS>(std::stoi(message.params) + 1)] =
+                true;
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(((_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(screen).first / 2)), _window_height / 4));
+        _ecs.addComponents<ecs::Position>(index,
+            ecs::Position(
+                ((_window_width / 2)
+                    - (SpriteFactory::getMaxTextureSizeForSprite(screen).first
+                        / 2)),
+                _window_height / 4));
         _ecs.addComponents<LevelStatus>(index, LevelStatus());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
@@ -57,15 +63,18 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createPlayer(unsigned int server_id, float x, float y, int health)
+    void Client::createPlayer(
+        unsigned int server_id, float x, float y, int health)
     {
         size_t index = getNextIndex();
 
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction());
         _ecs.addComponents<ecs::Playable>(index, ecs::Playable());
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::MY_PLAYER_SHIP));
+        _ecs.addComponents<ecs::Velocity>(
+            index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::MY_PLAYER_SHIP));
         _ecs.addComponents<Health>(index, Health(health));
 
         ecs_server_to_client[server_id] = index;
@@ -82,7 +91,8 @@ namespace rtype
             ecs::Direction(static_cast<ecs::direction>(dir_x),
                 static_cast<ecs::direction>(dir_y)));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
-        _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(static_cast<SPRITES>(spriteId)));
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;

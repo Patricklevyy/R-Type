@@ -9,7 +9,7 @@
 
 namespace poc_game
 {
-     void Client::init_ecs_client_registry()
+    void Client::init_ecs_client_registry()
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
@@ -28,8 +28,10 @@ namespace poc_game
         std::string player_room = message.params.substr(0, pos);
         std::string entities = message.params.substr(pos + 1);
 
-        std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities << std::endl;
-        std::tuple<float, float, int> pos_port = Utils::parsePositionAndRoomPort(player_room);
+        std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities
+                  << std::endl;
+        std::tuple<float, float, int> pos_port =
+            Utils::parsePositionAndRoomPort(player_room);
 
         std::list<size_t> deads = _ath_system.removePlayButtons(_ecs);
         for (const auto &entity_id : deads) {
@@ -46,8 +48,10 @@ namespace poc_game
 
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(index, window);
-        _ecs.addComponents<Music>(index, Music("game_poc/assets/music/onSIGHT.ogg"));
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::BACKGROUND));
+        _ecs.addComponents<Music>(
+            index, Music("game_poc/assets/music/onSIGHT.ogg"));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::BACKGROUND));
         _ecs.addComponents<ecs::Position>(index, ecs::Position(0, 0));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(10));
         _ecs.addComponents<Shader>(index, Shader(FILTER_MODE::Neutral));
@@ -69,8 +73,10 @@ namespace poc_game
     {
         size_t index = getNextIndex();
 
-        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::PLAY_BUTTON));
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 2, _window_height / 2));
+        _ecs.addComponents<Displayable>(
+            index, Displayable(SPRITES::PLAY_BUTTON));
+        _ecs.addComponents<ecs::Position>(
+            index, ecs::Position(_window_width / 2, _window_height / 2));
         _ecs.addComponents<TempDisplay>(index, TempDisplay());
     }
 
@@ -85,26 +91,35 @@ namespace poc_game
             const libconfig::Setting &client = root["client"];
 
             if (!client.lookupValue("window_width", _window_width)) {
-                std::cerr << "Erreur : 'window_x' introuvable dans le fichier de configuration." << std::endl;
+                std::cerr << "Erreur : 'window_x' introuvable dans le fichier "
+                             "de configuration."
+                          << std::endl;
             }
 
             if (!client.lookupValue("window_height", _window_height)) {
-                std::cerr << "Erreur : 'window_y' introuvable dans le fichier de configuration." << std::endl;
+                std::cerr << "Erreur : 'window_y' introuvable dans le fichier "
+                             "de configuration."
+                          << std::endl;
             }
         } catch (const libconfig::FileIOException &fioex) {
-            std::cerr << "Erreur : Impossible de lire le fichier de configuration." << std::endl;
+            std::cerr
+                << "Erreur : Impossible de lire le fichier de configuration."
+                << std::endl;
         } catch (const libconfig::ParseException &pex) {
-            std::cerr << "Erreur de parsing au niveau " << pex.getFile()
-                      << ":" << pex.getLine() << " - " << pex.getError() << std::endl;
+            std::cerr << "Erreur de parsing au niveau " << pex.getFile() << ":"
+                      << pex.getLine() << " - " << pex.getError() << std::endl;
         } catch (const libconfig::SettingNotFoundException &nfex) {
-            std::cerr << "Erreur : Paramètre introuvable dans le fichier de configuration." << std::endl;
+            std::cerr << "Erreur : Paramètre introuvable dans le fichier de "
+                         "configuration."
+                      << std::endl;
         }
     }
 
     void Client::init_all()
     {
         if (!_udpClient->initialize("game_poc/config/udp_config.conf")) {
-            throw ERROR::FailedToInitializeClientExceptions("Failed to initialize client");
+            throw ERROR::FailedToInitializeClientExceptions(
+                "Failed to initialize client");
         }
         init_window_size("game_poc/config/client_config.conf");
         _timer->init("game_poc/config/client_config.conf", false);
@@ -116,4 +131,4 @@ namespace poc_game
         init_subscribe_event_bus();
         _eventBus.emit(POC_GAME_ACTIONS::START_LISTEN_EVENT);
     }
-}
+} // namespace poc_game

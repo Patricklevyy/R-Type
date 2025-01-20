@@ -9,8 +9,8 @@
 #include <arpa/inet.h>
 #include <cmath>
 #include <cstring>
-#include <sys/socket.h>
 #include <random>
+#include <sys/socket.h>
 
 namespace poc_game
 {
@@ -31,7 +31,8 @@ namespace poc_game
     }
 
     Room::Room(Room &&other) noexcept
-        : _port(other._port), _name(std::move(other._name)), _sockfd(other._sockfd), _addr(other._addr)
+        : _port(other._port), _name(std::move(other._name)),
+          _sockfd(other._sockfd), _addr(other._addr)
     {
         other._sockfd = -1;
     }
@@ -53,7 +54,8 @@ namespace poc_game
     {
         _sockfd = socket(AF_INET, SOCK_DGRAM, 0);
         if (_sockfd < 0) {
-            std::cerr << "Socket creation failed for room " << _name << std::endl;
+            std::cerr << "Socket creation failed for room " << _name
+                      << std::endl;
             return false;
         }
 
@@ -61,13 +63,14 @@ namespace poc_game
         _addr.sin_port = htons(_port);
         _addr.sin_addr.s_addr = INADDR_ANY;
 
-        if (bind(_sockfd, (struct sockaddr *)&_addr, sizeof(_addr)) < 0) {
+        if (bind(_sockfd, (struct sockaddr *) &_addr, sizeof(_addr)) < 0) {
             std::cerr << "Bind failed for room " << _name << std::endl;
             close(_sockfd);
             return false;
         }
 
-        std::cout << "Room " << _name << " is listening on port " << _port << std::endl;
+        std::cout << "Room " << _name << " is listening on port " << _port
+                  << std::endl;
         return true;
     }
 
@@ -83,7 +86,8 @@ namespace poc_game
 
     bool Room::sendMessage(const std::string &message)
     {
-        ssize_t sent = sendto(_sockfd, message.c_str(), message.size(), 0, (struct sockaddr *)&_addr, sizeof(_addr));
+        ssize_t sent = sendto(_sockfd, message.c_str(), message.size(), 0,
+            (struct sockaddr *) &_addr, sizeof(_addr));
         return sent >= 0;
     }
 
@@ -127,7 +131,8 @@ namespace poc_game
     {
         char ipStr[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(this->_addr.sin_addr), ipStr, INET_ADDRSTRLEN);
-        return std::string(ipStr) + ":" + std::to_string(ntohs(this->_addr.sin_port));
+        return std::string(ipStr) + ":"
+            + std::to_string(ntohs(this->_addr.sin_port));
     }
 
-}
+} // namespace poc_game

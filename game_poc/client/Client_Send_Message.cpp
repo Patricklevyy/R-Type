@@ -50,7 +50,8 @@ namespace poc_game
         mess.id = 0;
         mess.action = POC_GAME_ACTIONS::START;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "x=" + std::to_string(_window_width)
+            + ";y=" + std::to_string(_window_height);
 
         _message_compressor.serialize(mess, buffer);
 
@@ -68,7 +69,8 @@ namespace poc_game
         mess.id = 0;
         mess.action = POC_GAME_ACTIONS::RESTART;
         mess.secret_key = _udpClient->getSecretKey();
-        mess.params = "x=" + std::to_string(_window_width) + ";y=" + std::to_string(_window_height);
+        mess.params = "x=" + std::to_string(_window_width)
+            + ";y=" + std::to_string(_window_height);
 
         _message_compressor.serialize(mess, buffer);
 
@@ -78,4 +80,4 @@ namespace poc_game
             std::cout << "failed " << std::endl;
         }
     }
-}
+} // namespace poc_game

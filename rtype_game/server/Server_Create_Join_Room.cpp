@@ -13,16 +13,19 @@ namespace rtype
     {
         (void) id;
 
-        (void)id;
+        (void) id;
 
         std::cout << "JE parse" << std::endl;
-        std::map<std::string, std::string> map_params = Utils::parseMessageParams(params);
+        std::map<std::string, std::string> map_params =
+            Utils::parseMessageParams(params);
         std::cout << "JE check" << std::endl;
         checkCreateRoomArgs(map_params);
 
         std::cout << "JE set LA OMMAND" << std::endl;
-        auto newRoom = std::make_shared<Room>(_currentPort, map_params["room_name"]);
-        newRoom->start(_currentPort, map_params["x"], map_params["y"], map_params["dif"]);
+        auto newRoom =
+            std::make_shared<Room>(_currentPort, map_params["room_name"]);
+        newRoom->start(
+            _currentPort, map_params["x"], map_params["y"], map_params["dif"]);
         _rooms.push_back(newRoom);
         _currentPort++;
     }
@@ -37,16 +40,12 @@ namespace rtype
 
         checkJoinRoomArgs(map_params);
 
-        for (auto &room : _rooms)
-        {
-            if (room->getName() == map_params["room_name"])
-            {
-                if (map_params.find("client_name") != map_params.end())
-                {
-                    room->createClient(lastclientAdr, map_params["client_name"]);
-                }
-                else
-                {
+        for (auto &room : _rooms) {
+            if (room->getName() == map_params["room_name"]) {
+                if (map_params.find("client_name") != map_params.end()) {
+                    room->createClient(
+                        lastclientAdr, map_params["client_name"]);
+                } else {
                     room->createClient(lastclientAdr, "");
                 }
             }
@@ -61,7 +60,8 @@ namespace rtype
 
         for (auto &room : _rooms) {
             if (room->getName() == params["room_name"]) {
-                throw ERROR::RoomAlreadyExistingExceptions("This name is already taken for a room");
+                throw ERROR::RoomAlreadyExistingExceptions(
+                    "This name is already taken for a room");
             }
         }
     }
@@ -79,7 +79,8 @@ namespace rtype
             if (room->getName() == params["room_name"]) {
                 roomFound = true;
                 if (room->getNbClient() >= 4) {
-                    throw ERROR::RoomIsFullExceptions("The room is full of client (4 MAX PER ROOM)");
+                    throw ERROR::RoomIsFullExceptions(
+                        "The room is full of client (4 MAX PER ROOM)");
                 }
             }
         }

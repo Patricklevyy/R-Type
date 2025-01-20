@@ -99,10 +99,17 @@ namespace rtype
             _ecs._components_arrays[typeid(ecs::Playable)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
-            if ((positions[i].has_value() && i < healths.size() && healths[i].has_value()) && ((i < monsters.size() && monsters[i].has_value()) || (i < playables.size() && playables[i].has_value()))) {
-                updateMessage += std::to_string(i) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) + ";";
+            if ((positions[i].has_value() && i < healths.size()
+                    && healths[i].has_value())
+                && ((i < monsters.size() && monsters[i].has_value())
+                    || (i < playables.size() && playables[i].has_value()))) {
+                updateMessage += std::to_string(i) + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_x)))
+                    + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_y)))
+                    + ";";
             }
         }
 
@@ -112,7 +119,8 @@ namespace rtype
 
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::UPDATE_PARTIALS_POSITIONS_FROM_SERVER;
+        responseMessage.action =
+            RTYPE_ACTIONS::UPDATE_PARTIALS_POSITIONS_FROM_SERVER;
         responseMessage.id = 0;
         responseMessage.params = updateMessage;
 
@@ -180,13 +188,18 @@ namespace rtype
     {
         std::string updateMessage = "";
 
-        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(
+            _ecs._components_arrays[typeid(ecs::Position)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value()) {
-                updateMessage += std::to_string(i) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) + ";";
+                updateMessage += std::to_string(i) + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_x)))
+                    + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_y)))
+                    + ";";
             }
         }
 
@@ -250,7 +263,8 @@ namespace rtype
         responseMessage.action = RTYPE_ACTIONS::UPDATE_LIFE;
 
         for (auto life : lifes) {
-            responseMessage.params += std::to_string(life.first) + "," + std::to_string(life.second) + ";";
+            responseMessage.params += std::to_string(life.first) + ","
+                + std::to_string(life.second) + ";";
         }
 
         _message_compressor.serialize(responseMessage, response);
@@ -259,4 +273,4 @@ namespace rtype
             _udp_server->sendMessage(response, clientAddr);
         }
     }
-}
+} // namespace rtype

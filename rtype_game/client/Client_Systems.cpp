@@ -33,16 +33,20 @@ namespace rtype
         if (!_mouse_pressed)
             return;
 
-
         _mouse_pressed = false;
-        auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
+        auto isLevelChosen =
+            _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
             send_server_start_game(isLevelChosen.second);
         } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
             restart_game();
-        } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
+        } else if (_player_system.getIndexPlayer(_ecs._components_arrays)
+            != -1) {
             auto release_time = std::chrono::steady_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
+            auto duration =
+                std::chrono::duration_cast<std::chrono::milliseconds>(
+                    release_time - _mouse_press_time)
+                    .count();
 
             if (duration >= 2000) {
                 send_server_new_shoot(true);
@@ -52,35 +56,45 @@ namespace rtype
         }
     }
 
-    void Client::execute_animation() {
-        if (!_mouse_pressed)
-        {
-            size_t index = _animation_system.getChargedAnimationIndex(_ecs._components_arrays);
+    void Client::execute_animation()
+    {
+        if (!_mouse_pressed) {
+            size_t index = _animation_system.getChargedAnimationIndex(
+                _ecs._components_arrays);
             if (index != 0)
                 _kill_system.killEntity(_ecs, index);
             return;
         }
-        int index_player = _player_system.getIndexPlayer(_ecs._components_arrays);
+        int index_player =
+            _player_system.getIndexPlayer(_ecs._components_arrays);
         if (index_player == -1)
             return;
-        std::pair<float, float> player_positions = _position_system.getPlayerPosition(index_player, _ecs._components_arrays);
+        std::pair<float, float> player_positions =
+            _position_system.getPlayerPosition(
+                index_player, _ecs._components_arrays);
         player_positions.first += 100;
         if (_animation_system.isAlreadyAnimation(_ecs._components_arrays)) {
-            _animation_system.updateChargedAnimation(_ecs._components_arrays, player_positions);
+            _animation_system.updateChargedAnimation(
+                _ecs._components_arrays, player_positions);
             return;
         }
         auto release_time = std::chrono::steady_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(
+            release_time - _mouse_press_time)
+                            .count();
 
         if (duration > 100) {
-            size_t index =  getNextIndex();
-            _ecs.addComponents<ecs::Position>(index, ecs::Position(player_positions.first, player_positions.second));
-            _ecs.addComponents<Displayable>(index, Displayable(SPRITES::CHARGED_ANIMATION));
+            size_t index = getNextIndex();
+            _ecs.addComponents<ecs::Position>(index,
+                ecs::Position(player_positions.first, player_positions.second));
+            _ecs.addComponents<Displayable>(
+                index, Displayable(SPRITES::CHARGED_ANIMATION));
             _ecs.addComponents<Animation>(index, Animation());
         }
     }
 
-    std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
+    std::vector<std::pair<std::string, int>> Client::parseRoomList(
+        const std::string &roomList)
     {
         std::vector<std::pair<std::string, int>> parsedRooms;
         std::stringstream ss(roomList);
@@ -94,7 +108,8 @@ namespace rtype
                 size_t delimiterPos = roomEntry.find(',');
                 if (delimiterPos != std::string::npos) {
                     std::string roomName = roomEntry.substr(0, delimiterPos);
-                    int nbClients = std::stoi(roomEntry.substr(delimiterPos + 1));
+                    int nbClients =
+                        std::stoi(roomEntry.substr(delimiterPos + 1));
                     parsedRooms.emplace_back(roomName, nbClients);
                 }
             }
@@ -104,14 +119,17 @@ namespace rtype
 
     void Client::updatePlayerLife(std::string lifes_string)
     {
-        std::list<std::pair<size_t, int>> lifes = Utils::parse_update_life(lifes_string);
+        std::list<std::pair<size_t, int>> lifes =
+            Utils::parse_update_life(lifes_string);
 
         std::pair<bool, int> player;
         for (auto life : lifes) {
-            player = _player_system.updatePlayerLife(_ecs._components_arrays, ecs_server_to_client[life.first], life.second);
+            player = _player_system.updatePlayerLife(_ecs._components_arrays,
+                ecs_server_to_client[life.first], life.second);
 
             if (player.first) {
-                _player_system.updateLifeDisplay(_ecs._components_arrays, ecs_server_to_client[life.first]);
+                _player_system.updateLifeDisplay(
+                    _ecs._components_arrays, ecs_server_to_client[life.first]);
                 return;
             }
         }

@@ -24,7 +24,8 @@ namespace rtype
         _ecs.addRegistry<PowerUp>();
     }
 
-    void Room::init_all(int port, std::string window_width, std::string window_height, std::string difficulty)
+    void Room::init_all(int port, std::string window_width,
+        std::string window_height, std::string difficulty)
     {
         _window_width = std::stoi(window_width);
         _window_height = std::stoi(window_height);
@@ -33,10 +34,13 @@ namespace rtype
         _gameplay_factory = std::make_shared<GameplayFactory>();
 
         _gameplay_factory->init("rtype_game/config/gameplay_config.conf");
-        _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::stoi(difficulty)));
+        _gameplay_factory->changeDifficulty(
+            static_cast<DIFFICULTY>(std::stoi(difficulty)));
 
-        if (!_udp_server->initialize("rtype_game/config/udp_config.conf", port)) {
-            std::cerr << "Failed to initialize socket for room " << _name << std::endl;
+        if (!_udp_server->initialize(
+                "rtype_game/config/udp_config.conf", port)) {
+            std::cerr << "Failed to initialize socket for room " << _name
+                      << std::endl;
             return;
         }
         _ecs.init_basic_registry();
@@ -47,4 +51,4 @@ namespace rtype
         std::cout << "je suis dans le game thread" << std::endl;
         init_event_bus();
     }
-}
+} // namespace rtype

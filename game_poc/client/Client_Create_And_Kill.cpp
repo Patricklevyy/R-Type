@@ -14,7 +14,8 @@ namespace poc_game
         killEntity(_kill_system.killPipes(_ecs));
         size_t index = getNextIndex();
 
-        _ecs.addComponents<ecs::Position>(index, ecs::Position(_window_width / 4, _window_height / 4));
+        _ecs.addComponents<ecs::Position>(
+            index, ecs::Position(_window_width / 4, _window_height / 4));
         _ecs.addComponents<TempDisplay>(index, TempDisplay());
         _ecs.addComponents<Displayable>(index, Displayable(REPLAY_BUTTON));
     }
@@ -32,13 +33,15 @@ namespace poc_game
                 it = ecs_client_to_server.find(index_ecs_client);
                 ecs_client_to_server.erase(it);
 
-                std::cout << " KILL enity " << id << " , " << index_ecs_client << std::endl;
+                std::cout << " KILL enity " << id << " , " << index_ecs_client
+                          << std::endl;
                 _kill_system.killEntity(_ecs, index_ecs_client);
             }
         }
     }
 
-    void Client::createEntity(unsigned int server_id, float x, float y, SPRITES sprite_id)
+    void Client::createEntity(
+        unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
         std::cout << "JE CREATE : " << server_id << " , " << index << std::endl;
@@ -53,4 +56,4 @@ namespace poc_game
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
     }
-}
+} // namespace poc_game

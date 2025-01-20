@@ -9,8 +9,7 @@
 
 namespace poc_game
 {
-    SFMLHandler::SFMLHandler(Client &client)
-        : _client(client)
+    SFMLHandler::SFMLHandler(Client &client) : _client(client)
     {
     }
 
@@ -20,29 +19,24 @@ namespace poc_game
 
     void SFMLHandler::handleEvents(std::queue<sf::Event> &events)
     {
-        while (!events.empty())
-        {
+        while (!events.empty()) {
             sf::Event event = events.front();
             events.pop();
 
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                _client._running = false;
-                return;
-            case sf::Event::MouseButtonPressed:
-                processMouseButtonPressed(event);
-                break;
+            switch (event.type) {
+                case sf::Event::Closed: _client._running = false; return;
+                case sf::Event::MouseButtonPressed:
+                    processMouseButtonPressed(event);
+                    break;
 
-            default:
-                break;
+                default: break;
             }
         }
     }
 
     void SFMLHandler::processMouseButtonPressed(const sf::Event &event)
     {
-        (void)event;
+        (void) event;
         _client.handleMouseClick();
     }
-}
+} // namespace poc_game

@@ -9,7 +9,8 @@
 
 namespace rtype
 {
-    void Room::gameThreadFunction(int port, std::string window_width, std::string window_height, std::string difficulty)
+    void Room::gameThreadFunction(int port, std::string window_width,
+        std::string window_height, std::string difficulty)
     {
         init_all(port, window_width, window_height, difficulty);
 
@@ -28,7 +29,8 @@ namespace rtype
                 }
             }
             auto currentTime = std::chrono::steady_clock::now();
-            auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastClientUpdate);
+            auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(
+                currentTime - lastClientUpdate);
 
             if (elapsedTime.count() >= 2) {
                 send_roll_back();
@@ -47,9 +49,11 @@ namespace rtype
         _udp_server->stopReceiving();
     }
 
-    void Room::start(int port, std::string window_width, std::string window_height, std::string difficulty)
+    void Room::start(int port, std::string window_width,
+        std::string window_height, std::string difficulty)
     {
-        _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height, difficulty);
+        _gameThread = std::thread(&Room::gameThreadFunction, this, port,
+            window_width, window_height, difficulty);
         _gameThread.detach();
     }
 } // namespace rtype

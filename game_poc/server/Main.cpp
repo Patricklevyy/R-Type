@@ -11,12 +11,9 @@ int main()
 {
     poc_game::Server POC_SERVER;
 
-    try
-    {
+    try {
         POC_SERVER.start();
-    }
-    catch (std::exception &e)
-    {
+    } catch (std::exception &e) {
         std::cerr << std::endl << e.what() << std::endl;
         exit(84);
     }

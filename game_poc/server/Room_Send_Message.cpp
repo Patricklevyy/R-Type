@@ -38,13 +38,18 @@ namespace poc_game
     {
         std::string updateMessage = "";
 
-        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(_ecs._components_arrays[typeid(ecs::Position)]);
+        auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(
+            _ecs._components_arrays[typeid(ecs::Position)]);
 
         for (size_t i = 0; i < positions.size(); ++i) {
             if (positions[i].has_value()) {
-                updateMessage += std::to_string(i) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_x))) +
-                                "," + std::to_string(static_cast<int>(round(positions[i].value()._pos_y))) + ";";
+                updateMessage += std::to_string(i) + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_x)))
+                    + ","
+                    + std::to_string(
+                        static_cast<int>(round(positions[i].value()._pos_y)))
+                    + ";";
             }
         }
 
@@ -87,7 +92,9 @@ namespace poc_game
         std::vector<char> send_message;
         ecs::udp::Message mes;
         mes.action = POC_GAME_ACTIONS::CREATE_PLAYER;
-        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port);
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";"
+            + std::to_string(static_cast<int>(position.second)) + ";"
+            + std::to_string(_port);
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position);
@@ -97,14 +104,16 @@ namespace poc_game
         }
     }
 
-    void Room::send_client_new_pipe(size_t index, float x, float y, SPRITES sprite)
+    void Room::send_client_new_pipe(
+        size_t index, float x, float y, SPRITES sprite)
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
         responseMessage.action = POC_GAME_ACTIONS::SPAWN_PIPE;
         responseMessage.id = index;
 
-        responseMessage.params = "x=" + std::to_string(x) + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite);
+        responseMessage.params = "x=" + std::to_string(x)
+            + ";y=" + std::to_string(y) + ";type=" + std::to_string(sprite);
 
         _message_compressor.serialize(responseMessage, response);
 
@@ -112,4 +121,4 @@ namespace poc_game
             _udp_server->sendMessage(response, clientAddr);
         }
     }
-}
+} // namespace poc_game
