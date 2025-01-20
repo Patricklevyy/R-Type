@@ -20,32 +20,21 @@ namespace rtype
 
     void SFMLHandler::init_keys()
     {
-        _keyBindings = {
-            {sf::Keyboard::A, sf::Keyboard::A},
-            {sf::Keyboard::B, sf::Keyboard::B},
-            {sf::Keyboard::Z, sf::Keyboard::Z},
+        _keyBindings = {{sf::Keyboard::Z, sf::Keyboard::Z},
             {sf::Keyboard::S, sf::Keyboard::S},
             {sf::Keyboard::Q, sf::Keyboard::Q},
-            {sf::Keyboard::D, sf::Keyboard::D}
-        };
+            {sf::Keyboard::D, sf::Keyboard::D}};
     }
-
-    void SFMLHandler::bindKey(sf::Keyboard::Key former_key, sf::Keyboard::Key new_key)
-    {
-        _keyBindings[former_key] = new_key;
-    }
-
-    void SFMLHandler::unbind(sf::Keyboard::Key key)
-    {
-        _keyBindings[key] = key;
-    }
-
 
     void SFMLHandler::resetBind()
     {
         init_keys();
     }
 
+    std::map<sf::Keyboard::Key, sf::Keyboard::Key> SFMLHandler::getKeyBindings()
+    {
+        return _keyBindings;
+    }
 
     void SFMLHandler::handleEvents(std::queue<sf::Event> &events)
     {
@@ -68,38 +57,39 @@ namespace rtype
                     processMouseButtonReleased(event);
                     break;
 
-            default:
-                break;
+                default: break;
             }
         }
     }
 
     void SFMLHandler::processKeyPressed(const sf::Event &event)
     {
-        if (event.key.code == sf::Keyboard::Escape)
-        {
+        if (event.key.code == sf::Keyboard::Escape) {
             _client._running = false;
             return;
         }
 
-        if (event.key.code == _keyBindings[sf::Keyboard::D] && !_client._in_menu)
-        {
-            _client.change_player_direction(ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
+        if (event.key.code == _keyBindings[sf::Keyboard::D]
+            && !_client._in_menu) {
+            _client.change_player_direction(
+                ecs::direction::RIGHT, ecs::direction::NO_CHANGE);
         }
-        if (event.key.code == _keyBindings[sf::Keyboard::Q] && !_client._in_menu)
-        {
-            _client.change_player_direction(ecs::direction::LEFT, ecs::direction::NO_CHANGE);
+        if (event.key.code == _keyBindings[sf::Keyboard::Q]
+            && !_client._in_menu) {
+            _client.change_player_direction(
+                ecs::direction::LEFT, ecs::direction::NO_CHANGE);
         }
-        if (event.key.code == _keyBindings[sf::Keyboard::Z] && !_client._in_menu)
-        {
-            _client.change_player_direction(ecs::direction::NO_CHANGE, ecs::direction::UP);
+        if (event.key.code == _keyBindings[sf::Keyboard::Z]
+            && !_client._in_menu) {
+            _client.change_player_direction(
+                ecs::direction::NO_CHANGE, ecs::direction::UP);
         }
-        if (event.key.code == _keyBindings[sf::Keyboard::S] && !_client._in_menu)
-        {
-            _client.change_player_direction(ecs::direction::NO_CHANGE, ecs::direction::DOWN);
+        if (event.key.code == _keyBindings[sf::Keyboard::S]
+            && !_client._in_menu) {
+            _client.change_player_direction(
+                ecs::direction::NO_CHANGE, ecs::direction::DOWN);
         }
-        if (event.key.code == sf::Keyboard::Num1)
-        {
+        if (event.key.code == sf::Keyboard::Num1) {
             _client.set_window_filter(FILTER_MODE::Neutral);
         }
         if (event.key.code == sf::Keyboard::Num2) {
@@ -118,15 +108,16 @@ namespace rtype
 
     void SFMLHandler::processKeyReleased(const sf::Event &event)
     {
-        if (!_client._in_menu)
-        {
-            if (event.key.code == _keyBindings[sf::Keyboard::D] || event.key.code == _keyBindings[sf::Keyboard::Q])
-            {
-                _client.change_player_direction(ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
+        if (!_client._in_menu) {
+            if (event.key.code == _keyBindings[sf::Keyboard::D]
+                || event.key.code == _keyBindings[sf::Keyboard::Q]) {
+                _client.change_player_direction(
+                    ecs::direction::NO_DIRECTION, ecs::direction::NO_CHANGE);
             }
-            if (event.key.code == _keyBindings[sf::Keyboard::Z] || event.key.code == _keyBindings[sf::Keyboard::S])
-            {
-                _client.change_player_direction(ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
+            if (event.key.code == _keyBindings[sf::Keyboard::Z]
+                || event.key.code == _keyBindings[sf::Keyboard::S]) {
+                _client.change_player_direction(
+                    ecs::direction::NO_CHANGE, ecs::direction::NO_DIRECTION);
             }
         }
     }
@@ -144,4 +135,11 @@ namespace rtype
             _client.handleMouseRelease();
         }
     }
+
+    void SFMLHandler::updateKeyBindings(
+        const std::map<sf::Keyboard::Key, sf::Keyboard::Key> &newBindings)
+    {
+        _keyBindings = newBindings;
+    }
+
 } // namespace rtype

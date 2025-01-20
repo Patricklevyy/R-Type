@@ -109,15 +109,16 @@
                 bool _running = true;
                 EventBus _eventBus;
                 ecs::ECS _ecs;
+                FILTER_MODE _currentFilter = FILTER_MODE::Neutral;
 
                 /**
                  * @brief Sends a message to the server to ask the list of all the rooms.
                  */
                 void requestRoomList();
 
-                // std::vector<std::pair<std::string, int>> getRoomsList();
                 std::mutex roomListMutex;
                 std::vector<std::pair<std::string, int>> _roomsList;
+                std::shared_ptr<SFMLHandler> _sfml_handler;
 
 
             protected:
@@ -135,7 +136,6 @@
 
                 // CLASSES
 
-                std::shared_ptr<SFMLHandler> _sfml_handler;
                 ecs::udp::MessageCompressor _message_compressor;
                 std::shared_ptr<Timer> _timer;
                 std::shared_ptr<ecs::udp::UDP_Client> _udpClient;

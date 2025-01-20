@@ -14,12 +14,18 @@ namespace rtype
         if (!_font.loadFromFile("assets/fonts/Georgia Regular font.ttf")
             || !_logoTexture.loadFromFile("assets/backgrounds/logo.png")
             || !_createRoomTexture.loadFromFile(
-                "assets/backgrounds/create_room_button.png")) {
+                "assets/backgrounds/create_room_button.png")
+            || !_settingsTexture.loadFromFile(
+                "assets/settings/settings_button.png")
+            || !font_2.loadFromFile("assets/fonts/VeniteAdoremusStraight-Yzo6v.ttf")
+            || !_backgroundTexture.loadFromFile("assets/settings/menu_background.jpg")) {
             throw std::runtime_error("Failed to load resources");
         }
 
         _logo.setTexture(_logoTexture);
         _logo.setScale(0.3f, 0.3f);
+
+        _settings.setTexture(_settingsTexture);
 
         _validateButton.setTexture(_createRoomTexture);
         _validateButton.setScale(0.3f, 0.3f);
@@ -28,11 +34,12 @@ namespace rtype
             _font, sf::Vector2f(0, 0), sf::Vector2f(400, 40));
         _roomHandling =
             std::make_shared<RoomHandling>(_font, _client._roomsList);
-        _client.requestRoomList();
-        roomsList = _client._roomsList;
-        for (const auto &room : roomsList) {
-            _roomHandling->addRoom(room.first, room.second);
-        }
+        _background.setTexture(_backgroundTexture);
+        // _client.requestRoomList();
+        // roomsList = _client._roomsList;
+        // for (const auto &room : roomsList) {
+        //     _roomHandling->addRoom(room.first, room.second);
+        // }
 
         _roomContainer.setFillColor(sf::Color(20, 20, 20));
         _roomContainer.setOutlineColor(sf::Color::White);
@@ -42,10 +49,16 @@ namespace rtype
         _outerContainer.setOutlineColor(sf::Color::White);
         _outerContainer.setOutlineThickness(3);
 
-        _playerNameText.setFont(_font);
-        _playerNameText.setString("Player: " + _playerName);
+        _playerText.setFont(font_2);
+        _playerText.setString("Player:");
+        _playerText.setCharacterSize(20);
+        _playerText.setStyle(sf::Text::Underlined);
+        _playerText.setFillColor(sf::Color::White);
+
+        _playerNameText.setFont(font_2);
+        _playerNameText.setString(_playerName);
         _playerNameText.setCharacterSize(20);
-        _playerNameText.setFillColor(sf::Color::White);
+        _playerNameText.setFillColor(sf::Color::Red);
     }
 
     void Menu::run(bool &inMenu)
@@ -82,6 +95,7 @@ namespace rtype
     void Menu::handleEvents(bool &_in_menu)
     {
         sf::Event event;
+        bool inSettings = false;
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 _in_menu = false;
@@ -105,6 +119,18 @@ namespace rtype
                     _in_menu = false;
                 }
             }
+            if (event.type == sf::Event::MouseButtonPressed) {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
+                sf::Vector2f mousePosF(static_cast<float>(mousePos.x),
+                    static_cast<float>(mousePos.y));
+                if (_settings.getGlobalBounds().contains(mousePosF)) {
+                    inSettings = true;
+                    auto keyBidingsMap = _client._sfml_handler->getKeyBindings();
+
+                    Settings settings(_window, keyBidingsMap, _client);
+                    settings.run(inSettings);
+                }
+            }
 
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Enter) {
@@ -123,6 +149,9 @@ namespace rtype
     void Menu::update()
     {
         sf::Vector2u windowSize = _window.getSize();
+
+        _playerText.setPosition(30, 30);
+        _playerNameText.setPosition(_playerText.getPosition().x + _playerText.getGlobalBounds().width + 20, 30);
 
         _logo.setPosition(
             (windowSize.x - _logo.getGlobalBounds().width) / 2, 20);
@@ -143,8 +172,8 @@ namespace rtype
                 + _roomContainer.getSize().x
                 - _validateButton.getGlobalBounds().width - 20,
             _roomContainer.getPosition().y + _roomContainer.getSize().y + 10);
-        _playerNameText.setPosition(
-            windowSize.x - _playerNameText.getLocalBounds().width - 20, 10);
+        _settings.setPosition(
+            windowSize.x - _settings.getLocalBounds().width - 20, 20);
     }
 
     void Menu::syncRooms()
@@ -169,13 +198,16 @@ namespace rtype
     void Menu::render()
     {
         _window.clear(sf::Color::Black);
+        _window.draw(_background);
 
         _window.draw(_outerContainer);
         _window.draw(_roomContainer);
+        _window.draw(_settings);
         _roomHandling->draw(_window, _roomContainer);
         _textInput->draw(_window);
         _window.draw(_validateButton);
         _window.draw(_logo);
+        _window.draw(_playerText);
         _window.draw(_playerNameText);
 
         _window.display();

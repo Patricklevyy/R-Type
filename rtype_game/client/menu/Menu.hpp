@@ -13,6 +13,7 @@
 #include "InputScreen.hpp"
 #include "RoomHandling.hpp"
 #include "TextInput.hpp"
+#include "Settings.hpp"
 
 namespace rtype
 {
@@ -37,14 +38,20 @@ namespace rtype
       private:
         sf::RenderWindow &_window;
         sf::Font _font;
+        sf::Font font_2;
         sf::Texture _logoTexture;
         sf::Texture _createRoomTexture;
+        sf::Texture _settingsTexture;
         sf::Sprite _logo;
+        sf::Sprite _settings;
         sf::Sprite _validateButton;
         sf::RectangleShape _roomContainer;
         sf::RectangleShape _outerContainer;
+        sf::Texture _backgroundTexture;
+        sf::Sprite _background;
 
         sf::Text _playerNameText;
+        sf::Text _playerText;
         std::string _playerName;
         std::string _createdRoom;
         Client &_client;

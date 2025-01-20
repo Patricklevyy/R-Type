@@ -26,7 +26,7 @@ namespace rtype
                 "Erreur de chargement de l'image du bouton");
         }
         if (!_backgroundTexture.loadFromFile(
-                "assets/backgrounds/menu_background.jpg")) {
+                "assets/settings/menu_background.jpg")) {
             throw std::runtime_error(
                 "Erreur de chargement de l'image du background");
         }
@@ -57,6 +57,7 @@ namespace rtype
 
     void InputScreen::run(bool &isInputScreen, std::string &playerName)
     {
+        int playerCounter = 0;
         while (_window.isOpen() && isInputScreen) {
             sf::Event event;
 
@@ -67,6 +68,10 @@ namespace rtype
             _window.clear(sf::Color(10, 10, 40));
             render();
             _window.display();
+        }
+        if (playerName.empty()) {
+            playerName = "Player_" + std::string(1, 'A' + (playerCounter % 26));
+            playerCounter++;
         }
     }
 
