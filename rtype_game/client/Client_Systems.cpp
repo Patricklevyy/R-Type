@@ -16,7 +16,8 @@ namespace rtype
 
     void Client::change_player_direction(ecs::direction x, ecs::direction y)
     {
-        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(x, y, _player_system.getIndexPlayer(_ecs._components_arrays));
+        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(
+            x, y, _player_system.getIndexPlayer(_ecs._components_arrays));
         send_server_player_direction(x, y);
         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
     }
@@ -39,7 +40,8 @@ namespace rtype
             send_server_start_game(isLevelChosen.second);
         } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
             restart_game();
-        } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
+        } else if (_player_system.getIndexPlayer(_ecs._components_arrays)
+            != -1) {
             auto release_time = std::chrono::steady_clock::now();
             auto duration =
                 std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -132,4 +134,4 @@ namespace rtype
             }
         }
     }
-}
+} // namespace rtype

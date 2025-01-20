@@ -78,7 +78,8 @@ namespace rtype
         _ecs.addComponents<ecs::Direction>(index, ecs::Direction());
         _ecs.addComponents<ecs::Playable>(index, ecs::Playable());
         _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
-        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
+        _ecs.addComponents<ecs::Velocity>(
+            index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
         _ecs.addComponents<Displayable>(index, Displayable(sprite));
         _ecs.addComponents<Health>(index, Health(health));
 
