@@ -76,6 +76,8 @@
             UP_VELOCITY,
             DOWN_VELOCITY,
             UPDATE_LIFE,
+            PUT_WEAPON,
+            REMOVE_WEAPON,
             MAX_ACTION
         };
 
@@ -119,6 +121,8 @@
             LIFE_RECTANGLE,
             LIFE_RED,
             LIFE_HEART,
+            MY_PLAYER_SHIP_WEAPON,
+            OTHER_PLAYER_SHIP_WEAPON,
             MAX_SPRITE
         };
 
