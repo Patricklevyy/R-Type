@@ -206,7 +206,7 @@
                         case SPRITES::LIFE_HEART:
                             return {loadTexture("assets/ath/life.png")};
                         case SPRITES::MY_PLAYER_SHIP_WEAPON:
-                            return loadTextures("player_ship/rtype_vaisseau_weapon/vaisseau_weapon1.png", 0, 4);
+                            return loadTextures("player_ship/rtype_vaisseau_weapon/vaisseau_weapon", 0, 4);
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
                     }

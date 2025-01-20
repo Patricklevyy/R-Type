@@ -172,8 +172,8 @@
         enum BONUS {
             VELOCITY = 1,
             LIFE,
-            WEAPON,
             SHIELD,
+            WEAPON,
             MAX_BONUS
         };
     }
