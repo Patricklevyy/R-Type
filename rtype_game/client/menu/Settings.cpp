@@ -25,7 +25,8 @@ namespace rtype
                 "assets/settings/choosen_icon.png")
             || !_returnButtonTexture.loadFromFile(
                 "assets/settings/return_img.png")
-            || !_settingsTexture.loadFromFile("assets/settings/settings_background.jpg")) {
+            || !_settingsTexture.loadFromFile(
+                "assets/settings/settings_background.jpg")) {
             throw std::runtime_error("Failed to load resources");
         }
         _formerKey.setTexture(_formerKeyTexture);
@@ -49,17 +50,23 @@ namespace rtype
         if (!font.loadFromFile("assets/fonts/komikax.ttf")) {
             return;
         }
-        _window.draw(_settings);
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
+        _window.draw(_settings, leshader);
         drawTitleAndPanels(font);
         drawAccessibilitySection(font);
         drawKeybindingsSection(font);
-        _window.draw(_returnButton);
+        _window.draw(_returnButton, leshader);
 
         _window.display();
     }
 
     void Settings::drawTitleAndPanels(sf::Font &font)
     {
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
         sf::Vector2u winSize = _window.getSize();
         float leftPanelWidth = winSize.x / 2.0f;
 
@@ -71,7 +78,7 @@ namespace rtype
         settingsText.setFillColor(sf::Color::White);
         settingsText.setPosition(
             winSize.x / 2.0f - settingsText.getGlobalBounds().width / 2.0f, 20);
-        _window.draw(settingsText);
+        _window.draw(settingsText, leshader);
 
         float panelStartY = 300;
 
@@ -81,7 +88,7 @@ namespace rtype
         keybindingsRect.setFillColor(sf::Color::Transparent);
         keybindingsRect.setOutlineColor(sf::Color::Red);
         keybindingsRect.setOutlineThickness(4.f);
-        _window.draw(keybindingsRect);
+        _window.draw(keybindingsRect, leshader);
     }
 
     void Settings::drawAccessibilitySection(sf::Font &font)
@@ -89,6 +96,9 @@ namespace rtype
         sf::Vector2u winSize = _window.getSize();
         float leftPanelWidth = winSize.x / 2.0f;
         float panelStartY = 300;
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
 
         sf::RectangleShape accessibilityRect(
             sf::Vector2f(leftPanelWidth - 40, 400));
@@ -96,7 +106,7 @@ namespace rtype
         accessibilityRect.setFillColor(sf::Color::Transparent);
         accessibilityRect.setOutlineColor(sf::Color::Red);
         accessibilityRect.setOutlineThickness(4.f);
-        _window.draw(accessibilityRect);
+        _window.draw(accessibilityRect, leshader);
 
         sf::Text accessibilityText;
         accessibilityText.setFont(font);
@@ -107,12 +117,11 @@ namespace rtype
         accessibilityText.setPosition(leftPanelWidth / 2.0f
                 - accessibilityText.getGlobalBounds().width / 2.0f,
             panelStartY);
-        _window.draw(accessibilityText);
+        _window.draw(accessibilityText, leshader);
 
         std::vector<std::string> filterNames = {
             "Neutral", "Protanopia", "Deuteranopia", "Tritanopia", "Inverted"};
-        float filterStartY =
-            panelStartY + 90;
+        float filterStartY = panelStartY + 90;
         float filterSpacing = 55;
 
         for (size_t i = 0; i < filterNames.size(); ++i) {
@@ -128,13 +137,13 @@ namespace rtype
 
                 _choosenIcon.setPosition(
                     filterText.getLocalBounds().width + 80, filterPosY);
-                _window.draw(_choosenIcon);
+                _window.draw(_choosenIcon, leshader);
             } else {
                 filterText.setFillColor(sf::Color::White);
             }
 
             filterText.setPosition(40, filterPosY);
-            _window.draw(filterText);
+            _window.draw(filterText, leshader);
         }
     }
 
@@ -143,6 +152,9 @@ namespace rtype
         sf::Vector2u winSize = _window.getSize();
         float leftPanelWidth = winSize.x / 2.0f;
         float panelStartY = 300;
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
 
         sf::Text keybindingsText;
         keybindingsText.setFont(font);
@@ -154,7 +166,7 @@ namespace rtype
                 + (leftPanelWidth / 2.0f
                     - keybindingsText.getGlobalBounds().width / 2.0f),
             panelStartY);
-        _window.draw(keybindingsText);
+        _window.draw(keybindingsText, leshader);
 
         int y = panelStartY + 100;
         for (const auto &binding : _bindings) {
@@ -170,14 +182,14 @@ namespace rtype
                 _formerKey.getPosition().y
                     + (_formerKey.getGlobalBounds().height / 2.f
                         - formerKeyText.getGlobalBounds().height / 2.f));
-            _window.draw(_formerKey);
-            _window.draw(formerKeyText);
+            _window.draw(_formerKey, leshader);
+            _window.draw(formerKeyText, leshader);
 
             _rightArrow.setPosition(leftPanelWidth + 240,
                 y
                     + (_formerKey.getGlobalBounds().height / 2.f
                         - _rightArrow.getGlobalBounds().height / 2.f));
-            _window.draw(_rightArrow);
+            _window.draw(_rightArrow, leshader);
 
             _newKey.setPosition(leftPanelWidth + 340, y);
             sf::Text newKeyText;
@@ -191,8 +203,8 @@ namespace rtype
                 _newKey.getPosition().y
                     + (_newKey.getGlobalBounds().height / 2.f
                         - newKeyText.getGlobalBounds().height / 2.f));
-            _window.draw(_newKey);
-            _window.draw(newKeyText);
+            _window.draw(_newKey, leshader);
+            _window.draw(newKeyText, leshader);
 
             y += 120;
         }

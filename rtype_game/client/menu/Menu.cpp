@@ -197,18 +197,21 @@ namespace rtype
 
     void Menu::render()
     {
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
         _window.clear(sf::Color::Black);
-        _window.draw(_background);
+        _window.draw(_background, leshader);
 
         _window.draw(_outerContainer);
         _window.draw(_roomContainer);
-        _window.draw(_settings);
+        _window.draw(_settings, leshader);
         _roomHandling->draw(_window, _roomContainer);
         _textInput->draw(_window);
-        _window.draw(_validateButton);
-        _window.draw(_logo);
-        _window.draw(_playerText);
-        _window.draw(_playerNameText);
+        _window.draw(_validateButton, leshader);
+        _window.draw(_logo, leshader);
+        _window.draw(_playerText, leshader);
+        _window.draw(_playerNameText, leshader);
 
         _window.display();
     }
