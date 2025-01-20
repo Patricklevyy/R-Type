@@ -1,4 +1,4 @@
-name: Push mirror
+name: Push Mirror
 
 on:
   push:
@@ -13,8 +13,45 @@ env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-CPP-500-LYN-5-2-rtype-noe.pereira.git"
 
 jobs:
+  clang_format_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Check Code Format
+        id: clang_format
+        run: |
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror -style=file
+
+  clang_format_fix:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Clang-Format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Apply Clang-Format Fixes
+        run: |
+          find . -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
+
+      - name: Commit and Push Fixes
+        run: |
+          git config user.name "GitHub Action Bot"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "[ADD] auto-format code with clang-format"
+          git push origin ${{ github.head_ref }}
+
   build_and_verify:
     runs-on: ubuntu-latest
+    needs: [clang_format_check, clang_format_fix]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -38,60 +75,9 @@ jobs:
       - name: Run Unit Tests
         run: ./r-type_tests
 
-  clang_format_check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Clang-Format
-        run: sudo apt-get update && sudo apt-get install -y clang-format
-
-      - name: Check Code Format
-        id: clang_format
-        run: |
-          find . -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror -style=file
-
-  clang_format_fix:
-    runs-on: ubuntu-latest
-    needs: clang_format_check
-    if: failure()
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Clang-Format
-        run: sudo apt-get update && sudo apt-get install -y clang-format
-
-      - name: Apply Clang-Format Fixes
-        run: |
-          find . -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
-
-      - name: Commit and Push Fixes
-        run: |
-          git config user.name "GitHub Action Bot"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "[ADD] auto-format code with clang-format"
-          git push origin ${{ github.head_ref }}
-
-  format_check_or_fix:
-    runs-on: ubuntu-latest
-    needs:
-      - clang_format_check
-      - clang_format_fix
-    if: always()
-    steps:
-      - name: Ensure Format Check or Fix is Done
-        run: echo "Format check or fix complete"
-
   generate_docs:
     runs-on: ubuntu-latest
     needs: build_and_verify
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -110,9 +96,7 @@ jobs:
 
   push_to_mirror:
     runs-on: ubuntu-latest
-    needs:
-      - generate_docs
-      - format_check_or_fix
+    needs: [generate_docs]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -122,7 +106,5 @@ jobs:
       - name: Push to Mirror Repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url:
-            ${{ env.MIRROR_URL }}
-          ssh_private_key:
-            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+          target_repo_url: ${{ env.MIRROR_URL }}
+          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
