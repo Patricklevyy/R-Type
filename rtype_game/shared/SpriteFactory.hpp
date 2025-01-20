@@ -101,6 +101,8 @@
                             return std::make_tuple<float, float, float>(1.12f, 0.8f, 0.4f);
                         case SPRITES::LIFE_HEART:
                             return std::make_tuple<float, float, float>(1.0f, 1.0f, 0.4f);
+                        case SPRITES::MY_PLAYER_SHIP_WEAPON:
+                            return std::make_tuple<float, float, float>(3.0f, 3.0f, 0.4f);
                         default:
                             throw std::invalid_argument("Invalid sprite ID in sprite and scale : " + id);
                     }
@@ -203,6 +205,8 @@
                             return {loadTexture("assets/ath/life_rectangle.png")};
                         case SPRITES::LIFE_HEART:
                             return {loadTexture("assets/ath/life.png")};
+                        case SPRITES::MY_PLAYER_SHIP_WEAPON:
+                            return loadTextures("player_ship/rtype_vaisseau_weapon/vaisseau_weapon1.png", 0, 4);
                         default:
                             throw std::invalid_argument("Invalid sprite ID  in sprite: " + id);
                     }
