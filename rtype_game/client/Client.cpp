@@ -155,6 +155,8 @@ namespace rtype
 
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
             execute_animation();
+            if (_inLevelStatus)
+                levelStatusTime();
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
