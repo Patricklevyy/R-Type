@@ -146,6 +146,7 @@ namespace rtype
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 add_level_status_screen(false, message);
+                _inLevelStatus = true;
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -155,6 +156,7 @@ namespace rtype
                 auto &message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
                 add_level_status_screen(true, message);
+                _inLevelStatus = true;
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }

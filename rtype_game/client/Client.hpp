@@ -125,6 +125,7 @@
             private:
                 int _window_width;
                 int _window_height;
+                bool _inLevelStatus = false;
                 int _isBoosted = false;
                 std::string _name;
                 std::map<int, int> ecs_server_to_client;
@@ -260,6 +261,7 @@
 
                 void execute_animation();
                 void updatePlayerLife(std::string);
+                void levelStatusTime();
         };
     }
 #endif /* !CLIENT_HPP_ */

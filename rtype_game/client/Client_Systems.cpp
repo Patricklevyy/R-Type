@@ -16,7 +16,10 @@ namespace rtype
 
     void Client::change_player_direction(ecs::direction x, ecs::direction y)
     {
-        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(x, y, _player_system.getIndexPlayer(_ecs._components_arrays));
+        size_t player_index = _player_system.getIndexPlayer(_ecs._components_arrays);
+        if (player_index == 0)
+            return;
+        std::tuple<ecs::direction, ecs::direction, size_t> _x_y(x, y, player_index);
         send_server_player_direction(x, y);
         _eventBus.emit(RTYPE_ACTIONS::UPDATE_PLAYER_DIRECTION, std::ref(_x_y));
     }
@@ -32,13 +35,10 @@ namespace rtype
         if (!_mouse_pressed)
             return;
 
-
         _mouse_pressed = false;
         auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
             send_server_start_game(isLevelChosen.second);
-        } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
-            restart_game();
         } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
             auto release_time = std::chrono::steady_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(release_time - _mouse_press_time).count();
@@ -113,6 +113,21 @@ namespace rtype
                 _player_system.updateLifeDisplay(_ecs._components_arrays, ecs_server_to_client[life.first]);
                 return;
             }
+        }
+    }
+
+    void Client::levelStatusTime()
+    {
+        static auto lastTime = std::chrono::steady_clock::now();
+
+        auto currentTime = std::chrono::steady_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastTime).count();
+
+        if (elapsed > 5) {
+            _inLevelStatus = false;
+            if (_player_system.getIndexPlayer(_ecs._components_arrays) == 0)
+                send_server_new_player();
+            restart_game();
         }
     }
 }

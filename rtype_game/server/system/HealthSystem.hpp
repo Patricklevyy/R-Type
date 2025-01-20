@@ -42,13 +42,11 @@
                  */
                 ~HealthSystem() {}
 
-                std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
-                // std::tuple<std::list<size_t>, unsigned int, bool> checkLife(ecs::ECS &ecs, unsigned int &player_alive)
+                std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> checkLife(ecs::ECS &ecs)
                     {
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
                         auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
                         auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(ecs._components_arrays[typeid(ecs::Playable)]);
-                        // std::tuple<std::list<size_t>, unsigned int, bool> dead_entities;
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);
                         std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> dead_entities;
                         std::get<1>(dead_entities) = 0;
@@ -65,9 +63,7 @@
                                     if (i < monsters.size() && monsters[i].has_value())
                                         std::get<1>(dead_entities) += monsters[i].value()._score_value;
                                     if (i < playables.size() && playables[i].has_value()) {
-                                        player_alive--;
-                                        if (player_alive <= 0)
-                                            std::get<2>(dead_entities) = true;
+                                        std::get<2>(dead_entities) = true;
                                     }
                                     std::get<0>(dead_entities).push_front(i);
                                     if (i < positions.size() && positions[i].has_value()) {
