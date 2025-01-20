@@ -83,4 +83,4 @@ namespace rtype
             default: return "XXX";
         }
     }
-}
+} // namespace rtype

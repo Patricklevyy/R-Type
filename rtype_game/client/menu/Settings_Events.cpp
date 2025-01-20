@@ -105,4 +105,4 @@ namespace rtype
             updateFiltersEvent(event);
         }
     }
-}
+} // namespace rtype

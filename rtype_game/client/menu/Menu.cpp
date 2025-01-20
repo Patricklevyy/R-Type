@@ -17,8 +17,10 @@ namespace rtype
                 "assets/backgrounds/create_room_button.png")
             || !_settingsTexture.loadFromFile(
                 "assets/settings/settings_button.png")
-            || !font_2.loadFromFile("assets/fonts/VeniteAdoremusStraight-Yzo6v.ttf")
-            || !_backgroundTexture.loadFromFile("assets/settings/menu_background.jpg")) {
+            || !font_2.loadFromFile(
+                "assets/fonts/VeniteAdoremusStraight-Yzo6v.ttf")
+            || !_backgroundTexture.loadFromFile(
+                "assets/settings/menu_background.jpg")) {
             throw std::runtime_error("Failed to load resources");
         }
 
@@ -125,7 +127,8 @@ namespace rtype
                     static_cast<float>(mousePos.y));
                 if (_settings.getGlobalBounds().contains(mousePosF)) {
                     inSettings = true;
-                    auto keyBidingsMap = _client._sfml_handler->getKeyBindings();
+                    auto keyBidingsMap =
+                        _client._sfml_handler->getKeyBindings();
 
                     Settings settings(_window, keyBidingsMap, _client);
                     settings.run(inSettings);
@@ -151,7 +154,9 @@ namespace rtype
         sf::Vector2u windowSize = _window.getSize();
 
         _playerText.setPosition(30, 30);
-        _playerNameText.setPosition(_playerText.getPosition().x + _playerText.getGlobalBounds().width + 20, 30);
+        _playerNameText.setPosition(_playerText.getPosition().x
+                + _playerText.getGlobalBounds().width + 20,
+            30);
 
         _logo.setPosition(
             (windowSize.x - _logo.getGlobalBounds().width) / 2, 20);

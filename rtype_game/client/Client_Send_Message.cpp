@@ -30,16 +30,19 @@ namespace rtype
         }
         message.params += std::to_string(player_positions.second + 20);
         message.params += ";dir_x=" + std::to_string(ecs::direction::RIGHT)
-            + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION) + ";type=";
+            + ";dir_y=" + std::to_string(ecs::direction::NO_DIRECTION)
+            + ";type=";
         if (!charged) {
             if (_isBoosted) {
                 message.params += std::to_string(SPRITES::PLAYER_RED_MISSILE);
             } else {
-                message.params += std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
+                message.params +=
+                    std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
             }
         } else {
             if (_isBoosted) {
-                message.params += std::to_string(SPRITES::PLAYER_RED_CHARGED_SHOOT);
+                message.params +=
+                    std::to_string(SPRITES::PLAYER_RED_CHARGED_SHOOT);
             } else {
                 message.params += std::to_string(SPRITES::PLAYER_CHARGED_SHOOT);
             }
@@ -138,4 +141,4 @@ namespace rtype
         _message_compressor.serialize(request, buffer);
         _udpClient->sendMessageToDefault(buffer);
     }
-}
+} // namespace rtype
