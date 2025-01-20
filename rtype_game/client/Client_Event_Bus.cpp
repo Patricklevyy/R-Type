@@ -159,10 +159,12 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_ATH, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::START_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
             _ath_system.removeLevels(_ecs);
+            init_score();
+            init_life();
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();

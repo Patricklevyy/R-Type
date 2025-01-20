@@ -265,7 +265,7 @@
             size_t getNextIndex();
             void startLevel(LEVELS);
             void send_client_level_status(bool, LEVELS);
-            void send_client_remove_ath();
+            void send_client_start_level();
             void sendScore(unsigned int);
             void send_roll_back();
             std::pair<int, int> createHitbox(SPRITES);

@@ -36,8 +36,6 @@ namespace rtype
         _mouse_pressed = false;
         auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
-            init_score();
-            init_life();
             send_server_start_game(isLevelChosen.second);
         } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
             restart_game();
@@ -50,19 +48,6 @@ namespace rtype
             } else {
                 send_server_new_shoot(false);
             }
-        }
-    }
-
-    void Client::handleMouseClick()
-    {
-        auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
-        if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
-            init_score();
-            send_server_start_game(isLevelChosen.second);
-        } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
-            restart_game();
-        } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
-            send_server_new_shoot();
         }
     }
 

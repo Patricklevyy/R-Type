@@ -154,11 +154,11 @@ namespace rtype
         }
     }
 
-    void Room::send_client_remove_ath()
+    void Room::send_client_start_level()
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::REMOVE_ATH;
+        responseMessage.action = RTYPE_ACTIONS::START_LEVEL;
         responseMessage.id = 0;
 
         _message_compressor.serialize(responseMessage, response);

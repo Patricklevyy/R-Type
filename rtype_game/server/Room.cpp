@@ -106,7 +106,7 @@ namespace rtype
 
         playingInLevel = true;
         _ecs.addComponents<Levels>(index, Levels(level));
-        send_client_remove_ath();
+        send_client_start_level();
     }
 
     void Room::handleCommand(const std::vector<char> &compressed_message, std::string clientAddr)

@@ -101,7 +101,6 @@
 
                 void handleMousePress();
                 void handleMouseRelease();
-                void handleMouseClick();
                 void changeDifficulty(DIFFICULTY);
                 void launchMenu();
 
