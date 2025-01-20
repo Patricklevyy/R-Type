@@ -80,6 +80,34 @@
                         return dead_entities;
                     }
 
+                    std::list<std::pair<size_t, int>> updatePlayerLife(std::unordered_map<std::type_index, std::any> &components_array) {
+
+                        auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
+                        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
+
+                        std::list<std::pair<size_t, int>> lifes_updates;
+
+                        static auto last_execution_time = std::chrono::steady_clock::now();
+
+                        auto now = std::chrono::steady_clock::now();
+                        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - last_execution_time);
+                        if (elapsed.count() < 500) {
+                            return lifes_updates;
+                        }
+
+                        last_execution_time = now;
+
+
+                        for (size_t i = 0; i < playables.size(); ++i)
+                        {
+                            if (playables[i].has_value() && i < healths.size() && healths[i].has_value())
+                            {
+                                lifes_updates.push_front(std::make_pair(i, healths[i].value()._health));
+                            }
+                        }
+                        return lifes_updates;
+                    }
+
             protected:
             private:
         };

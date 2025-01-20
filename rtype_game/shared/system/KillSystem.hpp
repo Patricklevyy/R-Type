@@ -19,6 +19,7 @@
     #include "../../server/components/Allies.hpp"
     #include "../../server/components/Ennemies.hpp"
     #include "../../server/components/Monster.hpp"
+    #include "../../server/components/Bonus.hpp"
     #include "../../server/components/Hitbox.hpp"
     #include "../../server/components/Damage.hpp"
     #include "../../server/components/PowerUp.hpp"
@@ -33,6 +34,7 @@
     #include "../../server/components/SpriteId.hpp"
     #include "../../server/components/Bonus.hpp"
     #include "../../client/components/Text.hpp"
+    #include "../../client/components/Life.hpp"
 
     namespace rtype
     {
@@ -60,6 +62,7 @@
                     ecs.killEntityFromRegistry<Music>(index);
                     ecs.killEntityFromRegistry<Text>(index);
                     ecs.killEntityFromRegistry<Animation>(index);
+                    ecs.killEntityFromRegistry<Life>(index);
 
                     // SHARED COMPONENTS
 
@@ -81,11 +84,12 @@
                     ecs.addDeadEntity(index);
                 }
 
-                std::list<size_t> killMonstersAndProjectiles(ecs::ECS &ecs)
+                std::list<size_t> killAllExceptPlayer(ecs::ECS &ecs)
                 {
                     auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays[typeid(Levels)]);
                     auto &projectiles = std::any_cast<ecs::SparseArray<Projectiles> &>(ecs._components_arrays[typeid(Projectiles)]);
+                    auto &bonuses = std::any_cast<ecs::SparseArray<Bonus> &>(ecs._components_arrays[typeid(Bonus)]);
 
                     std::list<size_t> dead_entities;
 
@@ -108,6 +112,14 @@
                     for (size_t i = 0; i < projectiles.size(); ++i)
                         {
                             if (projectiles[i].has_value())
+                            {
+                                killEntity(ecs, i);
+                                dead_entities.push_front(i);
+                            }
+                        }
+                    for (size_t i = 0; i < bonuses.size(); ++i)
+                        {
+                            if (bonuses[i].has_value())
                             {
                                 killEntity(ecs, i);
                                 dead_entities.push_front(i);
@@ -137,7 +149,7 @@
                         {
                             if (texts[i].has_value())
                             {
-                                ecs.killEntityFromRegistry<Text>(i);
+                                killEntity(ecs, i);
                             }
                         }
                 }

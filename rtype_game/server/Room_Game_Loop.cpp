@@ -37,6 +37,7 @@ namespace rtype
             _eventBus.emit(RTYPE_ACTIONS::CHECK_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_BONUS_COLLISIONS);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LIFES);
+            _eventBus.emit(RTYPE_ACTIONS::UPDATE_LIFE);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_BONUS);
             _eventBus.emit(RTYPE_ACTIONS::EXECUTE_LEVEL);
             _eventBus.emit(RTYPE_ACTIONS::CHECK_LEVEL_FINISHED);
@@ -48,7 +49,6 @@ namespace rtype
 
     void Room::start(int port, std::string window_width, std::string window_height, std::string difficulty)
     {
-        std::cout << "j'inite et je creer les threads" << std::endl;
         _gameThread = std::thread(&Room::gameThreadFunction, this, port, window_width, window_height, difficulty);
         _gameThread.detach();
     }

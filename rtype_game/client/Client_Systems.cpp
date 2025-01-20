@@ -25,7 +25,6 @@ namespace rtype
     {
         _mouse_pressed = true;
         _mouse_press_time = std::chrono::steady_clock::now();
-        std::cout << "press" << std::endl;
     }
 
     void Client::handleMouseRelease()
@@ -37,7 +36,6 @@ namespace rtype
         _mouse_pressed = false;
         auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
-            init_score();
             send_server_start_game(isLevelChosen.second);
         } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
             restart_game();
@@ -50,19 +48,6 @@ namespace rtype
             } else {
                 send_server_new_shoot(false);
             }
-        }
-    }
-
-    void Client::handleMouseClick()
-    {
-        auto isLevelChosen = _ath_system.isLevelClicked(_ecs._components_arrays);
-        if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
-            init_score();
-            send_server_start_game(isLevelChosen.second);
-        } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
-            restart_game();
-        } else if (_player_system.getIndexPlayer(_ecs._components_arrays) != -1) {
-            send_server_new_shoot();
         }
     }
 
@@ -91,6 +76,43 @@ namespace rtype
             _ecs.addComponents<ecs::Position>(index, ecs::Position(player_positions.first, player_positions.second));
             _ecs.addComponents<Displayable>(index, Displayable(SPRITES::CHARGED_ANIMATION));
             _ecs.addComponents<Animation>(index, Animation());
+        }
+    }
+
+    std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
+    {
+        std::vector<std::pair<std::string, int>> parsedRooms;
+        std::stringstream ss(roomList);
+        std::string roomEntry;
+
+        while (std::getline(ss, roomEntry, ':')) {
+            size_t prefixPos = roomEntry.find("rooms=");
+            if (prefixPos != std::string::npos) {
+                roomEntry = roomEntry.substr(prefixPos + 6);
+
+                size_t delimiterPos = roomEntry.find(',');
+                if (delimiterPos != std::string::npos) {
+                    std::string roomName = roomEntry.substr(0, delimiterPos);
+                    int nbClients = std::stoi(roomEntry.substr(delimiterPos + 1));
+                    parsedRooms.emplace_back(roomName, nbClients);
+                }
+            }
+        }
+        return parsedRooms;
+    }
+
+    void Client::updatePlayerLife(std::string lifes_string)
+    {
+        std::list<std::pair<size_t, int>> lifes = Utils::parse_update_life(lifes_string);
+
+        std::pair<bool, int> player;
+        for (auto life : lifes) {
+            player = _player_system.updatePlayerLife(_ecs._components_arrays, ecs_server_to_client[life.first], life.second);
+
+            if (player.first) {
+                _player_system.updateLifeDisplay(_ecs._components_arrays, ecs_server_to_client[life.first]);
+                return;
+            }
         }
     }
 }

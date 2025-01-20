@@ -75,6 +75,7 @@
             REMOVE_SHIELD,
             UP_VELOCITY,
             DOWN_VELOCITY,
+            UPDATE_LIFE,
             MAX_ACTION
         };
 
@@ -101,6 +102,7 @@
             FIRE_BALL,
             BOSS_PROJECTILE,
             OTHER_PLAYER_SHIP,
+            OTHER_PLAYER_SHIP_SHIELD,
             LOOSER_SCREEN,
             WIN_SCREEN,
             LEVEL1,
@@ -114,6 +116,9 @@
             SPEED_DROP,
             ASTEROIDE,
             MY_PLAYER_SHIP_SHIELD,
+            LIFE_RECTANGLE,
+            LIFE_RED,
+            LIFE_HEART,
             MAX_SPRITE
         };
 

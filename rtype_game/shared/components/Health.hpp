@@ -22,7 +22,7 @@ namespace rtype {
             /**
              * @brief Constructor for the Health class.
              */
-            Health(int health) : _health(health){};
+            Health(int health) : _health(health), _max_heath(health) {};
 
             /**
              * @brief Destructor for the Ennemies class.
@@ -30,6 +30,7 @@ namespace rtype {
             ~Health() {};
 
             int _health;
+            int _max_heath;
 
         protected:
         private:

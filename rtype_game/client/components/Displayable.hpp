@@ -113,6 +113,14 @@ namespace rtype {
             return sf::Vector2f(0, 0);
         }
 
+         void setSpriteScale(float scaleX, float scaleY) {
+            if (sprite) {
+                sprite->setScale(scaleX, scaleY);
+            } else {
+                throw std::runtime_error("Sprite is not initialized");
+            }
+        }
+
     private:
         std::shared_ptr<sf::Sprite> sprite;
         std::vector<std::shared_ptr<sf::Texture>> textures;

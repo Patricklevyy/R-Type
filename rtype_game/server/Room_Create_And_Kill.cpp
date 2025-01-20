@@ -20,7 +20,7 @@ namespace rtype
         std::vector<char> send_message;
         ecs::udp::Message mes;
         mes.action = RTYPE_ACTIONS::CREATE_CLIENT;
-        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_port) + ";" + std::to_string(_gameplay_factory->getDifficulty()) + ":" + sendExistingEntities();
+        mes.params = std::to_string(static_cast<int>(position.first)) + ";" + std::to_string(static_cast<int>(position.second)) + ";" + std::to_string(_gameplay_factory->getPlayerHealth()) + ";" + std::to_string(_port) + ";" + std::to_string(_gameplay_factory->getDifficulty()) + ":" + sendExistingEntities();
 
         std::cout << "CREATE CLINET : " << mes.params << std::endl;
         mes.id = create_player(position, clientName);
@@ -177,7 +177,7 @@ namespace rtype
             case BONUS::VELOCITY:
                 _bonus_system.changePlayerVelocity(_ecs._components_arrays, std::get<0>(bonus_info.second), _gameplay_factory->getVelocityBoostBonus());
                 _bonus_system.powerUp(_ecs._components_arrays, std::get<0>(bonus_info.second), bonus_info.first, _gameplay_factory->getVelocityDurationBonus());
-                send_client_change_player_velocity(true);
+                send_client_change_player_velocity(std::get<0>(bonus_info.second), true);
                 break;
             case BONUS::SHIELD:
                 _bonus_system.updatePlayerTempShield(_ecs._components_arrays, std::get<0>(bonus_info.second), SpriteFactory::getMaxTextureSizeForSprite(SPRITES::MY_PLAYER_SHIP_SHIELD), true);

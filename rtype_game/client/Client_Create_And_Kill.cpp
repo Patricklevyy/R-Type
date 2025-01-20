@@ -56,21 +56,16 @@ namespace rtype
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createPlayer(unsigned int server_id, float x, float y)
+    void Client::createPlayer(unsigned int server_id, float x, float y, int health)
     {
         size_t index = getNextIndex();
 
-        ecs::Direction direction;
-        ecs::Playable playable(_name);
-        ecs::Position position(x, y);
-        ecs::Velocity velocity(_gameplay_factory->getPlayerVelocity());
-        Displayable displayable(SPRITES::MY_PLAYER_SHIP);
-
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<ecs::Playable>(index, playable);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Displayable>(index, displayable);
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction());
+        _ecs.addComponents<ecs::Playable>(index, ecs::Playable());
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::MY_PLAYER_SHIP));
+        _ecs.addComponents<Health>(index, Health(health));
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;

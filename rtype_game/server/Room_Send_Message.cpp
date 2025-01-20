@@ -154,11 +154,11 @@ namespace rtype
         }
     }
 
-    void Room::send_client_remove_ath()
+    void Room::send_client_start_level()
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
-        responseMessage.action = RTYPE_ACTIONS::REMOVE_ATH;
+        responseMessage.action = RTYPE_ACTIONS::START_LEVEL;
         responseMessage.id = 0;
 
         _message_compressor.serialize(responseMessage, response);
@@ -198,7 +198,7 @@ namespace rtype
         }
     }
 
-    void Room::send_client_change_player_velocity(bool up)
+    void Room::send_client_change_player_velocity(size_t player_index, bool up)
     {
         std::vector<char> response;
         ecs::udp::Message responseMessage;
@@ -207,7 +207,7 @@ namespace rtype
         } else {
             responseMessage.action = RTYPE_ACTIONS::DOWN_VELOCITY;
         }
-        responseMessage.id = 0;
+        responseMessage.id = player_index;
 
         _message_compressor.serialize(responseMessage, response);
 
@@ -225,8 +225,25 @@ namespace rtype
         } else {
             responseMessage.action = RTYPE_ACTIONS::REMOVE_SHIELD;
         }
+        responseMessage.id = index;
+
+        _message_compressor.serialize(responseMessage, response);
+
+        for (const auto &clientAddr : _clientAddresses) {
+            _udp_server->sendMessage(response, clientAddr);
+        }
+    }
+
+    void Room::send_client_player_lifes(std::list<std::pair<size_t, int>> lifes)
+    {
+        std::vector<char> response;
+        ecs::udp::Message responseMessage;
         responseMessage.id = 0;
-        responseMessage.params = std::to_string(index);
+        responseMessage.action = RTYPE_ACTIONS::UPDATE_LIFE;
+
+        for (auto life : lifes) {
+            responseMessage.params += std::to_string(life.first) + "," + std::to_string(life.second) + ";";
+        }
 
         _message_compressor.serialize(responseMessage, response);
 

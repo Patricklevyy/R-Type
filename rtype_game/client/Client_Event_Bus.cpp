@@ -159,10 +159,12 @@ namespace rtype
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-        _eventBus.subscribe(RTYPE_ACTIONS::REMOVE_ATH, [this](const std::vector<std::any> &args) {
+        _eventBus.subscribe(RTYPE_ACTIONS::START_LEVEL, [this](const std::vector<std::any> &args) {
             (void)args;
 
             _ath_system.removeLevels(_ecs);
+            init_score();
+            init_life();
         });
         _eventBus.subscribe(RTYPE_ACTIONS::CREATE_PLAYER, [this](const std::vector<std::any> &args) {
             ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
@@ -171,6 +173,7 @@ namespace rtype
             std::string token;
 
             float x = 0.0f, y = 0.0f;
+            int health = 0;
 
             std::getline(ss, token, ';');
             x = std::stof(token);
@@ -178,7 +181,10 @@ namespace rtype
             std::getline(ss, token, ';');
             y = std::stof(token);
 
-            createPlayer(message.id, x, y);
+            std::getline(ss, token, ';');
+            health = std::stof(token);
+
+            createPlayer(message.id, x, y, health);
         });
         _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_SCORE, [this](const std::vector<std::any> &args) {
             try {
@@ -209,7 +215,7 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                _bonus_system.changePlayerVelocity(_ecs._components_arrays, _player_system.getIndexPlayer(_ecs._components_arrays), _gameplay_factory->getVelocityBoostBonus());
+                _bonus_system.changeEntityVelocity(_ecs._components_arrays, ecs_server_to_client[message.id], _gameplay_factory->getVelocityBoostBonus());
 
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
@@ -219,7 +225,7 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                _bonus_system.changePlayerVelocity(_ecs._components_arrays, _player_system.getIndexPlayer(_ecs._components_arrays), -_gameplay_factory->getVelocityBoostBonus());
+                _bonus_system.changeEntityVelocity(_ecs._components_arrays, ecs_server_to_client[message.id], -_gameplay_factory->getVelocityBoostBonus());
 
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
@@ -229,7 +235,10 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::MY_PLAYER_SHIP_SHIELD);
+                if (!_player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::MY_PLAYER_SHIP_SHIELD))
+                {
+                    _player_system.changeTeamateSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::OTHER_PLAYER_SHIP_SHIELD);
+                }
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
@@ -238,32 +247,22 @@ namespace rtype
             try {
                 ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-                _player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[std::stoi(message.params)], SPRITES::MY_PLAYER_SHIP);
+                if (!_player_system.changePlayerSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::MY_PLAYER_SHIP))
+                {
+                    _player_system.changeTeamateSprite(_ecs._components_arrays, ecs_server_to_client[message.id], SPRITES::OTHER_PLAYER_SHIP);
+                }
             } catch (const std::bad_any_cast &e) {
                 std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
         });
-    }
+        _eventBus.subscribe(RTYPE_ACTIONS::UPDATE_LIFE, [this](const std::vector<std::any> &args) {
+            try {
+                ecs::udp::Message message = std::any_cast<std::reference_wrapper<ecs::udp::Message>>(args[0]).get();
 
-    std::vector<std::pair<std::string, int>> Client::parseRoomList(const std::string &roomList)
-    {
-        std::vector<std::pair<std::string, int>> parsedRooms;
-        std::stringstream ss(roomList);
-        std::string roomEntry;
-
-        while (std::getline(ss, roomEntry, ':')) {
-            size_t prefixPos = roomEntry.find("rooms=");
-            if (prefixPos != std::string::npos) {
-                roomEntry = roomEntry.substr(prefixPos + 6);
-
-                size_t delimiterPos = roomEntry.find(',');
-                if (delimiterPos != std::string::npos) {
-                    std::string roomName = roomEntry.substr(0, delimiterPos);
-                    int nbClients = std::stoi(roomEntry.substr(delimiterPos + 1));
-                    parsedRooms.emplace_back(roomName, nbClients);
-                }
+                updatePlayerLife(message.params);
+            } catch (const std::bad_any_cast &e) {
+                std::cerr << "Error during event handling: " << e.what() << std::endl;
             }
-        }
-        return parsedRooms;
+        });
     }
 }
