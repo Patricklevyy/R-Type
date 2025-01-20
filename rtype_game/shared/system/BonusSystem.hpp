@@ -20,11 +20,31 @@
 
     namespace rtype
     {
+        /**
+         * @class BonusSystem
+         * @brief A class that handles the bonus of the game.
+         *
+         * The BonusSystem class is managing every Bonus when an entity is killed
+         */
         class BonusSystem {
             public:
+                /**
+                 * @brief Constructor for the BonusSystem class.
+                 */
                 BonusSystem() {}
+
+                /**
+                 * @brief Destructor for the BonusSystem class.
+                 */
                 ~BonusSystem() {}
 
+                /**
+                 * @brief Add life to a player after the bonus Life is taken.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of components associated with various entities.
+                 * @param index The index of the player entity whose life is to be updated.
+                 * @param life The amount of life to add to the player.
+                 */
                 void addPlayerLife(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int life) {
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
@@ -37,6 +57,13 @@
                     }
                 }
 
+                /**
+                 * @brief Add speed to a player after the bonus Speed is taken.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of components associated with various entities.
+                 * @param index The index of the player entity whose speed is to be updated.
+                 * @param velocity The new speed of the player.
+                 */
                 void changePlayerVelocity(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int velocity) {
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                     auto &velocities = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);
@@ -46,6 +73,13 @@
                     }
                 }
 
+                /**
+                 * @brief Modify the speed of entities.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of components associated with various entities.
+                 * @param index The index of the entity whose speed need to be updated.
+                 * @param velocity The speed of the entities.
+                 */
                 void changeEntityVelocity(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int velocity) {
                     auto &velocities = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);
 
@@ -54,6 +88,14 @@
                     }
                 }
 
+               /**
+                 * @brief Manage the bonus that has been taken to set the duration of this effect.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of components associated with various entities.
+                 * @param index The index of the entity whose speed need to be updated.
+                 * @param bonus The bonus that has been taken.
+                 * @param bonus_duration The speed of the entities.
+                 */
                 void powerUp(std::unordered_map<std::type_index, std::any> &components_array, size_t index, BONUS bonus, int bonus_duration) {
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
 
@@ -63,6 +105,14 @@
                     }
                 }
 
+               /**
+                 * @brief Manage the shield of the player.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of components associated with various entities.
+                 * @param index The index of the entity whose speed need to be updated.
+                 * @param x_y The position of the player.
+                 * @param invincible Set invincible parameter on the player.
+                 */
                 void updatePlayerTempShield(std::unordered_map<std::type_index, std::any> &components_array, size_t index, std::pair<int, int> x_y, bool invicible) {
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                     auto &hitbox = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
@@ -74,6 +124,11 @@
                     }
                 }
 
+               /**
+                 * @brief Check the bonus to update the effect.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 *        It represents the collection of Bonuses.
+                 */
                 std::list<std::pair<size_t, std::list<BONUS>>> checkBonus(std::unordered_map<std::type_index, std::any> &components_array) {
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
 
