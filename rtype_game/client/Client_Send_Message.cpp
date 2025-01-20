@@ -51,7 +51,8 @@ namespace rtype
         _message_compressor.serialize(message, buffer);
 
         _udpClient->sendMessageToDefault(buffer);
-        _music_system.shootMusic(_ecs._components_arrays, "assets/musics/shot_song.ogg");
+        _music_system.shootMusic(
+            _ecs._components_arrays, "assets/musics/shot_song.ogg");
     }
 
     void Client::send_server_player_direction(
