@@ -14,10 +14,12 @@ var classrtype_1_1Client =
     [ "send_server_join_room", "classrtype_1_1Client.html#ab633d05ad0965489928393569d89ad71", null ],
     [ "set_window_filter", "classrtype_1_1Client.html#a4b4c1dca9657cfa4f489fe771590f1e1", null ],
     [ "start", "classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4", null ],
+    [ "_currentFilter", "classrtype_1_1Client.html#ab9a99d6d9504fac0eb8b8e362aae10a4", null ],
     [ "_ecs", "classrtype_1_1Client.html#ad9273a9238fb958e38961baaa9f8fe7c", null ],
     [ "_eventBus", "classrtype_1_1Client.html#af361faea316896d608510962c341d0f4", null ],
     [ "_in_menu", "classrtype_1_1Client.html#ac840cc7c68fc34edbf343ccd2a21427a", null ],
     [ "_roomsList", "classrtype_1_1Client.html#a1b4bda91cd69cd60eef61aa97e8a6252", null ],
     [ "_running", "classrtype_1_1Client.html#a2563beae9bd38f7e95efe6bea1c114c5", null ],
+    [ "_sfml_handler", "classrtype_1_1Client.html#ac94cacc61a70fb9e524364b8320e53f7", null ],
     [ "roomListMutex", "classrtype_1_1Client.html#a7665eb4a2bd57d0e4397970d99347b81", null ]
 ];

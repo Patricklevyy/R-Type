@@ -80,6 +80,7 @@ var hierarchy =
     [ "rtype::ScoreSystem", "classrtype_1_1ScoreSystem.html", null ],
     [ "rtype::SecretKeyChecker", "classrtype_1_1SecretKeyChecker.html", null ],
     [ "rtype::Server", "classrtype_1_1Server.html", null ],
+    [ "rtype::Settings", "classrtype_1_1Settings.html", null ],
     [ "rtype::SFMLHandler", "classrtype_1_1SFMLHandler.html", null ],
     [ "rtype::Shader", "classrtype_1_1Shader.html", null ],
     [ "rtype::ShootingSystem", "classrtype_1_1ShootingSystem.html", null ],

@@ -9,8 +9,9 @@ var searchData=
   ['filter_6',['Filter',['../classrtype_1_1Filter.html',1,'rtype']]],
   ['filter_2ehpp_7',['Filter.hpp',['../Filter_8hpp.html',1,'']]],
   ['filter_5fmode_8',['FILTER_MODE',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76',1,'rtype']]],
-  ['fire_5fball_9',['FIRE_BALL',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ac89bb905f02d6f29d6d90edd3829c54a',1,'rtype']]],
-  ['fonctionnalités_10',['Fonctionnalités',['../md_documentation_2CMakeDocumentation.html#autotoc_md18',1,'']]],
-  ['formule_20de_20bande_20passante_11',['Formule de bande passante',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md11',1,'']]],
-  ['frameworks_20et_20bibliothèques_20utilisés_12',['Documentation des Frameworks et Bibliothèques Utilisés',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html',1,'']]]
+  ['filtermodetostring_9',['filterModeToString',['../classrtype_1_1Settings.html#ac904a978ff2ab64bf79fe9a307e4afd9',1,'rtype::Settings']]],
+  ['fire_5fball_10',['FIRE_BALL',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ac89bb905f02d6f29d6d90edd3829c54a',1,'rtype']]],
+  ['fonctionnalités_11',['Fonctionnalités',['../md_documentation_2CMakeDocumentation.html#autotoc_md18',1,'']]],
+  ['formule_20de_20bande_20passante_12',['Formule de bande passante',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md11',1,'']]],
+  ['frameworks_20et_20bibliothèques_20utilisés_13',['Documentation des Frameworks et Bibliothèques Utilisés',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html',1,'']]]
 ];

@@ -55,5 +55,6 @@ var searchData=
   ['musicsystem_52',['musicsystem',['../classrtype_1_1MusicSystem.html',1,'rtype::MusicSystem'],['../classrtype_1_1MusicSystem.html#a688e8eb73befad966a02178f33591aff',1,'rtype::MusicSystem::MusicSystem()']]],
   ['musicsystem_2ehpp_53',['MusicSystem.hpp',['../MusicSystem_8hpp.html',1,'']]],
   ['my_5fplayer_5fship_54',['MY_PLAYER_SHIP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a629b51c371016e65912d9e81d785ed8b',1,'rtype']]],
-  ['my_5fplayer_5fship_5fshield_55',['MY_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216',1,'rtype']]]
+  ['my_5fplayer_5fship_5fshield_55',['MY_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216',1,'rtype']]],
+  ['my_5fplayer_5fship_5fweapon_56',['MY_PLAYER_SHIP_WEAPON',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686',1,'rtype']]]
 ];

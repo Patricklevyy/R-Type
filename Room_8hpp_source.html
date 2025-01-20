@@ -269,13 +269,14 @@ $(document).ready(function(){initNavTree('Room_8hpp_source.html',''); initResiza
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            <span class="keywordtype">void</span> create_bonus(std::pair&lt;<a class="code hl_enumeration" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62">BONUS</a>, std::tuple&lt;size_t, float, float&gt;&gt;);</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keywordtype">void</span> send_client_change_player_velocity(<span class="keywordtype">size_t</span>, <span class="keywordtype">bool</span>);</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            <span class="keywordtype">void</span> send_client_player_shield(<span class="keywordtype">size_t</span>, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordtype">void</span> desactivateBonus(std::pair&lt;<span class="keywordtype">size_t</span>, std::list&lt;BONUS&gt;&gt;);</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <span class="keywordtype">void</span> send_client_player_lifes(std::list&lt;std::pair&lt;size_t, int&gt;&gt;);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        };</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordtype">void</span> send_client_player_weapon(<span class="keywordtype">size_t</span> index, <span class="keywordtype">bool</span> put);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <span class="keywordtype">void</span> desactivateBonus(std::pair&lt;<span class="keywordtype">size_t</span>, std::list&lt;BONUS&gt;&gt;);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            <span class="keywordtype">void</span> send_client_player_lifes(std::list&lt;std::pair&lt;size_t, int&gt;&gt;);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        };</div>
 </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="preprocessor">#endif </span><span class="comment">/* !ROOM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="preprocessor">#endif </span><span class="comment">/* !ROOM_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aAllies_8hpp_html"><div class="ttname"><a href="Allies_8hpp.html">Allies.hpp</a></div><div class="ttdoc">Class representing allies in the game.</div></div>
 <div class="ttc" id="aAsteroideSystem_8hpp_html"><div class="ttname"><a href="AsteroideSystem_8hpp.html">AsteroideSystem.hpp</a></div></div>
 <div class="ttc" id="aBonus_8hpp_html"><div class="ttname"><a href="Bonus_8hpp.html">Bonus.hpp</a></div><div class="ttdoc">Class representing bonus in the game.</div></div>
@@ -325,9 +326,9 @@ $(document).ready(function(){initNavTree('Room_8hpp_source.html',''); initResiza
 <div class="ttc" id="aclassrtype_1_1ShootingSystem_html"><div class="ttname"><a href="classrtype_1_1ShootingSystem.html">rtype::ShootingSystem</a></div><div class="ttdoc">Manages shooting behavior for monsters.</div><div class="ttdef"><b>Definition</b> ShootingSystem.hpp:29</div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html"><div class="ttname"><a href="classrtype_1_1Timer.html">rtype::Timer</a></div><div class="ttdoc">Handles timing for the game loop and frame updates.</div><div class="ttdef"><b>Definition</b> Timer.hpp:24</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
-<div class="ttc" id="anamespacertype_html_a3a5c65b39ed5a357de62dc4fece0d7a8"><div class="ttname"><a href="namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8">rtype::LEVELS</a></div><div class="ttdeci">LEVELS</div><div class="ttdef"><b>Definition</b> Enums.hpp:139</div></div>
-<div class="ttc" id="anamespacertype_html_a4dfee7a3dedb8a551726b7adcf8c0f62"><div class="ttname"><a href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62">rtype::BONUS</a></div><div class="ttdeci">BONUS</div><div class="ttdoc">Spawn a weapon when a monster is killed.</div><div class="ttdef"><b>Definition</b> Enums.hpp:168</div></div>
-<div class="ttc" id="anamespacertype_html_a747b1b1523f4dfe8c5cb549d5eb17662"><div class="ttname"><a href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">rtype::SPRITES</a></div><div class="ttdeci">SPRITES</div><div class="ttdoc">Defines sprite identifiers for game assets.</div><div class="ttdef"><b>Definition</b> Enums.hpp:87</div></div>
+<div class="ttc" id="anamespacertype_html_a3a5c65b39ed5a357de62dc4fece0d7a8"><div class="ttname"><a href="namespacertype.html#a3a5c65b39ed5a357de62dc4fece0d7a8">rtype::LEVELS</a></div><div class="ttdeci">LEVELS</div><div class="ttdef"><b>Definition</b> Enums.hpp:145</div></div>
+<div class="ttc" id="anamespacertype_html_a4dfee7a3dedb8a551726b7adcf8c0f62"><div class="ttname"><a href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62">rtype::BONUS</a></div><div class="ttdeci">BONUS</div><div class="ttdoc">Spawn a weapon when a monster is killed.</div><div class="ttdef"><b>Definition</b> Enums.hpp:174</div></div>
+<div class="ttc" id="anamespacertype_html_a747b1b1523f4dfe8c5cb549d5eb17662"><div class="ttname"><a href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">rtype::SPRITES</a></div><div class="ttdeci">SPRITES</div><div class="ttdoc">Defines sprite identifiers for game assets.</div><div class="ttdef"><b>Definition</b> Enums.hpp:89</div></div>
 <div class="ttc" id="astructecs_1_1udp_1_1Message_html"><div class="ttname"><a href="structecs_1_1udp_1_1Message.html">ecs::udp::Message</a></div><div class="ttdef"><b>Definition</b> Structures_ecs.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

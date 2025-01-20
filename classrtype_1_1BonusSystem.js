@@ -7,5 +7,6 @@ var classrtype_1_1BonusSystem =
     [ "changePlayerVelocity", "classrtype_1_1BonusSystem.html#a2fb69546968c3aba19c6d414592f6503", null ],
     [ "checkBonus", "classrtype_1_1BonusSystem.html#aa118af4de2fca38f57578fdf873fc7dc", null ],
     [ "powerUp", "classrtype_1_1BonusSystem.html#a4a4aa096ee2f8334a659ca4c42e29aee", null ],
-    [ "updatePlayerTempShield", "classrtype_1_1BonusSystem.html#aae47d386b9554fc3f942f1175c2b2561", null ]
+    [ "updatePlayerTempShield", "classrtype_1_1BonusSystem.html#aae47d386b9554fc3f942f1175c2b2561", null ],
+    [ "updatePlayerTempWeapon", "classrtype_1_1BonusSystem.html#ae463d573ef0ff8cea190a56c01a7f299", null ]
 ];

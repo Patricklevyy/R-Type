@@ -32,5 +32,7 @@ var classrtype_1_1GameplayFactory =
     [ "getSpriteBonus", "classrtype_1_1GameplayFactory.html#a041bb86bd468e20adf8ad2dd6ec0c910", null ],
     [ "getVelocityBoostBonus", "classrtype_1_1GameplayFactory.html#a0f0843a2cbad228f9207e0acc503f3eb", null ],
     [ "getVelocityDurationBonus", "classrtype_1_1GameplayFactory.html#aeac80dc098a57ddf52b401f119240d7c", null ],
+    [ "getWeaponBoostBonus", "classrtype_1_1GameplayFactory.html#abe7bcc30223782be0d0d288bad58bd36", null ],
+    [ "getWeaponDurationBonus", "classrtype_1_1GameplayFactory.html#ace67a75fc148f9c186b583af829d714c", null ],
     [ "init", "classrtype_1_1GameplayFactory.html#aedf497747aef27228f32f9a70acfc9af", null ]
 ];

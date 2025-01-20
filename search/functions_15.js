@@ -39,13 +39,14 @@ var searchData=
   ['_7eroomhandling_36',['~RoomHandling',['../classrtype_1_1RoomHandling.html#a0ddb8190040f33ab767e055453397a36',1,'rtype::RoomHandling']]],
   ['_7escoresystem_37',['~ScoreSystem',['../classrtype_1_1ScoreSystem.html#a5e7753155127e6ac12daf3928eca55d0',1,'rtype::ScoreSystem']]],
   ['_7eserver_38',['~Server',['../classrtype_1_1Server.html#a3b343250afbd788b280c73bc4b39aea5',1,'rtype::Server']]],
-  ['_7esfmlhandler_39',['~SFMLHandler',['../classrtype_1_1SFMLHandler.html#a2f4fae74ef5f92f8000775f5ead6a758',1,'rtype::SFMLHandler']]],
-  ['_7espriteid_40',['~SpriteId',['../classrtype_1_1SpriteId.html#a40452dc854bf65f9e05228b8bbef4c49',1,'rtype::SpriteId']]],
-  ['_7etextinput_41',['~TextInput',['../classrtype_1_1TextInput.html#a7489f67bbde14971bdbfe100cec3461c',1,'rtype::TextInput']]],
-  ['_7etimer_42',['~Timer',['../classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e',1,'rtype::Timer']]],
-  ['_7eudp_5fclient_43',['~UDP_Client',['../classUDP__Client.html#a230ef61d3baa382fb9034288fbdf0b67',1,'UDP_Client']]],
-  ['_7eudp_5fserver_44',['~UDP_Server',['../classecs_1_1udp_1_1UDP__Server.html#af51706bb2a0ae4c3a23c1d82eaaaaed5',1,'ecs::udp::UDP_Server']]],
-  ['_7eupdateentitysystem_45',['~UpdateEntitySystem',['../classrtype_1_1UpdateEntitySystem.html#a75ae808d6e31a858c29334a498f3a48d',1,'rtype::UpdateEntitySystem']]],
-  ['_7evelocity_46',['~Velocity',['../classecs_1_1Velocity.html#a8c066abf78b788df5f8e50e56c5876a4',1,'ecs::Velocity']]],
-  ['_7ewindow_47',['~Window',['../classrtype_1_1Window.html#af8b272b31d3bca5c12e9f869c2ce77d7',1,'rtype::Window']]]
+  ['_7esettings_39',['~Settings',['../classrtype_1_1Settings.html#a5b146c4892f15c309bc2cf5c9dd3a6fc',1,'rtype::Settings']]],
+  ['_7esfmlhandler_40',['~SFMLHandler',['../classrtype_1_1SFMLHandler.html#a2f4fae74ef5f92f8000775f5ead6a758',1,'rtype::SFMLHandler']]],
+  ['_7espriteid_41',['~SpriteId',['../classrtype_1_1SpriteId.html#a40452dc854bf65f9e05228b8bbef4c49',1,'rtype::SpriteId']]],
+  ['_7etextinput_42',['~TextInput',['../classrtype_1_1TextInput.html#a7489f67bbde14971bdbfe100cec3461c',1,'rtype::TextInput']]],
+  ['_7etimer_43',['~Timer',['../classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e',1,'rtype::Timer']]],
+  ['_7eudp_5fclient_44',['~UDP_Client',['../classUDP__Client.html#a230ef61d3baa382fb9034288fbdf0b67',1,'UDP_Client']]],
+  ['_7eudp_5fserver_45',['~UDP_Server',['../classecs_1_1udp_1_1UDP__Server.html#af51706bb2a0ae4c3a23c1d82eaaaaed5',1,'ecs::udp::UDP_Server']]],
+  ['_7eupdateentitysystem_46',['~UpdateEntitySystem',['../classrtype_1_1UpdateEntitySystem.html#a75ae808d6e31a858c29334a498f3a48d',1,'rtype::UpdateEntitySystem']]],
+  ['_7evelocity_47',['~Velocity',['../classecs_1_1Velocity.html#a8c066abf78b788df5f8e50e56c5876a4',1,'ecs::Velocity']]],
+  ['_7ewindow_48',['~Window',['../classrtype_1_1Window.html#af8b272b31d3bca5c12e9f869c2ce77d7',1,'rtype::Window']]]
 ];

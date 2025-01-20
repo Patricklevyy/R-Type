@@ -12,6 +12,7 @@ var searchData=
   ['allies_9',['Allies',['../classrtype_1_1Allies.html#a858190968b102b6114502c58e6b497d0',1,'rtype::Allies']]],
   ['animation_10',['Animation',['../classrtype_1_1Animation.html#a3e16431c7499f9d9d707e5eb06610288',1,'rtype::Animation']]],
   ['animationsystem_11',['AnimationSystem',['../classrtype_1_1AnimationSystem.html#af67de15d83aa3bdb518d276405a16458',1,'rtype::AnimationSystem']]],
-  ['asteroidesystem_12',['AsteroideSystem',['../classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c',1,'rtype::AsteroideSystem']]],
-  ['ath_13',['ATH',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH']]]
+  ['applychanges_12',['applyChanges',['../classrtype_1_1Settings.html#a4db8eeeaf0f959d004fa3008d85dc120',1,'rtype::Settings']]],
+  ['asteroidesystem_13',['AsteroideSystem',['../classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c',1,'rtype::AsteroideSystem']]],
+  ['ath_14',['ATH',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH']]]
 ];

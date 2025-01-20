@@ -18,10 +18,11 @@ var searchData=
   ['animation_2ehpp_15',['Animation.hpp',['../Animation_8hpp.html',1,'']]],
   ['animationsystem_16',['animationsystem',['../classrtype_1_1AnimationSystem.html#af67de15d83aa3bdb518d276405a16458',1,'rtype::AnimationSystem::AnimationSystem()'],['../classrtype_1_1AnimationSystem.html',1,'rtype::AnimationSystem']]],
   ['animationsystem_2ehpp_17',['AnimationSystem.hpp',['../AnimationSystem_8hpp.html',1,'']]],
-  ['asteroide_18',['ASTEROIDE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a77a03b976af3becde3153a7b05734bbe',1,'rtype']]],
-  ['asteroidesystem_19',['asteroidesystem',['../classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c',1,'rtype::AsteroideSystem::AsteroideSystem()'],['../classrtype_1_1AsteroideSystem.html',1,'rtype::AsteroideSystem']]],
-  ['asteroidesystem_2ehpp_20',['AsteroideSystem.hpp',['../AsteroideSystem_8hpp.html',1,'']]],
-  ['ath_21',['ath',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH::ATH()'],['../classrtype_1_1ATH.html',1,'rtype::ATH']]],
-  ['ath_2ehpp_22',['ATH.hpp',['../ATH_8hpp.html',1,'']]],
-  ['avec_20sdl2_20et_20raylib_23',['Comparatif avec SDL2 et Raylib',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md49',1,'']]]
+  ['applychanges_18',['applyChanges',['../classrtype_1_1Settings.html#a4db8eeeaf0f959d004fa3008d85dc120',1,'rtype::Settings']]],
+  ['asteroide_19',['ASTEROIDE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a77a03b976af3becde3153a7b05734bbe',1,'rtype']]],
+  ['asteroidesystem_20',['asteroidesystem',['../classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c',1,'rtype::AsteroideSystem::AsteroideSystem()'],['../classrtype_1_1AsteroideSystem.html',1,'rtype::AsteroideSystem']]],
+  ['asteroidesystem_2ehpp_21',['AsteroideSystem.hpp',['../AsteroideSystem_8hpp.html',1,'']]],
+  ['ath_22',['ath',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH::ATH()'],['../classrtype_1_1ATH.html',1,'rtype::ATH']]],
+  ['ath_2ehpp_23',['ATH.hpp',['../ATH_8hpp.html',1,'']]],
+  ['avec_20sdl2_20et_20raylib_24',['Comparatif avec SDL2 et Raylib',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md49',1,'']]]
 ];

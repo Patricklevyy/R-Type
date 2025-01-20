@@ -23,5 +23,6 @@ var searchData=
   ['move_5fup_20',['MOVE_UP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a5bbacaed72784a2b29845e6eca3c965e',1,'rtype']]],
   ['move_5fup_5fstop_21',['MOVE_UP_STOP',['../namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ab4631450225b810a5689e469ad543b06',1,'rtype']]],
   ['my_5fplayer_5fship_22',['MY_PLAYER_SHIP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a629b51c371016e65912d9e81d785ed8b',1,'rtype']]],
-  ['my_5fplayer_5fship_5fshield_23',['MY_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216',1,'rtype']]]
+  ['my_5fplayer_5fship_5fshield_23',['MY_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a3e00cf04bbef43d2d5f9f3533b818216',1,'rtype']]],
+  ['my_5fplayer_5fship_5fweapon_24',['MY_PLAYER_SHIP_WEAPON',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686',1,'rtype']]]
 ];

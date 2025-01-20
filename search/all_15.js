@@ -4,5 +4,6 @@ var searchData=
   ['operator_5b_5d_1',['operator[]',['../classecs_1_1SparseArray.html#a2c472a9aeb6a2c31111000254de2543f',1,'ecs::SparseArray::operator[](std::size_t index)'],['../classecs_1_1SparseArray.html#a321a8cb5aac58a689b03cbbb2974c57c',1,'ecs::SparseArray::operator[](std::size_t index) const']]],
   ['organisation_20des_20fichiers_20sources_2',['Organisation des fichiers sources',['../md_documentation_2CMakeDocumentation.html#autotoc_md32',1,'']]],
   ['other_5fplayer_5fship_3',['OTHER_PLAYER_SHIP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662abce9dd9487d7ddf9cc0c8c5157737e91',1,'rtype']]],
-  ['other_5fplayer_5fship_5fshield_4',['OTHER_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aad8901ee210050b6ba4b5bfbde2df22b',1,'rtype']]]
+  ['other_5fplayer_5fship_5fshield_4',['OTHER_PLAYER_SHIP_SHIELD',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662aad8901ee210050b6ba4b5bfbde2df22b',1,'rtype']]],
+  ['other_5fplayer_5fship_5fweapon_5',['OTHER_PLAYER_SHIP_WEAPON',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662afb410d4fd7ce6845ef9be145fbc98fd7',1,'rtype']]]
 ];

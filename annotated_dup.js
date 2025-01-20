@@ -90,6 +90,7 @@ var annotated_dup =
       [ "ScoreSystem", "classrtype_1_1ScoreSystem.html", "classrtype_1_1ScoreSystem" ],
       [ "SecretKeyChecker", "classrtype_1_1SecretKeyChecker.html", null ],
       [ "Server", "classrtype_1_1Server.html", "classrtype_1_1Server" ],
+      [ "Settings", "classrtype_1_1Settings.html", "classrtype_1_1Settings" ],
       [ "SFMLHandler", "classrtype_1_1SFMLHandler.html", "classrtype_1_1SFMLHandler" ],
       [ "Shader", "classrtype_1_1Shader.html", "classrtype_1_1Shader" ],
       [ "ShootingSystem", "classrtype_1_1ShootingSystem.html", "classrtype_1_1ShootingSystem" ],

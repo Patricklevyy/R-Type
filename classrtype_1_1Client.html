@@ -159,10 +159,14 @@ Attributs publics</h2></td></tr>
 <tr class="separator:af361faea316896d608510962c341d0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9273a9238fb958e38961baaa9f8fe7c" id="r_ad9273a9238fb958e38961baaa9f8fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classecs_1_1ECS.html">ecs::ECS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ad9273a9238fb958e38961baaa9f8fe7c">_ecs</a></td></tr>
 <tr class="separator:ad9273a9238fb958e38961baaa9f8fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a99d6d9504fac0eb8b8e362aae10a4" id="r_ab9a99d6d9504fac0eb8b8e362aae10a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab9a99d6d9504fac0eb8b8e362aae10a4">_currentFilter</a> = <a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559">FILTER_MODE::Neutral</a></td></tr>
+<tr class="separator:ab9a99d6d9504fac0eb8b8e362aae10a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7665eb4a2bd57d0e4397970d99347b81" id="r_a7665eb4a2bd57d0e4397970d99347b81"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a7665eb4a2bd57d0e4397970d99347b81">roomListMutex</a></td></tr>
 <tr class="separator:a7665eb4a2bd57d0e4397970d99347b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b4bda91cd69cd60eef61aa97e8a6252" id="r_a1b4bda91cd69cd60eef61aa97e8a6252"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; std::string, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a1b4bda91cd69cd60eef61aa97e8a6252">_roomsList</a></td></tr>
 <tr class="separator:a1b4bda91cd69cd60eef61aa97e8a6252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94cacc61a70fb9e524364b8320e53f7" id="r_ac94cacc61a70fb9e524364b8320e53f7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classrtype_1_1SFMLHandler.html">SFMLHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ac94cacc61a70fb9e524364b8320e53f7">_sfml_handler</a></td></tr>
+<tr class="separator:ac94cacc61a70fb9e524364b8320e53f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="aed5c20fac90ad07852bebc5d94382b30" name="aed5c20fac90ad07852bebc5d94382b30"></a>
@@ -447,6 +451,20 @@ Attributs publics</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des données membres</h2>
+<a id="ab9a99d6d9504fac0eb8b8e362aae10a4" name="ab9a99d6d9504fac0eb8b8e362aae10a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9a99d6d9504fac0eb8b8e362aae10a4">&#9670;&#160;</a></span>_currentFilter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a> rtype::Client::_currentFilter = <a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559">FILTER_MODE::Neutral</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad9273a9238fb958e38961baaa9f8fe7c" name="ad9273a9238fb958e38961baaa9f8fe7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9273a9238fb958e38961baaa9f8fe7c">&#9670;&#160;</a></span>_ecs</h2>
 
@@ -511,6 +529,20 @@ Attributs publics</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool rtype::Client::_running = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac94cacc61a70fb9e524364b8320e53f7" name="ac94cacc61a70fb9e524364b8320e53f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94cacc61a70fb9e524364b8320e53f7">&#9670;&#160;</a></span>_sfml_handler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classrtype_1_1SFMLHandler.html">SFMLHandler</a>&gt; rtype::Client::_sfml_handler</td>
         </tr>
       </table>
 </div><div class="memdoc">

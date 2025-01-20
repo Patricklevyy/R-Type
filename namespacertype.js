@@ -45,6 +45,7 @@ var namespacertype =
     [ "ScoreSystem", "classrtype_1_1ScoreSystem.html", "classrtype_1_1ScoreSystem" ],
     [ "SecretKeyChecker", "classrtype_1_1SecretKeyChecker.html", null ],
     [ "Server", "classrtype_1_1Server.html", "classrtype_1_1Server" ],
+    [ "Settings", "classrtype_1_1Settings.html", "classrtype_1_1Settings" ],
     [ "SFMLHandler", "classrtype_1_1SFMLHandler.html", "classrtype_1_1SFMLHandler" ],
     [ "Shader", "classrtype_1_1Shader.html", "classrtype_1_1Shader" ],
     [ "ShootingSystem", "classrtype_1_1ShootingSystem.html", "classrtype_1_1ShootingSystem" ],
@@ -60,8 +61,8 @@ var namespacertype =
     [ "BONUS", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62", [
       [ "VELOCITY", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0f7f17ae926a679df70f241b6e75d374", null ],
       [ "LIFE", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315", null ],
-      [ "WEAPON", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3", null ],
       [ "SHIELD", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62adaec1e35b11ab0b5346e8cc14773343e", null ],
+      [ "WEAPON", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3", null ],
       [ "MAX_BONUS", "namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd", null ]
     ] ],
     [ "BOSSES", "namespacertype.html#a701d30d6e53d47a1f10e4833b3eabb6d", [
@@ -145,6 +146,8 @@ var namespacertype =
       [ "UP_VELOCITY", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a449e3cce26ee25cb78201e5f5ccd34f8", null ],
       [ "DOWN_VELOCITY", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a81e0f92de503b2995bfadab84efe15ec", null ],
       [ "UPDATE_LIFE", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706", null ],
+      [ "PUT_WEAPON", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ae63220939de2dbf5079f44a647dcc3e7", null ],
+      [ "REMOVE_WEAPON", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a8327fa804ab545c692b59ca05b5a6440", null ],
       [ "MAX_ACTION", "namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
     [ "SPRITES", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662", [
@@ -182,6 +185,10 @@ var namespacertype =
       [ "LIFE_RECTANGLE", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a1d4a8e81265bcc49eef0fb5523eb6eac", null ],
       [ "LIFE_RED", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5", null ],
       [ "LIFE_HEART", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae", null ],
+      [ "MY_PLAYER_SHIP_WEAPON", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686", null ],
+      [ "OTHER_PLAYER_SHIP_WEAPON", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662afb410d4fd7ce6845ef9be145fbc98fd7", null ],
+      [ "PLAYER_RED_MISSILE", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d0b20cc37e43471e735d113632312c6", null ],
+      [ "PLAYER_RED_CHARGED_SHOOT", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a6982802e4e0854f81a1ea49ae1b18a30", null ],
       [ "MAX_SPRITE", "namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1", null ]
     ] ],
     [ "BORDER_MARGIN", "namespacertype.html#abf0617890a62862b9bc9871a345b6194", null ]

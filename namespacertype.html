@@ -207,6 +207,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Server.html">Server</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the game server and manages its rooms and clients.  <a href="classrtype_1_1Server.html#details">Plus de détails...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html">Settings</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html">SFMLHandler</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Shader.html">Shader</a></td></tr>
@@ -305,7 +307,10 @@ Classes</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a81e0f92de503b2995bfadab84efe15ec">DOWN_VELOCITY</a>
 , <a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706">UPDATE_LIFE</a>
-, <a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e">MAX_ACTION</a>
+, <a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3ae63220939de2dbf5079f44a647dcc3e7">PUT_WEAPON</a>
+, <a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3a8327fa804ab545c692b59ca05b5a6440">REMOVE_WEAPON</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e">MAX_ACTION</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ad8feded8f9d3253ec5953161afa093f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines all the possible actions in the R-Type game.  <a href="namespacertype.html#ad8feded8f9d3253ec5953161afa093f3">Plus de détails...</a><br /></td></tr>
@@ -353,6 +358,11 @@ Classes</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5">LIFE_RED</a>
 , <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae">LIFE_HEART</a>
+, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686">MY_PLAYER_SHIP_WEAPON</a>
+, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662afb410d4fd7ce6845ef9be145fbc98fd7">OTHER_PLAYER_SHIP_WEAPON</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a7d0b20cc37e43471e735d113632312c6">PLAYER_RED_MISSILE</a>
+, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a6982802e4e0854f81a1ea49ae1b18a30">PLAYER_RED_CHARGED_SHOOT</a>
 , <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1">MAX_SPRITE</a>
 <br />
  }</td></tr>
@@ -391,8 +401,8 @@ Classes</h2></td></tr>
 <tr class="memitem:a4dfee7a3dedb8a551726b7adcf8c0f62" id="r_a4dfee7a3dedb8a551726b7adcf8c0f62"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62">BONUS</a> { <br />
 &#160;&#160;<a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0f7f17ae926a679df70f241b6e75d374">VELOCITY</a> = 1
 , <a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315">LIFE</a>
-, <a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3">WEAPON</a>
 , <a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62adaec1e35b11ab0b5346e8cc14773343e">SHIELD</a>
+, <a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3">WEAPON</a>
 , <br />
 &#160;&#160;<a class="el" href="namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd">MAX_BONUS</a>
 <br />
@@ -422,8 +432,8 @@ Variables</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62a0f7f17ae926a679df70f241b6e75d374" name="a4dfee7a3dedb8a551726b7adcf8c0f62a0f7f17ae926a679df70f241b6e75d374"></a>VELOCITY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315" name="a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315"></a>LIFE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3" name="a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3"></a>WEAPON&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62adaec1e35b11ab0b5346e8cc14773343e" name="a4dfee7a3dedb8a551726b7adcf8c0f62adaec1e35b11ab0b5346e8cc14773343e"></a>SHIELD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3" name="a4dfee7a3dedb8a551726b7adcf8c0f62a0c22444b598096a8a7b24eb3c749d8c3"></a>WEAPON&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd" name="a4dfee7a3dedb8a551726b7adcf8c0f62a7c541e72a8d8f7eef3dfc3d3aa85b0fd"></a>MAX_BONUS&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -595,6 +605,8 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3a449e3cce26ee25cb78201e5f5ccd34f8" name="ad8feded8f9d3253ec5953161afa093f3a449e3cce26ee25cb78201e5f5ccd34f8"></a>UP_VELOCITY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3a81e0f92de503b2995bfadab84efe15ec" name="ad8feded8f9d3253ec5953161afa093f3a81e0f92de503b2995bfadab84efe15ec"></a>DOWN_VELOCITY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706" name="ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706"></a>UPDATE_LIFE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3ae63220939de2dbf5079f44a647dcc3e7" name="ad8feded8f9d3253ec5953161afa093f3ae63220939de2dbf5079f44a647dcc3e7"></a>PUT_WEAPON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3a8327fa804ab545c692b59ca05b5a6440" name="ad8feded8f9d3253ec5953161afa093f3a8327fa804ab545c692b59ca05b5a6440"></a>REMOVE_WEAPON&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e" name="ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e"></a>MAX_ACTION&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -648,6 +660,10 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662a1d4a8e81265bcc49eef0fb5523eb6eac" name="a747b1b1523f4dfe8c5cb549d5eb17662a1d4a8e81265bcc49eef0fb5523eb6eac"></a>LIFE_RECTANGLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5" name="a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5"></a>LIFE_RED&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae" name="a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae"></a>LIFE_HEART&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686" name="a747b1b1523f4dfe8c5cb549d5eb17662ada9511e20e369d7e1516d86791439686"></a>MY_PLAYER_SHIP_WEAPON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662afb410d4fd7ce6845ef9be145fbc98fd7" name="a747b1b1523f4dfe8c5cb549d5eb17662afb410d4fd7ce6845ef9be145fbc98fd7"></a>OTHER_PLAYER_SHIP_WEAPON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662a7d0b20cc37e43471e735d113632312c6" name="a747b1b1523f4dfe8c5cb549d5eb17662a7d0b20cc37e43471e735d113632312c6"></a>PLAYER_RED_MISSILE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662a6982802e4e0854f81a1ea49ae1b18a30" name="a747b1b1523f4dfe8c5cb549d5eb17662a6982802e4e0854f81a1ea49ae1b18a30"></a>PLAYER_RED_CHARGED_SHOOT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1" name="a747b1b1523f4dfe8c5cb549d5eb17662ab30e919f1b52cf31b06e09582663a5c1"></a>MAX_SPRITE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
