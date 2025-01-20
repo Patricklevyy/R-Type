@@ -16,7 +16,13 @@
 #define HEALTH_HPP_
 
 namespace rtype {
-
+    /**
+     * @class Health
+     * @brief A class that handles health of entities.
+     *
+     * The Health class is managing every entity health, to kill entity that took 
+     * too many damage
+     */
     class Health {
         public:
             /**
