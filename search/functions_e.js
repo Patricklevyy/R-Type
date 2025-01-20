@@ -10,7 +10,7 @@ var searchData=
   ['playernotfoundinecs_7',['PlayerNotFoundInEcs',['../classecs_1_1ERROR_1_1PlayerNotFoundInEcs.html#ac8dfaa32d3c7e951cb2b81f042ae2b32',1,'ecs::ERROR::PlayerNotFoundInEcs']]],
   ['playersystem_8',['PlayerSystem',['../classrtype_1_1PlayerSystem.html#a42fec4b747040ba61365af18baea5c7d',1,'rtype::PlayerSystem']]],
   ['position_9',['Position',['../classecs_1_1Position.html#a086437c7dee4e412abf49c16fed91806',1,'ecs::Position']]],
-  ['powerup_10',['powerup',['../classrtype_1_1PowerUp.html#a8ccc2cba55b789c6bf283f66bf80cd0e',1,'rtype::PowerUp::PowerUp()'],['../classrtype_1_1BonusSystem.html#a4a4aa096ee2f8334a659ca4c42e29aee',1,'rtype::BonusSystem::powerUp()']]],
+  ['powerup_10',['powerup',['../classrtype_1_1BonusSystem.html#a4a4aa096ee2f8334a659ca4c42e29aee',1,'rtype::BonusSystem::powerUp()'],['../classrtype_1_1PowerUp.html#a8ccc2cba55b789c6bf283f66bf80cd0e',1,'rtype::PowerUp::PowerUp()']]],
   ['projectiles_11',['Projectiles',['../classrtype_1_1Projectiles.html#a978f16ea1fcf124a0539911a394c105d',1,'rtype::Projectiles']]],
   ['projectilesinfotostring_12',['projectilesInfoToString',['../classrtype_1_1Utils.html#a4cd9ebf0c23be392ab8b4ba099ad617b',1,'rtype::Utils']]]
 ];
