@@ -101,6 +101,11 @@ namespace rtype {
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
         }
 
+        /**
+         * @brief Gets the size of the current sprite being displayed.
+         *
+         * @return Size of the sprite in pixels.
+         */
         sf::Vector2f getSpriteSize() const {
             if (sprite && sprite->getTexture()) {
                 auto textureSize = sprite->getTexture()->getSize();
@@ -113,6 +118,13 @@ namespace rtype {
             return sf::Vector2f(0, 0);
         }
 
+        /**
+         * @brief Sets the scale of the sprite.
+         *
+         * @param scaleX The x-scale factor.
+         * @param scaleY The y-scale factor.
+         * @throws std::runtime_error If the sprite is not initialized.
+         */
          void setSpriteScale(float scaleX, float scaleY) {
             if (sprite) {
                 sprite->setScale(scaleX, scaleY);

@@ -18,9 +18,14 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include "../../shared/Enums.hpp"
 
 namespace rtype
 {
+    /**
+     * @class Shader
+     * @brief Manages a SFML shader object for applying accessibility filters.
+     */
     class Shader
     {
     public:
