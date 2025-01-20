@@ -90,8 +90,12 @@ namespace rtype
                     return 1000;
                 case SPRITES::PLAYER_SIMPLE_MISSILE:
                     return 10;
-                case SPRITES::PLAYER_CHARGED_SHOOT:
+                case SPRITES::PLAYER_RED_MISSILE:
                     return 50;
+                case SPRITES::PLAYER_CHARGED_SHOOT:
+                    return 200;
+                case SPRITES::PLAYER_RED_CHARGED_SHOOT:
+                    return 100;
                 case SPRITES::MONSTER_MULTIPLE_MISSILE:
                     return 10;
                 case SPRITES::BABY_PROJECTILE:
@@ -115,6 +119,10 @@ namespace rtype
                 return 200;
             case PLAYER_CHARGED_SHOOT:
                 return 400;
+            case PLAYER_RED_MISSILE:
+                return 700;
+            case PLAYER_RED_CHARGED_SHOOT:
+                return 1000;
             default:
                 return 300;
             }

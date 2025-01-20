@@ -123,6 +123,8 @@
             LIFE_HEART,
             MY_PLAYER_SHIP_WEAPON,
             OTHER_PLAYER_SHIP_WEAPON,
+            PLAYER_RED_MISSILE,
+            PLAYER_RED_CHARGED_SHOOT,
             MAX_SPRITE
         };
 

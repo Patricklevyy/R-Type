@@ -104,9 +104,7 @@ namespace rtype
             bonuses[BONUS::SHIELD] = std::make_pair(boost, duration);
 
             const libconfig::Setting& bonusWeaponSettings = root["gameplay"]["bonus"]["weapon"];
-            int damage;
-            bonusWeaponSettings.lookupValue("damage", damage);
             bonusWeaponSettings.lookupValue("duration", duration);
-            bonuses[BONUS::WEAPON] = std::make_pair(damage, duration);
+            bonuses[BONUS::WEAPON] = std::make_pair(boost, duration);
         }
 }

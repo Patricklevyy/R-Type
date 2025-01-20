@@ -23,6 +23,10 @@ namespace rtype
             case BONUS::VELOCITY:
                 _bonus_system.changePlayerVelocity(_ecs._components_arrays, player_index, -_gameplay_factory->getVelocityBoostBonus());
                 send_client_change_player_velocity(player_index, false);
+                break;
+            case BONUS::WEAPON:
+                send_client_player_weapon(player_index, false);
+                break;
             default:
                 break;
             }
