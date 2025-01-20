@@ -125,6 +125,7 @@
             private:
                 int _window_width;
                 int _window_height;
+                int _isBoosted = false;
                 std::string _name;
                 std::map<int, int> ecs_server_to_client;
                 std::map<int, int> ecs_client_to_server;

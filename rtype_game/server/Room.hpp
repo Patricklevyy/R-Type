@@ -272,6 +272,7 @@
             void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
             void send_client_change_player_velocity(size_t, bool);
             void send_client_player_shield(size_t, bool);
+            void send_client_player_weapon(size_t index, bool put);
             void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
             void send_client_player_lifes(std::list<std::pair<size_t, int>>);
         };
