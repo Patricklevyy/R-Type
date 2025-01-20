@@ -125,6 +125,8 @@ namespace rtype
 
         if (elapsed > 5) {
             _inLevelStatus = false;
+            if (_player_system.getIndexPlayer(_ecs._components_arrays) == 0)
+                send_server_new_player();
             restart_game();
         }
     }

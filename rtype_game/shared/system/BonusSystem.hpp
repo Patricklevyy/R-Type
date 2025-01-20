@@ -74,7 +74,7 @@
                     }
                 }
 
-                void updatePlayerTempWeapon(std::unordered_map<std::type_index, std::any> &components_array, size_t index, std::pair<int, int> x_y, bool invicible) {
+                void updatePlayerTempWeapon(std::unordered_map<std::type_index, std::any> &components_array, size_t index, std::pair<int, int> x_y) {
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                     auto &hitbox = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);
                     auto &powerups = std::any_cast<ecs::SparseArray<PowerUp> &>(components_array[typeid(PowerUp)]);
