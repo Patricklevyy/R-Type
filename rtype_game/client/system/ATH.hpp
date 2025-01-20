@@ -15,7 +15,6 @@
     #include "../../shared/components/Levels.hpp"
     #include "../components/Displayable.hpp"
     #include "../components/Window.hpp"
-    #include "../components/TempDisplay.hpp"
 
     namespace rtype
     {
@@ -60,7 +59,7 @@
                         float mouseY = mousePos.y;
 
                         for (std::size_t i = 0; i < positions.size(); ++i) {
-                            if (positions[i].has_value() && displayables[i].has_value() && levels[i].has_value()) {
+                            if (positions[i].has_value() && i < displayables.size() && displayables[i].has_value() && i < levels.size() && levels[i].has_value()) {
                                 auto size = displayables[i].value().getSpriteSize();
 
                                 if (mouseX >= positions[i].value()._pos_x && mouseX <= positions[i].value()._pos_x + size.x &&
@@ -72,7 +71,7 @@
                         }
                         return std::make_pair(false, LEVELS{});
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCption] " << e.what() << std::endl;
                         return std::make_pair(false, LEVELS{});
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
@@ -83,7 +82,7 @@
                 bool isLooseOrWinClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
-                        auto &tempdisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(components_array.at(typeid(TempDisplay)));
+                        auto &level_status = std::any_cast<ecs::SparseArray<LevelStatus> &>(components_array.at(typeid(LevelStatus)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
                         auto &displayables = std::any_cast<ecs::SparseArray<Displayable> &>(components_array.at(typeid(Displayable)));
 
@@ -93,7 +92,7 @@
                         float mouseY = mousePos.y;
 
                         for (std::size_t i = 0; i < positions.size(); ++i) {
-                            if (positions[i].has_value() && displayables[i].has_value() && tempdisplays[i].has_value()) {
+                            if (positions[i].has_value() && i < displayables.size() && displayables[i].has_value() && i < level_status.size() && level_status[i].has_value()) {
                                 auto size = displayables[i].value().getSpriteSize();
 
                                 if (mouseX >= positions[i].value()._pos_x && mouseX <= positions[i].value()._pos_x + size.x &&

@@ -22,6 +22,7 @@
     #include "../components/Displayable.hpp"
     #include "../../../ecs/components/Position.hpp"
     #include "../../../ecs/components/Velocity.hpp"
+    #include "../components/Text.hpp"
 
     namespace rtype
     {
@@ -43,6 +44,7 @@
                         auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
                         auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array.at(typeid(ecs::Position)));
                         auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(components_array.at(typeid(Shader)));
+                        auto& texts = std::any_cast<ecs::SparseArray<Text>&>(components_array.at(typeid(Text)));
 
                         auto lawindow = windows[0].value().getRenderWindow().get();
                         auto leshader = shader[0].value().getShader().get();
@@ -52,12 +54,17 @@
                                 displayable[i].value().update(deltaTime);
                                 displayable[i].value().setSpritePosition(positions[i].value()._pos_x, positions[i].value()._pos_y);
                                 lawindow->draw(*displayable[i].value().getSprite(), leshader);
-                                std::cout << "RENDER : " << i << std::endl;
+                            }
+                        }
+                        for (size_t i = 0; i < texts.size(); ++i) {
+                            if (texts[i].has_value()) {
+                                auto& text = texts[i].value();
+                                lawindow->draw(*text.getText());
                             }
                         }
                         lawindow->display();
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPTIO] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
@@ -77,7 +84,7 @@
                             displayable[0].value().setSprite(sprite);
                         }
                     } catch (const std::exception &e) {
-                        std::cerr << "[EXCEPTION] " << e.what() << std::endl;
+                        std::cerr << "[EXCEPION] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
@@ -88,7 +95,7 @@
                  * @param components_array The array of ECS components.
                  * @param menu Whether the game is in menu mode (background does not move).
                  */
-                void move_background(std::unordered_map<std::type_index, std::any> &components_array, bool menu)
+                void move_background(std::unordered_map<std::type_index, std::any> &components_array, bool menu, float tickRate)
                 {
                     if (menu)
                         return;
@@ -100,7 +107,7 @@
                         if (positions[0].value()._pos_x <= -1920) {
                             positions[0].value()._pos_x = 0;
                         } else {
-                            positions[0].value()._pos_x -= velocity[0].value().velocity;
+                            positions[0].value()._pos_x -= velocity[0].value().velocity / tickRate;
                         }
                     }
                 }

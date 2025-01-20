@@ -6,6 +6,7 @@
 */
 
 #include "Client.hpp"
+#include <thread>
 #include "../../ecs/components/Direction.hpp"
 
 namespace rtype
@@ -14,6 +15,7 @@ namespace rtype
     {
         _udpClient = std::make_shared<ecs::udp::UDP_Client>();
         _timer = std::make_shared<Timer>();
+        reset_level_lock();
     }
 
     Client::~Client()
@@ -37,7 +39,7 @@ namespace rtype
     void Client::updateEntitiesFirstConnexion(const std::string &message)
     {
         std::vector<std::tuple<std::pair<float, float>, int, int>> entities =
-            Command_checker::parseUpdateEntities(message);
+            Utils::parseUpdateEntities(message);
 
         while (!entities.empty()) {
             std::tuple<std::pair<float, float>, int, int> entity =
@@ -54,17 +56,21 @@ namespace rtype
     void Client::setRoomAdress(int port)
     {
         std::string ip_port =
-            Command_checker::check_adress(port, _udpClient->getServerIp());
+            Utils::check_adress(port, _udpClient->getServerIp());
         _udpClient->setDefaultAddress(ip_port);
+    }
+
+    void Client::changeDifficulty(DIFFICULTY difficulty)
+    {
+        _gameplay_factory->changeDifficulty(difficulty);
     }
 
     void Client::handle_message(std::vector<char> &message)
     {
+        std::lock_guard<std::mutex> lock(roomListMutex);
         ecs::udp::Message mes;
         _message_compressor.deserialize(message, mes);
         Utils::checkAction(mes.action);
-        std::cout << "id : " << mes.id << " action " << mes.action << " params "
-                  << mes.params << std::endl;
         rtype::RTYPE_ACTIONS action =
             static_cast<rtype::RTYPE_ACTIONS>(mes.action);
         _eventBus.emit(action, std::ref(mes));
@@ -72,38 +78,72 @@ namespace rtype
 
     void Client::restart_game()
     {
-        _kill_system.killTempDisplay(_ecs);
+        _kill_system.killLevelStatus(_ecs);
+        _kill_system.killTexts(_ecs);
         init_levels_sprites();
         if (_player_system.getIndexPlayer(_ecs._components_arrays) == -1)
             send_server_new_player();
     }
 
-    void Client::send_server_new_player()
+    void Client::launchMenu()
     {
-        std::vector<char> buffer;
-        ecs::udp::Message mess;
-        mess.id = 0;
-        mess.action = RTYPE_ACTIONS::CREATE_PLAYER;
-        mess.secret_key = _udpClient->getSecretKey();
-        _message_compressor.serialize(mess, buffer);
+        auto &windows = std::any_cast<ecs::SparseArray<Window> &>(
+            _ecs._components_arrays.at(typeid(Window)));
+        auto lawindow = windows[0].value().getRenderWindow().get();
+        std::string playerName;
 
-        std::cout << "je send" << std::endl;
-        if (_udpClient->sendMessageToDefault(buffer)) {
-            std::cout << "Message sent: " << std::endl;
-        } else {
-            std::cout << "failed " << std::endl;
+        try {
+            InputScreen inputScreen(*lawindow);
+            bool isInputScreen = true;
+            inputScreen.run(isInputScreen, playerName);
+        } catch (const std::exception &e) {
+            std::cerr << "Erreur lors du chargement de l'écran d'entrée : "
+                      << e.what() << "\n";
+            return;
+        }
+
+        std::atomic<bool> runningNetworkThread{true};
+        std::thread networkThread([&]() {
+            while (runningNetworkThread) {
+                auto messages = _udpClient->fetchAllMessages();
+                for (auto &[clientAddress, message] : messages) {
+                    try {
+                        handle_message(message);
+                    } catch (std::exception &e) {
+                        std::cerr << std::endl << e.what() << std::endl;
+                    }
+                }
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        });
+
+        try {
+            requestRoomList();
+            Menu menu(*lawindow, playerName, *this);
+            menu.run(_in_menu);
+        } catch (const std::exception &e) {
+            std::cerr << "Erreur lors du chargement du menu principal : "
+                      << e.what() << "\n";
+            return;
+        }
+
+        runningNetworkThread = false;
+        if (networkThread.joinable()) {
+            networkThread.join();
         }
     }
 
     void Client::start()
     {
         init_all();
+        launchMenu();
 
-        std::queue<sf::Event> events;
         while (_running) {
             _timer->waitTPS();
-            events = _event_window_system.fetchEvents();
+
+            auto events = _event_window_system.fetchEvents();
             _sfml_handler->handleEvents(events);
+
             auto messages = _udpClient->fetchAllMessages();
             for (auto &[clientAddress, message] : messages) {
                 try {
@@ -112,10 +152,14 @@ namespace rtype
                     std::cerr << std::endl << e.what() << std::endl;
                 }
             }
+
             _eventBus.emit(RTYPE_ACTIONS::UPDATE_POSITIONS);
+            execute_animation();
             _eventBus.emit(RTYPE_ACTIONS::MOVE_BACKGROUND);
             _eventBus.emit(RTYPE_ACTIONS::RENDER_WINDOW);
         }
+
         _eventBus.emit(RTYPE_ACTIONS::STOP_LISTEN_EVENT);
     }
+
 } // namespace rtype

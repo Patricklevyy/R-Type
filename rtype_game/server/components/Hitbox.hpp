@@ -31,8 +31,14 @@
                  */
                 ~Hitbox() {};
 
+                void setHitbox(std::pair<int, int> x_y) {
+                    _width = x_y.first;
+                    _height = x_y.second;
+                }
+
                 int _width;
                 int _height;
+                bool _invicible = false;
             protected:
             private:
         };

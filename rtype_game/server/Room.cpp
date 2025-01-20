@@ -108,8 +108,9 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
+        playingInLevel = true;
         _ecs.addComponents<Levels>(index, Levels(level));
-        send_client_remove_ath();
+        send_client_start_level();
     }
 
     void Room::handleCommand(
@@ -118,24 +119,9 @@ namespace rtype
         (void) clientAddr;
         ecs::udp::Message message;
         _message_compressor.deserialize(compressed_message, message);
-        std::cout << "new message in the ROOOM : " << message.id
-                  << "action : " << message.action << " , " << message.params
-                  << std::endl;
-        rtype::RTYPE_ACTIONS action =
-            static_cast<rtype::RTYPE_ACTIONS>(message.action);
+        // std::cout << "new message in the ROOOM : " << message.id << "action : " << message.action << " , " << message.params << std::endl;
+        rtype::RTYPE_ACTIONS action = static_cast<rtype::RTYPE_ACTIONS>(message.action);
         _eventBus.emit(action, std::ref(message));
-    }
-
-    void Room::init_ecs_server_registry()
-    {
-        _ecs.addRegistry<Health>();
-        _ecs.addRegistry<Projectiles>();
-        _ecs.addRegistry<SpriteId>();
-        _ecs.addRegistry<Monster>();
-        _ecs.addRegistry<Hitbox>();
-        _ecs.addRegistry<Ennemies>();
-        _ecs.addRegistry<Allies>();
-        _ecs.addRegistry<Levels>();
     }
 
     std::pair<float, float> Room::get_player_start_position(int nb_client)

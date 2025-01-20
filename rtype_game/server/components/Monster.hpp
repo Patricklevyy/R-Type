@@ -20,7 +20,7 @@
 
         class Monster {
         public:
-            Monster(SPRITES type) : _intValue(5), _monster(type)
+            Monster(SPRITES type, int score_value = 1) : _intValue(5), _monster(type), _score_value(score_value)
 
             {
                 startTime = std::chrono::high_resolution_clock::now();
@@ -74,6 +74,7 @@
 
             int _intValue;
             SPRITES _monster;
+            int _score_value;
 
         protected:
         private:

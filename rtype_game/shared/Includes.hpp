@@ -28,6 +28,7 @@
     #include <memory>
     #include <stdexcept>
     #include <ctime>
+    #include <cmath>
 
     // FILES
 

@@ -13,27 +13,33 @@ namespace rtype
     {
         _ecs.addRegistry<Window>();
         _ecs.addRegistry<Displayable>();
-        _ecs.addRegistry<Health>();
         _ecs.addRegistry<Shader>();
         _ecs.addRegistry<Levels>();
-        _ecs.addRegistry<TempDisplay>();
+        _ecs.addRegistry<Health>();
+        _ecs.addRegistry<LevelStatus>();
         _ecs.addRegistry<Music>();
+        _ecs.addRegistry<Text>();
+        _ecs.addRegistry<Animation>();
+        _ecs.addRegistry<Life>();
     }
 
     void Client::init_window_and_background()
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Music>(
-            _index_ecs_client, Music("assets/musics/gad.ogg"));
-        _ecs.addComponents<Displayable>(
-            _index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
-        _ecs.addComponents<ecs::Position>(
-            _index_ecs_client, ecs::Position(0, 0));
-        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(10));
-        _ecs.addComponents<Shader>(
-            _index_ecs_client, Shader(FILTER_MODE::Neutral));
+        _ecs.addComponents<Music>(_index_ecs_client, Music("assets/musics/gad.ogg"));
+        _ecs.addComponents<Displayable>(_index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
+        _ecs.addComponents<ecs::Position>(_index_ecs_client, ecs::Position(0, 0));
+        _ecs.addComponents<ecs::Velocity>(_index_ecs_client, ecs::Velocity(_gameplay_factory->getBackgroundSpeed()));
+        _ecs.addComponents<Shader>(_index_ecs_client, Shader(FILTER_MODE::Neutral));
         _index_ecs_client++;
+    }
+
+    void Client::reset_level_lock()
+    {
+        _levels_wins[LEVELS::UN] = true;
+        _levels_wins[LEVELS::DEUX] = true;
+        _levels_wins[LEVELS::BOSS] = true;
     }
 
     void Client::init_window_size(const std::string &file_path)
@@ -77,6 +83,8 @@ namespace rtype
             throw ERROR::FailedToInitializeClientExceptions(
                 "Failed to initialize client");
         }
+        _gameplay_factory = std::make_shared<GameplayFactory>();
+        _gameplay_factory->init("rtype_game/config/gameplay_config.conf");
         init_window_size("rtype_game/config/client_config.conf");
         _timer->init("rtype_game/config/client_config.conf", false);
         _udpClient->startReceiving();
@@ -85,42 +93,87 @@ namespace rtype
         init_window_and_background();
         init_subscribe_event_bus();
         _eventBus.emit(RTYPE_ACTIONS::START_LISTEN_EVENT);
+        requestRoomList();
+    }
+
+    void Client::put_level_lock(LEVELS level, int x, int y)
+    {
+        if (!_levels_wins[level]) {
+            size_t index = getNextIndex();
+            _ecs.addComponents<ecs::Position>(index, ecs::Position(x + 55, y + 50));
+            _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_LOCK));
+            _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
+        }
     }
 
     void Client::init_levels_sprites()
     {
         size_t index = getNextIndex();
 
-        _ecs.addComponents<ecs::Position>(index,
-            ecs::Position((_window_width / 4)
-                    - (SpriteFactory::getMaxTextureSizeForSprite(
-                           SPRITES::LEVEL1)
-                            .first
-                        / 2),
-                _window_height - 400));
+        int x, y;
+
+        x = (_window_width / 4) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL1).first / 2);
+        y = _window_height - 400;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL1));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::UN));
+
         index = getNextIndex();
-        _ecs.addComponents<ecs::Position>(index,
-            ecs::Position((_window_width / 2)
-                    - (SpriteFactory::getMaxTextureSizeForSprite(
-                           SPRITES::LEVEL2)
-                            .first
-                        / 2),
-                _window_height - 400));
+        x = (_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL2).first / 2);
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
         _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL2));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::DEUX));
+
+        put_level_lock(LEVELS::DEUX, x, y);
+
         index = getNextIndex();
-        _ecs.addComponents<ecs::Position>(index,
-            ecs::Position(((_window_width / 4) * 3)
-                    - (SpriteFactory::getMaxTextureSizeForSprite(
-                           SPRITES::LEVEL_BOSS)
-                            .first
-                        / 2),
-                _window_height - 400));
-        _ecs.addComponents<Displayable>(
-            index, Displayable(SPRITES::LEVEL_BOSS));
+        x = ((_window_width / 4) * 3) - (SpriteFactory::getMaxTextureSizeForSprite(SPRITES::LEVEL_BOSS).first / 2);
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LEVEL_BOSS));
         _ecs.addComponents<Levels>(index, Levels(LEVELS::BOSS));
+        put_level_lock(LEVELS::BOSS, x, y);
+    }
+
+    void Client::init_score()
+    {
+        size_t index = getNextIndex();
+
+        _ecs.addComponents<Text>(index, Text("SCORE : 0", "assets/fonts/komikax.ttf"));
+    }
+
+    void Client::init_life()
+    {
+        size_t index = getNextIndex();
+
+        int x, y;
+
+        x = (_window_width / 3);
+        y = 20;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_HEART));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+
+        index = getNextIndex();
+
+        x += 100;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_RECTANGLE));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+
+        index = getNextIndex();
+
+        x += 8;
+        y += 8;
+
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::LIFE_RED));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
+        _ecs.addComponents<Life>(index, Life());
     }
 
     void Client::init_game(ecs::udp::Message &message)
@@ -130,18 +183,14 @@ namespace rtype
         std::string player_room = message.params.substr(0, pos);
         std::string entities = message.params.substr(pos + 1);
 
-        std::cout << "PLAYER : " << player_room << "ENTITIES : " << entities
-                  << std::endl;
-        std::tuple<float, float, int> pos_port =
-            Command_checker::parsePositionAndRoomPort(player_room);
+        std::tuple<std::tuple<float, float, int>, int, int> pos_port_dif = Utils::parsePositionAndRoomPort(player_room);
 
-        _render_window_system.changeBackground(
-            _ecs._components_arrays, SPRITES::GAME_BACKGROUND);
-        _music_system.changeMusic(
-            _ecs._components_arrays, "assets/musics/macron.ogg");
+        _render_window_system.changeBackground(_ecs._components_arrays, SPRITES::GAME_BACKGROUND);
+        _music_system.changeMusic(_ecs._components_arrays, "assets/musics/macron.ogg");
+        setRoomAdress(std::get<1>(pos_port_dif));
+        _gameplay_factory->changeDifficulty(static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
+        createPlayer(message.id, std::get<0>(std::get<0>(pos_port_dif)), std::get<1>(std::get<0>(pos_port_dif)), std::get<2>(std::get<0>(pos_port_dif)));
         init_levels_sprites();
-        setRoomAdress(std::get<2>(pos_port));
-        createPlayer(message.id, std::get<0>(pos_port), std::get<1>(pos_port));
         updateEntitiesFirstConnexion(entities);
         _in_menu = false;
     }

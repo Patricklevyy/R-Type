@@ -9,19 +9,19 @@
 
 namespace rtype
 {
-    void Client::add_level_status_screen(bool win)
+    void Client::add_level_status_screen(bool win, ecs::udp::Message &message)
     {
         size_t index = getNextIndex();
 
         SPRITES screen;
         if (win) {
             screen = SPRITES::WIN_SCREEN;
+            _levels_wins[static_cast<LEVELS>(std::stoi(message.params) + 1)] = true;
         } else {
             screen = SPRITES::LOOSER_SCREEN;
         }
-        _ecs.addComponents<ecs::Position>(
-            index, ecs::Position(_window_width / 4, _window_height / 4));
-        _ecs.addComponents<TempDisplay>(index, TempDisplay());
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(((_window_width / 2) - (SpriteFactory::getMaxTextureSizeForSprite(screen).first / 2)), _window_height / 4));
+        _ecs.addComponents<LevelStatus>(index, LevelStatus());
         _ecs.addComponents<Displayable>(index, Displayable(screen));
     }
 
@@ -47,37 +47,26 @@ namespace rtype
         unsigned int server_id, float x, float y, SPRITES sprite_id)
     {
         size_t index = getNextIndex();
-        std::cout << "JE CREATE : " << index << std::endl;
         ecs::Position position(x, y);
         Displayable displayable(sprite_id);
-        Health health(60);
 
         _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Health>(index, health);
         _ecs.addComponents<Displayable>(index, displayable);
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
     }
 
-    void Client::createPlayer(unsigned int server_id, float x, float y)
+    void Client::createPlayer(unsigned int server_id, float x, float y, int health)
     {
-        std::cout << "NEW PLAYER \n\n\n\n\n\n\n" << std::endl;
         size_t index = getNextIndex();
 
-        ecs::Direction direction;
-        ecs::Playable playable(_name);
-        ecs::Position position(x, y);
-        ecs::Velocity velocity(200);
-        Displayable displayable(SPRITES::MY_PLAYER_SHIP);
-        Health health(100);
-
-        _ecs.addComponents<ecs::Direction>(index, direction);
-        _ecs.addComponents<ecs::Playable>(index, playable);
-        _ecs.addComponents<ecs::Velocity>(index, velocity);
-        _ecs.addComponents<ecs::Position>(index, position);
-        _ecs.addComponents<Displayable>(index, displayable);
-        _ecs.addComponents<Health>(index, health);
+        _ecs.addComponents<ecs::Direction>(index, ecs::Direction());
+        _ecs.addComponents<ecs::Playable>(index, ecs::Playable());
+        _ecs.addComponents<ecs::Position>(index, ecs::Position(x, y));
+        _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(_gameplay_factory->getPlayerVelocity()));
+        _ecs.addComponents<Displayable>(index, Displayable(SPRITES::MY_PLAYER_SHIP));
+        _ecs.addComponents<Health>(index, Health(health));
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;
@@ -93,9 +82,7 @@ namespace rtype
             ecs::Direction(static_cast<ecs::direction>(dir_x),
                 static_cast<ecs::direction>(dir_y)));
         _ecs.addComponents<ecs::Velocity>(index, ecs::Velocity(velocity));
-        _ecs.addComponents<Health>(index, Health(60));
-        _ecs.addComponents<Displayable>(
-            index, Displayable(static_cast<SPRITES>(spriteId)));
+        _ecs.addComponents<Displayable>(index, Displayable(static_cast<SPRITES>(spriteId)));
 
         ecs_server_to_client[server_id] = index;
         ecs_client_to_server[index] = server_id;

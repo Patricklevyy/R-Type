@@ -26,9 +26,9 @@
     #include "../shared/EventBus.hpp"
     #include "../shared/Timer.hpp"
     #include "../shared/Utils.hpp"
-    #include "HitboxFactory.hpp"
     #include "RandomNumber.hpp"
-    #include "MonsterFactory.hpp"
+    #include "../shared/GameplayFactory.hpp"
+    #include "../shared/SpriteFactory.hpp"
 
     // COMPONENTS
 
@@ -39,6 +39,9 @@
     #include "components/Hitbox.hpp"
     #include "components/Allies.hpp"
     #include "components/Ennemies.hpp"
+    #include "components/Bonus.hpp"
+    #include "components/Damage.hpp"
+    #include "components/PowerUp.hpp"
     #include "../shared/components/Levels.hpp"
 
     // SYSTEMS
@@ -51,10 +54,11 @@
     #include "system/CollisionSystem.hpp"
     #include "system/ShootingSystem.hpp"
     #include "system/HealthSystem.hpp"
+    #include "system/AsteroideSystem.hpp"
     #include "RandomNumber.hpp"
     #include "system/LevelSystem.hpp"
-    #include "system/ScoreSystem.hpp"
     #include "../shared/system/KillSystem.hpp"
+    #include "../shared/system/BonusSystem.hpp"
 
     namespace rtype
     {
@@ -81,12 +85,12 @@
             /**
              * @brief Starts the game in the room.
              */
-            void start(int, std::string, std::string);
+            void start(int, std::string, std::string, std::string);
 
             /**
              * @brief Handles the game thread functionality.
              */
-            void gameThreadFunction(int, std::string, std::string);
+            void gameThreadFunction(int, std::string, std::string, std::string);
 
             /**
              * @brief Sends a message to all clients in the room.
@@ -132,16 +136,15 @@
              */
             std::string getAddress() const;
 
-            /**
-             * @brief Initializes the event bus for the room.
-             */
-            void init_event_bus();
 
             /**
              * @brief Sends the existing entities in the room to the clients.
              * @return A string containing the serialized data of the existing entities.
              */
             std::string sendExistingEntities();
+
+            void spawnBonus(const std::pair<float, float> &position);
+            std::vector<std::string> _clientAddresses;
 
 
         private:
@@ -156,12 +159,13 @@
             ecs::ECS _ecs;
             EventBus _eventBus;
             std::string _name;
+            bool playingInLevel = false;
             unsigned int _nb_client = 0;
             int _sockfd;
             struct sockaddr_in _addr;
             std::thread _gameThread;
-            std::vector<std::string> _clientAddresses;
             RandomNumber _random_number;
+            std::shared_ptr<GameplayFactory> _gameplay_factory;
 
             // SYSTEMS
 
@@ -173,14 +177,22 @@
             HealthSystem _health_system;
             ShootingSystem _shooting_system;
             LevelSystem _level_system;
-            ScoreSystem _score_system;
             KillSystem _kill_system;
+            AsteroideSystem _asteroide_system;
+            BonusSystem _bonus_system;
 
             /**
              * @brief Sends information about dead entities to clients.
              * @param deadEntities A list of IDs for the dead entities.
              */
             void send_client_dead_entities(std::list<size_t>);
+
+            /**
+             * @brief Initializes the event bus for the room.
+             */
+            void init_event_bus();
+
+            void init_all(int, std::string, std::string, std::string);
 
             /**
              * @brief Initializes the room's network socket.
@@ -248,11 +260,20 @@
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
             void createMonster(SPRITES);
+            void createBoss(SPRITES);
             void send_client_new_monster(size_t, float, float , int);
             size_t getNextIndex();
             void startLevel(LEVELS);
-            void send_client_level_status(bool);
-            void send_client_remove_ath();
+            void send_client_level_status(bool, LEVELS);
+            void send_client_start_level();
+            void sendScore(unsigned int);
+            void send_roll_back();
+            std::pair<int, int> createHitbox(SPRITES);
+            void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
+            void send_client_change_player_velocity(size_t, bool);
+            void send_client_player_shield(size_t, bool);
+            void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
+            void send_client_player_lifes(std::list<std::pair<size_t, int>>);
         };
     }
 
