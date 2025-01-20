@@ -70,6 +70,10 @@ namespace rtype
                 return getPlayerPlayerDamage();
             case PLAYER_CHARGED_SHOOT:
                 return (getPlayerPlayerDamage() * 3);
+            case PLAYER_RED_MISSILE:
+                return (getPlayerPlayerDamage() * 3);
+            case PLAYER_RED_CHARGED_SHOOT:
+                return (getPlayerPlayerDamage() * 5);
             case MONSTER_SIMPLE_MISSILE:
                 return getMonsterDamage(SPRITES::SIMPLE_MONSTER);
             case MONSTER_MULTIPLE_MISSILE:

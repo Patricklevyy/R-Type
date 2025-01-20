@@ -89,7 +89,7 @@ namespace rtype
     bool Utils::isAllie(SPRITES type)
     {
         if (type == SPRITES::PLAYER_SIMPLE_MISSILE
-            || type == SPRITES::PLAYER_CHARGED_SHOOT)
+            || type == SPRITES::PLAYER_CHARGED_SHOOT || type == SPRITES::PLAYER_RED_MISSILE || type == SPRITES::PLAYER_RED_CHARGED_SHOOT)
             return true;
         return false;
     }

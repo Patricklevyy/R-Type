@@ -34,6 +34,10 @@ namespace rtype {
 
         int getLifeBonus();
 
+        int getWeaponDurationBonus();
+
+        int getWeaponBoostBonus();
+
         int getVelocityDurationBonus();
 
         int getVelocityBoostBonus();
