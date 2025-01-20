@@ -38,8 +38,6 @@ namespace rtype
             _ath_system.isLevelClicked(_ecs._components_arrays);
         if (isLevelChosen.first && _levels_wins[isLevelChosen.second]) {
             send_server_start_game(isLevelChosen.second);
-        } else if (_ath_system.isLooseOrWinClicked(_ecs._components_arrays)) {
-            restart_game();
         } else if (_player_system.getIndexPlayer(_ecs._components_arrays)
             != -1) {
             auto release_time = std::chrono::steady_clock::now();
