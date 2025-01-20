@@ -169,7 +169,9 @@ namespace rtype
         static auto lastTime = std::chrono::steady_clock::now();
 
         auto currentTime = std::chrono::steady_clock::now();
-        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastTime).count();
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+            currentTime - lastTime)
+                           .count();
 
         if (elapsed > 5) {
             _inLevelStatus = false;
