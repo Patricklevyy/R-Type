@@ -83,6 +83,7 @@ jobs:
     needs:
       - clang_format_check
       - clang_format_fix
+    if: always()
     steps:
       - name: Ensure Format Check or Fix is Done
         run: echo "Format check or fix complete"
