@@ -22,7 +22,6 @@
     #include <sstream>
     #include <chrono>
     #include <libconfig.h++>
-    #include <SFML/Graphics.hpp>
     #include <any>
     #include <typeindex>
     #include <memory>
