@@ -80,7 +80,7 @@ namespace rtype
 
                 std::tuple<std::list<size_t>, unsigned int, bool,
                     std::list<std::pair<float, float>>>
-                    dead_entities = _health_system.checkLife(_ecs, _nb_client);
+                    dead_entities = _health_system.checkLife(_ecs);
 
                 if (std::get<1>(dead_entities) != 0) {
                     _level_system.addToScore(
@@ -111,8 +111,6 @@ namespace rtype
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
                 if (std::get<2>(dead_entities)) {
-                    if (_nb_client > 0)
-                        _nb_client--;
                     dead_entites_id = _kill_system.killAllExceptPlayer(_ecs);
                     send_client_dead_entities(dead_entites_id);
                     playingInLevel = false;
@@ -217,7 +215,6 @@ namespace rtype
                 for (const auto &clientAddr : _clientAddresses) {
                     _udp_server->sendMessage(send_message, clientAddr);
                 }
-                _nb_client++;
             });
         _eventBus.subscribe(RTYPE_ACTIONS::SPAWN_ASTEROIDE,
             [this](const std::vector<std::any> &args) {

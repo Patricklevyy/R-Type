@@ -35,13 +35,13 @@
                             if (i < playables.size() && playables[i].has_value())
                                 return i;
                         }
-                        return -1;
+                        return 0;
                     } catch (const std::exception &e) {
                         std::cerr << "[EXCEPTIN] " << e.what() << std::endl;
                     } catch (...) {
                         std::cerr << "[UNKNOWN ERROR] Une erreur inconnue s'est produite." << std::endl;
                     }
-                    return -1;
+                    return 0;
                 }
 
                 bool changePlayerSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)

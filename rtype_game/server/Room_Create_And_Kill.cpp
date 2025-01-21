@@ -164,6 +164,8 @@ namespace rtype
     {
         size_t index = getNextIndex();
 
+        if (_random_number.generateRandomNumbers(1, 5) != 3)
+            return;
         BONUS bonus = _gameplay_factory->getRandomBonuses(
             _random_number.generateRandomNumbers(1, BONUS::MAX_BONUS - 1));
         SPRITES sprite = _gameplay_factory->getSpriteBonus(bonus);
@@ -249,8 +251,7 @@ namespace rtype
                 _bonus_system.updatePlayerTempWeapon(_ecs._components_arrays,
                     std::get<0>(bonus_info.second),
                     SpriteFactory::getMaxTextureSizeForSprite(
-                        SPRITES::MY_PLAYER_SHIP_WEAPON),
-                    true);
+                        SPRITES::MY_PLAYER_SHIP_WEAPON));
                 _bonus_system.powerUp(_ecs._components_arrays,
                     std::get<0>(bonus_info.second), bonus_info.first,
                     _gameplay_factory->getWeaponDurationBonus());
