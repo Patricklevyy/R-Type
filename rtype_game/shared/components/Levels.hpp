@@ -12,9 +12,19 @@
 
     namespace rtype
     {
+    /**
+     * @class Levels
+     * @brief A class that handles levels of the game.
+     *
+     * The Levels class is managing every levels of the game 
+     * to change the difficulty.
+     */
         class Levels
         {
             public:
+                /**
+                 * @brief Constructor for the Health class.
+                 */
                 Levels(LEVELS level) : _level(level), _spawnInterval(2.0f) {
                     _lastSpawnTime = std::chrono::steady_clock::now();
                 }
