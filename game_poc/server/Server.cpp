@@ -40,9 +40,9 @@ namespace poc_game
             Utils::parseMessageParams(params);
 
         std::string room_name = "ROOM " + std::to_string(_rooms_nb);
-        Room newRoom(_currentPort, room_name);
+        auto newRoom = std::make_shared<Room>(_currentPort, room_name);
         _rooms.push_back(std::move(newRoom));
-        _rooms.back().start(
+        _rooms.back()->start(
             _currentPort, map_params["x"], map_params["y"], clientAddr);
         _currentPort++;
         _rooms_nb++;

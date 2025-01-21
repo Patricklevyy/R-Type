@@ -149,4 +149,18 @@ namespace rtype
         _message_compressor.serialize(request, buffer);
         _udpClient->sendMessageToDefault(buffer);
     }
+
+    void Client::send_server_client_leave()
+    {
+        ecs::udp::Message request;
+        size_t index = _player_system.getIndexPlayer(_ecs._components_arrays);
+        if (index == 0)
+            return;
+        request.id = ecs_client_to_server[index];
+        request.action = RTYPE_ACTIONS::CLIENT_LEAVE;
+        request.secret_key = _udpClient->getSecretKey();
+        std::vector<char> buffer;
+        _message_compressor.serialize(request, buffer);
+        _udpClient->sendMessageToDefault(buffer);
+    }
 } // namespace rtype

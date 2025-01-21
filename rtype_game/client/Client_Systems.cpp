@@ -136,4 +136,22 @@ namespace rtype
             }
         }
     }
+
+    void Client::levelStatusTime()
+    {
+        static auto lastTime = std::chrono::steady_clock::now();
+
+        auto currentTime = std::chrono::steady_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+            currentTime - lastTime)
+                           .count();
+
+        if (elapsed > 5) {
+            _inLevelStatus = false;
+            if (_player_system.getIndexPlayer(_ecs._components_arrays) == 0)
+                send_server_new_player();
+            restart_game();
+            lastTime = currentTime;
+        }
+    }
 } // namespace rtype

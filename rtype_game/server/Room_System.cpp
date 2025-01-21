@@ -39,4 +39,11 @@ namespace rtype
             }
         }
     }
+
+    void Room::remove_player(size_t index)
+    {
+        _kill_system.killEntity(_ecs, index);
+        _nb_client--;
+        send_client_dead_entities({index});
+    }
 } // namespace rtype

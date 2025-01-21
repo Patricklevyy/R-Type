@@ -32,7 +32,7 @@ namespace poc_game
         float elapsed_time =
             std::chrono::duration<float>(current_time - _last_spawn_time)
                 .count();
-        float SPACE = 320;
+        float SPACE = 750;
 
         if (elapsed_time >= PIPE_SPAWN_INTERVAL) {
             size_t index = getNextIndex();

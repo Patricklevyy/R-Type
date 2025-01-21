@@ -285,5 +285,18 @@ namespace rtype
                     send_client_player_lifes(player_life);
                 }
             });
+        _eventBus.subscribe(RTYPE_ACTIONS::CLIENT_LEAVE,
+            [this](const std::vector<std::any> &args) {
+                try {
+                    ecs::udp::Message message = std::any_cast<
+                        std::reference_wrapper<ecs::udp::Message>>(args[0])
+                                                    .get();
+
+                    remove_player(message.id);
+                } catch (const std::bad_any_cast &e) {
+                    std::cerr << "Error during event handling: dans" << e.what()
+                              << std::endl;
+                }
+            });
     }
 } // namespace rtype
