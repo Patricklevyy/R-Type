@@ -35,20 +35,24 @@ namespace rtype
         if (!charged) {
             if (_isBoosted) {
                 message.params += std::to_string(SPRITES::PLAYER_RED_MISSILE);
-                _music_system.shootMusic(_ecs._components_arrays, "assets/musics/shot_red_missile.ogg");
+                _music_system.shootMusic(_ecs._components_arrays,
+                    "assets/musics/shot_red_missile.ogg");
             } else {
                 message.params +=
                     std::to_string(SPRITES::PLAYER_SIMPLE_MISSILE);
-                _music_system.shootMusic(_ecs._components_arrays, "assets/musics/shot_simple_missile.ogg");
+                _music_system.shootMusic(_ecs._components_arrays,
+                    "assets/musics/shot_simple_missile.ogg");
             }
         } else {
             if (_isBoosted) {
                 message.params +=
                     std::to_string(SPRITES::PLAYER_RED_CHARGED_SHOOT);
-                _music_system.shootMusic(_ecs._components_arrays, "assets/musics/shot_red_charged.ogg");
+                _music_system.shootMusic(_ecs._components_arrays,
+                    "assets/musics/shot_red_charged.ogg");
             } else {
                 message.params += std::to_string(SPRITES::PLAYER_CHARGED_SHOOT);
-                _music_system.shootMusic(_ecs._components_arrays, "assets/musics/shot_charged.ogg");
+                _music_system.shootMusic(
+                    _ecs._components_arrays, "assets/musics/shot_charged.ogg");
             }
         }
 

@@ -27,8 +27,8 @@ namespace rtype
     {
         Window window(_window_width, _window_height, "R-Type");
         _ecs.addComponents<Window>(_index_ecs_client, window);
-        _ecs.addComponents<Music>(
-            _index_ecs_client, Music("assets/musics/Daft-Punk-Veridis-Quo-_Official-Video_.ogg"));
+        _ecs.addComponents<Music>(_index_ecs_client,
+            Music("assets/musics/Daft-Punk-Veridis-Quo-_Official-Video_.ogg"));
         _ecs.addComponents<Displayable>(
             _index_ecs_client, Displayable(SPRITES::MENU_BACKGROUND));
         _ecs.addComponents<ecs::Position>(
@@ -205,8 +205,8 @@ namespace rtype
 
         _render_window_system.changeBackground(
             _ecs._components_arrays, SPRITES::GAME_BACKGROUND);
-        _music_system.changeMusic(
-            _ecs._components_arrays, "assets/musics/thunderbird-game-over-9232-_1_.ogg");
+        _music_system.changeMusic(_ecs._components_arrays,
+            "assets/musics/thunderbird-game-over-9232-_1_.ogg");
         setRoomAdress(std::get<1>(pos_port_dif));
         _gameplay_factory->changeDifficulty(
             static_cast<DIFFICULTY>(std::get<2>(pos_port_dif)));
