@@ -17,11 +17,38 @@
 
     namespace rtype
     {
+        /**
+         * @class AsteroidSystem
+         * @brief A class that handles Asteroid in the game.
+         */
         class AsteroideSystem {
             public:
+
+                /**
+                * @brief Constructor for the AsteroideSystem class.
+                */
                 AsteroideSystem() {}
+
+                /**
+                * @brief Destructor for the AsteroideSystem class.
+                */
                 ~AsteroideSystem() {}
 
+                /**
+                 * @brief Handles the spawning of asteroids in the game.
+                 * @param randomizer An instance of RandomNumber used to generate random vertical positions for the asteroids.
+                 * @param gameplayFactory A shared pointer to the GameplayFactory, which provides game settings such as difficulty 
+                 *        and asteroid spawn parameters.
+                 * @param window_height The height of the game window in pixels.
+                 * @param window_width The width of the game window in pixels.
+                 * @param isPlaying A boolean indicating whether the game is currently in a playing state.
+                 * @return A list of tuples, where each tuple contains:
+                 * - A size_t index representing the asteroid ID.
+                 * - A pair of pairs representing:
+                 *   - The position of the asteroid.
+                 *   - The movement direction of the asteroid.
+                 * - SPRITES enum indicating the type of sprite.
+                 */
                 std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> spwan_asteroide(RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory, int window_height, int window_width, bool isPlaying) {
                     std::list<std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES>> asteroids;
 
