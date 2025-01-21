@@ -34,26 +34,26 @@
                     }
                 }
 
-                void setMusic(const std::string& filePath)
+                void setMusic(const std::string& filePath, bool loop)
                 {
                     if (!music->openFromFile(filePath)) {
                         throw std::runtime_error("Erreur : Impossible de charger le fichier audio : " + filePath);
                     }
-                    music->setLoop(true);
+                    music->setLoop(loop);
                     music->play();
                 }
 
-                void setShootMusic(const std::string& filePath)
-                {
-                    if (!music->openFromFile(filePath)) {
-                        throw std::runtime_error("Erreur : Impossible de charger le fichier audio : " + filePath);
-                    }
-                    if (music->getStatus() == sf::Sound::Playing) {
-                        music->stop();
-                    }
-                    music->setLoop(false);
-                    music->play();
-                }
+                // void setShootMusic(const std::string& filePath)
+                // {
+                //     if (!music->openFromFile(filePath)) {
+                //         throw std::runtime_error("Erreur : Impossible de charger le fichier audio : " + filePath);
+                //     }
+                //     if (music->getStatus() == sf::Sound::Playing) {
+                //         music->stop();
+                //     }
+                //     music->setLoop(false);
+                //     music->play();
+                // }
 
             protected:
             private:

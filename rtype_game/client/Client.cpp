@@ -117,8 +117,16 @@ namespace rtype
             }
         });
 
+        std::atomic<bool> runningRequestListThread{true};
+        std::thread requestRoomListThread([&]() {
+            while (runningRequestListThread) {
+                requestRoomList();
+                std::this_thread::sleep_for(
+                    std::chrono::seconds(1));
+            }
+        });
+
         try {
-            requestRoomList();
             Menu menu(*lawindow, playerName, *this);
             menu.run(_in_menu);
         } catch (const std::exception &e) {
@@ -130,6 +138,11 @@ namespace rtype
         runningNetworkThread = false;
         if (networkThread.joinable()) {
             networkThread.join();
+        }
+
+        runningRequestListThread = false;
+        if (requestRoomListThread.joinable()) {
+            requestRoomListThread.join();
         }
     }
 

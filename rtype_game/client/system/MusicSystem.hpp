@@ -24,7 +24,7 @@
                         auto &musics = std::any_cast<ecs::SparseArray<Music> &>(components_array.at(typeid(Music)));
 
                         if (musics[0].has_value()) {
-                            musics[0].value().setMusic(musicFilePath);
+                            musics[0].value().setMusic(musicFilePath, true);
                         }
                     } catch (const std::exception &e) {
                         std::cerr << "[EXCEPTON] " << e.what() << std::endl;
@@ -39,7 +39,7 @@
                         auto &musics = std::any_cast<ecs::SparseArray<Music> &>(components_array.at(typeid(Music)));
 
                         if (musics[0].has_value()) {
-                            musics[0].value().setShootMusic(musicFilePath);
+                            musics[0].value().setMusic(musicFilePath, false);
                         }
                     } catch (const std::exception &e) {
                         std::cerr << "[EXCEPTON] " << e.what() << std::endl;
