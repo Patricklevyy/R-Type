@@ -14,7 +14,6 @@
 # Link to our documentation
 
 [Documentation of the project with doxygen](https://patricklevyy.github.io/R-Type/)
-[Diagram des classes](documentation/diagram_class.pdf)
 
 # Supported platforms:
 

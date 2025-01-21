@@ -8,7 +8,8 @@ INPUT                  = ./rtype_game ./ecs \
                          ./documentation/Documentation_gestionnaire_UDP_RType.md \
                          ./documentation/CMakeDocumentation.md \
                          ./documentation/Documentation_frameworks_bibliotheques_utilises.md \
-                         ./documentation/Diagram_class.md
+                         ./documentation/Diagram_class.md \
+                         ./README.md
 
 # Activer le support de Markdown
 ENABLE_MARKDOWN        = YES
