@@ -88,6 +88,10 @@
             REPLAY_BUTTON
         };
 
+        /**
+         * @enum LEVELS
+         * @brief Defines stages of the game.
+         */
         enum LEVELS
         {
             UN,
