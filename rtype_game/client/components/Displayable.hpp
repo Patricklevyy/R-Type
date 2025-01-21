@@ -21,6 +21,10 @@
 #include "../../shared/SpriteFactory.hpp"
 
 namespace rtype {
+    /**
+     * @class Displayable
+     * @brief Handles the entity that needs to be display with sfml.
+     */
     class Displayable {
     public:
         /**
@@ -101,6 +105,9 @@ namespace rtype {
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
         }
 
+        /**
+         * @brief Get the size of the sprite.
+         */
         sf::Vector2f getSpriteSize() const {
             if (sprite && sprite->getTexture()) {
                 auto textureSize = sprite->getTexture()->getSize();
@@ -113,7 +120,12 @@ namespace rtype {
             return sf::Vector2f(0, 0);
         }
 
-         void setSpriteScale(float scaleX, float scaleY) {
+        /**
+         * @brief Set a scale on a sprite.
+         * @param scaleX the scale that needs to be applied on the x-orientation
+         * @param sclaeY the scale that needs to be applied on the y-orientation
+         */
+        void setSpriteScale(float scaleX, float scaleY) {
             if (sprite) {
                 sprite->setScale(scaleX, scaleY);
             } else {
