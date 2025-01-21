@@ -45,7 +45,7 @@ namespace rtype
         if (event.type == sf::Event::MouseButtonPressed) {
             sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
 
-            float panelStartY = 300;
+            float panelStartY = 200;
             float filterStartY = panelStartY + 90;
             float filterSpacing = 55;
 
@@ -59,6 +59,36 @@ namespace rtype
                               << filterModeToString(_currentFilter)
                               << std::endl;
                 }
+            }
+        }
+    }
+
+    void Settings::updateDifficultyEvent(sf::Event event)
+    {
+        if (event.type != sf::Event::MouseButtonPressed
+            || event.mouseButton.button != sf::Mouse::Left)
+            return;
+
+        sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
+
+        float panelStartY = 200;
+        float accessibilityHeight = 400;
+        float difficultyStartY =
+            panelStartY + accessibilityHeight + 50;
+
+        float optionStartY = difficultyStartY + 90;
+        float optionSpacing = 55;
+
+        for (size_t i = 0; i < 4; ++i) {
+            float optionPosY = optionStartY + i * optionSpacing;
+            sf::FloatRect optionRect(
+                40, optionPosY, 200, 30);
+
+            if (optionRect.contains(static_cast<float>(mousePos.x),
+                    static_cast<float>(mousePos.y))) {
+                _currentdifficulty = static_cast<DIFFICULTY>(i);
+                _client.changeDifficulty(_currentdifficulty);
+                return;
             }
         }
     }
@@ -77,9 +107,9 @@ namespace rtype
                 sf::Vector2i mousePos = sf::Mouse::getPosition(_window);
 
                 float leftPanelWidth = _window.getSize().x / 2.0f;
-                float panelStartY = 300 + 100;
+                float panelStartY = 200 + 100;
                 int index = (mousePos.y - panelStartY) / 120;
-                if (index >= 0 && index < _bindings.size()) {
+                if (index >= 0 && static_cast<std::size_t>(index) < _bindings.size()) {
                     float keyStartX = leftPanelWidth + 100;
                     float keyEndX =
                         keyStartX + _formerKey.getGlobalBounds().width;
@@ -103,6 +133,7 @@ namespace rtype
                 }
             }
             updateFiltersEvent(event);
+            updateDifficultyEvent(event);
         }
     }
 } // namespace rtype
