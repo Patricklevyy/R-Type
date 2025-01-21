@@ -17,6 +17,10 @@
 
     namespace rtype
     {
+        /**
+         * @class Ennemies
+         * @brief A class that handles ennemies in the game.
+         */
         class Ennemies {
             public:
                 /**
