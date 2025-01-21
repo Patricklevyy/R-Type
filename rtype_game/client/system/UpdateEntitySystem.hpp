@@ -19,6 +19,10 @@
 
     namespace rtype
     {
+        /**
+         * @class UpdateEntitySystem
+         * @brief Handle entities and their actions.
+         */
         class UpdateEntitySystem
         {
             public:
