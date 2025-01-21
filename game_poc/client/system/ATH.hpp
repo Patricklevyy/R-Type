@@ -19,11 +19,27 @@
 
     namespace poc_game
     {
+        /**
+         * @class ATH
+         * @brief Class responsible for managing the in-game HUD elements.
+         */
         class ATH {
             public:
+                /**
+                 * @brief Default constructor for ATH class.
+                 */
                 ATH() {}
+
+                /**
+                 * @brief Default destructor for ATH class.
+                 */
                 ~ATH() {}
 
+                /**
+                 * @brief Get the current mouse position in the game window.
+                 * @param components_array The array containing the ECS components.
+                 * @return sf::Vector2f The mouse position in the game world coordinates.
+                 */
                 sf::Vector2f getMousePosition(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &windows = std::any_cast<ecs::SparseArray<Window> &>(components_array.at(typeid(Window)));
@@ -33,6 +49,11 @@
                     return lawindow->mapPixelToCoords(mousePosPixel);
                 }
 
+                /**
+                 * @brief Remove the Play buttons from the display.
+                 * @param ecs The ECS object containing all components.
+                 * @return A list of removed button's indexes.
+                 */
                 std::list<size_t> removePlayButtons(ecs::ECS &ecs)
                 {
                     auto &tempDisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(ecs._components_arrays.at(typeid(TempDisplay)));
@@ -47,7 +68,11 @@
                     return deads;
                 }
 
-
+                /**
+                 * @brief Check if a level button was clicked.
+                 * @param components_array The array containing the ECS components.
+                 * @return A pair indicating if a level was clicked and the level itself.
+                 */
                 std::pair<bool, LEVELS> isLevelClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
@@ -81,6 +106,11 @@
                     }
                 }
 
+                /**
+                 * @brief Check if the Play button was clicked.
+                 * @param components_array The array containing the ECS components.
+                 * @return bool True if the play button was clicked, or false.
+                 */
                 bool isPlayButtonClicked(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     try {
