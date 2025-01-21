@@ -275,6 +275,7 @@
             void send_client_player_weapon(size_t index, bool put);
             void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
             void send_client_player_lifes(std::list<std::pair<size_t, int>>);
+            void remove_player(size_t);
         };
     }
 

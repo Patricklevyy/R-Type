@@ -262,6 +262,7 @@
                 void execute_animation();
                 void updatePlayerLife(std::string);
                 void levelStatusTime();
+                void send_server_client_leave();
         };
     }
 #endif /* !CLIENT_HPP_ */
