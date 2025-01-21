@@ -18,8 +18,8 @@
     namespace rtype
     {
         /**
-         * @class ERROR
-         * @brief A class to manage the error that can happend in the game and manage them.
+         * @namespace ERROR
+         * @brief A namespace to manage the error that can happend in the game and manage them.
          */
         namespace ERROR
         {
