@@ -22,6 +22,10 @@
 
     namespace rtype
     {
+        /**
+         * @class SpriteFactory
+         * @brief A class to manage the sprites of the game.
+         */
         class SpriteFactory
             {
             public:
@@ -225,6 +229,12 @@
                 }
 
             private:
+                /**
+                 * @brief Load a sequence of textures from files based on a category and frame range.
+                 * @param category A string representing the category of the texture.
+                 * @param startFrame The starting frame number for the texture sequence.
+                 * @param endFrame The ending frame number for the texture sequence.
+                 */
                 static std::vector<std::shared_ptr<sf::Texture>> loadTextures(const std::string& category, int startFrame, int endFrame) {
                     std::vector<std::shared_ptr<sf::Texture>> textures;
 
@@ -236,6 +246,12 @@
                     return textures;
                 }
 
+                /**
+                 * @brief Generate the file path for a texture based on its category and frame number.
+                 * @param category A string representing the category of the texture (e.g., bonus type or entity name).
+                 * @param frame The frame number to include in the file path.
+                 * @return A string containing the generated file path.
+                 */
                 static std::string generateFilePath(const std::string& category, int frame) {
                     return "assets/" + category + "_frame" + std::to_string(frame) + ".png";
                 }
