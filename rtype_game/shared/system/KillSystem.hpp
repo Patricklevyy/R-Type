@@ -38,11 +38,30 @@
 
     namespace rtype
     {
+        /**
+         * @class KillSystem
+         * @brief A class that handles the kills in the game.
+         *
+         * The KillSystem class is managing every kill entity
+         */
         class KillSystem {
             public:
+                /**
+                 * @brief Constructor for the KillSystem class.
+                 */
                 KillSystem() {}
+
+                /**
+                 * @brief Destructor for the KillSystem class.
+                 */
                 ~KillSystem() {}
 
+                /**
+                 * @brief Kill the entity when it has taken too much damage.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 *        It allows access to the components of the entity being processed.
+                 * @param index The index of the player entity whose life is to be updated.
+                 */
                 void killEntity(ecs::ECS &ecs, size_t index)
                 {
                     // ECS COMPONENTS
@@ -84,6 +103,11 @@
                     ecs.addDeadEntity(index);
                 }
 
+                /**
+                 * @brief Kill all the entity when a stage is done.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 *        It allows access to the components of the entity being processed.
+                 */
                 std::list<size_t> killAllExceptPlayer(ecs::ECS &ecs)
                 {
                     auto &monsters = std::any_cast<ecs::SparseArray<Monster> &>(ecs._components_arrays[typeid(Monster)]);
@@ -128,6 +152,11 @@
                     return dead_entities;
                 }
 
+                /**
+                 * @brief Kill the win or loose status.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 *        It allows access to the components of the entity being processed.
+                 */
                 void killLevelStatus(ecs::ECS &ecs)
                 {
                     auto &level_status = std::any_cast<ecs::SparseArray<LevelStatus> &>(ecs._components_arrays[typeid(LevelStatus)]);
@@ -141,6 +170,11 @@
                         }
                 }
 
+                /**
+                 * @brief Kill the texts in the window.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 *        It allows access to the components of the entity being processed.
+                 */
                 void killTexts(ecs::ECS &ecs)
                 {
                     auto &texts = std::any_cast<ecs::SparseArray<Text> &>(ecs._components_arrays[typeid(Text)]);
