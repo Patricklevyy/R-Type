@@ -360,6 +360,7 @@
              * @param list The index of the players, and their life.
              */
             void send_client_player_lifes(std::list<std::pair<size_t, int>>);
+            void remove_player(size_t);
         };
     }
 

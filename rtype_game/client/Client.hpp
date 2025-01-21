@@ -383,6 +383,7 @@
                  * @brief Handles the time-related behavior for level status.
                  */
                 void levelStatusTime();
+                void send_server_client_leave();
         };
     }
 #endif /* !CLIENT_HPP_ */

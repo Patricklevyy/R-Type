@@ -78,6 +78,7 @@
             UPDATE_LIFE,
             PUT_WEAPON,
             REMOVE_WEAPON,
+            CLIENT_LEAVE,
             MAX_ACTION
         };
 
