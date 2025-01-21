@@ -13,9 +13,20 @@
 
     namespace poc_game
     {
+        /**
+         * @class PlayerSystem
+         * @brief Class responsible for handling in player actions.
+         */
         class PlayerSystem {
             public:
+                /**
+                 * @brief Default constructor for PlayerSystem class.
+                 */
                 PlayerSystem() {}
+
+                /**
+                 * @brief Default constructor for PlayerSystem class.
+                 */
                 ~PlayerSystem() {}
 
                 /**
