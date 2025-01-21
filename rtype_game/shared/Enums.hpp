@@ -128,6 +128,10 @@
             MAX_SPRITE
         };
 
+        /**
+         * @enum MONSTERS
+         * @brief Enum Monsters.
+         */
         enum MONSTER
         {
             MONSTER1 = 1,
@@ -135,12 +139,20 @@
             MAX_MONSTER
         };
 
+        /**
+         * @enum BOSSES
+         * @brief Enum Bosss.
+         */
         enum BOSSES
         {
             BOSS1 = 1,
             MAX_BOSS
         };
 
+        /**
+         * @enum LEVELS
+         * @brief Defines stages of the game.
+         */
         enum LEVELS
         {
             UN = 1,
@@ -148,6 +160,10 @@
             BOSS
         };
 
+        /**
+         * @enum DIFFICULTY
+         * @brief Defines difficulty of the monsters for customization.
+         */
         enum DIFFICULTY
         {
             EASY,
