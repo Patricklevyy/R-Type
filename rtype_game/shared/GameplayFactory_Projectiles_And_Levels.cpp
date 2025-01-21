@@ -21,11 +21,8 @@ namespace rtype
 
     void GameplayFactory::changeGameplayDifficulty()
     {
-        switch (_difficulty) {
-            case DIFFICULTY::EASY: break;
-
-            case DIFFICULTY::MEDIUM:
-                std::get<0>(player) = std::get<0>(player) * 0.67;
+        if (_difficulty == DIFFICULTY::MEDIUM) {
+            std::get<0>(player) = std::get<0>(player) * 0.67;
                 std::get<1>(player) = std::get<1>(player) * 0.83;
                 std::get<2>(player) = std::get<2>(player) * 0.67;
 
@@ -45,10 +42,8 @@ namespace rtype
                 asteroids.second = 4;
 
                 background_speed *= 1.25;
-                break;
-
-            case DIFFICULTY::HARD:
-                std::get<0>(player) = std::get<0>(player) * 0.53;
+        } else if (_difficulty == DIFFICULTY::HARD || _difficulty == DIFFICULTY::IMPOSSIBLE) {
+            std::get<0>(player) = std::get<0>(player) * 0.53;
                 std::get<1>(player) = std::get<1>(player) * 0.75;
                 std::get<2>(player) = std::get<2>(player) * 0.53;
 
@@ -68,7 +63,6 @@ namespace rtype
                 asteroids.second = 5;
 
                 background_speed *= 1.5;
-                break;
         }
     }
 

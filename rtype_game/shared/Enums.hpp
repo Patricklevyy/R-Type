@@ -168,7 +168,8 @@
         {
             EASY,
             MEDIUM,
-            HARD
+            HARD,
+            IMPOSSIBLE
         };
 
         /**

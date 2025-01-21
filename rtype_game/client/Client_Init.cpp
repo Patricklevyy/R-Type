@@ -43,8 +43,8 @@ namespace rtype
     void Client::reset_level_lock()
     {
         _levels_wins[LEVELS::UN] = true;
-        _levels_wins[LEVELS::DEUX] = true;
-        _levels_wins[LEVELS::BOSS] = true;
+        _levels_wins[LEVELS::DEUX] = false;
+        _levels_wins[LEVELS::BOSS] = false;
     }
 
     void Client::init_window_size(const std::string &file_path)
