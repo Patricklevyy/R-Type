@@ -16,8 +16,16 @@
 
     namespace poc_game
     {
+        /**
+         * @class GravitySystem
+         * @brief A class that handles the gravity in game.
+         */
         class GravitySystem {
             public:
+                /**
+                 * @brief Function that execute eath attraction to pull player down.
+                 * @param components_array The array of components for the ECS.
+                 */
                 void executeGravity(std::unordered_map<std::type_index, std::any> &components_array) {
                     constexpr float GRAVITY_MULTIPLIER_UP = 2.0f;
                     constexpr float GRAVITY_MULTIPLIER_DOWN = 5.0f;
