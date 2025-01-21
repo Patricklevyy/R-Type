@@ -16,8 +16,16 @@
 
     namespace rtype
     {
+        /**
+         * @class
+         * @brief Music in game.
+         */
         class Music {
             public:
+                /**
+                 * @brief Constructor for the Music class.
+                 * @param musicFilePath The path to the music in ogg format
+                 */
                 Music(const std::string& musicFilePath) : music(std::make_shared<sf::Music>())
                 {
                     if (!music->openFromFile(musicFilePath)) {
@@ -27,6 +35,9 @@
                     music->play();
                 }
 
+                /**
+                 * @brief Destructor for the Music class.
+                 */
                 ~Music()
                 {
                     if (music.use_count() == 1) {
@@ -34,6 +45,10 @@
                     }
                 }
 
+                /**
+                 * @brief Set the music in game.
+                 * @param filepath The path to the music to play.
+                 */
                 void setMusic(const std::string& filePath)
                 {
                     if (!music->openFromFile(filePath)) {
@@ -43,6 +58,10 @@
                     music->play();
                 }
 
+                /**
+                 * @brief Play a sound that seems to be a gun shot when the player execute the shoot action in game.
+                 * @param filePath the path to the music to play.
+                 */
                 void setShootMusic(const std::string& filePath)
                 {
                     if (!music->openFromFile(filePath)) {
