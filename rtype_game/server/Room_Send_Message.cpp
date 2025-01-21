@@ -30,10 +30,9 @@ namespace rtype
         std::vector<char> response;
         ecs::udp::Message responseMessage;
 
-        responseMessage.id = 0;
+        responseMessage.id = level;
         if (win) {
             responseMessage.action = RTYPE_ACTIONS::WIN_LEVEL;
-            responseMessage.params = std::to_string(level);
         } else {
             responseMessage.action = RTYPE_ACTIONS::FAIL_LEVEL;
         }

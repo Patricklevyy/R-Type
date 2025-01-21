@@ -20,6 +20,7 @@
     #include "../shared/Includes.hpp"
     #include "../shared/Enums.hpp"
     #include <cmath>
+    #include <SFML/Graphics.hpp>
 
     namespace poc_game
     {

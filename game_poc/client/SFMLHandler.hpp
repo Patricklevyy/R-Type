@@ -9,6 +9,7 @@
 #define SFMLHANDLER_HPP_
 
     #include "Client.hpp"
+    #include <SFML/Graphics.hpp>
 
     namespace poc_game
     {

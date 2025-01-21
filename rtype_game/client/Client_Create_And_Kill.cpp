@@ -15,8 +15,9 @@ namespace rtype
 
         SPRITES screen;
         if (win) {
+            std::cout << "LLEVELLLE : " << message.id << std::endl;
             screen = SPRITES::WIN_SCREEN;
-            _levels_wins[static_cast<LEVELS>(std::stoi(message.params) + 1)] =
+            _levels_wins[static_cast<LEVELS>(message.id + 1)] =
                 true;
         } else {
             screen = SPRITES::LOOSER_SCREEN;
