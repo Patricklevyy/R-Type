@@ -21,6 +21,10 @@
 
 namespace rtype
 {
+    /**
+     * @class Shader
+     * @brief The shader that make the game looks better.
+     */
     class Shader
     {
     public:
