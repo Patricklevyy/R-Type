@@ -23,6 +23,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class SpriteFactory
+         * @brief Class that handles all the sprites.
+         */
         class SpriteFactory
             {
             public:
