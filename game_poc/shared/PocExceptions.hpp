@@ -12,6 +12,10 @@
 
     namespace poc_game
     {
+        /**
+         * @namespace ERROR
+         * @brief A namespace to manage the error that can happend in the game and manage them.
+         */
         namespace ERROR
         {
             /**
