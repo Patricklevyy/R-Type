@@ -49,7 +49,7 @@
             int _rooms_nb = 0;
             Timer _timer;
             bool _running = true;
-            std::vector<Room> _rooms;
+            std::vector<std::shared_ptr<Room>> _rooms;
             int _currentPort;
             std::shared_ptr<ecs::udp::UDP_Manager> _udpManager;
             ecs::udp::MessageCompressor _compressor;
