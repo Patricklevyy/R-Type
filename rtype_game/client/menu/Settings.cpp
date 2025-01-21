@@ -219,8 +219,7 @@ namespace rtype
 
         float accessibilityHeight = 400;
         float panelStartY = 200;
-        float difficultyStartY =
-            panelStartY + accessibilityHeight + 50;
+        float difficultyStartY = panelStartY + accessibilityHeight + 50;
 
         auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
             _client._ecs._components_arrays.at(typeid(Shader)));

@@ -73,16 +73,14 @@ namespace rtype
 
         float panelStartY = 200;
         float accessibilityHeight = 400;
-        float difficultyStartY =
-            panelStartY + accessibilityHeight + 50;
+        float difficultyStartY = panelStartY + accessibilityHeight + 50;
 
         float optionStartY = difficultyStartY + 90;
         float optionSpacing = 55;
 
         for (size_t i = 0; i < 4; ++i) {
             float optionPosY = optionStartY + i * optionSpacing;
-            sf::FloatRect optionRect(
-                40, optionPosY, 200, 30);
+            sf::FloatRect optionRect(40, optionPosY, 200, 30);
 
             if (optionRect.contains(static_cast<float>(mousePos.x),
                     static_cast<float>(mousePos.y))) {
@@ -109,7 +107,8 @@ namespace rtype
                 float leftPanelWidth = _window.getSize().x / 2.0f;
                 float panelStartY = 200 + 100;
                 int index = (mousePos.y - panelStartY) / 120;
-                if (index >= 0 && static_cast<std::size_t>(index) < _bindings.size()) {
+                if (index >= 0
+                    && static_cast<std::size_t>(index) < _bindings.size()) {
                     float keyStartX = leftPanelWidth + 100;
                     float keyEndX =
                         keyStartX + _formerKey.getGlobalBounds().width;

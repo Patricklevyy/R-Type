@@ -24,41 +24,42 @@ namespace rtype
         if (_difficulty == DIFFICULTY::MEDIUM) {
             std::get<0>(player) = std::get<0>(player) * 0.67;
 
-                for (auto &monster : monsters) {
-                    std::get<0>(monster.second) *= 1.25;
-                    std::get<1>(monster.second) *= 1.2;
-                    std::get<2>(monster.second) *= 1.33;
-                }
+            for (auto &monster : monsters) {
+                std::get<0>(monster.second) *= 1.25;
+                std::get<1>(monster.second) *= 1.2;
+                std::get<2>(monster.second) *= 1.33;
+            }
 
-                for (auto &boss : bosses) {
-                    std::get<0>(boss.second) *= 1.25;
-                    std::get<1>(boss.second) *= 1.25;
-                    std::get<2>(boss.second) *= 1.33;
-                }
+            for (auto &boss : bosses) {
+                std::get<0>(boss.second) *= 1.25;
+                std::get<1>(boss.second) *= 1.25;
+                std::get<2>(boss.second) *= 1.33;
+            }
 
-                std::get<0>(asteroids) *= 0.71;
-                std::get<1>(asteroids) = 4;
+            std::get<0>(asteroids) *= 0.71;
+            std::get<1>(asteroids) = 4;
 
-                background_speed *= 1.25;
-        } else if (_difficulty == DIFFICULTY::HARD || _difficulty == DIFFICULTY::IMPOSSIBLE) {
+            background_speed *= 1.25;
+        } else if (_difficulty == DIFFICULTY::HARD
+            || _difficulty == DIFFICULTY::IMPOSSIBLE) {
             std::get<0>(player) = std::get<0>(player) * 0.53;
 
-                for (auto &monster : monsters) {
-                    std::get<0>(monster.second) *= 1.625;
-                    std::get<1>(monster.second) *= 1.4;
-                    std::get<2>(monster.second) *= 1.67;
-                }
+            for (auto &monster : monsters) {
+                std::get<0>(monster.second) *= 1.625;
+                std::get<1>(monster.second) *= 1.4;
+                std::get<2>(monster.second) *= 1.67;
+            }
 
-                for (auto &boss : bosses) {
-                    std::get<0>(boss.second) *= 1.5;
-                    std::get<1>(boss.second) *= 1.5;
-                    std::get<2>(boss.second) *= 2.0;
-                }
+            for (auto &boss : bosses) {
+                std::get<0>(boss.second) *= 1.5;
+                std::get<1>(boss.second) *= 1.5;
+                std::get<2>(boss.second) *= 2.0;
+            }
 
-                std::get<0>(asteroids) *= 0.50;
-                std::get<1>(asteroids) = 5;
+            std::get<0>(asteroids) *= 0.50;
+            std::get<1>(asteroids) = 5;
 
-                background_speed *= 1.5;
+            background_speed *= 1.5;
         }
     }
 
