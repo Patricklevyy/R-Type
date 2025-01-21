@@ -13,6 +13,8 @@ namespace rtype
     {
         client._sfml_handler->updateKeyBindings(_bindings);
         client._currentFilter = _currentFilter;
+        client._difficulty = _currentdifficulty;
+        client.changeDifficulty(_currentdifficulty);
     }
 
     std::string Settings::showDirections(std::string letter)

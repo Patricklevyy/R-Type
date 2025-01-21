@@ -14,7 +14,8 @@ namespace rtype
         Client &client)
         : _window(win), _bindings(keyBindings),
           selectedKey(sf::Keyboard::Unknown),
-          _currentFilter(client._currentFilter), _client(client)
+          _currentFilter(client._currentFilter), _client(client),
+          _currentdifficulty(_client._difficulty)
     {
         if (!_formerKeyTexture.loadFromFile(
                 "assets/settings/former_key_bind.png")
@@ -57,6 +58,7 @@ namespace rtype
         drawTitleAndPanels(font);
         drawAccessibilitySection(font);
         drawKeybindingsSection(font);
+        drawDifficultySection(font);
         _window.draw(_returnButton, leshader);
 
         _window.display();
@@ -80,7 +82,7 @@ namespace rtype
             winSize.x / 2.0f - settingsText.getGlobalBounds().width / 2.0f, 20);
         _window.draw(settingsText, leshader);
 
-        float panelStartY = 300;
+        float panelStartY = 200;
 
         sf::RectangleShape keybindingsRect(
             sf::Vector2f(leftPanelWidth - 40, 600));
@@ -95,7 +97,7 @@ namespace rtype
     {
         sf::Vector2u winSize = _window.getSize();
         float leftPanelWidth = winSize.x / 2.0f;
-        float panelStartY = 300;
+        float panelStartY = 200;
         auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
             _client._ecs._components_arrays.at(typeid(Shader)));
         auto leshader = shader[0].value().getShader().get();
@@ -151,7 +153,7 @@ namespace rtype
     {
         sf::Vector2u winSize = _window.getSize();
         float leftPanelWidth = winSize.x / 2.0f;
-        float panelStartY = 300;
+        float panelStartY = 200;
         auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
             _client._ecs._components_arrays.at(typeid(Shader)));
         auto leshader = shader[0].value().getShader().get();
@@ -207,6 +209,68 @@ namespace rtype
             _window.draw(newKeyText, leshader);
 
             y += 120;
+        }
+    }
+
+    void Settings::drawDifficultySection(sf::Font &font)
+    {
+        sf::Vector2u winSize = _window.getSize();
+        float leftPanelWidth = winSize.x / 2.0f;
+
+        float accessibilityHeight = 400;
+        float panelStartY = 200;
+        float difficultyStartY =
+            panelStartY + accessibilityHeight + 50;
+
+        auto &shader = std::any_cast<ecs::SparseArray<Shader> &>(
+            _client._ecs._components_arrays.at(typeid(Shader)));
+        auto leshader = shader[0].value().getShader().get();
+
+        sf::RectangleShape difficultyRect(
+            sf::Vector2f(leftPanelWidth - 40, 400));
+        difficultyRect.setPosition(20, difficultyStartY - 20);
+        difficultyRect.setFillColor(sf::Color::Transparent);
+        difficultyRect.setOutlineColor(sf::Color::Red);
+        difficultyRect.setOutlineThickness(4.f);
+        _window.draw(difficultyRect, leshader);
+
+        sf::Text difficultyText;
+        difficultyText.setFont(font);
+        difficultyText.setString("DIFFICULTY LEVEL");
+        difficultyText.setStyle(sf::Text::Underlined);
+        difficultyText.setCharacterSize(32);
+        difficultyText.setFillColor(sf::Color::White);
+        difficultyText.setPosition(leftPanelWidth / 2.0f
+                - difficultyText.getGlobalBounds().width / 2.0f,
+            difficultyStartY);
+        _window.draw(difficultyText, leshader);
+
+        std::vector<std::string> difficultyNames = {
+            "EASY", "MEDIUM", "HARD", "IMPOSSIBLE"};
+        float optionStartY = difficultyStartY + 90;
+        float optionSpacing = 55;
+
+        for (size_t i = 0; i < difficultyNames.size(); ++i) {
+            sf::Text difficultyOptionText;
+            difficultyOptionText.setFont(font);
+            difficultyOptionText.setString(difficultyNames[i]);
+            difficultyOptionText.setCharacterSize(24);
+
+            float optionPosY = optionStartY + i * optionSpacing;
+
+            if (static_cast<DIFFICULTY>(i) == _currentdifficulty) {
+                difficultyOptionText.setFillColor(sf::Color::Yellow);
+
+                _choosenIcon.setPosition(
+                    difficultyOptionText.getLocalBounds().width + 80,
+                    optionPosY);
+                _window.draw(_choosenIcon, leshader);
+            } else {
+                difficultyOptionText.setFillColor(sf::Color::White);
+            }
+
+            difficultyOptionText.setPosition(40, optionPosY);
+            _window.draw(difficultyOptionText, leshader);
         }
     }
 

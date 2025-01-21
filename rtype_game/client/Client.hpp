@@ -152,6 +152,7 @@
                 EventBus _eventBus;
                 ecs::ECS _ecs;
                 FILTER_MODE _currentFilter = FILTER_MODE::Neutral;
+                DIFFICULTY _difficulty = DIFFICULTY::EASY;
 
                 /**
                  * @brief Sends a message to the server to ask the list of all the rooms.
@@ -176,7 +177,7 @@
                 std::queue<sf::Event> _events;
                 size_t _index_ecs_client = 0;
                 std::shared_ptr<GameplayFactory> _gameplay_factory;
-                DIFFICULTY _difficulty = DIFFICULTY::EASY;
+                // DIFFICULTY _difficulty = DIFFICULTY::EASY;
 
                 // CLASSES
 

@@ -82,6 +82,12 @@ namespace rtype
         void drawKeybindingsSection(sf::Font &font);
 
       /**
+       * @brief Display the difficulty section in the parameter.
+       * @param The font that will be use to draw the section.
+       */
+        void drawDifficultySection(sf::Font &font);
+
+      /**
        * @brief Manages user inputs and interactions within a specific screen.
        * @param mode The mode of filter to use for visual accessibility.
        */
@@ -104,6 +110,12 @@ namespace rtype
        * @param event The filter selected by the user.
        */
         void updateFiltersEvent(sf::Event);
+
+      /**
+       * @brief Help us to change the difficulty in parameter.
+       * @param event The key pressed to change the difficulty.
+       */
+        void updateDifficultyEvent(sf::Event);
 
 
       protected:
@@ -128,6 +140,7 @@ namespace rtype
         sf::Texture _returnButtonTexture;
         FILTER_MODE _currentFilter = FILTER_MODE::Neutral;
         Client &_client;
+        DIFFICULTY _currentdifficulty = DIFFICULTY::EASY;
     };
 } // namespace rtype
 
