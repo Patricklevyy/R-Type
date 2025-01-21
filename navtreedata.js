@@ -93,6 +93,14 @@ var NAVTREE =
         [ "Raisons du choix", "md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md64", null ]
       ] ]
     ] ],
+    [ "Diagramme des classes", "md_documentation_2Diagram__class.html", null ],
+    [ "R-Type", "md_README.html", [
+      [ "Compilation command", "md_README.html#autotoc_md67", null ],
+      [ "Doxygen command", "md_README.html#autotoc_md68", null ],
+      [ "Link to our documentation", "md_README.html#autotoc_md69", null ],
+      [ "Supported platforms:", "md_README.html#autotoc_md70", null ],
+      [ "Contacts:", "md_README.html#autotoc_md71", null ]
+    ] ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
@@ -128,12 +136,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ATH_8hpp.html",
-"RoomHandling_8hpp_source.html",
-"classecs_1_1Velocity.html",
-"classrtype_1_1ERROR_1_1RoomNotFoundExceptions.html",
-"classrtype_1_1Monster.html#a0c9deea5ca2150e28f0a38234370b1ab",
-"classrtype_1_1SpriteId.html#a0cf38b773b696f38f1cc3a672adad7d5",
-"namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62"
+"RoomHandling_8hpp.html",
+"classecs_1_1SparseArray.html#afcd962364e142d19175d6e2f98c23f75",
+"classrtype_1_1ERROR_1_1RoomIsFullExceptions.html#aab73daa75b47d77b89817e5d9671e544",
+"classrtype_1_1Monster.html",
+"classrtype_1_1Sprite.html#aeebe77f1f588452c438ae4fd145f4e72",
+"namespacegetIpAddress.html#a8839beadc34d8ad40d02f2e2b02d62ec"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

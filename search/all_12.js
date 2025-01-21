@@ -24,14 +24,15 @@ var searchData=
   ['levelsystem_2ehpp_21',['LevelSystem.hpp',['../LevelSystem_8hpp.html',1,'']]],
   ['libconfig_22',['3. libconfig',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md51',1,'']]],
   ['library_23',['2. SFML (Simple and Fast Multimedia Library)',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45',1,'']]],
-  ['life_24',['life',['../classrtype_1_1Life.html#a9449cbbd30d7a29736bef41066ca9a18',1,'rtype::Life::Life()'],['../classrtype_1_1Life.html',1,'rtype::Life'],['../namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315',1,'rtype::LIFE']]],
+  ['life_24',['life',['../namespacertype.html#a4dfee7a3dedb8a551726b7adcf8c0f62a5e5fc5306903067bbbdde1128c488315',1,'rtype::LIFE'],['../classrtype_1_1Life.html',1,'rtype::Life'],['../classrtype_1_1Life.html#a9449cbbd30d7a29736bef41066ca9a18',1,'rtype::Life::Life()']]],
   ['life_2ehpp_25',['Life.hpp',['../Life_8hpp.html',1,'']]],
   ['life_5fdrop_26',['LIFE_DROP',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662abcda16fb42b7b019f483e9d3ee34d148',1,'rtype']]],
   ['life_5fheart_27',['LIFE_HEART',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ad9d8ac916754819803627d00cfd371ae',1,'rtype']]],
   ['life_5frectangle_28',['LIFE_RECTANGLE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a1d4a8e81265bcc49eef0fb5523eb6eac',1,'rtype']]],
   ['life_5fred_29',['LIFE_RED',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a367e37f852000f7217060b679aba09c5',1,'rtype']]],
-  ['loadshader_30',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
-  ['loadtexturesforsprite_31',['loadtexturesforsprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory::loadTexturesForSprite(SPRITES id)'],['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory::loadTexturesForSprite(SPRITES id)']]],
-  ['local_5fip_32',['local_ip',['../namespacegetIpAddress.html#ad0201988c3ed8777c0907dd3f0ec3f6f',1,'getIpAddress']]],
-  ['looser_5fscreen_33',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
+  ['link_20to_20our_20documentation_30',['Link to our documentation',['../md_README.html#autotoc_md69',1,'']]],
+  ['loadshader_31',['loadShader',['../classrtype_1_1Shader.html#aa848b7ef62776f826a9790d93ba1b367',1,'rtype::Shader']]],
+  ['loadtexturesforsprite_32',['loadtexturesforsprite',['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory::loadTexturesForSprite(SPRITES id)'],['../classrtype_1_1SpriteFactory.html#a85ebb8defb7f39e7d10a33f5181837e5',1,'rtype::SpriteFactory::loadTexturesForSprite(SPRITES id)']]],
+  ['local_5fip_33',['local_ip',['../namespacegetIpAddress.html#ad0201988c3ed8777c0907dd3f0ec3f6f',1,'getIpAddress']]],
+  ['looser_5fscreen_34',['LOOSER_SCREEN',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a01187e8b6e13466a478fdec96bbad44c',1,'rtype']]]
 ];

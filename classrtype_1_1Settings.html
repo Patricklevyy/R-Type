@@ -135,6 +135,9 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a1cdd37e71a699695d10f986b8290210a" id="r_a1cdd37e71a699695d10f986b8290210a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html#a1cdd37e71a699695d10f986b8290210a">drawKeybindingsSection</a> (sf::Font &amp;font)</td></tr>
 <tr class="memdesc:a1cdd37e71a699695d10f986b8290210a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the keybinding section in the parameter.  <br /></td></tr>
 <tr class="separator:a1cdd37e71a699695d10f986b8290210a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f2e062e140467c145c376fd381fbf6b" id="r_a1f2e062e140467c145c376fd381fbf6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html#a1f2e062e140467c145c376fd381fbf6b">drawDifficultySection</a> (sf::Font &amp;font)</td></tr>
+<tr class="memdesc:a1f2e062e140467c145c376fd381fbf6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the difficulty section in the parameter.  <br /></td></tr>
+<tr class="separator:a1f2e062e140467c145c376fd381fbf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac904a978ff2ab64bf79fe9a307e4afd9" id="r_ac904a978ff2ab64bf79fe9a307e4afd9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html#ac904a978ff2ab64bf79fe9a307e4afd9">filterModeToString</a> (<a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a> mode)</td></tr>
 <tr class="memdesc:ac904a978ff2ab64bf79fe9a307e4afd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages user inputs and interactions within a specific screen.  <br /></td></tr>
 <tr class="separator:ac904a978ff2ab64bf79fe9a307e4afd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +150,9 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a280f3dbef301fcae1c0c289e7b16f724" id="r_a280f3dbef301fcae1c0c289e7b16f724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html#a280f3dbef301fcae1c0c289e7b16f724">updateFiltersEvent</a> (sf::Event)</td></tr>
 <tr class="memdesc:a280f3dbef301fcae1c0c289e7b16f724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the filter selected by the user.  <br /></td></tr>
 <tr class="separator:a280f3dbef301fcae1c0c289e7b16f724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05d3f92f0d4b8e86ffc79fcda1d008a" id="r_ae05d3f92f0d4b8e86ffc79fcda1d008a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Settings.html#ae05d3f92f0d4b8e86ffc79fcda1d008a">updateDifficultyEvent</a> (sf::Event)</td></tr>
+<tr class="memdesc:ae05d3f92f0d4b8e86ffc79fcda1d008a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Help us to change the difficulty in parameter.  <br /></td></tr>
+<tr class="separator:ae05d3f92f0d4b8e86ffc79fcda1d008a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Manages user settings. </p>
@@ -268,6 +274,32 @@ Fonctions membres publiques</h2></td></tr>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">font</td><td>The font that will be use to draw the explainations. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f2e062e140467c145c376fd381fbf6b" name="a1f2e062e140467c145c376fd381fbf6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f2e062e140467c145c376fd381fbf6b">&#9670;&#160;</a></span>drawDifficultySection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Settings::drawDifficultySection </td>
+          <td>(</td>
+          <td class="paramtype">sf::Font &amp;&#160;</td>
+          <td class="paramname"><em>font</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display the difficulty section in the parameter. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">The</td><td>font that will be use to draw the section. </td></tr>
   </table>
   </dd>
 </dl>
@@ -469,6 +501,32 @@ Fonctions membres publiques</h2></td></tr>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>The Direction that correspond to the key </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae05d3f92f0d4b8e86ffc79fcda1d008a" name="ae05d3f92f0d4b8e86ffc79fcda1d008a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae05d3f92f0d4b8e86ffc79fcda1d008a">&#9670;&#160;</a></span>updateDifficultyEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::Settings::updateDifficultyEvent </td>
+          <td>(</td>
+          <td class="paramtype">sf::Event&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Help us to change the difficulty in parameter. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The key pressed to change the difficulty. </td></tr>
   </table>
   </dd>
 </dl>

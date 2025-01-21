@@ -19,10 +19,11 @@ var searchData=
   ['timer_16',['timer',['../classrtype_1_1Timer.html#a42bd695aa25a2d68dd798acf5cf1e68b',1,'rtype::Timer::Timer()'],['../classrtype_1_1Timer.html',1,'rtype::Timer']]],
   ['timer_2ecpp_17',['Timer.cpp',['../Timer_8cpp.html',1,'']]],
   ['timer_2ehpp_18',['Timer.hpp',['../Timer_8hpp.html',1,'']]],
-  ['tritanopia_19',['Tritanopia',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76ace6e196774cf4511aeb646882082746a',1,'rtype']]],
-  ['tt_20deserialize_20tt_20',['Méthode &lt;tt&gt;deserialize&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md6',1,'']]],
-  ['tt_20messagecompressor_20tt_21',['Implémentation : Classe &lt;tt&gt;MessageCompressor&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md4',1,'']]],
-  ['tt_20serialize_20tt_22',['Méthode &lt;tt&gt;serialize&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md5',1,'']]],
-  ['tt_20vcpkg_20json_20tt_20est_20correctement_20configuré_20pour_20inclure_20les_20versions_20des_20dépendances_20nécessaires_23',['- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.',['../md_documentation_2CMakeDocumentation.html#autotoc_md36',1,'']]],
-  ['type_24',['type',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html',1,'Documentation: Gestionnaire UDP pour le projet R-Type'],['../md_documentation_2CMakeDocumentation.html',1,'Système de Build CMake pour le Projet R-Type']]]
+  ['to_20our_20documentation_19',['Link to our documentation',['../md_README.html#autotoc_md69',1,'']]],
+  ['tritanopia_20',['Tritanopia',['../namespacertype.html#a7856aee68d12739441d9c1701f13bf76ace6e196774cf4511aeb646882082746a',1,'rtype']]],
+  ['tt_20deserialize_20tt_21',['Méthode &lt;tt&gt;deserialize&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md6',1,'']]],
+  ['tt_20messagecompressor_20tt_22',['Implémentation : Classe &lt;tt&gt;MessageCompressor&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md4',1,'']]],
+  ['tt_20serialize_20tt_23',['Méthode &lt;tt&gt;serialize&lt;/tt&gt;',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html#autotoc_md5',1,'']]],
+  ['tt_20vcpkg_20json_20tt_20est_20correctement_20configuré_20pour_20inclure_20les_20versions_20des_20dépendances_20nécessaires_24',['- Vérifiez que &lt;tt&gt;vcpkg.json&lt;/tt&gt; est correctement configuré pour inclure les versions des dépendances nécessaires.',['../md_documentation_2CMakeDocumentation.html#autotoc_md36',1,'']]],
+  ['type_25',['type',['../md_documentation_2Documentation__gestionnaire__UDP__RType.html',1,'Documentation: Gestionnaire UDP pour le projet R-Type'],['../md_README.html',1,'R-Type'],['../md_documentation_2CMakeDocumentation.html',1,'Système de Build CMake pour le Projet R-Type']]]
 ];

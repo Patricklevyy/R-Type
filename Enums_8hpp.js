@@ -91,6 +91,7 @@ var Enums_8hpp =
       [ "UPDATE_LIFE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a96d218ae7bde52c5108005f10c6be706", null ],
       [ "PUT_WEAPON", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3ae63220939de2dbf5079f44a647dcc3e7", null ],
       [ "REMOVE_WEAPON", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3a8327fa804ab545c692b59ca05b5a6440", null ],
+      [ "CLIENT_LEAVE", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3af50c185e563ee95cdd4236e71232657e", null ],
       [ "MAX_ACTION", "Enums_8hpp.html#ad8feded8f9d3253ec5953161afa093f3aa329adac5a3cbc732d53c9357b7afa0e", null ]
     ] ],
     [ "SPRITES", "Enums_8hpp.html#a747b1b1523f4dfe8c5cb549d5eb17662", [

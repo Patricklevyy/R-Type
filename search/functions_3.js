@@ -9,6 +9,7 @@ var searchData=
   ['displayable_6',['Displayable',['../classrtype_1_1Displayable.html#a8dea0a247485e546abdd0936e55cfa28',1,'rtype::Displayable']]],
   ['draw_7',['draw',['../classrtype_1_1Sprite.html#a44889b58292e3fe28c9f3a139ef03455',1,'rtype::Sprite::draw()'],['../classrtype_1_1RoomHandling.html#a627c268836d9a8f87def3bbfb626f00d',1,'rtype::RoomHandling::draw()'],['../classrtype_1_1TextInput.html#a6984569de68974d8f52746cb211d5a30',1,'rtype::TextInput::draw()']]],
   ['drawaccessibilitysection_8',['drawAccessibilitySection',['../classrtype_1_1Settings.html#a850eafd9cea422629e677b2dbcf19638',1,'rtype::Settings']]],
-  ['drawkeybindingssection_9',['drawKeybindingsSection',['../classrtype_1_1Settings.html#a1cdd37e71a699695d10f986b8290210a',1,'rtype::Settings']]],
-  ['drawtitleandpanels_10',['drawTitleAndPanels',['../classrtype_1_1Settings.html#aaf29876f73384762f51297a210630a93',1,'rtype::Settings']]]
+  ['drawdifficultysection_9',['drawDifficultySection',['../classrtype_1_1Settings.html#a1f2e062e140467c145c376fd381fbf6b',1,'rtype::Settings']]],
+  ['drawkeybindingssection_10',['drawKeybindingsSection',['../classrtype_1_1Settings.html#a1cdd37e71a699695d10f986b8290210a',1,'rtype::Settings']]],
+  ['drawtitleandpanels_11',['drawTitleAndPanels',['../classrtype_1_1Settings.html#aaf29876f73384762f51297a210630a93',1,'rtype::Settings']]]
 ];
