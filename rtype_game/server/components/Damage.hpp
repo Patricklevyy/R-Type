@@ -10,9 +10,20 @@
 
     namespace rtype
     {
+        /**
+         * @class Damage
+         * @brief A class that handles damage of entities.
+         */
         class Damage {
             public:
+                /**
+                 * @brief Constructor for the Damage class.
+                 */
                 Damage(int damages = 20) : _damages(damages) {}
+
+                /**
+                 * @brief Destructor for the Damage class.
+                 */
                 ~Damage() {}
 
                 int _damages;
