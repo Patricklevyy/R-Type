@@ -13,11 +13,28 @@
 
     namespace poc_game
     {
+        /**
+         * @class MusicSystem
+         * @brief Class responsible for handling in game music.
+
+         */
         class MusicSystem {
             public:
+                /**
+                 * @brief Default constructor for MusicSystem class.
+                 */
                 MusicSystem() {}
+
+                /**
+                 * @brief Default destructor for MusicSystem class.
+                 */
                 ~MusicSystem() {}
 
+                /**
+                 * @brief Change the music in the game.
+                 * @param components_array The array of ECS components containing the music component.
+                 * @param musicFilePath The file path of the new music to be played.
+                 */
                 void changeMusic(std::unordered_map<std::type_index, std::any> &components_array, std::string musicFilePath)
                 {
                     try {
