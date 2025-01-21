@@ -220,7 +220,7 @@ namespace rtype {
         std::map<int, std::tuple<int, int, int>> bosses;
         std::map<int, std::list<int>> levels;
         std::tuple<int, int, int> player;
-        std::pair<int, int> asteroids;
+        std::tuple<int, int, int> asteroids;
         std::map<int, std::pair<int, int>> bonuses;
         int bonus_speed = 0;
         float background_speed = 0;

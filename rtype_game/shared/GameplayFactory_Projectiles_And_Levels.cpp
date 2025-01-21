@@ -38,8 +38,8 @@ namespace rtype
                     std::get<2>(boss.second) *= 1.33;
                 }
 
-                asteroids.first *= 0.71;
-                asteroids.second = 4;
+                std::get<0>(asteroids) *= 0.71;
+                std::get<1>(asteroids) = 4;
 
                 background_speed *= 1.25;
         } else if (_difficulty == DIFFICULTY::HARD || _difficulty == DIFFICULTY::IMPOSSIBLE) {
@@ -59,8 +59,8 @@ namespace rtype
                     std::get<2>(boss.second) *= 2.0;
                 }
 
-                asteroids.first *= 0.50;
-                asteroids.second = 5;
+                std::get<0>(asteroids) *= 0.50;
+                std::get<1>(asteroids) = 5;
 
                 background_speed *= 1.5;
         }
@@ -73,12 +73,12 @@ namespace rtype
 
     int GameplayFactory::getAsteroidsSpawnInterval()
     {
-        return asteroids.first;
+        return std::get<0>(asteroids);
     }
 
     int GameplayFactory::getAsteroidsNumberOfSpawn()
     {
-        return asteroids.second;
+        return std::get<1>(asteroids);
     }
 
     int GameplayFactory::getProjectilesHealth(SPRITES sprite)
