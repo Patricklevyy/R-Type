@@ -73,11 +73,12 @@ namespace rtype
 
         const libconfig::Setting &asteroidSettings =
             root["gameplay"]["asteroides"];
-        int spawningTime, number;
+        int spawningTime, number, aste_damage;
         asteroidSettings.lookupValue("spwaningTime", spawningTime);
         asteroidSettings.lookupValue("number", number);
+        asteroidSettings.lookupValue("damage", aste_damage);
 
-        asteroids = std::make_pair(spawningTime, number);
+        asteroids = std::tuple(spawningTime, number, aste_damage);
 
         const libconfig::Setting &backgroundSettings = root["display"];
         int speed;

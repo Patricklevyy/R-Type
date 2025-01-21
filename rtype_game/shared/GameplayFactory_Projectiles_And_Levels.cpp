@@ -23,8 +23,6 @@ namespace rtype
     {
         if (_difficulty == DIFFICULTY::MEDIUM) {
             std::get<0>(player) = std::get<0>(player) * 0.67;
-                std::get<1>(player) = std::get<1>(player) * 0.83;
-                std::get<2>(player) = std::get<2>(player) * 0.67;
 
                 for (auto &monster : monsters) {
                     std::get<0>(monster.second) *= 1.25;
@@ -38,14 +36,12 @@ namespace rtype
                     std::get<2>(boss.second) *= 1.33;
                 }
 
-                asteroids.first *= 0.71;
-                asteroids.second = 4;
+                std::get<0>(asteroids) *= 0.71;
+                std::get<1>(asteroids) = 4;
 
                 background_speed *= 1.25;
         } else if (_difficulty == DIFFICULTY::HARD || _difficulty == DIFFICULTY::IMPOSSIBLE) {
             std::get<0>(player) = std::get<0>(player) * 0.53;
-                std::get<1>(player) = std::get<1>(player) * 0.75;
-                std::get<2>(player) = std::get<2>(player) * 0.53;
 
                 for (auto &monster : monsters) {
                     std::get<0>(monster.second) *= 1.625;
@@ -59,8 +55,8 @@ namespace rtype
                     std::get<2>(boss.second) *= 2.0;
                 }
 
-                asteroids.first *= 0.50;
-                asteroids.second = 5;
+                std::get<0>(asteroids) *= 0.50;
+                std::get<1>(asteroids) = 5;
 
                 background_speed *= 1.5;
         }
@@ -73,12 +69,12 @@ namespace rtype
 
     int GameplayFactory::getAsteroidsSpawnInterval()
     {
-        return asteroids.first;
+        return std::get<0>(asteroids);
     }
 
     int GameplayFactory::getAsteroidsNumberOfSpawn()
     {
-        return asteroids.second;
+        return std::get<1>(asteroids);
     }
 
     int GameplayFactory::getProjectilesHealth(SPRITES sprite)
