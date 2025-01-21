@@ -104,6 +104,21 @@
                         return lifes_updates;
                     }
 
+                    void resetLifeForPlayers(std::unordered_map<std::type_index, std::any> &components_array) {
+
+                        auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
+                        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
+
+
+                        for (size_t i = 0; i < playables.size(); ++i)
+                        {
+                            if (playables[i].has_value() && i < healths.size() && healths[i].has_value())
+                            {
+                                healths[i].value()._health = healths[i].value()._max_heath;
+                            }
+                        }
+                    }
+
             protected:
             private:
         };
