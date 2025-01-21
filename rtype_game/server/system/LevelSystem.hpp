@@ -23,11 +23,29 @@
 
     namespace rtype
     {
+        /**
+        * @class LevelSystem
+        * @brief Manages Levels in the game.
+        */
         class LevelSystem {
             public:
+                /**
+                * @brief Constructor for the LevelSystem class.
+                */
                 LevelSystem() {}
+
+                /**
+                * @brief Destructor for the LevelSystem class.
+                */
                 ~LevelSystem() {}
 
+                /**
+                 * @brief Handle the spawn of the Boss Monster.
+                 * @param ecs The Entity Components System that contains all the entity in the game and caontains also informations such as health
+                 * @param randomizer An instance of RandomNumber used to generate random vertical positions for the Boss.
+                 * @param gameplayFactory A shared pointer to the GameplayFactory, which provides game settings such as 
+                 *        Boss spawn parameters.
+                 */
                 std::list<SPRITES> spwanBoss(ecs::ECS &ecs, RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays.at(typeid(Levels)));
@@ -53,6 +71,13 @@
                     return monsters;
                 }
 
+                /**
+                 * @brief Handle the level started by the player.
+                 * @param ecs The Entity Components System that contains all the entity in the game and caontains also informations such as health.
+                 * @param randomizer An instance of RandomNumber used to generate random vertical positions for the Monsters.
+                 * @param gameplayFactory A shared pointer to the GameplayFactory, which provides game settings such as 
+                 *        Monster spawn parameters.
+                 */
                 std::list<SPRITES> executeLevel(ecs::ECS &ecs, RandomNumber randomizer, std::shared_ptr<GameplayFactory> gameplayFactory)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(ecs._components_arrays.at(typeid(Levels)));
@@ -88,6 +113,10 @@
                     return monsters;
                 }
 
+                /**
+                 * @brief Get the score of the player.
+                 * @param components_array An unordered map that conatined all the components, and wich permit to get the score.
+                 */
                 unsigned int getScore(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array[typeid(Levels)]);
@@ -100,6 +129,11 @@
                     return 0;
                 }
 
+                /**
+                 * @brief Increase the score of the player.
+                 * @param components_array An unordered map that conatined all the components, and wich permit to get the score.
+                 * @param score The score to add to the player.
+                 */
                 void addToScore(std::unordered_map<std::type_index, std::any> &components_array, unsigned int score)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array[typeid(Levels)]);
@@ -111,6 +145,10 @@
                     }
                 }
 
+                /**
+                 * @brief Says the status of the levels (finished or not).
+                 * @param components_array An unordered map that conatined all the components, and wich permit to get informations on the game.
+                 */
                 std::pair<LEVELS, bool> isLevelFinished(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &levels = std::any_cast<ecs::SparseArray<Levels> &>(components_array[typeid(Levels)]);
