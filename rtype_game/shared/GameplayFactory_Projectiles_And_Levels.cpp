@@ -23,8 +23,6 @@ namespace rtype
     {
         if (_difficulty == DIFFICULTY::MEDIUM) {
             std::get<0>(player) = std::get<0>(player) * 0.67;
-                std::get<1>(player) = std::get<1>(player) * 0.83;
-                std::get<2>(player) = std::get<2>(player) * 0.67;
 
                 for (auto &monster : monsters) {
                     std::get<0>(monster.second) *= 1.25;
@@ -44,8 +42,6 @@ namespace rtype
                 background_speed *= 1.25;
         } else if (_difficulty == DIFFICULTY::HARD || _difficulty == DIFFICULTY::IMPOSSIBLE) {
             std::get<0>(player) = std::get<0>(player) * 0.53;
-                std::get<1>(player) = std::get<1>(player) * 0.75;
-                std::get<2>(player) = std::get<2>(player) * 0.53;
 
                 for (auto &monster : monsters) {
                     std::get<0>(monster.second) *= 1.625;
