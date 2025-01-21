@@ -23,6 +23,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class Filter
+         * @brief Handle the visual accessibility with filters.
+         */
         class Filter
         {
             public:
