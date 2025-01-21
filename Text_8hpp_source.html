@@ -115,61 +115,61 @@ $(document).ready(function(){initNavTree('Text_8hpp_source.html',''); initResiza
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html">   17</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Text.html">Text</a> {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">   19</a></span>                <a class="code hl_function" href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">Text</a>(<span class="keyword">const</span> std::string&amp; text, <span class="keyword">const</span> std::string&amp; fontPath, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> characterSize = 40, <span class="keywordtype">float</span> x = 20, <span class="keywordtype">float</span> y = 20)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                    : _font(std::make_shared&lt;sf::Font&gt;()), _text(std::make_shared&lt;sf::<a class="code hl_class" href="classrtype_1_1Text.html">Text</a>&gt;()) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                    <span class="keywordflow">if</span> (!_font-&gt;loadFromFile(fontPath)) {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Erreur: Impossible de charger la police à partir de &quot;</span> + fontPath);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                    }</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    _text-&gt;setFont(*_font);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    _text-&gt;setString(text);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    _text-&gt;setCharacterSize(characterSize);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    _text-&gt;setFillColor(sf::Color::White);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                    _text-&gt;setPosition(x, y);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                }</div>
-</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html">   21</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Text.html">Text</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">   31</a></span>                std::shared_ptr&lt;sf::Text&gt; <a class="code hl_function" href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">getText</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                    <span class="keywordflow">return</span> _text;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                }</div>
-</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">   35</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">setText</a>(<span class="keyword">const</span> std::string&amp; newText) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    _text-&gt;setString(newText);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                }</div>
-</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">   39</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">setPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">   31</a></span>                <a class="code hl_function" href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">Text</a>(<span class="keyword">const</span> std::string&amp; text, <span class="keyword">const</span> std::string&amp; fontPath, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> characterSize = 40, <span class="keywordtype">float</span> x = 20, <span class="keywordtype">float</span> y = 20)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                    : _font(std::make_shared&lt;sf::Font&gt;()), _text(std::make_shared&lt;sf::<a class="code hl_class" href="classrtype_1_1Text.html">Text</a>&gt;()) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    <span class="keywordflow">if</span> (!_font-&gt;loadFromFile(fontPath)) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Erreur: Impossible de charger la police à partir de &quot;</span> + fontPath);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    _text-&gt;setFont(*_font);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    _text-&gt;setString(text);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                    _text-&gt;setCharacterSize(characterSize);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    _text-&gt;setFillColor(sf::Color::White);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    _text-&gt;setPosition(x, y);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                }</div>
 </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">   43</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">setColor</a>(<span class="keyword">const</span> sf::Color&amp; color) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    _text-&gt;setFillColor(color);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                }</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">   46</a></span>                std::shared_ptr&lt;sf::Text&gt; <a class="code hl_function" href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">getText</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keywordflow">return</span> _text;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                }</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                std::shared_ptr&lt;sf::Font&gt; _font;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                std::shared_ptr&lt;sf::Text&gt; _text;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            };</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">   53</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">setText</a>(<span class="keyword">const</span> std::string&amp; newText) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    _text-&gt;setString(newText);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                }</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">/* !TEXT_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassrtype_1_1Text_html"><div class="ttname"><a href="classrtype_1_1Text.html">rtype::Text</a></div><div class="ttdef"><b>Definition</b> Text.hpp:17</div></div>
-<div class="ttc" id="aclassrtype_1_1Text_html_a030d48ee3880e8d2dfa7776b1d2124b8"><div class="ttname"><a href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">rtype::Text::getText</a></div><div class="ttdeci">std::shared_ptr&lt; sf::Text &gt; getText() const</div><div class="ttdef"><b>Definition</b> Text.hpp:31</div></div>
-<div class="ttc" id="aclassrtype_1_1Text_html_a577d8e0c4054f64889f8f7d7968d015f"><div class="ttname"><a href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">rtype::Text::setColor</a></div><div class="ttdeci">void setColor(const sf::Color &amp;color)</div><div class="ttdef"><b>Definition</b> Text.hpp:43</div></div>
-<div class="ttc" id="aclassrtype_1_1Text_html_a8f91c6eed4a0991b850378b581c54787"><div class="ttname"><a href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">rtype::Text::setText</a></div><div class="ttdeci">void setText(const std::string &amp;newText)</div><div class="ttdef"><b>Definition</b> Text.hpp:35</div></div>
-<div class="ttc" id="aclassrtype_1_1Text_html_abdd14a5e11a59143d9371cc557243f04"><div class="ttname"><a href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">rtype::Text::setPosition</a></div><div class="ttdeci">void setPosition(float x, float y)</div><div class="ttdef"><b>Definition</b> Text.hpp:39</div></div>
-<div class="ttc" id="aclassrtype_1_1Text_html_ac40c6371266b047aa9b3deaf86a6e6c5"><div class="ttname"><a href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">rtype::Text::Text</a></div><div class="ttdeci">Text(const std::string &amp;text, const std::string &amp;fontPath, unsigned int characterSize=40, float x=20, float y=20)</div><div class="ttdef"><b>Definition</b> Text.hpp:19</div></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">   62</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">setPosition</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    _text-&gt;setPosition(x, y);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                }</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">   70</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">setColor</a>(<span class="keyword">const</span> sf::Color&amp; color) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    _text-&gt;setFillColor(color);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                std::shared_ptr&lt;sf::Font&gt; _font;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                std::shared_ptr&lt;sf::Text&gt; _text;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            };</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif </span><span class="comment">/* !TEXT_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassrtype_1_1Text_html"><div class="ttname"><a href="classrtype_1_1Text.html">rtype::Text</a></div><div class="ttdoc">The text that will be displayed in the game to give some informations such as menu or score.</div><div class="ttdef"><b>Definition</b> Text.hpp:21</div></div>
+<div class="ttc" id="aclassrtype_1_1Text_html_a030d48ee3880e8d2dfa7776b1d2124b8"><div class="ttname"><a href="classrtype_1_1Text.html#a030d48ee3880e8d2dfa7776b1d2124b8">rtype::Text::getText</a></div><div class="ttdeci">std::shared_ptr&lt; sf::Text &gt; getText() const</div><div class="ttdoc">Get the text to display.</div><div class="ttdef"><b>Definition</b> Text.hpp:46</div></div>
+<div class="ttc" id="aclassrtype_1_1Text_html_a577d8e0c4054f64889f8f7d7968d015f"><div class="ttname"><a href="classrtype_1_1Text.html#a577d8e0c4054f64889f8f7d7968d015f">rtype::Text::setColor</a></div><div class="ttdeci">void setColor(const sf::Color &amp;color)</div><div class="ttdoc">Set the color of the text to display.</div><div class="ttdef"><b>Definition</b> Text.hpp:70</div></div>
+<div class="ttc" id="aclassrtype_1_1Text_html_a8f91c6eed4a0991b850378b581c54787"><div class="ttname"><a href="classrtype_1_1Text.html#a8f91c6eed4a0991b850378b581c54787">rtype::Text::setText</a></div><div class="ttdeci">void setText(const std::string &amp;newText)</div><div class="ttdoc">Set the text to display.</div><div class="ttdef"><b>Definition</b> Text.hpp:53</div></div>
+<div class="ttc" id="aclassrtype_1_1Text_html_abdd14a5e11a59143d9371cc557243f04"><div class="ttname"><a href="classrtype_1_1Text.html#abdd14a5e11a59143d9371cc557243f04">rtype::Text::setPosition</a></div><div class="ttdeci">void setPosition(float x, float y)</div><div class="ttdoc">Set the position of the text to display.</div><div class="ttdef"><b>Definition</b> Text.hpp:62</div></div>
+<div class="ttc" id="aclassrtype_1_1Text_html_ac40c6371266b047aa9b3deaf86a6e6c5"><div class="ttname"><a href="classrtype_1_1Text.html#ac40c6371266b047aa9b3deaf86a6e6c5">rtype::Text::Text</a></div><div class="ttdeci">Text(const std::string &amp;text, const std::string &amp;fontPath, unsigned int characterSize=40, float x=20, float y=20)</div><div class="ttdoc">Constructor for the Text class.</div><div class="ttdef"><b>Definition</b> Text.hpp:31</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -98,24 +98,36 @@ $(document).ready(function(){initNavTree('classrtype_1_1KillSystem.html',''); in
 </div><!--header-->
 <div class="contents">
 
+<p>A class that handles the kills in the game.  
+ <a href="classrtype_1_1KillSystem.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="KillSystem_8hpp_source.html">KillSystem.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a44e7390a8533a0991a88b7b565e0b0fd" id="r_a44e7390a8533a0991a88b7b565e0b0fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#a44e7390a8533a0991a88b7b565e0b0fd">KillSystem</a> ()</td></tr>
+<tr class="memdesc:a44e7390a8533a0991a88b7b565e0b0fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classrtype_1_1KillSystem.html" title="A class that handles the kills in the game.">KillSystem</a> class.  <br /></td></tr>
 <tr class="separator:a44e7390a8533a0991a88b7b565e0b0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a04e4574939f8e3441197a3cf4724d3" id="r_a2a04e4574939f8e3441197a3cf4724d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#a2a04e4574939f8e3441197a3cf4724d3">~KillSystem</a> ()</td></tr>
+<tr class="memdesc:a2a04e4574939f8e3441197a3cf4724d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1KillSystem.html" title="A class that handles the kills in the game.">KillSystem</a> class.  <br /></td></tr>
 <tr class="separator:a2a04e4574939f8e3441197a3cf4724d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a227a9b7af739a16cb11868cdce37335f" id="r_a227a9b7af739a16cb11868cdce37335f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#a227a9b7af739a16cb11868cdce37335f">killEntity</a> (<a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;ecs, size_t index)</td></tr>
+<tr class="memdesc:a227a9b7af739a16cb11868cdce37335f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kill the entity when it has taken too much damage.  <br /></td></tr>
 <tr class="separator:a227a9b7af739a16cb11868cdce37335f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2a8e1ad50c3939585bcfc9bf8607ffb" id="r_ab2a8e1ad50c3939585bcfc9bf8607ffb"><td class="memItemLeft" align="right" valign="top">std::list&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#ab2a8e1ad50c3939585bcfc9bf8607ffb">killAllExceptPlayer</a> (<a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;ecs)</td></tr>
+<tr class="memdesc:ab2a8e1ad50c3939585bcfc9bf8607ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kill all the entity when a stage is done.  <br /></td></tr>
 <tr class="separator:ab2a8e1ad50c3939585bcfc9bf8607ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00f9005ade92512faa8307ba9e8038cb" id="r_a00f9005ade92512faa8307ba9e8038cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#a00f9005ade92512faa8307ba9e8038cb">killLevelStatus</a> (<a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;ecs)</td></tr>
+<tr class="memdesc:a00f9005ade92512faa8307ba9e8038cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kill the win or loose status.  <br /></td></tr>
 <tr class="separator:a00f9005ade92512faa8307ba9e8038cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8394dd986c10290d18d5ca0de4a3c894" id="r_a8394dd986c10290d18d5ca0de4a3c894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1KillSystem.html#a8394dd986c10290d18d5ca0de4a3c894">killTexts</a> (<a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;ecs)</td></tr>
+<tr class="memdesc:a8394dd986c10290d18d5ca0de4a3c894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kill the texts in the window.  <br /></td></tr>
 <tr class="separator:a8394dd986c10290d18d5ca0de4a3c894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>A class that handles the kills in the game. </p>
+<p>The <a class="el" href="classrtype_1_1KillSystem.html" title="A class that handles the kills in the game.">KillSystem</a> class is managing every kill entity </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a44e7390a8533a0991a88b7b565e0b0fd" name="a44e7390a8533a0991a88b7b565e0b0fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44e7390a8533a0991a88b7b565e0b0fd">&#9670;&#160;</a></span>KillSystem()</h2>
 
@@ -138,6 +150,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor for the <a class="el" href="classrtype_1_1KillSystem.html" title="A class that handles the kills in the game.">KillSystem</a> class. </p>
 
 </div>
 </div>
@@ -163,6 +177,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="classrtype_1_1KillSystem.html" title="A class that handles the kills in the game.">KillSystem</a> class. </p>
 
 </div>
 </div>
@@ -190,6 +206,14 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Kill all the entity when a stage is done. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs</td><td>A reference to the ECS (Entity Component System) managing all components and entities. It allows access to the components of the entity being processed. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -227,6 +251,15 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Kill the entity when it has taken too much damage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs</td><td>A reference to the ECS (Entity Component System) managing all components and entities. It allows access to the components of the entity being processed. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the player entity whose life is to be updated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a00f9005ade92512faa8307ba9e8038cb" name="a00f9005ade92512faa8307ba9e8038cb"></a>
@@ -253,6 +286,14 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Kill the win or loose status. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs</td><td>A reference to the ECS (Entity Component System) managing all components and entities. It allows access to the components of the entity being processed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a8394dd986c10290d18d5ca0de4a3c894" name="a8394dd986c10290d18d5ca0de4a3c894"></a>
@@ -278,6 +319,14 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Kill the texts in the window. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs</td><td>A reference to the ECS (Entity Component System) managing all components and entities. It allows access to the components of the entity being processed. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

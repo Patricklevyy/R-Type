@@ -98,27 +98,38 @@ $(document).ready(function(){initNavTree('classrtype_1_1PlayerSystem.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>Handles player-related functionalities such as managing player index, sprite, life, and related visual updates.  
+ <a href="classrtype_1_1PlayerSystem.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="PlayerSystem_8hpp_source.html">PlayerSystem.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a42fec4b747040ba61365af18baea5c7d" id="r_a42fec4b747040ba61365af18baea5c7d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#a42fec4b747040ba61365af18baea5c7d">PlayerSystem</a> ()</td></tr>
+<tr class="memdesc:a42fec4b747040ba61365af18baea5c7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classrtype_1_1PlayerSystem.html" title="Handles player-related functionalities such as managing player index, sprite, life,...">PlayerSystem</a> class.  <br /></td></tr>
 <tr class="separator:a42fec4b747040ba61365af18baea5c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adda5d36b96f6b980b05f85af14abdc83" id="r_adda5d36b96f6b980b05f85af14abdc83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#adda5d36b96f6b980b05f85af14abdc83">~PlayerSystem</a> ()</td></tr>
+<tr class="memdesc:adda5d36b96f6b980b05f85af14abdc83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor for the <a class="el" href="classrtype_1_1PlayerSystem.html" title="Handles player-related functionalities such as managing player index, sprite, life,...">PlayerSystem</a> class.  <br /></td></tr>
 <tr class="separator:adda5d36b96f6b980b05f85af14abdc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0350540bcdc2293eaa8de22468a8f191" id="r_a0350540bcdc2293eaa8de22468a8f191"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#a0350540bcdc2293eaa8de22468a8f191">getIndexPlayer</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
 <tr class="memdesc:a0350540bcdc2293eaa8de22468a8f191"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the index of the player, used only by the client.  <br /></td></tr>
 <tr class="separator:a0350540bcdc2293eaa8de22468a8f191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac97fef635152002e0d322e1a99744e89" id="r_ac97fef635152002e0d322e1a99744e89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#ac97fef635152002e0d322e1a99744e89">changePlayerSprite</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, size_t index, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite)</td></tr>
+<tr class="memdesc:ac97fef635152002e0d322e1a99744e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the sprite of the player entity.  <br /></td></tr>
 <tr class="separator:ac97fef635152002e0d322e1a99744e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ff6f58775606f441d41659eadb1bec" id="r_a08ff6f58775606f441d41659eadb1bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#a08ff6f58775606f441d41659eadb1bec">changeTeamateSprite</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, size_t index, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite)</td></tr>
+<tr class="memdesc:a08ff6f58775606f441d41659eadb1bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the sprite of a teammate entity.  <br /></td></tr>
 <tr class="separator:a08ff6f58775606f441d41659eadb1bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3e1875eebe845a225f6cf244b4a33d5" id="r_ad3e1875eebe845a225f6cf244b4a33d5"><td class="memItemLeft" align="right" valign="top">std::pair&lt; bool, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#ad3e1875eebe845a225f6cf244b4a33d5">updatePlayerLife</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, size_t index, int health)</td></tr>
+<tr class="memdesc:ad3e1875eebe845a225f6cf244b4a33d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the player's health.  <br /></td></tr>
 <tr class="separator:ad3e1875eebe845a225f6cf244b4a33d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaaad33830ad019b6f575846e466938f" id="r_aeaaad33830ad019b6f575846e466938f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1PlayerSystem.html#aeaaad33830ad019b6f575846e466938f">updateLifeDisplay</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, size_t index)</td></tr>
+<tr class="memdesc:aeaaad33830ad019b6f575846e466938f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the visual representation of the player's health.  <br /></td></tr>
 <tr class="separator:aeaaad33830ad019b6f575846e466938f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Handles player-related functionalities such as managing player index, sprite, life, and related visual updates. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a42fec4b747040ba61365af18baea5c7d" name="a42fec4b747040ba61365af18baea5c7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42fec4b747040ba61365af18baea5c7d">&#9670;&#160;</a></span>PlayerSystem()</h2>
 
@@ -141,6 +152,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor for the <a class="el" href="classrtype_1_1PlayerSystem.html" title="Handles player-related functionalities such as managing player index, sprite, life,...">PlayerSystem</a> class. </p>
 
 </div>
 </div>
@@ -166,6 +179,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default destructor for the <a class="el" href="classrtype_1_1PlayerSystem.html" title="Handles player-related functionalities such as managing player index, sprite, life,...">PlayerSystem</a> class. </p>
 
 </div>
 </div>
@@ -210,6 +225,16 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Changes the sprite of the player entity. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the player entity whose sprite is to be changed. </td></tr>
+    <tr><td class="paramname">sprite</td><td>The new sprite to assign to the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a08ff6f58775606f441d41659eadb1bec" name="a08ff6f58775606f441d41659eadb1bec"></a>
@@ -252,6 +277,16 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Changes the sprite of a teammate entity. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the teammate entity whose sprite is to be changed. </td></tr>
+    <tr><td class="paramname">sprite</td><td>The new sprite to assign to the teammate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0350540bcdc2293eaa8de22468a8f191" name="a0350540bcdc2293eaa8de22468a8f191"></a>
@@ -279,6 +314,12 @@ Fonctions membres publiques</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the index of the player, used only by the client. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -315,6 +356,15 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Updates the visual representation of the player's health. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the player entity whose life bar is to be updated. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -357,6 +407,16 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Updates the player's health. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the player entity whose health is to be updated. </td></tr>
+    <tr><td class="paramname">health</td><td>The new health value to set for the player. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

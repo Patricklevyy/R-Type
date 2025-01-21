@@ -1,6 +1,7 @@
 var namespaces_dup =
 [
     [ "ecs", "namespaceecs.html", "namespaceecs" ],
+    [ "ERROR", "namespaceERROR.html", null ],
     [ "generateSecretKey", "namespacegenerateSecretKey.html", [
       [ "generate_secret_key", "namespacegenerateSecretKey.html#ac061c112737a83f03d8084c71ca65729", null ],
       [ "update_secret_key_in_file", "namespacegenerateSecretKey.html#aab35597d4ef626ac9ad0bf06a76f715c", null ],

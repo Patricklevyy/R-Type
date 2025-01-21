@@ -98,36 +98,53 @@ $(document).ready(function(){initNavTree('classrtype_1_1Utils.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>A utility class providing static methods for parsingand sending informations.  
+ <a href="classrtype_1_1Utils.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Utils_8hpp_source.html">Utils.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Fonctions membres publiques statiques</h2></td></tr>
 <tr class="memitem:a50f60e732d25bf44412dc959dca6e3e9" id="r_a50f60e732d25bf44412dc959dca6e3e9"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a50f60e732d25bf44412dc959dca6e3e9">parseMessageParams</a> (const std::string &amp;params)</td></tr>
+<tr class="memdesc:a50f60e732d25bf44412dc959dca6e3e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a string of parameters into a map.  <br /></td></tr>
 <tr class="separator:a50f60e732d25bf44412dc959dca6e3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29b3f1ae5b73d24e5ec8fa25402c1493" id="r_a29b3f1ae5b73d24e5ec8fa25402c1493"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a29b3f1ae5b73d24e5ec8fa25402c1493">checkAction</a> (int)</td></tr>
+<tr class="memdesc:a29b3f1ae5b73d24e5ec8fa25402c1493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate an action identifier.  <br /></td></tr>
 <tr class="separator:a29b3f1ae5b73d24e5ec8fa25402c1493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b06130cf01cc8a46068c1ac70e4e1fb" id="r_a0b06130cf01cc8a46068c1ac70e4e1fb"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; <a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>, <a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a0b06130cf01cc8a46068c1ac70e4e1fb">extractPlayerPosIndex</a> (std::string, unsigned int)</td></tr>
+<tr class="memdesc:a0b06130cf01cc8a46068c1ac70e4e1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the player's position, direction, and index from a string message.  <br /></td></tr>
 <tr class="separator:a0b06130cf01cc8a46068c1ac70e4e1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a008332f643d1b4a8069c29a96089001a" id="r_a008332f643d1b4a8069c29a96089001a"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; std::pair&lt; float, float &gt;, std::pair&lt; int, int &gt;, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a008332f643d1b4a8069c29a96089001a">extractProjectilePosAndDir</a> (std::string)</td></tr>
+<tr class="memdesc:a008332f643d1b4a8069c29a96089001a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the projectile's position, direction, and sprite type from a string.  <br /></td></tr>
 <tr class="separator:a008332f643d1b4a8069c29a96089001a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f7c599b62579211f6ef87b783070c86" id="r_a2f7c599b62579211f6ef87b783070c86"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a2f7c599b62579211f6ef87b783070c86">isAllie</a> (<a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> type)</td></tr>
+<tr class="memdesc:a2f7c599b62579211f6ef87b783070c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given sprite type represents an ally.  <br /></td></tr>
 <tr class="separator:a2f7c599b62579211f6ef87b783070c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cd9ebf0c23be392ab8b4ba099ad617b" id="r_a4cd9ebf0c23be392ab8b4ba099ad617b"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a4cd9ebf0c23be392ab8b4ba099ad617b">projectilesInfoToString</a> (std::tuple&lt; std::pair&lt; float, float &gt;, std::pair&lt; int, int &gt;, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> &gt;, int)</td></tr>
+<tr class="memdesc:a4cd9ebf0c23be392ab8b4ba099ad617b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert projectile information to a string.  <br /></td></tr>
 <tr class="separator:a4cd9ebf0c23be392ab8b4ba099ad617b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae571fdfdd41c04e1f754ea013db4378b" id="r_ae571fdfdd41c04e1f754ea013db4378b"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#ae571fdfdd41c04e1f754ea013db4378b">bonusInfoToString</a> (const std::pair&lt; float, float &gt; &amp;position, int direction_x, int direction_y, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> sprite, int velocity)</td></tr>
+<tr class="memdesc:ae571fdfdd41c04e1f754ea013db4378b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert bonus information to a string.  <br /></td></tr>
 <tr class="separator:ae571fdfdd41c04e1f754ea013db4378b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a521e3de13752f088631f07d19de2317a" id="r_a521e3de13752f088631f07d19de2317a"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a521e3de13752f088631f07d19de2317a">check_adress</a> (int, const std::string &amp;)</td></tr>
+<tr class="memdesc:a521e3de13752f088631f07d19de2317a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate and format an address string.  <br /></td></tr>
 <tr class="separator:a521e3de13752f088631f07d19de2317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb318bfe826e6d575c1bf127051fd0a5" id="r_afb318bfe826e6d575c1bf127051fd0a5"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::pair&lt; std::size_t, std::pair&lt; float, float &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#afb318bfe826e6d575c1bf127051fd0a5">parse_update</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:afb318bfe826e6d575c1bf127051fd0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse an update message into a list of entities and their positions.  <br /></td></tr>
 <tr class="separator:afb318bfe826e6d575c1bf127051fd0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a845910332ea6ca46b5dfe00110db5241" id="r_a845910332ea6ca46b5dfe00110db5241"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::tuple&lt; std::pair&lt; float, float &gt;, int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a845910332ea6ca46b5dfe00110db5241">parseUpdateEntities</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:a845910332ea6ca46b5dfe00110db5241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse an update message into a vector of entity data.  <br /></td></tr>
 <tr class="separator:a845910332ea6ca46b5dfe00110db5241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca2a794d187377a8c2e94ac81f14a96c" id="r_aca2a794d187377a8c2e94ac81f14a96c"><td class="memItemLeft" align="right" valign="top">static std::tuple&lt; std::tuple&lt; float, float, int &gt;, int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#aca2a794d187377a8c2e94ac81f14a96c">parsePositionAndRoomPort</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:aca2a794d187377a8c2e94ac81f14a96c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse position and room port information from a string.  <br /></td></tr>
 <tr class="separator:aca2a794d187377a8c2e94ac81f14a96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a771955ff64e65f6145a016402fa2ed49" id="r_a771955ff64e65f6145a016402fa2ed49"><td class="memItemLeft" align="right" valign="top">static std::list&lt; std::pair&lt; std::size_t, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Utils.html#a771955ff64e65f6145a016402fa2ed49">parse_update_life</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:a771955ff64e65f6145a016402fa2ed49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse an update message for life values.  <br /></td></tr>
 <tr class="separator:a771955ff64e65f6145a016402fa2ed49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>A utility class providing static methods for parsingand sending informations. </p>
+</div><h2 class="groupheader">Documentation des fonctions membres</h2>
 <a id="ae571fdfdd41c04e1f754ea013db4378b" name="ae571fdfdd41c04e1f754ea013db4378b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae571fdfdd41c04e1f754ea013db4378b">&#9670;&#160;</a></span>bonusInfoToString()</h2>
 
@@ -180,6 +197,19 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Convert bonus information to a string. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>A pair of floats representing the position. </td></tr>
+    <tr><td class="paramname">direction_x</td><td>An integer representing the x direction. </td></tr>
+    <tr><td class="paramname">direction_y</td><td>An integer representing the y direction. </td></tr>
+    <tr><td class="paramname">sprite</td><td>SPRITES enum representing the sprite type. </td></tr>
+    <tr><td class="paramname">velocity</td><td>An integer representing the speed of the bonus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A string representing of the bonus information. </dd></dl>
+
 </div>
 </div>
 <a id="a521e3de13752f088631f07d19de2317a" name="a521e3de13752f088631f07d19de2317a"></a>
@@ -216,6 +246,16 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Validate and format an address string. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>An integer representing the port number. </td></tr>
+    <tr><td class="paramname">address</td><td>A string containing the address. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A validated and formatted address string. </dd></dl>
+
 </div>
 </div>
 <a id="a29b3f1ae5b73d24e5ec8fa25402c1493" name="a29b3f1ae5b73d24e5ec8fa25402c1493"></a>
@@ -241,6 +281,14 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Validate an action identifier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>An integer representing the action to check. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -278,6 +326,16 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Extract the player's position, direction, and index from a string message. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A string containing player information. </td></tr>
+    <tr><td class="paramname">index</td><td>An unsigned integer identifying the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A tuple containing two directions and a size_t index. </dd></dl>
+
 </div>
 </div>
 <a id="a008332f643d1b4a8069c29a96089001a" name="a008332f643d1b4a8069c29a96089001a"></a>
@@ -303,6 +361,20 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Extract the projectile's position, direction, and sprite type from a string. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A string containing projectile information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A tuple containing:<ul>
+<li>A pair of floats representing the position.</li>
+<li>A pair of integers representing the direction.</li>
+<li>SPRITES enum representing the sprite type. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -330,6 +402,15 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Check if the given sprite type represents an ally. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>SPRITES enum representing the sprite type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>True if the sprite is an ally, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="afb318bfe826e6d575c1bf127051fd0a5" name="afb318bfe826e6d575c1bf127051fd0a5"></a>
@@ -355,6 +436,19 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Parse an update message into a list of entities and their positions. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">update</td><td>A string containing update information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A list of pairs, where each pair consists of:<ul>
+<li>A size_t index representing the entity.</li>
+<li>A pair of floats representing the position. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -382,6 +476,19 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Parse an update message for life values. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">update</td><td>A string containing life update information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A list of pairs, where each pair consists of:<ul>
+<li>A size_t index representing the entity.</li>
+<li>An integer representing the life value. </li>
+</ul>
+</dd></dl>
+
 </div>
 </div>
 <a id="a50f60e732d25bf44412dc959dca6e3e9" name="a50f60e732d25bf44412dc959dca6e3e9"></a>
@@ -407,6 +514,15 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Parse a string of parameters into a map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">params</td><td>A string containing parameters in a specific format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A map of key-value pairs extracted from the string. </dd></dl>
 
 </div>
 </div>
@@ -434,6 +550,19 @@ Fonctions membres publiques statiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Parse position and room port information from a string. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A string containing position and port information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A tuple containing:<ul>
+<li>A tuple of floats and an integer.</li>
+<li>Two integers representing the port and other data. </li>
+</ul>
+</dd></dl>
+
 </div>
 </div>
 <a id="a845910332ea6ca46b5dfe00110db5241" name="a845910332ea6ca46b5dfe00110db5241"></a>
@@ -459,6 +588,19 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Parse an update message into a vector of entity data. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">update</td><td>A string containing update information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A vector of tuples, where each tuple contains:<ul>
+<li>A pair of floats representing the position.</li>
+<li>Two integers representing additional data. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -495,6 +637,16 @@ Fonctions membres publiques statiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Convert projectile information to a string. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectileInfo</td><td>A tuple containing projectile data. </td></tr>
+    <tr><td class="paramname">velocity</td><td>An integer representing the velocity of the projectile. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A string representation of the projectile information. </dd></dl>
 
 </div>
 </div>

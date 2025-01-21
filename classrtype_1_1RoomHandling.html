@@ -99,23 +99,33 @@ $(document).ready(function(){initNavTree('classrtype_1_1RoomHandling.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>Manage the rooms (join, create).  
+ <a href="classrtype_1_1RoomHandling.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="RoomHandling_8hpp_source.html">RoomHandling.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:affc49464ef751c6c07b4fa6b3f61a5e5" id="r_affc49464ef751c6c07b4fa6b3f61a5e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#affc49464ef751c6c07b4fa6b3f61a5e5">RoomHandling</a> (sf::Font &amp;_font, std::vector&lt; std::pair&lt; std::string, int &gt; &gt; &amp;rooms)</td></tr>
+<tr class="memdesc:affc49464ef751c6c07b4fa6b3f61a5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classrtype_1_1RoomHandling.html" title="Manage the rooms (join, create).">RoomHandling</a> class.  <br /></td></tr>
 <tr class="separator:affc49464ef751c6c07b4fa6b3f61a5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddb8190040f33ab767e055453397a36" id="r_a0ddb8190040f33ab767e055453397a36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#a0ddb8190040f33ab767e055453397a36">~RoomHandling</a> ()</td></tr>
+<tr class="memdesc:a0ddb8190040f33ab767e055453397a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1RoomHandling.html" title="Manage the rooms (join, create).">RoomHandling</a> class.  <br /></td></tr>
 <tr class="separator:a0ddb8190040f33ab767e055453397a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af467851ecffc616fdff3188113b31cef" id="r_af467851ecffc616fdff3188113b31cef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#af467851ecffc616fdff3188113b31cef">addRoom</a> (const std::string &amp;name, int nb_places)</td></tr>
+<tr class="memdesc:af467851ecffc616fdff3188113b31cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation of a room.  <br /></td></tr>
 <tr class="separator:af467851ecffc616fdff3188113b31cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b72576f928de393d7e14b4ef7138eb8" id="r_a4b72576f928de393d7e14b4ef7138eb8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#a4b72576f928de393d7e14b4ef7138eb8">handleClick</a> (const sf::Vector2f &amp;mousePos, const sf::RectangleShape &amp;container)</td></tr>
+<tr class="memdesc:a4b72576f928de393d7e14b4ef7138eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle when a client click on a room to join it.  <br /></td></tr>
 <tr class="separator:a4b72576f928de393d7e14b4ef7138eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52ee73653bf736598c8e38c1dbbdbba2" id="r_a52ee73653bf736598c8e38c1dbbdbba2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#a52ee73653bf736598c8e38c1dbbdbba2">handleScroll</a> (float delta)</td></tr>
+<tr class="memdesc:a52ee73653bf736598c8e38c1dbbdbba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the scroll if there are too many rooms available.  <br /></td></tr>
 <tr class="separator:a52ee73653bf736598c8e38c1dbbdbba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a627c268836d9a8f87def3bbfb626f00d" id="r_a627c268836d9a8f87def3bbfb626f00d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#a627c268836d9a8f87def3bbfb626f00d">draw</a> (sf::RenderWindow &amp;window, const sf::RectangleShape &amp;container)</td></tr>
+<tr class="memdesc:a627c268836d9a8f87def3bbfb626f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the menu for the Rooms.  <br /></td></tr>
 <tr class="separator:a627c268836d9a8f87def3bbfb626f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4f9a4be0702ac2e71026f4d1f83d537" id="r_ab4f9a4be0702ac2e71026f4d1f83d537"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#ab4f9a4be0702ac2e71026f4d1f83d537">getSelectedRoom</a> () const</td></tr>
+<tr class="memdesc:ab4f9a4be0702ac2e71026f4d1f83d537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the room choosen by the player.  <br /></td></tr>
 <tr class="separator:ab4f9a4be0702ac2e71026f4d1f83d537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -123,7 +133,9 @@ Attributs publics</h2></td></tr>
 <tr class="memitem:a1b0294a4cc99774c344acb14271bc86b" id="r_a1b0294a4cc99774c344acb14271bc86b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; std::string, int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1RoomHandling.html#a1b0294a4cc99774c344acb14271bc86b">_rooms</a></td></tr>
 <tr class="separator:a1b0294a4cc99774c344acb14271bc86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Manage the rooms (join, create). </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="affc49464ef751c6c07b4fa6b3f61a5e5" name="affc49464ef751c6c07b4fa6b3f61a5e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#affc49464ef751c6c07b4fa6b3f61a5e5">&#9670;&#160;</a></span>RoomHandling()</h2>
 
@@ -158,6 +170,15 @@ Attributs publics</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructor for the <a class="el" href="classrtype_1_1RoomHandling.html" title="Manage the rooms (join, create).">RoomHandling</a> class. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_font</td><td>The font to use for the room name. </td></tr>
+    <tr><td class="paramname">rooms</td><td>All the rooms available. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0ddb8190040f33ab767e055453397a36" name="a0ddb8190040f33ab767e055453397a36"></a>
@@ -182,6 +203,8 @@ Attributs publics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="classrtype_1_1RoomHandling.html" title="Manage the rooms (join, create).">RoomHandling</a> class. </p>
 
 </div>
 </div>
@@ -220,6 +243,15 @@ Attributs publics</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creation of a room. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the new room. </td></tr>
+    <tr><td class="paramname">nb_places</td><td>The places availables in the room. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a627c268836d9a8f87def3bbfb626f00d" name="a627c268836d9a8f87def3bbfb626f00d"></a>
@@ -256,6 +288,15 @@ Attributs publics</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Draw the menu for the Rooms. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>The window in wich we want to display the Rooms menu. </td></tr>
+    <tr><td class="paramname">container</td><td>The container to display the rooms inside like a board. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab4f9a4be0702ac2e71026f4d1f83d537" name="ab4f9a4be0702ac2e71026f4d1f83d537"></a>
@@ -280,6 +321,8 @@ Attributs publics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the room choosen by the player. </p>
 
 </div>
 </div>
@@ -317,6 +360,15 @@ Attributs publics</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handle when a client click on a room to join it. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mousePos</td><td>The position of the mouse. </td></tr>
+    <tr><td class="paramname">container</td><td>The conatiner that conatin all the rooms. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a52ee73653bf736598c8e38c1dbbdbba2" name="a52ee73653bf736598c8e38c1dbbdbba2"></a>
@@ -342,6 +394,14 @@ Attributs publics</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Handle the scroll if there are too many rooms available. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta</td><td>The scroll. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

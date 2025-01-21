@@ -14,7 +14,8 @@ var Enums_8hpp =
     [ "DIFFICULTY", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13", [
       [ "EASY", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13acc7b4b03cc2410885c0656ce94b664b3", null ],
       [ "MEDIUM", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a52c41364989848f4e1bbee8b65cb52f2", null ],
-      [ "HARD", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a5a7efc8ba176e689a1e926e57a1c4f48", null ]
+      [ "HARD", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a5a7efc8ba176e689a1e926e57a1c4f48", null ],
+      [ "IMPOSSIBLE", "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a957d27aff8262e3233af6e797907cb1d", null ]
     ] ],
     [ "FILTER_MODE", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76", [
       [ "Neutral", "Enums_8hpp.html#a7856aee68d12739441d9c1701f13bf76aebc02318e8c1edf3e6ab909b5406e559", null ],

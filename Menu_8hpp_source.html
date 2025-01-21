@@ -119,67 +119,77 @@ $(document).ready(function(){initNavTree('Menu_8hpp_source.html',''); initResiza
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacertype.html">rtype</a></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">class </span>Client;</div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html">   21</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Menu.html">Menu</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>      <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classrtype_1_1Menu.html">Menu</a>(sf::RenderWindow &amp;window, <span class="keyword">const</span> std::string &amp;name, <a class="code hl_class" href="classrtype_1_1Client.html">Client</a> &amp;client);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">   24</a></span>        <a class="code hl_function" href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">~Menu</a>() {};</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a0312055132c478a7f90431588aae7508">run</a>(<span class="keywordtype">bool</span> &amp;);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a615b44f0eb0b25f9a5415c730289631e">handleEvents</a>(<span class="keywordtype">bool</span> &amp;_in_menu);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#af745988f9bd18f5fd114fce36133326b">update</a>();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a8c8c646f83f5dc70d45b6b159dfb5703">render</a>();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">   29</a></span>        std::string <a class="code hl_function" href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">getPlayerName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _playerName; }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">   30</a></span>        std::string <a class="code hl_function" href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">getCreatedRoom</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _createdRoom; }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">   31</a></span>        std::shared_ptr&lt;RoomHandling&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">_roomHandling</a>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">   32</a></span>        std::shared_ptr&lt;TextInput&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">_textInput</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a7b5677e7a13a1a8f867bc4d000564757">syncRooms</a>();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">   34</a></span>        std::vector&lt;std::pair&lt;std::string, int&gt;&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">roomsList</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#aa327ed67665bd14a91121a8c6e24f139">joinRoomEvent</a>();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        sf::RenderWindow &amp;_window;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        sf::Font _font;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        sf::Font font_2;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        sf::Texture _logoTexture;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        sf::Texture _createRoomTexture;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        sf::Texture _settingsTexture;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        sf::Sprite _logo;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        sf::Sprite _settings;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        sf::Sprite _validateButton;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        sf::RectangleShape _roomContainer;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        sf::RectangleShape _outerContainer;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        sf::Texture _backgroundTexture;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        sf::Sprite _background;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        sf::Text _playerNameText;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        sf::Text _playerText;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        std::string _playerName;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::string _createdRoom;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_class" href="classrtype_1_1Client.html">Client</a> &amp;_client;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    };</div>
-</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace rtype</span></div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Menu.html">Menu</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_class" href="classrtype_1_1Menu.html">Menu</a>(sf::RenderWindow &amp;window, <span class="keyword">const</span> std::string &amp;name, <a class="code hl_class" href="classrtype_1_1Client.html">Client</a> &amp;client);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">   38</a></span>        <a class="code hl_function" href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">~Menu</a>() {};</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a0312055132c478a7f90431588aae7508">run</a>(<span class="keywordtype">bool</span> &amp;);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a615b44f0eb0b25f9a5415c730289631e">handleEvents</a>(<span class="keywordtype">bool</span> &amp;_in_menu);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#af745988f9bd18f5fd114fce36133326b">update</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a8c8c646f83f5dc70d45b6b159dfb5703">render</a>();</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">/* !MENU_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">   64</a></span>        std::string <a class="code hl_function" href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">getPlayerName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _playerName; }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">   69</a></span>        std::string <a class="code hl_function" href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">getCreatedRoom</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _createdRoom; }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">   71</a></span>        std::shared_ptr&lt;RoomHandling&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">_roomHandling</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">   72</a></span>        std::shared_ptr&lt;TextInput&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">_textInput</a>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#a7b5677e7a13a1a8f867bc4d000564757">syncRooms</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">   78</a></span>        std::vector&lt;std::pair&lt;std::string, int&gt;&gt; <a class="code hl_variable" href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">roomsList</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Menu.html#aa327ed67665bd14a91121a8c6e24f139">joinRoomEvent</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        sf::RenderWindow &amp;_window;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        sf::Font _font;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        sf::Font font_2;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        sf::Texture _logoTexture;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        sf::Texture _createRoomTexture;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        sf::Texture _settingsTexture;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        sf::Sprite _logo;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        sf::Sprite _settings;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        sf::Sprite _validateButton;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        sf::RectangleShape _roomContainer;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        sf::RectangleShape _outerContainer;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        sf::Texture _backgroundTexture;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        sf::Sprite _background;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        sf::Text _playerNameText;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        sf::Text _playerText;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        std::string _playerName;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        std::string _createdRoom;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_class" href="classrtype_1_1Client.html">Client</a> &amp;_client;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    };</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>} <span class="comment">// namespace rtype</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">/* !MENU_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aInputScreen_8hpp_html"><div class="ttname"><a href="InputScreen_8hpp.html">InputScreen.hpp</a></div></div>
 <div class="ttc" id="aRoomHandling_8hpp_html"><div class="ttname"><a href="RoomHandling_8hpp.html">RoomHandling.hpp</a></div></div>
 <div class="ttc" id="aSettings_8hpp_html"><div class="ttname"><a href="Settings_8hpp.html">Settings.hpp</a></div></div>
 <div class="ttc" id="aTextInput_8hpp_html"><div class="ttname"><a href="TextInput_8hpp.html">TextInput.hpp</a></div></div>
-<div class="ttc" id="aclassrtype_1_1Client_html"><div class="ttname"><a href="classrtype_1_1Client.html">rtype::Client</a></div><div class="ttdef"><b>Definition</b> Client.hpp:70</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html"><div class="ttname"><a href="classrtype_1_1Menu.html">rtype::Menu</a></div><div class="ttdef"><b>Definition</b> Menu.hpp:21</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a0312055132c478a7f90431588aae7508"><div class="ttname"><a href="classrtype_1_1Menu.html#a0312055132c478a7f90431588aae7508">rtype::Menu::run</a></div><div class="ttdeci">void run(bool &amp;)</div><div class="ttdef"><b>Definition</b> Menu.cpp:66</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a08ae0d116bea76c05c0b50d20ee317e1"><div class="ttname"><a href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">rtype::Menu::~Menu</a></div><div class="ttdeci">~Menu()</div><div class="ttdef"><b>Definition</b> Menu.hpp:24</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a10d5361536c7ca924c60d93204dd4b23"><div class="ttname"><a href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">rtype::Menu::_roomHandling</a></div><div class="ttdeci">std::shared_ptr&lt; RoomHandling &gt; _roomHandling</div><div class="ttdef"><b>Definition</b> Menu.hpp:31</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a21d2ef806a23721eee584a9bd70f8ea9"><div class="ttname"><a href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">rtype::Menu::getPlayerName</a></div><div class="ttdeci">std::string getPlayerName() const</div><div class="ttdef"><b>Definition</b> Menu.hpp:29</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a615b44f0eb0b25f9a5415c730289631e"><div class="ttname"><a href="classrtype_1_1Menu.html#a615b44f0eb0b25f9a5415c730289631e">rtype::Menu::handleEvents</a></div><div class="ttdeci">void handleEvents(bool &amp;_in_menu)</div><div class="ttdef"><b>Definition</b> Menu.cpp:97</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a66424d3960d68b5e1b0d88a4fb34c792"><div class="ttname"><a href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">rtype::Menu::getCreatedRoom</a></div><div class="ttdeci">std::string getCreatedRoom() const</div><div class="ttdef"><b>Definition</b> Menu.hpp:30</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a7b5677e7a13a1a8f867bc4d000564757"><div class="ttname"><a href="classrtype_1_1Menu.html#a7b5677e7a13a1a8f867bc4d000564757">rtype::Menu::syncRooms</a></div><div class="ttdeci">void syncRooms()</div><div class="ttdef"><b>Definition</b> Menu.cpp:184</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a8c8c646f83f5dc70d45b6b159dfb5703"><div class="ttname"><a href="classrtype_1_1Menu.html#a8c8c646f83f5dc70d45b6b159dfb5703">rtype::Menu::render</a></div><div class="ttdeci">void render()</div><div class="ttdef"><b>Definition</b> Menu.cpp:203</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_a947acc7da5835ec402b35ce564d1a675"><div class="ttname"><a href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">rtype::Menu::roomsList</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::string, int &gt; &gt; roomsList</div><div class="ttdef"><b>Definition</b> Menu.hpp:34</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_aa327ed67665bd14a91121a8c6e24f139"><div class="ttname"><a href="classrtype_1_1Menu.html#aa327ed67665bd14a91121a8c6e24f139">rtype::Menu::joinRoomEvent</a></div><div class="ttdeci">void joinRoomEvent()</div><div class="ttdef"><b>Definition</b> Menu.cpp:76</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_adf3ecffaa59b4d274a531a3ff909f5e0"><div class="ttname"><a href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">rtype::Menu::_textInput</a></div><div class="ttdeci">std::shared_ptr&lt; TextInput &gt; _textInput</div><div class="ttdef"><b>Definition</b> Menu.hpp:32</div></div>
-<div class="ttc" id="aclassrtype_1_1Menu_html_af745988f9bd18f5fd114fce36133326b"><div class="ttname"><a href="classrtype_1_1Menu.html#af745988f9bd18f5fd114fce36133326b">rtype::Menu::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition</b> Menu.cpp:152</div></div>
+<div class="ttc" id="aclassrtype_1_1Client_html"><div class="ttname"><a href="classrtype_1_1Client.html">rtype::Client</a></div><div class="ttdoc">Handle the client actions.</div><div class="ttdef"><b>Definition</b> Client.hpp:74</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html"><div class="ttname"><a href="classrtype_1_1Menu.html">rtype::Menu</a></div><div class="ttdoc">Menu of the project.</div><div class="ttdef"><b>Definition</b> Menu.hpp:25</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a0312055132c478a7f90431588aae7508"><div class="ttname"><a href="classrtype_1_1Menu.html#a0312055132c478a7f90431588aae7508">rtype::Menu::run</a></div><div class="ttdeci">void run(bool &amp;)</div><div class="ttdoc">Handle the menu run, and all the events done on it.</div><div class="ttdef"><b>Definition</b> Menu.cpp:66</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a08ae0d116bea76c05c0b50d20ee317e1"><div class="ttname"><a href="classrtype_1_1Menu.html#a08ae0d116bea76c05c0b50d20ee317e1">rtype::Menu::~Menu</a></div><div class="ttdeci">~Menu()</div><div class="ttdoc">Destructor of the Menu class.</div><div class="ttdef"><b>Definition</b> Menu.hpp:38</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a10d5361536c7ca924c60d93204dd4b23"><div class="ttname"><a href="classrtype_1_1Menu.html#a10d5361536c7ca924c60d93204dd4b23">rtype::Menu::_roomHandling</a></div><div class="ttdeci">std::shared_ptr&lt; RoomHandling &gt; _roomHandling</div><div class="ttdef"><b>Definition</b> Menu.hpp:71</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a21d2ef806a23721eee584a9bd70f8ea9"><div class="ttname"><a href="classrtype_1_1Menu.html#a21d2ef806a23721eee584a9bd70f8ea9">rtype::Menu::getPlayerName</a></div><div class="ttdeci">std::string getPlayerName() const</div><div class="ttdoc">Get the name of the player.</div><div class="ttdef"><b>Definition</b> Menu.hpp:64</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a615b44f0eb0b25f9a5415c730289631e"><div class="ttname"><a href="classrtype_1_1Menu.html#a615b44f0eb0b25f9a5415c730289631e">rtype::Menu::handleEvents</a></div><div class="ttdeci">void handleEvents(bool &amp;_in_menu)</div><div class="ttdoc">Handle events that are made in the menu.</div><div class="ttdef"><b>Definition</b> Menu.cpp:97</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a66424d3960d68b5e1b0d88a4fb34c792"><div class="ttname"><a href="classrtype_1_1Menu.html#a66424d3960d68b5e1b0d88a4fb34c792">rtype::Menu::getCreatedRoom</a></div><div class="ttdeci">std::string getCreatedRoom() const</div><div class="ttdoc">Get all the room already created.</div><div class="ttdef"><b>Definition</b> Menu.hpp:69</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a7b5677e7a13a1a8f867bc4d000564757"><div class="ttname"><a href="classrtype_1_1Menu.html#a7b5677e7a13a1a8f867bc4d000564757">rtype::Menu::syncRooms</a></div><div class="ttdeci">void syncRooms()</div><div class="ttdoc">Synchronise the room to stay coherent in all client.</div><div class="ttdef"><b>Definition</b> Menu.cpp:184</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a8c8c646f83f5dc70d45b6b159dfb5703"><div class="ttname"><a href="classrtype_1_1Menu.html#a8c8c646f83f5dc70d45b6b159dfb5703">rtype::Menu::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Render the Menu.</div><div class="ttdef"><b>Definition</b> Menu.cpp:203</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_a947acc7da5835ec402b35ce564d1a675"><div class="ttname"><a href="classrtype_1_1Menu.html#a947acc7da5835ec402b35ce564d1a675">rtype::Menu::roomsList</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::string, int &gt; &gt; roomsList</div><div class="ttdef"><b>Definition</b> Menu.hpp:78</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_aa327ed67665bd14a91121a8c6e24f139"><div class="ttname"><a href="classrtype_1_1Menu.html#aa327ed67665bd14a91121a8c6e24f139">rtype::Menu::joinRoomEvent</a></div><div class="ttdeci">void joinRoomEvent()</div><div class="ttdoc">Client join a room form the menu.</div><div class="ttdef"><b>Definition</b> Menu.cpp:76</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_adf3ecffaa59b4d274a531a3ff909f5e0"><div class="ttname"><a href="classrtype_1_1Menu.html#adf3ecffaa59b4d274a531a3ff909f5e0">rtype::Menu::_textInput</a></div><div class="ttdeci">std::shared_ptr&lt; TextInput &gt; _textInput</div><div class="ttdef"><b>Definition</b> Menu.hpp:72</div></div>
+<div class="ttc" id="aclassrtype_1_1Menu_html_af745988f9bd18f5fd114fce36133326b"><div class="ttname"><a href="classrtype_1_1Menu.html#af745988f9bd18f5fd114fce36133326b">rtype::Menu::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Update the menu display and the menu Events.</div><div class="ttdef"><b>Definition</b> Menu.cpp:152</div></div>
 <div class="ttc" id="anamespacertype_html"><div class="ttname"><a href="namespacertype.html">rtype</a></div><div class="ttdef"><b>Definition</b> Client.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

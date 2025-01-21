@@ -11,10 +11,10 @@ var searchData=
   ['addroom_8',['addRoom',['../classrtype_1_1RoomHandling.html#af467851ecffc616fdff3188113b31cef',1,'rtype::RoomHandling']]],
   ['addtoscore_9',['addToScore',['../classrtype_1_1LevelSystem.html#af5f5ccfcda7170f69c3ec7c7873fc7b2',1,'rtype::LevelSystem']]],
   ['advanced_5fmonster_10',['ADVANCED_MONSTER',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662ab6655f396c15c1ac66057e50da493e5a',1,'rtype']]],
-  ['allies_11',['allies',['../classrtype_1_1Allies.html',1,'rtype::Allies'],['../classrtype_1_1Allies.html#a858190968b102b6114502c58e6b497d0',1,'rtype::Allies::Allies()']]],
+  ['allies_11',['allies',['../classrtype_1_1Allies.html#a858190968b102b6114502c58e6b497d0',1,'rtype::Allies::Allies()'],['../classrtype_1_1Allies.html',1,'rtype::Allies']]],
   ['allies_2ehpp_12',['Allies.hpp',['../Allies_8hpp.html',1,'']]],
   ['and_20fast_20multimedia_20library_13',['2. SFML (Simple and Fast Multimedia Library)',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md45',1,'']]],
-  ['animation_14',['animation',['../classrtype_1_1Animation.html#a3e16431c7499f9d9d707e5eb06610288',1,'rtype::Animation::Animation()'],['../classrtype_1_1Animation.html',1,'rtype::Animation']]],
+  ['animation_14',['animation',['../classrtype_1_1Animation.html',1,'rtype::Animation'],['../classrtype_1_1Animation.html#a3e16431c7499f9d9d707e5eb06610288',1,'rtype::Animation::Animation()']]],
   ['animation_2ehpp_15',['Animation.hpp',['../Animation_8hpp.html',1,'']]],
   ['animationsystem_16',['animationsystem',['../classrtype_1_1AnimationSystem.html#af67de15d83aa3bdb518d276405a16458',1,'rtype::AnimationSystem::AnimationSystem()'],['../classrtype_1_1AnimationSystem.html',1,'rtype::AnimationSystem']]],
   ['animationsystem_2ehpp_17',['AnimationSystem.hpp',['../AnimationSystem_8hpp.html',1,'']]],
@@ -22,7 +22,8 @@ var searchData=
   ['asteroide_19',['ASTEROIDE',['../namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662a77a03b976af3becde3153a7b05734bbe',1,'rtype']]],
   ['asteroidesystem_20',['asteroidesystem',['../classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c',1,'rtype::AsteroideSystem::AsteroideSystem()'],['../classrtype_1_1AsteroideSystem.html',1,'rtype::AsteroideSystem']]],
   ['asteroidesystem_2ehpp_21',['AsteroideSystem.hpp',['../AsteroideSystem_8hpp.html',1,'']]],
-  ['ath_22',['ath',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH::ATH()'],['../classrtype_1_1ATH.html',1,'rtype::ATH']]],
-  ['ath_2ehpp_23',['ATH.hpp',['../ATH_8hpp.html',1,'']]],
-  ['avec_20sdl2_20et_20raylib_24',['Comparatif avec SDL2 et Raylib',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md49',1,'']]]
+  ['asteroidsystem_22',['AsteroidSystem',['../classAsteroidSystem.html',1,'']]],
+  ['ath_23',['ath',['../classrtype_1_1ATH.html#a35c087367b70136ed8c920316705511f',1,'rtype::ATH::ATH()'],['../classrtype_1_1ATH.html',1,'rtype::ATH']]],
+  ['ath_2ehpp_24',['ATH.hpp',['../ATH_8hpp.html',1,'']]],
+  ['avec_20sdl2_20et_20raylib_25',['Comparatif avec SDL2 et Raylib',['../md_documentation_2Documentation__frameworks__bibliotheques__utilises.html#autotoc_md49',1,'']]]
 ];

@@ -104,6 +104,7 @@ var annotated_dup =
       [ "Utils", "classrtype_1_1Utils.html", null ],
       [ "Window", "classrtype_1_1Window.html", "classrtype_1_1Window" ]
     ] ],
+    [ "AsteroidSystem", "classAsteroidSystem.html", null ],
     [ "UDP_Client", "classUDP__Client.html", "classUDP__Client" ],
     [ "UDP_Manager", "classUDP__Manager.html", null ]
 ];

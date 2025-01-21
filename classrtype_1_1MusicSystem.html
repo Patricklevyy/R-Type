@@ -98,20 +98,29 @@ $(document).ready(function(){initNavTree('classrtype_1_1MusicSystem.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>Handles animations and interactions in the game, including level management and mouse input detection.  
+ <a href="classrtype_1_1MusicSystem.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="MusicSystem_8hpp_source.html">MusicSystem.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a688e8eb73befad966a02178f33591aff" id="r_a688e8eb73befad966a02178f33591aff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1MusicSystem.html#a688e8eb73befad966a02178f33591aff">MusicSystem</a> ()</td></tr>
+<tr class="memdesc:a688e8eb73befad966a02178f33591aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classrtype_1_1MusicSystem.html" title="Handles animations and interactions in the game, including level management and mouse input detection...">MusicSystem</a> class.  <br /></td></tr>
 <tr class="separator:a688e8eb73befad966a02178f33591aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af72edd7f7691d36dac4da116ebe9ca05" id="r_af72edd7f7691d36dac4da116ebe9ca05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1MusicSystem.html#af72edd7f7691d36dac4da116ebe9ca05">~MusicSystem</a> ()</td></tr>
+<tr class="memdesc:af72edd7f7691d36dac4da116ebe9ca05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor for the <a class="el" href="classrtype_1_1MusicSystem.html" title="Handles animations and interactions in the game, including level management and mouse input detection...">MusicSystem</a> class.  <br /></td></tr>
 <tr class="separator:af72edd7f7691d36dac4da116ebe9ca05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c5f34310b159bd299dab73e35c9ee76" id="r_a8c5f34310b159bd299dab73e35c9ee76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1MusicSystem.html#a8c5f34310b159bd299dab73e35c9ee76">changeMusic</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, std::string musicFilePath)</td></tr>
+<tr class="memdesc:a8c5f34310b159bd299dab73e35c9ee76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the background music of the game.  <br /></td></tr>
 <tr class="separator:a8c5f34310b159bd299dab73e35c9ee76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0d83a193f83a7d14e7905667bf2e816" id="r_ae0d83a193f83a7d14e7905667bf2e816"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1MusicSystem.html#ae0d83a193f83a7d14e7905667bf2e816">shootMusic</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array, std::string musicFilePath)</td></tr>
+<tr class="memdesc:ae0d83a193f83a7d14e7905667bf2e816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the shooting sound effect of the game.  <br /></td></tr>
 <tr class="separator:ae0d83a193f83a7d14e7905667bf2e816"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Handles animations and interactions in the game, including level management and mouse input detection. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a688e8eb73befad966a02178f33591aff" name="a688e8eb73befad966a02178f33591aff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a688e8eb73befad966a02178f33591aff">&#9670;&#160;</a></span>MusicSystem()</h2>
 
@@ -134,6 +143,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor for the <a class="el" href="classrtype_1_1MusicSystem.html" title="Handles animations and interactions in the game, including level management and mouse input detection...">MusicSystem</a> class. </p>
 
 </div>
 </div>
@@ -159,6 +170,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default destructor for the <a class="el" href="classrtype_1_1MusicSystem.html" title="Handles animations and interactions in the game, including level management and mouse input detection...">MusicSystem</a> class. </p>
 
 </div>
 </div>
@@ -197,6 +210,15 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Changes the background music of the game. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">musicFilePath</td><td>The file path to the new music file to be played. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ae0d83a193f83a7d14e7905667bf2e816" name="ae0d83a193f83a7d14e7905667bf2e816"></a>
@@ -232,6 +254,15 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Changes the shooting sound effect of the game. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>A reference to a map containing ECS components indexed by their type. </td></tr>
+    <tr><td class="paramname">musicFilePath</td><td>The file path to the new shooting sound file to be played. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

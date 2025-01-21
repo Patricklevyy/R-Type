@@ -56,6 +56,7 @@ var NAVTREEINDEX0 =
 "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13":[5,0,2,3,2,2],
 "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a52c41364989848f4e1bbee8b65cb52f2":[5,0,2,3,2,2,1],
 "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a5a7efc8ba176e689a1e926e57a1c4f48":[5,0,2,3,2,2,2],
+"Enums_8hpp.html#a54b260e928f16526373dff8bab381a13a957d27aff8262e3233af6e797907cb1d":[5,0,2,3,2,2,3],
 "Enums_8hpp.html#a54b260e928f16526373dff8bab381a13acc7b4b03cc2410885c0656ce94b664b3":[5,0,2,3,2,2,0],
 "Enums_8hpp.html#a701d30d6e53d47a1f10e4833b3eabb6d":[5,0,2,3,2,1],
 "Enums_8hpp.html#a701d30d6e53d47a1f10e4833b3eabb6da52ceb555b9c54a966341988301dc4c11":[5,0,2,3,2,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "RandomNumber_8hpp_source.html":[5,0,2,2,4],
 "RenderWindow_8hpp.html":[5,0,2,0,2,6],
 "RenderWindow_8hpp_source.html":[5,0,2,0,2,6],
-"RoomHandling_8hpp.html":[5,0,2,0,1,4],
-"RoomHandling_8hpp_source.html":[5,0,2,0,1,4]
+"RoomHandling_8hpp.html":[5,0,2,0,1,4]
 };

@@ -98,24 +98,35 @@ $(document).ready(function(){initNavTree('classrtype_1_1SFMLHandler.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>Class that handles user input events for the client using SFML.  
+ <a href="classrtype_1_1SFMLHandler.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SFMLHandler_8hpp_source.html">SFMLHandler.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a0dbc49a7f286c81daa4b95f0cfa077b7" id="r_a0dbc49a7f286c81daa4b95f0cfa077b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a0dbc49a7f286c81daa4b95f0cfa077b7">SFMLHandler</a> (<a class="el" href="classrtype_1_1Client.html">Client</a> &amp;client)</td></tr>
+<tr class="memdesc:a0dbc49a7f286c81daa4b95f0cfa077b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classrtype_1_1SFMLHandler.html" title="Class that handles user input events for the client using SFML.">SFMLHandler</a> class.  <br /></td></tr>
 <tr class="separator:a0dbc49a7f286c81daa4b95f0cfa077b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f4fae74ef5f92f8000775f5ead6a758" id="r_a2f4fae74ef5f92f8000775f5ead6a758"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a2f4fae74ef5f92f8000775f5ead6a758">~SFMLHandler</a> ()</td></tr>
+<tr class="memdesc:a2f4fae74ef5f92f8000775f5ead6a758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1SFMLHandler.html" title="Class that handles user input events for the client using SFML.">SFMLHandler</a> class.  <br /></td></tr>
 <tr class="separator:a2f4fae74ef5f92f8000775f5ead6a758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c68860990fe3ec502fd4ab231eda31d" id="r_a8c68860990fe3ec502fd4ab231eda31d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a8c68860990fe3ec502fd4ab231eda31d">handleEvents</a> (std::queue&lt; sf::Event &gt; &amp;)</td></tr>
+<tr class="memdesc:a8c68860990fe3ec502fd4ab231eda31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles a queue of SFML events.  <br /></td></tr>
 <tr class="separator:a8c68860990fe3ec502fd4ab231eda31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a895b7eaa07f01a5bec6e962115f152e7" id="r_a895b7eaa07f01a5bec6e962115f152e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a895b7eaa07f01a5bec6e962115f152e7">resetBind</a> ()</td></tr>
+<tr class="memdesc:a895b7eaa07f01a5bec6e962115f152e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the key bindings to their default values.  <br /></td></tr>
 <tr class="separator:a895b7eaa07f01a5bec6e962115f152e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e46528bb32ef7770be60aa48c9ff2e4" id="r_a2e46528bb32ef7770be60aa48c9ff2e4"><td class="memItemLeft" align="right" valign="top">std::map&lt; sf::Keyboard::Key, sf::Keyboard::Key &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a2e46528bb32ef7770be60aa48c9ff2e4">getKeyBindings</a> ()</td></tr>
+<tr class="memdesc:a2e46528bb32ef7770be60aa48c9ff2e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current key bindings.  <br /></td></tr>
 <tr class="separator:a2e46528bb32ef7770be60aa48c9ff2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a147e8fd0bdd80cb59af2d7894479cc58" id="r_a147e8fd0bdd80cb59af2d7894479cc58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1SFMLHandler.html#a147e8fd0bdd80cb59af2d7894479cc58">updateKeyBindings</a> (const std::map&lt; sf::Keyboard::Key, sf::Keyboard::Key &gt; &amp;newBindings)</td></tr>
+<tr class="memdesc:a147e8fd0bdd80cb59af2d7894479cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the key bindings with a new configuration.  <br /></td></tr>
 <tr class="separator:a147e8fd0bdd80cb59af2d7894479cc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Class that handles user input events for the client using SFML. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="a0dbc49a7f286c81daa4b95f0cfa077b7" name="a0dbc49a7f286c81daa4b95f0cfa077b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0dbc49a7f286c81daa4b95f0cfa077b7">&#9670;&#160;</a></span>SFMLHandler()</h2>
 
@@ -131,6 +142,14 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor for the <a class="el" href="classrtype_1_1SFMLHandler.html" title="Class that handles user input events for the client using SFML.">SFMLHandler</a> class. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td>A reference to the <a class="el" href="classrtype_1_1Client.html" title="Handle the client actions.">Client</a> object that manages game logic. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -148,6 +167,8 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="classrtype_1_1SFMLHandler.html" title="Class that handles user input events for the client using SFML.">SFMLHandler</a> class. </p>
 
 </div>
 </div>
@@ -167,6 +188,9 @@ Fonctions membres publiques</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns the current key bindings. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>A map associating keys with actions. </dd></dl>
+
 </div>
 </div>
 <a id="a8c68860990fe3ec502fd4ab231eda31d" name="a8c68860990fe3ec502fd4ab231eda31d"></a>
@@ -185,6 +209,14 @@ Fonctions membres publiques</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles a queue of SFML events. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">events</td><td>A reference to a queue of events to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a895b7eaa07f01a5bec6e962115f152e7" name="a895b7eaa07f01a5bec6e962115f152e7"></a>
@@ -201,6 +233,8 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Resets the key bindings to their default values. </p>
 
 </div>
 </div>
@@ -219,6 +253,14 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Updates the key bindings with a new configuration. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newBindings</td><td>A map representing the new key associations. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

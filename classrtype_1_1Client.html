@@ -99,13 +99,16 @@ $(document).ready(function(){initNavTree('classrtype_1_1Client.html',''); initRe
 </div><!--header-->
 <div class="contents">
 
+<p>Handle the client actions.  
+ <a href="classrtype_1_1Client.html#details">Plus de détails...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Client_8hpp_source.html">Client.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Graphe de collaboration de rtype::Client:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrtype_1_1Client__coll__graph.png" border="0" usemap="#artype_1_1Client_coll__map" alt="Collaboration graph"/></div>
 <map name="artype_1_1Client_coll__map" id="artype_1_1Client_coll__map">
-<area shape="rect" title=" " alt="" coords="79,93,182,119"/>
+<area shape="rect" title="Handle the client actions." alt="" coords="79,93,182,119"/>
 <area shape="rect" href="classrtype_1_1EventBus.html" title="A system for subscribing and emitting events in the game." alt="" coords="5,5,131,31"/>
 <area shape="poly" title=" " alt="" coords="79,42,93,68,117,91,113,95,89,71,74,45"/>
 <area shape="rect" href="classecs_1_1ECS.html" title="Manages entities and their components in an ECS architecture." alt="" coords="155,5,232,31"/>
@@ -116,10 +119,10 @@ Graphe de collaboration de rtype::Client:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:aed5c20fac90ad07852bebc5d94382b30" id="r_aed5c20fac90ad07852bebc5d94382b30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aed5c20fac90ad07852bebc5d94382b30">Client</a> ()</td></tr>
-<tr class="memdesc:aed5c20fac90ad07852bebc5d94382b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classrtype_1_1Client.html">Client</a> class.  <br /></td></tr>
+<tr class="memdesc:aed5c20fac90ad07852bebc5d94382b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classrtype_1_1Client.html" title="Handle the client actions.">Client</a> class.  <br /></td></tr>
 <tr class="separator:aed5c20fac90ad07852bebc5d94382b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e343d3201b6d391017f7345d8504612" id="r_a1e343d3201b6d391017f7345d8504612"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a1e343d3201b6d391017f7345d8504612">~Client</a> ()</td></tr>
-<tr class="memdesc:a1e343d3201b6d391017f7345d8504612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1Client.html">Client</a> class.  <br /></td></tr>
+<tr class="memdesc:a1e343d3201b6d391017f7345d8504612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1Client.html" title="Handle the client actions.">Client</a> class.  <br /></td></tr>
 <tr class="separator:a1e343d3201b6d391017f7345d8504612"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bdb805662af176334a2235c0aafccc4" id="r_a5bdb805662af176334a2235c0aafccc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a5bdb805662af176334a2235c0aafccc4">start</a> ()</td></tr>
 <tr class="memdesc:a5bdb805662af176334a2235c0aafccc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the game client.  <br /></td></tr>
@@ -128,22 +131,31 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:a60bf11c57c5a6260f1c27fea743fba14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles messages from the server.  <br /></td></tr>
 <tr class="separator:a60bf11c57c5a6260f1c27fea743fba14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a2e4bc190f25cdf4b01fb0d423368fa" id="r_a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a0a2e4bc190f25cdf4b01fb0d423368fa">change_player_direction</a> (<a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>, <a class="el" href="namespaceecs.html#a7a98367474612e41f7e1da1a57853776">ecs::direction</a>)</td></tr>
+<tr class="memdesc:a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the direction of the player.  <br /></td></tr>
 <tr class="separator:a0a2e4bc190f25cdf4b01fb0d423368fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b7d52bef8b7f6e67d23171b14293d46" id="r_a6b7d52bef8b7f6e67d23171b14293d46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a6b7d52bef8b7f6e67d23171b14293d46">send_server_create_room</a> (std::string roomName)</td></tr>
+<tr class="memdesc:a6b7d52bef8b7f6e67d23171b14293d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to the server to create a new room.  <br /></td></tr>
 <tr class="separator:a6b7d52bef8b7f6e67d23171b14293d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab633d05ad0965489928393569d89ad71" id="r_ab633d05ad0965489928393569d89ad71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab633d05ad0965489928393569d89ad71">send_server_join_room</a> (std::string roomName, std::string clientName)</td></tr>
+<tr class="memdesc:ab633d05ad0965489928393569d89ad71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to the server to join an existing room.  <br /></td></tr>
 <tr class="separator:ab633d05ad0965489928393569d89ad71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b4c1dca9657cfa4f489fe771590f1e1" id="r_a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a4b4c1dca9657cfa4f489fe771590f1e1">set_window_filter</a> (<a class="el" href="namespacertype.html#a7856aee68d12739441d9c1701f13bf76">FILTER_MODE</a>)</td></tr>
+<tr class="memdesc:a4b4c1dca9657cfa4f489fe771590f1e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the window's filter mode.  <br /></td></tr>
 <tr class="separator:a4b4c1dca9657cfa4f489fe771590f1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3f21141e62830ca3c413cff63e9680f" id="r_ab3f21141e62830ca3c413cff63e9680f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab3f21141e62830ca3c413cff63e9680f">create_new_player_shoot</a> ()</td></tr>
+<tr class="memdesc:ab3f21141e62830ca3c413cff63e9680f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new player shot entity in the game.  <br /></td></tr>
 <tr class="separator:ab3f21141e62830ca3c413cff63e9680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3556f5162eba0ec2c26d838e6fd9b98" id="r_ab3556f5162eba0ec2c26d838e6fd9b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ab3556f5162eba0ec2c26d838e6fd9b98">handleMousePress</a> ()</td></tr>
+<tr class="memdesc:ab3556f5162eba0ec2c26d838e6fd9b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the mouse press event.  <br /></td></tr>
 <tr class="separator:ab3556f5162eba0ec2c26d838e6fd9b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe2e8c8f2e756e614fa9ed95b384f78a" id="r_abe2e8c8f2e756e614fa9ed95b384f78a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#abe2e8c8f2e756e614fa9ed95b384f78a">handleMouseRelease</a> ()</td></tr>
+<tr class="memdesc:abe2e8c8f2e756e614fa9ed95b384f78a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the mouse release event.  <br /></td></tr>
 <tr class="separator:abe2e8c8f2e756e614fa9ed95b384f78a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeabdcfceae20ed8a5f160f0757fffcb" id="r_aaeabdcfceae20ed8a5f160f0757fffcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#aaeabdcfceae20ed8a5f160f0757fffcb">changeDifficulty</a> (<a class="el" href="namespacertype.html#a54b260e928f16526373dff8bab381a13">DIFFICULTY</a>)</td></tr>
+<tr class="memdesc:aaeabdcfceae20ed8a5f160f0757fffcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the game's difficulty level.  <br /></td></tr>
 <tr class="separator:aaeabdcfceae20ed8a5f160f0757fffcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9126531902e39a79ef6a5ab19d2be12f" id="r_a9126531902e39a79ef6a5ab19d2be12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a9126531902e39a79ef6a5ab19d2be12f">launchMenu</a> ()</td></tr>
+<tr class="memdesc:a9126531902e39a79ef6a5ab19d2be12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launches the game's main menu.  <br /></td></tr>
 <tr class="separator:a9126531902e39a79ef6a5ab19d2be12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a625e82d95bb41484b434e99e9ecf02a3" id="r_a625e82d95bb41484b434e99e9ecf02a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#a625e82d95bb41484b434e99e9ecf02a3">requestRoomList</a> ()</td></tr>
 <tr class="memdesc:a625e82d95bb41484b434e99e9ecf02a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the server to ask the list of all the rooms.  <br /></td></tr>
@@ -168,7 +180,9 @@ Attributs publics</h2></td></tr>
 <tr class="memitem:ac94cacc61a70fb9e524364b8320e53f7" id="r_ac94cacc61a70fb9e524364b8320e53f7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classrtype_1_1SFMLHandler.html">SFMLHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1Client.html#ac94cacc61a70fb9e524364b8320e53f7">_sfml_handler</a></td></tr>
 <tr class="separator:ac94cacc61a70fb9e524364b8320e53f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Handle the client actions. </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a id="aed5c20fac90ad07852bebc5d94382b30" name="aed5c20fac90ad07852bebc5d94382b30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed5c20fac90ad07852bebc5d94382b30">&#9670;&#160;</a></span>Client()</h2>
 
@@ -184,7 +198,7 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Default constructor for the <a class="el" href="classrtype_1_1Client.html">Client</a> class. </p>
+<p>Default constructor for the <a class="el" href="classrtype_1_1Client.html" title="Handle the client actions.">Client</a> class. </p>
 
 </div>
 </div>
@@ -203,7 +217,7 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destructor for the <a class="el" href="classrtype_1_1Client.html">Client</a> class. </p>
+<p>Destructor for the <a class="el" href="classrtype_1_1Client.html" title="Handle the client actions.">Client</a> class. </p>
 
 </div>
 </div>
@@ -234,6 +248,15 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Modify the direction of the player. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">horizontal</td><td>The horizontal direction of the player. </td></tr>
+    <tr><td class="paramname">vertical</td><td>The vertical direction of the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aaeabdcfceae20ed8a5f160f0757fffcb" name="aaeabdcfceae20ed8a5f160f0757fffcb"></a>
@@ -252,6 +275,14 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Changes the game's difficulty level. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">difficulty</td><td>The new difficulty level to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab3f21141e62830ca3c413cff63e9680f" name="ab3f21141e62830ca3c413cff63e9680f"></a>
@@ -268,6 +299,8 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a new player shot entity in the game. </p>
 
 </div>
 </div>
@@ -312,6 +345,8 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles the mouse press event. </p>
+
 </div>
 </div>
 <a id="abe2e8c8f2e756e614fa9ed95b384f78a" name="abe2e8c8f2e756e614fa9ed95b384f78a"></a>
@@ -329,6 +364,8 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles the mouse release event. </p>
+
 </div>
 </div>
 <a id="a9126531902e39a79ef6a5ab19d2be12f" name="a9126531902e39a79ef6a5ab19d2be12f"></a>
@@ -345,6 +382,8 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Launches the game's main menu. </p>
 
 </div>
 </div>
@@ -383,6 +422,14 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a request to the server to create a new room. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roomName</td><td>The name of the room to be created. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab633d05ad0965489928393569d89ad71" name="ab633d05ad0965489928393569d89ad71"></a>
@@ -411,6 +458,15 @@ Attributs publics</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sends a request to the server to join an existing room. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roomName</td><td>The name of the room to join. </td></tr>
+    <tr><td class="paramname">clientName</td><td>The name of the client joining the room. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4b4c1dca9657cfa4f489fe771590f1e1" name="a4b4c1dca9657cfa4f489fe771590f1e1"></a>
@@ -428,6 +484,14 @@ Attributs publics</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the window's filter mode. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filterMode</td><td>The filter mode to apply to the window. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

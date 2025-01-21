@@ -112,9 +112,13 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:aa5df994e8813ad26703191cc9bfb90d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classrtype_1_1HealthSystem.html" title="Manages entity health and removes entities with zero or negative health.">HealthSystem</a>.  <br /></td></tr>
 <tr class="separator:aa5df994e8813ad26703191cc9bfb90d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d158f0d15328244e0dc5a2fab7905a9" id="r_a3d158f0d15328244e0dc5a2fab7905a9"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; std::list&lt; size_t &gt;, unsigned int, bool, std::list&lt; std::pair&lt; float, float &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1HealthSystem.html#a3d158f0d15328244e0dc5a2fab7905a9">checkLife</a> (<a class="el" href="classecs_1_1ECS.html">ecs::ECS</a> &amp;ecs)</td></tr>
+<tr class="memdesc:a3d158f0d15328244e0dc5a2fab7905a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chack the life of all the entity in the game.  <br /></td></tr>
 <tr class="separator:a3d158f0d15328244e0dc5a2fab7905a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa4115262d1f2df6a7dcd1975e6b7ba6" id="r_afa4115262d1f2df6a7dcd1975e6b7ba6"><td class="memItemLeft" align="right" valign="top">std::list&lt; std::pair&lt; size_t, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1HealthSystem.html#afa4115262d1f2df6a7dcd1975e6b7ba6">updatePlayerLife</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="memdesc:afa4115262d1f2df6a7dcd1975e6b7ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upadte the life of the player.  <br /></td></tr>
 <tr class="separator:afa4115262d1f2df6a7dcd1975e6b7ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8910539514adf79d61aba15a46366f16" id="r_a8910539514adf79d61aba15a46366f16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1HealthSystem.html#a8910539514adf79d61aba15a46366f16">resetLifeForPlayers</a> (std::unordered_map&lt; std::type_index, std::any &gt; &amp;components_array)</td></tr>
+<tr class="separator:a8910539514adf79d61aba15a46366f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Manages entity health and removes entities with zero or negative health. </p>
@@ -198,6 +202,40 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Chack the life of all the entity in the game. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs</td><td>The Entity Components System that contains all the entity in the game and caontains also informations such as health </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8910539514adf79d61aba15a46366f16" name="a8910539514adf79d61aba15a46366f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8910539514adf79d61aba15a46366f16">&#9670;&#160;</a></span>resetLifeForPlayers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtype::HealthSystem::resetLifeForPlayers </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; std::type_index, std::any &gt; &amp;&#160;</td>
+          <td class="paramname"><em>components_array</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="afa4115262d1f2df6a7dcd1975e6b7ba6" name="afa4115262d1f2df6a7dcd1975e6b7ba6"></a>
@@ -223,6 +261,14 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Upadte the life of the player. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">components_array</td><td>An unordered map that conatined all the components, and wich permit to detect the collision and update the life. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -4,6 +4,7 @@ var hierarchy =
     [ "rtype::Animation", "classrtype_1_1Animation.html", null ],
     [ "rtype::AnimationSystem", "classrtype_1_1AnimationSystem.html", null ],
     [ "rtype::AsteroideSystem", "classrtype_1_1AsteroideSystem.html", null ],
+    [ "AsteroidSystem", "classAsteroidSystem.html", null ],
     [ "rtype::ATH", "classrtype_1_1ATH.html", null ],
     [ "rtype::Bonus", "classrtype_1_1Bonus.html", null ],
     [ "rtype::BonusSystem", "classrtype_1_1BonusSystem.html", null ],

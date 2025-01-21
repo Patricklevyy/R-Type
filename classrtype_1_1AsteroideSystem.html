@@ -103,10 +103,13 @@ $(document).ready(function(){initNavTree('classrtype_1_1AsteroideSystem.html',''
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a6c56990c9810c418beb8a0caac8c8a4c" id="r_a6c56990c9810c418beb8a0caac8c8a4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1AsteroideSystem.html#a6c56990c9810c418beb8a0caac8c8a4c">AsteroideSystem</a> ()</td></tr>
+<tr class="memdesc:a6c56990c9810c418beb8a0caac8c8a4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classrtype_1_1AsteroideSystem.html">AsteroideSystem</a> class.  <br /></td></tr>
 <tr class="separator:a6c56990c9810c418beb8a0caac8c8a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00dbed6be5f49b846e5be3164d683bba" id="r_a00dbed6be5f49b846e5be3164d683bba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1AsteroideSystem.html#a00dbed6be5f49b846e5be3164d683bba">~AsteroideSystem</a> ()</td></tr>
+<tr class="memdesc:a00dbed6be5f49b846e5be3164d683bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classrtype_1_1AsteroideSystem.html">AsteroideSystem</a> class.  <br /></td></tr>
 <tr class="separator:a00dbed6be5f49b846e5be3164d683bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac43831eee5d7c1604cb5d9d15ff56de0" id="r_ac43831eee5d7c1604cb5d9d15ff56de0"><td class="memItemLeft" align="right" valign="top">std::list&lt; std::tuple&lt; size_t, std::pair&lt; std::pair&lt; float, float &gt;, std::pair&lt; float, float &gt; &gt;, <a class="el" href="namespacertype.html#a747b1b1523f4dfe8c5cb549d5eb17662">SPRITES</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrtype_1_1AsteroideSystem.html#ac43831eee5d7c1604cb5d9d15ff56de0">spwan_asteroide</a> (<a class="el" href="classrtype_1_1RandomNumber.html">RandomNumber</a> randomizer, std::shared_ptr&lt; <a class="el" href="classrtype_1_1GameplayFactory.html">GameplayFactory</a> &gt; gameplayFactory, int window_height, int window_width, bool isPlaying)</td></tr>
+<tr class="memdesc:ac43831eee5d7c1604cb5d9d15ff56de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the spawning of asteroids in the game.  <br /></td></tr>
 <tr class="separator:ac43831eee5d7c1604cb5d9d15ff56de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
@@ -133,6 +136,8 @@ Fonctions membres publiques</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructor for the <a class="el" href="classrtype_1_1AsteroideSystem.html">AsteroideSystem</a> class. </p>
+
 </div>
 </div>
 <a id="a00dbed6be5f49b846e5be3164d683bba" name="a00dbed6be5f49b846e5be3164d683bba"></a>
@@ -157,6 +162,8 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="classrtype_1_1AsteroideSystem.html">AsteroideSystem</a> class. </p>
 
 </div>
 </div>
@@ -212,6 +219,28 @@ Fonctions membres publiques</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Handles the spawning of asteroids in the game. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">randomizer</td><td>An instance of <a class="el" href="classrtype_1_1RandomNumber.html" title="Utility class for generating random numbers within a range.">RandomNumber</a> used to generate random vertical positions for the asteroids. </td></tr>
+    <tr><td class="paramname">gameplayFactory</td><td>A shared pointer to the <a class="el" href="classrtype_1_1GameplayFactory.html" title="A class to manage the gameplay of the game.">GameplayFactory</a>, which provides game settings such as difficulty and asteroid spawn parameters. </td></tr>
+    <tr><td class="paramname">window_height</td><td>The height of the game window in pixels. </td></tr>
+    <tr><td class="paramname">window_width</td><td>The width of the game window in pixels. </td></tr>
+    <tr><td class="paramname">isPlaying</td><td>A boolean indicating whether the game is currently in a playing state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A list of tuples, where each tuple contains:<ul>
+<li>A size_t index representing the asteroid ID.</li>
+<li>A pair of pairs representing:<ul>
+<li>The position of the asteroid.</li>
+<li>The movement direction of the asteroid.</li>
+</ul>
+</li>
+<li>SPRITES enum indicating the type of sprite. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>

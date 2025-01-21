@@ -116,34 +116,35 @@ $(document).ready(function(){initNavTree('Timer_8hpp_source.html',''); initResiz
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classrtype_1_1Timer.html">   24</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classrtype_1_1Timer.html">Timer</a> {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_function" href="classrtype_1_1Timer.html#a42bd695aa25a2d68dd798acf5cf1e68b">Timer</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <a class="code hl_function" href="classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e">~Timer</a>();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#ae8b2aedfb4c0eac9173ec03e7b5e8012">init</a>(<span class="keyword">const</span> std::string&amp; configFile, <span class="keywordtype">bool</span> isServer);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <a class="code hl_function" href="classrtype_1_1Timer.html#a42bd695aa25a2d68dd798acf5cf1e68b">Timer</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_function" href="classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e">~Timer</a>();</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#a39807cf878bf8aa93edfe0d4de11dc08">waitTPS</a>();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#aedb46fe73fcd299ed4c939dbdce47db1">waitFPS</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordtype">float</span> <a class="code hl_function" href="classrtype_1_1Timer.html#ab8a164494b7bcb9190909aefcbf777a8">getTps</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordtype">float</span> _tps;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            std::chrono::duration&lt;float&gt; tps_duration;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            std::chrono::duration&lt;float&gt; fps_duration;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; last_tps_tick;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; last_fps_tick;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        };</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#ae8b2aedfb4c0eac9173ec03e7b5e8012">init</a>(<span class="keyword">const</span> std::string&amp; configFile, <span class="keywordtype">bool</span> isServer);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#a39807cf878bf8aa93edfe0d4de11dc08">waitTPS</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classrtype_1_1Timer.html#aedb46fe73fcd299ed4c939dbdce47db1">waitFPS</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordtype">float</span> <a class="code hl_function" href="classrtype_1_1Timer.html#ab8a164494b7bcb9190909aefcbf777a8">getTps</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordtype">float</span> _tps;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            std::chrono::duration&lt;float&gt; tps_duration;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            std::chrono::duration&lt;float&gt; fps_duration;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; last_tps_tick;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; last_fps_tick;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        };</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">/* !TIMER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif </span><span class="comment">/* !TIMER_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aIncludes_8hpp_html"><div class="ttname"><a href="Includes_8hpp.html">Includes.hpp</a></div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html"><div class="ttname"><a href="classrtype_1_1Timer.html">rtype::Timer</a></div><div class="ttdoc">Handles timing for the game loop and frame updates.</div><div class="ttdef"><b>Definition</b> Timer.hpp:24</div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html_a39807cf878bf8aa93edfe0d4de11dc08"><div class="ttname"><a href="classrtype_1_1Timer.html#a39807cf878bf8aa93edfe0d4de11dc08">rtype::Timer::waitTPS</a></div><div class="ttdeci">void waitTPS()</div><div class="ttdoc">Waits for the next tick to maintain TPS.</div><div class="ttdef"><b>Definition</b> Timer.cpp:98</div></div>
-<div class="ttc" id="aclassrtype_1_1Timer_html_a42bd695aa25a2d68dd798acf5cf1e68b"><div class="ttname"><a href="classrtype_1_1Timer.html#a42bd695aa25a2d68dd798acf5cf1e68b">rtype::Timer::Timer</a></div><div class="ttdeci">Timer()</div><div class="ttdef"><b>Definition</b> Timer.cpp:12</div></div>
-<div class="ttc" id="aclassrtype_1_1Timer_html_a9eeff216a4c83459d15ba44148fdf01e"><div class="ttname"><a href="classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e">rtype::Timer::~Timer</a></div><div class="ttdeci">~Timer()</div><div class="ttdef"><b>Definition</b> Timer.cpp:16</div></div>
+<div class="ttc" id="aclassrtype_1_1Timer_html_a42bd695aa25a2d68dd798acf5cf1e68b"><div class="ttname"><a href="classrtype_1_1Timer.html#a42bd695aa25a2d68dd798acf5cf1e68b">rtype::Timer::Timer</a></div><div class="ttdeci">Timer()</div><div class="ttdoc">Constructor for the Timer class.</div><div class="ttdef"><b>Definition</b> Timer.cpp:12</div></div>
+<div class="ttc" id="aclassrtype_1_1Timer_html_a9eeff216a4c83459d15ba44148fdf01e"><div class="ttname"><a href="classrtype_1_1Timer.html#a9eeff216a4c83459d15ba44148fdf01e">rtype::Timer::~Timer</a></div><div class="ttdeci">~Timer()</div><div class="ttdoc">Destructor for the Timer class.</div><div class="ttdef"><b>Definition</b> Timer.cpp:16</div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html_ab8a164494b7bcb9190909aefcbf777a8"><div class="ttname"><a href="classrtype_1_1Timer.html#ab8a164494b7bcb9190909aefcbf777a8">rtype::Timer::getTps</a></div><div class="ttdeci">float getTps() const</div><div class="ttdoc">Gets the current TPS value.</div><div class="ttdef"><b>Definition</b> Timer.cpp:20</div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html_ae8b2aedfb4c0eac9173ec03e7b5e8012"><div class="ttname"><a href="classrtype_1_1Timer.html#ae8b2aedfb4c0eac9173ec03e7b5e8012">rtype::Timer::init</a></div><div class="ttdeci">void init(const std::string &amp;configFile, bool isServer)</div><div class="ttdoc">Initializes the timer with configuration settings.</div><div class="ttdef"><b>Definition</b> Timer.cpp:25</div></div>
 <div class="ttc" id="aclassrtype_1_1Timer_html_aedb46fe73fcd299ed4c939dbdce47db1"><div class="ttname"><a href="classrtype_1_1Timer.html#aedb46fe73fcd299ed4c939dbdce47db1">rtype::Timer::waitFPS</a></div><div class="ttdeci">void waitFPS()</div><div class="ttdoc">Waits for the next frame to maintain FPS.</div><div class="ttdef"><b>Definition</b> Timer.cpp:110</div></div>
