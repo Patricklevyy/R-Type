@@ -20,7 +20,10 @@
 #include <string>
 
 namespace poc_game {
-
+    /**
+     * @class Sprite
+     * @brief Class that handles all the sprites.
+     */
     class Sprite {
     public:
         /**
