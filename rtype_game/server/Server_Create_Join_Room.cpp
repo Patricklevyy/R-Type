@@ -15,10 +15,8 @@ namespace rtype
 
         (void) id;
 
-        std::cout << "JE parse" << std::endl;
         std::map<std::string, std::string> map_params =
             Utils::parseMessageParams(params);
-        std::cout << "JE check" << std::endl;
         checkCreateRoomArgs(map_params);
 
         std::cout << "JE set LA OMMAND" << std::endl;

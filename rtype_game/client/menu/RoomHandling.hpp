@@ -14,17 +14,41 @@
 
 namespace rtype
 {
+      /**
+       * @class RoomHandling
+       * @brief Manage the rooms (join, create).
+       */
     class RoomHandling {
       public:
+
+      /**
+       * @brief Constructor for the RoomHandling class.
+       * @param _font The font to use for the room name.
+       * @param rooms All the rooms available.
+       */
         RoomHandling(sf::Font &_font, std::vector<std::pair<std::string, int>> &rooms)
         : _rooms(rooms), _font(_font), _scrollOffset(0) {};
+
+      /**
+       * @brief Destructor for the RoomHandling class.
+       */
         ~RoomHandling() {};
 
+      /**
+       * @brief Creation of a room.
+       * @param name The name of the new room.
+       * @param nb_places The places availables in the room.
+       */
         void addRoom(const std::string &name, int nb_places)
         {
             _rooms.emplace_back(name, nb_places);
         }
 
+      /**
+       * @brief Handle when a client click on a room to join it.
+       * @param mousePos The position of the mouse.
+       * @param container The conatiner that conatin all the rooms.
+       */
         std::string handleClick(
             const sf::Vector2f &mousePos, const sf::RectangleShape &container)
         {
@@ -44,6 +68,10 @@ namespace rtype
             return _selectedRoom;
         }
 
+      /**
+       * @brief Handle the scroll if there are too many rooms available.
+       * @param delta The scroll.
+       */
         void handleScroll(float delta)
         {
             _scrollOffset += delta * 20;
@@ -51,6 +79,11 @@ namespace rtype
                 _scrollOffset = 0;
         }
 
+      /**
+       * @brief Draw the menu for the Rooms.
+       * @param window The window in wich we want to display the Rooms menu.
+       * @param container The container to display the rooms inside like a board.
+       */
         void draw(sf::RenderWindow &window, const sf::RectangleShape &container)
         {
             std::unordered_set<std::string> drawnRooms;
@@ -87,6 +120,9 @@ namespace rtype
             }
         }
 
+      /**
+       * @brief Get the room choosen by the player.
+       */
         std::string getSelectedRoom() const
         {
             return _selectedRoom;

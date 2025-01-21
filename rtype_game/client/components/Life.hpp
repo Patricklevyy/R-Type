@@ -10,9 +10,20 @@
 
 namespace rtype
 {
+    /**
+     * @class Life
+     * @brief Informations on the life of an entity.
+     */
     class Life {
         public:
+            /**
+             * @brief Constructor for the Life class.
+             */
             Life() {}
+
+            /**
+             * @brief Destructor for the Life class.
+             */
             ~Life() {}
 
         protected:

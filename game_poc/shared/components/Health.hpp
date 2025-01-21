@@ -16,7 +16,10 @@
 #define HEALTH_HPP_
 
 namespace poc_game {
-
+    /**
+     * @class Health
+     * @brief A class that handles health of entities.
+     */
     class Health {
         public:
             /**

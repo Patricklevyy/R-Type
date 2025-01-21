@@ -111,6 +111,7 @@ namespace rtype
                 if (!dead_entites_id.empty())
                     send_client_dead_entities(dead_entites_id);
                 if (std::get<2>(dead_entities)) {
+                    _eventBus.emit(RTYPE_ACTIONS::UPDATE_LIFE);
                     dead_entites_id = _kill_system.killAllExceptPlayer(_ecs);
                     send_client_dead_entities(dead_entites_id);
                     playingInLevel = false;
@@ -192,6 +193,8 @@ namespace rtype
                     if (!dead_entites_id.empty())
                         send_client_dead_entities(dead_entites_id);
                     playingInLevel = false;
+                    if (_gameplay_factory->getDifficulty() != DIFFICULTY::IMPOSSIBLE)
+                        _health_system.resetLifeForPlayers(_ecs._components_arrays);
                     send_client_level_status(level.second, level.first);
                 }
             });

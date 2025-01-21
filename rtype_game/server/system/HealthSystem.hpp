@@ -42,6 +42,10 @@
                  */
                 ~HealthSystem() {}
 
+                /**
+                * @brief Chack the life of all the entity in the game.
+                * @param ecs The Entity Components System that contains all the entity in the game and caontains also informations such as health
+                */
                 std::tuple<std::list<size_t>, unsigned int, bool, std::list<std::pair<float, float>>> checkLife(ecs::ECS &ecs)
                     {
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
@@ -76,6 +80,11 @@
                         return dead_entities;
                     }
 
+                    /**
+                     * @brief Upadte the life of the player.
+                     * @param components_array An unordered map that conatined all the components, and wich permit to detect 
+                     * the collision and update the life.
+                     */
                     std::list<std::pair<size_t, int>> updatePlayerLife(std::unordered_map<std::type_index, std::any> &components_array) {
 
                         auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
@@ -102,6 +111,21 @@
                             }
                         }
                         return lifes_updates;
+                    }
+
+                    void resetLifeForPlayers(std::unordered_map<std::type_index, std::any> &components_array) {
+
+                        auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
+                        auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
+
+
+                        for (size_t i = 0; i < playables.size(); ++i)
+                        {
+                            if (playables[i].has_value() && i < healths.size() && healths[i].has_value())
+                            {
+                                healths[i].value()._health = healths[i].value()._max_heath;
+                            }
+                        }
                     }
 
             protected:

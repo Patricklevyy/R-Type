@@ -56,6 +56,10 @@
     namespace poc_game
     {
         class SFMLHandler;
+        /**
+         * @class Client
+         * @brief Handle the client actions.
+         */
         class Client
         {
             public:
@@ -79,14 +83,29 @@
                  */
                 void handle_message(std::vector<char>&);
 
+                /**
+                 * @brief Sends a signal to the server to indicate that the player is playing.
+                 */
                 void send_server_playing();
 
+                /**
+                 * @brief Sends a signal to the server to indicate that the player is jumping.
+                 */
                 void send_server_jump();
 
+                /**
+                 * @brief Sends a signal to the server to restart the game.
+                 */
                 void send_server_restart_game();
 
+                /**
+                 * @brief Creates a new player shoot entity and sends the corresponding signal to the server.
+                 */
                 void create_new_player_shoot();
 
+                /**
+                 * @brief Handles a mouse click event, triggers associated actions.
+                 */
                 void handleMouseClick();
 
                 bool _in_menu = true;
@@ -168,11 +187,35 @@
                  * @param message The message containing the update data.
                  */
                 size_t getNextIndex();
+
+                /**
+                 * @brief Adds a level status screen.
+                 */
                 void add_level_status_screen();
+
+
+                /**
+                 * @brief Restarts the game using the data from the server.
+                 * @param message The server message containing data to restart the game.
+                 */
                 void restart_game(ecs::udp::Message&);
+
+                /**
+                 * @brief Creates a new projectile entity for the player.
+                 * @param server_id The unique identifier assigned to the entity on the server.
+                 * @param x The x-coordinate for the projectile's starting position.
+                 * @param y The y-coordinate for the projectile's starting position.
+                 * @param dir_x The x direction for the projectile's movement.
+                 * @param dir_y The y direction for the projectile's movement.
+                 * @param velocity The velocity at which the projectile moves.
+                 * @param spriteId The ID of the sprite to be used for the projectile.
+                 */
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
                 // MESSAGE TO SERVER
 
+                /**
+                 * @brief Inform the server that the game has start.
+                 */
                 void send_server_start_game();
 
                 // INITIALISATION
@@ -202,8 +245,24 @@
                  * @brief Initializes the event bus subscription.
                  */
                 void init_subscribe_event_bus();
+
+                /**
+                 * @brief Initializes the player with specified parameters.
+                 * @param server_id The unique identifier for the player entity on the server.
+                 * @param x The initial x coordinate for the player's position.
+                 * @param y The initial y coordinate for the player's position.
+                 */
                 void init_player(unsigned int, float, float);
+
+                /**
+                 * @brief Initializes the play button.
+                 */
                 void init_play_button();
+
+                /**
+                 * @brief Initializes the game using data from the server.
+                 * @param message The server message containing data to initialize the game.
+                 */
                 void init_game(ecs::udp::Message &);
         };
     }

@@ -20,6 +20,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class DirectionSystem
+         * @brief A class that handles the Direction.
+         */
         class DirectionSystem
         {
         public:

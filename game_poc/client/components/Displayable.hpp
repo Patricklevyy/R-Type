@@ -21,6 +21,10 @@
 #include "../SpriteFactory.hpp"
 
 namespace poc_game {
+    /**
+     * @class Displayable
+     * @brief Specified that an entity needs to be displayed.
+     */
     class Displayable {
     public:
         /**
@@ -101,6 +105,9 @@ namespace poc_game {
             sprite->setScale(std::get<0>(scales_and_speed), std::get<1>(scales_and_speed));
         }
 
+        /**
+         * @brief Get the size of a sprite.
+         */
         sf::Vector2f getSpriteSize() const {
             if (sprite && sprite->getTexture()) {
                 auto textureSize = sprite->getTexture()->getSize();

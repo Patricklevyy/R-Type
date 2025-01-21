@@ -18,6 +18,10 @@
     #include <iostream>
 
     namespace rtype {
+        /**
+         * @class Hitbox
+         * @brief A class that handles Hitbox of entities in the game.
+         */
         class Hitbox {
             public:
 
@@ -31,6 +35,10 @@
                  */
                 ~Hitbox() {};
 
+                /**
+                 * @brief Set the hitbox of an entity.
+                 * @param x_y a pair that represent the location of the entity to set it hitbox
+                 */
                 void setHitbox(std::pair<int, int> x_y) {
                     _width = x_y.first;
                     _height = x_y.second;

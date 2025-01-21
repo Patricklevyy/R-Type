@@ -21,6 +21,10 @@
 
 namespace poc_game
 {
+    /**
+     * @class Shader
+     * @brief The shader that make the game looks better.
+     */
     class Shader
     {
     public:

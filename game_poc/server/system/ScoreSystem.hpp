@@ -21,6 +21,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class ScoreSystem
+         * @brief Manages score in game.
+         */
         class ScoreSystem {
             public:
                 ScoreSystem() {}

@@ -259,21 +259,106 @@
              */
             void createEntityProjectiles(size_t, std::tuple<std::pair<float, float>, std::pair<int, int>, SPRITES>);
 
+            /**
+             * @brief Creation of a monster.
+             * @param Sprites The sprite of the monster that will be created.
+             */
             void createMonster(SPRITES);
+
+            /**
+             * @brief Creates the Boss in the game.
+             * @param Sprites The sprite of the Boss that will be created.
+             */
             void createBoss(SPRITES);
+
+            /**
+             * @brief Send to the client the information that a monster have been created.
+             * @param size_t The index of this monster.
+             * @param x The x-position of this monster
+             * @param y The y-position of this monster
+             * @param type The type of this monster
+             */
             void send_client_new_monster(size_t, float, float , int);
+
+            /**
+             * @brief Get the next index in the ecs to create a new entity at this place.
+             */
             size_t getNextIndex();
+
+            /**
+             * @brief Start the level selected by the player.
+             * @param Level The level stated.
+             */
             void startLevel(LEVELS);
+
+            /**
+             * @brief Send the status of the level to the client.
+             * @param bool Say if the level is running or not
+             * @param Levels The level running.
+             */
             void send_client_level_status(bool, LEVELS);
+
+            /**
+             * @brief Send to the client the level is starting.
+             */
             void send_client_start_level();
+
+            /**
+             * @brief Send the score of the player.
+             * @param score The score of the player.
+             */
             void sendScore(unsigned int);
+
+            /**
+             * @brief Send the information for a roll-back.
+             */
             void send_roll_back();
+
+            /**
+             * @brief Create an hitbox for the sprite based on its actual size.
+             * @param Sprite The sprite that need an hitbox.
+             */
             std::pair<int, int> createHitbox(SPRITES);
+
+            /**
+             * @brief Create a bonus that is dropped sometimes when a monster is killed.
+             * @param index The index for the bonus.
+             * @param x The x-position for the bonus.
+             * @param y The y-position for the bonus.
+             */
             void create_bonus(std::pair<BONUS, std::tuple<size_t, float, float>>);
+
+            /**
+             * @brief Send to the client his new speed.
+             * @param index The index of this entity that change his speed.
+             * @param bool If the speed is increasing or if it is the end of the bonus
+             */
             void send_client_change_player_velocity(size_t, bool);
+
+            /**
+             * @brief Send to the client the information that the shield needs to be modified.
+             * @param size_t The index of this player.
+             * @param bool If the shield needs to be applied or removed
+             */
             void send_client_player_shield(size_t, bool);
+
+            /**
+             * @brief Send the information when the player change his weapon.
+             * @param index The index of the player.
+             * @param x If the better weapon need to be equiped or removed.
+             */
             void send_client_player_weapon(size_t index, bool put);
+
+            /**
+             * @brief Send to the client the bonus to desactivate.
+             * @param pair The index of this bonus and his type.
+             */
             void desactivateBonus(std::pair<size_t, std::list<BONUS>>);
+
+            /**
+             * @brief Information on the life of the player.
+             * @param list The index of the players, and their life.
+             */
             void send_client_player_lifes(std::list<std::pair<size_t, int>>);
         };
     }

@@ -10,9 +10,20 @@
 
     namespace rtype
     {
+    /**
+     * @class Animation
+     * @brief Handles the animation of sprites in the game.
+     */
         class Animation {
             public:
+                /**
+                 * @brief Constructor for the Animation class.
+                 */
                 Animation() {}
+
+                /**
+                 * @brief Destructor for the Animation class.
+                 */
                 ~Animation() {}
 
             protected:

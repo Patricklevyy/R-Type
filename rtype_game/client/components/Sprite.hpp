@@ -21,7 +21,10 @@
 
 namespace rtype
 {
-
+    /**
+     * @class Sprite
+     * @brief All the sprite that will be used in the game will be prepared to be displayed here.
+     */
     class Sprite
     {
     public:

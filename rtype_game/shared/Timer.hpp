@@ -23,7 +23,14 @@
          */
         class Timer {
         public:
+            /**
+             * @brief Constructor for the Timer class.
+             */
             Timer();
+
+            /**
+             * @brief Destructor for the Timer class.
+             */
             ~Timer();
 
             /**

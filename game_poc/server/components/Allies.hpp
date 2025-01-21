@@ -17,6 +17,11 @@
 
     namespace poc_game
     {
+        /**
+         * @class Allies
+         * @brief Class representing allies in the game.
+
+         */
         class Allies {
             public:
                 /**

@@ -17,6 +17,10 @@
 
     namespace rtype
     {
+        /**
+         * @namespace ERROR
+         * @brief A namespace to manage the error that can happend in the game and manage them.
+         */
         namespace ERROR
         {
             /**
@@ -206,11 +210,23 @@
                     std::string message_;
             };
 
+            /**
+             * @class PlayerDontExistInEcsException
+             * @brief A class to manage when a player is not found.
+             */
             class PlayerDontExistInEcsException : public std::exception {
                 public:
+                    /**
+                     * @brief Constructs the exception with a custom error message.
+                     * @param message A detailed message describing the error.
+                     */
                     explicit PlayerDontExistInEcsException(const std::string& message)
                         : message_("PlayerDontExistInEcsException: " + message) {}
 
+                    /**
+                     * @brief Retrieves the error message associated with the exception.
+                     * @return A C-string containing the error message.
+                     */
                     const char* what() const noexcept override {
                         return message_.c_str();
                     }

@@ -61,6 +61,11 @@
              */
             void initializeCommands();
 
+            /**
+             * @brief Starts a new game by creating a new room.
+             * @param clientAddr The address of the client that requested the game start.
+             * @param params The parameters containing additional information for the room setup.
+             */
             void start_game(const std::string&, std::string &);
 
             /**

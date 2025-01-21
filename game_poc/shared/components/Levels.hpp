@@ -12,9 +12,16 @@
 
     namespace poc_game
     {
+    /**
+     * @class Levels
+     * @brief A class that handles levels of the game.
+     */
         class Levels
         {
             public:
+                /**
+                 * @brief Constructor for the Health class.
+                 */
                 Levels(LEVELS level) : _level(level), _spawnInterval(2.0f) {
                     _lastSpawnTime = std::chrono::steady_clock::now();
                 }

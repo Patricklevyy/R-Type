@@ -17,6 +17,10 @@
 
     namespace rtype
     {
+        /**
+         * @class SpriteId
+         * @brief A class that handles SpritesId for entity in the game.
+         */
         class SpriteId {
             public:
 

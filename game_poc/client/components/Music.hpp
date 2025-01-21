@@ -16,8 +16,16 @@
 
     namespace poc_game
     {
+        /**
+         * @class Music
+         * @brief Class that handles in game Music.
+         */
         class Music {
             public:
+                /**
+                 * @brief Constructor for the Music class.
+                 * @param musicFilePath The path to the music file to be played.
+                 */
                 Music(const std::string& musicFilePath) : music(std::make_shared<sf::Music>())
                 {
                     if (!music->openFromFile(musicFilePath)) {
@@ -27,6 +35,9 @@
                     music->play();
                 }
 
+                /**
+                 * @brief Destructor for the Music class.
+                 */
                 ~Music()
                 {
                     if (music.use_count() == 1) {
@@ -34,6 +45,11 @@
                     }
                 }
 
+
+                /**
+                 * @brief Change the current music track.
+                 * @param filePath The path to the new music track to be played.
+                 */
                 void setMusic(const std::string& filePath)
                 {
                     if (!music->openFromFile(filePath)) {
