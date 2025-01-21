@@ -20,11 +20,27 @@
 
     namespace rtype
     {
+      /**
+       * @class AnimationSystem
+       * @brief Handle the animation in game.
+       */
         class AnimationSystem {
             public:
+                /**
+                 * @brief Constructor for the AnimationSystem class.
+                 */
                 AnimationSystem() {}
+
+                /**
+                 * @brief Destructor for the AnimationSystem class.
+                 */
                 ~AnimationSystem() {}
 
+                /**
+                 * @brief Checks if there is at least one active animation in the component array.
+                 * @param components_array Reference to an unordered map containing components indexed by type.
+                 * @return true if at least one Animation component exists and is active.
+                 */
                 bool isAlreadyAnimation(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &animations = std::any_cast<ecs::SparseArray<Animation> &>(components_array.at(typeid(Animation)));
@@ -37,6 +53,11 @@
                     return false;
                 }
 
+                /**
+                 * @brief Retrieves the index of the first active animation in the component array.
+                 * @param components_array Reference to an unordered map containing components indexed by type.
+                 * @return The index of the first active Animation component. Returns 0 if no active animations are found.
+                 */
                 size_t getChargedAnimationIndex(std::unordered_map<std::type_index, std::any> &components_array)
                 {
                     auto &animations = std::any_cast<ecs::SparseArray<Animation> &>(components_array.at(typeid(Animation)));
@@ -49,6 +70,11 @@
                     return 0;
                 }
 
+                /**
+                 * @brief Updates the position of active animations in the component array.
+                 * @param components_array A reference to an unordered map containing components indexed by type.
+                 * @param player_positions A pair of floats representing the player's position.
+                 */
                 void updateChargedAnimation(std::unordered_map<std::type_index, std::any> &components_array, std::pair<float, float> player_positions)
                 {
                     auto &animations = std::any_cast<ecs::SparseArray<Animation> &>(components_array.at(typeid(Animation)));
