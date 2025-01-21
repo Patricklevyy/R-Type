@@ -79,7 +79,7 @@ namespace rtype
             case MONSTER_MULTIPLE_MISSILE:
                 return getMonsterDamage(SPRITES::ADVANCED_MONSTER);
             case BABY_PROJECTILE:
-                return getMonsterDamage(SPRITES::SUPER_MONSTER);
+                return getMonsterDamage(SPRITES::BABY_PROJECTILE);
             case FIRE_BALL:
                 return getMonsterDamage(SPRITES::MEGA_MONSTER);
             case BOSS_PROJECTILE:
