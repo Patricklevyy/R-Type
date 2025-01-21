@@ -17,13 +17,25 @@
 
     namespace rtype
     {
+        /**
+         * @class PlayerSystem
+         * @brief Handles player-related functionalities such as managing player index, sprite, life, and related visual updates.
+         */
         class PlayerSystem {
             public:
+                /**
+                 * @brief Default constructor for the PlayerSystem class.
+                 */
                 PlayerSystem() {}
+
+                /**
+                 * @brief Default destructor for the PlayerSystem class.
+                 */
                 ~PlayerSystem() {}
 
                 /**
                  * @brief Return the index of the player, used only by the client.
+                 * @param components_array A reference to a map containing ECS components indexed by their type.
                  */
                 int getIndexPlayer(std::unordered_map<std::type_index, std::any> &components_array)
                 {
@@ -44,6 +56,12 @@
                     return 0;
                 }
 
+                /**
+                 * @brief Changes the sprite of the player entity.
+                 * @param components_array A reference to a map containing ECS components indexed by their type.
+                 * @param index The index of the player entity whose sprite is to be changed.
+                 * @param sprite The new sprite to assign to the player.
+                 */
                 bool changePlayerSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
                 {
                     try {
@@ -63,6 +81,12 @@
                     return false;
                 }
 
+                /**
+                 * @brief Changes the sprite of a teammate entity.
+                 * @param components_array A reference to a map containing ECS components indexed by their type.
+                 * @param index The index of the teammate entity whose sprite is to be changed.
+                 * @param sprite The new sprite to assign to the teammate.
+                 */
                 void changeTeamateSprite(std::unordered_map<std::type_index, std::any> &components_array, size_t index, SPRITES sprite)
                 {
                     try {
@@ -78,7 +102,13 @@
                     }
                 }
 
-                std::pair<bool, int> updatePlayerLife(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int health) {
+                    /**
+                     * @brief Updates the player's health.
+                     * @param components_array A reference to a map containing ECS components indexed by their type.
+                     * @param index The index of the player entity whose health is to be updated.
+                     * @param health The new health value to set for the player.
+                     */
+                    std::pair<bool, int> updatePlayerLife(std::unordered_map<std::type_index, std::any> &components_array, size_t index, int health) {
                     auto &playables = std::any_cast<ecs::SparseArray<ecs::Playable> &>(components_array[typeid(ecs::Playable)]);
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);
 
@@ -92,6 +122,11 @@
                     return std::make_pair(false, 0);
                 }
 
+                /**
+                 * @brief Updates the visual representation of the player's health.
+                 * @param components_array A reference to a map containing ECS components indexed by their type.
+                 * @param index The index of the player entity whose life bar is to be updated.
+                 */
                 void updateLifeDisplay(std::unordered_map<std::type_index, std::any> &components_array, size_t index) {
                     auto &life = std::any_cast<ecs::SparseArray<Life> &>(components_array[typeid(Life)]);
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(components_array[typeid(Health)]);

@@ -174,6 +174,9 @@
             // LevelSystem _level_system;
             // ScoreSystem _score_system;
 
+            /**
+             * @brief Sends updates to all clients about the current game state.
+             */
             void send_client_positions_update();
 
             /**
@@ -182,6 +185,13 @@
              */
             void send_client_dead_entities(std::list<size_t>);
 
+            /**
+             * @brief Sends clients the position, the sprites and the index for a new pipes.
+             * @param index The index of the new entity.
+             * @param x The x position.
+             * @param y The y position.
+             * @param Sprite The sprite of the new entity.
+             */
             void send_client_new_pipe(size_t, float, float y, SPRITES);
 
             /**
@@ -200,19 +210,53 @@
              */
             void init_ecs_server_registry();
 
+             /**
+             * @brief Inform the client that the game is loose.
+             */
             void send_client_loose_game();
 
-
+            /**
+             * @brief Get the next index in the ecs to create a new entity at this place.
+             */
             size_t getNextIndex();
 
+            /**
+             * @brief Creates a player entity in the ECS.
+             * @param position The starting position of the player.
+             * @return The ECS ID of the created player entity.
+             */
             size_t create_player(std::pair<float, float>);
 
+             /**
+             * @brief Handles a command sent by a client.
+             * @param command The raw command data.
+             * @param clientAddr The address of the client sending the command.
+             */
             void handleCommand(const std::vector<char> &, std::string);
 
+            /**
+             * @brief Start the game.
+             */
             void start_game();
+
+            /**
+             * @brief Action by the player to jump.
+             */
             void player_jump();
+
+            /**
+             * @brief Restart the game.
+             */
             void restart_game();
+
+            /**
+             * @brief Inform the client to create a new player.
+             */
             void send_client_create_player();
+
+            /**
+             * @brief Spawn Obstacles.
+             */
             void spawn_pipes();
         };
     }

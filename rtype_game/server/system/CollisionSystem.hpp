@@ -69,6 +69,11 @@ namespace rtype
             }
         }
 
+        /**
+         * @brief Handles the collision between a player and a bonus that has been droped by a monster.
+         * @param components_array An unordered map that conatined all the components, and wich permit to detect 
+         * the collision between a player and a Bonus components.
+         */
         std::pair<std::list<size_t>, std::list<std::pair<BONUS, std::tuple<size_t, float, float>>>> detectCollisionsBonus(std::unordered_map<std::type_index, std::any> &components_array) {
             auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(components_array[typeid(ecs::Position)]);
             auto &hitboxes = std::any_cast<ecs::SparseArray<Hitbox> &>(components_array[typeid(Hitbox)]);

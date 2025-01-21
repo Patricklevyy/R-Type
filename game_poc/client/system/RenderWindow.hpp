@@ -25,6 +25,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class RenderWindow
+         * @brief Class responsible for the display of the window.
+         */
         class RenderWindow
         {
             public:

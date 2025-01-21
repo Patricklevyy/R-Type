@@ -25,6 +25,11 @@
         class VelocitySystem
         {
         public:
+            /**
+             * @brief Updates the velocity of the player.
+             * @param components_array The unordered map of all components in the ECS
+             * @param vel The new velocity value to set for the player.
+             */
             void updatePlayerVelocity(std::unordered_map<std::type_index, std::any> &components_array, float vel)
             {
                 auto &velocity = std::any_cast<ecs::SparseArray<ecs::Velocity> &>(components_array[typeid(ecs::Velocity)]);

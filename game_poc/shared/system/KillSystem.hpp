@@ -28,11 +28,28 @@
 
     namespace poc_game
     {
+        /**
+         * @class KillSystem
+         * @brief A class that handles the kills in the game.
+         */
         class KillSystem {
             public:
+                /**
+                 * @brief Constructor for the KillSystem class.
+                 */
                 KillSystem() {}
+
+                /**
+                 * @brief Destructor for the KillSystem class.
+                 */
                 ~KillSystem() {}
 
+                /**
+                 * @brief Kill the entity when it has taken too much damage.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 *        It allows access to the components of the entity being processed.
+                 * @param index The index of the player entity whose life is to be updated.
+                 */
                 void killEntity(ecs::ECS &ecs, size_t index)
                 {
                     // ECS COMPONENTS
@@ -65,6 +82,10 @@
                     ecs.addDeadEntity(index);
                 }
 
+                /**
+                 * @brief Kill temporary the display.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 */
                 void killTempDisplay(ecs::ECS &ecs)
                 {
                     auto &tempdisplays = std::any_cast<ecs::SparseArray<TempDisplay> &>(ecs._components_arrays[typeid(TempDisplay)]);
@@ -78,6 +99,10 @@
                         }
                 }
 
+                /**
+                 * @brief Kill only pipes when the player passed them correctly.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 */
                 std::list<size_t> killPipes(ecs::ECS &ecs)
                 {
                     auto &healths = std::any_cast<ecs::SparseArray<Health> &>(ecs._components_arrays[typeid(Health)]);
@@ -93,6 +118,10 @@
                     return deads;
                 }
 
+                /**
+                 * @brief Kill all the entity when a stage is done.
+                 * @param ecs A reference to the ECS (Entity Component System) managing all components and entities.
+                 */
                 std::list<size_t> killEverything(ecs::ECS &ecs)
                 {
                     auto &positions = std::any_cast<ecs::SparseArray<ecs::Position> &>(ecs._components_arrays[typeid(ecs::Position)]);

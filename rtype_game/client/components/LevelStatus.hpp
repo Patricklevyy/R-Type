@@ -10,9 +10,20 @@
 
     namespace rtype
     {
+        /**
+         * @class LevelStatus
+         * @brief The status of the level started by the player.
+         */
         class LevelStatus {
             public:
+                /**
+                 * @brief Constructor for the LevelStatus class.
+                 */
                 LevelStatus() {}
+
+                /**
+                 * @brief Destructor for the LevelStatus class.
+                 */
                 ~LevelStatus() {}
 
             protected:

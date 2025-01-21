@@ -23,6 +23,10 @@
 
     namespace rtype
     {
+      /**
+       * @class Filter
+       * @brief Handles filters for visual accessibility.
+       */
         class Filter
         {
             public:

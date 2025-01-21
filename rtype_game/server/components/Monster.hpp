@@ -18,8 +18,17 @@
     namespace rtype {
         #include <chrono>
 
+        /**
+         * @class Monster
+         * @brief A class that handles Monsters in the game.
+         */
         class Monster {
         public:
+            /**
+             * @brief Constructor of the Monster class.
+             * @param type The type of sprite that will be use for the monster
+             * @param score_value The value that will be given to the player when the monster will be kill
+             */
             Monster(SPRITES type, int score_value = 1) : _intValue(5), _monster(type), _score_value(score_value)
 
             {

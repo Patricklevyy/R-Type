@@ -26,6 +26,10 @@
 
     namespace rtype
     {
+        /**
+         * @class RenderWindow
+         * @brief Handles the visual content of the window.
+         */
         class RenderWindow
         {
             public:

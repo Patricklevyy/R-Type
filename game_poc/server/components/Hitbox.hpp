@@ -19,6 +19,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class Hitbox
+         * @brief A class that handles Hitbox of entities in the game.
+         */
         class Hitbox {
             public:
 

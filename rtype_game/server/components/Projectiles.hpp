@@ -17,6 +17,10 @@
 
     namespace rtype
     {
+        /**
+         * @class Projectiles
+         * @brief A class that handles Projectiles lauched in the game.
+         */
         class Projectiles {
             public:
 

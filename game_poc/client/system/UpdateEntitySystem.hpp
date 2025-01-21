@@ -19,6 +19,10 @@
 
     namespace poc_game
     {
+        /**
+         * @class UpdateENtitySystem
+         * @brief Class responsible for handling Entity in the system.
+         */
         class UpdateEntitySystem
         {
             public:

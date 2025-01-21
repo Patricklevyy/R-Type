@@ -163,6 +163,21 @@
 
         protected:
         private:
+        /**
+         * @brief Creates an entity in the game.
+         * @param index A unique identifier for the entity.
+         * @param x The x-coordinate of the entity's initial position.
+         * @param y The y-coordinate of the entity's initial position.
+         * @param _x The horizontal movement direction of the entity.
+         * @param _y The vertical movement direction of the entity.
+         * @param sprite The type of sprite associated with the entity, represented by the SPRITES enum.
+         * @return A tuple containing:
+         * - The entity's unique index.
+         * - A nested pair where:
+         *   - The first pair represents the entity's position.
+         *   - The second pair represents the entity's movement directions.
+         * - The sprite type of the entity.
+         */
             std::tuple<size_t, std::pair<std::pair<float, float>, std::pair<float, float>>, SPRITES> createEntity(size_t index, float x, float y, ecs::direction _x, ecs::direction _y, SPRITES sprite) {
 
                 std::pair<std::pair<float, float>, std::pair<float, float>> nested_pair;

@@ -66,6 +66,10 @@
     {
         class SFMLHandler;
         class Menu;
+        /**
+         * @class Client
+         * @brief Handle the client actions.
+         */
         class Client
         {
             public:
@@ -89,19 +93,57 @@
                  */
                 void handle_message(std::vector<char>&);
 
+                /**
+                 * @brief Modify the direction of the player.
+                 * @param horizontal The horizontal direction of the player.
+                 * @param vertical The vertical direction of the player.
+                 */
                 void change_player_direction(ecs::direction, ecs::direction);
 
+                /**
+                 * @brief Sends a request to the server to create a new room.
+                 * @param roomName The name of the room to be created.
+                 */
                 void send_server_create_room(std::string roomName);
 
+                /**
+                 * @brief Sends a request to the server to join an existing room.
+                 * @param roomName The name of the room to join.
+                 * @param clientName The name of the client joining the room.
+                 */
                 void send_server_join_room(std::string roomName, std::string clientName);
 
+                /**
+                 * @brief Sets the window's filter mode.
+                 * @param filterMode The filter mode to apply to the window.
+                 */
                 void set_window_filter(FILTER_MODE);
 
+                /**
+                 * @brief Creates a new player shot entity in the game.
+                 */
                 void create_new_player_shoot();
 
+                /**
+                 * @brief Handles the mouse press event.
+                 */
                 void handleMousePress();
+
+                /**
+                 * @brief Handles the mouse release event.
+                 */
                 void handleMouseRelease();
+
+                /**
+                 * @brief Changes the game's difficulty level.
+                 * @param difficulty The new difficulty level to set.
+                 */
                 void changeDifficulty(DIFFICULTY);
+
+
+                /**
+                 * @brief Launches the game's main menu.
+                 */
                 void launchMenu();
 
 
@@ -158,6 +200,10 @@
                 AnimationSystem _animation_system;
                 BonusSystem _bonus_system;
 
+                /**
+                 * @brief Sends a new shoot event to the server.
+                 * @param charged A boolean value that indicates if the shot is charged.
+                 */
                 void send_server_new_shoot(bool charged = false);
 
                 bool _mouse_pressed = false;
@@ -217,17 +263,76 @@
                  * @param message The message containing the update data.
                  */
                 void updateEntitiesFirstConnexion(const std::string &);
+
+                /**
+                 * @brief Gets the next available index for a new entity or object.
+                 */
                 size_t getNextIndex();
+
+                /**
+                 * @brief Adds a level status screen based on certain conditions.
+                 * @param condition A boolean value indicating whether to show or hide the level status.
+                 * @param message A reference to a Message object containing the information to display.
+                 */
                 void add_level_status_screen(bool, ecs::udp::Message &);
+
+                /**
+                 * @brief Restarts the game, resetting necessary variables and components.
+                 */
                 void restart_game();
+
+                /**
+                 * @brief Sends a request to the server to create a new player.
+                 */
                 void send_server_new_player();
+
+                /**
+                 * @brief Creates a new projectile entity with the given parameters.
+                 * @param server_id The unique identifier for the projectile on the server side.
+                 * @param x The x coordinate for the projectile's starting position.
+                 * @param y The y coordinate for the projectile's starting position.
+                 * @param dir_x The x-direction for the projectile's movement.
+                 * @param dir_y The y-direction for the projectile's movement.
+                 * @param velocity The speed at which the projectile moves.
+                 * @param spriteId The sprite ID representing the projectile's visual appearance.
+                 */
                 void createEntityProjectile(unsigned int, float, float, int, int, int, int);
+
+                /**
+                 * @brief Resets the level lock, allowing the level to be modified again.
+                 */
                 void reset_level_lock();
+
+                /**
+                 * @brief Sets a lock on the level.
+                 * @param level The level to lock.
+                 * @param x The x-coordinate associated with the level lock.
+                 * @param y The y-coordinate associated with the level lock.
+                 */
                 void put_level_lock(LEVELS, int, int);
+
+
+                /**
+                 * @brief Initializes the score for the game.
+                 */
                 void init_score();
+
+                /**
+                 * @brief Initializes the player's life or health.
+                 */
                 void init_life();
+
+                /**
+                 * @brief Parses a list of room names and their respective IDs.
+                 * @param roomList A string representing the raw list of rooms to be parsed.
+                 */
                 std::vector<std::pair<std::string, int>> parseRoomList(const std::string &);
 
+
+                /**
+                 * @brief Sends a request to the server to start the game with the specified level.
+                 * @param level The level to start the game with.
+                 */
                 void send_server_start_game(LEVELS);
 
                 // INITIALISATION
@@ -257,10 +362,26 @@
                  * @brief Initializes the event bus subscription.
                  */
                 void init_subscribe_event_bus();
+
+                /**
+                 * @brief Initializes the sprites for the levels.
+                 */
                 void init_levels_sprites();
 
+                /**
+                 * @brief Executes the animations for the game.
+                 */
                 void execute_animation();
+
+                /**
+                 * @brief Updates the player's life and health display.
+                 * @param lifes_string The new health value of the player.
+                 */
                 void updatePlayerLife(std::string);
+
+                /**
+                 * @brief Handles the time-related behavior for level status.
+                 */
                 void levelStatusTime();
         };
     }
